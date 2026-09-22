@@ -1,17 +1,44 @@
+# OS files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# IDE / Editors
 .vscode/
 .idea/
+
+# Dependencies
 node_modules/
+
+# Production build artifacts
 dist/
 .astro/
-.env
-.env.*
-*.log
-npm-debug.log*
 coverage/
 *.tsbuildinfo
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Deployment platforms
 .wrangler/
 .vercel/
 .netlify/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 devserver*.log
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
