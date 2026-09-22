@@ -453,11 +453,10 @@ const pt = {
 
 const it = {
   home: {
-    keywords: "test della vista online, test della vista online gratis, test vista online gratis, controllo vista online, test acuità visiva online, tabella di Snellen online, tabella optometrica online, test vista patente, test vista da casa",
-    title: "Test della vista online gratis — Controllo vista a casa (20/40)",
-    description:
-      "Fai il test della vista online gratis. Calibra lo schermo, mettiti a 3 m e prova tabella di Snellen, E direzionale, colori, visione periferica e da vicino — riferimento 20/40, otto lingue, senza registrazione.",
-    lede: "Prova il test della vista online gratis: calibrato, occhio per occhio, in dieci minuti.",
+    keywords: "test della vista online, test della vista online gratis, test acuità visiva online, tabella di Snellen online, test vista patente",
+    title: "Test vista online gratis — Controllo 20/40",
+    description: "Test della vista online gratis. Calibra lo schermo e controlla la tua vista in 10 minuti con il test di Snellen, astigmatismo e visione dei colori.",
+    lede: "Esercitati con il test della vista online: calibrazione a schermo, occhio per occhio, in 10 minuti.",
     articleTitle: "Test della vista online gratis: cosa copre davvero lo screening",
     body: [
       { h: "Cosa copre lo screening", p: "L'ordine replica quello dello sportello: calibra lo schermo, mettiti alla giusta distanza, copri un occhio con il palmo e leggi la riga più piccola che riesci a leggere. Poi E direzionale, tavole dei colori, visione periferica a 60 e 75 gradi, visione da vicino a 40 cm, sensibilità al contrasto, quadrante per astigmatismo e schermo duocromatico. Il riferimento è 20/40." },
@@ -622,10 +621,10 @@ const ja = {
 };
 const ru = {
   home: {
-    keywords: "проверка зрения онлайн, проверка зрения онлайн бесплатно, проверка зрения онлайн на смартфоне, проверка зрения онлайн на телефоне, проверка зрения онлайн на компьютере, проверка зрения онлайн на мониторе, проверка зрения онлайн таблица, проверка зрения онлайн таблица сивцева, проверка зрения онлайн тест",
-    title: "Проверка зрения онлайн бесплатно｜На смартфоне и ПК (20/40)",
-    description: "Бесплатная проверка зрения онлайн на смартфоне или компьютере: откалибруйте экран, встаньте в 3 м и проверьте остроту зрения (таблица Сивцева, кольца Ландольта, цветоощущение и зрение вблизи). Без регистрации.",
-    lede: "Потренируйтесь бесплатно: калибровка, по одному глазу, за десять минут.",
+    keywords: "проверка зрения онлайн, проверка зрения онлайн бесплатно, таблица сивцева, проверка зрения онлайн на смартфоне",
+    title: "Проверка зрения онлайн бесплатно — Оценка 20/40",
+    description: "Бесплатная проверка зрения онлайн на смартфоне или ПК: откалибруйте экран и проверьте зрение (таблица Сивцева, кольца Ландольта) за 10 минут.",
+    lede: "Потренируйтесь бесплатно: калибровка, по одному глазу, за 10 минут.",
     articleTitle: "Бесплатная проверка зрения онлайн: что входит в скрининг",
     body: [
       { h: "Что входит в проверку", p: "Порядок как в кабинете: откалибруйте экран, встаньте на нужное расстояние, закройте один глаз ладонью и прочитайте самую мелкую строку. Затем кольца Ландольта, цветные таблицы, периферия на 60 и 75 градусов, зрение вблизи на 40 см, контраст, астигматизм и дуохромный тест. Ориентир — 20/40." },

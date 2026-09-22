@@ -19,9 +19,33 @@ const breadcrumb = {
     { "@type": "ListItem", position: 3, name: post.title[locale] || post.title.en, item: urlFor(locale, "blog") + post.slug + "/" },
   ],
 };
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.title[locale] || post.title.en,
+  description: post.excerpt[locale] || post.excerpt.en,
+  inLanguage: locale,
+  author: { "@type": "Organization", name: "Online Vision Test" },
+  datePublished: "2024-01-01T08:00:00Z",
+  dateModified: "2026-09-01T08:00:00Z"
+};
+
+const META_L = {
+  en: { by: "Written by Online Vision Test", rev: "Last reviewed: September 2026", src: "Sources: official DMV agencies, optometry references" },
+  es: { by: "Escrito por Online Vision Test", rev: "Última revisión: Septiembre 2026", src: "Fuentes: agencias oficiales, referencias de optometría" },
+  fr: { by: "Écrit par Online Vision Test", rev: "Dernière révision : Septembre 2026", src: "Sources : agences officielles, références en optométrie" },
+  de: { by: "Geschrieben von Online Vision Test", rev: "Zuletzt überprüft: September 2026", src: "Quellen: offizielle Agenturen, Optometrie-Referenzen" },
+  pt: { by: "Escrito por Online Vision Test", rev: "Última revisão: Setembro 2026", src: "Fontes: agências oficiais, referências de optometria" },
+  it: { by: "Scritto da Online Vision Test", rev: "Ultima revisione: Settembre 2026", src: "Fonti: agenzie ufficiali, riferimenti di optometria" },
+  ja: { by: "執筆: Online Vision Test", rev: "最終確認: 2026年9月", src: "情報源: 公式機関、検眼資料" },
+  ru: { by: "Написано Online Vision Test", rev: "Последнее обновление: Сентябрь 2026", src: "Источники: официальные агентства, оптометрические справочники" },
+};
+const m = META_L[locale] || META_L.en;
 ---
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
 
 <section class="section">
   <div class="container">
@@ -36,6 +60,11 @@ const breadcrumb = {
     <div class="simple-hero">
       <h1>{post.title[locale] || post.title.en}</h1>
       <p>{post.excerpt[locale] || post.excerpt.en}</p>
+      <div style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1rem;">
+        <div><strong>{m.by}</strong></div>
+        <div>{m.rev}</div>
+        <div>{m.src}</div>
+      </div>
     </div>
 
     <div class="content-body" style="max-width: 800px; margin: 0 auto;">

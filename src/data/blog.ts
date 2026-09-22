@@ -27,12 +27,16 @@ export const POSTS = [
   },
   {
     slug: "dmv-eye-test-practice",
-    englishOnly: true,
+    englishOnly: false,
     title: {
       en: "DMV Eye Test Online - Practice Test",
+      it: "Test Vista Patente Online - Esercitati",
+      ru: "Онлайн-тест зрения для DMV - Практика",
     },
     excerpt: {
       en: "Get ready for your official DMV vision screening with our free practice eye test.",
+      it: "Preparati per l\'esame della vista con il nostro test pratico gratuito.",
+      ru: "Подготовьтесь к официальной проверке зрения с помощью нашего бесплатного тренировочного теста.",
     },
     content: {
       en: `
@@ -44,6 +48,27 @@ export const POSTS = [
         
         <h3>How to practice</h3>
         <p>Ensure your screen is calibrated properly using a credit card. Stand at the designated distance and read the letters. Practicing at home can reduce anxiety and let you know if you need to visit an optometrist before your official appointment.</p>
+      `
+    ,
+      it: `
+        <h2>Esercitati per il Test della Vista</h2>
+        <p>Se devi rinnovare la patente, dovrai superare un esame della vista. Puoi usare il nostro <strong>test della vista online</strong> come pratica per vedere se la tua acuità visiva soddisfa i requisiti.</p>
+        
+        <h3>Qual è il punteggio minimo?</h3>
+        <p>Molti enti richiedono una visione di 20/40. Usando il nostro <strong>test di Snellen</strong>, puoi simulare l'esame. Questo è un test di pratica e non sostituisce l'esame ufficiale.</p>
+        
+        <h3>Come esercitarsi</h3>
+        <p>Assicurati che lo schermo sia calibrato. Mettiti alla giusta distanza e leggi le lettere. Fare pratica a casa riduce l'ansia e ti fa capire se hai bisogno di un oculista.</p>
+      `,
+      ru: `
+        <h2>Тренировка перед проверкой зрения</h2>
+        <p>Если вам нужно обновить водительские права, вам предстоит пройти проверку зрения. Вы можете использовать наш <strong>онлайн-тест зрения</strong> в качестве тренировки, чтобы проверить, соответствует ли ваша острота зрения требованиям.</p>
+        
+        <h3>Какой результат нужен?</h3>
+        <p>В большинстве случаев требуется зрение 20/40. Используя нашу <strong>таблицу Сивцева</strong>, вы можете смоделировать экзамен. Обратите внимание, что это неофициальный тренировочный тест.</p>
+        
+        <h3>Как тренироваться</h3>
+        <p>Убедитесь, что экран откалиброван. Встаньте на нужное расстояние и читайте буквы. Практика дома снизит тревожность и покажет, нужен ли вам визит к врачу.</p>
       `
     }
   },
@@ -134,12 +159,16 @@ export const POSTS = [
   },
   {
     slug: "6-6-vision-test-online",
-    englishOnly: true,
+    englishOnly: false,
     title: {
       en: "6/6 Vision Test Online: What 6/6 Means and How to Check",
+      it: "Test della vista 6/6 online: Significato e come verificare",
+      ru: "Онлайн-тест зрения 6/6: что значит 6/6 и как проверить",
     },
     excerpt: {
       en: "6/6 is the metric form of 20/20. See the full 6/6 to 20/20 conversion chart and how to check 6/6 vision at home.",
+      it: "6/6 è la forma metrica di 20/20. Scopri la tabella di conversione e come controllare la vista a casa.",
+      ru: "6/6 — это метрический эквивалент 20/20. Ознакомьтесь с таблицей перевода и узнайте, как проверить зрение дома.",
     },
     content: {
       en: `
@@ -170,6 +199,21 @@ export const POSTS = [
 
         <h2>What this screener shows instead</h2>
         <p>One honest note: <a href="/#screener">the free practice screening</a> displays results in 20/xx form, because it was built around the American notation. The lines are the same physical sizes, so use the chart above to map your result. A 20/20 result is a 6/6 result. A 20/40 result is a 6/12 result. If a line worries you, see an optometrist before relying on it. Our <a href="/about/">about page</a> explains what a screen-based check can and cannot tell you.</p>
+      `
+    ,
+      it: `
+        <h2>Cosa significa visione 6/6</h2>
+        <p>6/6 è la forma metrica di 20/20. Significa che leggi a 6 metri ciò che un occhio standard legge a 6 metri. 6/6, 20/20 e 1.0 indicano tutti una normale visione da lontano.</p>
+        
+        <h2>Come controllare il 6/6 a casa</h2>
+        <p>Posizionati a 6 metri dallo schermo (equivalenti ai 20 piedi americani). Calibra il display con una carta bancaria. Copri un occhio e leggi la riga più piccola. I nostri risultati sono in formato 20/xx, ma un 20/20 corrisponde a un 6/6.</p>
+      `,
+      ru: `
+        <h2>Что означает зрение 6/6</h2>
+        <p>6/6 — это метрическая форма 20/20. Это означает, что вы видите с 6 метров то, что стандартный глаз видит с 6 метров. 6/6, 20/20 и 1.0 означают нормальное зрение вдаль.</p>
+        
+        <h2>Как проверить 6/6 дома</h2>
+        <p>Встаньте в 6 метрах от экрана. Сначала откалибруйте экран с помощью банковской карты. Закройте один глаз и прочитайте самую маленькую строку. Наши результаты отображаются в формате 20/xx, но результат 20/20 соответствует 6/6.</p>
       `
     }
   }

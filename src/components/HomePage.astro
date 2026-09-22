@@ -227,6 +227,49 @@ const faqSchema = {
     </section>
   )}
 
+  {isUS && (
+    <section class="section" id="states">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-i18n="states.kicker">{d("states.kicker")}</p>
+          <h2 data-i18n="states.title">{d("states.title")}</h2>
+          <p class="section-sub" data-i18n="states.sub">{d("states.sub")}</p>
+          <p class="section-sub" style="margin-top:0.5rem; color:var(--muted); font-size:0.9rem;">
+            <em>Last reviewed: September 2026. Official sources: State DMV/DPS manuals.</em>
+          </p>
+        </div>
+        <div class="featured-states" id="featuredStates"></div>
+        <div class="table-card">
+          <div class="table-tools">
+            <label class="search-wrap">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4.5 4.5"></path></svg>
+              <input id="stateSearch" type="search" placeholder={d("states.search")} aria-label={d("states.search")} autocomplete="off" />
+            </label>
+            <div class="legend">
+              <span class="chip chip-ok" data-i18n="states.legendOk">{d("states.legendOk")}</span>
+              <span class="chip chip-mid" data-i18n="states.legendMid">{d("states.legendMid")}</span>
+              <span class="chip chip-warn" data-i18n="states.legendWarn">{d("states.legendWarn")}</span>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="state-table">
+              <thead>
+                <tr>
+                  <th data-i18n="states.colState">{d("states.colState")}</th>
+                  <th data-i18n="states.colAcuity">{d("states.colAcuity")}</th>
+                  <th data-i18n="states.colIfBelow">{d("states.colIfBelow")}</th>
+                  <th data-i18n="states.colRenewal">{d("states.colRenewal")}</th>
+                </tr>
+              </thead>
+              <tbody id="stateTableBody"></tbody>
+            </table>
+          </div>
+          <p class="table-foot" data-i18n="states.foot">{d("states.foot")}</p>
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="section" id="how">
     <div class="container">
       <div class="section-head">

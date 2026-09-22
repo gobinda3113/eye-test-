@@ -13,7 +13,7 @@ export const HREFLANG = {
   es: "es-ES",
   fr: "fr-FR",
   de: "de-DE",
-  pt: "pt-BR",
+  pt: "pt-PT",
   it: "it-IT",
   ja: "ja-JP",
   ru: "ru-RU",
