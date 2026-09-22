@@ -1,55 +1,14 @@
-# DMV Eye Test Online - Project Architecture & Feature Summary
+# eye-test
 
-This document serves as a comprehensive breakdown of the `DMV Eye Test Online` project. It details the technical stack, core features, architectural decisions, and recent optimizations. 
+## About this project
 
-## 1. Tech Stack & Philosophy
-- **Framework:** Astro (Static Site Generation for maximum speed and SEO).
-- **Language:** Strict TypeScript (with `zod` for runtime boundary validation).
-- **Styling:** Vanilla CSS (`global.css`). No Tailwind, no Bootstrap. Native CSS Grid/Flexbox with cascading media queries.
-- **Interactivity:** Vanilla DOM manipulation. No React, Vue, or Alpine.js.
-- **Philosophy:** Built under the "Ponytail" (minimalist, dependency-free, native platform features) and "Matt Pocock" (strict TypeScript, no implicit `any`, zod boundaries) paradigms.
+A free online vision screening tool. It lets anyone check their eyesight at home from a phone or computer browser, with no signup and no data leaving the device.
 
-## 2. Core Features & "The Lab"
-The application simulates a DMV vision screening using HTML5 Canvas rendering. 
+## What it does
 
-### Calibration System
-Because physical screen sizes and pixel densities vary, the app requires users to calibrate their screen using a standard physical object (like a credit card). This calculates the exact `mmPerPx`, ensuring that the rendering algorithms draw the test optotypes at the precise millimeter heights required by optometry formulas (e.g., Snellen distance).
-
-### Vision Checks (6 Modules)
-1. **Visual Acuity (Snellen):** Renders dynamic Snellen tumbling E's or letters at exact pixel heights based on the user's distance from the screen.
-2. **Color Blindness (Ishihara):** Generates randomized pseudo-isochromatic plates to test for red-green color deficiencies.
-3. **Peripheral Vision:** Uses a central fixation point and tests visual field degrees.
-4. **Astigmatism:** Renders a radiating dial/sunburst chart to detect blurred axes.
-5. **Contrast Sensitivity:** Renders optotypes at decreasing opacity/contrast levels to test low-light vision capabilities.
-6. **Depth Perception (Stereo):** (If supported) Tests binocular disparity.
-
-## 3. Data & State Management
-- **100% Client-Side Privacy:** No vision test results or user data ever leave the browser. There is no backend database.
-- **Local Storage:** Progress (results) and calibration data (distance, mmPerPx) are saved in the browser's `localStorage` so users don't lose their place if they refresh.
-- **Zod Validation:** When reading from `localStorage`, the data is strictly parsed through Zod schemas (`ProfileSchema`, `ResultSchema`). If a browser extension corrupts the data, Zod catches it and safely falls back to default empty states rather than throwing fatal runtime errors.
-
-## 4. Internationalization (i18n)
-- **Languages Supported:** English (`en`), Spanish (`es`), French (`fr`), German (`de`), Portuguese (`pt`), Italian (`it`), Japanese (`ja`), Russian (`ru`).
-- **Routing:** Astro uses dynamic routing (`/pages/[locale]/`) to generate static HTML pages for every language.
-- **Dictionary:** UI strings are managed in a flat dictionary structure (`i18n.ts`) and applied to the HTML via `data-i18n` attributes.
-
-## 5. Information Architecture (Pages)
-- **Home/Landing (`/`):** Hero section, feature grids, and the entry point to the test.
-- **The Screener / Lab:** The actual interactive Canvas-based testing environment.
-- **State Rules Database (`/states`):** A comprehensive, searchable table of the exact DMV vision requirements (e.g., 20/40 acuity, 140-degree field of vision) for all 50 US states.
-- **CDL Prep:** Specialized information for Commercial Driver's License vision requirements.
-- **FAQ:** Common questions regarding DMV tests.
-
-## 6. Recent UI/UX Optimizations
-- **Mobile Menu Overlap:** The mobile navigation menu was shifted to `position: absolute; top: 100%; z-index: 100` so that it drops down gracefully over the page content without physically shifting the `<main>` DOM elements down.
-- **Header Alignment:** On mobile, when the central navigation links are hidden, the utility tools (language dropdown, theme toggle, hamburger menu) correctly align to the right edge.
-- **Language Dropdown:** Removed hardcoded pixel widths (`width: auto`) to accommodate longer translations (like "Português") and injected a custom SVG chevron arrow into the CSS background padding for a polished, native feel.
-
-## 7. Areas for Potential LLM Improvement / Brainstorming
-*When feeding this to another model, you can ask it to focus on:*
-1. **SEO Enhancements:** Are there schema markups or semantic HTML improvements that could boost local SEO for DMV-related search terms?
-2. **Canvas Accessibility:** Canvas is inherently inaccessible to screen readers. How can we improve the accessibility fallback for visually impaired users (ironic for a vision test, but important for compliance)?
-3. **Monetization / Conversion:** Without compromising the "free" nature of the tool, what are lightweight ways to monetize (e.g., lead gen for local optometrists, affiliate links for glasses)?
-4. **Test Accuracy:** Are there better algorithms or browser APIs (like WebGL or device camera distance tracking) to improve the clinical accuracy of the Snellen and Peripheral checks?
-
-# eye-test-
+- Calibrates the screen to real-world size using a bank card, so test letters render at true size.
+- Runs 11 vision checks: distance acuity (Snellen chart), Tumbling-E, Landolt rings, colour vision plates, peripheral field flashes, near vision card, contrast sensitivity, astigmatism dial, red/green refraction screen, and depth perception.
+- Tests each eye separately, then both together, against the 20/40 benchmark.
+- Shows a results summary that can be printed or saved, with Japanese driving-licence reference (both eyes 0.7+, each eye 0.3+).
+- Works in 8 languages: English, Spanish, French, German, Portuguese, Italian, Japanese, and Russian.
+- Pure practice screener: not a medical exam, diagnosis, or prescription.
