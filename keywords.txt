@@ -1,0 +1,170 @@
+for Portuguese : 
+teste de visão (Main Keyword)          | Volume: >1000 | Translation: vision test
+teste de visao                         | Volume: >1000 | Translation: vision test
+teste de visão online                  | Volume: >1000 | Translation: online vision test
+teste de visao letras                  | Volume: >100  | Translation: vision test letters
+teste de visão pelo celular            | Volume: >100  | Translation: vision test on mobile
+tabela teste de visão detran           | Volume: >100  | Translation: Detran (DMV) vision test chart
+teste de visão letras                  | Volume: >100  | Translation: vision test letters
+teste de visão detran                  | Volume: >100  | Translation: Detran (DMV) vision test
+letras para teste de visão             | Volume: >100  | Translation: letters for vision test
+teste de visão infantil                | Volume: >100  | Translation: children's vision test
+letras pequenas para teste de visão    | Volume: >100  | Translation: small letters for vision test
+teste de visão pelo celular grátis     | Volume: >100  | Translation: free vision test on mobile
+teste de visão miopia                  | Volume: >100  | Translation: vision test myopia
+teste de visão do detran               | Volume: >100  | Translation: Detran (DMV) vision test
+teste de visão para perto              | Volume: >100  | Translation: near vision test
+teste de visão com desenhos            | Volume: >100  | Translation: vision test with drawings
+teste de visão online grátis           | Volume: >100  | Translation: free online vision test
+teste de visão no celular              | Volume: <100  | Translation: vision test on mobile
+simulação teste de visão detran        | Volume: <100  | Translation: Detran (DMV) vision test simulation
+teste de visao celular                 | Volume: <100  | Translation: mobile vision test
+
+Keyword for us only (
+dmv eye test                          | KD: Medium | Volume: >1000
+dmv eye test online free              | KD: Medium | Volume: >1000
+dmv eye test chart                    | KD: Medium | Volume: >1000
+cheat sheet dmv eye test machine      | KD: Easy   | Volume: >100
+driver's license dmv eye test machine | KD: Easy   | Volume: >100
+dmv eye test online                   | KD: Easy   | Volume: >100
+line 5 dmv eye test                   | KD: Easy   | Volume: >100
+dmv eye test machine                  | KD: Easy   | Volume: >100
+free dmv eye test online              | KD: Easy   | Volume: >100
+
+faq -
+
+how beat the eye test at the dmv                 | KD: Easy   | Volume: >100
+how to pass dmv eye test                         | KD: Easy   | Volume: <100
+what is the eye test at the dmv                  | KD: Medium | Volume: <100
+how do i pass the california dmv eye test        | KD: Easy   | Volume: <100
+what is the dmv eye test                         | KD: N/A    | Volume: <100
+can you use reading glasses for dmv eye test     | KD: Easy   | Volume: <100
+what happens if you fail the eye test at dmv     | KD: N/A    | Volume: <100
+what does the eye test look like at the dmv      | KD: N/A    | Volume: <100
+what does the dmv eye test look like             | KD: N/A    | Volume: <100
+what happens if i fail my eye test at dmv        | KD: N/A    | Volume: <100
+how to pass the dmv eye test                     | KD: N/A    | Volume: <100
+do you take an eye test at the dmv               | KD: N/A    | Volume: <100
+what kind of eye test does the dmv give          | KD: N/A    | Volume: <100
+what happens if you don't pass eye test at dmv   | KD: N/A    | Volume: <100
+what if you fail the eye test at dmv             | KD: N/A    | Volume: <100
+what happens if you fail the eye test at the dmv | KD: N/A    | Volume: <100
+what kind of eye test at dmv                     | KD: N/A    | Volume: <100
+what eye test does the california dmv use        | KD: N/A    | Volume: <100
+how to pass an eye test at the dmv               | KD: N/A    | Volume: <100
+how to pass eye test at dmv                      | KD: N/A    | Volume: <100
+)- add content for this for English language only  
+
+
+ faq :
+
+
+
+for English :
+eye test chart(main )
+dmv eye test online free (Main Keyword) | Volume: >1000 | Translation: dmv eye test online free
+dmv eye test online                     | Volume: >100  | Translation: dmv eye test online
+free dmv eye test online                | Volume: >100  | Translation: free dmv eye test online
+nys dmv eye test online                 | Volume: <100  | Translation: New York State dmv eye test online
+dmv eye test online florida             | Volume: <100  | Translation: dmv eye test online Florida
+dmv eye test online california          | Volume: <100  | Translation: dmv eye test online California
+dmv eye test online nc                  | Volume: <100  | Translation: dmv eye test online North Carolina
+ny dmv eye test online                  | Volume: <100  | Translation: New York dmv eye test online
+nyc dmv eye test online                 | Volume: <100  | Translation: New York City dmv eye test online
+
+online eye test                         | Volume: >1000 | KD: Medium
+eye test online                         | Volume: >1000 | KD: Medium
+free eye test                           | Volume: >1000 | KD: Easy
+eye test chart                          | Volume: >10,000 | KD: Easy
+snellen eye test                        | Volume: >1000 | KD: Medium
+dmv eye test                            | Volume: >1000 | KD: Medium
+dominant eye test                       | Volume: >1000 | KD: Easy
+
+
+German (Deutsch)
+
+
+sehtest online (Main Keyword) | Volume: >1000 | Translation: online eye test
+sehtest online machen         | Volume: >100  | Translation: do/take eye test online
+sehtest online handy          | Volume: >100  | Translation: online eye test on mobile/phone
+sehtest online kostenlos      | Volume: >100  | Translation: free online eye test
+sehtest online handy kostenlos| Volume: >100  | Translation: free mobile online eye test
+
+faq
+ 
+kann man online einen sehtest machen (Main Keyword)   | Volume: <100 | Translation: can you do an eye test online
+wie funktioniert ein online sehtest                   | Volume: <100 | Translation: how does an online eye test work
+
+
+
+for French 
+
+test de vue en ligne (Main Keyword)     | Volume: >100 | Translation: online eye test
+test de vue en ligne gratuit            | Volume: <100 | Translation: free online eye test
+comment réaliser un test de vue en ligne| Volume: <100 | Translation: how to take an online eye test
+test de vue en ligne myopie             | Volume: <100 | Translation: online eye test myopia
+test de vue en ligne pour enfant        | Volume: <100 | Translation: online eye test for children
+comment faire un test de vue en ligne ? | Volume: <100 | Translation: how to do an online eye test?
+faire un test de vue en ligne           | Volume: <100 | Translation: do an online eye test
+test de vue en ligne enfant             | Volume: <100 | Translation: online eye test child
+test de vision en ligne (Main Keyword) | Volume: <100 | Translation: online vision test
+test de vision en ligne gratuit        | Volume: <100 | Translation: free online vision test
+
+FAQ
+
+comment réaliser un test de vue en ligne (Main Keyword) | Volume: <100 | Translation: how to take an online eye test
+comment faire un test de vue en ligne ?                 | Volume: <100 | Translation: how to do an online eye test?
+
+
+
+Spanish (Español)
+
+examen de la vista online (Main Keyword) | Volume: <100 | Translation: online eye test
+examen de la vista online gratis         | Volume: <100 | Translation: free online eye test
+examen de la vista online para niños     | Volume: <100 | Translation: online eye test for children
+examen de la vista online miopia | Volume: <100 | Translation: online eye test myopia
+
+
+Italian (Italiano)
+
+test della vista online (Main Keyword) | Volume: >100 | Translation: online eye test
+test della vista online gratis         | Volume: <100 | Translation: free online eye test
+
+
+Japanese (日本語)
+
+視力検査 スマホ (Main Keyword)            | Volume: >10,000 | Translation: vision test smartphone
+視力検査スマホ                            | Volume: >100    | Translation: vision test smartphone
+視力 検査 スマホ                          | Volume: >100    | Translation: vision test smartphone
+簡易視力検査 スマホ                       | Volume: <100    | Translation: simple vision test smartphone
+家で視力検査 スマホ                       | Volume: <100    | Translation: vision test at home smartphone
+ランドルト環 視力検査 スマホ              | Volume: <100    | Translation: Landolt ring/C vision test smartphone
+視力検査スマホ 無料                       | Volume: <100    | Translation: free vision test smartphone
+視力検査スマホで                          | Volume: <100    | Translation: vision test on smartphone
+スマホ 視力 検査 スマホ                   | Volume: <100    | Translation: smartphone vision test smartphone
+自宅 視力検査 スマホ                      | Volume: <100    | Translation: at-home vision test smartphone
+スマホ 視力検査 スマホ                    | Volume: <100    | Translation: smartphone vision test smartphone
+運転免許 運転免許 視力検査 スマホ         | Volume: <100    | Translation: driver's license vision test smartphone
+運転免許更新 運転 免許 更新 視力 検査 スマホ| Volume: <100    | Translation: driver's license renewal vision test smartphone
+簡易 視力検査 スマホ                      | Volume: <100    | Translation: simple vision test smartphone
+
+FAQ
+
+スマホで視力検査できますか？ (Main Keyword) | Volume: <100 | Translation: can you do a vision test on a smartphone?
+
+
+Russia 
+
+проверка зрения онлайн (Main Keyword)            | Volume: >100 | Translation: online vision test
+проверка зрения онлайн на смартфоне              | Volume: >100 | Translation: online vision test on smartphone
+проверка зрения онлайн на телефоне               | Volume: <100 | Translation: online vision test on phone
+проверка зрения онлайн на мониторе               | Volume: <100 | Translation: online vision test on monitor
+проверка зрения онлайн на компьютере             | Volume: <100 | Translation: online vision test on computer
+проверка зрения онлайн тест                      | Volume: <100 | Translation: online vision test
+проверка зрения онлайн бесплатно                 | Volume: <100 | Translation: free online vision test
+проверка зрения онлайн таблица                   | Volume: <100 | Translation: online vision test chart
+проверка зрения онлайн на компьютере тест        | Volume: <100 | Translation: online vision test on computer
+проверка зрения онлайн для детей                 | Volume: <100 | Translation: online vision test for children
+проверка зрения онлайн таблица сивцева           | Volume: <100 | Translation: online vision test Sivtsev chart
+проверка зрения онлайн с телефона                | Volume: <100 | Translation: online vision test from phone
+проверка зрения онлайн на компьютере таблица     | Volume: <100 | Translation: online vision test chart on computer

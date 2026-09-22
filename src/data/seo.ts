@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Per-locale SEO copy: the <title>, meta description, H1 and lede for every
  * prerendered route, plus the body sections of the text pages.
  *
@@ -112,29 +112,30 @@ const en = {
 
 const es = {
   home: {
-    title: "Examen de la vista  en línea gratis — Práctica (20/40)",
+    keywords: "examen de la vista online, examen de la vista online gratis, examen de la vista online para niños, examen de la vista online miopia",
+    title: "Examen de la vista online gratis — Prueba visual (20/40)",
     description:
-      "Haz gratis el examen de la vista  en línea. Calibra la pantalla, colócate a 3 m y practica el optotipo Snellen, la E de la orientación, el color, la visión periférica y la visión cercana: referencia 20/40, ocho idiomas y sin registro.",
-    lede: "Practica el examen de la vista  en línea gratis: calibrado, ojo por ojo y en diez minutos.",
-    articleTitle: "Examen de la vista  en línea gratis: qué cubre realmente la evaluación",
+      "Haz gratis tu examen de la vista online. Calibra la pantalla, colócate a 3 m y practica el optotipo Snellen, la E de la orientación, el color, la visión periférica y la visión cercana: referencia 20/40, ocho idiomas y sin registro.",
+    lede: "Practica el examen de la vista online gratis: calibrado, ojo por ojo y en diez minutos.",
+    articleTitle: "Examen de la vista online gratis: qué cubre realmente la evaluación",
     body: [
       { h: "Qué cubre la evaluación", p: "El orden imita el del mostrador: calibrar la pantalla, colocarte a la distancia correcta, tapar un ojo con la palma y leer la línea más pequeña que puedas. Después vienen la E de orientación, las láminas de color, la visión periférica a 60 y 75 grados, la visión cercana a 40 cm, la sensibilidad al contraste, el dial de astigmatismo y una pantalla de refracción duocroma. La referencia es 20/40, el mismo punto de corte que usa la mayoría de los estados para la licencia sin restricciones." },
       { h: "Cómo obtener un resultado fiable", p: "Todo depende de que los píxeles tengan el tamaño correcto, y eso es lo que falla en casi todas las pruebas caseras: un optotipo mostrado «más o menos» puede estar un 30 % desviado, lo justo para que una línea de 20/40 se confunda con una de 20/25. Coloca una tarjeta bancaria contra el contorno en pantalla y desliza hasta que coincidan. Una tarjeta mide 85,6 mm según la norma ISO/IEC 7810, así que la aplicación puede convertir milímetros en píxeles y dibujar cada letra a su tamaño real." },
       { h: "Prepara la habitación antes de empezar", p: "Colócate a 3 m (10 pies), o a 6 m si tienes espacio, que es la distancia estándar de Snellen, y marca el sitio en el suelo para repetir siempre la misma posición. Atenúa la luz de forma que la pantalla sea lo más brillante de la sala, mantén el monitor a la altura de los ojos y no te inclines hacia delante para salvar una línea: la distancia es la medida." },
       { h: "Por qué un optotipo calibrado supera a una imagen", p: "Muchas páginas muestran una imagen de una tabla de Snellen. Se ve igual, pero no mide nada: la imagen tiene un número fijo de píxeles, así que el ángulo visual depende por completo de tu monitor y de lo lejos que te sientes. Dos personas pueden leer el mismo archivo y recibir conclusiones distintas. Por eso el paso de la tarjeta aquí es obligatorio y no opcional, y por eso las letras se dibujan como vectores en lugar de componerse con una tipografía." },
-      { h: "Qué no es esta herramienta", p: "No es una prueba  ni del transporte, no es una exploración médica y no puede diagnosticar ni recetar. Los resultados dependen de tu pantalla, tu iluminación y tu distancia, y los resúmenes por estado son orientativos y pueden estar desactualizados. Si algo te preocupa, acude a un optometrista u oftalmólogo antes de tu cita." },
+      { h: "Qué no es esta herramienta", p: "No es un examen oficial de tráfico ni de transporte, no es una exploración médica y no puede diagnosticar ni recetar. Los resultados dependen de tu pantalla, tu iluminación y tu distancia, y los resúmenes por estado son orientativos y pueden estar desactualizados. Si algo te preocupa, acude a un optometrista u oftalmólogo antes de tu cita." },
     ],
   },
   blog: {
     title: "Examen de la vista online gratis - Comprueba tu visión en casa",
     description:
-      "Agudeza visual mínima, restricciones y renovación en los tu región de tu país y DC, con la norma citada y enlaces oficiales . La mayoría exige 20/40 y permite una licencia restringida hasta 20/70.",
-    h1: "Requisitos de visión  por estado",
-    lede: "La mayoría de los estados exige 20/40 con ambos ojos para una licencia sin restricciones y permite seguir conduciendo con espejo exterior hasta 20/70. Cinco filas están verificadas con la norma; el resto te remite a tu.",
+      "Agudeza visual mínima, restricciones y renovación con referencias sobre agudeza visual mínima, restricciones frecuentes y consejos para tu revisión. La mayoría exige 20/40 y permite una licencia restringida hasta 20/70.",
+    h1: "Guías y artículos sobre el examen de la vista",
+    lede: "La mayoría de los estados exige 20/40 con ambos ojos para una licencia sin restricciones y permite seguir conduciendo con espejo exterior hasta 20/70. Cinco filas están verificadas con la norma; el resto te remite a tu organismo oficial de tráfico.",
     body: [
       { h: "Cómo leer la tabla", p: "Agudeza mínima es el estándar para una licencia sin restricciones. Si quedas por debajo es la peor agudeza corregida que aún puede dar derecho a una licencia restringida: normalmente conducir solo de día o llevar espejo exterior. Visión al renovar indica si el estado te revisa en cada ciclo, en ciclos alternos o con más intervalo." },
       { h: "Por qué existen las restricciones", p: "Una restricción no es una prohibición. Es una nota en la licencia —lentes correctivos, espejos exteriores, solo de día— para que la norma refleje cómo ves de verdad. La mayoría de quienes fallan la primera prueba simplemente necesitaban sus gafas." },
-      { h: "El profesional es otro estándar", p: "Los conductores comerciales interestatales se miden con 49 C.F.R. § 391.41: 20/40 corregido en cada ojo y en ambos a la vez, 70° de campo en cada ojo y 130° en conjunto, y distinguir rojo, verde y ámbar. El estándar de una licencia normal no sirve." },
+      { h: "Los conductores profesionales siguen otro estándar", p: "Los conductores comerciales interestatales se miden con 49 C.F.R. § 391.41: 20/40 corregido en cada ojo y en ambos a la vez, 70° de campo en cada ojo y 130° en conjunto, y distinguir rojo, verde y ámbar. El estándar de una licencia normal no sirve." },
     ],
   },
   about: {
@@ -142,10 +143,10 @@ const es = {
     description:
       "Quién construye Online Vision Test, por qué el optotipo se dibuja y no se fotografía, y qué puede y qué no puede decirte un evaluador en el navegador.",
     h1: "Acerca de este evaluador",
-    lede: "Un evaluador de práctica gratuito para quienes van a hacer el examen de la vista .",
+    lede: "Un evaluador de práctica gratuito para quienes van a hacer el examen de la vista para la licencia de conducir.",
     body: [
-      { h: "Qué es esto", p: "Online Vision Test es un evaluador de práctica gratuito que funciona en el navegador. Reproduce el orden de una revisión de visión en ventanilla —calibrar, situarse a distancia, tapar un ojo, leer la línea más pequeña— y añade las pruebas que importan para las licencias de tu país y las tarjetas médicas profesional: agudeza a distancia, dirección con la E, láminas de color, visión periférica, visión cercana, sensibilidad al contraste, dial de astigmatismo y cribado de refracción duo­croma." },
-      { h: "Qué no es", p: "No es un examen  ni del transporte, no es una exploración médica y no puede diagnosticar nada ni emitir una receta. Los resultados dependen de tu monitor, la luz de la sala y la distancia. Si una prueba sugiere un problema, acude a un optometrista u oftalmólogo." },
+      { h: "Qué es esto", p: "Online Vision Test es un evaluador de práctica gratuito que funciona en el navegador. Reproduce el orden de una revisión de visión en ventanilla —calibrar, situarse a distancia, tapar un ojo, leer la línea más pequeña— y añade las pruebas que importan para las licencias de tu país y los certificados médicos profesionales: agudeza a distancia, dirección con la E, láminas de color, visión periférica, visión cercana, sensibilidad al contraste, dial de astigmatismo y cribado de refracción duo­croma." },
+      { h: "Qué no es", p: "No es un examen oficial ni médico, no es una exploración médica y no puede diagnosticar nada ni emitir una receta. Los resultados dependen de tu monitor, la luz de la sala y la distancia. Si una prueba sugiere un problema, acude a un optometrista u oftalmólogo." },
       { h: "Cómo está hecho", p: "Sin cuentas, sin analíticas, sin subidas. Los optotipos se dibujan como trazos vectoriales sobre una rejilla de 5x5, así la proporción trazo/altura es correcta a cualquier tamaño, y los tamaños físicos derivan de una calibración con tarjeta bancaria. Todo se ejecuta en tu dispositivo y cada resultado se queda en tu navegador." },
     ],
   },
@@ -172,15 +173,15 @@ const es = {
   terms: {
     title: "Términos de uso — Online Vision Test",
     description:
-      "Las condiciones de uso de Online Vision Test: una herramienta de práctica gratuita ofrecida tal cual, sin consejo médico, sin garantía y sin vínculo con ningún.",
+      "Las condiciones de uso de Online Vision Test: una herramienta de práctica gratuita ofrecida tal cual, sin consejo médico, sin garantía y sin afiliación con ningún organismo oficial.",
     h1: "Términos de uso",
-    lede: "Una herramienta de práctica gratuita, tal cual, sin consejo médico y sin vínculo con ningún.",
+    lede: "Una herramienta de práctica gratuita, tal cual, sin consejo médico y sin afiliación con ningún organismo oficial.",
     body: [],
     englishBody: true,
   },
   notFound: {
     title: "Página no encontrada — Online Vision Test",
-    description: "Esa dirección no existe. Vuelve al evaluador de práctica o consulta las normas de visión de los tu región.",
+    description: "Esa dirección no existe. Vuelve al evaluador de práctica o consulta nuestras guías de visión.",
     h1: "Esa página no está aquí",
     lede: "El enlace puede ser antiguo o la página puede haberse movido. El evaluador y las normas estatales están a un clic.",
     body: [],
@@ -196,7 +197,8 @@ const es = {
 
 const fr = {
   home: {
-    title: "Test de vue en ligne gratuit — Entraînement (20/40)",
+    keywords: "test de vue en ligne, test de vue en ligne gratuit, comment réaliser un test de vue en ligne, test de vue en ligne myopie, test de vue en ligne pour enfant, comment faire un test de vue en ligne ?, faire un test de vue en ligne, test de vue en ligne enfant, test de vision en ligne, test de vision en ligne gratuit",
+    title: "Test de vue en ligne gratuit — Contrôle visuel (20/40)",
     description:
       "Passez gratuitement le test de vue en ligne. Calibrez l'écran, placez-vous à 3 m et entraînez-vous à l'échelle de Snellen, au E directionnel, aux couleurs, à la vision périphérique et de près — repère 20/40, huit langues, sans inscription.",
     lede: "Entraînez-vous gratuitement au test de vue en ligne : calibré, œil par œil, en dix minutes.",
@@ -206,19 +208,19 @@ const fr = {
       { h: "Comment obtenir un résultat fiable", p: "Tout dépend de la taille réelle des pixels, et c'est là que presque tous les tests maison échouent : un optotype affiché « à peu près à la bonne taille » peut être décalé de 30 %, assez pour confondre une ligne 20/40 avec une 20/25. Placez une carte bancaire contre le contour à l'écran et faites-la glisser jusqu'à ce qu'elles coïncident. Une carte mesure 85,6 mm selon la norme ISO/IEC 7810 : l'application peut donc convertir les millimètres en pixels et dessiner chaque lettre à sa taille réelle." },
       { h: "Préparez la pièce avant de commencer", p: "Placez-vous à 3 m (10 pieds), ou à 6 m si vous avez l'espace, la distance standard de Snellen, et marquez le sol pour reprendre toujours la même position. Baissez l'éclairage pour que l'écran soit l'élément le plus lumineux de la pièce, gardez l'écran à hauteur des yeux et ne vous penchez pas en avant pour sauver une ligne : la distance, c'est la mesure." },
       { h: "Pourquoi un optotype calibré vaut mieux qu'une image", p: "Beaucoup de sites affichent une image d'échelle de Snellen. Cela y ressemble, mais ne mesure rien : l'image a un nombre fixe de pixels, donc l'angle visuel dépend entièrement de votre écran et de votre recul. Deux personnes peuvent lire le même fichier et repartir avec des conclusions différentes. C'est pourquoi l'étape de la carte est obligatoire ici, et pourquoi les lettres sont dessinées en vectoriel plutôt que composées dans une police." },
-      { h: "Ce que cet outil n'est pas", p: "Ce n'est pas un test officiel ni du transporte, pas un examen médical, et il ne peut ni diagnostiquer ni prescrire. Les résultats dépendent de votre écran, de votre éclairage et de votre distance, et les résumés par État sont indicatifs et peuvent être périmés. Si quelque chose vous inquiète, consultez un optométriste ou un ophtalmologue avant votre rendez-vous." },
+      { h: "Ce que cet outil n'est pas", p: "Ce n'est pas un examen officiel ni médical, pas un examen médical, et il ne peut ni diagnostiquer ni prescrire. Les résultats dépendent de votre écran, de votre éclairage et de votre distance, et les résumés par État sont indicatifs et peuvent être périmés. Si quelque chose vous inquiète, consultez un optométriste ou un ophtalmologue avant votre rendez-vous." },
     ],
   },
   blog: {
     title: "Test de vue en ligne gratuit - Vérifiez votre vision chez vous",
     description:
-      "Acuité visuelle minimale, restrictions et renouvellement dans les votre région et le district de Columbia, avec la référence légale et les liens officiels du. La plupart exigent 20/40 et autorisent un permis restreint jusqu'à 20/70.",
+      "Acuité visuelle minimale, restrictions et renouvellement avec les repères d'acuité visuelle minimale, les restrictions et les conseils pour préparer votre contrôle. La plupart exigent 20/40 et autorisent un permis restreint jusqu'à 20/70.",
     h1: "Exigences de vision par État",
-    lede: "La plupart des États exigent 20/40 des deux yeux pour un permis sans restriction et autorisent la conduite avec rétroviseur extérieur jusqu'à 20/70. Cinq lignes sont vérifiées dans le texte de loi ; les autres vous renvoient à votre.",
+    lede: "La plupart des États exigent 20/40 des deux yeux pour un permis sans restriction et autorisent la conduite avec rétroviseur extérieur jusqu'à 20/70. Cinq lignes sont vérifiées dans le texte de loi ; les autres vous renvoient à votre administration officielle.",
     body: [
       { h: "Comment lire le tableau", p: "L'acuité minimale est la norme pour un permis sans restriction. Si vous êtes en dessous indique la pire acuité corrigée qui peut encore ouvrir droit à un permis restreint — souvent la conduite de jour ou un rétroviseur extérieur. Vision au renouvellement précise si l'État contrôle à chaque cycle, un cycle sur deux, ou plus rarement." },
       { h: "Pourquoi les restrictions existent", p: "Une restriction n'est pas une interdiction. C'est une mention sur le permis — verres correcteurs, rétroviseurs extérieurs, conduite de jour — pour que la norme corresponde à votre vision réelle. La plupart des personnes recalées au premier contrôle avaient simplement besoin de leurs lunettes." },
-      { h: "Le profesional suit une autre norme", p: "Les conducteurs professionnels inter-États relèvent de 49 C.F.R. § 391.41 : 20/40 corrigé séparément à chaque œil et des deux ensemble, 70° de champ par œil et 130° au total, et la reconnaissance du rouge, du vert et de l'ambre. La norme d'un permis ordinaire ne s'applique pas." },
+      { h: "Les conducteurs professionnels suivent une autre norme", p: "Les conducteurs professionnels inter-États relèvent de 49 C.F.R. § 391.41 : 20/40 corrigé séparément à chaque œil et des deux ensemble, 70° de champ par œil et 130° au total, et la reconnaissance du rouge, du vert et de l'ambre. La norme d'un permis ordinaire ne s'applique pas." },
     ],
   },
   about: {
@@ -228,8 +230,8 @@ const fr = {
     h1: "À propos de ce dépistage",
     lede: "Un outil d'entraînement gratuit pour les personnes qui vont passer l'examen de vue du permis officiel.",
     body: [
-      { h: "Ce que c'est", p: "Online Vision Test est un dépistage d'entraînement gratuit qui tourne dans le navigateur. Il reproduit l'ordre d'un contrôle au guichet — calibrer, se placer à distance, cacher un œil, lire la plus petite ligne — et ajoute les tests qui comptent pour un permis officiel et une carte médicale profesional : acuité de loin, sens du E, planches de couleurs, vision périphérique, vision de près, sensibilité aux contrastes, cadran d'astigmatisme et dépistage de réfraction duo­chrome." },
-      { h: "Ce que ce n'est pas", p: "Ce n'est pas un test officiel ou du transporte, ni un examen médical, et cela ne peut ni diagnostiquer ni prescrire. Les résultats dépendent de votre écran, de l'éclairage et de la distance. Si un test suggère un problème, consultez un optométriste ou un ophtalmologue." },
+      { h: "Ce que c'est", p: "Online Vision Test est un dépistage d'entraînement gratuit qui tourne dans le navigateur. Il reproduit l'ordre d'un contrôle au guichet — calibrer, se placer à distance, cacher un œil, lire la plus petite ligne — et ajoute les tests qui comptent pour un permis officiel et un certificat médical professionnel : acuité de loin, sens du E, planches de couleurs, vision périphérique, vision de près, sensibilité aux contrastes, cadran d'astigmatisme et dépistage de réfraction duo­chrome." },
+      { h: "Ce que ce n'est pas", p: "Ce n'est pas un examen officiel ou médical, ni un examen médical, et cela ne peut ni diagnostiquer ni prescrire. Les résultats dépendent de votre écran, de l'éclairage et de la distance. Si un test suggère un problème, consultez un optométriste ou un ophtalmologue." },
       { h: "Comment c'est construit", p: "Aucun compte, aucune mesure d'audience, aucun envoi. Les optotypes sont dessinés en tracés vectoriels sur une grille 5x5, donc le rapport trait/hauteur reste juste à toute taille, et les dimensions physiques viennent d'une calibration par carte bancaire. Tout s'exécute sur votre appareil et chaque résultat reste dans votre navigateur." },
     ],
   },
@@ -256,15 +258,15 @@ const fr = {
   terms: {
     title: "Conditions d'utilisation — Online Vision Test",
     description:
-      "Les conditions d'utilisation de Online Vision Test : un outil d'entraînement gratuit fourni en l'état, sans conseil médical, sans garantie et sans lien avec un.",
+      "Les conditions d'utilisation de Online Vision Test : un outil d'entraînement gratuit fourni en l'état, sans conseil médical, sans garantie et sans affiliation avec une administration officielle.",
     h1: "Conditions d'utilisation",
-    lede: "Un outil d'entraînement gratuit, fourni en l'état, sans conseil médical ni lien avec un.",
+    lede: "Un outil d'entraînement gratuit, fourni en l'état, sans conseil médical ni affiliation avec un organisme officiel.",
     body: [],
     englishBody: true,
   },
   notFound: {
     title: "Page introuvable — Online Vision Test",
-    description: "Cette adresse n'existe pas. Revenez au dépistage de vue ou consultez les règles des votre région.",
+    description: "Cette adresse n'existe pas. Revenez au dépistage de vue ou consultez nos guides de vision.",
     h1: "Cette page n'est pas ici",
     lede: "Le lien est peut-être ancien ou la page a été déplacée. Le dépistage et les règles par État sont à un clic.",
     body: [],
@@ -280,17 +282,18 @@ const fr = {
 
 const de = {
   home: {
-    title: "Kostenloser Sehtest online — Übung (20/40)",
+    keywords: "sehtest online, sehtest online machen, sehtest online handy, sehtest online kostenlos, sehtest online handy kostenlos, kann man online einen sehtest machen, wie funktioniert ein online sehtest",
+    title: "Sehtest online kostenlos — Am Handy & PC prüfen (20/40)",
     description:
       "Machen Sie den Sehtest kostenlos online. Bildschirm kalibrieren, 3 m Abstand halten und Snellen-Tafel, Richtungs-E, Farben, peripheres Sehen und Nahsicht üben — 20/40-Marke, acht Sprachen, ohne Anmeldung.",
     lede: "Üben Sie den Sehtest kostenlos online: kalibriert, Auge für Auge, in zehn Minuten.",
     articleTitle: "Kostenloser Sehtest online: was die Prüfung wirklich abdeckt",
     body: [
-      { h: "Was die Prüfung abdeckt", p: "Die Reihenfolge folgt dem Schalter: Bildschirm kalibrieren, richtige Entfernung einnehmen, ein Auge mit der Handfläche abdecken und die kleinste lesbare Zeile vorlesen. Danach folgen das Richtungs-E, die Farbtafeln, das periphere Sehen bei 60 und 75 Grad, die Nahsicht bei 40 cm, die Kontrastempfindlichkeit, das AstigmatismZifferblatt und ein duochromer Refraktionstest. Die Marke ist 20/40 — derselbe Wert, den die meisten Bundesstaaten für einen unbeschränkten Führerschein ansetzen." },
+      { h: "Was die Prüfung abdeckt", p: "Die Reihenfolge folgt dem Schalter: Bildschirm kalibrieren, richtige Entfernung einnehmen, ein Auge mit der Handfläche abdecken und die kleinste lesbare Zeile vorlesen. Danach folgen das Richtungs-E, die Farbtafeln, das periphere Sehen bei 60 und 75 Grad, die Nahsicht bei 40 cm, die Kontrastempfindlichkeit, das Astigmatismus-Zifferblatt und ein duochromer Refraktionstest. Die Marke ist 20/40 — derselbe Wert, den die meisten Bundesstaaten für einen unbeschränkten Führerschein ansetzen." },
       { h: "So bekommen Sie ein belastbares Ergebnis", p: "Alles hängt davon ab, dass die Pixel die richtige Größe haben, und genau daran scheitern fast alle Heimtests: Eine Sehprobe, die „ungefähr richtig\" angezeigt wird, kann um 30 Prozent danebenliegen — genug, um eine 20/40-Zeile mit einer 20/25-Zeile zu verwechseln. Halten Sie eine Bankkarte an die Bildschirmkontur und schieben Sie sie, bis beide übereinstimmen. Eine Karte ist nach ISO/IEC 7810 genau 85,6 mm breit, sodass die Anwendung Millimeter in Pixel umrechnen und jeden Buchstaben in seiner echten Größe zeichnen kann." },
       { h: "Bereiten Sie den Raum vor", p: "Stellen Sie sich 3 m entfernt auf, oder 6 m, wenn Sie den Platz haben — das ist der Snellen-Standard —, und markieren Sie die Stelle am Boden, damit Sie immer gleich stehen. Dämpfen Sie das Licht, sodass der Bildschirm das hellste Objekt im Raum ist, halten Sie ihn auf Augenhöhe und lehnen Sie sich nicht vor, um eine Zeile zu retten: Die Entfernung ist die Messung." },
       { h: "Warum eine kalibrierte Tafel besser ist als ein Bild", p: "Viele Seiten zeigen ein Bild einer Snellen-Tafel. Es sieht gleich aus, misst aber nichts: Das Bild hat eine feste Pixelzahl, der Sehwinkel hängt also vollständig von Ihrem Monitor und Ihrem Abstand ab. Zwei Personen können dieselbe Datei lesen und unterschiedliche Rückmeldungen bekommen. Deshalb ist der Kartenschritt hier verpflichtend und nicht optional, und deshalb werden die Buchstaben als Vektoren gezeichnet statt in einer Schriftart gesetzt." },
-      { h: "Was dieses Werkzeug nicht ist", p: "Es ist kein offizieller  oder transporte-Test, keine medizinische Untersuchung, und es kann weder diagnostizieren noch eine Brille verordnen. Ergebnisse hängen von Bildschirm, Beleuchtung und Abstand ab, und die Übersichten je Bundesstaat sind Anhaltspunkte, die veraltet sein können. Wenn Sie beunruhigt sind, gehen Sie vor Ihrem Termin zu einer Optometristin, einem Optometristen oder Augenarzt." },
+      { h: "Was dieses Werkzeug nicht ist", p: "Es ist kein offizieller Führerschein- oder Sehtest, keine medizinische Untersuchung, und es kann weder diagnostizieren noch eine Brille verordnen. Ergebnisse hängen von Bildschirm, Beleuchtung und Abstand ab, und die Übersichten je Bundesstaat sind Anhaltspunkte, die veraltet sein können. Wenn Sie beunruhigt sind, gehen Sie vor Ihrem Termin zu einer Optometristin, einem Optometristen oder Augenarzt." },
     ],
   },
   blog: {
@@ -298,11 +301,11 @@ const de = {
     description:
       "Mindest-Sehschärfe, Auflagen und Erneuerung in allen 50 Bundesstaaten und DC, mit Gesetzesangabe und offiziellen Links. Die meisten verlangen 20/40 und erlauben eine Auflage bis 20/70.",
     h1: "Sehanforderungen nach Bundesstaat",
-    lede: "Die meisten Staaten verlangen 20/40 mit beiden Augen für eine unbeschränkte Fahrerlaubnis und erlauben mit Außenspiegel noch 20/70. Fünf Zeilen sind am Gesetzestext geprüft; der Rest verweist Sie an Ihre.",
+    lede: "Die meisten Staaten verlangen 20/40 mit beiden Augen für eine unbeschränkte Fahrerlaubnis und erlauben mit Außenspiegel noch 20/70. Fünf Zeilen sind am Gesetzestext geprüft; der Rest verweist Sie an die zuständige Führerscheinstelle.",
     body: [
       { h: "So lesen Sie die Tabelle", p: "Mindest-Sehschärfe ist der Standard für eine unbeschränkte Fahrerlaubnis. Wenn Sie darunter liegen nennt die schlechteste korrigierte Sehschärfe, die noch für eine Auflage reicht — meist Fahren nur bei Tag oder Außenspiegel. Sehen bei Erneuerung zeigt, ob der Staat in jedem Zyklus, in jedem zweiten oder seltener nachprüft." },
       { h: "Warum es Auflagen gibt", p: "Eine Auflage ist kein Verbot. Sie ist ein Vermerk auf dem Führerschein — Korrekturbrille, Außenspiegel, nur bei Tag — damit die Regel zu Ihrem tatsächlichen Sehen passt. Wer die erste Prüfung nicht besteht, brauchte meist nur seine Brille." },
-      { h: "Der profesional folgt einer anderen Norm", p: "Gewerbliche Fernfahrer werden nach 49 C.F.R. § 391.41 gemessen: 20/40 korrigiert auf jedem Auge einzeln und auf beiden zusammen, 70° Gesichtsfeld je Auge und 130° zusammen sowie Rot, Grün und Gelb. Die Norm eines normalen Führerscheins gilt dort nicht." },
+      { h: "Berufskraftfahrer unterliegen einer strengeren Norm", p: "Gewerbliche Fernfahrer werden nach 49 C.F.R. § 391.41 gemessen: 20/40 korrigiert auf jedem Auge einzeln und auf beiden zusammen, 70° Gesichtsfeld je Auge und 130° zusammen sowie Rot, Grün und Gelb. Die Norm eines normalen Führerscheins gilt dort nicht." },
     ],
   },
   about: {
@@ -312,8 +315,8 @@ const de = {
     h1: "Über diese Prüfung",
     lede: "Eine kostenlose Übungsprüfung für alle, die den Sehtest für den Führerschein vor sich haben.",
     body: [
-      { h: "Was das ist", p: "Online Vision Test ist eine kostenlose Übungsprüfung im Browser. Sie bildet die Reihenfolge einer Sehprüfung am Schalter nach — kalibrieren, Abstand einnehmen, ein Auge abdecken, kleinste Zeile lesen — und ergänzt die Tests, auf die es bei Führerscheinen und profesional-Gesundheitskarten ankommt: Fern-Sehschärfe, Richtungs-E, Farbtafeln, peripheres Sehen, Nahsicht, Kontrastempfindlichkeit, AstigmatismUhr und Duochrom-Refraktion." },
-      { h: "Was das nicht ist", p: "Es ist kein offizieller  oder transporte-Test, keine ärztliche Untersuchung, und es kann weder diagnostizieren noch eine Verordnung ausstellen. Ergebnisse hängen von Bildschirm, Licht und Abstand ab. Wenn ein Test auffällt, gehen Sie zu Optometrist oder Augenarzt." },
+      { h: "Was das ist", p: "Online Vision Test ist eine kostenlose Übungsprüfung im Browser. Sie bildet die Reihenfolge einer Sehprüfung am Schalter nach — kalibrieren, Abstand einnehmen, ein Auge abdecken, kleinste Zeile lesen — und ergänzt die Tests, auf die es bei Führerscheinen und Berufskraftfahrer-Untersuchungen ankommt: Fern-Sehschärfe, Richtungs-E, Farbtafeln, peripheres Sehen, Nahsicht, Kontrastempfindlichkeit, Astigmatismus-Tafel und Duochrom-Refraktion." },
+      { h: "Was das nicht ist", p: "Es ist kein offizieller Führerschein- oder Sehtest, keine ärztliche Untersuchung, und es kann weder diagnostizieren noch eine Verordnung ausstellen. Ergebnisse hängen von Bildschirm, Licht und Abstand ab. Wenn ein Test auffällt, gehen Sie zu Optometrist oder Augenarzt." },
       { h: "Wie es gebaut ist", p: "Keine Konten, keine Analyse, keine Uploads. Die Sehzeichen sind Vektorpfade auf einem 5x5-Raster, damit das Verhältnis Strich zu Höhe in jeder Größe stimmt, und die physischen Größen folgen aus einer Kalibrierung per Bankkarte. Alles läuft auf Ihrem Gerät, jedes Ergebnis bleibt in Ihrem Browser." },
     ],
   },
@@ -364,30 +367,30 @@ const de = {
 
 const pt = {
   home: {
-    keywords: "teste de vis\u00E3o, teste de visao, teste de vis\u00E3o online, teste de visao letras, teste de vis\u00E3o pelo celular",
-    title: "Exame de vista online grátis — Prática (20/40)",
+    keywords: "teste de visão, teste de visao, teste de visão online, teste de visao letras, teste de visão pelo celular, tabela teste de visão detran, teste de visão letras, teste de visão detran, letras para teste de visão, teste de visão infantil, letras pequenas para teste de visão, teste de visão pelo celular grátis, teste de visão miopia, teste de visão do detran, teste de visão para perto, teste de visão com desenhos, teste de visão online grátis, teste de visão no celular, simulação teste de visão detran, teste de visao celular",
+    title: "Teste de visão online grátis — Pelo celular ou PC (20/40)",
     description:
-      "Faça o exame de vista online de graça. Calibre o ecrã, fique a 3 m e treine a tabela de Snellen, o E direcional, as cores, a visão periférica e a visão de perto — referência 20/40, oito idiomas, sem registo.",
-    lede: "Treine o exame de vista online de graça: calibrado, olho a olho, em dez minutos.",
-    articleTitle: "Exame de vista online grátis: o que a avaliação cobre",
+      "Faça o teste de visão online grátis pelo celular ou computador. Calibre a tela a 3 m e treine com a tabela de Snellen, o E direcional, miopia e visão de perto: referência 20/40 e simulação Detran, sem cadastro.",
+    lede: "Treine o teste de visão online grátis: calibrado, olho por olho, em dez minutos.",
+    articleTitle: "Teste de visão online grátis: o que a avaliação cobre",
     body: [
-      { h: "O que a avaliação cobre", p: "A ordem imita a do balcão: calibrar o ecrã, colocar-se à distância correta, tapar um olho com a palma da mão e ler a linha mais pequena que conseguir. Depois vêm o E direcional, as placas de cor, a visão periférica a 60 e 75 graus, a visão de perto a 40 cm, a sensibilidade ao contraste, o mostrador de astigmatismo e um ecrã de refração duocromática. A referência é 20/40, o mesmo limite que a maioria dos estados usa para a carta sem restrições." },
-      { h: "Como obter um resultado fiável", p: "Tudo depende de os píxeis terem o tamanho correto, e é aqui que quase todos os testes caseiros falham: um optótipo apresentado «mais ou menos» pode estar 30 % desviado, o suficiente para confundir uma linha de 20/40 com uma de 20/25. Encoste um cartão bancário ao contorno no ecrã e deslize até coincidirem. Um cartão mede 85,6 mm pela norma ISO/IEC 7810, por isso a aplicação converte milímetros em píxeis e desenha cada letra no tamanho real." },
-      { h: "Prepare a sala antes de começar", p: "Fique a 3 m, ou a 6 m se tiver espaço — a distância padrão de Snellen — e marque o lugar no chão para repetir sempre a mesma posição. Baixe a luz para que o ecrã seja o objeto mais claro da sala, mantenha o monitor à altura dos olhos e não se incline para a frente para salvar uma linha: a distância é a medição." },
-      { h: "Porque um optótipo calibrado vence uma imagem", p: "Muitos sites mostram uma imagem de uma tabela de Snellen. Parece igual, mas não mede nada: a imagem tem um número fixo de píxeis, logo o ângulo visual depende inteiramente do seu monitor e da distância a que se senta. Duas pessoas podem ler o mesmo ficheiro e receber conclusões diferentes. Por isso o passo do cartão é obrigatório aqui, e por isso as letras são desenhadas como vetores em vez de compostas numa tipografia." },
-      { h: "O que esta ferramenta não é", p: "Não é um teste nem do transporte, não é um exame médico e não pode diagnosticar nem receitar. Os resultados dependem do ecrã, da iluminação e da distância, e os resumos por estado são orientativos e podem estar desatualizados. Se algo o preocupa, consulte um optometrista ou oftalmologista antes da sua marcação." },
+      { h: "O que a avaliação cobre", p: "A ordem imita a do balcão: calibrar a tela, colocar-se à distância correta, tapar um olho com a palma da mão e ler a linha mais pequena que conseguir. Depois vêm o E direcional, as placas de cor, a visão periférica a 60 e 75 graus, a visão de perto a 40 cm, a sensibilidade ao contraste, o mostrador de astigmatismo e uma tela de refração duocromática. A referência é 20/40, o mesmo limite que a maioria dos estados usa para a carta sem restrições." },
+      { h: "Como obter um resultado fiável", p: "Tudo depende de os píxeis terem o tamanho correto, e é aqui que quase todos os testes caseiros falham: um optótipo apresentado «mais ou menos» pode estar 30 % desviado, o suficiente para confundir uma linha de 20/40 com uma de 20/25. Encoste um cartão bancário ao contorno na tela e deslize até coincidirem. Um cartão mede 85,6 mm pela norma ISO/IEC 7810, por isso a aplicação converte milímetros em píxeis e desenha cada letra no tamanho real." },
+      { h: "Prepare a sala antes de começar", p: "Fique a 3 m, ou a 6 m se tiver espaço — a distância padrão de Snellen — e marque o lugar no chão para repetir sempre a mesma posição. Baixe a luz para que a tela seja o objeto mais claro da sala, mantenha o monitor à altura dos olhos e não se incline para a frente para salvar uma linha: a distância é a medição." },
+      { h: "Porque um optótipo calibrado vence uma imagem", p: "Muitos sites mostram uma imagem de uma tabela de Snellen. Parece igual, mas não mede nada: a imagem tem um número fixo de píxeis, logo o ângulo visual depende inteiramente do seu monitor e da distância a que se senta. Duas pessoas podem ler o mesmo arquivo e receber conclusões diferentes. Por isso o passo do cartão é obrigatório aqui, e por isso as letras são desenhadas como vetores em vez de compostas numa tipografia." },
+      { h: "O que esta ferramenta não é", p: "Não é um exame oficial do Detran nem médico, não é um exame médico e não pode diagnosticar nem receitar. Os resultados dependem da tela, da iluminação e da distância, e os resumos por estado são orientativos e podem estar desatualizados. Se algo o preocupa, consulte um optometrista ou oftalmologista antes da sua consulta." },
     ],
   },
   blog: {
     title: "Teste de visão online grátis - Verifique sua visão em casa",
     description:
-      "Acuidade visual mínima, restrições e renovação nos tu región dos EUA e em DC, com a norma citada e links oficiais do. A maioria exige 20/40 e permite carta restrita até 20/70.",
+      "Acuidade visual mínima, restrições e renovação com referências de acuidade visual mínima, restrições e dicas para o exame de vista. A maioria exige 20/40 e permite carta restrita até 20/70.",
     h1: "Requisitos de visão por estado",
-    lede: "A maioria dos estados exige 20/40 com os dois olhos para uma carta sem restrições e permite conduzir com espelho exterior até 20/70. Cinco linhas estão verificadas na lei; as restantes remetem para o seu.",
+    lede: "A maioria dos estados exige 20/40 com os dois olhos para uma carta sem restrições e permite conduzir com espelho exterior até 20/70. Cinco linhas estão verificadas na lei; as demais remetem ao órgão oficial de trânsito.",
     body: [
       { h: "Como ler a tabela", p: "Acuidade mínima é a norma para uma carta sem restrições. Se ficar abaixo indica a pior acuidade corrigida que ainda pode dar carta restrita — normalmente conduzir só de dia ou com espelho exterior. Visão na renovação mostra se o estado reavalia em cada ciclo, em ciclos alternados ou com mais intervalo." },
       { h: "Porque existem restrições", p: "Uma restrição não é uma proibição. É uma nota na carta — lentes corretivas, espelhos exteriores, só de dia — para que a norma corresponda ao que realmente vê. Quem falha a primeira avaliação quase sempre só precisava dos óculos." },
-      { h: "O profesional segue outra norma", p: "Os motoristas comerciais interestaduais são medidos pela 49 C.F.R. § 391.41: 20/40 corrigido em cada olho e nos dois em conjunto, 70° de campo em cada olho e 130° no total, e distinguir vermelho, verde e âmbar. A norma de uma carta normal não se aplica." },
+      { h: "Motoristas profissionais seguem outra norma", p: "Os motoristas comerciais interestaduais são medidos pela 49 C.F.R. § 391.41: 20/40 corrigido em cada olho e nos dois em conjunto, 70° de campo em cada olho e 130° no total, e distinguir vermelho, verde e âmbar. A norma de uma carta normal não se aplica." },
     ],
   },
   about: {
@@ -395,19 +398,19 @@ const pt = {
     description:
       "Quem faz o Online Vision Test, porque o optotipo é desenhado em vez de fotografado, e o que uma avaliação no navegador pode e não pode dizer.",
     h1: "Sobre esta avaliação",
-    lede: "Uma avaliação de prática gratuita para quem vai fazer o exame de vista da carta de condução nos EUA.",
+    lede: "Uma avaliação de prática gratuita para quem vai fazer o exame de vista da carteira de motorista (CNH).",
     body: [
-      { h: "O que é isto", p: "O Online Vision Test é uma avaliação de prática gratuita que corre no navegador. Reproduz a ordem de uma verificação ao balcão — calibrar, afastar-se, tapar um olho, ler a linha mais pequena — e acrescenta os testes que contam para as cartas dos EUA e para o atestado médico profesional: acuidade ao longe, sentido do E, placas de cor, visão periférica, visão de perto, sensibilidade ao contraste, mostrador de astigmatismo e rastreio de refração duocroma." },
-      { h: "O que não é", p: "Não é um exame ou do transporte, não é um exame médico e não pode diagnosticar nem receitar. Os resultados dependem do ecrã, da luz e da distância. Se um teste sugerir um problema, procure um optometrista ou oftalmologista." },
+      { h: "O que é isto", p: "O Online Vision Test é uma avaliação de prática gratuita que corre no navegador. Reproduz a ordem de uma verificação ao balcão — calibrar, afastar-se, tapar um olho, ler a linha mais pequena — e acrescenta os testes que contam para as cartas dos EUA e para o exame médico profissional: acuidade ao longe, sentido do E, placas de cor, visão periférica, visão de perto, sensibilidade ao contraste, mostrador de astigmatismo e rastreio de refração duocroma." },
+      { h: "O que não é", p: "Não é um exame oficial do Detran nem médico, não é um exame médico e não pode diagnosticar nem receitar. Os resultados dependem da tela, da luz e da distância. Se um teste sugerir um problema, procure um optometrista ou oftalmologista." },
       { h: "Como é feito", p: "Sem contas, sem analítica, sem envios. Os optotipos são desenhados como traços vetoriais numa grelha 5x5, para que a razão traço/altura esteja certa em qualquer tamanho, e os tamanhos físicos vêm de uma calibração com cartão bancário. Tudo corre no seu dispositivo e cada resultado fica no seu navegador." },
     ],
   },
   contact: {
     title: "Contacto — Online Vision Test",
     description:
-      "Comunique uma regra estadual desatualizada, um erro de ecrã ou de tradução, ou envie uma sugestão para a avaliação.",
+      "Comunique uma regra estadual desatualizada, um erro de tela ou de tradução, ou envie uma sugestão para a avaliação.",
     h1: "Contacto",
-    lede: "Regra estadual desatualizada, erro no ecrã ou tradução errada? Diga-nos.",
+    lede: "Regra estadual desatualizada, erro na tela ou tradução errada? Diga-nos.",
     body: [
       { h: "E-mail", p: "Escreva para " + EMAIL + ". Correções às regras de visão dos estados são o mais útil, sobretudo com a lei ou a página do organismo." },
       { h: "Antes de escrever", p: "Isto é uma ferramenta de prática, não uma clínica. Não podemos interpretar resultados, dizer se vai passar nem responder sobre os seus olhos — para isso, um optometrista, um oftalmologista ou o organismo de licenciamento." },
@@ -425,15 +428,15 @@ const pt = {
   terms: {
     title: "Termos de utilização — Online Vision Test",
     description:
-      "Os termos do Online Vision Test: uma ferramenta de prática gratuita fornecida tal como está, sem aconselhamento médico, sem garantia e sem ligação a qualquer.",
+      "Os termos do Online Vision Test: uma ferramenta de prática gratuita fornecida tal como está, sem aconselhamento médico, sem garantia e sem vínculo com qualquer órgão oficial.",
     h1: "Termos de utilização",
-    lede: "Uma ferramenta de prática gratuita, tal como está, sem aconselhamento médico nem ligação a qualquer.",
+    lede: "Uma ferramenta de prática gratuita, tal como está, sem aconselhamento médico nem vínculo com qualquer órgão oficial.",
     body: [],
     englishBody: true,
   },
   notFound: {
     title: "Página não encontrada — Online Vision Test",
-    description: "Esse endereço não existe. Volte à avaliação de vista ou veja as regras dos tu región.",
+    description: "Esse endereço não existe. Volte à avaliação de vista ou veja as nossos guias de visão.",
     h1: "Essa página não está aqui",
     lede: "O link pode ser antigo ou a página pode ter mudado. A avaliação e as regras estaduais estão a um clique.",
     body: [],
@@ -450,8 +453,8 @@ const pt = {
 
 const it = {
   home: {
-    keywords: "test della vista online, test della vista online gratis",
-    title: "Test della Vista Online Gratis — Pratica (20/40)",
+    keywords: "test della vista online, test della vista online gratis, test vista online gratis, controllo vista online, test acuità visiva online, tabella di Snellen online, tabella optometrica online, test vista patente, test vista da casa",
+    title: "Test della vista online gratis — Controllo vista a casa (20/40)",
     description:
       "Fai il test della vista online gratis. Calibra lo schermo, mettiti a 3 m e prova tabella di Snellen, E direzionale, colori, visione periferica e da vicino — riferimento 20/40, otto lingue, senza registrazione.",
     lede: "Prova il test della vista online gratis: calibrato, occhio per occhio, in dieci minuti.",
@@ -501,16 +504,28 @@ const it = {
     description: "Cosa memorizza Online Vision Test (tema, lingua e calibrazione nel tuo browser) e cosa non fa mai: nessun account, nessuna analisi, nessun upload.",
     h1: "Informativa sulla privacy",
     lede: "Nessun account, nessuna analisi, nessun upload. I tuoi risultati non lasciano mai il dispositivo.",
-    body: [],
-    englishBody: true,
+    body: [
+      { h: "Cosa memorizziamo", p: "Tre piccoli valori nel localStorage del tuo browser: la scelta del tema chiaro/scuro, la lingua selezionata e il profilo di calibrazione dello schermo. Al termine del test, il riepilogo viene salvato localmente nello stesso modo. Nessun dato viene mai trasmesso all'esterno." },
+      { h: "Cosa non facciamo", p: "Nessun account, nessun login, nessuno script pubblicitario o di tracciamento, nessun pixel di monitoraggio e nessun registro lato server dei tuoi risultati." },
+      { h: "Il tuo controllo", p: "Cancellando i dati del sito nel browser rimuovi ogni informazione salvata. Puoi scaricare o copiare il riepilogo dei risultati solo se lo desideri." },
+      { h: "Destinatari", p: "Lo strumento di screening è pensato per adulti che desiderano verificare orientativamente la propria vista o prepararsi al rinnovo della patente." },
+      { h: "Modifiche e contatti", p: "Eventuali aggiornamenti a questa informativa saranno pubblicati su questa pagina. Per domande: " + EMAIL + "." },
+    ],
+    englishBody: false,
   },
   terms: {
     title: "Termini di utilizzo — Online Vision Test",
-    description: "Termini di utilizzo di Online Vision Test: strumento gratuito così com'è, senza consigli medici, senza garanzia e senza affiliazione.",
+    description: "Termini di utilizzo di Online Vision Test: strumento gratuito fornito così com'è, senza consulenza medica, senza garanzie e senza affiliazioni ufficiali.",
     h1: "Termini di utilizzo",
-    lede: "Uno strumento gratuito, così com'è, senza consigli medici e senza affiliazioni.",
-    body: [],
-    englishBody: true,
+    lede: "Uno strumento di pratica gratuito, fornito così com'è, senza consulenza medica né affiliazioni con enti pubblici.",
+    body: [
+      { h: "Solo strumento di esercitazione", p: "Online Vision Test è uno screening educativo di prova. Non è un esame ufficiale della motorizzazione, non è una visita medica e non rilascia prescrizioni o diagnosi." },
+      { h: "Nessuna consulenza medica", p: "Nulla su questo sito costituisce parere medico. Consulta sempre un medico oculista o un optometrista qualificato per qualsiasi necessità visiva." },
+      { h: "Accuratezza", p: "I risultati dipendono dal monitor, dalla calibrazione, dall'illuminazione e dalla distanza di visione. Verifica sempre i requisiti ufficiali presso gli enti competenti." },
+      { h: "Esclusione di garanzie", p: "Il servizio è fornito «così com'è», senza garanzie di alcun tipo. Nei limiti consentiti dalla legge, decliniamo ogni responsabilità derivante dall'uso delle informazioni fornite." },
+      { h: "Modifiche e contatti", p: "Questi termini possono essere aggiornati periodicamente. Per domande: " + EMAIL + "." },
+    ],
+    englishBody: false,
   },
   notFound: {
     title: "Pagina non trovata — Online Vision Test",
@@ -607,9 +622,9 @@ const ja = {
 };
 const ru = {
   home: {
-    keywords: "проверка зрения онлайн, проверка зрения онлайн бесплатно, проверка зрения онлайн на смартфоне, проверка зрения онлайн таблица",
-    title: "Проверка зрения онлайн｜Бесплатный тест на смартфоне (20/40)",
-    description: "Проверка зрения онлайн для детей и взрослых. Бесплатный тест на смартфоне или компьютере: откалибруйте экран, встаньте в 3 м и проверьте таблицу Сивцева, кольца Ландольта, цвет, периферию и зрение вблизи. Без регистрации.",
+    keywords: "проверка зрения онлайн, проверка зрения онлайн бесплатно, проверка зрения онлайн на смартфоне, проверка зрения онлайн на телефоне, проверка зрения онлайн на компьютере, проверка зрения онлайн на мониторе, проверка зрения онлайн таблица, проверка зрения онлайн таблица сивцева, проверка зрения онлайн тест",
+    title: "Проверка зрения онлайн бесплатно｜На смартфоне и ПК (20/40)",
+    description: "Бесплатная проверка зрения онлайн на смартфоне или компьютере: откалибруйте экран, встаньте в 3 м и проверьте остроту зрения (таблица Сивцева, кольца Ландольта, цветоощущение и зрение вблизи). Без регистрации.",
     lede: "Потренируйтесь бесплатно: калибровка, по одному глазу, за десять минут.",
     articleTitle: "Бесплатная проверка зрения онлайн: что входит в скрининг",
     body: [
@@ -657,16 +672,28 @@ const ru = {
     description: "Что хранит Online Vision Test (тема, язык и калибровка в вашем браузере) и чего не делает никогда: без аккаунтов, аналитики и загрузок.",
     h1: "Политика конфиденциальности",
     lede: "Без аккаунта, аналитики и загрузок. Ваши результаты никогда не покидают устройство.",
-    body: [],
-    englishBody: true,
+    body: [
+      { h: "Что мы храним", p: "Три небольших значения в локальном хранилище (localStorage) вашего браузера: выбранная тема оформления, язык интерфейса и коэффициент калибровки экрана. Итоги проверки сохраняются там же исключительно для отображения вашего прогресса и никуда не пересылаются." },
+      { h: "Чего мы не делаем", p: "Мы не требуем регистрации, не используем рекламные или аналитические трекеры, не применяем отслеживающие пиксели и не ведем серверных логов ваших ответов." },
+      { h: "Ваш контроль", p: "Очистка данных сайта в настройках браузера полностью удаляет все сохраненные значения. Вы можете скачать или скопировать текстовый отчет по собственному желанию." },
+      { h: "Назначение сервиса", p: "Тренажёр рассчитан на взрослых пользователей, желающих предварительно оценить зрение перед визитом к специалисту или водительской медкомиссией." },
+      { h: "Изменения и контакты", p: "При обновлении политики дата изменений публикуется на этой странице. Вопросы можно направлять на " + EMAIL + "." },
+    ],
+    englishBody: false,
   },
   terms: {
     title: "Условия использования — Online Vision Test",
-    description: "Условия Online Vision Test: бесплатный тренажёр как есть, без медицинских советов, гарантий и affiliation.",
+    description: "Условия использования Online Vision Test: бесплатный тренажёр, предоставляемый «как есть», без медицинских советов, гарантий и связи с государственными органами.",
     h1: "Условия использования",
-    lede: "Бесплатный инструмент как есть, без медицинских советов и affiliation.",
-    body: [],
-    englishBody: true,
+    lede: "Бесплатный тренировочный инструмент, предоставляемый «как есть», без медицинских консультаций и связи с официальными ведомствами.",
+    body: [
+      { h: "Только для ознакомления и тренировки", p: "Online Vision Test — образовательный онлайн-тренажёр. Он не является официальным экзаменом, не заменяет медицинское обследование и не выдает рецептов или диагнозов." },
+      { h: "Отсутствие медицинских рекомендаций", p: "Материалы сайта не являются медицинской консультацией. По любым вопросам здоровья глаз обращайтесь к квалифицированному офтальмологу или оптометристу." },
+      { h: "Точность результатов", p: "Показатели зависят от настроек дисплея, точности калибровки, освещения в помещении и соблюдения дистанции. Официальные нормативы всегда уточняйте в профильных медицинских учреждениях." },
+      { h: "Ограничение ответственности", p: "Сервис предоставляется «как есть» без каких-либо гарантий. Мы не несем ответственности за любые решения, принятые на основе результатов онлайн-самопроверки." },
+      { h: "Изменения и контакты", p: "Условия могут обновляться. По всем вопросам пишите на " + EMAIL + "." },
+    ],
+    englishBody: false,
   },
   notFound: {
     title: "Страница не найдена — Online Vision Test",

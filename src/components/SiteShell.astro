@@ -3,20 +3,76 @@
  * Header + footer used by every page that is not the wizard home page.
  * Links are locale-aware (they point at the same page in the current locale)
  * and the language pills are real navigable URLs, which is what makes the
- * five locales crawlable.
+ * locales crawlable.
  */
 import { LOCALES, pathFor, SITE } from "../lib/site.ts";
 
 const { locale = "en", page = "home", customAlts } = Astro.props;
 const L = {
-  en: { home: "Home", blog: "Blog", about: "About", contact: "Contact", cta: "Start free check", privacy: "Privacy", terms: "Terms", guides: "Guides", legal: "Legal", lang: "Language", rights: "Practice screener, free to use." },
-  es: { home: "Inicio", blog: "Blog", about: "Acerca de", contact: "Contacto", cta: "Empezar gratis", privacy: "Privacidad", terms: "Términos", guides: "Guías", legal: "Legal", lang: "Idioma", rights: "Evaluador de práctica, uso gratuito." },
-  fr: { home: "Accueil", blog: "Blog", about: "À propos", contact: "Contact", cta: "Commencer gratuitement", privacy: "Confidentialité", terms: "Conditions", guides: "Guides", legal: "Mentions légales", lang: "Langue", rights: "Outil d'entraînement, gratuit." },
-  de: { home: "Start", blog: "Blog", about: "Über", contact: "Kontakt", cta: "Kostenlos starten", privacy: "Datenschutz", terms: "Nutzung", guides: "Ratgeber", legal: "Rechtliches", lang: "Sprache", rights: "Übungsprüfung, kostenlos." },
-  pt: { home: "Início", blog: "Blog", about: "Sobre", contact: "Contacto", cta: "Começar grátis", privacy: "Privacidade", terms: "Termos", guides: "Guias", legal: "Legal", lang: "Idioma", rights: "Avaliação de prática, gratuita." },
-  it: { home: "Home", blog: "Blog", about: "Chi siamo", contact: "Contatti", cta: "Inizia gratis", privacy: "Privacy", terms: "Termini", guides: "Guide", legal: "Note legali", lang: "Lingua", rights: "Screening gratuito, libero." },
-  ja: { home: "ホーム", blog: "ブログ", about: "概要", contact: "お問い合わせ", cta: "無料で開始", privacy: "プライバシー", terms: "利用規約", guides: "ガイド", legal: "法的情報", lang: "言語", rights: "無料の練習用スクリーニング。" },
-  ru: { home: "Главная", blog: "Блог", about: "О проекте", contact: "Контакты", cta: "Начать бесплатно", privacy: "Конфиденциальность", terms: "Условия", guides: "Руководства", legal: "Право", lang: "Язык", rights: "Бесплатный тренажёр." },
+  en: {
+    home: "Home", blog: "Blog", about: "About", contact: "Contact", cta: "Start free check",
+    privacy: "Privacy", terms: "Terms", guides: "Guides", legal: "Legal", lang: "Language",
+    skip: "Skip to content", theme: "Toggle dark mode",
+    privacyNote: "No account, no tracking, no uploads. Results stay in your browser.",
+    disclaimer: "Practice screener only. Not an official test, not a medical examination, and no diagnosis or prescription.",
+    rights: "Practice screener, free to use.",
+  },
+  es: {
+    home: "Inicio", blog: "Blog", about: "Acerca de", contact: "Contacto", cta: "Empezar gratis",
+    privacy: "Privacidad", terms: "Términos", guides: "Guías", legal: "Legal", lang: "Idioma",
+    skip: "Saltar al contenido", theme: "Cambiar tema oscuro/claro",
+    privacyNote: "Sin cuenta, sin rastreo, sin subidas. Los resultados se quedan en tu navegador.",
+    disclaimer: "Evaluación de práctica únicamente. No es un examen oficial ni médico, y no ofrece diagnóstico ni receta.",
+    rights: "Evaluador de práctica, uso gratuito.",
+  },
+  fr: {
+    home: "Accueil", blog: "Blog", about: "À propos", contact: "Contact", cta: "Commencer gratuitement",
+    privacy: "Confidentialité", terms: "Conditions", guides: "Guides", legal: "Mentions légales", lang: "Langue",
+    skip: "Aller au contenu", theme: "Basculer le mode sombre",
+    privacyNote: "Aucun compte, aucun suivi, aucun envoi. Les résultats restent dans votre navigateur.",
+    disclaimer: "Outil d'entraînement uniquement. Ce n'est ni un examen officiel ni un acte médical, sans diagnostic ni ordonnance.",
+    rights: "Outil d'entraînement, gratuit.",
+  },
+  de: {
+    home: "Start", blog: "Blog", about: "Über", contact: "Kontakt", cta: "Kostenlos starten",
+    privacy: "Datenschutz", terms: "Nutzung", guides: "Ratgeber", legal: "Rechtliches", lang: "Sprache",
+    skip: "Zum Inhalt springen", theme: "Dunkelmodus umschalten",
+    privacyNote: "Kein Konto, kein Tracking, keine Uploads. Ergebnisse bleiben in Ihrem Browser.",
+    disclaimer: "Nur zur Übung. Kein offizieller Sehtest, keine ärztliche Untersuchung und keine Diagnose oder Verordnung.",
+    rights: "Übungsprüfung, kostenlos.",
+  },
+  pt: {
+    home: "Início", blog: "Blog", about: "Sobre", contact: "Contato", cta: "Começar grátis",
+    privacy: "Privacidade", terms: "Termos", guides: "Guias", legal: "Legal", lang: "Idioma",
+    skip: "Pular para o conteúdo", theme: "Alternar modo escuro",
+    privacyNote: "Sem conta, sem rastreamento, sem envios. Os resultados ficam no seu navegador.",
+    disclaimer: "Apenas avaliação de prática. Não é um exame oficial nem médico, e não fornece diagnóstico ou receita.",
+    rights: "Avaliação de prática, gratuita.",
+  },
+  it: {
+    home: "Home", blog: "Blog", about: "Chi siamo", contact: "Contatti", cta: "Inizia gratis",
+    privacy: "Privacy", terms: "Termini", guides: "Guide", legal: "Note legali", lang: "Lingua",
+    skip: "Salta al contenuto", theme: "Cambia tema chiaro/scuro",
+    privacyNote: "Nessun account, nessun tracciamento, nessun upload. I risultati restano nel tuo browser.",
+    disclaimer: "Solo strumento di esercitazione. Non è un esame ufficiale né una visita medica, e non fornisce diagnosi o prescrizioni.",
+    rights: "Screening gratuito, libero.",
+  },
+  ja: {
+    home: "ホーム", blog: "ブログ", about: "概要", contact: "お問い合わせ", cta: "無料で開始",
+    privacy: "プライバシー", terms: "利用規約", guides: "ガイド", legal: "法的情報", lang: "言語",
+    skip: "本文へスキップ", theme: "ダークモード切替",
+    privacyNote: "アカウント不要、追跡なし、送信なし。結果はブラウザ内にのみ保存されます。",
+    disclaimer: "練習用スクリーニングです。公式試験や医療検査ではなく、診断や処方は行いません。",
+    rights: "無料の練習用スクリーニング。",
+  },
+  ru: {
+    home: "Главная", blog: "Блог", about: "О проекте", contact: "Контакты", cta: "Начать бесплатно",
+    privacy: "Конфиденциальность", terms: "Условия", guides: "Руководства", legal: "Право", lang: "Язык",
+    skip: "Перейти к содержимому", theme: "Переключить темную тему",
+    privacyNote: "Без аккаунта, без отслеживания и загрузок. Результаты остаются в вашем браузере.",
+    disclaimer: "Только для тренировки и ознакомления. Не является официальным осмотром, диагнозом или рецептом на очки.",
+    rights: "Бесплатный тренажёр.",
+  },
 };
 const t = L[locale] || L.en;
 const home = pathFor(locale, "home");
@@ -29,7 +85,7 @@ const nav = [
 ];
 ---
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">{t.skip}</a>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="site-header min-head" id="siteHeader">
@@ -50,14 +106,13 @@ const nav = [
     </nav>
 
     <div class="header-tools">
-      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label={t.theme}>
         <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
         <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       </button>
       <a class="btn btn-primary btn-sm header-cta" href={home + "#screener"}>{t.cta}</a>
     </div>
   </div>
-  {page === "blog" && (
   <div class="header-langs">
     <div class="container header-langs-inner">
       <ul class="lang-links header-pills" aria-label={t.lang}>
@@ -85,7 +140,6 @@ const nav = [
       </ul>
     </div>
   </div>
-  )}
 </header>
 
 <main id="main">
@@ -95,40 +149,60 @@ const nav = [
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a class="brand" href={home}>
+      <div class="brand">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" fill="none">
-            <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+            <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1"/>
             <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
           </svg>
         </span>
         <span class="brand-text"><b>Online</b>Vision<span class="brand-tld">Test</span></span>
-      </a>
-      <p>Online Vision Test</p>
+      </div>
+      <p>{t.privacyNote}</p>
+      <ul class="lang-links" aria-label={t.lang}>
+        {
+          LOCALES.map((l) => {
+            let targetUrl = pathFor(l, page);
+            if (customAlts) {
+              const alt = customAlts.find(a => a.locale === l);
+              if (alt) targetUrl = alt.url.replace(SITE, "");
+              else return null;
+            }
+            return (
+              <li>
+                {l === locale ? (
+                  <span class="pill-active" aria-current="true">{l.toUpperCase()}</span>
+                ) : (
+                  <a href={targetUrl} hreflang={l} lang={l}>
+                    {l.toUpperCase()}
+                  </a>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
     </div>
-    <nav class="footer-col" aria-label={t.guides}>
-      <h3>{t.guides}</h3>
-      <a href={home}>{t.home}</a>
-      <a href={pathFor(locale, "blog")}>{t.blog}</a>
-      <a href={pathFor(locale, "about")}>{t.about}</a>
-      <a href={pathFor(locale, "contact")}>{t.contact}</a>
-    </nav>
-    <nav class="footer-col" aria-label={t.legal}>
-      <h3>{t.legal}</h3>
-      <a href={pathFor(locale, "privacy")}>{t.privacy}</a>
-      <a href={pathFor(locale, "terms")}>{t.terms}</a>
-    </nav>
-    <div class="footer-col">
-      <h3>Online Vision Test</h3>
-      <p>No account, no tracking, no uploads. Results stay in your browser.</p>
+    <div>
+      <h4>{t.guides}</h4>
+      <ul>
+        <li><a href={home + "#screener"}>{t.cta}</a></li>
+        <li><a href={pathFor(locale, "blog")}>{t.blog}</a></li>
+        <li><a href={pathFor(locale, "about")}>{t.about}</a></li>
+        <li><a href={pathFor(locale, "contact")}>{t.contact}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>{t.legal}</h4>
+      <ul>
+        <li><a href={pathFor(locale, "privacy")}>{t.privacy}</a></li>
+        <li><a href={pathFor(locale, "terms")}>{t.terms}</a></li>
+      </ul>
     </div>
   </div>
-  <div class="container">
-    <div class="disclaimer">
-      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 19H3l9-15.5Z"/><path d="M12 10v4.2M12 16.6v.1"/></svg>
-      <p>Practice screener only. Not an official test, not a medical examination, and no diagnosis or prescription.</p>
-    </div>
-    <p class="copyright"><span id="year"></span> <span>{t.rights}</span></p>
+  <div class="container footer-bottom">
+    <p class="disclaimer">{t.disclaimer}</p>
+    <p class="copyright">© <span id="year">2026</span> OnlineVisionTest.org · {t.rights}</p>
   </div>
 </footer>
 
@@ -147,4 +221,3 @@ const nav = [
     if (y) y.textContent = String(new Date().getFullYear());
   })();
 </script>
-

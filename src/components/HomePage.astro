@@ -1,18 +1,27 @@
-﻿---
+---
 /**
  * The single-page application, extracted from the generator's index.html.
  *
- * Structure, ids, classes and every data-i18n key are unchanged, so lab.js,
- * app.js and the eight-language switcher keep working exactly as before.
+ * Structure, ids, classes and every data-i18n key are unchanged, so lab.ts,
+ * app.ts and the eight-language switcher keep working exactly as before.
  *
- * The only server-side additions are the hero strings: they are rendered from
- * the same src/scripts/i18n.js dictionary the client hydrates from, so a
- * non-English route ships a genuinely translated H1 and lede in the HTML with
- * no post-load swap. Everything below the fold is translated on hydrate.
+ * Every data-i18n element, check card, reference card, and FAQ item is
+ * server-rendered from the same src/scripts/i18n.ts dictionary the client
+ * hydrates from, so every locale route ships 100% localized HTML with zero
+ * untranslated English fallback text before JavaScript runs.
  */
 
 import { DICT } from "../scripts/i18n.ts";
-import { FAQ_COUNT, US_ONLY_FAQ_NUMS } from "../scripts/data.ts";
+import {
+  FAQ_COUNT,
+  US_ONLY_FAQ_NUMS,
+  CHECKS,
+  US_ONLY_CHECK_IDS,
+  ICONS,
+  REFS,
+  SOURCES,
+  DMV_LINKS,
+} from "../scripts/data.ts";
 import { seoFor } from "../data/seo.ts";
 import { SITE, LOCALES } from "../lib/site.ts";
 
@@ -29,6 +38,9 @@ const heroTitleKey = isUS ? "us.hero.title" : K("hero.title");
 const faqNums = Array.from({ length: FAQ_COUNT }, (_, i) => i + 1).filter(
   (n) => isUS || !US_ONLY_FAQ_NUMS.includes(n)
 );
+const checkList = isUS
+  ? CHECKS
+  : CHECKS.filter((c) => !US_ONLY_CHECK_IDS.includes(c.id));
 const dict = DICT[locale] || DICT.en;
 const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
 const meta = seoFor(locale, isUS ? "us" : "home");
@@ -75,7 +87,7 @@ const faqSchema = {
 <script type="application/ld+json" is:inline set:html={JSON.stringify(testSchema)} />
 <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
 
-<a class="skip-link" href="#screener" data-i18n="a11y.skip">Skip to the vision check</a>
+<a class="skip-link" href="#screener" data-i18n="a11y.skip">{d("a11y.skip")}</a>
 
 <div class="grain" aria-hidden="true"></div>
 
@@ -93,10 +105,10 @@ const faqSchema = {
     </a>
 
     <nav class="header-nav" id="headerNav" aria-label="Main">
-      <a href="#checks" data-i18n="nav.checks">Checks</a>
-      <a href="#screener" data-i18n="nav.start">Vision check</a>
-      <a href={blogHref} data-i18n="nav.blog">Blog</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
+      <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
+      <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
+      <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
     </nav>
 
     <div class="header-tools">
@@ -113,21 +125,21 @@ const faqSchema = {
           <option value="ru" selected={locale === "ru"}>Русский</option>
         </select>
       </label>
-      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" data-i18n-attr="aria-label:a11y.theme">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label={d("a11y.theme")} data-i18n-attr="aria-label:a11y.theme">
         <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
         <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
       </button>
-      <a class="btn btn-primary btn-sm header-cta" href="#screener" data-i18n="nav.cta">Start free check</a>
-      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" data-i18n-attr="aria-label:a11y.menu">
+      <a class="btn btn-primary btn-sm header-cta" href="#screener" data-i18n="nav.cta">{d("nav.cta")}</a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label={d("a11y.menu")} aria-expanded="false" data-i18n-attr="aria-label:a11y.menu">
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
       </button>
     </div>
   </div>
   <div class="mobile-nav" id="mobileNav" hidden>
-    <a href="#checks" data-i18n="nav.checks">Checks</a>
-    <a href="#screener" data-i18n="nav.start">Vision check</a>
-    <a href={blogHref} data-i18n="nav.blog">Blog</a>
-    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
+    <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
+    <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
+    <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
   </div>
 </header>
 
@@ -152,15 +164,15 @@ const faqSchema = {
         <p class="lede" data-i18n={K("hero.lede")}>{d(K("hero.lede"))}</p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" href="#screener">
-            <span data-i18n="hero.cta1">Start the free vision check</span>
+            <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn-ghost btn-lg" href="#checks" data-i18n="hero.cta2">View all checks</a>
+          <a class="btn btn-ghost btn-lg" href="#checks" data-i18n="hero.cta2">{d("hero.cta2")}</a>
         </div>
         <ul class="trust-row">
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span data-i18n="hero.trust1">Nothing to install or sign up for</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v6c0 4.6-3.2 7.6-7.5 9-4.3-1.4-7.5-4.4-7.5-9V6L12 3Z"/></svg><span data-i18n="hero.trust2">Results never leave your browser</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.2l3.4 2"/></svg><span data-i18n="hero.trust3">About ten minutes, eye by eye</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span data-i18n="hero.trust1">{d("hero.trust1")}</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v6c0 4.6-3.2 7.6-7.5 9-4.3-1.4-7.5-4.4-7.5-9V6L12 3Z"/></svg><span data-i18n="hero.trust2">{d("hero.trust2")}</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.2l3.4 2"/></svg><span data-i18n="hero.trust3">{d("hero.trust3")}</span></li>
         </ul>
         <p class="hero-note" data-i18n="hero.note">{d("hero.note")}</p>
       </div>
@@ -168,36 +180,36 @@ const faqSchema = {
       <div class="hero-visual">
         <div class="chart-card" id="heroChartCard">
           <div class="chart-card-head">
-            <span class="card-label" data-i18n="hero.chartLabel">Snellen chart · 6 m</span>
-            <span class="pill pill-line" data-i18n="hero.chartPill">20/40 pass line</span>
+            <span class="card-label" data-i18n="hero.chartLabel">{d("hero.chartLabel")}</span>
+            <span class="pill pill-line" data-i18n="hero.chartPill">{d("hero.chartPill")}</span>
           </div>
           <div class="chart-lines" id="heroChart" aria-hidden="true"></div>
           <div class="chart-card-foot">
             <span class="mini">
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/></svg>
-              <span data-i18n="hero.calibrated">Screen calibrated</span>
+              <span data-i18n="hero.calibrated">{d("hero.calibrated")}</span>
             </span>
             <span class="mini">
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-7 4 4.5L21 6"/></svg>
-              <span data-i18n="hero.distance">Stand 3 m away</span>
+              <span data-i18n="hero.distance">{d("hero.distance")}</span>
             </span>
           </div>
         </div>
         <div class="float-badge badge-a">
           <span class="badge-ring" aria-hidden="true"></span>
-          <span><b>20/40</b><small data-i18n="hero.badgeA">{isUS ? "Most US DMV benchmark" : "20/40 reference line"}</small></span>
+          <span><b>20/40</b><small data-i18n={K("hero.badgeA")}>{d(K("hero.badgeA"))}</small></span>
         </div>
         <div class="float-badge badge-b">
-          <span><b data-i18n="hero.badgeBTitle">Left eye first</b><small data-i18n="hero.badgeB">Cover, read, swap</small></span>
+          <span><b data-i18n="hero.badgeBTitle">{d("hero.badgeBTitle")}</b><small data-i18n="hero.badgeB">{d("hero.badgeB")}</small></span>
         </div>
       </div>
     </div>
 
     <div class="container">
       <ul class="stat-strip">
-        <li><b>{isUS ? "12" : "11"}</b><span data-i18n="stats.checks">practice checks</span></li>
-        <li><b>20/40</b><span data-i18n="stats.bench">unrestricted benchmark</span></li>
-        <li><b>8</b><span data-i18n="stats.langs">languages</span></li>
+        <li><b>{isUS ? "12" : "11"}</b><span data-i18n="stats.checks">{d("stats.checks")}</span></li>
+        <li><b>20/40</b><span data-i18n="stats.bench">{d("stats.bench")}</span></li>
+        <li><b>8</b><span data-i18n="stats.langs">{d("stats.langs")}</span></li>
       </ul>
     </div>
   </section>
@@ -218,30 +230,30 @@ const faqSchema = {
   <section class="section" id="how">
     <div class="container">
       <div class="section-head">
-        <p class="kicker" data-i18n="how.kicker">How it works</p>
-        <h2 data-i18n="how.title">Ten minutes, replicated procedure</h2>
-        <p class="section-sub" data-i18n="how.sub">The order matches what happens at the counter: calibrate, distance, occlude, read. Do it the same way each time and the numbers mean something.</p>
+        <p class="kicker" data-i18n="how.kicker">{d("how.kicker")}</p>
+        <h2 data-i18n="how.title">{d("how.title")}</h2>
+        <p class="section-sub" data-i18n="how.sub">{d("how.sub")}</p>
       </div>
       <ol class="how-grid">
         <li class="how-card">
           <span class="how-num">01</span>
-          <h3 data-i18n="how.s1t">Calibrate your screen</h3>
-          <p data-i18n="how.s1b">Hold a bank card against the on-screen outline and slide until the sizes match. That turns millimetres into pixels so the letters are the real size.</p>
+          <h3 data-i18n="how.s1t">{d("how.s1t")}</h3>
+          <p data-i18n="how.s1b">{d("how.s1b")}</p>
         </li>
         <li class="how-card">
           <span class="how-num">02</span>
-          <h3 data-i18n="how.s2t">Set your distance</h3>
-          <p data-i18n="how.s2b">Pick 3 m or 6 m, mark the spot on the floor, and dim the room. Bright screens and short distances flatter your eyes.</p>
+          <h3 data-i18n="how.s2t">{d("how.s2t")}</h3>
+          <p data-i18n="how.s2b">{d("how.s2b")}</p>
         </li>
         <li class="how-card">
           <span class="how-num">03</span>
-          <h3 data-i18n="how.s3t">Cover one eye</h3>
-          <p data-i18n="how.s3b">Cup — never press — one eye with your palm, then the other. Both eyes together are tested last.</p>
+          <h3 data-i18n="how.s3t">{d("how.s3t")}</h3>
+          <p data-i18n="how.s3b">{d("how.s3b")}</p>
         </li>
         <li class="how-card">
           <span class="how-num">04</span>
-          <h3 data-i18n="how.s4t">Read the smallest line</h3>
-          <p data-i18n="how.s4b">Type or tap the letters you actually see. Miss twice in a row and the screener stops you there — guessing hides the problem you came to find.</p>
+          <h3 data-i18n="how.s4t">{d("how.s4t")}</h3>
+          <p data-i18n="how.s4b">{d("how.s4b")}</p>
         </li>
       </ol>
     </div>
@@ -250,77 +262,124 @@ const faqSchema = {
   <section class="section section-checks" id="checks">
     <div class="container">
       <div class="section-head">
-        <p class="kicker" data-i18n="checks.kicker">What gets checked</p>
+        <p class="kicker" data-i18n="checks.kicker">{d("checks.kicker")}</p>
         <h2 data-i18n={K("checks.title")}>{d(K("checks.title"))}</h2>
-        <p class="section-sub" data-i18n="checks.sub">Jump straight into any single check, or run the full sequence.</p>
+        <p class="section-sub" data-i18n="checks.sub">{d("checks.sub")}</p>
       </div>
-      <div class="check-grid" id="checkGrid"></div>
+      <div class="check-grid" id="checkGrid">
+        {checkList.map((c) => (
+          <button
+            type="button"
+            class="check-card"
+            data-test={c.test}
+            style={`--cc:${c.color}`}
+            aria-label={`${d(`checks.${c.id}.name`)} — ${d("checks.open")}`}
+          >
+            <span class="check-ico" aria-hidden="true">
+              <svg class="ico" viewBox="0 0 24 24" set:html={ICONS[c.icon] || ""}></svg>
+            </span>
+            <h3>{d(`checks.${c.id}.name`)}</h3>
+            <p>{d(`checks.${c.id}.desc`)}</p>
+            <div class="check-foot">
+              <span class="check-tag">{c.tag}</span>
+              <span class="check-go" aria-hidden="true">
+                {d("checks.open")}
+                <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="section section-screener" id="screener">
     <div class="container">
       <div class="section-head section-head-light">
-        <p class="kicker" data-i18n="lab.kicker">The screener</p>
-        <h2 data-i18n="lab.title">Run the full check</h2>
-        <p class="section-sub" data-i18n="lab.sub">Work through it in order. Nothing is uploaded — the whole screener runs on this device.</p>
+        <p class="kicker" data-i18n="lab.kicker">{d("lab.kicker")}</p>
+        <h2 data-i18n="lab.title">{d("lab.title")}</h2>
+        <p class="section-sub" data-i18n="lab.sub">{d("lab.sub")}</p>
       </div>
 
       <div class="lab" id="lab">
         <div class="lab-bar">
           <div class="lab-bar-left">
             <span class="lab-dot" aria-hidden="true"></span>
-            <span id="labStatus" data-i18n="lab.ready">Ready when you are</span>
+            <span id="labStatus" data-i18n="lab.ready">{d("lab.ready")}</span>
           </div>
           <div class="lab-bar-right">
-            <button class="btn btn-quiet btn-xs" id="labFullBtn" type="button" data-i18n="lab.focus">Focus mode</button>
-            <button class="btn btn-quiet btn-xs" id="labResetBtn" type="button" data-i18n="lab.reset">Restart</button>
+            <button class="btn btn-quiet btn-xs" id="labFullBtn" type="button" data-i18n="lab.focus">{d("lab.focus")}</button>
+            <button class="btn btn-quiet btn-xs" id="labResetBtn" type="button" data-i18n="lab.reset">{d("lab.reset")}</button>
           </div>
         </div>
         <div class="stepper-wrap" id="stepperWrap">
           <ol class="stepper" id="stepper"></ol>
         </div>
         <div class="lab-norm" id="labNorm" hidden></div>
-        <div class="lab-stage" id="labStage"><p class="stage-sub" data-lab-fallback>Loading the vision checks… if nothing appears, enable JavaScript and reload.</p></div>
+        <div class="lab-stage" id="labStage"><p class="stage-sub" data-lab-fallback>{d("lab.ready")}</p></div>
         <div class="lab-foot" id="labFoot"></div>
-        <noscript><p class="stage-sub">The vision checks need JavaScript. Enable it and reload to run the screener.</p></noscript>
+        <noscript><p class="stage-sub">{d("lab.ready")}</p></noscript>
       </div>
     </div>
   </section>
 
-
   <section class="section section-refs" id="reference">
     <div class="container">
       <div class="section-head">
-        <p class="kicker" data-i18n="refs.kicker">Evidence &amp; standards</p>
-        <h2 data-i18n="refs.title">Built on the tests eye professionals actually use</h2>
-        <p class="section-sub" data-i18n="refs.sub">Every check follows a published protocol. None of them diagnose anything on their own — they exist so you arrive at your appointment prepared.</p>
+        <p class="kicker" data-i18n="refs.kicker">{d("refs.kicker")}</p>
+        <h2 data-i18n="refs.title">{d("refs.title")}</h2>
+        <p class="section-sub" data-i18n="refs.sub">{d("refs.sub")}</p>
       </div>
-      <div class="ref-grid" id="refGrid"></div>
+      <div class="ref-grid" id="refGrid">
+        {REFS.map((r) => (
+          <a class="ref-card" href={r.url} target="_blank" rel="noopener noreferrer">
+            <span class="ref-badge" data-i18n="refs.learn">{d("refs.learn")}</span>
+            <h3>{d("refs." + r.id + ".t")}</h3>
+            <p>{d("refs." + r.id + ".b")}</p>
+            <span class="ref-go">
+              {new URL(r.url).hostname.replace(/^www\./, "")}
+              <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
       <div class="ref-links">
         <div class="ref-col">
-          <h3 data-i18n="refs.sources">Sources &amp; further reading</h3>
-          <ul class="ref-list" id="sourceList"></ul>
+          <h3 data-i18n="refs.sources">{d("refs.sources")}</h3>
+          <ul class="ref-list" id="sourceList">
+            {SOURCES.map((s) => (
+              <li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a></li>
+            ))}
+          </ul>
         </div>
         {isUS && (
-        <div class="ref-col">
-          <h3 data-i18n="refs.dmv">Official state licensing agencies</h3>
-          <ul class="ref-list" id="dmvList"></ul>
-        </div>
+          <div class="ref-col">
+            <h3 data-i18n="refs.dmv">{d("refs.dmv")}</h3>
+            <ul class="ref-list" id="dmvList">
+              {DMV_LINKS.map((dmv) => (
+                <li><a href={dmv.url} target="_blank" rel="noopener noreferrer"><b>{dmv.code}</b>{dmv.name}</a></li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>
   </section>
 
-
-
   <section class="section" id="faq">
     <div class="container">
       <div class="section-head">
-        <p class="kicker" data-i18n="faq.kicker">Questions</p>
-        <h2 data-i18n="faq.title">Before you start</h2>
+        <p class="kicker" data-i18n="faq.kicker">{d("faq.kicker")}</p>
+        <h2 data-i18n="faq.title">{d("faq.title")}</h2>
       </div>
-      <div class="faq-list" id="faqList"></div>
+      <div class="faq-list" id="faqList">
+        {faqNums.map((n) => (
+          <details class="faq-item">
+            <summary>{d(`faq.q${n}`)}</summary>
+            <div class="faq-body">{d(`faq.a${n}`)}</div>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -339,38 +398,38 @@ const faqSchema = {
         <span class="brand-text"><b>Online</b>Vision<span class="brand-tld">Test</span></span>
       </a>
       <p data-i18n={K("footer.tagline")}>{d(K("footer.tagline"))}</p>
-      <p class="footer-langs" data-i18n="footer.langs">Available in English, Spanish, French, German, Portuguese, Italian, Japanese and Russian.</p>
+      <p class="footer-langs" data-i18n="footer.langs">{d("footer.langs")}</p>
     </div>
-    <nav class="footer-col" aria-label="Checks">
-      <h3 data-i18n="footer.c1">Checks</h3>
-      <a href="#screener" data-i18n="checks.distance.name">Distance acuity</a>
-      <a href="#screener" data-i18n="checks.tumbling.name">Tumbling-E</a>
-      <a href="#screener" data-i18n="checks.color.name">Colour vision</a>
-      <a href="#screener" data-i18n="checks.peripheral.name">Peripheral awareness</a>
-      <a href="#screener" data-i18n="checks.near.name">Near vision</a>
-      <a href="#screener" data-i18n="checks.contrast.name">Contrast sensitivity</a>
-      <a href="#screener" data-i18n="checks.astigmatism.name">Astigmatism dial</a>
-      <a href="#screener" data-i18n="checks.refraction.name">Refraction screening</a>
-      <a href="#screener" data-i18n="checks.stereo.name">Depth perception</a>
+    <nav class="footer-col" aria-label={d("footer.c1")}>
+      <h3 data-i18n="footer.c1">{d("footer.c1")}</h3>
+      <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+      <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+      <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
+      <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+      <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
+      <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+      <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+      <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+      <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
     </nav>
-    <nav class="footer-col" aria-label="Guides">
-      <h3 data-i18n="footer.c2">Guides</h3>
-      <a href={blogHref} data-i18n="nav.blog">Blog</a>
+    <nav class="footer-col" aria-label={d("footer.c2")}>
+      <h3 data-i18n="footer.c2">{d("footer.c2")}</h3>
+      <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
       {locale === "en" && !isUS && (<a href="/us/">{d("footer.us")}</a>)}
-      <a href="#faq" data-i18n="footer.g4">Screening limits</a>
-      <a href="#reference" data-i18n="refs.kicker">Evidence &amp; standards</a>
+      <a href="#faq" data-i18n="footer.g4">{d("footer.g4")}</a>
+      <a href="#reference" data-i18n="refs.kicker">{d("refs.kicker")}</a>
     </nav>
     <div class="footer-col">
-      <h3 data-i18n="footer.c3">Privacy</h3>
-      <p data-i18n="footer.p1">No account, no tracking pixel, no uploads. Results are kept in this browser's own storage and can be cleared at any time.</p>
+      <h3 data-i18n="footer.c3">{d("footer.c3")}</h3>
+      <p data-i18n="footer.p1">{d("footer.p1")}</p>
     </div>
   </div>
   <div class="container">
     <div class="disclaimer" role="note" aria-label="Medical and legal notice">
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 19H3l9-15.5Z"/><path d="M12 10v4.2M12 16.6v.1"/></svg>
-      <p data-i18n="footer.disclaimer">This site is an educational practice screener only. It is not an official medical examination, and it cannot diagnose an eye condition or produce a prescription. Screen-based results are affected by your monitor, room lighting and viewing distance. If a check suggests a problem, or you have any concern about your vision, see an optometrist or ophthalmologist before you rely on these results.</p>
+      <p data-i18n="footer.disclaimer">{d("footer.disclaimer")}</p>
     </div>
-    <p class="copyright"><span id="year"></span> <span data-i18n="footer.copy">Online Vision Test. Practice screener, free to use.</span></p>
+    <p class="copyright"><span id="year"></span> <span data-i18n="footer.copy">{d("footer.copy")}</span></p>
   </div>
 </footer>
 
