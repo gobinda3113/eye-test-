@@ -1,0 +1,26 @@
+﻿---
+const datasetSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://onlinevisiontest.org/blog/#blog",
+  "name": "Online Vision Test — Guides & Articles",
+  "description": "Guides on free online eye tests, Snellen charts, DMV vision practice and eye health.",
+  "url": "https://onlinevisiontest.org/blog/",
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Online Vision Test",
+    "url": "https://onlinevisiontest.org/"
+  }
+};
+
+import Layout from "../../layouts/Layout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import BlogIndex from "../../components/BlogIndex.astro";
+---
+
+<Layout locale="en" page="blog" schema={datasetSchema}>
+  <SiteShell locale="en" page="blog">
+    <BlogIndex locale="en" />
+  </SiteShell>
+</Layout>

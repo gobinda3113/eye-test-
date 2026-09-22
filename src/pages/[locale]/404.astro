@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import ProsePage from "../../components/ProsePage.astro";
+import { LOCALES, DEFAULT_LOCALE } from "../../lib/site.ts";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return LOCALES.filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params;
+---
+
+<Layout locale={locale} page="notFound" noindex>
+  <SiteShell locale={locale} page="notFound">
+    <ProsePage locale={locale} page="notFound" />
+  </SiteShell>
+</Layout>

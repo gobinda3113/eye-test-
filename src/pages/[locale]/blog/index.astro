@@ -1,0 +1,37 @@
+﻿---
+import { LOCALES, DEFAULT_LOCALE } from "../../../lib/site.ts";
+export const prerender = true;
+
+export function getStaticPaths() {
+  return LOCALES.filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params;
+
+const datasetSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://onlinevisiontest.org/" + locale + "/blog/#blog",
+  "name": "Online Vision Test — Guides & Articles",
+  "description": "Guides on free online eye tests and vision practice.",
+  "url": "https://onlinevisiontest.org/" + locale + "/blog/",
+  "inLanguage": locale,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Online Vision Test",
+    "url": "https://onlinevisiontest.org/"
+  }
+};
+
+import Layout from "../../../layouts/Layout.astro";
+import SiteShell from "../../../components/SiteShell.astro";
+import BlogIndex from "../../../components/BlogIndex.astro";
+---
+
+<Layout locale={locale} page="blog" schema={datasetSchema}>
+  <SiteShell locale={locale} page="blog">
+    <BlogIndex locale={locale} />
+  </SiteShell>
+</Layout>

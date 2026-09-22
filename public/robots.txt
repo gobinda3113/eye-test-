@@ -1,0 +1,6 @@
+# https://onlinevisiontest.org/robots.txt
+User-agent: *
+Allow: /
+
+# Keep preview / staging hosts out of the index (see public/_headers as well).
+Sitemap: https://onlinevisiontest.org/sitemap-index.xml

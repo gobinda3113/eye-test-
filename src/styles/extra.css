@@ -1,0 +1,378 @@
+/* ---------------------------------------------------------------------------
+   Additive stylesheet for the SEO build.
+
+   global.css is byte-identical to the generator's src/styles.css, so every
+   addition the static site needs lives here: visible focus rings, the
+   long-form article, breadcrumbs, the verification chips, the minimal
+   header/footer used by the non-wizard pages, and the print rules that make
+   those pages printable.
+
+   Two rules while editing this file:
+
+   1. Use the design tokens that global.css actually defines (--text, --text-2,
+      --muted, --border, --border-strong, --surface-2, --primary). A var()
+      fallback is only used when the token is missing, so
+      `var(--text-muted, #42535a)` silently pins a light-mode grey in dark
+      mode and the text disappears. There is no `--text-muted` token.
+   2. Never set border-radius on :focus-visible. The outline already follows
+      each element's own radius, and overriding it flattens pills and the
+      circular icon buttons the moment they are focused.
+   3. global.css hides sections on paper with `.section:not(#screener)`, and a
+      :not(#id) carries an id's worth of specificity. Any print rule that has
+      to beat it must out-rank (1,1,0) - `body.is-doc #main .section` does.
+
+   Where this file overrides a global.css rule of equal specificity, it
+   repeats the class on the element (`.table-scroll.states-scroll`,
+   `.site-header.min-head`) instead of relying on this file being emitted
+   later - a bundler is free to reorder the two.
+   --------------------------------------------------------------------------- */
+
+/* Visible keyboard focus everywhere (global.css only had the UA default). */
+:focus-visible {
+  outline: 3px solid var(--primary, #0c7d6f);
+  outline-offset: 2px;
+}
+.skip-link:focus {
+  outline: 3px solid var(--primary, #0c7d6f);
+  outline-offset: 0;
+}
+
+/* ------------------------------------------------------------ breadcrumbs */
+.crumbs {
+  margin: 18px 0 4px;
+  font-size: 13px;
+  text-align: left;
+}
+.crumbs ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+}
+.crumbs li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.crumbs li + li::before {
+  content: "/";
+  opacity: 0.45;
+}
+.crumbs a {
+  color: var(--text-2, #3d5158);
+  text-decoration: none;
+}
+.crumbs a:hover {
+  text-decoration: underline;
+}
+.crumbs [aria-current="page"] {
+  color: var(--text, #08161a);
+}
+
+/* ------------------------------------------------- long-form SEO article */
+/* Left-aligned, not centred: the article sits under a left-aligned breadcrumb
+   and H1, and shares the left edge of the 660px .section-head column every
+   other home-page section uses. */
+.prose {
+  max-width: 78ch;
+  margin: 0;
+  text-align: left;
+}
+.prose h2 {
+  margin: 34px 0 10px;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem);
+  line-height: 1.25;
+}
+.prose h3 {
+  margin: 24px 0 8px;
+  font-size: 1.075rem;
+}
+.prose p,
+.prose li {
+  line-height: 1.7;
+  color: var(--text-2, #3d5158);
+}
+.prose p + p {
+  margin-top: 12px;
+}
+.prose ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+/* .glance is a card list, not a bullet list, so it has to beat `.prose ul`. */
+.prose .glance {
+  margin-top: 12px;
+  padding-left: 0;
+  gap: 10px;
+}
+.prose strong {
+  color: var(--text, #08161a);
+}
+.prose .sources {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border, #e0e7e5);
+  font-size: 13px;
+}
+.glance {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 0;
+  list-style: none;
+}
+.glance li {
+  padding: 10px 14px;
+  border: 1px solid var(--border, #e0e7e5);
+  border-radius: 12px;
+  background: var(--surface-2, #f0f4f3);
+}
+.glance b {
+  color: var(--text, #08161a);
+}
+
+/* -------------------------------------------------------------- page head */
+.simple-hero {
+  padding: 26px 0 8px;
+  text-align: left;
+}
+.simple-hero h1 {
+  margin: 4px 0 10px;
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+  line-height: 1.15;
+}
+.simple-hero p {
+  max-width: 70ch;
+  color: var(--text-2, #3d5158);
+  line-height: 1.7;
+}
+.lang-note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-2, #3d5158);
+}
+
+/* -------------------------------------------------------------- states pg */
+/* The dedicated /states/ page page-scrolls; the 560px cap exists for the
+   home-page widget, where the table shares the page with nine other blocks.
+   Both classes are repeated on the element deliberately: .table-scroll and
+   .states-scroll have the same specificity, so this must not depend on
+   extra.css happening to be emitted after global.css. */
+.table-scroll.states-scroll {
+  overflow-x: auto;
+  max-height: none;
+  -webkit-overflow-scrolling: touch;
+}
+.src-cell {
+  font-size: 12.5px;
+  line-height: 1.45;
+  min-width: 190px;
+}
+/* The stacked (<=720px) table turns every td into a two-column grid, and each
+   element child becomes its own grid item - so the chip, the statute link and
+   the date must be one wrapped item or the link lands in the label column. */
+.src-wrap {
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+}
+.src-cell a {
+  color: var(--primary, #0c7d6f);
+  overflow-wrap: anywhere;
+}
+.src-cell .asof {
+  display: block;
+  opacity: 0.7;
+}
+/* .verified-note is also used inside .table-card, which has no padding of its
+   own, so the note needs its own or it sits flush against the card border. */
+.table-card .verified-note {
+  margin-top: 0;
+  padding: 0 20px 16px;
+}
+.verified-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-2, #3d5158);
+  text-align: left;
+}
+
+/* --------------------------------------------------- minimal shell pages */
+/* .site-header is already sticky at z-index 60 with its own backdrop blur.
+   The shell pages never load app.js, so .is-stuck never arrives and the
+   header would keep its transparent bottom border forever. Both classes are
+   repeated so the border does not depend on stylesheet order. */
+.site-header.min-head {
+  border-bottom-color: var(--border, #e0e7e5);
+}
+.min-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+}
+.min-nav a {
+  color: var(--text-2, #3d5158);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 0;
+}
+.min-nav a:hover {
+  color: var(--primary, #0c7d6f);
+}
+.lang-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.lang-links a,
+.lang-links .pill-active {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong, #cdd8d5);
+  color: var(--text-2, #3d5158);
+  text-decoration: none;
+  background: transparent;
+  white-space: nowrap;
+}
+.lang-links a:hover {
+  border-color: var(--primary, #0c7d6f);
+  color: var(--primary, #0c7d6f);
+}
+/* --primary on --primary-soft is only 4.21:1, just under AA for 12.5px text.
+   --primary-600 of the same ramp reaches 5.4:1 in both themes. */
+.lang-links a[aria-current="true"],
+.lang-links .pill-active[aria-current="true"] {
+  border-color: var(--primary, #0c7d6f);
+  background: var(--primary, #0c7d6f);
+  color: #fff;
+}
+
+/* Sticky language bar inside the header — same row on home + docs. */
+.header-langs {
+  border-top: 1px solid var(--border, #e0e7e5);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+}
+.header-langs-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 6px;
+  padding-bottom: 8px;
+}
+.lang-links.header-pills {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.lang-links.header-pills li {
+  flex: 0 0 auto;
+  list-style: none;
+}
+
+/* The shell pages put the language pills above a single .section; trim the
+   96px section padding so pills, breadcrumb and H1 read as one block. */
+body.is-doc .section {
+  padding-top: 44px;
+}
+
+@media (max-width: 720px) {
+  /* Four text links plus the tools no longer fit on the 68px bar, so the doc
+     header becomes two rows instead of overflowing (the home page swaps in a
+     hamburger menu at this width instead). */
+  .min-head .header-inner {
+    height: auto;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    row-gap: 6px;
+  }
+  .min-head .min-nav {
+    order: 3;
+    flex: 1 1 100%;
+    gap: 2px 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .prose {
+    max-width: 100%;
+  }
+  .simple-hero {
+    padding-top: 18px;
+  }
+  body.is-doc .section {
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Below ~340px the search field's 240px min-width would push past the card. */
+  .table-tools .search-wrap {
+    min-width: 0;
+  }
+}
+
+@media print {
+  /* global.css hides every .section except the wizard's #screener so the home
+     page prints just the result, and it does so with `.section:not(#screener)`
+     - the :not(#id) gives that rule an ID's worth of specificity, so a plain
+     `body.is-doc .section` would still lose. #main (the shell's <main>) has to
+     be part of the selector to out-specify it. */
+  body.is-doc #main .section {
+    display: block !important;
+    padding: 0 !important;
+  }
+  body.is-doc .skip-link,
+  body.is-doc .min-head,
+  body.is-doc .lang-links,
+  body.is-doc .crumbs,
+  body.is-doc .table-tools,
+  body.is-doc .verified-note .btn {
+    display: none !important;
+  }
+  body.is-doc .table-card,
+  body.is-doc .table-scroll {
+    border: 0;
+    box-shadow: none;
+    max-height: none;
+    overflow: visible;
+  }
+  body.is-doc .state-table thead {
+    display: table-header-group;
+  }
+  /* Paper is narrower than a screen and cannot scroll, so the five columns
+     have to be squeezed rather than scrolled: drop the Source column's 190px
+     floor and the screen-sized 20px cell padding. */
+  body.is-doc .state-table {
+    font-size: 11px;
+  }
+  body.is-doc .state-table th,
+  body.is-doc .state-table td {
+    padding: 6px 8px;
+  }
+  body.is-doc .src-cell {
+    min-width: 0;
+  }
+  body.is-doc .prose a,
+  body.is-doc .src-cell a {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,90 @@
+---
+import { seoFor } from "../data/seo.ts";
+import { pathFor, urlFor } from "../lib/site.ts";
+import { POSTS } from "../data/blog.ts";
+
+const { locale = "en" } = Astro.props;
+const meta = seoFor(locale, "blog");
+
+const home = pathFor(locale, "home");
+
+// Filter posts for this locale
+const visiblePosts = POSTS.filter(post => !post.englishOnly || locale === "en");
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Online Vision Test", item: home },
+    { "@type": "ListItem", position: 2, name: meta.h1, item: urlFor(locale, "blog") },
+  ],
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .blog-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .blog-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+  }
+  .blog-card h3 {
+    margin: 0 0 1rem 0;
+    color: var(--fg);
+  }
+  .blog-card p {
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  .read-more {
+    margin-top: 1.5rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>
+
+<section class="section">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href={home}>Online Vision Test</a></li>
+        <li aria-current="page">{meta.h1}</li>
+      </ol>
+    </nav>
+
+    <div class="simple-hero">
+      <h1>{meta.h1}</h1>
+      <p>{meta.lede}</p>
+    </div>
+
+    <div class="blog-grid">
+      {visiblePosts.map(post => (
+        <a href={pathFor(locale, "blog") + post.slug + "/"} class="blog-card">
+          <h3>{post.title[locale] || post.title.en}</h3>
+          <p>{post.excerpt[locale] || post.excerpt.en}</p>
+          <span class="read-more" aria-hidden="true">&rarr;</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

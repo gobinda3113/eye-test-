@@ -1,0 +1,27 @@
+---
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Online Vision Test",
+  "url": "https://onlinevisiontest.org/",
+  "description": "Free online vision screening. Tests visual acuity, color blindness, peripheral vision, and more.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+
+import Layout from "../layouts/Layout.astro";
+import HomePage from "../components/HomePage.astro";
+import { SITE, homeAlternates } from "../lib/site.ts";
+
+const customAlts = homeAlternates();
+---
+
+<Layout locale="en" page="home" schema={webAppSchema} customAlts={customAlts} customXDefault={SITE + "/"}>
+  <HomePage locale="en" variant="generic" />
+</Layout>
+

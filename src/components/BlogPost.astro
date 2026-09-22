@@ -1,0 +1,51 @@
+---
+import { DICT } from "../scripts/i18n.ts";
+import { pathFor, urlFor } from "../lib/site.ts";
+
+const { locale = "en", post } = Astro.props;
+const dict = DICT[locale] || DICT.en;
+const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
+
+const home = pathFor(locale, "home");
+const blogHome = pathFor(locale, "blog");
+const BLOG_LABEL = { en: "Blog", es: "Blog", fr: "Blog", de: "Blog", pt: "Blog", it: "Blog", ja: "ブログ", ru: "Блог" }[locale] || "Blog";
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Online Vision Test", item: home },
+    { "@type": "ListItem", position: 2, name: BLOG_LABEL, item: urlFor(locale, "blog") },
+    { "@type": "ListItem", position: 3, name: post.title[locale] || post.title.en, item: urlFor(locale, "blog") + post.slug + "/" },
+  ],
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+<section class="section">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href={home}>Online Vision Test</a></li>
+        <li><a href={blogHome}>{BLOG_LABEL}</a></li>
+        <li aria-current="page">{post.title[locale] || post.title.en}</li>
+      </ol>
+    </nav>
+
+    <div class="simple-hero">
+      <h1>{post.title[locale] || post.title.en}</h1>
+      <p>{post.excerpt[locale] || post.excerpt.en}</p>
+    </div>
+
+    <div class="content-body" style="max-width: 800px; margin: 0 auto;">
+      <article set:html={post.content[locale] || post.content.en} />
+
+      <div style="margin-top: 60px; padding: 40px; background: var(--bg-elev); border-radius: var(--r-lg); text-align: center; border: 1px solid var(--border);">
+        <h3 style="margin-top: 0;">{locale === "en" ? "Ready to test your vision?" : d("nav.start")}</h3>
+        <p style="color: var(--muted); margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
+        <a class="btn btn-primary" href={home + "#screener"}>{d("nav.cta")}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+---
+/**
+ * Text page shell: breadcrumb, H1, lede and body sections, compiled from
+ * src/data/seo.js for the route's locale.
+ */
+import { seoFor } from "../data/seo.ts";
+import { pathFor, urlFor } from "../lib/site.ts";
+
+const { locale = "en", page } = Astro.props;
+const meta = seoFor(locale, page);
+
+const NOTE = {
+  es: "El texto legal completo se ofrece en inglés.",
+  fr: "Le texte juridique complet est fourni en anglais.",
+  de: "Der vollständige Rechtstext ist auf Englisch verfügbar.",
+  pt: "O texto legal completo é fornecido em inglês.",
+  it: "Il testo legale completo è fornito in inglese.",
+  ja: "法的文書の全文は英語で提供されています。",
+  ru: "Полный юридический текст приведён на английском языке.",
+};
+const BACK = {
+  en: { screener: "Start the free vision check", states: "Browse guides", home: "Back to the home page" },
+  es: { screener: "Empezar la prueba gratuita", states: "Ver las guías", home: "Volver a la página de inicio" },
+  fr: { screener: "Lancer le dépistage gratuit", states: "Voir les guides", home: "Retour à l'accueil" },
+  de: { screener: "Kostenlose Prüfung starten", states: "Ratgeber ansehen", home: "Zurück zur Startseite" },
+  pt: { screener: "Começar a avaliação grátis", states: "Ver os guias", home: "Voltar à página inicial" },
+  it: { screener: "Avvia il controllo gratuito", states: "Sfoglia le guide", home: "Torna alla home" },
+  ja: { screener: "無料チェックを開始", states: "ガイドを見る", home: "ホームに戻る" },
+  ru: { screener: "Начать бесплатную проверку", states: "Открыть руководства", home: "На главную" },
+};
+const b = BACK[locale] || BACK.en;
+const home = pathFor(locale, "home");
+const current = urlFor(locale, page);
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Online Vision Test", item: home },
+    { "@type": "ListItem", position: 2, name: meta.h1, item: current },
+  ],
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+<section class="section">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href={home}>Online Vision Test</a></li>
+        <li aria-current="page">{meta.h1}</li>
+      </ol>
+    </nav>
+
+    <div class="simple-hero">
+      <h1>{meta.h1}</h1>
+      <p>{meta.lede}</p>
+      {locale !== "en" && meta.englishBody && <p class="lang-note">{NOTE[locale]}</p>}
+    </div>
+
+    <div class="prose">
+      {
+        meta.body.map((s) => (
+          <>
+            <h2>{s.h}</h2>
+            <p>{s.p}</p>
+          </>
+        ))
+      }
+      {
+        (page === "notFound" || page === "serverError") && (
+          <p>
+            <a class="btn btn-primary" href={home + "#screener"}>{b.screener}</a>{" "}
+            <a class="btn btn-ghost" href={pathFor(locale, "blog")}>{b.states}</a>{" "}
+            <a class="btn btn-quiet" href={home}>{b.home}</a>
+          </p>
+        )
+      }
+    </div>
+  </div>
+</section>

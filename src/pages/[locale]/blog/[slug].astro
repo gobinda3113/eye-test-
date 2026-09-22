@@ -1,0 +1,63 @@
+---
+import { LOCALES, DEFAULT_LOCALE, HREFLANG, SITE } from "../../../lib/site.ts";
+import { POSTS } from "../../../data/blog.ts";
+import Layout from "../../../layouts/Layout.astro";
+import SiteShell from "../../../components/SiteShell.astro";
+import BlogPost from "../../../components/BlogPost.astro";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  const paths = [];
+  LOCALES.filter(l => l !== DEFAULT_LOCALE).forEach(locale => {
+    POSTS.forEach(post => {
+      if (!post.englishOnly) {
+        paths.push({
+          params: { locale, slug: post.slug },
+          props: { post }
+        });
+      }
+    });
+  });
+  return paths;
+}
+
+const { locale } = Astro.params;
+const { post } = Astro.props;
+
+const customMeta = {
+  title: post.title[locale] || post.title.en,
+  description: post.excerpt[locale] || post.excerpt.en,
+  url: SITE + "/" + locale + "/blog/" + post.slug + "/",
+};
+
+const customAlts = LOCALES.filter(l => !post.englishOnly || l === "en").map(l => ({
+  locale: l,
+  hreflang: HREFLANG[l],
+  url: SITE + (l === "en" ? "" : "/" + l) + "/blog/" + post.slug + "/",
+}));
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title[locale] || post.title.en,
+  "description": post.excerpt[locale] || post.excerpt.en,
+  "url": "https://onlinevisiontest.org/" + locale + "/blog/" + post.slug + "/",
+  "mainEntityOfPage": SITE + "/" + locale + "/blog/" + post.slug + "/",
+  "inLanguage": locale,
+  "image": SITE + "/og-en.png",
+  "author": { "@type": "Organization", name: "Online Vision Test", url: SITE + "/" },
+  "publisher": {
+    "@type": "Organization",
+    name: "Online Vision Test",
+    url: SITE + "/",
+    logo: { "@type": "ImageObject", url: SITE + "/favicon.svg" }
+  },
+};
+---
+
+<Layout locale={locale} page="blog" schema={schema} customMeta={customMeta} customAlts={customAlts} customXDefault={SITE + "/blog/" + post.slug + "/"}>
+  <SiteShell locale={locale} page="blog" customAlts={customAlts}>
+    <BlogPost locale={locale} post={post} />
+  </SiteShell>
+</Layout>

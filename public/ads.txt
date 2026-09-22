@@ -1,0 +1,4 @@
+# ads.txt — placeholder. This build ships no ad or analytics
+# scripts (see README "Performance"). Replace the placeholder line below with
+# your own authorised-seller record before enabling any monetisation.
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

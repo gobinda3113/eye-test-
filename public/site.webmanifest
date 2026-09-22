@@ -1,0 +1,22 @@
+{
+  "name": "Online Vision Test — Free Practice Screener",
+  "short_name": "Vision Test",
+  "description": "Free online vision test: calibrate your screen and check distance, colour, peripheral and near vision eye by eye.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1417",
+  "theme_color": "#0b1417",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

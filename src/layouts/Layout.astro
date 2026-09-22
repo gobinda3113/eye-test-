@@ -1,0 +1,214 @@
+---
+import "../styles/global.css";
+import "../styles/extra.css";
+import {
+  LOCALES,
+  DEFAULT_LOCALE,
+  pageDef,
+  urlFor,
+  alternates,
+  ogImage,
+  ogLocale,
+} from "../lib/site.ts";
+import { seoFor } from "../data/seo.ts";
+
+const { locale = DEFAULT_LOCALE, page = "home", noindex = false, customMeta, customAlts, customXDefault, schema } = Astro.props;
+const def = pageDef(page);
+const baseMeta = seoFor(locale, page);
+const meta = customMeta ? { ...baseMeta, ...customMeta } : baseMeta;
+const canonical = customMeta?.url || urlFor(locale, page);
+const alts = customAlts || alternates(page);
+const xDefaultUrl = customXDefault || urlFor(DEFAULT_LOCALE, page);
+const isError = Boolean(noindex || def.noindex);
+const robots = isError ? "noindex, follow" : "index, follow";
+const og = ogImage(locale);
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap";
+---
+
+<!doctype html>
+<html lang={locale} dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    {meta.keywords && <meta name="keywords" content={meta.keywords} />}
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#0b1417" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href={canonical} />
+
+    {
+      alts.map((a) => (
+        <link rel="alternate" hreflang={a.hreflang} href={a.url} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Online Vision Test" />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={meta.title} />
+    <meta property="og:locale" content={ogLocale(locale)} />
+    {
+      LOCALES.filter((l) => l !== locale).map((l) => (
+        <meta property="og:locale:alternate" content={ogLocale(l)} />
+      ))
+    }
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:image" content={og} />
+    <meta name="twitter:image:alt" content={meta.title} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!--
+      Analytics and search-console verification are deliberately NOT loaded.
+      The privacy policy promises no analytics, and the build rules say no
+      network calls, so the tags are parked here, commented out, until that
+      policy changes. Uncomment and replace the placeholders to switch them on.
+
+      GA4
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+      <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag("js", new Date());
+        gtag("config", "G-XXXXXXXXXX");
+      </script>
+
+      Google Search Console
+      <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN" />
+
+      Bing Webmaster Tools
+      <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" />
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={fontHref} />
+
+    <slot name="structured-data" />
+    {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
+
+    <script is:inline>
+      // Runs before first paint: applies the stored theme (no light/dark flash)
+      // and, on a non-English route, pins the language so the client-side
+      // i18n.js dictionary hydrates in the same language the page was built in.
+      try {
+        var storedTheme = localStorage.getItem("dmv-eye-test.theme");
+        var prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = storedTheme || (prefersDark ? "dark" : "light");
+        var routeLang = document.documentElement.lang || "en";
+        if (routeLang !== "en") localStorage.setItem("dmv-eye-test.lang", routeLang);
+      } catch (err) {}
+    </script>
+
+    <script is:inline>
+      // Progressive accessibility layer. The wizard already ships arrow-key and
+      // Enter/Space handling in lab.js; this only labels what the script cannot
+      // know about statically (live region, step changes, canvases) and is
+      // deliberately tiny so it never delays the lab.
+      (function () {
+        function labelCanvases() {
+          var c = document.querySelectorAll("canvas:not([aria-label])");
+          for (var i = 0; i < c.length; i++) {
+            c[i].setAttribute("role", "img");
+            c[i].setAttribute("aria-label", "Vision test image");
+          }
+        }
+        // The depth-perception step is answered with buttons, so give the answer
+        // group a keyboard route of its own: 1-4 pick a shape in order, N answers
+        // "cannot see a shape", Y moves focus to the answers. Pure synthetic
+        // clicks — the wizard's own state machine is untouched.
+        function labelStereo() {
+          var wrap = document.querySelector(".stereo-btns");
+          if (!wrap) return;
+          var btns = wrap.querySelectorAll("button[data-shape]");
+          var n = 0;
+          for (var i = 0; i < btns.length; i++) {
+            var shape = btns[i].getAttribute("data-shape");
+            if (shape === "none") btns[i].setAttribute("aria-keyshortcuts", "N");
+            else {
+              n++;
+              btns[i].setAttribute("aria-keyshortcuts", String(n));
+            }
+          }
+        }
+        function stereoKeys(e) {
+          if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+          var t = e.target;
+          if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+          var wrap = document.querySelector(".stereo-btns");
+          if (!wrap) return;
+          var key = (e.key || "").toLowerCase();
+          var shapes = wrap.querySelectorAll('button[data-shape]:not([data-shape="none"])');
+          var none = wrap.querySelector('button[data-shape="none"]');
+          if (key === "y") {
+            e.preventDefault();
+            if (shapes[0]) shapes[0].focus();
+            return;
+          }
+          if (key === "n" || key === "0") {
+            if (!none) return;
+            e.preventDefault();
+            none.click();
+            return;
+          }
+          if (key >= "1" && key <= "9") {
+            var idx = Number(key) - 1;
+            if (!shapes[idx]) return;
+            e.preventDefault();
+            shapes[idx].click();
+          }
+        }
+        function announce() {
+          var s = document.getElementById("labStatus");
+          if (s && !s.getAttribute("aria-live")) s.setAttribute("aria-live", "polite");
+          var st = document.getElementById("labStage");
+          if (st && !st.getAttribute("role")) {
+            st.setAttribute("role", "region");
+            st.setAttribute("aria-label", "Vision test step");
+            st.setAttribute("tabindex", "-1");
+          }
+          var last = st && st.firstElementChild;
+          if (st && last && st.dataset.a11yStep !== String(st.childElementCount)) {
+            st.dataset.a11yStep = String(st.childElementCount);
+            try {
+              st.focus({ preventScroll: true });
+            } catch (err) {}
+          }
+          labelCanvases();
+          labelStereo();
+        }
+        function start() {
+          var st = document.getElementById("labStage");
+          announce();
+          if (st && window.MutationObserver) new MutationObserver(announce).observe(st, { childList: true, subtree: true });
+          else if (st) setInterval(announce, 800);
+          document.addEventListener("keydown", stereoKeys);
+        }
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+        else start();
+      })();
+    </script>
+  </head>
+  <body class={page === "home" ? undefined : "is-doc"}>
+    <slot />
+</body>
+</html>
+
