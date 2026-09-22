@@ -1,5 +1,7 @@
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
 node_modules/
 dist/
 .astro/
@@ -8,7 +10,7 @@ dist/
 *.log
 npm-debug.log*
 coverage/
-.tsbuildinfo
+*.tsbuildinfo
 .wrangler/
 .vercel/
 .netlify/
