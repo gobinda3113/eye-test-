@@ -74,6 +74,12 @@ const fontHref =
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
+    {
+      schema && (
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+      )
+    }
+
     <!--
       Analytics and search-console verification are deliberately NOT loaded.
       The privacy policy promises no analytics, and the build rules say no

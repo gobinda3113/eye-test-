@@ -81,11 +81,46 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: strip(d("faq.a" + n)) },
   })),
 };
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: isUS ? "How to Take the DMV Practice Eye Test at Home" : "How to Take an Online Vision Test at Home",
+  description: meta.description,
+  totalTime: "PT10M",
+  step: [
+    {
+      "@type": "HowToStep",
+      name: "Calibrate Your Display",
+      text: "Hold a standard magnetic credit card or ID card (85.6 mm) against the screen outline and adjust the slider until they match exactly.",
+      url: (isUS ? SITE + "/us/" : SITE + "/") + "#screener",
+    },
+    {
+      "@type": "HowToStep",
+      name: "Measure the Test Distance",
+      text: "Step back 10 feet (3 meters) from your screen, or 20 feet (6 meters) for standard Snellen distance.",
+      url: (isUS ? SITE + "/us/" : SITE + "/") + "#screener",
+    },
+    {
+      "@type": "HowToStep",
+      name: "Cover One Eye at a Time",
+      text: "Gently cover your left eye with your palm without pressing on the eyelid. Read the smallest line of letters you can see, then repeat for the right eye.",
+      url: (isUS ? SITE + "/us/" : SITE + "/") + "#screener",
+    },
+    {
+      "@type": "HowToStep",
+      name: "Check Your Visual Acuity Score",
+      text: "Compare your result (such as 20/20 or 20/40) against the minimum driver licensing and vision screening benchmarks.",
+      url: (isUS ? SITE + "/us/" : SITE + "/") + "#reference",
+    },
+  ],
+};
 ---
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(appSchema)} />
 <script type="application/ld+json" is:inline set:html={JSON.stringify(testSchema)} />
 <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
 
 <a class="skip-link" href="#screener" data-i18n="a11y.skip">{d("a11y.skip")}</a>
 
@@ -425,6 +460,25 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  {meta.body && meta.body.length > 0 && (
+    <section class="section" id="guide">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">{isUS ? "DMV Reference Guide" : d("nav.start")}</p>
+          <h2>{meta.articleTitle || (isUS ? "DMV Vision Guide" : d("nav.start"))}</h2>
+        </div>
+        <article class="prose" style="max-width: 800px;">
+          {meta.body.map((sec) => (
+            <div style="margin-bottom: 28px;">
+              <h3 style="margin-bottom: 8px;">{sec.h}</h3>
+              <p>{sec.p}</p>
+            </div>
+          ))}
+        </article>
+      </div>
+    </section>
+  )}
 
 </main>
 

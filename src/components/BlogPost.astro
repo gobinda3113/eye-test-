@@ -26,9 +26,9 @@ const articleSchema = {
   headline: post.title[locale] || post.title.en,
   description: post.excerpt[locale] || post.excerpt.en,
   inLanguage: locale,
-  author: { "@type": "Organization", name: "Online Vision Test" },
-  datePublished: "2024-01-01T08:00:00Z",
-  dateModified: "2026-09-01T08:00:00Z"
+  author: { "@type": "Organization", name: "Online Vision Test", url: "https://onlinevisiontest.org/" },
+  datePublished: post.datePublished || "2025-06-01T08:00:00Z",
+  dateModified: post.dateModified || "2026-09-20T08:00:00Z"
 };
 
 const META_L = {

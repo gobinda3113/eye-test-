@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "learned": {
+    "routes": [
+      "/",
+      "/about",
+      "/admin",
+      "/admin/content",
+      "/admin/creators",
+      "/admin/overview",
+      "/admin/super_admin",
+      "/admin/users",
+      "/contact",
+      "/profile",
+      "/profile/videos",
+      "/upload",
+      "/watch/96bd4e7b-bc87-4cd3-8d01-696debf06786"
+    ]
+  },
+  "runs": []
+}

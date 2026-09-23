@@ -15,6 +15,7 @@ dist/
 .astro/
 coverage/
 *.tsbuildinfo
+old_index.html
 
 # Environment & Secrets
 .env

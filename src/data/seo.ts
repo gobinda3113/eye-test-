@@ -22,7 +22,14 @@ const en = {
     description:
       "Free online vision test: calibrate your screen and check distance, colour, peripheral and near vision eye by eye. No signup, results stay in your browser.",
     lede: "Practise the online vision test for free: calibrated, eye by eye, done in ten minutes.",
-    articleTitle: "free online vision test: what the screening actually covers",
+    articleTitle: "Free online vision test: what the screening actually covers",
+    body: [
+      { h: "What the screening actually covers", p: "The flow mirrors an in-person eye exam: calibrate your display with a standard card, step back to the designated distance, cover one eye with your palm, and identify the smallest row of optotypes. Following visual acuity, the screener guides you through Tumbling-E orientation, color recognition plates, 60° and 75° peripheral awareness, 16-inch near vision, contrast sensitivity, an astigmatism dial, and a red-green duochrome check. The primary target benchmark is 20/40 visual acuity — the standard required by most driver licensing agencies for unrestricted driving." },
+      { h: "How to get an accurate result at home", p: "Accuracy depends entirely on physical pixel dimensions. Uncalibrated online charts can be distorted by 30% or more, turning a true 20/40 line into an apparent 20/25. By placing a standard magnetic card (85.6 mm under ISO/IEC 7810) against the screen outline and adjusting the slider, the software translates screen millimeters into exact angular dimensions, rendering vector letters with calibrated millimeter precision." },
+      { h: "Preparing your testing environment", p: "Position yourself exactly 10 feet (3 meters) away, or 20 feet (6 meters) if space allows for standard Snellen testing. Mark your spot on the floor so your position stays consistent. Dim ambient room lighting so the monitor is the clearest light source in your field of view, keep the screen at eye level, and avoid leaning forward to guess optotypes — viewing distance is a fundamental part of the measurement." },
+      { h: "Why calibrated vector optotypes beat static images", p: "Static image charts rely on fixed pixel resolutions that change physical size depending on screen resolution and scaling. Two people viewing the same image on different laptops will see vastly different visual angles. Calibrated vector optotypes scale dynamically on a 5x5 Snellen grid, ensuring identical arcminute substructures across all devices." },
+      { h: "Medical disclaimer and purpose", p: "This screening tool is designed for personal practice and educational self-check. It is not an official DMV or DOT examination, not a clinical eye exam, and cannot replace a comprehensive medical evaluation by a licensed optometrist or ophthalmologist. If you notice persistent blur, double vision, or discomfort, schedule an examination with an eye care professional." },
+    ],
   },
   us: {
     keywords: "dmv eye test online free, free dmv eye test online, dmv eye test online, dmv eye test chart, dmv eye test machine, nys dmv eye test online",
@@ -30,6 +37,14 @@ const en = {
     description:
       "Practice the free DMV eye test online: DMV eye test chart, what the test machine shows, Snellen and Tumbling-E checks, 20/40 benchmark. No signup. Start now.",
     lede: "Practise the DMV eye test online free: calibrated, eye by eye, 50-state rules, done in ten minutes.",
+    articleTitle: "DMV Eye Test Online: Requirements, Machines, and How to Prepare",
+    body: [
+      { h: "What the DMV eye test evaluates", p: "DMV vision screeners test whether an applicant meets the minimum visual standards to operate a motor vehicle safely. While standard driver licenses require 20/40 visual acuity in both eyes, states also test peripheral vision (typically 110° to 140° total horizontal field) and basic traffic light color recognition. Rehearsing at home helps you identify whether your current glasses or contacts meet your state's threshold." },
+      { h: "Counter vision machines vs. wall charts", p: "Modern DMV service centers typically employ automated desktop vision machines like the Optec 1000 or Titmus V1 rather than illuminated wall charts. These enclosed viewers present optical slides under controlled illumination at simulated 20-foot optical infinity. The examiner will typically ask you to read line 5 (the standard 20/40 line) with both eyes, followed by monocular checks." },
+      { h: "What happens if you fall below 20/40", p: "Falling short of 20/40 does not mean you lose your license. In almost every state, falling between 20/40 and 20/70 allows you to obtain a vision examination form (such as California DL-62, New York MV-619, or Texas DL-63) to take to an eye doctor. An optometrist or ophthalmologist can update your prescription or clear you for daytime-only driving." },
+      { h: "How to rehearse effectively", p: "Rehearsing beforehand removes test anxiety. Use our calibrated practice screener to test each eye separately at a measured 10-foot or 20-foot distance. If you normally wear corrective lenses to drive, keep them on during the test." },
+      { h: "Important advisory", p: "This practice screener is an independent educational tool and is not affiliated with or endorsed by any state DMV or DOT agency. Refer to your state's official department of motor vehicles for statutory requirements." },
+    ],
   },
   blog: {
     title: "Online Eye Test Free - Check Your Vision at Home",
@@ -115,7 +130,7 @@ const es = {
     keywords: "examen de la vista online, examen de la vista online gratis, examen de la vista online para niños, examen de la vista online miopia",
     title: "Examen de la vista online gratis — Prueba visual (20/40)",
     description:
-      "Haz gratis tu examen de la vista online. Calibra la pantalla, colócate a 3 m y practica el optotipo Snellen, la E de la orientación, el color, la visión periférica y la visión cercana: referencia 20/40, ocho idiomas y sin registro.",
+      "Examen de la vista online gratis. Calibra la pantalla con una tarjeta a 3 m y practica Snellen, agudeza 20/40, visión cercana y periférica sin registro.",
     lede: "Practica el examen de la vista online gratis: calibrado, ojo por ojo y en diez minutos.",
     articleTitle: "Examen de la vista online gratis: qué cubre realmente la evaluación",
     body: [
@@ -129,7 +144,7 @@ const es = {
   blog: {
     title: "Examen de la vista online gratis - Comprueba tu visión en casa",
     description:
-      "Agudeza visual mínima, restricciones y renovación con referencias sobre agudeza visual mínima, restricciones frecuentes y consejos para tu revisión. La mayoría exige 20/40 y permite una licencia restringida hasta 20/70.",
+      "Guías sobre el examen de la vista: agudeza visual 20/40, requisitos por estado, restricciones y consejos para aprobar tu revisión de conducir en casa.",
     h1: "Guías y artículos sobre el examen de la vista",
     lede: "La mayoría de los estados exige 20/40 con ambos ojos para una licencia sin restricciones y permite seguir conduciendo con espejo exterior hasta 20/70. Cinco filas están verificadas con la norma; el resto te remite a tu organismo oficial de tráfico.",
     body: [
@@ -200,7 +215,7 @@ const fr = {
     keywords: "test de vue en ligne, test de vue en ligne gratuit, comment réaliser un test de vue en ligne, test de vue en ligne myopie, test de vue en ligne pour enfant, comment faire un test de vue en ligne ?, faire un test de vue en ligne, test de vue en ligne enfant, test de vision en ligne, test de vision en ligne gratuit",
     title: "Test de vue en ligne gratuit — Contrôle visuel (20/40)",
     description:
-      "Passez gratuitement le test de vue en ligne. Calibrez l'écran, placez-vous à 3 m et entraînez-vous à l'échelle de Snellen, au E directionnel, aux couleurs, à la vision périphérique et de près — repère 20/40, huit langues, sans inscription.",
+      "Test de vue en ligne gratuit : calibrez votre écran à 3 m et testez votre acuité 20/40, échelle de Snellen, vision de près et périphérique sans inscription.",
     lede: "Entraînez-vous gratuitement au test de vue en ligne : calibré, œil par œil, en dix minutes.",
     articleTitle: "Test de vue en ligne gratuit : ce que couvre réellement le dépistage",
     body: [
@@ -214,7 +229,7 @@ const fr = {
   blog: {
     title: "Test de vue en ligne gratuit - Vérifiez votre vision chez vous",
     description:
-      "Acuité visuelle minimale, restrictions et renouvellement avec les repères d'acuité visuelle minimale, les restrictions et les conseils pour préparer votre contrôle. La plupart exigent 20/40 et autorisent un permis restreint jusqu'à 20/70.",
+      "Guides du test de vue : acuité visuelle 20/40, normes pour le permis de conduire, restrictions et conseils pour vérifier votre vue à la maison.",
     h1: "Exigences de vision par État",
     lede: "La plupart des États exigent 20/40 des deux yeux pour un permis sans restriction et autorisent la conduite avec rétroviseur extérieur jusqu'à 20/70. Cinq lignes sont vérifiées dans le texte de loi ; les autres vous renvoient à votre administration officielle.",
     body: [
@@ -285,7 +300,7 @@ const de = {
     keywords: "sehtest online, sehtest online machen, sehtest online handy, sehtest online kostenlos, sehtest online handy kostenlos, kann man online einen sehtest machen, wie funktioniert ein online sehtest",
     title: "Sehtest online kostenlos — Am Handy & PC prüfen (20/40)",
     description:
-      "Machen Sie den Sehtest kostenlos online. Bildschirm kalibrieren, 3 m Abstand halten und Snellen-Tafel, Richtungs-E, Farben, peripheres Sehen und Nahsicht üben — 20/40-Marke, acht Sprachen, ohne Anmeldung.",
+      "Kostenloser Sehtest online am PC & Smartphone: Bildschirm kalibrieren, 3 m Abstand, Snellen-Sehtest, 20/40-Marke und Nahsicht ohne Anmeldung prüfen.",
     lede: "Üben Sie den Sehtest kostenlos online: kalibriert, Auge für Auge, in zehn Minuten.",
     articleTitle: "Kostenloser Sehtest online: was die Prüfung wirklich abdeckt",
     body: [
@@ -299,7 +314,7 @@ const de = {
   blog: {
     title: "Sehtest online kostenlos - Überprüfen Sie Ihre Sehkraft zu Hause",
     description:
-      "Mindest-Sehschärfe, Auflagen und Erneuerung in allen 50 Bundesstaaten und DC, mit Gesetzesangabe und offiziellen Links. Die meisten verlangen 20/40 und erlauben eine Auflage bis 20/70.",
+      "Ratgeber zum Sehtest: Mindestsehschärfe 20/40, Führerschein-Auflagen, Snellen-Tafel und praktische Tipps zur Überprüfung Ihrer Sehkraft zu Hause.",
     h1: "Sehanforderungen nach Bundesstaat",
     lede: "Die meisten Staaten verlangen 20/40 mit beiden Augen für eine unbeschränkte Fahrerlaubnis und erlauben mit Außenspiegel noch 20/70. Fünf Zeilen sind am Gesetzestext geprüft; der Rest verweist Sie an die zuständige Führerscheinstelle.",
     body: [
@@ -370,7 +385,7 @@ const pt = {
     keywords: "teste de visão, teste de visao, teste de visão online, teste de visao letras, teste de visão pelo celular, tabela teste de visão detran, teste de visão letras, teste de visão detran, letras para teste de visão, teste de visão infantil, letras pequenas para teste de visão, teste de visão pelo celular grátis, teste de visão miopia, teste de visão do detran, teste de visão para perto, teste de visão com desenhos, teste de visão online grátis, teste de visão no celular, simulação teste de visão detran, teste de visao celular",
     title: "Teste de visão online grátis — Pelo celular ou PC (20/40)",
     description:
-      "Faça o teste de visão online grátis pelo celular ou computador. Calibre a tela a 3 m e treine com a tabela de Snellen, o E direcional, miopia e visão de perto: referência 20/40 e simulação Detran, sem cadastro.",
+      "Teste de visão online grátis no celular ou PC: calibre a tela a 3 m, treine com a tabela de Snellen, acuidade 20/40 e simulação Detran, sem cadastro.",
     lede: "Treine o teste de visão online grátis: calibrado, olho por olho, em dez minutos.",
     articleTitle: "Teste de visão online grátis: o que a avaliação cobre",
     body: [
@@ -384,7 +399,7 @@ const pt = {
   blog: {
     title: "Teste de visão online grátis - Verifique sua visão em casa",
     description:
-      "Acuidade visual mínima, restrições e renovação com referências de acuidade visual mínima, restrições e dicas para o exame de vista. A maioria exige 20/40 e permite carta restrita até 20/70.",
+      "Guias do exame de vista: acuidade visual 20/40, requisitos para CNH e Detran, restrições e dicas práticas para testar sua visão em casa.",
     h1: "Requisitos de visão por estado",
     lede: "A maioria dos estados exige 20/40 com os dois olhos para uma carta sem restrições e permite conduzir com espelho exterior até 20/70. Cinco linhas estão verificadas na lei; as demais remetem ao órgão oficial de trânsito.",
     body: [
@@ -406,10 +421,10 @@ const pt = {
     ],
   },
   contact: {
-    title: "Contacto — Online Vision Test",
+    title: "Contato — Online Vision Test",
     description:
       "Comunique uma regra estadual desatualizada, um erro de tela ou de tradução, ou envie uma sugestão para a avaliação.",
-    h1: "Contacto",
+    h1: "Contato",
     lede: "Regra estadual desatualizada, erro na tela ou tradução errada? Diga-nos.",
     body: [
       { h: "E-mail", p: "Escreva para " + EMAIL + ". Correções às regras de visão dos estados são o mais útil, sobretudo com a lei ou a página do organismo." },
@@ -580,7 +595,7 @@ const ja = {
   },
   contact: {
     title: "お問い合わせ — Online Vision Test",
-    description: "古いルール、表示バグ、翻訳ミスの報告や、改善提案はこちらから。",
+    description: "運転免許の視力検査基準、画面表示の不具合、翻訳の誤りに関するご報告や改善のご提案はこちらのお問い合わせ窓口からご連絡ください。",
     h1: "お問い合わせ",
     lede: "古いルール、表示バグ、翻訳ミスを見つけたら教えてください。",
     body: [
@@ -590,7 +605,7 @@ const ja = {
   },
   privacy: {
     title: "プライバシーポリシー — Online Vision Test",
-    description: "Online Vision Testが保存するもの（テーマ、言語、調整値のみ）と、しないこと：アカウント、分析、アップロードなし。",
+    description: "Online Vision Testのプライバシーポリシー：個人情報の収集やトラッキング、サーバーへの送信は一切行いません。安心して視力検査をご利用いただけます。",
     h1: "プライバシーポリシー",
     lede: "アカウント、分析、アップロードなし。結果が端末から出ることはありません。",
     body: [],
