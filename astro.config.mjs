@@ -21,6 +21,7 @@ export default defineConfig({
     inlineStylesheets: "auto",
     format: "directory",
   },
+  redirects: { "/sitemap.xml": "/sitemap-index.xml" },
   compressHTML: true,
   i18n: {
     defaultLocale: "en",

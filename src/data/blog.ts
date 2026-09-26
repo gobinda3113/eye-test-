@@ -168,7 +168,7 @@ export const POSTS = [
     content: {
       en: `
         <h2>The box on the counter</h2>
-        <p>Most DMV offices test vision with a desktop viewer, not a wall poster. Common models are the Optec 1000 and the Titmus V1. You rest your forehead against the hood and look inside at small slides. That enclosure is the point: it fixes your distance and blocks room light, so every applicant gets the same conditions. The Titmus tests far vision at 20 feet and near vision at 16 inches in the same unit.</p>
+        <p>Most DMV offices test vision with a desktop viewer, not a wall poster. Common models are the Optec 1000 and the Titmus V1. You rest your forehead against the hood and look inside at small slides. That enclosure is the point: the driver's license dmv eye test machine fixes your distance and blocks room light, so every applicant gets the same conditions. The Titmus tests far vision at 20 feet and near vision at 16 inches in the same unit.</p>
 
         <h2>What the examiner asks you to do</h2>
         <p>You read lines of letters or numbers, one eye at a time, then both together. The manuals for these machines describe the rhythm plainly: read one numbered line fully, move to the next, stop where you miss. Examiners often call out "read line 5," which is why that phrase shows up in search results. It is just the 20/40 row on that slide set. After acuity comes the rest: flashes at the sides for peripheral vision and a red, green and amber check for colour. The colour part is not a full colour-blindness exam. It only asks whether you can separate traffic signals.</p>
@@ -177,7 +177,7 @@ export const POSTS = [
         <p>Some offices still use a Snellen chart on the wall at 10 or 20 feet. Same task, less ceremony: cover one eye with your palm, read the smallest line you can, swap eyes. Bright rooms and short distances flatter your eyes, which is one reason home posters mislead.</p>
 
         <h2>How to rehearse honestly</h2>
-        <p>Cheat sheets and memorised posters do not transfer because offices rotate charts. What transfers is procedure: calibrate the screen with a bank card, stand at a marked 3 metres, cover one eye without pressing on it, and read randomised letters. That is exactly what <a href="/us/#screener">the free practice screening</a> runs. If you wear glasses to drive, practise in them. Passing with correction is normal, and it is better to learn that at home than at the counter. Read <a href="/blog/dmv-eye-test-fail-guide/">what happens if you fail</a> so the worst case holds no surprises either.</p>
+        <p>Looking for a cheat sheet dmv eye test machine? Cheat sheets and memorised posters do not transfer because offices rotate charts. What transfers is procedure: calibrate the screen with a bank card, stand at a marked 3 metres, cover one eye without pressing on it, and read randomised letters. That is exactly what <a href="/us/#screener">the free practice screening</a> runs. If you wear glasses to drive, practise in them. Passing with correction is normal, and it is better to learn that at home than at the counter. Read <a href="/blog/dmv-eye-test-fail-guide/">what happens if you fail</a> so the worst case holds no surprises either.</p>
       `
     }
   },
@@ -445,3 +445,4 @@ export const POSTS = [
     }
   }
 ];
+

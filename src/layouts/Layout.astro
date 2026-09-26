@@ -46,7 +46,7 @@ const fontHref =
     }
     <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={page.startsWith("blog") ? "article" : "website"} />
     <meta property="og:site_name" content="Online Vision Test" />
     <meta property="og:title" content={meta.title} />
     <meta property="og:description" content={meta.description} />
@@ -94,13 +94,13 @@ const fontHref =
         gtag("js", new Date());
         gtag("config", "G-XXXXXXXXXX");
       </script>
-
-      Google Search Console
-      <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN" />
-
-      Bing Webmaster Tools
-      <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" />
     -->
+
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN" />
+
+    <!-- Bing Webmaster Tools -->
+    <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -43,3 +43,11 @@ __pycache__/
 venv/
 env/
 
+
+# AI Agents & Scripts
+.kilo/
+.reticle/
+.aider*
+.gemini/
+*.cjs
+*.py

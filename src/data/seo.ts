@@ -17,7 +17,6 @@ export const EMAIL = "support@onlinevisiontest.org";
 
 const en = {
   home: {
-    keywords: "free online vision test, online vision test, eye test chart, snellen eye test, free eye test online, online eye exam",
     title: "Free Online Vision Test — 11 Checks in 10 Minutes",
     description:
       "Free online vision test: calibrate your screen and check distance, colour, peripheral and near vision eye by eye. No signup, results stay in your browser.",
@@ -32,7 +31,6 @@ const en = {
     ],
   },
   us: {
-    keywords: "dmv eye test online free, free dmv eye test online, dmv eye test online, dmv eye test chart, dmv eye test machine, nys dmv eye test online",
     title: "Free DMV Eye Test Online — Practice the 20/40 Check",
     description:
       "Practice the free DMV eye test online: DMV eye test chart, what the test machine shows, Snellen and Tumbling-E checks, 20/40 benchmark. No signup. Start now.",
@@ -66,7 +64,7 @@ const en = {
     body: [
       { h: "What this is", p: "Online Vision Test is a free, browser-based practice screener. It reproduces the order of a counter vision check — calibrate, stand back, cover one eye, read the smallest line — and adds the tests US licences and CDL medical cards care about: distance acuity, a Tumbling-E direction test, colour plates, peripheral awareness, near vision, contrast sensitivity, an astigmatism dial and a duochrome refraction screen." },
       { h: "What it is not", p: "It is not an official DMV or DOT test, not a medical examination, and it cannot diagnose a condition or produce a prescription. Screen-based results depend on your monitor, your room lighting and your viewing distance. If a check suggests a problem, see an optometrist or ophthalmologist." },
-      { h: "How it is built", p: "No accounts, no analytics, no uploads. The optotypes are drawn as vector paths on a 5x5 grid so the stroke-to-height ratio is correct at any size, and physical sizes derive from a bank-card calibration step. Everything runs on your device and every result stays in your browser." },
+      { h: "How it is built", p: "No accounts, no uploads. The optotypes are drawn as vector paths on a 5x5 grid so the stroke-to-height ratio is correct at any size, and physical sizes derive from a bank-card calibration step. Everything runs on your device and every result stays in your browser." },
     ],
   },
   contact: {
@@ -83,12 +81,12 @@ const en = {
   privacy: {
     title: "Privacy Policy — Online Vision Test",
     description:
-      "What Online Vision Test stores (a theme, a language and a calibration number in your own browser) and what it never does: no accounts, no analytics, no uploads.",
+      "What Online Vision Test stores (a theme, a language and a calibration number in your own browser) and what it never does: no accounts, no uploads.",
     h1: "Privacy policy",
-    lede: "No account, no analytics, no uploads. Your results never leave your device.",
+    lede: "No account, no uploads. Your results never leave your device.",
     body: [
       { h: "What we store", p: "Three small values in your browser's own localStorage: your light/dark theme choice, your language choice, and your screen-calibration profile. When you finish a run, the result summary is stored the same way so the stepper can show what you have already covered. None of it is transmitted anywhere." },
-      { h: "What we do not do", p: "No account, no sign-in, no advertising or analytics script, no tracking pixel, no server-side log of your results. The page loads fonts from Google Fonts, which means Google sees the request for the font files — nothing about your test is attached to it." },
+      { h: "What we do not do", p: "No account, no sign-in, no advertising, no tracking pixel, no server-side log of your results. We use Cloudflare Web Analytics for basic anonymous traffic metrics. The page loads fonts from Google Fonts, which means Google sees the request for the font files — nothing about your test is attached to it." },
       { h: "Your control", p: "Clearing site data in your browser removes everything. The reported results can also be downloaded as a plain-text file or copied, and you can simply not do that — nothing is kept on our side either way." },
       { h: "Children", p: "The screener is intended for adults preparing for a driver-licence or CDL medical examination. It is not directed at children." },
       { h: "Changes and contact", p: "If this policy changes, the date on this page changes with it. Questions: " + EMAIL + "." },
@@ -127,7 +125,6 @@ const en = {
 
 const es = {
   home: {
-    keywords: "examen de la vista online, examen de la vista online gratis, examen de la vista online para niños, examen de la vista online miopia",
     title: "Examen de la vista online gratis — Prueba visual (20/40)",
     description:
       "Examen de la vista online gratis. Calibra la pantalla con una tarjeta a 3 m y practica Snellen, agudeza 20/40, visión cercana y periférica sin registro.",
@@ -212,7 +209,6 @@ const es = {
 
 const fr = {
   home: {
-    keywords: "test de vue en ligne, test de vue en ligne gratuit, comment réaliser un test de vue en ligne, test de vue en ligne myopie, test de vue en ligne pour enfant, comment faire un test de vue en ligne ?, faire un test de vue en ligne, test de vue en ligne enfant, test de vision en ligne, test de vision en ligne gratuit",
     title: "Test de vue en ligne gratuit — Contrôle visuel (20/40)",
     description:
       "Test de vue en ligne gratuit : calibrez votre écran à 3 m et testez votre acuité 20/40, échelle de Snellen, vision de près et périphérique sans inscription.",
@@ -297,7 +293,6 @@ const fr = {
 
 const de = {
   home: {
-    keywords: "sehtest online, sehtest online machen, sehtest online handy, sehtest online kostenlos, sehtest online handy kostenlos, kann man online einen sehtest machen, wie funktioniert ein online sehtest",
     title: "Sehtest online kostenlos — Am Handy & PC prüfen (20/40)",
     description:
       "Kostenloser Sehtest online am PC & Smartphone: Bildschirm kalibrieren, 3 m Abstand, Snellen-Sehtest, 20/40-Marke und Nahsicht ohne Anmeldung prüfen.",
@@ -382,7 +377,6 @@ const de = {
 
 const pt = {
   home: {
-    keywords: "teste de visão, teste de visao, teste de visão online, teste de visao letras, teste de visão pelo celular, tabela teste de visão detran, teste de visão letras, teste de visão detran, letras para teste de visão, teste de visão infantil, letras pequenas para teste de visão, teste de visão pelo celular grátis, teste de visão miopia, teste de visão do detran, teste de visão para perto, teste de visão com desenhos, teste de visão online grátis, teste de visão no celular, simulação teste de visão detran, teste de visao celular",
     title: "Teste de visão online grátis — Pelo celular ou PC (20/40)",
     description:
       "Teste de visão online grátis no celular ou PC: calibre a tela a 3 m, treine com a tabela de Snellen, acuidade 20/40 e simulação Detran, sem cadastro.",
@@ -468,7 +462,6 @@ const pt = {
 
 const it = {
   home: {
-    keywords: "test della vista online, test della vista online gratis, test acuità visiva online, tabella di Snellen online, test vista patente",
     title: "Test vista online gratis — Controllo 20/40",
     description: "Test della vista online gratis. Calibra lo schermo e controlla la tua vista in 10 minuti con il test di Snellen, astigmatismo e visione dei colori.",
     lede: "Esercitati con il test della vista online: calibrazione a schermo, occhio per occhio, in 10 minuti.",
@@ -558,7 +551,6 @@ const it = {
 };
 const ja = {
   home: {
-    keywords: "視力検査 スマホ, 視力検査スマホ, 視力 検査 スマホ, 簡易視力検査 スマホ, 家で視力検査 スマホ, ランドルト環 視力検査 スマホ, 視力検査スマホ 無料, 視力検査スマホで, 自宅 視力検査 スマホ, 運転免許更新 視力検査 スマホ, 簡易 視力検査 スマホ, スマホで視力検査",
     title: "視力検査 スマホ｜無料のオンライン簡易視力検査（20/40）",
     description: "スマホで視力検査できますか？はい、この無料ツールで自宅で簡易視力検査が可能です。視力検査スマホで画面を調整し、3m離れてスネレン表、ランドルト環、色覚、周辺視野、近見視力をチェック。家で視力検査 スマホとして登録不要。運転免許更新時の目安にも。",
     lede: "無料の視力検査 スマホを練習：自宅で画面調整つき、片目ずつ、約10分。簡易視力検査 スマホ対応。",
@@ -636,7 +628,6 @@ const ja = {
 };
 const ru = {
   home: {
-    keywords: "проверка зрения онлайн, проверка зрения онлайн бесплатно, таблица сивцева, проверка зрения онлайн на смартфоне",
     title: "Проверка зрения онлайн бесплатно — Оценка 20/40",
     description: "Бесплатная проверка зрения онлайн на смартфоне или ПК: откалибруйте экран и проверьте зрение (таблица Сивцева, кольца Ландольта) за 10 минут.",
     lede: "Потренируйтесь бесплатно: калибровка, по одному глазу, за 10 минут.",
