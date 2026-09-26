@@ -107,7 +107,7 @@ const fontHref =
     <link rel="stylesheet" href={fontHref} />
 
     <slot name="structured-data" />
-    {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
+
 
     <script is:inline>
       // Runs before first paint: applies the stored theme (no light/dark flash)
