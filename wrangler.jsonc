@@ -1,7 +1,7 @@
 {
   // Cloudflare Workers static-assets deploy. "npm run build" writes ./dist,
   // "npm run deploy" (npx wrangler deploy) uploads it.
-  "name": "eye-test",
+  "name": "dmv-eye-test-online",
   "compatibility_date": "2026-09-01",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
