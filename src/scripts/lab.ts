@@ -184,6 +184,7 @@ export function createLab(labEl) {
     if (!id || (id === step && !single)) return;
     step = id;
     render();
+    labEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function render() {

@@ -432,6 +432,7 @@ html[data-theme="dark"] .hero-glow { opacity: .42; }
   background: var(--lab-bg); color: var(--lab-text);
   border: 1px solid var(--lab-border); border-radius: var(--r-lg);
   box-shadow: var(--shadow-lg); overflow: hidden;
+  scroll-margin-top: calc(var(--header-h) + 24px);
 }
 .lab.is-full {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100vh; height: 100dvh;
@@ -982,7 +983,7 @@ input[type="range"]::-moz-range-thumb {
   .how-grid { grid-template-columns: repeat(2, 1fr); }
   .check-grid { grid-template-columns: repeat(2, 1fr); }
   .check-card, .check-card:nth-child(1), .check-card:nth-child(2) { grid-column: span 1; }
-  .stage-grid { grid-template-columns: minmax(0, 1fr); }
+  /* stage-grid stacking moved to 720px to keep side-by-side longer */
   .cdl-grid { grid-template-columns: 1fr; gap: 34px; }
   .featured-states { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -997,6 +998,22 @@ input[type="range"]::-moz-range-thumb {
   .brand-tld { display: none; }
   .lang-wrap .ico { display: none; }
   .lang-wrap select { width: auto; padding: 7px 28px 7px 12px; font-size: 12.5px; }
+
+  /* Compact the test stage on smaller screens to prevent vertical scrolling */
+  .stage-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 14px; }
+  .stage-panel { padding: 14px; }
+  .e-view { padding: 12px; min-height: 140px; }
+  .arrows { width: 100%; max-width: 190px; }
+  .arrow-btn { height: 50px; border-radius: 12px; }
+  .arrow-btn .ico { width: 24px; height: 24px; }
+  .plate-canvas { max-width: 160px; }
+  .field-screen { height: 160px; }
+  .calib-visual { padding: 16px; gap: 8px; }
+  .calib-card { height: 160px; width: 254px; }
+  .dial-svg { max-width: 160px; }
+  .duo-half { min-height: 120px; padding: 16px 8px; }
+  .lab-stage { padding: 16px 12px; min-height: auto; }
+
   /* Below ~720px the four-column table becomes a stack of labelled rows
      instead of a clipped horizontal scroller. */
   .table-scroll { max-height: 68vh; overflow-x: hidden; overflow-y: auto; }
