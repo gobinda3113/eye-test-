@@ -1,0 +1,59 @@
+---
+import { STATES_VERIFIED as STATES } from "../../data/states.ts";
+import Layout from "../../layouts/Layout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import { SITE } from "../../lib/site.ts";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return STATES.map((state) => ({
+    params: { state: state.name.toLowerCase().replace(/ /g, "-") },
+    props: { stateData: state },
+  }));
+}
+
+const { stateData } = Astro.props;
+const slug = stateData.name.toLowerCase().replace(/ /g, "-");
+
+const customMeta = {
+  title: `DMV Eye Test Online ${stateData.name} - Free Practice Screening`,
+  description: `Practice the ${stateData.name} DMV eye test online before you go. Minimum acuity required for a ${stateData.name} driver's license: ${stateData.min}.`,
+  url: `${SITE}/states/${slug}/`,
+};
+---
+
+<Layout locale="en" customMeta={customMeta}>
+  <SiteShell locale="en" page="home">
+    <div class="container section">
+      <div class="simple-hero">
+        <h1>DMV Eye Test Online: {stateData.name}</h1>
+        <p>Preparing for your <strong>{stateData.name}</strong> driver's license renewal? The minimum visual acuity requirement in {stateData.name} is {stateData.min} in {stateData.need === "both" ? "both eyes" : "at least one eye"}.</p>
+        <p>
+          <a class="btn btn-primary" href="/us/#screener">Practice the US DMV Test Online</a>
+        </p>
+      </div>
+
+      <div class="prose" style="margin-top: 40px; max-width: 600px;">
+        <h2>Vision Requirements for {stateData.name}</h2>
+        <ul>
+          <li><strong>Standard Requirement:</strong> {stateData.min}</li>
+          <li><strong>Restricted License:</strong> {stateData.restrict ? `Possible down to ${stateData.restrict}` : "Not generally permitted below the minimum."}</li>
+          <li><strong>Tested During Renewal:</strong> {stateData.renewal === "every" ? "Every renewal cycle" : stateData.renewal === "alternate" ? "Every other renewal cycle" : "Depending on age or longer renewal cycles."}</li>
+          {stateData.verified && stateData.field && <li><strong>Field of Vision:</strong> {stateData.field}</li>}
+        </ul>
+
+        {stateData.dmvUrl && (
+          <p>
+            For the most up-to-date and official information, please check the <a href={stateData.dmvUrl} target="_blank" rel="noopener noreferrer">official {stateData.name} DMV website</a>.
+          </p>
+        )}
+
+        <h2>Why Practice Online?</h2>
+        <p>
+          Failing the eye test at the counter can delay your license. By calibrating your screen and standing at the correct distance, you can simulate the exact visual acuity check you will face. Our free practice screener takes about 10 minutes and includes the Tumbling-E and color blindness checks frequently used by licensing offices.
+        </p>
+      </div>
+    </div>
+  </SiteShell>
+</Layout>

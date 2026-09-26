@@ -194,6 +194,13 @@ export const CHECKS = [
     tag: "0.5",
   },
   {
+    id: "amsler",
+    icon: "grid",
+    color: "#9b59b6",
+    test: "amsler",
+    tag: "Grid",
+  },
+  {
     id: "sivtsev",
     icon: "siv",
     color: "#8a5a12",
@@ -262,4 +269,5 @@ export const ICONS = {
   truck: '<path d="M3 16.5V8.5A1.5 1.5 0 0 1 4.5 7H13v9.5M13 9h4.6a2 2 0 0 1 1.9 1.4L21 15v1.5h-2"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/>',
   ring: '<circle cx="12" cy="12" r="8"/><path d="M12 4v3.4"/>',
   siv: '<path d="M6 4v16M6 12h5a4 4 0 0 1 0 8M15 4v16"/>',
+  grid: '<path d="M4 4h16v16H4zM8 4v16M12 4v16M16 4v16M4 8h16M4 12h16M4 16h16"/>',
 };

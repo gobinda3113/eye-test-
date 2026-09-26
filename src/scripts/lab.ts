@@ -205,6 +205,7 @@ export function createLab(labEl) {
       astigmatism: renderAstigmatism,
       refraction: renderRefraction,
       stereo: renderStereo,
+      amsler: renderAmsler,
       results: renderResults,
     };
     (setters[step] || renderCalibrate)();
@@ -1481,6 +1482,12 @@ export function createLab(labEl) {
         results.refraction ? (results.refraction.kind === "balanced" ? "pass" : "warn") : null,
         results.refraction ? `${t("refraction." + results.refraction.kind)} \u00b7 ${results.refraction.range}` : null
       ),
+            card(
+        t("results.amsler"),
+        results.amsler != null ? (results.amsler ? t("results.amslerPass") : t("results.amslerFail")) : t("results.notTested"),
+        results.amsler != null ? (results.amsler ? "pass" : "warn") : null,
+        null
+      ),
       card(
         t("results.stereo"),
         results.stereo ? (results.stereo.seen ? t("results.stereoSeen") : t("results.stereoNot")) : t("results.notTested"),
@@ -1935,3 +1942,42 @@ function shuffled(arr) {
 
 
 
+
+  function renderAmsler() {
+    let gridLines = '';
+    for (let i = 0; i <= 20; i++) {
+      const pos = 10 + i * 14;
+      gridLines += `<line x1="10" y1="${pos}" x2="290" y2="${pos}" stroke="currentColor" stroke-width="1.5" />`;
+      gridLines += `<line x1="${pos}" y1="10" x2="${pos}" y2="290" stroke="currentColor" stroke-width="1.5" />`;
+    }
+
+    stage.innerHTML = `
+      <div class="stage-title">${t("amsler.title")}</div>
+      <p class="stage-sub">${t("amsler.sub")}</p>
+      <div class="stage-grid">
+        <div class="stage-panel" style="display:grid;place-items:center;background:#fff;color:#000;padding:20px;border-radius:12px;">
+          <svg viewBox="0 0 300 300" style="width: 100%; max-width: 300px;">
+            <rect width="300" height="300" fill="#fff" />
+            ${gridLines}
+            <circle cx="150" cy="150" r="4" fill="#000" />
+          </svg>
+        </div>
+        <div class="stage-panel">
+          <div class="panel-title">${t("amsler.prompt")}</div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
+            <button class="btn btn-primary" data-act="pass">${t("amsler.noDistortion")}</button>
+            <button class="btn btn-quiet" data-act="fail">${t("amsler.distortionFound")}</button>
+          </div>
+        </div>
+      </div>`;
+
+    stage.querySelector('[data-act="pass"]').addEventListener('click', () => {
+      results.amsler = true;
+      setTimeout(() => advance(), 100);
+    });
+    stage.querySelector('[data-act="fail"]').addEventListener('click', () => {
+      results.amsler = false;
+      setTimeout(() => advance(), 100);
+    });
+    setFoot('');
+  }

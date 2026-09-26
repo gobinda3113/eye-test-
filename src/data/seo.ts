@@ -62,7 +62,7 @@ const en = {
     h1: "About this screener",
     lede: "A free practice screener for people about to take a US driver-licence eye exam.",
     body: [
-      { h: "What this is", p: "Online Vision Test is a free, browser-based practice screener. It reproduces the order of a counter vision check — calibrate, stand back, cover one eye, read the smallest line — and adds the tests US licences and CDL medical cards care about: distance acuity, a Tumbling-E direction test, colour plates, peripheral awareness, near vision, contrast sensitivity, an astigmatism dial and a duochrome refraction screen." },
+      { h: "What this is", p: "Online Vision Test is a free, browser-based practice screener operated by Perchange AI (contact@onlinevisiontest.org). It reproduces the order of a counter vision check — calibrate, stand back, cover one eye, read the smallest line — and adds the tests US licences and CDL medical cards care about: distance acuity, a Tumbling-E direction test, colour plates, peripheral awareness, near vision, contrast sensitivity, an astigmatism dial and a duochrome refraction screen." },
       { h: "What it is not", p: "It is not an official DMV or DOT test, not a medical examination, and it cannot diagnose a condition or produce a prescription. Screen-based results depend on your monitor, your room lighting and your viewing distance. If a check suggests a problem, see an optometrist or ophthalmologist." },
       { h: "How it is built", p: "No accounts, no uploads. The optotypes are drawn as vector paths on a 5x5 grid so the stroke-to-height ratio is correct at any size, and physical sizes derive from a bank-card calibration step. Everything runs on your device and every result stays in your browser." },
     ],

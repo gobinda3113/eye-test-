@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteShell from "../components/SiteShell.astro";
+import { SITE } from "../lib/site.ts";
+
+const customMeta = {
+  title: "Eye Test Chart Online - Free Snellen Chart Practice",
+  description: "Practice with a calibrated online eye test chart. Free Snellen chart for vision testing at 3m or 6m. Prepare for your driving or medical exam.",
+  url: `${SITE}/eye-test-chart/`,
+};
+---
+
+<Layout locale="en" customMeta={customMeta}>
+  <SiteShell locale="en" page="home">
+    <div class="container section">
+      <div class="simple-hero">
+        <h1>Eye Test Chart</h1>
+        <p>Use our free, correctly scaled online <strong>eye test chart</strong> (Snellen chart) to check your visual acuity from home. Calibrate the screen with a bank card, stand back, and see how you score.</p>
+        <p>
+          <a class="btn btn-primary" href="/#screener">Start the Eye Test Chart Screener</a>
+        </p>
+      </div>
+
+      <div class="prose" style="margin-top: 40px; max-width: 600px;">
+        <h2>How the Online Eye Test Chart Works</h2>
+        <p>
+          Unlike static images of eye charts you find online, a real vision screening requires precise scaling. A 20/40 letter must subtend exactly 5 arc-minutes at the specified distance. 
+        </p>
+        <p>
+          Our interactive eye test chart fixes the scaling problem by having you hold a standard bank card against the screen. We calculate the pixels-per-millimeter density of your specific device, ensuring the letters on our Snellen chart are physically accurate.
+        </p>
+        
+        <h2>Snellen Chart vs Tumbling-E</h2>
+        <p>
+          The standard eye test chart uses the Latin alphabet (Snellen or Sloan letters). If you do not read the Latin alphabet, or if you are taking a commercial driver's license (CDL) medical exam, you will likely encounter the Tumbling-E chart. Our online screener supports both modes.
+        </p>
+
+        <h2>Is this a replacement for a doctor?</h2>
+        <p>
+          No. This eye test chart is a practice screening tool only. If you struggle to read the 20/40 line, or notice blurriness, schedule an appointment with an optometrist. 
+        </p>
+      </div>
+    </div>
+  </SiteShell>
+</Layout>
