@@ -1,4 +1,4 @@
-﻿/**
+/**
  * UI strings for the eight shipped languages.
  *
  * Keys are flat dot paths so they can be spotted in markup directly
@@ -36,7 +36,7 @@ const en = {
   "hero.trust1": "Nothing to install or sign up for",
   "hero.trust2": "Results never leave your browser",
   "hero.trust3": "About ten minutes, eye by eye",
-  "hero.note": "A vision screener — not an official medical test, a diagnosis or a prescription.",
+  "hero.note": "A vision screener — not an official medical test, diagnosis, or prescription.",
   "hero.chartLabel": "Snellen chart · 6 m",
   "hero.chartPill": "20/40 pass line",
   "hero.calibrated": "Screen calibrated",
@@ -65,7 +65,7 @@ const en = {
   "how.s4b": "Type or tap the letters you actually see. Miss twice in a row and the screener stops you there — guessing hides the problem you came to find.",
 
   "checks.kicker": "What gets checked",
-  "checks.title": "Ten checks, the ones that actually decide your licence",
+  "checks.title": "Ten checks, the ones that actually decide your license",
   "checks.sub": "Jump straight into any single check, or run the full sequence.",
   "checks.open": "Open check",
   "checks.distance.name": "Distance acuity",
@@ -209,7 +209,7 @@ const en = {
 
   "states.kicker": "State requirements",
   "states.title": "Vision rules by state",
-  "states.sub": "Most states want 20/40 with both eyes for a full licence, and let you keep driving with a mirror restriction down to 20/70. Confirm your own state's rule before you go.",
+  "states.sub": "Most states want 20/40 with both eyes for a full license, and let you keep driving with a mirror restriction down to 20/70. Confirm your own state's rule before you go.",
   "states.search": "Search a state",
   "states.legendOk": "20/40 or better",
   "states.legendMid": "Restriction possible",
@@ -220,7 +220,7 @@ const en = {
   "states.colRenewal": "Vision at renewal",
   "states.need.better": "better eye",
   "states.need.both": "each eye",
-  "states.belowTpl": "A restricted licence is often possible down to {a}, usually with compulsory mirrors.",
+  "states.belowTpl": "A restricted license is often possible down to {a}, usually with compulsory mirrors.",
   "states.belowNone": "Must be corrected before driving.",
   "states.renewal.every": "Every renewal",
   "states.renewal.alternate": "Every other renewal",
@@ -232,12 +232,12 @@ const en = {
 
   "cdl.kicker": "Commercial drivers",
   "cdl.title": "Professional driver vision prep",
-  "cdl.body": "Interstate commercial licences are held to a federal standard that is stricter than a regular licence: acuity in each eye separately, a field-of-vision minimum, and the ability to tell red from green. Practise all three before your medical examiner visit.",
+  "cdl.body": "Interstate commercial licenses are held to a federal standard that is stricter than a regular license: acuity in each eye separately, a field-of-vision minimum, and the ability to tell red from green. Practice all three before your medical examiner visit.",
   "cdl.l1": "Corrected acuity in each eye, and in both together",
   "cdl.l2": "Field of vision in the worse eye",
   "cdl.l3": "Able to recognise traffic red, green and amber",
   "cdl.cta": "Run the CDL set",
-  "cdl.cardTitle": "Practise the federal set",
+  "cdl.cardTitle": "Practice the federal set",
   "cdl.cardBody": "Distance acuity per eye, a Tumbling-E pass for the field check, and the colour plate run — in one sequence.",
 
   "faq.kicker": "Questions",
@@ -247,9 +247,9 @@ const en = {
   "faq.q2": "Can it replace a visit to an optometrist?",
   "faq.a2": "No. Nothing on a screen can diagnose a condition or produce a prescription. If your results worry you, see an optometrist.",
   "faq.q3": "What acuity do I need to drive?",
-  "faq.a3": "In nearly every state, 20/40 or better with both eyes for an unrestricted licence. Many states still licence you with mirrors down to 20/70.",
+  "faq.a3": "In nearly every state, 20/40 or better with both eyes for an unrestricted license. Many states still license you with mirrors down to 20/70.",
   "faq.q4": "Should I wear my glasses or contacts?",
-  "faq.a4": "Yes. Test with the correction you drive in — the center tests corrected vision, and your licence will carry the appropriate restriction.",
+  "faq.a4": "Yes. Test with the correction you drive in — the center tests corrected vision, and your license will carry the appropriate restriction.",
   "faq.q5": "Why do I have to calibrate the screen?",
   "faq.a5": "Letter sizes are computed in millimetres. Uncalibrated, a 20/40 letter on your monitor is not a real 20/40 letter. A bank card is enough to set the scale.",
   "faq.q6": "How far away should I sit?",
@@ -259,7 +259,7 @@ const en = {
   "faq.q8": "Are my results stored anywhere?",
   "faq.a8": "Only in this browser. There are no accounts, no advertising trackers and no uploads. You can clear them whenever you like.",
 
-  "footer.tagline": "A free vision screener for people about to take a US driver-licence eye exam.",
+  "footer.tagline": "A free vision screener for people about to take a US driver-license eye exam.",
   "footer.langs": "Available in English, Spanish, French, German, Portuguese, Italian, Japanese and Russian.",
   "footer.c1": "Checks",
   "footer.c2": "Guides",
@@ -277,9 +277,9 @@ const en = {
   "featured.IL": "Each eye is tested separately, and a failing screening sends you for a doctor's report.",
   "featured.NY": "Tested with both eyes open. Down to 20/70 you can still be licensed with mirrors fitted.",
   "featured.TX": "Each eye separately, with a restricted option down to 20/70 if you wear corrective lenses.",
-  "featured.NC": "Acuity in the better eye at renewal; mirrors can keep a licence valid down to 20/70.",
+  "featured.NC": "Acuity in the better eye at renewal; mirrors can keep a license valid down to 20/70.",
   "featured.SC": "20/40 in the better eye at renewal, or a doctor's certificate — there is little middle ground.",
-  "featured.MN": "Both eyes together must reach 20/40; a restricted licence is possible down to 20/60.",
+  "featured.MN": "Both eyes together must reach 20/40; a restricted license is possible down to 20/60.",
   "lab.norm": "Normal: {a}",
   "lab.bench": "Benchmark: {b}",
   "checks.contrast.name": "Contrast sensitivity",
@@ -382,9 +382,9 @@ const en = {
   "faq.q11": "Why can I not see the hidden shape?",
   "faq.a11": "About one person in ten cannot free-view an autostereogram, and it also fails if one eye is much stronger than the other or if you cannot fuse the two images. Not seeing the shape is not by itself a diagnosis — but it is worth mentioning at your next eye exam.",
   "faq.q12": "What happens if you fail the eye test at the DMV?",
-  "faq.a12": "You do not lose your licence on the spot. The examiner hands you a form for an eye doctor (California DL-62, New York MV-619, Florida HSMV-72010 and Texas DL-63 are common examples), you get your eyes checked, and you come back to retake the vision screening.",
+  "faq.a12": "You do not lose your license on the spot. The examiner hands you a form for an eye doctor (California DL-62, New York MV-619, Florida HSMV-72010 and Texas DL-63 are common examples), you get your eyes checked, and you come back to retake the vision screening.",
   "faq.q13": "Can I wear my glasses or contacts for the test?",
-  "faq.a13": "Yes, and you should. Wear whatever you drive in. The catch is that passing with correction adds a corrective-lenses restriction to your licence. Reading glasses alone rarely help, because the test measures distance vision, not reading vision.",
+  "faq.a13": "Yes, and you should. Wear whatever you drive in. The catch is that passing with correction adds a corrective-lenses restriction to your license. Reading glasses alone rarely help, because the test measures distance vision, not reading vision.",
   "faq.q14": "What does the DMV eye test look like?",
   "faq.a14": "Most offices use a desktop viewer such as the Optec 1000 or Titmus V1. You rest your forehead against it and read lines of letters or numbers on small slides inside, one eye at a time. The examiner may ask you to read one numbered line fully, then move to the next, and finish with flashes at the sides plus a red, green and amber colour check.",
   "faq.q15": "Can I take the DMV eye test online?",
@@ -395,8 +395,8 @@ const en = {
   "faq.a17": "Learn the procedure, not the poster. Offices rotate charts and the letters change, so memorising one chart buys you nothing. Practising with randomised letters, the way this screener does it, is the only rehearsal that transfers.",
   "faq.q18": "Why do I cover one eye when I drive with both open?",
   "faq.a18": "Because most states set a standard per eye as well as for both together. One weak eye can hide behind a strong one when both are open, so the examiner checks each eye separately first and both together last.",
-  "faq.q19": "What restrictions can end up on my licence?",
-  "faq.a19": "The common ones are corrective lenses, daylight-only driving and outside mirrors. Texas adds a 45 mph limit to its daylight restriction for the 20/60 to 20/70 band. The code is printed on the licence itself.",
+  "faq.q19": "What restrictions can end up on my license?",
+  "faq.a19": "The common ones are corrective lenses, daylight-only driving and outside mirrors. Texas adds a 45 mph limit to its daylight restriction for the 20/60 to 20/70 band. The code is printed on the license itself.",
   "faq.q20": "How do I get a glasses restriction removed?",
   "faq.a20": "Pass the screening without correction at a later visit, or after surgery such as LASIK. In New York you can also submit a fresh passing result through the Online Vision Registry instead of queuing at an office.",
 
@@ -405,12 +405,12 @@ const en = {
   "gen.checks.title": "Eleven checks for distance, colour and near vision",
   "gen.footer.tagline": "A free practice vision screener for everyone.",
 
-  "us.banner": "Practice screener for US driver licences. Not an official test.",
+  "us.banner": "Practice screener for US driver licenses. Not an official test.",
   "us.hero.title": "Practice the <em>DMV eye test online free</em> before you go.",
   "us.banner.back": "Back to the global vision check",
   "us.distance.note": "US offices test at 20 feet. Our 6 m mode stands in the same spot within 10 centimetres, so the letters match.",
   "us.card.title": "US driver?",
-  "us.card.body": "Practise the DMV eye test: 20/40 benchmark, all 50 state vision rules and CDL prep.",
+  "us.card.body": "Practice the DMV eye test: 20/40 benchmark, all 50 state vision rules and CDL prep.",
   "us.card.cta": "Start the US DMV practice test",
   "footer.us": "US DMV practice test",
 

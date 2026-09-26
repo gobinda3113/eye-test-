@@ -263,7 +263,7 @@ export function createLab(labEl) {
                 <span class="cc-strip"></span>
                 <span class="cc-chip"></span>
                 <span class="cc-label">ID-1</span>
-              </div>
+              </div></div>
               <div id="calibRuler" style="display:none; height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); position: relative;">
                 <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
               </div>
@@ -453,7 +453,7 @@ export function createLab(labEl) {
       <p class="stage-sub">${t("test.eyeSub")}</p>
       <div id="distBody" style="margin-top:24px"></div></details>`;
     const body = stage.querySelector("#distBody");
-    navFoot({ next: true });
+    navFoot({ next: false });
 
     for (const eye of ["right", "left", "both"]) {
       if (my !== token) return;
@@ -478,7 +478,7 @@ export function createLab(labEl) {
       <p class="stage-sub">${t("test.eyeSub")}</p>
       <div id="distBody" style="margin-top:24px"></div></details>`;
     const body = stage.querySelector("#distBody");
-    navFoot({ next: true });
+    navFoot({ next: false });
 
     results.sivtsev = results.sivtsev || { right: null, left: null, both: null };
     for (const eye of ["right", "left", "both"]) {
@@ -729,13 +729,25 @@ export function createLab(labEl) {
         if (bestDen == null || den < bestDen) bestDen = den;
       }
       trial++;
+      const btn = stage.querySelector(`.arrow-btn[data-dir="${dir}"]`);
+      const currentBtn = stage.querySelector(`.arrow-btn[data-dir="${current}"]`);
+      if (btn) btn.style.background = ok ? "#dcfce7" : "#fee2e2";
+      if (btn) btn.style.color = ok ? "#166534" : "#991b1b";
+      if (!ok && currentBtn) {
+        currentBtn.style.background = "#dcfce7";
+        currentBtn.style.color = "#166534";
+      }
       view.style.transition = "opacity .15s";
       view.style.opacity = ok ? "1" : ".5";
       setTimeout(() => {
+        stage.querySelectorAll(".arrow-btn").forEach(b => {
+          b.style.background = "";
+          b.style.color = "";
+        });
         view.style.opacity = "1";
         locked = false;
         next();
-      }, 380);
+      }, 500);
     };
 
     stage.querySelectorAll(".arrow-btn").forEach((btn) => on(btn, "click", () => answer(btn.dataset.dir)));
@@ -818,13 +830,25 @@ export function createLab(labEl) {
         if (bestDen == null || den < bestDen) bestDen = den;
       }
       trial++;
+      const btn = stage.querySelector(`.arrow-btn[data-dir="${dir}"]`);
+      const currentBtn = stage.querySelector(`.arrow-btn[data-dir="${current}"]`);
+      if (btn) btn.style.background = ok ? "#dcfce7" : "#fee2e2";
+      if (btn) btn.style.color = ok ? "#166534" : "#991b1b";
+      if (!ok && currentBtn) {
+        currentBtn.style.background = "#dcfce7";
+        currentBtn.style.color = "#166534";
+      }
       view.style.transition = "opacity .15s";
       view.style.opacity = ok ? "1" : ".5";
       setTimeout(() => {
+        stage.querySelectorAll(".arrow-btn").forEach(b => {
+          b.style.background = "";
+          b.style.color = "";
+        });
         view.style.opacity = "1";
         locked = false;
         next();
-      }, 380);
+      }, 500);
     };
 
     stage.querySelectorAll(".arrow-btn").forEach((btn) => on(btn, "click", () => answer(btn.dataset.dir)));

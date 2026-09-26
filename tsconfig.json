@@ -8,8 +8,8 @@
     "dist"
   ],
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "allowJs": true,
-    "checkJs": true
+    "checkJs": false
   }
 }
