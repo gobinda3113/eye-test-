@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "deploy": "npx wrangler deploy"
+    "deploy": "npx wrangler pages deploy"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
