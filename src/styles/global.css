@@ -409,7 +409,7 @@ html[data-theme="dark"] .hero-glow { opacity: .42; }
   color: var(--cc, var(--primary));
 }
 .check-ico .ico { width: 23px; height: 23px; stroke-width: 1.8; }
-.check-card h3 { font-size: 18px; }
+.check-card .card-title { display: block; font-size: 18px; font-family: 'Plus Jakarta Sans', var(--font-sans); font-weight: 700; line-height: 1.25; color: var(--text); margin: 16px 0 12px; }
 .check-card p { font-size: 14.5px; color: var(--text-2); flex: 1; }
 .check-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--border); padding-top: 14px; }
 .check-tag { font-size: 12px; font-weight: 650; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -947,7 +947,7 @@ input[type="range"]::-moz-range-thumb {
 .footer-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, .85fr)); gap: 40px; }
 .footer-brand p { margin-top: 16px; color: var(--text-2); font-size: 14.5px; max-width: 32em; }
 .footer-langs { color: var(--muted) !important; font-size: 13px !important; }
-.footer-col h4 { font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.footer-col h3 { font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
 .footer-col a { display: block; padding: 6px 0; font-size: 14.5px; color: var(--text-2); }
 .footer-col a:hover { color: var(--primary); }
 .footer-col p { font-size: 13.5px; color: var(--text-2); }

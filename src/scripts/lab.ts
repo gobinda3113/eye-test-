@@ -258,7 +258,7 @@ export function createLab(labEl) {
                 <button type="button" id="btnModeCard" class="btn btn-quiet btn-xs" style="border: 2px solid var(--lab-accent);">Card</button>
                 <button type="button" id="btnModeRuler" class="btn btn-quiet btn-xs" style="border: 1px solid transparent;">Ruler (5 cm)</button>
               </div>
-              <div class="calib-card" id="calibCard">
+              <div class="calib-card-wrap" id="calibCardWrap" style="display:flex; align-items:center; justify-content:center;"><div class="calib-card" id="calibCard">
                 <span class="cc-strip"></span>
                 <span class="cc-chip"></span>
                 <span class="cc-label">ID-1</span>
@@ -270,7 +270,7 @@ export function createLab(labEl) {
               <p style="font-size: 13px; color: var(--text-3); margin-top: 6px; text-align: center;">This never leaves your device. It's just math.</p>
             </div>
             <div>
-              <div class="panel-title">${t("calib.slider")}</div>
+              <label class="panel-title" for="calibRange" style="display:block; cursor:pointer;">${t("calib.slider")}</label>
               <div class="slider-row">
                 <input type="range" id="calibRange" min="${CARD_MIN}" max="${CARD_MAX}" step="1" value="${cardW}" aria-label="${t("calib.slider")}">
                 <span class="slider-val" id="calibVal"></span>
@@ -303,6 +303,7 @@ export function createLab(labEl) {
         </div>
       </div></details>`;
 
+    const cardWrap = stage.querySelector("#calibCardWrap");
     const cardEl = stage.querySelector("#calibCard");
     const rulerEl = stage.querySelector("#calibRuler");
     const ticksEl = stage.querySelector("#rulerTicks");
@@ -322,6 +323,7 @@ export function createLab(labEl) {
       mode = 'card';
       btnCard.style.border = "2px solid var(--lab-accent)";
       btnRuler.style.border = "1px solid transparent";
+      cardWrap.style.display = "flex";
       cardEl.style.display = "grid";
       rulerEl.style.display = "none";
       hintEl.textContent = t("calib.cardHint");
@@ -333,6 +335,7 @@ export function createLab(labEl) {
       mode = 'ruler';
       btnRuler.style.border = "2px solid var(--lab-accent)";
       btnCard.style.border = "1px solid transparent";
+      cardWrap.style.display = "none";
       cardEl.style.display = "none";
       rulerEl.style.display = "block";
       hintEl.textContent = "True ruler size · 5 cm";
@@ -342,8 +345,23 @@ export function createLab(labEl) {
 
     const paint = () => {
       if (mode === 'card') {
-        cardEl.style.width = cardW + "px";
-        cardEl.style.height = Math.round(cardW * (53.98 / CARD_MM)) + "px";
+        const cs = getComputedStyle(visual);
+        const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+        const avail = Math.floor(visual.clientWidth - pad);
+        const ch = Math.round(cardW * (53.98 / CARD_MM));
+        if (cardW > avail) {
+          cardWrap.style.width = ch + "px";
+          cardWrap.style.height = cardW + "px";
+          cardEl.style.width = cardW + "px";
+          cardEl.style.height = ch + "px";
+          cardEl.style.transform = "rotate(90deg)";
+        } else {
+          cardWrap.style.width = cardW + "px";
+          cardWrap.style.height = ch + "px";
+          cardEl.style.width = cardW + "px";
+          cardEl.style.height = ch + "px";
+          cardEl.style.transform = "none";
+        }
         valEl.textContent = Math.round((cardW / nativeW) * 100) + "%";
       } else {
         const rulerW = cardW * (RULER_MM / CARD_MM);
@@ -362,6 +380,7 @@ export function createLab(labEl) {
       const avail = Math.floor(visual.clientWidth - pad);
       let limit = avail;
       if (mode === 'ruler') limit = Math.floor(avail * (CARD_MM / RULER_MM));
+      else limit = Math.floor(avail * (CARD_MM / 53.98));
       return Math.max(CARD_MIN, Math.min(CARD_MAX, limit || CARD_MIN));
     };
 

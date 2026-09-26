@@ -254,7 +254,7 @@ const howToSchema = {
       <div class="container">
         <div class="how-card">
           <span class="how-num">US</span>
-          <h3>{d("us.card.title")}</h3>
+          <h2>{d("us.card.title")}</h2>
           <p>{d("us.card.body")}</p>
           <p><a class="btn btn-primary btn-sm" href="/us/">{d("us.card.cta")}</a></p>
         </div>
@@ -356,7 +356,7 @@ const howToSchema = {
             <span class="check-ico" aria-hidden="true">
               <svg class="ico" viewBox="0 0 24 24" set:html={ICONS[c.icon] || ""}></svg>
             </span>
-            <h3>{d(`checks.${c.id}.name`)}</h3>
+            <strong class="card-title">{d(`checks.${c.id}.name`)}</strong>
             <p>{d(`checks.${c.id}.desc`)}</p>
             <div class="check-foot">
               <span class="check-tag">{c.tag}</span>
@@ -533,3 +533,5 @@ const howToSchema = {
 <script>
   import "../scripts/app.ts";
 </script>
+
+
