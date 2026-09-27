@@ -11,6 +11,7 @@
   --surface-2: #F4F1EA;
   --surface-3: #EAE6DD;
   --border: #E6E1D8;
+  --border-soft: #E7E2D6;
   --border-strong: #CDC5B7;
   --text: #101418;
   --text-2: #4A5658;
@@ -65,6 +66,7 @@ html[data-theme="dark"] {
   --surface-2: #192420;
   --surface-3: #202E29;
   --border: #23342E;
+  --border-soft: #1B2924;
   --border-strong: #334B42;
   --text: #EDEFEA;
   --text-2: #A5B3AE;
