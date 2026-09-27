@@ -64,7 +64,7 @@ const breadcrumb = {
         meta.body.map((s) => (
           <>
             <h2>{s.h}</h2>
-            <p>{s.p}</p>
+            <p set:html={s.p} />
           </>
         ))
       }

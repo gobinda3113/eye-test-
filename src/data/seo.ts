@@ -81,12 +81,13 @@ const en = {
   privacy: {
     title: "Privacy Policy — Online Vision Test",
     description:
-      "What Online Vision Test stores (a theme, a language and a calibration number in your own browser) and what it never does: no accounts, no uploads.",
+      "What Online Vision Test stores (a theme, a language and a calibration number in your own browser) and how anonymized analytics are handled: no accounts, no uploads.",
     h1: "Privacy policy",
     lede: "No account, no uploads. Your results never leave your device.",
     body: [
       { h: "What we store", p: "Three small values in your browser's own localStorage: your light/dark theme choice, your language choice, and your screen-calibration profile. When you finish a run, the result summary is stored the same way so the stepper can show what you have already covered. None of it is transmitted anywhere." },
-      { h: "What we do not do", p: "No account, no sign-in, no advertising, no tracking pixel, no server-side log of your results. We use Cloudflare Web Analytics for basic anonymous traffic metrics. The page loads fonts from Google Fonts, which means Google sees the request for the font files — nothing about your test is attached to it." },
+      { h: "Analytics", p: "The site uses Google Analytics 4 (measurement ID G-55QRZ61B47) to collect anonymized usage statistics only — such as aggregate page visits and interaction patterns — to help us improve the screening tool. Vision test results, screen calibration metrics, and theme choices stay in your browser's localStorage and are never sent anywhere. Google Analytics activates only after you provide consent (Google Consent Mode v2, denied by default). You can opt out at any time through your browser settings or by installing the <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener\">Google Analytics Opt-out Browser Add-on</a>. For more information on how Google handles data, please review the <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">Google Privacy Policy</a> and <a href=\"https://policies.google.com/technologies/cookies\" target=\"_blank\" rel=\"noopener\">Google Cookie Technologies</a>. If advertising is introduced in the future, this policy will be updated before any advertising cookies are set." },
+      { h: "What we do not do", p: "No account, no sign-in, no advertising, and no server-side log of your vision test results. The page loads fonts from Google Fonts, which means Google sees the request for the font files — nothing about your test is attached to it." },
       { h: "Your control", p: "Clearing site data in your browser removes everything. The reported results can also be downloaded as a plain-text file or copied, and you can simply not do that — nothing is kept on our side either way." },
       { h: "Children", p: "The screener is intended for adults preparing for a driver-licence or CDL medical examination. It is not directed at children." },
       { h: "Changes and contact", p: "If this policy changes, the date on this page changes with it. Questions: " + EMAIL + "." },
@@ -176,9 +177,9 @@ const es = {
   privacy: {
     title: "Política de privacidad — Online Vision Test",
     description:
-      "Qué guarda Online Vision Test (un tema, un idioma y un número de calibración en tu propio navegador) y qué no hace nunca: sin cuentas, sin analíticas, sin subidas.",
+      "Qué guarda Online Vision Test (un tema, un idioma y un número de calibración en tu propio navegador) y qué no hace: sin cuentas, sin publicidad y sin subidas.",
     h1: "Política de privacidad",
-    lede: "Sin cuenta, sin analíticas y sin subidas. Tus resultados nunca salen de tu dispositivo.",
+    lede: "Sin cuenta y sin subidas. Tus resultados nunca salen de tu dispositivo.",
     body: [],
     englishBody: true,
   },
@@ -260,9 +261,9 @@ const fr = {
   privacy: {
     title: "Politique de confidentialité — Online Vision Test",
     description:
-      "Ce que Online Vision Test stocke (un thème, une langue et un nombre de calibration dans votre propre navigateur) et ce qu'il ne fait jamais : aucun compte, aucune mesure d'audience, aucun envoi.",
+      "Ce que Online Vision Test stocke (un thème, une langue et un nombre de calibration dans votre propre navigateur) : aucun compte, aucune publicité, aucun envoi.",
     h1: "Politique de confidentialité",
-    lede: "Aucun compte, aucune mesure d'audience, aucun envoi. Vos résultats ne quittent jamais votre appareil.",
+    lede: "Aucun compte, aucun envoi. Vos résultats ne quittent jamais votre appareil.",
     body: [],
     englishBody: true,
   },
@@ -344,9 +345,9 @@ const de = {
   privacy: {
     title: "Datenschutzerklärung — Online Vision Test",
     description:
-      "Was Online Vision Test speichert (Thema, Sprache und ein Kalibrierwert im eigenen Browser) und was es nie tut: keine Konten, keine Analyse, keine Uploads.",
+      "Was Online Vision Test speichert (Thema, Sprache und ein Kalibrierwert im eigenen Browser) und was es nie tut: keine Konten, keine Werbung, keine Uploads.",
     h1: "Datenschutzerklärung",
-    lede: "Kein Konto, keine Analyse, keine Uploads. Ihre Ergebnisse verlassen das Gerät nie.",
+    lede: "Kein Konto, keine Werbung, keine Uploads. Ihre Ergebnisse verlassen das Gerät nie.",
     body: [],
     englishBody: true,
   },
@@ -428,9 +429,9 @@ const pt = {
   privacy: {
     title: "Política de privacidade — Online Vision Test",
     description:
-      "O que o Online Vision Test guarda (um tema, um idioma e um valor de calibração no seu próprio navegador) e o que nunca faz: sem contas, sem analítica, sem envios.",
+      "O que o Online Vision Test guarda (um tema, um idioma e um valor de calibração no seu próprio navegador) e o que nunca faz: sem contas, sem publicidade, sem envios.",
     h1: "Política de privacidade",
-    lede: "Sem conta, sem analítica e sem envios. Os seus resultados nunca saem do dispositivo.",
+    lede: "Sem conta, sem publicidade e sem envios. Os seus resultados nunca saem do dispositivo.",
     body: [],
     englishBody: true,
   },
@@ -508,12 +509,13 @@ const it = {
   },
   privacy: {
     title: "Informativa sulla privacy — Online Vision Test",
-    description: "Cosa memorizza Online Vision Test (tema, lingua e calibrazione nel tuo browser) e cosa non fa mai: nessun account, nessuna analisi, nessun upload.",
+    description: "Cosa memorizza Online Vision Test (tema, lingua e calibrazione nel tuo browser) e come viene gestita l'analisi anonima: nessun account, nessun upload.",
     h1: "Informativa sulla privacy",
-    lede: "Nessun account, nessuna analisi, nessun upload. I tuoi risultati non lasciano mai il dispositivo.",
+    lede: "Nessun account, nessun upload. I tuoi risultati non lasciano mai il dispositivo.",
     body: [
       { h: "Cosa memorizziamo", p: "Tre piccoli valori nel localStorage del tuo browser: la scelta del tema chiaro/scuro, la lingua selezionata e il profilo di calibrazione dello schermo. Al termine del test, il riepilogo viene salvato localmente nello stesso modo. Nessun dato viene mai trasmesso all'esterno." },
-      { h: "Cosa non facciamo", p: "Nessun account, nessun login, nessuno script pubblicitario o di tracciamento, nessun pixel di monitoraggio e nessun registro lato server dei tuoi risultati." },
+      { h: "Analitica", p: "Il sito utilizza Google Analytics 4 (ID misurazione G-55QRZ61B47) esclusivamente per raccogliere statistiche di utilizzo anonimizzate (come visualizzazioni aggregate delle pagine e modelli di interazione). I risultati dei test visivi, la calibrazione dello schermo e le preferenze del tema rimangono strettamente memorizzati nel localStorage del browser e non vengono mai inviati altrove. Google Analytics si attiva solo dopo aver espresso il consenso (Google Consent Mode v2, negato per impostazione predefinita). È possibile disattivare la raccolta in qualsiasi momento tramite le impostazioni del browser o installando il <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener\">componente aggiuntivo del browser per la disattivazione di Google Analytics</a>. Per ulteriori informazioni su come Google gestisce i dati, consultare le <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">norme sulla privacy di Google</a> e l'informativa sui <a href=\"https://policies.google.com/technologies/cookies\" target=\"_blank\" rel=\"noopener\">cookie di Google</a>. If advertising is introduced in the future, this policy will be updated before any advertising cookies are set." },
+      { h: "Cosa non facciamo", p: "Nessun account, nessun login, nessuna pubblicità e nessun registro lato server dei tuoi risultati." },
       { h: "Il tuo controllo", p: "Cancellando i dati del sito nel browser rimuovi ogni informazione salvata. Puoi scaricare o copiare il riepilogo dei risultati solo se lo desideri." },
       { h: "Destinatari", p: "Lo strumento di screening è pensato per adulti che desiderano verificare orientativamente la propria vista o prepararsi al rinnovo della patente." },
       { h: "Modifiche e contatti", p: "Eventuali aggiornamenti a questa informativa saranno pubblicati su questa pagina. Per domande: " + EMAIL + "." },
@@ -597,9 +599,9 @@ const ja = {
   },
   privacy: {
     title: "プライバシーポリシー — Online Vision Test",
-    description: "Online Vision Testのプライバシーポリシー：個人情報の収集やトラッキング、サーバーへの送信は一切行いません。安心して視力検査をご利用いただけます。",
+    description: "Online Vision Testのプライバシーポリシー：個人情報の収集や広告トラッキング、サーバーへの送信は一切行いません。安心して視力検査をご利用いただけます。",
     h1: "プライバシーポリシー",
-    lede: "アカウント、分析、アップロードなし。結果が端末から出ることはありません。",
+    lede: "アカウント、広告、アップロードなし。結果が端末から出ることはありません。",
     body: [],
     englishBody: true,
   },
@@ -674,12 +676,13 @@ const ru = {
   },
   privacy: {
     title: "Политика конфиденциальности — Online Vision Test",
-    description: "Что хранит Online Vision Test (тема, язык и калибровка в вашем браузере) и чего не делает никогда: без аккаунтов, аналитики и загрузок.",
+    description: "Что хранит Online Vision Test (тема, язык и калибровка в вашем браузере) и как обрабатывается анонимная аналитика: без аккаунтов и передачи результатов.",
     h1: "Политика конфиденциальности",
-    lede: "Без аккаунта, аналитики и загрузок. Ваши результаты никогда не покидают устройство.",
+    lede: "Без аккаунта и без передачи данных. Ваши результаты никогда не покидают устройство.",
     body: [
       { h: "Что мы храним", p: "Три небольших значения в локальном хранилище (localStorage) вашего браузера: выбранная тема оформления, язык интерфейса и коэффициент калибровки экрана. Итоги проверки сохраняются там же исключительно для отображения вашего прогресса и никуда не пересылаются." },
-      { h: "Чего мы не делаем", p: "Мы не требуем регистрации, не используем рекламные или аналитические трекеры, не применяем отслеживающие пиксели и не ведем серверных логов ваших ответов." },
+      { h: "Аналитика", p: "Сайт использует Google Analytics 4 (идентификатор G-55QRZ61B47) исключительно для сбора анонимной статистики использования (обобщенные просмотры страниц, характер взаимодействия), чтобы помогать нам улучшать тренажёр. Результаты проверки зрения, калибровка экрана и выбор темы сохраняются строго в localStorage браузера и никуда не передаются. Google Analytics активируется только после получения согласия пользователя (Google Consent Mode v2, по умолчанию отключено). Отказаться от сбора данных можно в любой момент в настройках браузера или установив <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener\">блокировщик Google Analytics</a>. Подробнее о том, как Google обрабатывает данные, см. в <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">политике конфиденциальности Google</a> и на странице <a href=\"https://policies.google.com/technologies/cookies\" target=\"_blank\" rel=\"noopener\">технологий использования файлов cookie Google</a>. If advertising is introduced in the future, this policy will be updated before any advertising cookies are set." },
+      { h: "Чего мы не делаем", p: "Мы не требуем регистрации, не размещаем рекламу и не ведем серверных логов ваших ответов." },
       { h: "Ваш контроль", p: "Очистка данных сайта в настройках браузера полностью удаляет все сохраненные значения. Вы можете скачать или скопировать текстовый отчет по собственному желанию." },
       { h: "Назначение сервиса", p: "Тренажёр рассчитан на взрослых пользователей, желающих предварительно оценить зрение перед визитом к специалисту или водительской медкомиссией." },
       { h: "Изменения и контакты", p: "При обновлении политики дата изменений публикуется на этой странице. Вопросы можно направлять на " + EMAIL + "." },
