@@ -401,6 +401,10 @@ const en = {
     "report.normalValue": "Normal:",
     "history.acuity": "— Acuity:",
     "history.na": "N/A",
+    "calib.modeRuler": "Ruler (5 cm)",
+    "calib.modeCard": "Card",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "This never leaves your device. It's just math.",
   };
 
 const es = {
@@ -800,6 +804,10 @@ const es = {
     "report.normalValue": "Normal:",
     "history.acuity": "— Agudeza:",
     "history.na": "N/D",
+    "calib.modeRuler": "Regla (5 cm)",
+    "calib.modeCard": "Tarjeta",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "Esto nunca sale de tu dispositivo. Es solo matemáticas.",
   };
 
 const fr = {
@@ -1199,6 +1207,10 @@ const fr = {
     "report.normalValue": "Normal :",
     "history.acuity": "— Acuité :",
     "history.na": "N/A",
+    "calib.modeRuler": "Règle (5 cm)",
+    "calib.modeCard": "Carte",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "Ceci ne quitte jamais votre appareil. Ce ne sont que des mathématiques.",
   };
 
 const de = {
@@ -1599,6 +1611,10 @@ const de = {
     "report.normalValue": "Normal:",
     "history.acuity": "— Sehschärfe:",
     "history.na": "k.A.",
+    "calib.modeRuler": "Lineal (5 cm)",
+    "calib.modeCard": "Karte",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "Dies verlässt niemals dein Gerät. Es ist nur Mathematik.",
   };
 
 const pt = {
@@ -1999,6 +2015,10 @@ const pt = {
     "report.normalValue": "Normal:",
     "history.acuity": "— Acuidade:",
     "history.na": "N/D",
+    "calib.modeRuler": "Régua (5 cm)",
+    "calib.modeCard": "Cartão",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "Isso nunca sai do seu dispositivo. É apenas matemática.",
   };
 
 
@@ -2387,6 +2407,10 @@ const it = {
     "report.normalValue": "Normale:",
     "history.acuity": "— Acuità:",
     "history.na": "N/D",
+    "calib.modeRuler": "Righello (5 cm)",
+    "calib.modeCard": "Carta",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "Questo non lascia mai il tuo dispositivo. È solo matematica.",
   };
 const ja = {
     "a11y.skip": "視力チェックへ進む",
@@ -2773,6 +2797,10 @@ const ja = {
     "report.normalValue": "正常値:",
     "history.acuity": "— 視力:",
     "history.na": "N/A",
+    "calib.modeRuler": "定規（5 cm）",
+    "calib.modeCard": "カード",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "これはあなたの端末から送信されることはありません。単なる計算です。",
   };
 const ru = {
     "a11y.skip": "Перейти к проверке зрения",
@@ -3158,6 +3186,10 @@ const ru = {
     "report.normalValue": "Норма:",
     "history.acuity": "— Острота зрения:",
     "history.na": "Н/Д",
+    "calib.modeRuler": "Линейка (5 см)",
+    "calib.modeCard": "Карта",
+    "calib.modeId1": "ID-1",
+    "calib.privacyNote": "Эти данные никогда не покидают ваше устройство. Это просто математика.",
   };
 export const DICT = { en, es, fr, de, pt, it, ja, ru };
 

@@ -256,19 +256,19 @@ export function createLab(labEl) {
           <div class="calib-stage">
             <div class="calib-visual">
               <div style="display: flex; gap: 8px; margin-bottom: 12px; justify-content: center; width: 100%;">
-                <button type="button" id="btnModeCard" class="btn btn-quiet btn-xs" style="border: 2px solid var(--lab-accent);">Card</button>
-                <button type="button" id="btnModeRuler" class="btn btn-quiet btn-xs" style="border: 1px solid transparent;">Ruler (5 cm)</button>
+                <button type="button" id="btnModeCard" class="btn btn-quiet btn-xs" style="border: 2px solid var(--lab-accent);">${t("calib.modeCard")}</button>
+                <button type="button" id="btnModeRuler" class="btn btn-quiet btn-xs" style="border: 1px solid transparent;">${t("calib.modeRuler")}</button>
               </div>
               <div class="calib-card-wrap" id="calibCardWrap" style="display:flex; align-items:center; justify-content:center;"><div class="calib-card" id="calibCard">
                 <span class="cc-strip"></span>
                 <span class="cc-chip"></span>
-                <span class="cc-label">ID-1</span>
+                <span class="cc-label">${t("calib.modeId1")}</span>
               </div></div>
               <div id="calibRuler" style="display:none; height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); position: relative;">
                 <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
               </div>
               <p class="cc-hint" id="calibHint">${t("calib.cardHint")}</p>
-              <p style="font-size: 13px; color: var(--text-3); margin-top: 6px; text-align: center;">This never leaves your device. It's just math.</p>
+              <p style="font-size: 13px; color: var(--text-3); margin-top: 6px; text-align: center;">${t("calib.privacyNote")}</p>
             </div>
             <div>
               <label class="panel-title" id="calibRangeLabel" for="calibRange" style="display:block; cursor:pointer;">${t("calib.slider")}</label>
