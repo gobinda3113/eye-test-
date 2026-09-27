@@ -59,24 +59,54 @@ const breadcrumb = {
       {locale !== "en" && meta.englishBody && <p class="lang-note">{NOTE[locale]}</p>}
     </div>
 
-    <div class="prose">
+    <div class={`prose ${page === "contact" ? "prose-contact" : ""}`}>
+      {
+        (page === "notFound" || page === "serverError") && (
+          <div class="error-snellen-wrap" aria-hidden="true">
+            <div class="error-snellen-card">
+              <div class="error-snellen-meta">
+                <span>Snellen Rating</span>
+                <span>20 / &infin;</span>
+              </div>
+              <div class="error-chart">
+                <div class="error-line line-1">E</div>
+                <div class="error-line line-2">F P</div>
+                <div class="error-line line-3">T O Z</div>
+                <div class="error-line line-4">{page === "serverError" ? "5 0 0" : "4 0 4"}</div>
+                <div class="error-line line-5">{page === "serverError" ? "SERVER ERROR" : "PAGE NOT FOUND"}</div>
+              </div>
+              <div class="error-snellen-foot">
+                <span>ONLINE VISION TEST</span>
+                <span>REF: {page === "serverError" ? "HTTP 500" : "HTTP 404"}</span>
+              </div>
+            </div>
+          </div>
+        )
+      }
       {
         meta.body.map((s) => (
-          <>
+          <div class={page === "contact" ? "contact-card" : "prose-section"}>
             <h2>{s.h}</h2>
             <p set:html={s.p} />
-          </>
+          </div>
         ))
       }
       {
         (page === "notFound" || page === "serverError") && (
-          <p>
-            <a class="btn btn-primary" href={home + "#screener"}>{b.screener}</a>{" "}
-            <a class="btn btn-ghost" href={pathFor(locale, "blog")}>{b.states}</a>{" "}
+          <div class="error-actions">
+            <a class="btn btn-primary" href={home + "#screener"}>{b.screener}</a>
+            <a class="btn btn-ghost" href={pathFor(locale, "blog")}>{b.states}</a>
             <a class="btn btn-quiet" href={home}>{b.home}</a>
-          </p>
+          </div>
         )
       }
+    </div>
+
+    <div class="snellen-divider" aria-hidden="true" style="margin-top: 3.5rem;">
+      <span>E</span>
+      <span>F P</span>
+      <span>T O Z</span>
+      <span>L P E D</span>
     </div>
   </div>
 </section>

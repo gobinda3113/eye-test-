@@ -53,48 +53,52 @@
 
 /* ------------------------------------------------- long-form SEO article */
 .prose {
-  max-width: 76ch;
+  max-width: 68ch;
   margin: 0;
   text-align: left;
 }
 .prose h2 {
   font-family: var(--font-display);
-  margin: 36px 0 12px;
-  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.85rem);
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.75rem);
   line-height: 1.25;
   letter-spacing: -0.025em;
   color: var(--text);
+  font-weight: 600;
 }
 .prose h3 {
   font-family: var(--font-display);
-  margin: 26px 0 10px;
+  margin: 2rem 0 0.75rem;
   font-size: 1.15rem;
   letter-spacing: -0.015em;
   color: var(--text);
+  font-weight: 600;
 }
 .prose p,
 .prose li {
-  line-height: 1.72;
+  line-height: 1.75;
   color: var(--text-2);
+  font-size: 1rem;
 }
 .prose p + p {
-  margin-top: 14px;
+  margin-top: 1.25rem;
 }
 .prose ul {
-  margin: 12px 0 0;
+  margin: 1rem 0 0;
   padding-left: 20px;
   display: grid;
   gap: 8px;
   list-style: disc;
 }
 .prose .glance {
-  margin-top: 14px;
+  margin-top: 1.25rem;
   padding-left: 0;
   gap: 10px;
   list-style: none;
 }
 .prose strong {
   color: var(--text);
+  font-weight: 600;
 }
 .prose a {
   color: var(--primary);
@@ -105,10 +109,10 @@
   color: var(--primary-600);
 }
 .prose .sources {
-  margin-top: 28px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-  font-size: 13px;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+  font-size: 0.8125rem;
   color: var(--muted);
 }
 .glance {
@@ -128,25 +132,121 @@
   color: var(--text);
 }
 
+/* -------------------------------------------------------------- contact & error styles */
+.contact-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 1.75rem 2rem;
+  margin-top: 1.75rem;
+}
+.contact-card h2 {
+  margin-top: 0 !important;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.contact-card p {
+  color: var(--text-2);
+  line-height: 1.75;
+}
+
+.error-snellen-wrap {
+  margin: 1.75rem 0 2rem;
+  max-width: 320px;
+}
+.error-snellen-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.error-snellen-meta,
+.error-snellen-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.error-snellen-foot {
+  border-bottom: none;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 0.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+}
+.error-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text);
+  user-select: none;
+}
+.error-chart .line-1 {
+  font-size: 3.25rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+.error-chart .line-2 {
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.22em;
+}
+.error-chart .line-3 {
+  font-size: 1.35rem;
+  line-height: 1;
+  letter-spacing: 0.26em;
+}
+.error-chart .line-4 {
+  font-size: 1.1rem;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  color: var(--primary);
+}
+.error-chart .line-5 {
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.35em;
+  filter: blur(1.5px);
+  opacity: 0.65;
+  color: var(--muted);
+}
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
 /* -------------------------------------------------------------- page head */
 .simple-hero {
-  padding: 24px 0 12px;
+  padding: 24px 0 16px;
   text-align: left;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 2rem;
 }
 .simple-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
   margin: 8px 0 12px;
-  font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.7rem);
+  font-size: clamp(2rem, 1.5rem + 1.8vw, 2.75rem);
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: var(--text);
 }
 .simple-hero p {
-  max-width: 72ch;
+  max-width: 68ch;
   color: var(--text-2);
   line-height: 1.7;
-  font-size: 16.5px;
+  font-size: 1.0625rem;
 }
 .lang-note {
   margin-top: 10px;
