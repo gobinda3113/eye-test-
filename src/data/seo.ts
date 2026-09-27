@@ -45,7 +45,7 @@ const en = {
     ],
   },
   blog: {
-    title: "Online Eye Test Free - Check Your Vision at Home",
+    title: "Vision Test Guides & Articles — Online Vision Test",
     description: "Take a free online eye test to check your visual acuity. Use our Snellen eye test chart from the comfort of your home.",
     h1: "Online Eye Test Guide",
     lede: "Learn how to easily test your vision online for free, check your dominant eye, and use a Snellen chart.",
@@ -139,7 +139,7 @@ const es = {
     ],
   },
   blog: {
-    title: "Examen de la vista online gratis - Comprueba tu visión en casa",
+    title: "Guías y artículos de visión — Online Vision Test",
     description:
       "Guías sobre el examen de la vista: agudeza visual 20/40, requisitos por estado, restricciones y consejos para aprobar tu revisión de conducir en casa.",
     h1: "Guías y artículos sobre el examen de la vista",
@@ -223,7 +223,7 @@ const fr = {
     ],
   },
   blog: {
-    title: "Test de vue en ligne gratuit - Vérifiez votre vision chez vous",
+    title: "Guides et articles sur la vue — Online Vision Test",
     description:
       "Guides du test de vue : acuité visuelle 20/40, normes pour le permis de conduire, restrictions et conseils pour vérifier votre vue à la maison.",
     h1: "Exigences de vision par État",
@@ -307,7 +307,7 @@ const de = {
     ],
   },
   blog: {
-    title: "Sehtest online kostenlos - Überprüfen Sie Ihre Sehkraft zu Hause",
+    title: "Sehtest-Ratgeber & Artikel — Online Vision Test",
     description:
       "Ratgeber zum Sehtest: Mindestsehschärfe 20/40, Führerschein-Auflagen, Snellen-Tafel und praktische Tipps zur Überprüfung Ihrer Sehkraft zu Hause.",
     h1: "Sehanforderungen nach Bundesstaat",
@@ -391,7 +391,7 @@ const pt = {
     ],
   },
   blog: {
-    title: "Teste de visão online grátis - Verifique sua visão em casa",
+    title: "Guias e artigos sobre visão — Online Vision Test",
     description:
       "Guias do exame de vista: acuidade visual 20/40, requisitos para CNH e Detran, restrições e dicas práticas para testar sua visão em casa.",
     h1: "Requisitos de visão por estado",
@@ -475,7 +475,7 @@ const it = {
     ],
   },
   blog: {
-    title: "Test della vista online gratis - Controlla la vista a casa",
+    title: "Guide e articoli sulla vista — Online Vision Test",
     description: "Guide gratuite sul test della vista online: come usare la tabella di Snellen a casa, controllare l'occhio dominante e prepararsi alla visita.",
     h1: "Guide e articoli",
     lede: "Impara a testare la vista online gratis, a controllare l'occhio dominante e a usare la tabella di Snellen.",
@@ -564,7 +564,7 @@ const ja = {
     ],
   },
   blog: {
-    title: "視力検査 スマホ 無料｜自宅で視力をチェック",
+    title: "視力検査ガイド＆記事 — Online Vision Test",
     description: "無料の視力検査 スマホの使い方ガイド：自宅でスネレン表を使う方法、利き目の調べ方、受診前の準備。",
     h1: "ガイドと記事",
     lede: "無料で視力をテストする方法、利き目の調べ方、スネレン表の使い方を学びましょう。",
@@ -641,7 +641,7 @@ const ru = {
     ],
   },
   blog: {
-    title: "Проверка зрения онлайн бесплатно｜Проверьте зрение дома",
+    title: "Статьи и руководства о зрении — Online Vision Test",
     description: "Бесплатные руководства по проверке зрения онлайн: как пользоваться таблицей Сивцева дома, определить ведущий глаз и подготовиться к приёму.",
     h1: "Руководства и статьи",
     lede: "Узнайте, как бесплатно проверить зрение онлайн, определить ведущий глаз и пользоваться таблицей.",
