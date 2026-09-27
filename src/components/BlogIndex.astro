@@ -29,40 +29,57 @@ const breadcrumb = {
 <style>
   .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.75rem;
     margin-top: 2rem;
   }
   .blog-card {
-    background: var(--bg-elev);
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    padding: 1.5rem;
+    border-radius: var(--r);
+    padding: 1.75rem;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: background 0.15s, border-color 0.15s;
     display: flex;
     flex-direction: column;
   }
   .blog-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-color: var(--accent);
+    background: var(--surface-2);
+    border-color: var(--border-strong);
   }
   .blog-card h3 {
-    margin: 0 0 1rem 0;
-    color: var(--fg);
+    margin: 0 0 0.75rem 0;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+    transition: color 0.15s;
+  }
+  .blog-card:hover h3 {
+    color: var(--primary);
   }
   .blog-card p {
-    color: var(--muted);
+    color: var(--text-2);
     margin: 0;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.6;
     flex-grow: 1;
   }
   .read-more {
     margin-top: 1.5rem;
-    color: var(--accent);
+    color: var(--muted);
+    font-size: 0.875rem;
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s, transform 0.15s;
+  }
+  .blog-card:hover .read-more {
+    color: var(--primary);
+    transform: translateX(3px);
   }
 </style>
 
@@ -76,6 +93,7 @@ const breadcrumb = {
     </nav>
 
     <div class="simple-hero">
+      <div class="eyebrow">Optometry Journal</div>
       <h1>{meta.h1}</h1>
       <p>{meta.lede}</p>
     </div>
@@ -85,7 +103,10 @@ const breadcrumb = {
         <a href={pathFor(locale, "blog") + post.slug + "/"} class="blog-card">
           <h3>{post.title[locale] || post.title.en}</h3>
           <p>{post.excerpt[locale] || post.excerpt.en}</p>
-          <span class="read-more" aria-hidden="true">&rarr;</span>
+          <span class="read-more" aria-hidden="true">
+            Read guide
+            <svg class="ico" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+          </span>
         </a>
       ))}
     </div>

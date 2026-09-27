@@ -20,7 +20,6 @@ const breadcrumb = {
   ],
 };
 
-
 const META_L = {
   en: { by: "Written by Online Vision Test", rev: "Last reviewed: September 2026", src: "Sources: official DMV agencies, optometry references" },
   es: { by: "Escrito por Online Vision Test", rev: "Última revisión: Septiembre 2026", src: "Fuentes: agencias oficiales, referencias de optometría" },
@@ -47,22 +46,34 @@ const m = META_L[locale] || META_L.en;
     </nav>
 
     <div class="simple-hero">
+      <div class="eyebrow">Clinical Guide</div>
       <h1>{post.title[locale] || post.title.en}</h1>
       <p>{post.excerpt[locale] || post.excerpt.en}</p>
-      <div style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1rem;">
+      <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 6px 18px;">
         <div><strong>{m.by}</strong></div>
+        <span aria-hidden="true" style="opacity: 0.4;">·</span>
         <div>{m.rev}</div>
+        <span aria-hidden="true" style="opacity: 0.4;">·</span>
         <div>{m.src}</div>
       </div>
     </div>
 
-    <div class="content-body" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-body prose" style="max-width: 76ch; margin: 0 auto;">
       <article set:html={post.content[locale] || post.content.en} />
 
-      <div style="margin-top: 60px; padding: 40px; background: var(--bg-elev); border-radius: var(--r-lg); text-align: center; border: 1px solid var(--border);">
-        <h3 style="margin-top: 0;">{locale === "en" ? "Ready to test your vision?" : d("nav.start")}</h3>
-        <p style="color: var(--muted); margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
-        <a class="btn btn-primary" href={home}>{d("nav.cta")}</a>
+      <div class="snellen-divider" aria-hidden="true" style="margin: 48px 0 36px;">
+        <span class="snellen-motif">
+          <span class="m-1">E</span>
+          <span class="m-2">F P</span>
+          <span class="m-3">T O Z</span>
+          <span class="m-4">L P E D</span>
+        </span>
+      </div>
+
+      <div class="dark-ink-panel" style="margin-top: 36px;">
+        <h3 style="margin-top: 0; font-size: clamp(1.6rem, 2.5vw, 2.2rem);">{locale === "en" ? "Ready to test your vision?" : d("nav.start")}</h3>
+        <p style="margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
+        <a class="btn btn-primary btn-lg" href={home}>{d("nav.cta")}</a>
       </div>
     </div>
   </div>
