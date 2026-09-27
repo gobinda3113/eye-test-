@@ -1,19 +1,4 @@
 ---
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Online Vision Test",
-  "url": "https://onlinevisiontest.org/",
-  "description": "Free online vision screening. Tests visual acuity, color blindness, peripheral vision, and more.",
-  "applicationCategory": "HealthApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-};
-
 import Layout from "../../layouts/Layout.astro";
 import HomePage from "../../components/HomePage.astro";
 import { LOCALES, DEFAULT_LOCALE, SITE, homeAlternates } from "../../lib/site.ts";
@@ -28,13 +13,8 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const customAlts = homeAlternates();
-const webAppSchemaLocale = {
-  ...webAppSchema,
-  url: SITE + "/" + locale + "/",
-  inLanguage: locale,
-};
 ---
 
-<Layout locale={locale} page="home" schema={webAppSchemaLocale} customAlts={customAlts} customXDefault={SITE + "/"}>
+<Layout locale={locale} page="home" customAlts={customAlts} customXDefault={SITE + "/"}>
   <HomePage locale={locale} variant="generic" />
 </Layout>

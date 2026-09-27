@@ -1,19 +1,4 @@
 ---
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "DMV Eye Test Online",
-  "url": "https://onlinevisiontest.org/us/",
-  "description": "Free online DMV vision screening practice for all 50 US states. Tests visual acuity, color blindness, peripheral vision, and more.",
-  "applicationCategory": "HealthApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-};
-
 import Layout from "../../layouts/Layout.astro";
 import HomePage from "../../components/HomePage.astro";
 import { SITE, usAlternates, usUrl } from "../../lib/site.ts";
@@ -31,6 +16,6 @@ const customMeta = {
 const customAlts = usAlternates();
 ---
 
-<Layout locale="en" page="us" schema={webAppSchema} customMeta={customMeta} customAlts={customAlts} customXDefault={SITE + "/"}>
+<Layout locale="en" page="us" customMeta={customMeta} customAlts={customAlts} customXDefault={SITE + "/"}>
   <HomePage locale="en" variant="us" />
 </Layout>

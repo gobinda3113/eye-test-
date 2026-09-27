@@ -17,7 +17,7 @@ export const EMAIL = "support@onlinevisiontest.org";
 
 const en = {
   home: {
-    title: "Free Online Vision Test — 11 Checks in 10 Minutes",
+    title: "Free Online Vision Test — 12 Checks in 10 Minutes",
     description:
       "Free online vision test: calibrate your screen and check distance, colour, peripheral and near vision eye by eye. No signup, results stay in your browser.",
     lede: "Practise the online vision test for free: calibrated, eye by eye, done in ten minutes.",

@@ -21,9 +21,19 @@ const customMeta = {
   description: `Practice the ${stateData.name} DMV eye test online before you go. Minimum acuity required for a ${stateData.name} driver's license: ${stateData.min}.`,
   url: `${SITE}/states/${slug}/`,
 };
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": `${stateData.name} DMV Eye Test & Vision Requirements`,
+  "url": `https://onlinevisiontest.org/states/${slug}/`,
+  "description": `Pass the ${stateData.name} DMV eye test in ${new Date().getFullYear()}. Learn the vision requirements, visual acuity minimums, and practice online.`,
+  "inLanguage": "en"
+};
+
 ---
 
-<Layout locale="en" customMeta={customMeta}>
+<Layout locale="en" customMeta={customMeta} schema={pageSchema}>
   <SiteShell locale="en" page="home">
     <div class="container section">
       <div class="simple-hero">

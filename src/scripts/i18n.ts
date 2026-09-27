@@ -405,6 +405,15 @@ const en = {
     "calib.modeCard": "Card",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "This never leaves your device. It's just math.",
+    "schema.howTo.name": "How to Take an Online Vision Test at Home",
+    "schema.howTo.step1.name": "Calibrate Your Display",
+    "schema.howTo.step1.text": "Hold a standard magnetic credit card or ID card (85.6 mm) against the screen outline and adjust the slider until they match exactly.",
+    "schema.howTo.step2.name": "Measure the Test Distance",
+    "schema.howTo.step2.text": "Step back 10 feet (3 meters) from your screen, or 20 feet (6 meters) for standard Snellen distance.",
+    "schema.howTo.step3.name": "Cover One Eye at a Time",
+    "schema.howTo.step3.text": "Gently cover your left eye with your palm without pressing on the eyelid. Read the smallest line of letters you can see, then repeat for the right eye.",
+    "schema.howTo.step4.name": "Check Your Visual Acuity Score",
+    "schema.howTo.step4.text": "Compare your result (such as 20/20 or 20/40) against the minimum driver licensing and vision screening benchmarks.",
   };
 
 const es = {
@@ -808,6 +817,15 @@ const es = {
     "calib.modeCard": "Tarjeta",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "Esto nunca sale de tu dispositivo. Es solo matemáticas.",
+    "schema.howTo.name": "Cómo hacer un examen de la vista en línea en casa",
+    "schema.howTo.step1.name": "Calibra tu pantalla",
+    "schema.howTo.step1.text": "Sostén una tarjeta de crédito o tarjeta de identificación magnética estándar (85,6 mm) contra el contorno en la pantalla y ajusta el control deslizante hasta que coincidan exactamente.",
+    "schema.howTo.step2.name": "Mide la distancia de prueba",
+    "schema.howTo.step2.text": "Aléjate 10 pies (3 metros) de tu pantalla, o 20 pies (6 metros) para la distancia estándar de Snellen.",
+    "schema.howTo.step3.name": "Cubre un ojo a la vez",
+    "schema.howTo.step3.text": "Cubre suavemente tu ojo izquierdo con la palma de la mano sin presionar el párpado. Lee la línea de letras más pequeña que puedas ver, luego repite para el ojo derecho.",
+    "schema.howTo.step4.name": "Comprueba tu puntuación de agudeza visual",
+    "schema.howTo.step4.text": "Compara tu resultado (como 20/20 o 20/40) con los puntos de referencia mínimos de licencias de conducir y exámenes de la vista.",
   };
 
 const fr = {
@@ -1211,6 +1229,15 @@ const fr = {
     "calib.modeCard": "Carte",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "Ceci ne quitte jamais votre appareil. Ce ne sont que des mathématiques.",
+    "schema.howTo.name": "Comment passer un test de vision en ligne à domicile",
+    "schema.howTo.step1.name": "Étalonnez votre écran",
+    "schema.howTo.step1.text": "Tenez une carte de crédit magnétique standard ou une carte d'identité (85,6 mm) contre le contour à l'écran et ajustez le curseur jusqu'à ce qu'ils correspondent exactement.",
+    "schema.howTo.step2.name": "Mesurez la distance du test",
+    "schema.howTo.step2.text": "Reculez de 10 pieds (3 mètres) de votre écran, ou de 20 pieds (6 mètres) pour la distance standard de Snellen.",
+    "schema.howTo.step3.name": "Couvrez un œil à la fois",
+    "schema.howTo.step3.text": "Couvrez doucement votre œil gauche avec la paume de votre main sans appuyer sur la paupière. Lisez la plus petite ligne de lettres que vous pouvez voir, puis répétez l'opération pour l'œil droit.",
+    "schema.howTo.step4.name": "Vérifiez votre score d'acuité visuelle",
+    "schema.howTo.step4.text": "Comparez votre résultat (tel que 20/20 ou 20/40) par rapport aux références minimales en matière de permis de conduire et de dépistage de la vue.",
   };
 
 const de = {
@@ -1615,6 +1642,15 @@ const de = {
     "calib.modeCard": "Karte",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "Dies verlässt niemals dein Gerät. Es ist nur Mathematik.",
+    "schema.howTo.name": "So machst du einen Online-Sehtest zu Hause",
+    "schema.howTo.step1.name": "Kalibriere deinen Bildschirm",
+    "schema.howTo.step1.text": "Halte eine Standard-Kreditkarte oder einen Personalausweis (85,6 mm) an den Bildschirmumriss und passe den Schieberegler an, bis sie genau übereinstimmen.",
+    "schema.howTo.step2.name": "Miss die Testentfernung",
+    "schema.howTo.step2.text": "Tritt 10 Fuß (3 Meter) von deinem Bildschirm zurück, oder 20 Fuß (6 Meter) für die Standard-Snellen-Entfernung.",
+    "schema.howTo.step3.name": "Bedecke ein Auge nach dem anderen",
+    "schema.howTo.step3.text": "Bedecke dein linkes Auge sanft mit der Handfläche, ohne auf das Augenlid zu drücken. Lies die kleinste Buchstabenreihe, die du sehen kannst, und wiederhole dies für das rechte Auge.",
+    "schema.howTo.step4.name": "Überprüfe deine Sehschärfe",
+    "schema.howTo.step4.text": "Vergleiche dein Ergebnis (z. B. 20/20 oder 20/40) mit den Mindestrichtlinien für den Führerschein und Sehtests.",
   };
 
 const pt = {
@@ -2019,6 +2055,15 @@ const pt = {
     "calib.modeCard": "Cartão",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "Isso nunca sai do seu dispositivo. É apenas matemática.",
+    "schema.howTo.name": "Como fazer um exame de vista online em casa",
+    "schema.howTo.step1.name": "Calibre sua tela",
+    "schema.howTo.step1.text": "Segure um cartão de crédito magnético padrão ou carteira de identidade (85,6 mm) contra o contorno da tela e ajuste o controle deslizante até que eles correspondam exatamente.",
+    "schema.howTo.step2.name": "Meça a distância do teste",
+    "schema.howTo.step2.text": "Afaste-se 10 pés (3 metros) da sua tela, ou 20 pés (6 metros) para a distância padrão de Snellen.",
+    "schema.howTo.step3.name": "Cubra um olho de cada vez",
+    "schema.howTo.step3.text": "Cubra suavemente o olho esquerdo com a palma da mão sem pressionar a pálpebra. Leia a menor linha de letras que conseguir ver, depois repita para o olho direito.",
+    "schema.howTo.step4.name": "Verifique a sua pontuação de acuidade visual",
+    "schema.howTo.step4.text": "Compare o seu resultado (como 20/20 ou 20/40) com os padrões mínimos de exames de vista e emissão de carteira de motorista.",
   };
 
 
@@ -2411,6 +2456,15 @@ const it = {
     "calib.modeCard": "Carta",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "Questo non lascia mai il tuo dispositivo. È solo matematica.",
+    "schema.howTo.name": "Come fare un test della vista online a casa",
+    "schema.howTo.step1.name": "Calibra il tuo schermo",
+    "schema.howTo.step1.text": "Tieni una normale carta di credito magnetica o una carta d'identità (85,6 mm) contro il contorno dello schermo e regola il cursore finché non corrispondono esattamente.",
+    "schema.howTo.step2.name": "Misura la distanza del test",
+    "schema.howTo.step2.text": "Indietreggia di 10 piedi (3 metri) dallo schermo, o di 20 piedi (6 metri) per la distanza standard di Snellen.",
+    "schema.howTo.step3.name": "Copri un occhio alla volta",
+    "schema.howTo.step3.text": "Copri delicatamente l'occhio sinistro con il palmo della mano senza premere sulla palpebra. Leggi la riga di lettere più piccola che riesci a vedere, quindi ripeti per l'occhio destro.",
+    "schema.howTo.step4.name": "Controlla il tuo punteggio di acuità visiva",
+    "schema.howTo.step4.text": "Confronta il tuo risultato (come 20/20 o 20/40) con i requisiti minimi per la patente di guida e gli esami della vista.",
   };
 const ja = {
     "a11y.skip": "視力チェックへ進む",
@@ -2801,6 +2855,15 @@ const ja = {
     "calib.modeCard": "カード",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "これはあなたの端末から送信されることはありません。単なる計算です。",
+    "schema.howTo.name": "自宅でオンライン視力検査を行う方法",
+    "schema.howTo.step1.name": "画面を調整する",
+    "schema.howTo.step1.text": "一般的なクレジットカードまたはIDカード（85.6 mm）を画面の枠に当て、ぴったり重なるまでスライダーを調整します。",
+    "schema.howTo.step2.name": "検査距離を測る",
+    "schema.howTo.step2.text": "画面から10フィート（3メートル）離れるか、スネレン視力検査の標準距離である20フィート（6メートル）離れます。",
+    "schema.howTo.step3.name": "片目ずつ隠す",
+    "schema.howTo.step3.text": "まぶたを圧迫しないように、手のひらで左目をそっと覆います。見える一番小さな文字の列を読み、右目でも同じように繰り返します。",
+    "schema.howTo.step4.name": "視力スコアを確認する",
+    "schema.howTo.step4.text": "自分の結果（20/20や20/40など）を、運転免許や視力検査の最低基準と比較します。",
   };
 const ru = {
     "a11y.skip": "Перейти к проверке зрения",
@@ -3190,6 +3253,15 @@ const ru = {
     "calib.modeCard": "Карта",
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "Эти данные никогда не покидают ваше устройство. Это просто математика.",
+    "schema.howTo.name": "Как пройти проверку зрения онлайн дома",
+    "schema.howTo.step1.name": "Откалибруйте свой экран",
+    "schema.howTo.step1.text": "Приложите стандартную магнитную кредитную карту или удостоверение личности (85,6 мм) к контуру на экране и отрегулируйте ползунок, пока они точно не совпадут.",
+    "schema.howTo.step2.name": "Измерьте расстояние для теста",
+    "schema.howTo.step2.text": "Отойдите на 10 футов (3 метра) от экрана или на 20 футов (6 метров) для стандартного расстояния по Снеллену.",
+    "schema.howTo.step3.name": "Закрывайте по одному глазу",
+    "schema.howTo.step3.text": "Мягко закройте левый глаз ладонью, не давя на веко. Прочтите самую мелкую строчку букв, которую сможете увидеть, затем повторите для правого глаза.",
+    "schema.howTo.step4.name": "Проверьте свой результат остроты зрения",
+    "schema.howTo.step4.text": "Сравните свой результат (например, 20/20 или 20/40) с минимальными требованиями для получения водительских прав и проверки зрения.",
   };
 export const DICT = { en, es, fr, de, pt, it, ja, ru };
 
