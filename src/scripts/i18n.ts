@@ -12,8 +12,8 @@ export const LANGS = [
   { code: "de", label: "Deutsch", htmlLang: "de" },
   { code: "pt", label: "Português", htmlLang: "pt" },
   { code: "it", label: "Italiano", htmlLang: "it" },
-  { code: "ja", label: "???", htmlLang: "ja" },
-  { code: "ru", label: "???????", htmlLang: "ru" },
+  { code: "ja", label: "日本語", htmlLang: "ja" },
+  { code: "ru", label: "Русский", htmlLang: "ru" },
 ];
 
 const en = {
@@ -1213,9 +1213,9 @@ const de = {
     "cdl.cardBody": "Sehschärfe, Sichtfeld und Farbtest in einer Sequenz.",
     "refs.dmv": "Offizielle Behörden",
     "faq.q12": "Was passiert, wenn ich beim Sehtest durchfalle?",
-    "faq.a12": "du verlierst Ihren Führerschein nicht sofort. du erh�ltst ein Formular für den Augenarzt und kommen später wieder.",
+    "faq.a12": "du verlierst deinen Führerschein nicht sofort. du erhältst ein Formular für den Augenarzt und kommst später wieder.",
     "faq.q13": "Darf ich meine Brille beim Test tragen?",
-    "faq.a13": "Ja. du erh�ltst dann jedoch eine Brillenauflage in Ihrem Führerschein.",
+    "faq.a13": "Ja. du erhältst dann jedoch eine Brillenauflage in deinem Führerschein.",
     "faq.q14": "Wie sieht das Sehtestgerät aus?",
     "faq.a14": "Die meisten Büros verwenden ein Tischgerät. du liest kleine Buchstaben im Inneren des Geräts.",
     "faq.q15": "Kann ich den Sehtest online machen?",
