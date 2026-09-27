@@ -20,16 +20,6 @@ const breadcrumb = {
   ],
 };
 
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: post.title[locale] || post.title.en,
-  description: post.excerpt[locale] || post.excerpt.en,
-  inLanguage: locale,
-  author: { "@type": "Organization", name: "Online Vision Test", url: "https://onlinevisiontest.org/" },
-  datePublished: post.datePublished || "2025-06-01T08:00:00Z",
-  dateModified: post.dateModified || "2026-09-20T08:00:00Z"
-};
 
 const META_L = {
   en: { by: "Written by Online Vision Test", rev: "Last reviewed: September 2026", src: "Sources: official DMV agencies, optometry references" },
@@ -45,7 +35,6 @@ const m = META_L[locale] || META_L.en;
 ---
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
-<script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
 
 <section class="section">
   <div class="container">
