@@ -9,6 +9,9 @@ const customMeta = {
   url: `${SITE}/eye-test-chart/`,
 };
 
+const customAlts = [{ hreflang: "en", url: customMeta.url }];
+const customXDefault = customMeta.url;
+
 const chartSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -33,7 +36,7 @@ const howToSchema = {
 
 ---
 
-<Layout locale="en" customMeta={customMeta} schema={chartSchema}>
+<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={chartSchema}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">

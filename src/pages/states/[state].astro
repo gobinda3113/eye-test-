@@ -22,6 +22,9 @@ const customMeta = {
   url: `${SITE}/states/${slug}/`,
 };
 
+const customAlts = [{ hreflang: "en", url: customMeta.url }];
+const customXDefault = customMeta.url;
+
 const pageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -69,7 +72,7 @@ const faqSchema = {
 
 ---
 
-<Layout locale="en" customMeta={customMeta} schema={pageSchema}>
+<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">
