@@ -10,7 +10,7 @@ import { LOCALES, pathFor, SITE } from "../lib/site.ts";
 const { locale = "en", page = "home", customAlts } = Astro.props;
 const L = {
   en: {
-    home: "Home", blog: "Blog", about: "About", contact: "Contact", cta: "Start free check",
+    home: "Home", blog: "Blog", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "About", contact: "Contact", cta: "Start free check",
     privacy: "Privacy", terms: "Terms", guides: "Guides", legal: "Legal", lang: "Language",
     skip: "Skip to content", theme: "Toggle dark mode",
     privacyNote: "No account, no tracking, no uploads. Results stay in your browser.",
@@ -18,7 +18,7 @@ const L = {
     rights: "Practice screener, free to use.",
   },
   es: {
-    home: "Inicio", blog: "Blog", about: "Acerca de", contact: "Contacto", cta: "Empezar gratis",
+    home: "Inicio", blog: "Blog", chart: "Tabla de agudeza visual", us: "Práctica DMV", states: "Requisitos por estado", about: "Acerca de", contact: "Contacto", cta: "Empezar gratis",
     privacy: "Privacidad", terms: "Términos", guides: "Guías", legal: "Legal", lang: "Idioma",
     skip: "Saltar al contenido", theme: "Cambiar tema oscuro/claro",
     privacyNote: "Sin cuenta, sin rastreo, sin subidas. Los resultados se quedan en tu navegador.",
@@ -26,7 +26,7 @@ const L = {
     rights: "Evaluador de práctica, uso gratuito.",
   },
   fr: {
-    home: "Accueil", blog: "Blog", about: "À propos", contact: "Contact", cta: "Commencer gratuitement",
+    home: "Accueil", blog: "Blog", chart: "Échelle de Snellen", us: "Entraînement permis DMV", states: "Exigences par état", about: "À propos", contact: "Contact", cta: "Commencer gratuitement",
     privacy: "Confidentialité", terms: "Conditions", guides: "Guides", legal: "Mentions légales", lang: "Langue",
     skip: "Aller au contenu", theme: "Basculer le mode sombre",
     privacyNote: "Aucun compte, aucun suivi, aucun envoi. Les résultats restent dans votre navigateur.",
@@ -34,7 +34,7 @@ const L = {
     rights: "Outil d'entraînement, gratuit.",
   },
   de: {
-    home: "Start", blog: "Blog", about: "Über", contact: "Kontakt", cta: "Kostenlos starten",
+    home: "Start", blog: "Blog", chart: "Sehtest-Tabelle", us: "DMV Sehtest-Übung", states: "Anforderungen nach Staat", about: "Über", contact: "Kontakt", cta: "Kostenlos starten",
     privacy: "Datenschutz", terms: "Nutzung", guides: "Ratgeber", legal: "Rechtliches", lang: "Sprache",
     skip: "Zum Inhalt springen", theme: "Dunkelmodus umschalten",
     privacyNote: "Kein Konto, kein Tracking, keine Uploads. Ergebnisse bleiben in Ihrem Browser.",
@@ -42,7 +42,7 @@ const L = {
     rights: "Übungsprüfung, kostenlos.",
   },
   pt: {
-    home: "Início", blog: "Blog", about: "Sobre", contact: "Contato", cta: "Começar grátis",
+    home: "Início", blog: "Blog", chart: "Tabela de teste visual", us: "Simulado CNH / DMV", states: "Requisitos por estado", about: "Sobre", contact: "Contato", cta: "Começar grátis",
     privacy: "Privacidade", terms: "Termos", guides: "Guias", legal: "Legal", lang: "Idioma",
     skip: "Pular para o conteúdo", theme: "Alternar modo escuro",
     privacyNote: "Sem conta, sem rastreamento, sem envios. Os resultados ficam no seu navegador.",
@@ -50,7 +50,7 @@ const L = {
     rights: "Avaliação de prática, gratuita.",
   },
   it: {
-    home: "Home", blog: "Blog", about: "Chi siamo", contact: "Contatti", cta: "Inizia gratis",
+    home: "Home", blog: "Blog", chart: "Tabella di Snellen", us: "Esercitazione patente DMV", states: "Requisiti per stato", about: "Chi siamo", contact: "Contatti", cta: "Inizia gratis",
     privacy: "Privacy", terms: "Termini", guides: "Guide", legal: "Note legali", lang: "Lingua",
     skip: "Salta al contenuto", theme: "Cambia tema chiaro/scuro",
     privacyNote: "Nessun account, nessun tracciamento, nessun upload. I risultati restano nel tuo browser.",
@@ -58,7 +58,7 @@ const L = {
     rights: "Screening gratuito, libero.",
   },
   ja: {
-    home: "ホーム", blog: "ブログ", about: "概要", contact: "お問い合わせ", cta: "無料で開始",
+    home: "ホーム", blog: "ブログ", chart: "視力検査表", us: "運転免許・DMV練習", states: "米国の州別基準", about: "概要", contact: "お問い合わせ", cta: "無料で開始",
     privacy: "プライバシー", terms: "利用規約", guides: "ガイド", legal: "法的情報", lang: "言語",
     skip: "本文へスキップ", theme: "ダークモード切替",
     privacyNote: "アカウント不要、追跡なし、送信なし。結果はブラウザ内にのみ保存されます。",
@@ -66,7 +66,7 @@ const L = {
     rights: "無料の練習用スクリーニング。",
   },
   ru: {
-    home: "Главная", blog: "Блог", about: "О проекте", contact: "Контакты", cta: "Начать бесплатно",
+    home: "Главная", blog: "Блог", chart: "Таблица проверки зрения", us: "Тест для водителей (DMV)", states: "Требования по штатам", about: "О проекте", contact: "Контакты", cta: "Начать бесплатно",
     privacy: "Конфиденциальность", terms: "Условия", guides: "Руководства", legal: "Право", lang: "Язык",
     skip: "Перейти к содержимому", theme: "Переключить темную тему",
     privacyNote: "Без аккаунта, без отслеживания и загрузок. Результаты остаются в вашем браузере.",
@@ -187,6 +187,9 @@ const nav = [
       <h3>{t.guides}</h3>
       <ul>
         <li><a href={home + "#screener"}>{t.cta}</a></li>
+        <li><a href="/eye-test-chart/">{t.chart}</a></li>
+        <li><a href="/us/">{t.us}</a></li>
+        <li><a href="/states/">{t.states}</a></li>
         <li><a href={pathFor(locale, "blog")}>{t.blog}</a></li>
         <li><a href={pathFor(locale, "about")}>{t.about}</a></li>
         <li><a href={pathFor(locale, "contact")}>{t.contact}</a></li>

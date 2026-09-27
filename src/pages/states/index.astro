@@ -1,0 +1,96 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import { STATES_VERIFIED as STATES } from "../../data/states.ts";
+import { SITE } from "../../lib/site.ts";
+
+export const prerender = true;
+
+const title = "DMV Eye Test by State — Vision Requirements in All 50 States";
+const description = "Find DMV eye test requirements, minimum visual acuity standards, and renewal vision rules for all 50 US states and DC. Practice the test online.";
+const canonical = `${SITE}/states/`;
+
+const customMeta = {
+  title,
+  description,
+  url: canonical,
+};
+
+const customAlts = [{ hreflang: "en", url: canonical }];
+const customXDefault = canonical;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://onlinevisiontest.org/states/#webpage",
+      "url": "https://onlinevisiontest.org/states/",
+      "name": title,
+      "description": description,
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://onlinevisiontest.org/states/#itemlist",
+      "name": "DMV Eye Test Requirements by State",
+      "itemListElement": STATES.map((s, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": `${s.name} DMV Eye Test`,
+        "url": `https://onlinevisiontest.org/states/${s.name.toLowerCase().replace(/ /g, "-")}/`
+      }))
+    }
+  ]
+};
+
+const sortedStates = [...STATES].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={jsonLd}>
+  <SiteShell locale="en" page="home">
+    <div class="container section">
+      <div class="simple-hero">
+        <h1>DMV Eye Test Requirements by State</h1>
+        <p>
+          Every US state sets its own vision standards for obtaining or renewing a driver's license. While most states require <strong>20/40 visual acuity</strong> for an unrestricted license, renewal schedules, restricted license thresholds, and field of vision requirements vary nationwide. Select your state below to review specific requirements and practice the test online.
+        </p>
+        <p style="margin-top: 1rem;">
+          <a class="btn btn-primary" href="/us/">Practice the US DMV Eye Test</a>
+        </p>
+      </div>
+
+      <div style="margin-top: 40px;">
+        <h2>All 50 States and DC</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 20px;">
+          {sortedStates.map((s) => {
+            const slug = s.name.toLowerCase().replace(/ /g, "-");
+            return (
+              <a
+                href={`/states/${slug}/`}
+                style="display: block; padding: 16px 20px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: inherit; transition: border-color 0.2s;"
+              >
+                <div style="font-weight: 700; font-size: 1.05rem; color: var(--text);">{s.name}</div>
+                <div style="font-size: 0.875rem; color: var(--muted); margin-top: 4px;">
+                  Min Acuity: <strong>{s.min}</strong> ({s.need === "both" ? "both eyes" : "better eye"})
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top: 50px; max-width: 700px;">
+        <h2>Common Questions About State DMV Vision Tests</h2>
+        <h3>What if my vision is worse than 20/40?</h3>
+        <p>
+          Most states allow you to obtain a restricted license (such as daylight-only driving or wearing corrective lenses) if your corrected vision is between 20/40 and 20/70. If you cannot meet your state's minimum standard at the counter, you will typically receive a state vision examination form to have completed by a licensed optometrist or ophthalmologist.
+        </p>
+        <h3>How to prepare before visiting the DMV</h3>
+        <p>
+          You can test your visual acuity at home using our <a href="/eye-test-chart/">Snellen eye test chart</a> or take the full <a href="/us/">DMV practice screening</a> to check your distance acuity, color vision, and peripheral vision.
+        </p>
+      </div>
+    </div>
+  </SiteShell>
+</Layout>

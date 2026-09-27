@@ -53,7 +53,7 @@ export const POSTS = [
     content: {
       en: `
         <h2>Practice for the DMV Eye Test</h2>
-        <p>If you are heading to the Department of Motor Vehicles to renew or obtain your driver's license, you must pass a basic vision screening. You can use our <a href="/#screener">free online eye test</a> tool as a practice test to determine whether your visual acuity meets your state's minimum legal benchmarks.</p>
+        <p>If you are heading to the Department of Motor Vehicles to renew or obtain your driver's license, you must pass a basic vision screening. You can use our <a href="/">free online eye test</a> tool as a <a href="/us/">DMV practice test</a> to determine whether your visual acuity meets your state's minimum legal benchmarks, or practice with our <a href="/eye-test-chart/">Snellen eye test chart</a>.</p>
         
         <h3>What is the DMV passing score?</h3>
         <p>In almost every US state, an unrestricted driver's license requires <strong>20/40 visual acuity</strong> in both eyes combined or in at least one eye. If your eyesight falls between 20/40 and 20/70, most licensing agencies still allow you to drive with a restriction (such as corrective lenses or daylight-only driving) after an eye specialist completes an official evaluation form.</p>
@@ -140,7 +140,7 @@ export const POSTS = [
     content: {
       en: `
         <h2>Failing is paperwork, not punishment</h2>
-        <p>You failed the DMV eye test. Nothing happens to your licence that day. The examiner gives you a form for an eye doctor, you get checked, and you return to retake the vision screening. People fail for boring reasons: they left their glasses at home, their prescription is two years old, or they have never had one eye checked on its own. All of that is fixable in a week.</p>
+        <p>You failed the DMV eye test. Nothing happens to your licence that day. The examiner gives you a form for an eye doctor, you get checked, and you return to retake the vision screening. You can practice in advance with our <a href="/">online vision test</a> and calibrated <a href="/eye-test-chart/">eye test chart</a>. People fail for boring reasons: they left their glasses at home, their prescription is two years old, or they have never had one eye checked on its own. All of that is fixable in a week.</p>
 
         <h2>Which form you will get</h2>
         <p>It depends on the state. California hands out the Report of Vision Examination (DL-62). New York uses form MV-619 for a straight pass at 20/40 or better, and form MV-80L if you land between 20/40 and 20/70 or wear telescopic lenses (that one goes to the Medical Review Unit, not the counter). Florida uses the HSMV Report of Eye Exam (form 72010). Texas uses the Explanation for Eye Specialist (DL-63). Take the right paper to an optometrist or ophthalmologist, get it signed, and bring it back.</p>
@@ -174,7 +174,7 @@ export const POSTS = [
         <p>You read lines of letters or numbers, one eye at a time, then both together. The manuals for these machines describe the rhythm plainly: read one numbered line fully, move to the next, stop where you miss. Examiners often call out "read line 5," which is why that phrase shows up in search results. It is just the 20/40 row on that slide set. After acuity comes the rest: flashes at the sides for peripheral vision and a red, green and amber check for colour. The colour part is not a full colour-blindness exam. It only asks whether you can separate traffic signals.</p>
 
         <h2>Wall chart offices</h2>
-        <p>Some offices still use a Snellen chart on the wall at 10 or 20 feet. Same task, less ceremony: cover one eye with your palm, read the smallest line you can, swap eyes. Bright rooms and short distances flatter your eyes, which is one reason home posters mislead.</p>
+        <p>Some offices still use a <a href="/eye-test-chart/">Snellen chart on the wall</a> at 10 or 20 feet. Same task, less ceremony: cover one eye with your palm, read the smallest line you can, swap eyes. You can also run our <a href="/">online eye test</a> to calibrate your screen before testing.</p>
 
         <h2>How to rehearse honestly</h2>
         <p>Looking for a cheat sheet dmv eye test machine? Cheat sheets and memorised posters do not transfer because offices rotate charts. What transfers is procedure: calibrate the screen with a bank card, stand at a marked 3 metres, cover one eye without pressing on it, and read randomised letters. That is exactly what <a href="/us/#screener">the free practice screening</a> runs. If you wear glasses to drive, practise in them. Passing with correction is normal, and it is better to learn that at home than at the counter. Read <a href="/blog/dmv-eye-test-fail-guide/">what happens if you fail</a> so the worst case holds no surprises either.</p>
@@ -195,7 +195,7 @@ export const POSTS = [
     content: {
       en: `
         <h2>The rule almost everywhere</h2>
-        <p>Nearly every state wants 20/40 or better with both eyes for a full licence, and most will still licence you with a restriction down to about 20/70. Below that you see an eye doctor and retest. The differences sit in the details: per-eye versus both-together standards, field-of-vision degrees, and which form the doctor signs. Five states below, each checked against the statute or the agency page.</p>
+        <p>Nearly every state wants 20/40 or better with both eyes for a full licence, and most will still licence you with a restriction down to about 20/70. See our comprehensive guide to <a href="/states/">all 50 state DMV vision requirements</a> or test yourself with our <a href="/">online eye test</a>. Below that you see an eye doctor and retest. The differences sit in the details: per-eye versus both-together standards, field-of-vision degrees, and which form the doctor signs. Five states below, each checked against the statute or the agency page.</p>
 
         <h2>California: two thresholds, one form</h2>
         <p>California (Vehicle Code section 12804.9) reads 20/40 with both eyes together, plus 20/40 in one eye and at least 20/70 in the other. Miss it and you get 60 days on a temporary licence to return form DL-62 from an eye doctor. Fall short on the left eye and you may face a supplemental drive test with a freeway stretch. <a href="https://www.dmv.ca.gov/portal/driver-education-and-safety/medical-conditions-and-driving/vision-conditions/">CA DMV vision conditions</a>.</p>
@@ -246,14 +246,14 @@ export const POSTS = [
         <p>6/6 is the metric form of 20/20. It indicates that you can read at 6 metres what an eye with standard visual acuity reads at 6 metres. Many Commonwealth countries and Indian clinical centers report vision using metric notation, while North America measures at 20 feet (about 6.1 metres). 6/6, 20/20, and decimal 1.0 all describe normal baseline distance acuity.</p>
 
         <h2>6/6 to 20/20 conversion chart</h2>
-        <p>Every row below represents one line on a standardized visual acuity chart written in metric, imperial, and decimal formats:</p>
+        <p>Every row below represents one line on a standardized <a href="/eye-test-chart/">visual acuity chart</a> written in metric, imperial, and decimal formats:</p>
         <table class="state-table">
           <thead><tr><th>Metric (6 m)</th><th>Feet (20 ft)</th><th>Decimal</th><th>Clinical Significance</th></tr></thead>
           <tbody>
             <tr><td>6/6</td><td>20/20</td><td>1.0</td><td>Normal baseline distance acuity</td></tr>
             <tr><td>6/7.5</td><td>20/25</td><td>0.8</td><td>Near normal; passes all driving standards</td></tr>
             <tr><td>6/9</td><td>20/30</td><td>0.67</td><td>Mild distance blur</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>0.5</td><td>Standard DMV minimum driving cutoff in most jurisdictions</td></tr>
+            <tr><td>6/12</td><td>20/40</td><td>0.5</td><td>Standard <a href="/us/">DMV minimum driving cutoff</a> in most jurisdictions</td></tr>
             <tr><td>6/18</td><td>20/60</td><td>0.33</td><td>Restricted license or corrective lens requirement</td></tr>
             <tr><td>6/24</td><td>20/80</td><td>0.25</td><td>Requires corrective lenses for safe driving</td></tr>
             <tr><td>6/30</td><td>20/100</td><td>0.2</td><td>Substantial distance impairment</td></tr>
@@ -262,7 +262,7 @@ export const POSTS = [
         </table>
 
         <h2>How to check 6/6 acuity at home</h2>
-        <p>Position yourself exactly 6 metres (or 20 feet) from your screen. Calibrate your display using a physical bank card or ID card, because an uncalibrated optotype cannot provide accurate angular measurements. Gently cover one eye with your palm without pressing against the eyelid, read the smallest row of optotypes, and then repeat with the other eye. You can run <a href="/#screener">our free practice screener</a> directly in your browser.</p>
+        <p>Position yourself exactly 6 metres (or 20 feet) from your screen. Calibrate your display using a physical bank card or ID card, because an uncalibrated optotype cannot provide accurate angular measurements. Gently cover one eye with your palm without pressing against the eyelid, read the smallest row of optotypes, and then repeat with the other eye. You can run <a href="/">our free practice screener</a> directly in your browser.</p>
       `,
       es: `
         <h2>Qué significa una visión 6/6</h2>
@@ -392,7 +392,7 @@ export const POSTS = [
     content: {
       en: `
         <h2>Can you wear glasses during the DMV vision screening?</h2>
-        <p><strong>Yes, you can absolutely wear glasses or contact lenses during your DMV eye test.</strong> Millions of drivers take and pass their vision screening with corrective lenses every day. In fact, if you need prescription lenses to see clearly at distance, you should always bring them to the DMV counter.</p>
+        <p><strong>Yes, you can absolutely wear glasses or contact lenses during your DMV eye test.</strong> Millions of drivers take and pass their vision screening with corrective lenses every day. In fact, if you need prescription lenses to see clearly at distance, you should always bring them to the DMV counter. You can pre-check your acuity using our <a href="/">online eye test</a> or printable <a href="/eye-test-chart/">Snellen eye test chart</a>.</p>
 
         <h2>What about reading glasses?</h2>
         <p>A common question applicants search for is: <em>can you use reading glasses for the DMV eye test?</em> <strong>The short answer is generally no for distance acuity.</strong></p>
@@ -423,7 +423,7 @@ export const POSTS = [
     content: {
       en: `
         <h2>The history of the Snellen eye chart</h2>
-        <p>Invented in 1862 by Dutch ophthalmologist Herman Snellen, the <strong>Snellen eye test chart</strong> remains the global standard for measuring distance visual acuity. The chart consists of eleven lines of block letters (optotypes) that decrease in size as you read downward.</p>
+        <p>Invented in 1862 by Dutch ophthalmologist Herman Snellen, the <a href="/eye-test-chart/">Snellen eye test chart</a> remains the global standard for measuring distance visual acuity. The chart consists of eleven lines of block letters (optotypes) that decrease in size as you read downward.</p>
 
         <h2>How the 5x5 grid works</h2>
         <p>Snellen optotypes are not standard typographic fonts. Each letter is meticulously drafted on a 5x5 grid where each stroke, gap, and limb subtends exactly 1 minute of arc (1/60th of a degree) on the retina when viewed from the designated test distance. A 20/20 letter at 20 feet subtends an overall visual angle of 5 minutes of arc.</p>
@@ -437,10 +437,10 @@ export const POSTS = [
         <p>If your score is <strong>20/40</strong>, you must stand at 20 feet to read what a person with normal vision could comfortably read from 40 feet away. If your score is <strong>20/20</strong>, your distance visual acuity matches the accepted clinical baseline.</p>
 
         <h2>Why 'Line 5' is famous at the DMV</h2>
-        <p>In driver licensing facilities and online forums, people often ask about "line 5 dmv eye test". On standard Snellen charts calibrated for 20-foot viewing distances, Line 5 is typically the <strong>20/40 line</strong> (usually containing letters like P-E-C-F-D). Because 20/40 is the statutory minimum requirement to obtain an unrestricted driver's license in most US states, Line 5 is the crucial cutoff that examiners test.</p>
+        <p>In driver licensing facilities and online forums, people often ask about "line 5 <a href="/us/">DMV eye test</a>". On standard Snellen charts calibrated for 20-foot viewing distances, Line 5 is typically the <strong>20/40 line</strong> (usually containing letters like P-E-C-F-D). Because 20/40 is the statutory minimum requirement to obtain an unrestricted driver's license in most US states, Line 5 is the crucial cutoff that examiners test.</p>
 
         <h2>Why static wall posters mislead</h2>
-        <p>Many people print an eye chart poster or pull up an image on a smartphone. However, an uncalibrated digital image has an arbitrary pixel size that changes with screen resolution and magnification. If the letters are rendered 20% too large or too small, a true 20/40 letter can be easily misjudged as 20/20 or 20/60. To get an accurate measurement, use <a href="/#screener">our card-calibrated online vision test</a>, which scales vector optotypes to exact physical millimeter standards.</p>
+        <p>Many people print an eye chart poster or pull up an image on a smartphone. However, an uncalibrated digital image has an arbitrary pixel size that changes with screen resolution and magnification. If the letters are rendered 20% too large or too small, a true 20/40 letter can be easily misjudged as 20/20 or 20/60. To get an accurate measurement, use <a href="/">our card-calibrated online vision test</a>, which scales vector optotypes to exact physical millimeter standards.</p>
       `
     }
   }

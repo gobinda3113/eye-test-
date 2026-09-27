@@ -26,6 +26,9 @@ import { seoFor } from "../data/seo.ts";
 import { SITE, LOCALES } from "../lib/site.ts";
 
 const { locale = "en", variant = "generic" } = Astro.props;
+
+const FOOTER_LINKS = {"en":{"chart":"Eye Test Chart","us":"DMV Practice","states":"States","blog":"Blog"},"es":{"chart":"Tabla de agudeza visual","us":"Práctica DMV","states":"Requisitos por estado","blog":"Blog"},"fr":{"chart":"Échelle de Snellen","us":"Entraînement permis DMV","states":"Exigences par état","blog":"Blog"},"de":{"chart":"Sehtest-Tabelle","us":"DMV Sehtest-Übung","states":"Anforderungen nach Staat","blog":"Blog"},"pt":{"chart":"Tabela de teste visual","us":"Simulado CNH / DMV","states":"Requisitos por estado","blog":"Blog"},"it":{"chart":"Tabella di Snellen","us":"Esercitazione patente DMV","states":"Requisiti per stato","blog":"Blog"},"ja":{"chart":"視力検査表","us":"運転免許・DMV練習","states":"米国の州別基準","blog":"ブログ"},"ru":{"chart":"Таблица проверки зрения","us":"Тест для водителей (DMV)","states":"Требования по штатам","blog":"Блог"}};
+const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
 // The US DMV practice screener lives only on /us/. Every homepage route (/,
 // /es/, ...) renders the generic vision check, whatever the language.
 const isUS = variant === "us";
@@ -511,8 +514,10 @@ const howToSchema = {
     </nav>
     <nav class="footer-col" aria-label={d("footer.c2")}>
       <h3 data-i18n="footer.c2">{d("footer.c2")}</h3>
-      <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
-      {locale === "en" && !isUS && (<a href="/us/">{d("footer.us")}</a>)}
+      <a href="/eye-test-chart/">{fl.chart}</a>
+      <a href="/us/">{fl.us}</a>
+      <a href="/states/">{fl.states}</a>
+      <a href={blogHref} data-i18n="nav.blog">{fl.blog}</a>
       <a href="#faq" data-i18n="footer.g4">{d("footer.g4")}</a>
       <a href="#reference" data-i18n="refs.kicker">{d("refs.kicker")}</a>
     </nav>

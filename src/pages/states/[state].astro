@@ -103,6 +103,22 @@ const faqSchema = {
         <p>
           Failing the eye test at the counter can delay your license. By calibrating your screen and standing at the correct distance, you can simulate the exact visual acuity check you will face. Our free practice screener takes about 10 minutes and includes the Tumbling-E and color blindness checks frequently used by licensing offices.
         </p>
+        <h2>Related States in the {stateData.region}</h2>
+        <p>Vision requirements and DMV eye test standards for other states in the {stateData.region} region:</p>
+        <ul>
+          {STATES.filter((s) => s.region === stateData.region && s.code !== stateData.code).slice(0, 5).map((rs) => (
+            <li>
+              <a href={`/states/${rs.name.toLowerCase().replace(/ /g, "-")}/`}>
+                {rs.name} DMV Eye Test (Minimum Acuity: {rs.min})
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div style="margin-top: 24px; padding: 16px; background: var(--bg-elev); border-radius: var(--r-md); border: 1px solid var(--border);">
+          <p style="margin: 0 0 8px 0;">Looking for other state requirements? <a href="/states/">Browse vision requirements in all 50 states</a>.</p>
+          <p style="margin: 0;">Getting ready for your test? <a href="/us/">Practice the US DMV eye test online</a>.</p>
+        </div>
       </div>
     </div>
   </SiteShell>

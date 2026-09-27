@@ -1,7 +1,7 @@
 export const blogContent = {
   en: `
     <h2>How to Take an Online Eye Test at Home</h2>
-    <p>Taking an <strong>online eye test</strong> is a quick and convenient way to check your vision. Whether you are preparing for a <strong>dmv eye test</strong>, looking for a <strong>free eye test</strong> to assess your visual acuity, or simply curious about your eyesight, you can now use a professional <strong>eye test chart</strong> right from your screen.</p>
+    <p>Taking an <a href="/">online eye test</a> is a quick and convenient way to check your vision. Whether you are preparing for a <a href="/us/">DMV eye test</a>, looking for a free vision check to assess your visual acuity, or simply curious about your eyesight, you can now use a professional <a href="/eye-test-chart/">eye test chart</a> right from your screen.</p>
     
     <h3>Using the Snellen Eye Test</h3>
     <p>The standard method for checking distance vision is the <strong>snellen eye test</strong>. To get accurate results, you must calibrate your screen so the letters are the correct physical size, then stand at the right distance (usually 3 or 6 meters). Cover one eye at a time and read the smallest line you can see clearly.</p>
