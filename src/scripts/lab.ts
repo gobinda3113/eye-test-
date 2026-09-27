@@ -1559,7 +1559,7 @@ export function createLab(labEl) {
       <tr>
         <td style="padding: 8px 10px; border-bottom: 1px solid #ddd; font-weight: bold;">${r[0]}</td>
         <td style="padding: 8px 10px; border-bottom: 1px solid #ddd;">${r[1]}</td>
-        <td style="padding: 8px 10px; border-bottom: 1px solid #ddd; color: #555;">${r[2] ? `Normal: ${r[2]}` : ""}</td>
+        <td style="padding: 8px 10px; border-bottom: 1px solid #ddd; color: #555;">${r[2] ? `${t("report.normalValue")} ${r[2]}` : ""}</td>
       </tr>
     `).join('');
 
@@ -1567,11 +1567,11 @@ export function createLab(labEl) {
       <div style="font-family: 'Times New Roman', serif; color: #000; padding: 0 20px; line-height: 1.4; max-width: 800px; margin: 0 auto; box-sizing: border-box;">
         <div style="text-align: center; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px;">
           <h1 style="margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;">Online Vision Test</h1>
-           <p style="margin: 5px 0 0; font-size: 14px; color: #555;">Practice Screening Summary</p>
+           <p style="margin: 5px 0 0; font-size: 14px; color: #555;">${t("report.summary")}</p>
         </div>
         
         <div style="margin-bottom: 25px;">
-           <h2 style="font-size: 16px; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 4px;">Session Information</h2>
+           <h2 style="font-size: 16px; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 4px;">${t("report.session")}</h2>
           <table style="width: 100%; font-size: 13px; border: 0;">
             <tr>
               <td style="padding: 3px 0;"><strong>Date:</strong> ${dateStr}</td>
@@ -1598,7 +1598,7 @@ export function createLab(labEl) {
         </table>
 
         <div style="margin-bottom: 25px;">
-           <h3 style="margin: 0 0 6px 0; font-size: 15px;">Overall Verdict: ${t(`results.verdict.${verdict}.title`)}</h3>
+           <h3 style="margin: 0 0 6px 0; font-size: 15px;">${t("report.verdict")} ${t(`results.verdict.${verdict}.title`)}</h3>
            <p style="margin: 0; font-size: 13px;">${t(`results.verdict.${verdict}.body`)}</p>
         </div>
 
@@ -1648,7 +1648,7 @@ export function createLab(labEl) {
         // slice(1) to hide the current run which was just pushed
         histContainer.innerHTML = history.slice(1).map(h => {
           const d = new Date(h.createdAt).toLocaleDateString();
-          return `<div style="font-size:14px;color:var(--text-2);padding:4px 0;">${d} — Acuity: ${h.both != null ? acuityLabel(h.both) : "N/A"}</div>`;
+          return `<div style="font-size:14px;color:var(--text-2);padding:4px 0;">${d} ${t("history.acuity")} ${h.both != null ? acuityLabel(h.both) : t("history.na")}</div>`;
         }).join("");
         on(btnClearHist, "click", () => {
           clearHistory();

@@ -395,6 +395,12 @@ const en = {
     "calib.rulerHint": "True ruler size · 5 cm",
     "calib.rulerHold": "Hold a ruler against the line and slide until the 5 cm marks match exactly.",
     "calib.rulerScale": "Ruler scale",
+    "report.summary": "Practice Screening Summary",
+    "report.session": "Session Information",
+    "report.verdict": "Overall Verdict:",
+    "report.normalValue": "Normal:",
+    "history.acuity": "— Acuity:",
+    "history.na": "N/A",
   };
 
 const es = {
@@ -788,6 +794,12 @@ const es = {
     "calib.rulerScale": "Escala de la regla",
     "results.driveRef": "Referencia de conducción",
     "results.driveSource": "Fuente",
+    "report.summary": "Resumen del examen de práctica",
+    "report.session": "Información de la sesión",
+    "report.verdict": "Veredicto general:",
+    "report.normalValue": "Normal:",
+    "history.acuity": "— Agudeza:",
+    "history.na": "N/D",
   };
 
 const fr = {
@@ -1181,6 +1193,12 @@ const fr = {
     "calib.rulerScale": "Échelle de la règle",
     "results.driveRef": "Référence de conduite",
     "results.driveSource": "Source",
+    "report.summary": "Résumé de l'examen pratique",
+    "report.session": "Informations sur la session",
+    "report.verdict": "Verdict global :",
+    "report.normalValue": "Normal :",
+    "history.acuity": "— Acuité :",
+    "history.na": "N/A",
   };
 
 const de = {
@@ -1575,6 +1593,12 @@ const de = {
     "calib.rulerHint": "Echte Linealgröße · 5 cm",
     "calib.rulerHold": "Halte ein Lineal an die Linie und schiebe, bis die 5-cm-Markierungen genau übereinstimmen.",
     "calib.rulerScale": "Lineal-Maßstab",
+    "report.summary": "Zusammenfassung des Übungstests",
+    "report.session": "Sitzungsinformationen",
+    "report.verdict": "Gesamtergebnis:",
+    "report.normalValue": "Normal:",
+    "history.acuity": "— Sehschärfe:",
+    "history.na": "k.A.",
   };
 
 const pt = {
@@ -1969,6 +1993,12 @@ const pt = {
     "calib.rulerHint": "Tamanho real da régua · 5 cm",
     "calib.rulerHold": "Segure uma régua contra a linha e ajuste até as marcas de 5 cm coincidirem perfeitamente.",
     "calib.rulerScale": "Escala da régua",
+    "report.summary": "Resumo do exame prático",
+    "report.session": "Informações da sessão",
+    "report.verdict": "Veredito geral:",
+    "report.normalValue": "Normal:",
+    "history.acuity": "— Acuidade:",
+    "history.na": "N/D",
   };
 
 
@@ -2351,6 +2381,12 @@ const it = {
     "calib.rulerHint": "Dimensione reale del righello · 5 cm",
     "calib.rulerHold": "Tieni un righello contro la linea e scorri finché i segni dei 5 cm non combaciano esattamente.",
     "calib.rulerScale": "Scala del righello",
+    "report.summary": "Riepilogo dello screening di pratica",
+    "report.session": "Informazioni sulla sessione",
+    "report.verdict": "Verdetto generale:",
+    "report.normalValue": "Normale:",
+    "history.acuity": "— Acuità:",
+    "history.na": "N/D",
   };
 const ja = {
     "a11y.skip": "視力チェックへ進む",
@@ -2731,6 +2767,12 @@ const ja = {
     "calib.rulerScale": "定規のスケール",
     "results.driveRef": "運転免許の基準",
     "results.driveSource": "出典",
+    "report.summary": "練習用スクリーニングの概要",
+    "report.session": "セッション情報",
+    "report.verdict": "総合結果:",
+    "report.normalValue": "正常値:",
+    "history.acuity": "— 視力:",
+    "history.na": "N/A",
   };
 const ru = {
     "a11y.skip": "Перейти к проверке зрения",
@@ -3110,6 +3152,12 @@ const ru = {
     "calib.rulerHint": "Реальный размер линейки · 5 см",
     "calib.rulerHold": "Приложите линейку к линии и двигайте, пока отметки 5 см точно не совпадут.",
     "calib.rulerScale": "Масштаб линейки",
+    "report.summary": "Сводка тренировочного скрининга",
+    "report.session": "Информация о сеансе",
+    "report.verdict": "Общий результат:",
+    "report.normalValue": "Норма:",
+    "history.acuity": "— Острота зрения:",
+    "history.na": "Н/Д",
   };
 export const DICT = { en, es, fr, de, pt, it, ja, ru };
 
