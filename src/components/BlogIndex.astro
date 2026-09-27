@@ -9,7 +9,10 @@ const meta = seoFor(locale, "blog");
 const home = pathFor(locale, "home");
 
 // Filter posts for this locale
-const visiblePosts = POSTS.filter(post => !post.englishOnly || locale === "en");
+const visiblePosts = POSTS.filter(post => {
+  const supportedLocales = post.locales || (post.englishOnly ? ["en"] : Object.keys(post.title || {}));
+  return supportedLocales.includes(locale);
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",

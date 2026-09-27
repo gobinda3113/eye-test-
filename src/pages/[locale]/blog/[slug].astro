@@ -11,7 +11,8 @@ export function getStaticPaths() {
   const paths = [];
   LOCALES.filter(l => l !== DEFAULT_LOCALE).forEach(locale => {
     POSTS.forEach(post => {
-      if (!post.englishOnly) {
+      const supportedLocales = post.locales || (post.englishOnly ? ["en"] : LOCALES.filter(l => Boolean(post.title?.[l])));
+      if (supportedLocales.includes(locale)) {
         paths.push({
           params: { locale, slug: post.slug },
           props: { post }
@@ -31,11 +32,16 @@ const customMeta = {
   url: SITE + "/" + locale + "/blog/" + post.slug + "/",
 };
 
-const customAlts = LOCALES.filter(l => !post.englishOnly || l === "en").map(l => ({
+const supportedLocales = post.locales || (post.englishOnly ? ["en"] : LOCALES.filter(l => Boolean(post.title?.[l])));
+const customAlts = supportedLocales.map(l => ({
   locale: l,
   hreflang: HREFLANG[l],
   url: SITE + (l === "en" ? "" : "/" + l) + "/blog/" + post.slug + "/",
 }));
+
+const customXDefault = supportedLocales.includes("en")
+  ? SITE + "/blog/" + post.slug + "/"
+  : SITE + "/" + locale + "/blog/" + post.slug + "/";
 
 const schema = {
   "@context": "https://schema.org",
@@ -58,7 +64,7 @@ const schema = {
 };
 ---
 
-<Layout locale={locale} page="blog" schema={schema} customMeta={customMeta} customAlts={customAlts} customXDefault={SITE + "/blog/" + post.slug + "/"}>
+<Layout locale={locale} page="blog" schema={schema} customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault}>
   <SiteShell locale={locale} page="blog" customAlts={customAlts}>
     <BlogPost locale={locale} post={post} />
   </SiteShell>

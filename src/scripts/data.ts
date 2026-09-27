@@ -242,7 +242,7 @@ export const SOURCES = [
 
 /* ---------------------------------------------------------------- faq */
 
-export const FAQ_COUNT = 20;
+export const FAQ_COUNT = 23;
 
 /**
  * US-DMV-only content. The English route (onlinevisiontest.org/) is the DMV
@@ -252,7 +252,7 @@ export const FAQ_COUNT = 20;
  * must use the same lists so prerendered HTML and hydrated DOM agree.
  */
 export const US_ONLY_CHECK_IDS = ["cdl"];
-export const US_ONLY_FAQ_NUMS = [3, 7, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+export const US_ONLY_FAQ_NUMS = [3, 7, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
 
 /* ---------------------------------------------------------------- icons */
 

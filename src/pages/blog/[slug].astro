@@ -8,7 +8,10 @@ import { LOCALES, HREFLANG, SITE } from "../../lib/site.ts";
 export const prerender = true;
 
 export function getStaticPaths() {
-  return POSTS.map((post) => ({
+  return POSTS.filter(post => {
+    const supportedLocales = post.locales || (post.englishOnly ? ["en"] : LOCALES.filter(l => Boolean(post.title?.[l])));
+    return supportedLocales.includes("en");
+  }).map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
@@ -22,7 +25,8 @@ const customMeta = {
   url: SITE + "/blog/" + post.slug + "/",
 };
 
-const customAlts = LOCALES.filter(l => !post.englishOnly || l === "en").map(l => ({
+const supportedLocales = post.locales || (post.englishOnly ? ["en"] : LOCALES.filter(l => Boolean(post.title?.[l])));
+const customAlts = supportedLocales.map(l => ({
   locale: l,
   hreflang: HREFLANG[l],
   url: SITE + (l === "en" ? "" : "/" + l) + "/blog/" + post.slug + "/",
