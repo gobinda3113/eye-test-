@@ -85,7 +85,7 @@ const faqSchema = {
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: isUS ? "How to Take the DMV Practice Eye Test at Home" : d("schema.howTo.name"),
+  name: isUS ? d("us.schema.howTo.name") : d("schema.howTo.name"),
   description: meta.description,
   totalTime: "PT10M",
   step: [

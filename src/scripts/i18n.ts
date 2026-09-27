@@ -406,6 +406,7 @@ const en = {
     "calib.modeId1": "ID-1",
     "calib.privacyNote": "This never leaves your device. It's just math.",
     "schema.howTo.name": "How to Take an Online Vision Test at Home",
+    "us.schema.howTo.name": "How to Take the DMV Practice Eye Test at Home",
     "schema.howTo.step1.name": "Calibrate Your Display",
     "schema.howTo.step1.text": "Hold a standard magnetic credit card or ID card (85.6 mm) against the screen outline and adjust the slider until they match exactly.",
     "schema.howTo.step2.name": "Measure the Test Distance",
