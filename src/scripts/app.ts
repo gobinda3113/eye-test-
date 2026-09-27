@@ -437,13 +437,16 @@ async function boot() {
       lab.start("cdl");
     }
   });
-  document.addEventListener("keydown", (e) => {
+  document.addEventListener("keydown", (e: any) => {
     // Native <button> already fires click on Enter/Space; this guard is a no-op
     // for the check cards now that they are real buttons. Kept for safety.
     if (!lab) return;
-    if ((e.key === "Enter" || e.key === " ") && e.target.classList && (e.target.classList.contains("check-card") || e.target.classList.contains("check-row") || (e.target.closest && e.target.closest("[data-test]")))) {
-      e.preventDefault();
-      lab.start(e.target.dataset.test);
+    if (e.key === "Enter" || e.key === " ") {
+      const row = e.target.closest("[data-test]");
+      if (row) {
+        e.preventDefault();
+        lab.start(row.dataset.test);
+      }
     }
   });
 
