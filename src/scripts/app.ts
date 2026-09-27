@@ -190,16 +190,24 @@ function renderChecks() {
   if (!grid) return;
   // Only /us/ shows US-DMV entries (CDL).
   const list = isUSPage() ? CHECKS : CHECKS.filter((c) => !US_ONLY_CHECK_IDS.includes(c.id));
-  grid.innerHTML = list.map((c) => `
-    <button type="button" class="check-card" data-test="${c.test}" style="--cc:${c.color}" aria-label="${t(`checks.${c.id}.name`)} — ${t("checks.open")}">
-      <span class="check-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24">${ICONS[c.icon] || ""}</svg></span>
-      <h3>${t(`checks.${c.id}.name`)}</h3>
-      <p>${t(`checks.${c.id}.desc`)}</p>
-      <div class="check-foot">
-        <span class="check-tag">${c.tag}</span>
-        <span class="check-go" aria-hidden="true">${t("checks.open")}<svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg></span>
+  grid.innerHTML = list.map((c, idx) => {
+    const num = String(idx + 1).padStart(2, "0");
+    const name = t("checks." + c.id + ".name");
+    const desc = t("checks." + c.id + ".desc");
+    const open = t("checks.open");
+    return `
+    <button type="button" class="check-row" data-test="${c.test}" aria-label="${name} — ${open}">
+      <span class="check-num">${num}</span>
+      <div class="check-main">
+        <strong class="check-name">${name}</strong>
+        <p class="check-desc">${desc}</p>
       </div>
-    </button>`).join("");
+      <span class="check-meta">${c.tag}</span>
+      <span class="check-action" aria-hidden="true">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+      </span>
+    </button>`;
+  }).join("");
   void grid;
 }
 
@@ -349,7 +357,9 @@ function renderFaq() {
 function initReveal() {
   const targets = [
     ...document.querySelectorAll(".section-head"),
+    ...document.querySelectorAll(".how-step"),
     ...document.querySelectorAll(".how-card"),
+    ...document.querySelectorAll(".check-row"),
     ...document.querySelectorAll(".check-card"),
     ...document.querySelectorAll(".stat-strip"),
     ...document.querySelectorAll(".cdl-copy"),
@@ -431,7 +441,7 @@ async function boot() {
     // Native <button> already fires click on Enter/Space; this guard is a no-op
     // for the check cards now that they are real buttons. Kept for safety.
     if (!lab) return;
-    if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("check-card")) {
+    if ((e.key === "Enter" || e.key === " ") && e.target.classList && (e.target.classList.contains("check-card") || e.target.classList.contains("check-row") || (e.target.closest && e.target.closest("[data-test]")))) {
       e.preventDefault();
       lab.start(e.target.dataset.test);
     }
