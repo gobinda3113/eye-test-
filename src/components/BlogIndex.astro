@@ -2,9 +2,12 @@
 import { seoFor } from "../data/seo.ts";
 import { pathFor, urlFor } from "../lib/site.ts";
 import { POSTS } from "../data/blog.ts";
+import { DICT } from "../scripts/i18n.ts";
 
 const { locale = "en" } = Astro.props;
 const meta = seoFor(locale, "blog");
+const dict = DICT[locale] || DICT.en;
+const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
 
 const home = pathFor(locale, "home");
 
@@ -93,7 +96,7 @@ const breadcrumb = {
     </nav>
 
     <div class="simple-hero">
-      <div class="eyebrow">Optometry Journal</div>
+      <div class="eyebrow">{d("blog.eyebrow")}</div>
       <h1>{meta.h1}</h1>
       <p>{meta.lede}</p>
     </div>
@@ -104,7 +107,7 @@ const breadcrumb = {
           <h3>{post.title[locale] || post.title.en}</h3>
           <p>{post.excerpt[locale] || post.excerpt.en}</p>
           <span class="read-more" aria-hidden="true">
-            Read guide
+            {d("blog.readGuide")}
             <svg class="ico" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
           </span>
         </a>
