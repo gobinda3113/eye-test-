@@ -271,7 +271,7 @@ export function createLab(labEl) {
               <p style="font-size: 13px; color: var(--text-3); margin-top: 6px; text-align: center;">This never leaves your device. It's just math.</p>
             </div>
             <div>
-              <label class="panel-title" for="calibRange" style="display:block; cursor:pointer;">${t("calib.slider")}</label>
+              <label class="panel-title" id="calibRangeLabel" for="calibRange" style="display:block; cursor:pointer;">${t("calib.slider")}</label>
               <div class="slider-row">
                 <input type="range" id="calibRange" min="${CARD_MIN}" max="${CARD_MAX}" step="1" value="${cardW}" aria-label="${t("calib.slider")}">
                 <span class="slider-val" id="calibVal"></span>
@@ -314,6 +314,7 @@ export function createLab(labEl) {
     const holdEl = stage.querySelector("#calibHold");
     const range = stage.querySelector("#calibRange");
     const valEl = stage.querySelector("#calibVal");
+    const rangeLabel = stage.querySelector("#calibRangeLabel");
     const visual = stage.querySelector(".calib-visual");
     const noteEl = stage.querySelector("#calibNote");
 
@@ -329,6 +330,8 @@ export function createLab(labEl) {
       rulerEl.style.display = "none";
       hintEl.textContent = t("calib.cardHint");
       holdEl.textContent = t("calib.hold");
+      if (rangeLabel) rangeLabel.textContent = t("calib.slider");
+      lastMax = 0;
       fit();
     });
 
@@ -341,6 +344,8 @@ export function createLab(labEl) {
       rulerEl.style.display = "block";
       hintEl.textContent = "True ruler size · 5 cm";
       holdEl.textContent = "Hold a ruler against the line and slide until the 5 cm marks match exactly.";
+      if (rangeLabel) rangeLabel.textContent = "Ruler scale";
+      lastMax = 0;
       fit();
     });
 

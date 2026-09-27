@@ -1323,8 +1323,6 @@ const de = {
   "checks.distance.desc": "Die Snellen-Tafel in kalibrierter Realgröße. Lies mit jedem Auge bis zur 20/40-Marke.",
   "checks.tumbling.name": "Tumbling-E",
   "checks.tumbling.desc": "Der gedrehte E für alle, die das lateinische Alphabet nicht lesen, und das Format vieler profesional-Prüfungen.",
-  "checks.landolt.name": "Landolt-Ringe",
-  "checks.landolt.desc": "Der Ring-Test mit Lücke, den Europa und Japan verwenden: Wohin zeigt die Öffnung?",
   "checks.color.name": "Farbsehen",
   "checks.color.desc": "Pseudo-isochromatische Tafeln (Farbenblindheit Test) prüfen, ob du Verkehrsrot von Grün unterscheiden kannst.",
   "checks.peripheral.name": "Gesichtsfeld",
@@ -1388,10 +1386,6 @@ const de = {
   "tumbling.prompt": "Wohin zeigt die Öffnung",
   "tumbling.of": "Versuch {n} von {total}",
 
-  "landolt.title": "Landolt-Ringe",
-  "landolt.sub": "Die Öffnung im Ring zeigt in eine Richtung. Antworte mit den Pfeilen oder der Tastatur.",
-  "landolt.prompt": "Wohin zeigt die Öffnung",
-  "landolt.of": "Durchgang {n} von {total}",
 
   "color.title": "Farbsehen",
   "color.sub": "Sag uns, welche Zahl zwischen den Punkten versteckt ist. Wenn du wirklich keine siehst, sag das — auch das ist ein Ergebnis.",
@@ -1430,7 +1424,6 @@ const de = {
   "results.bench": "Marke 20/40",
   "results.notTested": "Nicht getestet",
   "results.tumbling": "Drehendes E",
-  "results.landolt": "Landolt-Ringe",
   "results.driveRef": "Führerschein-Referenz",
   "results.driveSource": "Quelle",
   "results.drive.de": "Gruppe 1: 0,7/0,7 dezimal (FeV Anlage 6). Ein Online-Test ersetzt nicht die Sehtestbescheinigung.",
