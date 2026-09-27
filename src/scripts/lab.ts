@@ -342,9 +342,9 @@ export function createLab(labEl) {
       cardWrap.style.display = "none";
       cardEl.style.display = "none";
       rulerEl.style.display = "block";
-      hintEl.textContent = "True ruler size · 5 cm";
-      holdEl.textContent = "Hold a ruler against the line and slide until the 5 cm marks match exactly.";
-      if (rangeLabel) rangeLabel.textContent = "Ruler scale";
+      hintEl.textContent = t("calib.rulerHint");
+      holdEl.textContent = t("calib.rulerHold");
+      if (rangeLabel) rangeLabel.textContent = t("calib.rulerScale");
       lastMax = 0;
       fit();
     });
