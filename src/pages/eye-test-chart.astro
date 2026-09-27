@@ -33,30 +33,46 @@ const howToSchema = {
     { "@type": "HowToStep", "name": "Read", "text": "Cover one eye and read the lowest line possible." }
   ]
 };
-
 ---
 
 <Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={chartSchema}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Online Vision Test</a></li>
+          <li aria-current="page">Eye Test Chart</li>
+        </ol>
+      </nav>
+
       <div class="simple-hero">
+        <div class="eyebrow">Clinical Reference</div>
         <h1>Eye Test Chart</h1>
         <p>Use our free, correctly scaled online <strong>eye test chart</strong> (Snellen chart) to check your visual acuity from home. Calibrate the screen with a bank card, stand back, and see how you score.</p>
-        <p>
+        <p style="margin-top: 20px;">
           <a class="btn btn-primary" href="/#screener">Start the Eye Test Chart Screener</a>
         </p>
       </div>
 
-      <div class="prose" style="margin-top: 40px; max-width: 600px;">
+      <div class="snellen-divider" aria-hidden="true" style="margin: 24px 0 36px;">
+        <span class="snellen-motif">
+          <span class="m-1">E</span>
+          <span class="m-2">F P</span>
+          <span class="m-3">T O Z</span>
+          <span class="m-4">L P E D</span>
+        </span>
+      </div>
+
+      <div class="prose" style="max-width: 72ch;">
         <h2>How the Online Eye Test Chart Works</h2>
         <p>
-          Unlike static images of eye charts you find online, a real vision screening requires precise scaling. A 20/40 letter must subtend exactly 5 arc-minutes at the specified distance. 
+          Unlike static images of eye charts you find online, a real vision screening requires precise scaling. A 20/40 letter must subtend exactly 5 arc-minutes at the specified distance.
         </p>
         <p>
           Our interactive eye test chart fixes the scaling problem by having you hold a standard bank card against the screen. We calculate the pixels-per-millimeter density of your specific device, ensuring the letters on our Snellen chart are physically accurate.
         </p>
-        
+
         <h2>Snellen Chart vs Tumbling-E</h2>
         <p>
           The standard eye test chart uses the Latin alphabet (Snellen or Sloan letters). If you do not read the Latin alphabet, or if you are taking a commercial driver's license (CDL) medical exam, you will likely encounter the Tumbling-E chart. Our online screener supports both modes.
@@ -64,8 +80,9 @@ const howToSchema = {
 
         <h2>Is this a replacement for a doctor?</h2>
         <p>
-          No. This eye test chart is a practice screening tool only. If you struggle to read the 20/40 line, or notice blurriness, schedule an appointment with an optometrist. 
+          No. This eye test chart is a practice screening tool only. If you struggle to read the 20/40 line, or notice blurriness, schedule an appointment with an optometrist.
         </p>
+
         <h2>DMV Vision Screening Practice</h2>
         <p>
           <strong>Practicing for the DMV?</strong> Prepare for your driving license vision exam with our <a href="/us/">free DMV practice test</a>, designed to simulate counter screening machines.
@@ -73,6 +90,14 @@ const howToSchema = {
         <p>
           <strong>Check your state's requirements:</strong> Acuity cutoffs and restricted license policies differ by state. <a href="/states/">Check your state's requirements</a> across all 50 US states and DC.
         </p>
+      </div>
+
+      <div style="margin-top: 50px;">
+        <div class="dark-ink-panel">
+          <h2 style="font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin-bottom: 12px;">Ready to test your vision?</h2>
+          <p>Calibrate your screen and practice the vision checks in 10 minutes.</p>
+          <a class="btn btn-primary btn-lg" href="/#screener">Start free check</a>
+        </div>
       </div>
     </div>
   </SiteShell>

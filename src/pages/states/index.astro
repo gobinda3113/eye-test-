@@ -50,29 +50,43 @@ const sortedStates = [...STATES].sort((a, b) => a.name.localeCompare(b.name));
 <Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={jsonLd}>
   <SiteShell locale="en" page="home">
     <div class="container section">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Online Vision Test</a></li>
+          <li><a href="/us/">DMV Practice</a></li>
+          <li aria-current="page">States</li>
+        </ol>
+      </nav>
+
       <div class="simple-hero">
+        <div class="eyebrow">State Index</div>
         <h1>DMV Eye Test Requirements by State</h1>
         <p>
           Every US state sets its own vision standards for obtaining or renewing a driver's license. While most states require <strong>20/40 visual acuity</strong> for an unrestricted license, renewal schedules, restricted license thresholds, and field of vision requirements vary nationwide. Select your state below to review specific requirements and practice the test online.
         </p>
-        <p style="margin-top: 1rem;">
+        <p style="margin-top: 20px;">
           <a class="btn btn-primary" href="/us/">Practice the US DMV Eye Test</a>
         </p>
       </div>
 
-      <div style="margin-top: 40px;">
-        <h2>All 50 States and DC</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 20px;">
+      <div style="margin-top: 36px;">
+        <h2 style="font-size: 22px; margin-bottom: 16px;">All 50 States and DC</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px;">
           {sortedStates.map((s) => {
             const slug = s.name.toLowerCase().replace(/ /g, "-");
             return (
               <a
                 href={`/states/${slug}/`}
-                style="display: block; padding: 16px 20px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: inherit; transition: border-color 0.2s;"
+                style="display: flex; flex-direction: column; justify-content: space-between; padding: 18px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); text-decoration: none; color: inherit; transition: border-color 0.15s, background 0.15s;"
+                onmouseover="this.style.background='var(--surface-2)'; this.style.borderColor='var(--border-strong)'"
+                onmouseout="this.style.background='var(--surface)'; this.style.borderColor='var(--border)'"
               >
-                <div style="font-weight: 700; font-size: 1.05rem; color: var(--text);">{s.name}</div>
-                <div style="font-size: 0.875rem; color: var(--muted); margin-top: 4px;">
-                  Min Acuity: <strong>{s.min}</strong> ({s.need === "both" ? "both eyes" : "better eye"})
+                <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+                  <strong style="font-size: 16px; color: var(--text);">{s.name}</strong>
+                  <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--muted); background: var(--surface-2); border: 1px solid var(--border); padding: 2px 6px; border-radius: var(--r-xs);">{s.code}</span>
+                </div>
+                <div style="font-size: 13px; color: var(--muted); margin-top: 10px;">
+                  Min Acuity: <strong style="color: var(--text); font-family: var(--font-display); font-size: 15px;">{s.min}</strong> ({s.need === "both" ? "both eyes" : "better eye"})
                 </div>
               </a>
             );
@@ -80,7 +94,16 @@ const sortedStates = [...STATES].sort((a, b) => a.name.localeCompare(b.name));
         </div>
       </div>
 
-      <div class="prose" style="margin-top: 50px; max-width: 700px;">
+      <div class="snellen-divider" aria-hidden="true" style="margin: 40px 0;">
+        <span class="snellen-motif">
+          <span class="m-1">E</span>
+          <span class="m-2">F P</span>
+          <span class="m-3">T O Z</span>
+          <span class="m-4">L P E D</span>
+        </span>
+      </div>
+
+      <div class="prose" style="max-width: 72ch;">
         <h2>Common Questions About State DMV Vision Tests</h2>
         <h3>What if my vision is worse than 20/40?</h3>
         <p>

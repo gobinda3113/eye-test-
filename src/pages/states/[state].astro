@@ -34,11 +34,6 @@ const pageSchema = {
   "inLanguage": "en"
 };
 
-
-
-
-
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -69,29 +64,53 @@ const faqSchema = {
     }
   ]
 };
-
 ---
 
 <Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Online Vision Test</a></li>
+          <li><a href="/states/">States</a></li>
+          <li aria-current="page">{stateData.name}</li>
+        </ol>
+      </nav>
+
       <div class="simple-hero">
+        <div class="eyebrow">State Requirements</div>
         <h1>DMV Eye Test Online: {stateData.name}</h1>
         <p>Preparing for your <strong>{stateData.name}</strong> driver's license renewal? The minimum visual acuity requirement in {stateData.name} is {stateData.min} in {stateData.need === "both" ? "both eyes" : "at least one eye"}.</p>
-        <p>
+        <p style="margin-top: 20px;">
           <a class="btn btn-primary" href="/us/#screener">Practice the US DMV Test Online</a>
         </p>
       </div>
 
-      <div class="prose" style="margin-top: 40px; max-width: 600px;">
+      <div class="prose" style="max-width: 72ch;">
         <h2>Vision Requirements for {stateData.name}</h2>
-        <ul>
-          <li><strong>Standard Requirement:</strong> {stateData.min}</li>
-          <li><strong>Restricted License:</strong> {stateData.restrict ? `Possible down to ${stateData.restrict}` : "Not generally permitted below the minimum."}</li>
-          <li><strong>Tested During Renewal:</strong> {stateData.renewal === "every" ? "Every renewal cycle" : stateData.renewal === "alternate" ? "Every other renewal cycle" : "Depending on age or longer renewal cycles."}</li>
-          {stateData.verified && stateData.field && <li><strong>Field of Vision:</strong> {stateData.field}</li>}
-        </ul>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 20px 24px; margin: 16px 0 24px;">
+          <ul style="margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px;">
+            <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
+              <span>Standard Requirement:</span>
+              <strong style="font-family: var(--font-display); font-size: 17px; color: var(--text);">{stateData.min}</strong>
+            </li>
+            <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
+              <span>Restricted License:</span>
+              <strong>{stateData.restrict ? `Possible down to ${stateData.restrict}` : "Not generally permitted below minimum"}</strong>
+            </li>
+            <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
+              <span>Tested During Renewal:</span>
+              <span>{stateData.renewal === "every" ? "Every renewal cycle" : stateData.renewal === "alternate" ? "Every other renewal cycle" : "Depending on age or longer cycles"}</span>
+            </li>
+            {stateData.verified && stateData.field && (
+              <li style="display: flex; justify-content: space-between;">
+                <span>Field of Vision:</span>
+                <strong>{stateData.field}</strong>
+              </li>
+            )}
+          </ul>
+        </div>
 
         {stateData.dmvUrl && (
           <p>
@@ -103,6 +122,7 @@ const faqSchema = {
         <p>
           Failing the eye test at the counter can delay your license. By calibrating your screen and standing at the correct distance, you can simulate the exact visual acuity check you will face. Our free practice screener takes about 10 minutes and includes the Tumbling-E and color blindness checks frequently used by licensing offices.
         </p>
+
         <h2>Related States in the {stateData.region}</h2>
         <p>Vision requirements and DMV eye test standards for other states in the {stateData.region} region:</p>
         <ul>
@@ -115,7 +135,7 @@ const faqSchema = {
           ))}
         </ul>
 
-        <div style="margin-top: 24px; padding: 16px; background: var(--bg-elev); border-radius: var(--r-md); border: 1px solid var(--border);">
+        <div style="margin-top: 32px; padding: 20px 24px; background: var(--surface); border-radius: var(--r-sm); border: 1px solid var(--border);">
           <p style="margin: 0 0 8px 0;">Looking for other state requirements? <a href="/states/">Browse vision requirements in all 50 states</a>.</p>
           <p style="margin: 0;">Getting ready for your test? <a href="/us/">Practice the US DMV eye test online</a>.</p>
         </div>
