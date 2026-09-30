@@ -23,6 +23,7 @@ import {
 } from "../scripts/data.ts";
 import { seoFor } from "../data/seo.ts";
 import { SITE } from "../lib/site.ts";
+import "../styles/landing.css";
 
 const { locale = "en", variant = "generic" } = Astro.props;
 
@@ -128,155 +129,174 @@ const howToSchema = {
 
 <div class="grain" aria-hidden="true"></div>
 
-<header class="site-header" id="siteHeader">
-  <div class="header-inner">
-    <a class="brand" href="#top" aria-label="Online Vision Test home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
-          <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
-          <path d="M11.4 20.2 20.6 11.8" stroke="var(--brand-mark-slash, #fff)" stroke-width="1.5" stroke-linecap="round" opacity=".85"/>
-        </svg>
-      </span>
-      <span class="brand-text"><b>Online</b>Vision<span class="brand-tld">Test</span></span>
-    </a>
-
-    <nav class="header-nav" id="headerNav" aria-label="Main">
-      <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
-      <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
-      <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
-      <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
-    </nav>
-
-    <div class="header-tools">
-      <label class="lang-wrap" title="Language">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
-        <select id="langSelect" aria-label="Language" data-current={locale}>
-          <option value="en" selected={locale === "en"}>English</option>
-          <option value="es" selected={locale === "es"}>Español</option>
-          <option value="fr" selected={locale === "fr"}>Français</option>
-          <option value="de" selected={locale === "de"}>Deutsch</option>
-          <option value="pt" selected={locale === "pt"}>Português</option>
-          <option value="it" selected={locale === "it"}>Italiano</option>
-          <option value="ja" selected={locale === "ja"}>日本語</option>
-          <option value="ru" selected={locale === "ru"}>Русский</option>
-        </select>
-      </label>
-      <button class="icon-btn" id="themeBtn" type="button" aria-label={d("a11y.theme")} data-i18n-attr="aria-label:a11y.theme">
-        <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
-        <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
-      </button>
-      <a class="btn btn-primary btn-sm header-cta" href="#screener" data-i18n="nav.cta">{d("nav.cta")}</a>
-      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label={d("a11y.menu")} aria-expanded="false" data-i18n-attr="aria-label:a11y.menu">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
-      </button>
-    </div>
-  </div>
-  <div class="mobile-nav" id="mobileNav" hidden>
-    <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
-    <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
-    <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
-    <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
-  </div>
-</header>
-
-<main id="top" data-variant={isUS ? "us" : "generic"}>
-
-  {isUS && (
-    <div class="container" style="padding-top: 20px;">
-      <p class="kicker">{d("us.banner")} <a href="/" style="color: var(--primary); text-decoration: underline; text-underline-offset: 3px;">{d("us.banner.back")}</a></p>
-      <p class="section-sub" style="margin-top: 4px;">{d("us.distance.note")}</p>
-    </div>
-  )}
-
+<div class="home-page site-shell" id="top">
   <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow">
-          <span data-i18n="hero.eyebrow">{d("hero.eyebrow")}</span>
-        </div>
-        <h1 data-i18n-html={heroTitleKey} set:html={d(heroTitleKey)}></h1>
-        <p class="lede" data-i18n={K("hero.lede")}>{d(K("hero.lede"))}</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="#screener">
-            <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+    <div class="hero-image" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <header class="site-header page-pad" id="siteHeader">
+      <div class="header-inner">
+        <a class="brand wordmark" href="#top" aria-label="Online Vision Test home">
+          <span class="brand-mark logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+              <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
+              <path d="M11.4 20.2 20.6 11.8" stroke="var(--brand-mark-slash, #fff)" stroke-width="1.5" stroke-linecap="round" opacity=".85"/>
+            </svg>
+          </span>
+          <span class="brand-text">Online<span class="wordmark-light">Vision</span>Test<span class="wordmark-dot">.</span></span>
+        </a>
+
+        <nav class="header-nav nav-links" id="headerNav" aria-label="Main">
+          <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
+          <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
+          <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
+          <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
+        </nav>
+
+        <div class="header-tools">
+          <label class="lang-wrap" title="Language">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+            <select id="langSelect" aria-label="Language" data-current={locale}>
+              <option value="en" selected={locale === "en"}>English</option>
+              <option value="es" selected={locale === "es"}>Español</option>
+              <option value="fr" selected={locale === "fr"}>Français</option>
+              <option value="de" selected={locale === "de"}>Deutsch</option>
+              <option value="pt" selected={locale === "pt"}>Português</option>
+              <option value="it" selected={locale === "it"}>Italiano</option>
+              <option value="ja" selected={locale === "ja"}>日本語</option>
+              <option value="ru" selected={locale === "ru"}>Русский</option>
+            </select>
+          </label>
+          <button class="icon-btn" id="themeBtn" type="button" aria-label={d("a11y.theme")} data-i18n-attr="aria-label:a11y.theme">
+            <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+            <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+          </button>
+          <a class="nav-cta" href="#screener" data-i18n="nav.cta">
+            <span>{d("nav.cta")}</span>
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </a>
-          <a class="hero-text-link" href="#checks">
-            <span data-i18n="hero.cta2">{d("hero.cta2")}</span>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-        <div class="hero-meta">
-          <p class="hero-trust-line">
-            <span data-i18n="hero.trust1">{d("hero.trust1")}</span>
-            <span class="sep" aria-hidden="true">·</span>
-            <span data-i18n="hero.trust2">{d("hero.trust2")}</span>
-            <span class="sep" aria-hidden="true">·</span>
-            <span data-i18n="hero.trust3">{d("hero.trust3")}</span>
-          </p>
-          <p class="hero-note" data-i18n="hero.note">{d("hero.note")}</p>
+          <button class="icon-btn menu-btn menu-toggle" id="menuBtn" type="button" aria-label={d("a11y.menu")} aria-expanded="false" data-i18n-attr="aria-label:a11y.menu">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
+          </button>
         </div>
       </div>
+      <div class="mobile-nav" id="mobileNav" hidden>
+        <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
+        <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
+        <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
+        <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
+      </div>
+    </header>
 
-      <div class="hero-visual">
-        <div class="chart-card" id="heroChartCard">
-          <div class="chart-card-head">
-            <span class="card-label" data-i18n="hero.chartLabel">{d("hero.chartLabel")}</span>
-            <span class="chart-bench-indicator" data-i18n="hero.chartPill">{d("hero.chartPill")}</span>
+    {isUS && (
+      <div class="page-pad" style="padding-top: 16px; position: relative; z-index: 5;">
+        <p class="hero-kicker"><span class="kicker-line"></span> {d("us.banner")} <a href="/" style="color: #badc7b; text-decoration: underline; margin-left: 8px;">{d("us.banner.back")}</a></p>
+        <p style="color: #b7cac1; font-size: 13px; margin: 4px 0 0 44px;">{d("us.distance.note")}</p>
+      </div>
+    )}
+
+    <div class="hero-content page-pad">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker">
+            <span class="kicker-line"></span>
+            <span data-i18n="hero.eyebrow">{d("hero.eyebrow")}</span>
           </div>
-          <div class="chart-lines" id="heroChart" aria-hidden="true"></div>
-          <div class="chart-card-foot">
-            <span class="mini">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/></svg>
-              <span data-i18n="hero.calibrated">{d("hero.calibrated")}</span>
-            </span>
-            <span class="mini">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-7 4 4.5L21 6"/></svg>
-              <span data-i18n="hero.distance">{d("hero.distance")}</span>
-            </span>
+          <h1 data-i18n-html={heroTitleKey} set:html={d(heroTitleKey)}></h1>
+          <p class="lede" data-i18n={K("hero.lede")}>{d(K("hero.lede"))}</p>
+          <div class="hero-actions">
+            <a class="button button-lime" href="#screener">
+              <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a class="text-link light" href="#how">
+              <span data-i18n="hero.cta2">{d("hero.cta2")}</span>
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="hero-meta">
+            <p class="hero-trust-line">
+              <span data-i18n="hero.trust1">{d("hero.trust1")}</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <span data-i18n="hero.trust2">{d("hero.trust2")}</span>
+              <span class="sep" aria-hidden="true">·</span>
+              <span data-i18n="hero.trust3">{d("hero.trust3")}</span>
+            </p>
+            <p class="hero-note" data-i18n="hero.note">{d("hero.note")}</p>
           </div>
         </div>
-        <div class="chart-sub-strip">
-          <div class="strip-item">
-            <span class="strip-num">20/40</span>
-            <span class="strip-desc" data-i18n={K("hero.badgeA")}>{d(K("hero.badgeA"))}</span>
+
+        <div class="hero-visual">
+          <div class="chart-card" id="heroChartCard">
+            <div class="chart-card-head">
+              <span class="card-label" data-i18n="hero.chartLabel">{d("hero.chartLabel")}</span>
+              <span class="chart-bench-indicator" data-i18n="hero.chartPill">{d("hero.chartPill")}</span>
+            </div>
+            <div class="chart-lines" id="heroChart" aria-hidden="true"></div>
+            <div class="chart-card-foot">
+              <span class="mini">
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/></svg>
+                <span data-i18n="hero.calibrated">{d("hero.calibrated")}</span>
+              </span>
+              <span class="mini">
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-7 4 4.5L21 6"/></svg>
+                <span data-i18n="hero.distance">{d("hero.distance")}</span>
+              </span>
+            </div>
           </div>
-          <div class="strip-item">
-            <span class="strip-num" data-i18n="hero.badgeBTitle">{d("hero.badgeBTitle")}</span>
-            <span class="strip-desc" data-i18n="hero.badgeB">{d("hero.badgeB")}</span>
+          <div class="chart-sub-strip">
+            <div class="strip-item">
+              <span class="strip-num">20/40</span>
+              <span class="strip-desc" data-i18n={K("hero.badgeA")}>{d(K("hero.badgeA"))}</span>
+            </div>
+            <div class="strip-item">
+              <span class="strip-num" data-i18n="hero.badgeBTitle">{d("hero.badgeBTitle")}</span>
+              <span class="strip-desc" data-i18n="hero.badgeB">{d("hero.badgeB")}</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="hero-bottom page-pad">
+      <span>NO SIGNUP. NO PRESSURE. JUST PERSPECTIVE.</span>
+      <a href="#how" aria-label="Scroll to how it works">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <main data-variant={isUS ? "us" : "generic"}>
+    <section class="stat-section page-pad">
       <ul class="stat-strip">
         <li><b>{isUS ? "12" : "11"}</b><span data-i18n="stats.checks">{d("stats.checks")}</span></li>
         <li><b>20/40</b><span data-i18n="stats.bench">{d("stats.bench")}</span></li>
         <li><b>8</b><span data-i18n="stats.langs">{d("stats.langs")}</span></li>
       </ul>
-    </div>
-  </section>
-
-  {!isUS && locale === "en" && (
-    <section class="section" id="us-test">
-      <div class="container">
-        <div style="border: 1px solid var(--border); border-radius: var(--r); padding: 26px 28px; background: var(--surface);">
-          <span class="check-meta" style="margin-bottom: 10px; display: inline-block;">US PRACTICE</span>
-          <h2 style="font-size: 22px; margin-bottom: 6px;">{d("us.card.title")}</h2>
-          <p style="color: var(--text-2); margin-bottom: 18px; font-size: 15px;">{d("us.card.body")}</p>
-          <p><a class="btn btn-primary btn-sm" href="/us/">{d("us.card.cta")}</a></p>
-        </div>
-      </div>
     </section>
-  )}
 
-  {isUS && (
-    <section class="section" id="states">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker" data-i18n="states.kicker">{d("states.kicker")}</p>
+    {!isUS && locale === "en" && (
+      <section class="section-us-callout page-pad" id="us-test">
+        <div class="us-card-panel">
+          <span class="check-category">US PRACTICE</span>
+          <h2>{d("us.card.title")}</h2>
+          <p>{d("us.card.body")}</p>
+          <a class="button button-dark" href="/us/">
+            <span>{d("us.card.cta")}</span>
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+        </div>
+      </section>
+    )}
+
+    {isUS && (
+      <section class="states-section page-pad" id="states">
+        <div class="section-label">
+          <span class="label-dot"></span>
+          <span data-i18n="states.kicker">{d("states.kicker")}</span>
+        </div>
+        <div class="section-head" style="margin-top: 20px;">
           <h2 data-i18n="states.title">{d("states.title")}</h2>
           <p class="section-sub" data-i18n="states.sub">{d("states.sub")}</p>
           <p class="section-sub" style="margin-top:0.5rem; color:var(--muted); font-size:0.9rem;">
@@ -311,69 +331,85 @@ const howToSchema = {
           </div>
           <p class="table-foot" data-i18n="states.foot">{d("states.foot")}</p>
         </div>
+      </section>
+    )}
+
+    <section class="intro-section page-pad" id="how">
+      <div class="section-label">
+        <span class="label-dot"></span>
+        <span data-i18n="how.kicker">{d("how.kicker")}</span>
+        <span class="label-number">01 / 04</span>
+      </div>
+      <div class="intro-grid">
+        <div class="intro-heading">
+          <h2 data-i18n="how.title">{d("how.title")}</h2>
+          <p data-i18n="how.sub">{d("how.sub")}</p>
+          <a class="underlined-link" href="#screener">
+            <span>{d("nav.cta")}</span>
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+        </div>
+        <div class="steps-list">
+          <div class="step-row">
+            <span>01</span>
+            <div>
+              <h3 data-i18n="how.s1t">{d("how.s1t")}</h3>
+              <p data-i18n="how.s1b">{d("how.s1b")}</p>
+            </div>
+            <svg class="step-arrow ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </div>
+          <div class="step-row">
+            <span>02</span>
+            <div>
+              <h3 data-i18n="how.s2t">{d("how.s2t")}</h3>
+              <p data-i18n="how.s2b">{d("how.s2b")}</p>
+            </div>
+            <svg class="step-arrow ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </div>
+          <div class="step-row">
+            <span>03</span>
+            <div>
+              <h3 data-i18n="how.s3t">{d("how.s3t")}</h3>
+              <p data-i18n="how.s3b">{d("how.s3b")}</p>
+            </div>
+            <svg class="step-arrow ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </div>
+          <div class="step-row">
+            <span>04</span>
+            <div>
+              <h3 data-i18n="how.s4t">{d("how.s4t")}</h3>
+              <p data-i18n="how.s4b">{d("how.s4b")}</p>
+            </div>
+            <svg class="step-arrow ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </div>
+        </div>
       </div>
     </section>
-  )}
 
-  <section class="section" id="how">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker" data-i18n="how.kicker">{d("how.kicker")}</p>
-        <h2 data-i18n="how.title">{d("how.title")}</h2>
-        <p class="section-sub" data-i18n="how.sub">{d("how.sub")}</p>
+    <div class="snellen-wrap page-pad" aria-hidden="true">
+      <div class="snellen-divider">
+        <span class="snellen-motif">
+          <span class="m-1">E</span>
+          <span class="m-2">F P</span>
+          <span class="m-3">T O Z</span>
+          <span class="m-4">L P E D</span>
+        </span>
       </div>
-      <ol class="how-timeline">
-        <li class="how-step">
-          <span class="how-step-num">01</span>
-          <div class="how-step-body">
-            <h3 data-i18n="how.s1t">{d("how.s1t")}</h3>
-            <p data-i18n="how.s1b">{d("how.s1b")}</p>
-          </div>
-        </li>
-        <li class="how-step">
-          <span class="how-step-num">02</span>
-          <div class="how-step-body">
-            <h3 data-i18n="how.s2t">{d("how.s2t")}</h3>
-            <p data-i18n="how.s2b">{d("how.s2b")}</p>
-          </div>
-        </li>
-        <li class="how-step">
-          <span class="how-step-num">03</span>
-          <div class="how-step-body">
-            <h3 data-i18n="how.s3t">{d("how.s3t")}</h3>
-            <p data-i18n="how.s3b">{d("how.s3b")}</p>
-          </div>
-        </li>
-        <li class="how-step">
-          <span class="how-step-num">04</span>
-          <div class="how-step-body">
-            <h3 data-i18n="how.s4t">{d("how.s4t")}</h3>
-            <p data-i18n="how.s4b">{d("how.s4b")}</p>
-          </div>
-        </li>
-      </ol>
     </div>
-  </section>
 
-  <div class="container" aria-hidden="true">
-    <div class="snellen-divider">
-      <span class="snellen-motif">
-        <span class="m-1">E</span>
-        <span class="m-2">F P</span>
-        <span class="m-3">T O Z</span>
-        <span class="m-4">L P E D</span>
-      </span>
-    </div>
-  </div>
-
-  <section class="section section-checks" id="checks">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker" data-i18n="checks.kicker">{d("checks.kicker")}</p>
-        <h2 data-i18n={K("checks.title")}>{d(K("checks.title"))}</h2>
-        <p class="section-sub" data-i18n="checks.sub">{d("checks.sub")}</p>
+    <section class="checks-section page-pad" id="checks">
+      <div class="section-label">
+        <span class="label-dot"></span>
+        <span data-i18n="checks.kicker">{d("checks.kicker")}</span>
+        <span class="label-number">02 / 04</span>
       </div>
-      <div class="check-index" id="checkGrid">
+      <div class="checks-heading">
+        <div>
+          <h2 data-i18n={K("checks.title")}>{d(K("checks.title"))}</h2>
+        </div>
+        <p data-i18n="checks.sub">{d("checks.sub")}</p>
+      </div>
+      <div class="check-list" id="checkGrid">
         {checkList.map((c, idx) => {
           const num = String(idx + 1).padStart(2, "0");
           return (
@@ -383,28 +419,35 @@ const howToSchema = {
               data-test={c.test}
               aria-label={`${d(`checks.${c.id}.name`)} — ${d("checks.open")}`}
             >
-              <span class="check-num">{num}</span>
-              <div class="check-main">
-                <strong class="check-name">{d(`checks.${c.id}.name`)}</strong>
-                <p class="check-desc">{d(`checks.${c.id}.desc`)}</p>
-              </div>
-              <span class="check-meta">{c.tag}</span>
-              <span class="check-action" aria-hidden="true">
-                <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+              <span class="check-index">{num}</span>
+              <span class="check-name">{d(`checks.${c.id}.name`)}</span>
+              <span class="check-description">{d(`checks.${c.id}.desc`)}</span>
+              <span class="check-category">{c.tag}</span>
+              <span class="check-arrow" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
               </span>
             </button>
           );
         })}
       </div>
-    </div>
-  </section>
+      <a class="button button-dark checks-button" href="#screener">
+        <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </section>
 
-  <section class="section section-screener" id="screener">
-    <div class="container">
-      <div class="section-head section-head-light">
-        <p class="kicker" data-i18n="lab.kicker">{d("lab.kicker")}</p>
-        <h2 data-i18n="lab.title">{d("lab.title")}</h2>
-        <p class="section-sub" data-i18n="lab.sub">{d("lab.sub")}</p>
+    <!-- The Eye Testing Tool: DO NOT MODIFY DESIGN OR FUNCTIONALITY -->
+    <section class="screener-section page-pad" id="screener">
+      <div class="section-label section-label-light">
+        <span class="label-dot"></span>
+        <span data-i18n="lab.kicker">{d("lab.kicker")}</span>
+        <span class="label-number">03 / 04</span>
+      </div>
+      <div class="screener-heading">
+        <div>
+          <h2 data-i18n="lab.title">{d("lab.title")}</h2>
+        </div>
+        <p data-i18n="lab.sub">{d("lab.sub")}</p>
       </div>
 
       <div class="lab" id="lab">
@@ -426,15 +469,21 @@ const howToSchema = {
         <div class="lab-foot" id="labFoot"></div>
         <noscript><p class="stage-sub">{d("lab.ready")}</p></noscript>
       </div>
-    </div>
-  </section>
 
-  <section class="section section-refs" id="reference">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker" data-i18n="refs.kicker">{d("refs.kicker")}</p>
+      <div class="screener-foot">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width: 19px; height: 19px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Private by design. No account, no upload, no pressure.</span>
+      </div>
+    </section>
+
+    <section class="refs-section page-pad" id="reference">
+      <div class="section-label">
+        <span class="label-dot"></span>
+        <span data-i18n="refs.kicker">{d("refs.kicker")}</span>
+      </div>
+      <div class="refs-heading">
         <h2 data-i18n="refs.title">{d("refs.title")}</h2>
-        <p class="section-sub" data-i18n="refs.sub">{d("refs.sub")}</p>
+        <p data-i18n="refs.sub">{d("refs.sub")}</p>
       </div>
       <div class="ref-grid" id="refGrid">
         {REFS.map((r) => (
@@ -444,7 +493,7 @@ const howToSchema = {
             <p>{d("refs." + r.id + ".b")}</p>
             <span class="ref-go">
               {new URL(r.url).hostname.replace(/^www\./, "")}
-              <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </span>
           </a>
         ))}
@@ -469,109 +518,114 @@ const howToSchema = {
           </div>
         )}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker" data-i18n="faq.kicker">{d("faq.kicker")}</p>
-        <h2 data-i18n="faq.title">{d("faq.title")}</h2>
+    <section class="faq-section page-pad" id="faq">
+      <div class="section-label">
+        <span class="label-dot"></span>
+        <span data-i18n="faq.kicker">{d("faq.kicker")}</span>
+        <span class="label-number">04 / 04</span>
       </div>
-      <div class="faq-list" id="faqList">
-        {faqNums.map((n) => (
-          <details class="faq-item">
-            <summary>{d(`faq.q${n}`)}</summary>
-            <div class="faq-body">{d(`faq.a${n}`)}</div>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  {meta.body && meta.body.length > 0 && (
-    <section class="section" id="guide">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">{isUS ? "DMV Reference Guide" : d("nav.start")}</p>
-          <h2>{meta.articleTitle || (isUS ? "DMV Vision Guide" : d("nav.start"))}</h2>
+      <div class="faq-grid">
+        <div>
+          <h2 data-i18n="faq.title">{d("faq.title")}</h2>
+          <p>It's your eyesight. You deserve to know what this tool can, and cannot, tell you.</p>
         </div>
+        <div class="faq-list" id="faqList">
+          {faqNums.map((n) => (
+            <details class="faq-item">
+              <summary>
+                <span>{d(`faq.q${n}`)}</span>
+              </summary>
+              <div class="faq-body"><p>{d(`faq.a${n}`)}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {meta.body && meta.body.length > 0 && (
+      <section class="guide-section page-pad" id="guide">
+        <div class="section-label">
+          <span class="label-dot"></span>
+          <span>{isUS ? "DMV Reference Guide" : d("nav.start")}</span>
+        </div>
+        <h2>{meta.articleTitle || (isUS ? "DMV Vision Guide" : d("nav.start"))}</h2>
         <article class="prose" style="max-width: 800px;">
           {meta.body.map((sec) => (
             <div style="margin-bottom: 28px;">
-              <h3 style="margin-bottom: 8px;">{sec.h}</h3>
+              <h3>{sec.h}</h3>
               <p>{sec.p}</p>
             </div>
           ))}
         </article>
-      </div>
-    </section>
-  )}
+      </section>
+    )}
 
-  <section class="section" id="final-cta" style="border-bottom: 0;">
-    <div class="container">
-      <div class="dark-ink-panel">
-        <h2 style="font-size: clamp(1.8rem, 2.8vw, 2.5rem); margin-bottom: 12px;">{d("lab.title")}</h2>
-        <p>{d("lab.sub")}</p>
-        <a class="btn btn-primary btn-lg" href="#screener">
-          <span>{d("nav.cta")}</span>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+    <section class="end-section page-pad" id="final-cta" style="border-bottom: 0;">
+      <div class="end-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="end-content">
+        <span class="end-eyebrow">A BETTER VIEW BEGINS HERE</span>
+        <h2 data-i18n="lab.title">{d("lab.title")}</h2>
+        <p data-i18n="lab.sub">{d("lab.sub")}</p>
+        <a class="button button-lime" href="#screener">
+          <span data-i18n="nav.cta">{d("nav.cta")}</span>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <a class="brand" href="#top">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1"/>
-            <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
-          </svg>
-        </span>
-        <span class="brand-text"><b>Online</b>Vision<span class="brand-tld">Test</span></span>
-      </a>
-      <p data-i18n={K("footer.tagline")}>{d(K("footer.tagline"))}</p>
-      <p class="footer-langs" data-i18n="footer.langs">{d("footer.langs")}</p>
+  <footer class="site-footer page-pad">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand wordmark dark-wordmark" href="#top">
+          <span class="brand-mark logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1"/>
+              <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="brand-text">Online<span class="wordmark-light">Vision</span>Test<span class="wordmark-dot">.</span></span>
+        </a>
+        <p data-i18n={K("footer.tagline")}>{d(K("footer.tagline"))}</p>
+        <p class="footer-langs" data-i18n="footer.langs">{d("footer.langs")}</p>
+      </div>
+      <nav class="footer-col" aria-label={d("footer.c1")}>
+        <h3 data-i18n="footer.c1">{d("footer.c1")}</h3>
+        <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+        <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+        <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
+        <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+        <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
+        <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+        <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+        <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+        <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+      </nav>
+      <nav class="footer-col" aria-label={d("footer.c2")}>
+        <h3 data-i18n="footer.c2">{d("footer.c2")}</h3>
+        <a href="/eye-test-chart/">{fl.chart}</a>
+        <a href="/us/">{fl.us}</a>
+        <a href="/states/">{fl.states}</a>
+        <a href={blogHref} data-i18n="nav.blog">{fl.blog}</a>
+        <a href="#faq" data-i18n="footer.g4">{d("footer.g4")}</a>
+        <a href="#reference" data-i18n="refs.kicker">{d("refs.kicker")}</a>
+      </nav>
+      <div class="footer-col">
+        <h3 data-i18n="footer.c3">{d("footer.c3")}</h3>
+        <p data-i18n="footer.p1">{d("footer.p1")}</p>
+      </div>
     </div>
-    <nav class="footer-col" aria-label={d("footer.c1")}>
-      <h3 data-i18n="footer.c1">{d("footer.c1")}</h3>
-      <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-      <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-      <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
-      <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-      <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
-      <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-      <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-      <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-      <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
-    </nav>
-    <nav class="footer-col" aria-label={d("footer.c2")}>
-      <h3 data-i18n="footer.c2">{d("footer.c2")}</h3>
-      <a href="/eye-test-chart/">{fl.chart}</a>
-      <a href="/us/">{fl.us}</a>
-      <a href="/states/">{fl.states}</a>
-      <a href={blogHref} data-i18n="nav.blog">{fl.blog}</a>
-      <a href="#faq" data-i18n="footer.g4">{d("footer.g4")}</a>
-      <a href="#reference" data-i18n="refs.kicker">{d("refs.kicker")}</a>
-    </nav>
-    <div class="footer-col">
-      <h3 data-i18n="footer.c3">{d("footer.c3")}</h3>
-      <p data-i18n="footer.p1">{d("footer.p1")}</p>
+    <div class="footer-bottom">
+      <div class="disclaimer" role="note" aria-label="Medical and legal notice">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 19H3l9-15.5Z"/><path d="M12 10v4.2M12 16.6v.1"/></svg>
+        <p data-i18n="footer.disclaimer">{d("footer.disclaimer")}</p>
+      </div>
+      <p class="copyright"><span id="year">2026</span> <span data-i18n="footer.copy">{d("footer.copy")}</span></p>
     </div>
-  </div>
-  <div class="container">
-    <div class="disclaimer" role="note" aria-label="Medical and legal notice">
-      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 19H3l9-15.5Z"/><path d="M12 10v4.2M12 16.6v.1"/></svg>
-      <p data-i18n="footer.disclaimer">{d("footer.disclaimer")}</p>
-    </div>
-    <p class="copyright"><span id="year"></span> <span data-i18n="footer.copy">{d("footer.copy")}</span></p>
-  </div>
-</footer>
+  </footer>
+</div>
 
 <script>
   import "../scripts/app.ts";
