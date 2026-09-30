@@ -8,49 +8,70 @@ import fsSync from "fs";
 // so there is exactly one place to change if the domain moves.
 const mtimeCache = {};
 
-function getFileMtime(filepath) {
-  if (mtimeCache[filepath]) return mtimeCache[filepath];
+function getFileMtime(filepaths) {
+  if (!filepaths) return new Date().toISOString();
+  const files = Array.isArray(filepaths) ? filepaths : [filepaths];
+  const key = files.join(";");
+  if (mtimeCache[key]) return mtimeCache[key];
   try {
-    const stdout = execSync(`git log -1 --format=%cI -- "${filepath}"`, { encoding: 'utf8' }).trim();
+    const fileArgs = files.map((f) => `"${f}"`).join(" ");
+    const stdout = execSync(`git log -1 --format=%cI -- ${fileArgs}`, { encoding: "utf8" }).trim();
     if (stdout) {
-      mtimeCache[filepath] = stdout;
+      mtimeCache[key] = stdout;
       return stdout;
     }
   } catch(e) {}
   try {
-     const stat = fsSync.statSync(filepath);
-     const d = stat.mtime.toISOString();
-     mtimeCache[filepath] = d;
-     return d;
+    let maxTime = 0;
+    for (const f of files) {
+      try {
+        const stat = fsSync.statSync(f);
+        if (stat.mtimeMs > maxTime) maxTime = stat.mtimeMs;
+      } catch(e) {}
+    }
+    if (maxTime > 0) {
+      const d = new Date(maxTime).toISOString();
+      mtimeCache[key] = d;
+      return d;
+    }
   } catch(e) {}
-  mtimeCache[filepath] = new Date().toISOString();
-  return mtimeCache[filepath];
+  mtimeCache[key] = new Date().toISOString();
+  return mtimeCache[key];
 }
 
-function getSourceFile(url) {
+const HOME_DEPS = [
+  "src/components/HomePage.astro",
+  "src/layouts/Layout.astro",
+  "src/styles/landing.css",
+  "src/styles/global.css",
+  "src/scripts/lab.ts",
+  "src/scripts/app.ts",
+];
+
+function getSourceFiles(url) {
   const path = new URL(url).pathname;
-  if (path === '/' || path === '') return 'src/pages/index.astro';
-  if (path === '/us/') return 'src/pages/us/index.astro';
-  if (path === '/eye-test-chart/') return 'src/pages/eye-test-chart.astro';
-  if (path === '/about/') return 'src/pages/about.astro';
-  if (path === '/terms/') return 'src/pages/terms.astro';
-  if (path === '/privacy/') return 'src/pages/privacy.astro';
-  if (path === '/contact/') return 'src/pages/contact.astro';
-  if (path === '/blog/') return 'src/pages/blog/index.astro';
+  if (path === "/" || path === "") return ["src/pages/index.astro", ...HOME_DEPS];
+  if (path === "/us/") return ["src/pages/us/index.astro", ...HOME_DEPS];
+  if (path === "/eye-test-chart/") return ["src/pages/eye-test-chart.astro", "src/scripts/vision.ts", "src/layouts/Layout.astro"];
+  if (path === "/about/") return ["src/pages/about.astro", "src/layouts/Layout.astro"];
+  if (path === "/terms/") return ["src/pages/terms.astro", "src/layouts/Layout.astro"];
+  if (path === "/privacy/") return ["src/pages/privacy.astro", "src/layouts/Layout.astro"];
+  if (path === "/contact/") return ["src/pages/contact.astro", "src/layouts/Layout.astro"];
+  if (path === "/blog/") return ["src/pages/blog/index.astro", "src/data/blog.ts", "src/layouts/Layout.astro"];
   
-  if (path.startsWith('/states/')) return 'src/pages/states/[state].astro';
-  if (path.match(/^\/blog\/[^/]+\/$/)) return 'src/pages/blog/[slug].astro';
+  if (path.startsWith("/states/")) return ["src/pages/states/[state].astro", "src/data/states.ts", "src/layouts/Layout.astro"];
+  if (path.match(/^\/blog\/[^/]+\/$/)) return ["src/pages/blog/[slug].astro", "src/data/blog.ts", "src/components/BlogPost.astro", "src/layouts/Layout.astro"];
   
   const localeMatch = path.match(/^\/([a-z]{2})\/(.*)$/);
   if (localeMatch) {
      const sub = localeMatch[2];
-     if (sub === '' || sub === '/') return 'src/pages/[locale]/index.astro';
-     if (sub === 'about/') return 'src/pages/[locale]/about.astro';
-     if (sub === 'terms/') return 'src/pages/[locale]/terms.astro';
-     if (sub === 'privacy/') return 'src/pages/[locale]/privacy.astro';
-     if (sub === 'contact/') return 'src/pages/[locale]/contact.astro';
-     if (sub === 'blog/') return 'src/pages/[locale]/blog/index.astro';
-     if (sub.startsWith('blog/')) return 'src/pages/[locale]/blog/[slug].astro';
+     if (sub === "" || sub === "/") return ["src/pages/[locale]/index.astro", ...HOME_DEPS];
+     if (sub === "about/") return ["src/pages/[locale]/about.astro", "src/layouts/Layout.astro"];
+     if (sub === "terms/") return ["src/pages/[locale]/terms.astro", "src/layouts/Layout.astro"];
+     if (sub === "privacy/") return ["src/pages/[locale]/privacy.astro", "src/layouts/Layout.astro"];
+     if (sub === "contact/") return ["src/pages/[locale]/contact.astro", "src/layouts/Layout.astro"];
+     if (sub === "blog/") return ["src/pages/[locale]/blog/index.astro", "src/data/blog.ts", "src/layouts/Layout.astro"];
+     if (sub.startsWith("blog/")) return ["src/pages/[locale]/blog/[slug].astro", "src/data/blog.ts", "src/components/BlogPost.astro", "src/layouts/Layout.astro"];
   }
   return null;
 }
@@ -98,9 +119,9 @@ export default defineConfig({
         },
       },
       serialize(item) {
-        const file = getSourceFile(item.url);
-        if (file) {
-           item.lastmod = getFileMtime(file);
+        const files = getSourceFiles(item.url);
+        if (files) {
+           item.lastmod = getFileMtime(files);
         }
         return item;
       },
