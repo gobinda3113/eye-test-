@@ -241,8 +241,14 @@
   height: 17px;
 }
 
-.home-page .menu-toggle {
+.home-page .header-tools .menu-toggle {
   display: none;
+}
+
+@media (min-width: 769px) {
+  .home-page .mobile-nav {
+    display: none !important;
+  }
 }
 
 .home-page .mobile-nav {
@@ -1512,7 +1518,7 @@ html[data-theme="dark"] .home-page .underlined-link {
   .home-page .nav-cta {
     display: none;
   }
-  .home-page .menu-toggle {
+  .home-page .header-tools .menu-toggle {
     display: flex;
   }
   .home-page .mobile-nav {
