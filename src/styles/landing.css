@@ -176,6 +176,10 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+.home-page .lang-wrap .lang-code {
+  display: none;
+}
+
 .home-page .lang-wrap select {
   background: transparent;
   border: 0;
@@ -1501,18 +1505,56 @@ html[data-theme="dark"] .home-page .underlined-link {
     opacity: 0.65;
   }
   .home-page .site-header {
-    height: 78px;
+    height: 72px;
   }
   .home-page .wordmark {
-    font-size: 22px;
+    font-size: clamp(17px, 4.4vw, 20px);
+    letter-spacing: -0.9px;
+    gap: 8px;
+    flex-shrink: 1;
+    min-width: 0;
   }
   .home-page .logo-mark {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
   }
   .home-page .logo-mark svg {
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
+  }
+  .home-page .header-tools {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .home-page .header-tools .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .home-page .header-tools .icon-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+  .home-page .lang-wrap {
+    position: relative;
+    padding: 7px 10px;
+    gap: 5px;
+  }
+  .home-page .lang-wrap .lang-code {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff;
+    line-height: 1;
+  }
+  .home-page .lang-wrap select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
   }
   .home-page .nav-links,
   .home-page .nav-cta {
@@ -1522,7 +1564,7 @@ html[data-theme="dark"] .home-page .underlined-link {
     display: flex;
   }
   .home-page .mobile-nav {
-    top: 78px;
+    top: 72px;
   }
   .home-page .hero-content {
     padding-top: 36px;
@@ -1608,6 +1650,27 @@ html[data-theme="dark"] .home-page .underlined-link {
 }
 
 @media (max-width: 440px) {
+  .page-pad {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .home-page .site-header {
+    height: 66px;
+  }
+  .home-page .wordmark {
+    font-size: 16px;
+    gap: 7px;
+  }
+  .home-page .header-tools {
+    gap: 6px;
+  }
+  .home-page .header-tools .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .home-page .mobile-nav {
+    top: 66px;
+  }
   .home-page .stat-strip {
     grid-template-columns: 1fr;
     gap: 18px;

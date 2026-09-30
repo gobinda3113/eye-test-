@@ -157,6 +157,7 @@ const howToSchema = {
         <div class="header-tools">
           <label class="lang-wrap" title="Language">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+            <span class="lang-code" aria-hidden="true">{locale.toUpperCase()}</span>
             <select id="langSelect" aria-label="Language" data-current={locale}>
               <option value="en" selected={locale === "en"}>English</option>
               <option value="es" selected={locale === "es"}>Español</option>

@@ -1,0 +1,52 @@
+# Online Vision Test
+
+> Free, browser-based visual acuity screening and DMV driver's license eye test practice with physical screen calibration.
+
+Online Vision Test (https://onlinevisiontest.org) provides calibrated eye screening tools to test distance visual acuity, color perception, near vision, and astigmatism from home using any computer monitor or smartphone.
+
+## Core Vision Screening Tools
+
+- [Online Vision Screening Test](https://onlinevisiontest.org/): Standard interactive eye screening including Snellen letter chart, Tumbling E orientation, color plates, and near vision checks.
+- [DMV Practice Eye Test (US)](https://onlinevisiontest.org/us/): Practice screener tailored for US driver's license vision requirements (20/40 standard).
+- [Printable & Digital Snellen Chart](https://onlinevisiontest.org/eye-test-chart/): Complete Snellen chart reference with line-by-line visual acuity ratings from 20/200 down to 20/10.
+
+## Calibration & Methodology
+
+Online Vision Test uses real-world physical calibration (standard bank card 85.6mm or physical ruler) to match CSS pixels to physical millimeters:
+- **Screen Calibration**: Adjusts letter sizing (optotype heights) to exact Snellen angular subtenses (5 minutes of arc total height, 1 minute of arc stroke width at test distance).
+- **Test Distances**: Supports 10 feet (3.05 meters) for standard rooms, and a 4-foot (1.22 meter) compact desk mode.
+- **Passing Standard**: The universal US DMV driving benchmark is 20/40 visual acuity in at least one eye, with or without corrective lenses.
+
+## DMV Vision Requirements by US State
+
+State-specific visual acuity thresholds, daylight-only restrictions, and doctor certification requirements:
+- [All 50 US States DMV Vision Directory](https://onlinevisiontest.org/states/)
+- [California DMV Vision Requirements](https://onlinevisiontest.org/states/california/): Minimum 20/40 with both eyes tested together; at least 20/40 in one eye and 20/70 in the other.
+- [Texas DMV Vision Requirements](https://onlinevisiontest.org/states/texas/): 20/40 or better without restriction; 20/50–20/70 requires specialist report.
+- [Florida DMV Vision Requirements](https://onlinevisiontest.org/states/florida/): 20/40 in each eye or both eyes together; 20/50 to 20/70 permitted with daylight restriction.
+- [New York DMV Vision Requirements](https://onlinevisiontest.org/states/new-york/): 20/40 in either eye or both eyes; accepted through DMV approved registry providers.
+
+## Clinical Articles & Guides
+
+- [Online Eye Test Guide](https://onlinevisiontest.org/blog/online-eye-test-guide/): How online eye exams work, accuracy limitations, and home testing instructions.
+- [DMV Eye Test Practice & Tips](https://onlinevisiontest.org/blog/dmv-eye-test-practice/): Complete preparation guide for passing the DMV vision test on the first try.
+- [What Happens If You Fail the DMV Eye Test](https://onlinevisiontest.org/blog/dmv-eye-test-fail-guide/): Next steps, eye doctor report forms (DL-62, MV-619), and re-testing procedures.
+- [DMV Eye Test Machines Explained](https://onlinevisiontest.org/blog/dmv-eye-test-machine/): How the Optec 1000/Titmus vision screening machines work.
+- [Snellen Eye Chart Explained](https://onlinevisiontest.org/blog/snellen-chart-explained/): Line-by-line visual acuity ratings and fractional notation.
+- [6/6 vs 20/20 Vision](https://onlinevisiontest.org/blog/6-6-vision-test-online/): Metric vs Imperial visual acuity conversion.
+
+## Available Languages
+
+The entire screener, calibration instructions, and documentation are available in 8 languages:
+- [English (EN)](https://onlinevisiontest.org/)
+- [Español (ES)](https://onlinevisiontest.org/es/)
+- [Français (FR)](https://onlinevisiontest.org/fr/)
+- [Deutsch (DE)](https://onlinevisiontest.org/de/)
+- [Português (PT)](https://onlinevisiontest.org/pt/)
+- [Italiano (IT)](https://onlinevisiontest.org/it/)
+- [日本語 (JA)](https://onlinevisiontest.org/ja/)
+- [Русский (RU)](https://onlinevisiontest.org/ru/)
+
+## Medical & Legal Disclaimer
+
+Online Vision Test is a screening simulation and educational tool. It does not provide medical diagnoses or replace a comprehensive ocular health exam by a licensed optometrist or ophthalmologist.
