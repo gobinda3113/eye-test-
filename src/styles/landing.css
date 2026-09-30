@@ -99,6 +99,17 @@
   text-decoration: none;
 }
 
+.home-page .site-header .brand-text,
+.home-page .hero .brand-text {
+  color: #fff;
+}
+
+.home-page .site-header .brand-mark {
+  background: transparent;
+  color: #fff;
+  --brand-mark-slash: #0b211f;
+}
+
 .home-page .logo-mark {
   display: flex;
   align-items: center;
@@ -159,6 +170,10 @@
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.home-page .lang-wrap .ico {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .home-page .lang-wrap select {
@@ -1285,6 +1300,15 @@
   color: #1b3c32;
 }
 
+.home-page .footer-brand .brand-mark {
+  background: transparent;
+  color: currentColor;
+}
+
+.home-page .footer-brand .brand-text {
+  color: inherit;
+}
+
 .home-page .footer-brand p {
   color: #718075;
   font-size: 14px;
@@ -1434,8 +1458,8 @@ html[data-theme="dark"] .home-page .footer-col a {
 }
 
 html[data-theme="dark"] .home-page .underlined-link {
-  color: # badc7b;
-  border-bottom-color: # badc7b;
+  color: #badc7b;
+  border-bottom-color: #badc7b;
 }
 
 /* -------------------------------------------------- Responsive */
@@ -1465,6 +1489,10 @@ html[data-theme="dark"] .home-page .underlined-link {
 @media (max-width: 768px) {
   .home-page .hero {
     min-height: auto;
+  }
+  .home-page .hero-image {
+    background-position: 72% 18%;
+    opacity: 0.65;
   }
   .home-page .site-header {
     height: 78px;

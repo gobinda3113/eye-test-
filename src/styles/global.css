@@ -313,6 +313,7 @@ html[data-theme="dark"] .btn.btn-primary {
   background: var(--text);
   color: var(--bg);
   flex: none;
+  --brand-mark-slash: var(--text);
 }
 .brand-mark svg { width: 18px; height: 18px; }
 .brand-text {
