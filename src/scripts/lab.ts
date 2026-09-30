@@ -377,29 +377,23 @@ export function createLab(labEl) {
       }
     };
 
-    /* The card is drawn at true size, so it has to be capped at whatever the
-       panel can actually show - otherwise it runs off the side of a phone and
-       the user calibrates against a clipped outline. */
-    const maxCard = () => {
+    const maxCard = () => CARD_MAX;
+
+    let lastMax = 0;
+    let lastAvail = -1;
+    const fit = () => {
       const cs = getComputedStyle(visual);
       const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
       const avail = Math.floor(visual.clientWidth - pad);
-      let limit = avail;
-      if (mode === 'ruler') limit = Math.floor(avail * (CARD_MM / RULER_MM));
-      else limit = Math.floor(avail * (CARD_MM / 53.98));
-      return Math.max(CARD_MIN, Math.min(CARD_MAX, limit || CARD_MIN));
-    };
-
-    let lastMax = 0;
-    const fit = () => {
       const mx = maxCard();
-      if (mx === lastMax) return;
+      if (mx === lastMax && avail === lastAvail) return;
       lastMax = mx;
+      lastAvail = avail;
       range.max = String(mx);
       cardW = Math.max(CARD_MIN, Math.min(want, mx));
       range.value = String(cardW);
       paint();
-      noteEl.hidden = mx >= nativeW;
+      noteEl.hidden = avail >= nativeW;
     };
     fit();
 
