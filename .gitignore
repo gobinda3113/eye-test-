@@ -51,3 +51,6 @@ env/
 .gemini/
 *.cjs
 *.py
+
+# Internal / SEO working files (not for public repo)
+keywords.txt
