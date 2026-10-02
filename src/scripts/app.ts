@@ -111,11 +111,8 @@ function initLanguage(lab) {
 }
 
 function refreshDynamic() {
-  renderChecks();
   renderFeatured();
   renderTable();
-  renderRefs();
-  renderFaq();
   apply();
 }
 
@@ -183,34 +180,6 @@ function renderHeroChart() {
     .join("");
 }
 
-/* ------------------------------------------------------------ check cards */
-
-function renderChecks() {
-  const grid = document.getElementById("checkGrid");
-  if (!grid) return;
-  // Only /us/ shows US-DMV entries (CDL).
-  const list = isUSPage() ? CHECKS : CHECKS.filter((c) => !US_ONLY_CHECK_IDS.includes(c.id));
-  grid.innerHTML = list.map((c, idx) => {
-    const num = String(idx + 1).padStart(2, "0");
-    const name = t("checks." + c.id + ".name");
-    const desc = t("checks." + c.id + ".desc");
-    const open = t("checks.open");
-    return `
-    <button type="button" class="check-row" data-test="${c.test}" aria-label="${name} — ${open}">
-      <span class="check-num">${num}</span>
-      <div class="check-main">
-        <strong class="check-name">${name}</strong>
-        <p class="check-desc">${desc}</p>
-      </div>
-      <span class="check-meta">${c.tag}</span>
-      <span class="check-action" aria-hidden="true">
-        <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
-      </span>
-    </button>`;
-  }).join("");
-  void grid;
-}
-
 /* ------------------------------------------------------------ state table */
 
 function levelFor(state) {
@@ -247,40 +216,6 @@ function renderFeatured() {
 
 /* ---------------------------------------------------------- references */
 
-function renderRefs() {
-  const grid = document.getElementById("refGrid");
-  if (grid) {
-    grid.innerHTML = REFS.map(
-      (r) => `
-      <a class="ref-card" href="${r.url}" target="_blank" rel="noopener noreferrer">
-        <span class="ref-badge" data-i18n="refs.learn">${t("refs.learn")}</span>
-        <h3>${t("refs." + r.id + ".t")}</h3>
-        <p>${t("refs." + r.id + ".b")}</p>
-        <span class="ref-go">${new URL(r.url).hostname.replace(/^www\./, "")}<svg class="ico" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg></span>
-      </a>`
-    ).join("");
-  }
-
-  const sources = document.getElementById("sourceList");
-  if (sources) {
-    sources.innerHTML = SOURCES.map(
-      (s) => `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name}</a></li>`
-    ).join("");
-  }
-
-  const dmv = document.getElementById("dmvList");
-  if (dmv) {
-    // The agency list only ships on /us/; other pages do not render the
-    // #dmvList column at all, so just clear it if ever present.
-    if (!isUSPage()) {
-      dmv.closest(".ref-col")?.remove();
-    } else {
-      dmv.innerHTML = DMV_LINKS.map(
-        (d) => `<li><a href="${d.url}" target="_blank" rel="noopener noreferrer"><b>${d.code}</b>${d.name}</a></li>`
-      ).join("");
-    }
-  }
-}
 
 function renderTable(filter = "") {
   const body = document.getElementById("stateTableBody");
@@ -328,23 +263,6 @@ function initStates() {
 
 /* ------------------------------------------------------------------- faq */
 
-function renderFaq() {
-  const list = document.getElementById("faqList");
-  if (!list) return;
-  // Mirror the server-side FAQPage schema: DMV items are /us/-only.
-  const us = isUSPage();
-  const nums = Array.from({ length: FAQ_COUNT }, (_, i) => i + 1).filter(
-    (n) => us || !US_ONLY_FAQ_NUMS.includes(n)
-  );
-  let html = "";
-  for (const i of nums) {
-    html += `<details class="faq-item">
-      <summary>${t(`faq.q${i}`)}</summary>
-      <div class="faq-body">${t(`faq.a${i}`)}</div>
-    </details>`;
-  }
-  list.innerHTML = html;
-}
 
 /* --------------------------------------------------------------- reveal */
 
