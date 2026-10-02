@@ -27,7 +27,7 @@ import "../styles/landing.css";
 
 const { locale = "en", variant = "generic" } = Astro.props;
 
-const FOOTER_LINKS = {"en":{"chart":"Eye Test Chart","us":"DMV Practice","states":"States","blog":"Blog"},"es":{"chart":"Tabla de agudeza visual","us":"Práctica DMV","states":"Requisitos por estado","blog":"Blog"},"fr":{"chart":"Échelle de Snellen","us":"Entraînement permis DMV","states":"Exigences par état","blog":"Blog"},"de":{"chart":"Sehtest-Tabelle","us":"DMV Sehtest-Übung","states":"Anforderungen nach Staat","blog":"Blog"},"pt":{"chart":"Tabela de teste visual","us":"Simulado CNH / DMV","states":"Requisitos por estado","blog":"Blog"},"it":{"chart":"Tabella di Snellen","us":"Esercitazione patente DMV","states":"Requisiti per stato","blog":"Blog"},"ja":{"chart":"視力検査表","us":"運転免許・DMV練習","states":"米国の州別基準","blog":"ブログ"},"ru":{"chart":"Таблица проверки зрения","us":"Тест для водителей (DMV)","states":"Требования по штатам","blog":"Блог"}};
+const FOOTER_LINKS = {"en":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"es":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"fr":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"de":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"pt":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"it":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"ja":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"ブログ"},"ru":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Блог"}};
 const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
 // The US DMV practice screener lives only on /us/. Every homepage route (/,
 // /es/, ...) renders the generic vision check, whatever the language.
@@ -46,7 +46,7 @@ const checkList = isUS
   : CHECKS.filter((c) => !US_ONLY_CHECK_IDS.includes(c.id));
 const dict = DICT[locale] || DICT.en;
 const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
-const meta = seoFor(locale, isUS ? "us" : "home");
+const meta = seoFor(locale, isUS ? "us": "DMV Practice");
 const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
 
 const strip = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
@@ -268,7 +268,7 @@ const howToSchema = {
     </div>
   </section>
 
-  <main data-variant={isUS ? "us" : "generic"}>
+  <main data-variant={isUS ? "us": "DMV Practice"}>
     <section class="stat-section page-pad">
       <ul class="stat-strip">
         <li><b>{isUS ? "12" : "11"}</b><span data-i18n="stats.checks">{d("stats.checks")}</span></li>
