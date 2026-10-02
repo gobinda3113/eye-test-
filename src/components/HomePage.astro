@@ -261,7 +261,7 @@ const howToSchema = {
     </div>
 
     <div class="hero-bottom page-pad">
-      <span>NO SIGNUP. NO PRESSURE. JUST PERSPECTIVE.</span>
+      <span data-i18n="hero.bottom.tagline">{d("hero.bottom.tagline")}</span>
       <a href="#how" aria-label="Scroll to how it works">
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
       </a>
@@ -301,7 +301,7 @@ const howToSchema = {
           <h2 data-i18n="states.title">{d("states.title")}</h2>
           <p class="section-sub" data-i18n="states.sub">{d("states.sub")}</p>
           <p class="section-sub" style="margin-top:0.5rem; color:var(--muted); font-size:0.9rem;">
-            <em>Last reviewed: September 2026. Official sources: State DMV/DPS manuals.</em>
+            <em data-i18n="states.reviewNote">{d("states.reviewNote")}</em>
           </p>
         </div>
         <div class="featured-states" id="featuredStates"></div>
@@ -473,7 +473,7 @@ const howToSchema = {
 
       <div class="screener-foot">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width: 19px; height: 19px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>Private by design. No account, no upload, no pressure.</span>
+        <span data-i18n="screener.privacyNote">{d("screener.privacyNote")}</span>
       </div>
     </section>
 
@@ -530,7 +530,7 @@ const howToSchema = {
       <div class="faq-grid">
         <div>
           <h2 data-i18n="faq.title">{d("faq.title")}</h2>
-          <p>It's your eyesight. You deserve to know what this tool can, and cannot, tell you.</p>
+          <p data-i18n="faq.lede">{d("faq.lede")}</p>
         </div>
         <div class="faq-list" id="faqList">
           {faqNums.map((n) => (
@@ -566,7 +566,7 @@ const howToSchema = {
     <section class="end-section page-pad" id="final-cta" style="border-bottom: 0;">
       <div class="end-rings" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="end-content">
-        <span class="end-eyebrow">A BETTER VIEW BEGINS HERE</span>
+        <span class="end-eyebrow" data-i18n="end.eyebrow">{d("end.eyebrow")}</span>
         <h2 data-i18n="lab.title">{d("lab.title")}</h2>
         <p data-i18n="lab.sub">{d("lab.sub")}</p>
         <a class="button button-lime" href="#screener">
