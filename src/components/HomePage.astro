@@ -271,7 +271,7 @@ const howToSchema = {
   <main data-variant={isUS ? "us": "DMV Practice"}>
     <section class="stat-section page-pad">
       <ul class="stat-strip">
-        <li><b>{isUS ? "12" : "11"}</b><span data-i18n="stats.checks">{d("stats.checks")}</span></li>
+        <li><b>{isUS ? "13" : "12"}</b><span data-i18n="stats.checks">{d("stats.checks")}</span></li>
         <li><b>20/40</b><span data-i18n="stats.bench">{d("stats.bench")}</span></li>
         <li><b>8</b><span data-i18n="stats.langs">{d("stats.langs")}</span></li>
       </ul>
@@ -603,15 +603,38 @@ const howToSchema = {
       </div>
       <nav class="footer-col" aria-label={d("footer.c1")}>
         <h3 data-i18n="footer.c1">{d("footer.c1")}</h3>
-        <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-        <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-        <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
-        <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-        <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
-        <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-        <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-        <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-        <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+        {isUS ? (
+          <Fragment>
+            <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+            <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+            <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
+            <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+            <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
+            <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+            <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+            <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+            <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+            <a href="#screener" data-i18n="checks.cdl.name">{d("checks.cdl.name")}</a>
+            <a href="#screener" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
+            <a href="#screener" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
+            <a href="#screener" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+            <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+            <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
+            <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+            <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
+            <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+            <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+            <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+            <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+            <a href="#screener" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
+            <a href="#screener" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
+            <a href="#screener" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
+          </Fragment>
+        )}
       </nav>
       <nav class="footer-col" aria-label={d("footer.c2")}>
         <h3 data-i18n="footer.c2">{d("footer.c2")}</h3>

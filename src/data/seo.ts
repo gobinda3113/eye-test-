@@ -1,3 +1,4 @@
+// COUNTING BASIS: We count the number of available independent check cards rendered. Generic renders 12 cards, US renders 13 cards.
 /**
  * Per-locale SEO copy: the <title>, meta description, H1 and lede for every
  * prerendered route, plus the body sections of the text pages.
