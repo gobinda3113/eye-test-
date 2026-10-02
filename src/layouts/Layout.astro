@@ -101,10 +101,9 @@ const fontHref =
     }
 
     <!--
-      Analytics and search-console verification are deliberately NOT loaded.
-      The privacy policy promises no analytics, and the build rules say no
-      network calls, so the tags are parked here, commented out, until that
-      policy changes. Uncomment and replace the placeholders to switch them on.
+      Analytics are loaded above with Consent Mode v2 (denied by default),
+      as disclosed in the privacy policy. The snippet below is kept parked
+      for legacy reference.
 
       GA4
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -115,12 +114,6 @@ const fontHref =
         gtag("config", "G-XXXXXXXXXX");
       </script>
     -->
-
-    <!-- Google Search Console -->
-    <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN" />
-
-    <!-- Bing Webmaster Tools -->
-    <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
