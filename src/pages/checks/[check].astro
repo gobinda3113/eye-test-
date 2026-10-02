@@ -1,0 +1,65 @@
+---
+import SiteShell from "../../components/SiteShell.astro";
+import { CHECKS } from "../../scripts/data.ts";
+import { DICT } from "../../scripts/i18n.ts";
+
+export function getStaticPaths() {
+  return CHECKS.map((c) => ({
+    params: { check: c.id },
+    props: { check: c },
+  }));
+}
+
+const { check } = Astro.props;
+
+const dict = DICT.en;
+const d = (k: string) => (dict[k] != null ? dict[k] : k);
+
+const title = `${d(`checks.${check.id}.name`)} - Vision Test Online`;
+const description = d(`checks.${check.id}.desc`);
+const canonical = `https://dmveyetest.online/checks/${check.id}/`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "url": canonical,
+  "publisher": {
+    "@type": "Organization",
+    "name": "DMV Eye Test Online"
+  }
+};
+---
+<SiteShell title={title} description={description} canonical={canonical} locale="en" hideCrawl={false}>
+  <Fragment slot="structured-data">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </Fragment>
+
+  <main class="page-pad" style="max-width: 800px; margin: 4rem auto; padding: 2rem;">
+    <a href="/#checks" style="color:var(--primary); text-decoration:none; display:inline-block; margin-bottom:2rem; font-weight: 500;">&larr; Back to all checks</a>
+    
+    <h1 style="font-size:2.5rem; margin-bottom:1rem; font-weight:700;">{d(`checks.${check.id}.name`)}</h1>
+    <p style="font-size:1.2rem; color:var(--muted); line-height:1.6; margin-bottom:2rem;">{description}</p>
+    
+    <h2 style="margin-top:2rem; margin-bottom:1rem; font-size:1.5rem; font-weight:600;">What it measures</h2>
+    <p style="line-height:1.6; margin-bottom:1.5rem;">This test evaluates your {d(`checks.${check.id}.name`).toLowerCase()}, a critical component of healthy vision and a standard requirement for driving and other activities.</p>
+
+    <h2 style="margin-top:2rem; margin-bottom:1rem; font-size:1.5rem; font-weight:600;">How to take it</h2>
+    <ul style="line-height:1.6; margin-bottom:2rem; padding-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem;">
+      <li>Calibrate your screen size using a standard credit card.</li>
+      <li>Sit at the recommended distance (usually 3 or 6 meters, depending on screen size).</li>
+      <li>Cover one eye at a time, followed by both eyes.</li>
+      <li>Follow the on-screen prompts to input what you see.</li>
+    </ul>
+
+    <div style="background:var(--bg-card); border:1px solid var(--border); padding:1.5rem; border-radius:12px; margin-bottom:2rem;">
+      <h3 style="margin-bottom:0.5rem; font-size:1.1rem; font-weight:600;">Disclaimer</h3>
+      <p style="color:var(--muted); line-height:1.5; font-size:0.9rem;">{d("lab.disclaimer")}</p>
+    </div>
+
+    <a href={`/#screener`} class="button button-lime" style="display:inline-block; width:auto; text-decoration:none; font-weight:600; padding:1rem 2rem; font-size:1.1rem; border-radius:30px; background:var(--primary); color:var(--bg);">
+      Start {d(`checks.${check.id}.name`)} Now
+    </a>
+  </main>
+</SiteShell>

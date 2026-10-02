@@ -151,8 +151,11 @@ export function createLab(labEl) {
       const classes = ["step"];
       if (active) classes.push("is-active");
       if (done && !active) classes.push("is-done");
-      return `<button type="button" class="${classes.join(" ")}" data-step="${id}">` +
-        `<span class="step-n">${done && !active ? "&#10003;" : i + 1}</span>${t(STEP_LABEL[id])}</button>`;
+      let label = t(STEP_LABEL[id]);
+      if (id === "distance") {
+        label += ` <span style="font-size:0.8em; opacity:0.75; font-weight:normal; margin-left:2px;">(L &rarr; R &rarr; Both)</span>`;
+      }
+      return `<button type="button" class="${classes.join(" ")}" data-step="${id}"><span class="step-n">${done && !active ? "&#10003;" : i + 1}</span>${label}</button>`;
     }).join("");
     stepper.querySelectorAll("[data-step]").forEach((btn) => {
       on(btn, "click", () => go(btn.dataset.step));
