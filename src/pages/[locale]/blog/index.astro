@@ -8,14 +8,16 @@ export function getStaticPaths() {
   }));
 }
 
+import { K, DICT } from "../../../scripts/i18n";
 const { locale } = Astro.params;
+const d = (key) => DICT[locale][key];
 
 const datasetSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": "https://onlinevisiontest.org/" + locale + "/blog/#blog",
-  "name": "Online Vision Test — Guides & Articles",
-  "description": "Guides on free online eye tests and vision practice.",
+  "name": d("blog.schema.name"),
+  "description": d("blog.schema.desc"),
   "url": "https://onlinevisiontest.org/" + locale + "/blog/",
   "inLanguage": locale,
   "publisher": {

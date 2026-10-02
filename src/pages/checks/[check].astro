@@ -16,7 +16,7 @@ const { check } = Astro.props;
 const dict = DICT.en;
 const d = (k: string) => (dict[k] != null ? dict[k] : k);
 
-const title = `${d(`checks.${check.id}.name`)} - Vision Test Online`;
+const title = `${d(`checks.${check.id}.name`)} — Online Vision Test`;
 const description = d(`checks.${check.id}.desc`);
 const canonical = `https://onlinevisiontest.org/checks/${check.id}/`;
 

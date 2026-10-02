@@ -153,7 +153,7 @@ export function createLab(labEl) {
       if (done && !active) classes.push("is-done");
       let label = t(STEP_LABEL[id]);
       if (id === "distance") {
-        label += ` <span style="font-size:0.8em; opacity:0.75; font-weight:normal; margin-left:2px;">(L &rarr; R &rarr; Both)</span>`;
+        label += ` <span style="font-size:0.8em; opacity:0.75; font-weight:normal; margin-left:2px;">${t("lab.eyeSeqHint")}</span>`;
       }
       return `<button type="button" class="${classes.join(" ")}" data-step="${id}"><span class="step-n">${done && !active ? "&#10003;" : i + 1}</span>${label}</button>`;
     }).join("");
