@@ -290,6 +290,7 @@ export function createLab(labEl) {
             ${tip(t("calib.tip1"))}
             ${tip(t("calib.tip2"))}
             ${tip(t("calib.tip3"))}
+              ${tip(t("calib.brightness"))}
           </div>
           <div class="panel-title" style="margin-top:24px">${t("calib.distanceTitle")}</div>
           <p class="stage-sub" style="margin-bottom:14px">${t("calib.distanceSub")}</p>
