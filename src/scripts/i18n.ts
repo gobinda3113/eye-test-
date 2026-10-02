@@ -424,6 +424,14 @@ const en = {
     "schema.howTo.step3.text": "Gently cover your left eye with your palm without pressing on the eyelid. Read the smallest line of letters you can see, then repeat for the right eye.",
     "schema.howTo.step4.name": "Check Your Visual Acuity Score",
     "schema.howTo.step4.text": "Compare your result (such as 20/20 or 20/40) against the minimum driver licensing and vision screening benchmarks.",
+    "hero.bottom.tagline": "NO SIGNUP. NO PRESSURE. JUST PERSPECTIVE.",
+    "states.reviewNote": "Last reviewed: September 2026. Official sources: State DMV/DPS manuals.",
+    "screener.privacyNote": "Private by design. No account, no upload, no pressure.",
+    "faq.lede": "It's your eyesight. You deserve to know what this tool can, and cannot, tell you.",
+    "end.eyebrow": "A BETTER VIEW BEGINS HERE",
+    "lab.wearGlasses": "Keep your glasses or contacts on for the entire check.",
+    "lab.smallScreen": "On small screens some checks may render below recommended size — use the largest screen available.",
+    "lab.disclaimer": "A vision screener — not an official medical test, diagnosis, or prescription.",
   };
 
 const es = {
@@ -839,6 +847,14 @@ const es = {
     "schema.howTo.step3.text": "Cubre suavemente tu ojo izquierdo con la palma de la mano sin presionar el párpado. Lee la línea de letras más pequeña que puedas ver, luego repite para el ojo derecho.",
     "schema.howTo.step4.name": "Comprueba tu puntuación de agudeza visual",
     "schema.howTo.step4.text": "Compara tu resultado (como 20/20 o 20/40) con los puntos de referencia mínimos de licencias de conducir y exámenes de la vista.",
+    "hero.bottom.tagline": "SIN REGISTRO. SIN PRESIÓN. SOLO PERSPECTIVA.",
+    "states.reviewNote": "Última revisión: septiembre de 2026. Fuentes oficiales: manuales del DMV/DPS del estado.",
+    "screener.privacyNote": "Privado por diseño. Sin cuentas, sin subidas, sin presión.",
+    "faq.lede": "Es tu vista. Mereces saber qué puede y qué no puede decirte esta herramienta.",
+    "end.eyebrow": "UNA MEJOR VISTA COMIENZA AQUÍ",
+    "lab.wearGlasses": "Mantén tus gafas o lentes de contacto puestos durante toda la prueba.",
+    "lab.smallScreen": "En pantallas pequeñas, algunas pruebas pueden mostrarse por debajo del tamaño recomendado; usa la pantalla más grande disponible.",
+    "lab.disclaimer": "Un evaluador visual, no una prueba médica oficial, diagnóstico o prescripción.",
   };
 
 const fr = {
@@ -1254,6 +1270,14 @@ const fr = {
     "schema.howTo.step3.text": "Couvrez doucement votre œil gauche avec la paume de votre main sans appuyer sur la paupière. Lisez la plus petite ligne de lettres que vous pouvez voir, puis répétez l'opération pour l'œil droit.",
     "schema.howTo.step4.name": "Vérifiez votre score d'acuité visuelle",
     "schema.howTo.step4.text": "Comparez votre résultat (tel que 20/20 ou 20/40) par rapport aux références minimales en matière de permis de conduire et de dépistage de la vue.",
+    "hero.bottom.tagline": "SANS INSCRIPTION. SANS PRESSION. JUSTE UNE PERSPECTIVE.",
+    "states.reviewNote": "Dernière révision : septembre 2026. Sources officielles : manuels du DMV/DPS de l'État.",
+    "screener.privacyNote": "Privé de par sa conception. Pas de compte, pas de téléchargement, pas de pression.",
+    "faq.lede": "C'est votre vue. Vous méritez de savoir ce que cet outil peut et ne peut pas vous dire.",
+    "end.eyebrow": "UNE MEILLEURE VUE COMMENCE ICI",
+    "lab.wearGlasses": "Gardez vos lunettes ou lentilles de contact pendant toute la vérification.",
+    "lab.smallScreen": "Sur les petits écrans, certains tests peuvent s'afficher en dessous de la taille recommandée - utilisez le plus grand écran disponible.",
+    "lab.disclaimer": "Un outil de dépistage visuel - pas un test médical officiel, un diagnostic ou une ordonnance.",
   };
 
 const de = {
@@ -1670,6 +1694,14 @@ const de = {
     "schema.howTo.step3.text": "Bedecke dein linkes Auge sanft mit der Handfläche, ohne auf das Augenlid zu drücken. Lies die kleinste Buchstabenreihe, die du sehen kannst, und wiederhole dies für das rechte Auge.",
     "schema.howTo.step4.name": "Überprüfe deine Sehschärfe",
     "schema.howTo.step4.text": "Vergleiche dein Ergebnis (z. B. 20/20 oder 20/40) mit den Mindestrichtlinien für den Führerschein und Sehtests.",
+    "hero.bottom.tagline": "KEINE ANMELDUNG. KEIN DRUCK. NUR PERSPEKTIVE.",
+    "states.reviewNote": "Zuletzt überprüft: September 2026. Offizielle Quellen: DMV/DPS-Handbücher der Bundesstaaten.",
+    "screener.privacyNote": "Standardmäßig privat. Kein Konto, kein Upload, kein Druck.",
+    "faq.lede": "Es ist Ihr Augenlicht. Sie haben es verdient, zu wissen, was dieses Tool Ihnen sagen kann und was nicht.",
+    "end.eyebrow": "EINE BESSERE SICHT BEGINNT HIER",
+    "lab.wearGlasses": "Behalten Sie Ihre Brille oder Kontaktlinsen während der gesamten Prüfung auf.",
+    "lab.smallScreen": "Auf kleinen Bildschirmen können einige Tests kleiner als empfohlen gerendert werden – verwenden Sie den größten verfügbaren Bildschirm.",
+    "lab.disclaimer": "Ein Sehtest - kein offizieller medizinischer Test, keine Diagnose oder Verschreibung.",
   };
 
 const pt = {
@@ -2086,6 +2118,14 @@ const pt = {
     "schema.howTo.step3.text": "Cubra suavemente o olho esquerdo com a palma da mão sem pressionar a pálpebra. Leia a menor linha de letras que conseguir ver, depois repita para o olho direito.",
     "schema.howTo.step4.name": "Verifique a sua pontuação de acuidade visual",
     "schema.howTo.step4.text": "Compare o seu resultado (como 20/20 ou 20/40) com os padrões mínimos de exames de vista e emissão de carteira de motorista.",
+    "hero.bottom.tagline": "SEM REGISTO. SEM PRESSÃO. APENAS PERSPECTIVA.",
+    "states.reviewNote": "Última revisão: setembro de 2026. Fontes oficiais: manuais do DMV/DPS do estado.",
+    "screener.privacyNote": "Privado por design. Sem contas, sem uploads, sem pressão.",
+    "faq.lede": "É a sua visão. Merece saber o que esta ferramenta pode e não pode dizer-lhe.",
+    "end.eyebrow": "UMA MELHOR VISÃO COMEÇA AQUI",
+    "lab.wearGlasses": "Mantenha os óculos ou lentes de contato durante todo o teste.",
+    "lab.smallScreen": "Em telas pequenas, alguns testes podem ser renderizados abaixo do tamanho recomendado — use a maior tela disponível.",
+    "lab.disclaimer": "Um teste de visão — não um teste médico oficial, diagnóstico ou prescrição.",
   };
 
 
@@ -2490,6 +2530,14 @@ const it = {
     "schema.howTo.step3.text": "Copri delicatamente l'occhio sinistro con il palmo della mano senza premere sulla palpebra. Leggi la riga di lettere più piccola che riesci a vedere, quindi ripeti per l'occhio destro.",
     "schema.howTo.step4.name": "Controlla il tuo punteggio di acuità visiva",
     "schema.howTo.step4.text": "Confronta il tuo risultato (come 20/20 o 20/40) con i requisiti minimi per la patente di guida e gli esami della vista.",
+    "hero.bottom.tagline": "NESSUNA REGISTRAZIONE. NESSUNA PRESSIONE. SOLO PROSPETTIVA.",
+    "states.reviewNote": "Ultima revisione: settembre 2026. Fonti ufficiali: manuali DMV/DPS statali.",
+    "screener.privacyNote": "Privato by design. Nessun account, nessun caricamento, nessuna pressione.",
+    "faq.lede": "È la tua vista. Meriti di sapere cosa questo strumento può e non può dirti.",
+    "end.eyebrow": "UNA VISTA MIGLIORE INIZIA QUI",
+    "lab.wearGlasses": "Tieni gli occhiali o le lenti a contatto per tutto il test.",
+    "lab.smallScreen": "Su schermi piccoli, alcuni test potrebbero apparire più piccoli rispetto alle dimensioni consigliate: usa lo schermo più grande disponibile.",
+    "lab.disclaimer": "Uno screening visivo: non un esame medico ufficiale, una diagnosi o una prescrizione.",
   };
 const ja = {
     "a11y.skip": "視力チェックへ進む",
@@ -2892,6 +2940,14 @@ const ja = {
     "schema.howTo.step3.text": "まぶたを圧迫しないように、手のひらで左目をそっと覆います。見える一番小さな文字の列を読み、右目でも同じように繰り返します。",
     "schema.howTo.step4.name": "視力スコアを確認する",
     "schema.howTo.step4.text": "自分の結果（20/20や20/40など）を、運転免許や視力検査の最低基準と比較します。",
+    "hero.bottom.tagline": "登録不要。プレッシャーなし。視力の確認だけ。",
+    "states.reviewNote": "最終更新：2026年9月。公式情報源：各州DMV/DPSマニュアル。",
+    "screener.privacyNote": "プライバシー重視。アカウント不要、アップロードなし、プレッシャーなし。",
+    "faq.lede": "あなたの視力です。このツールで何が分かり、何が分からないかを知る権利があります。",
+    "end.eyebrow": "より良い視界はここから始まる",
+    "lab.wearGlasses": "検査中はメガネまたはコンタクトレンズを着用したままにしてください。",
+    "lab.smallScreen": "小さな画面では、一部のテストが推奨サイズより小さく表示される場合があります。可能な限り大きな画面を使用してください。",
+    "lab.disclaimer": "視力スクリーニング — 公式な医学的検査、診断、処方ではありません。",
   };
 const ru = {
     "a11y.skip": "Перейти к проверке зрения",
@@ -3293,6 +3349,14 @@ const ru = {
     "schema.howTo.step3.text": "Мягко закройте левый глаз ладонью, не давя на веко. Прочтите самую мелкую строчку букв, которую сможете увидеть, затем повторите для правого глаза.",
     "schema.howTo.step4.name": "Проверьте свой результат остроты зрения",
     "schema.howTo.step4.text": "Сравните свой результат (например, 20/20 или 20/40) с минимальными требованиями для получения водительских прав и проверки зрения.",
+    "hero.bottom.tagline": "БЕЗ РЕГИСТРАЦИИ. БЕЗ ДАВЛЕНИЯ. ТОЛЬКО ПЕРСПЕКТИВА.",
+    "states.reviewNote": "Последняя проверка: сентябрь 2026 г. Официальные источники: руководства DMV/DPS штатов.",
+    "screener.privacyNote": "Конфиденциально по умолчанию. Никаких аккаунтов, никаких загрузок, никакого давления.",
+    "faq.lede": "Это ваше зрение. Вы заслуживаете знать, что этот инструмент может, а что не может вам сказать.",
+    "end.eyebrow": "ЛУЧШИЙ ВЗГЛЯД НАЧИНАЕТСЯ ЗДЕСЬ",
+    "lab.wearGlasses": "Оставьте очки или контактные линзы на протяжении всей проверки.",
+    "lab.smallScreen": "На маленьких экранах некоторые тесты могут отображаться меньше рекомендованного размера — используйте самый большой доступный экран.",
+    "lab.disclaimer": "Проверка зрения — не является официальным медицинским тестом, диагнозом или рецептом.",
   };
 export const DICT = { en, es, fr, de, pt, it, ja, ru };
 
