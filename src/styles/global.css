@@ -32,6 +32,12 @@
   --ok: #0D7A6A;
   --ok-soft: #E5F3F0;
 
+  /* Aliases for cards & test components */
+  --bg-card: var(--surface);
+  --bg-alt: var(--surface-2);
+  --bg-warn: var(--amber-soft);
+  --fg: var(--text);
+
   /* Refined, quiet shadows (no heavy blur) */
   --shadow-xs: 0 1px 2px rgba(16, 20, 24, .04);
   --shadow-sm: 0 1px 3px rgba(16, 20, 24, .05), 0 3px 8px rgba(16, 20, 24, .03);
@@ -84,6 +90,12 @@ html[data-theme="dark"] {
   --danger-soft: #32161A;
   --ok: #2EC4B6;
   --ok-soft: #12302A;
+
+  /* Aliases for cards & test components */
+  --bg-card: var(--surface);
+  --bg-alt: var(--surface-2);
+  --bg-warn: var(--amber-soft);
+  --fg: var(--text);
 
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, .4);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, .4), 0 4px 12px rgba(0, 0, 0, .5);
@@ -1004,6 +1016,76 @@ html[data-theme="dark"] .btn.btn-primary {
   text-transform: uppercase;
   color: var(--lab-muted);
   margin-bottom: 14px;
+}
+
+/* Individual check menu cards */
+.indiv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.check-menu-card {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg, 12px);
+  text-align: left;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.check-menu-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.check-menu-card:active {
+  transform: translateY(0);
+}
+
+.check-menu-card .check-menu-title {
+  color: var(--text);
+  font-family: var(--font-display, inherit);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.check-menu-card .check-menu-desc {
+  color: var(--text-2);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  margin: 0;
+  font-weight: 400;
+}
+
+.check-menu-card .check-menu-badge {
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--r-full, 999px);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.check-menu-card .check-menu-badge.is-dist {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.check-menu-card .check-menu-badge.is-short {
+  background: var(--primary-soft);
+  color: var(--primary);
 }
 
 /* calibration */

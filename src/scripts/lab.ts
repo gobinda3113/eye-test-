@@ -280,18 +280,18 @@ export function createLab(labEl) {
           &larr; ${t("modes.backModes")}
         </button>
       </div>
-      <div class="indiv-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div class="indiv-grid">
         ${CHECKS.map((c) => {
           const isDist = DISTANCE_CHECKS.includes(c.id);
           return `
-            <button type="button" class="check-menu-card button button-outline" data-check="${c.id}" style="text-align: left; padding: 1.25rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.5rem; height: auto;">
-              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <span style="font-weight: 700; font-size: 1.1rem;">${t(STEP_LABEL[c.id] || "checks." + c.id + ".name")}</span>
-                <span style="font-size: 0.75rem; padding: 2px 8px; border-radius: 20px; background: ${isDist ? "var(--bg-warn)" : "var(--bg-alt)"}; font-weight: 600;">
+            <button type="button" class="check-menu-card" data-check="${c.id}">
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 8px;">
+                <span class="check-menu-title">${t(STEP_LABEL[c.id] || "checks." + c.id + ".name")}</span>
+                <span class="check-menu-badge ${isDist ? "is-dist" : "is-short"}">
                   ${isDist ? t("modes.distanceNeeded") : t("modes.shortRange")}
                 </span>
               </div>
-              <p style="font-size: 0.85rem; opacity: 0.85; margin: 0; line-height: 1.4; font-weight: normal;">
+              <p class="check-menu-desc">
                 ${t("checks." + c.id + ".desc")}
               </p>
             </button>
@@ -328,7 +328,7 @@ export function createLab(labEl) {
       // Individual mode single test result screen (Section 5)
       stage.innerHTML = `
         <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
-        <div style="margin:2rem 0; padding:2.5rem 1.5rem; background:var(--bg-card); border: 1px solid var(--border); border-radius:12px; text-align:center;">
+        <div style="margin:2rem 0; padding:2.5rem 1.5rem; background:var(--bg-card); color:var(--text); border: 1px solid var(--border); border-radius:12px; text-align:center;">
           <div style="font-size:2.2rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem;">${metric}</div>
           <p style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem;">${t("modes.disclaimerBanner")}</p>
           <div style="display:flex; flex-direction:column; gap:0.75rem; max-width:320px; margin:0 auto;">
@@ -370,7 +370,7 @@ export function createLab(labEl) {
 
     stage.innerHTML = `
       <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
-      <div style="margin:2rem 0; padding:2rem 1.5rem; background:var(--bg-card); border: 1px solid var(--border); border-radius:12px; text-align:center;">
+      <div style="margin:2rem 0; padding:2rem 1.5rem; background:var(--bg-card); color:var(--text); border: 1px solid var(--border); border-radius:12px; text-align:center;">
         <div style="font-size:2rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem;">${metric}</div>
         <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">${t("modes.disclaimerBanner")}</p>
       </div>`;
