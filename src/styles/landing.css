@@ -142,6 +142,7 @@
   gap: clamp(20px, 2.5vw, 40px);
   font-size: 13px;
   font-weight: 600;
+  transform: translateY(-2px);
 }
 
 .home-page .nav-links a {

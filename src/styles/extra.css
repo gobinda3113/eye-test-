@@ -436,3 +436,318 @@ body.is-doc .section {
   flex-shrink: 0;
 }
 
+/* -------------------------------------------------- Unified Landing Header for /test/ */
+.site-header.landing-style-header {
+  height: 106px;
+  position: relative;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  background: #0b211f;
+  color: #fff;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header.landing-style-header.page-pad {
+  padding-left: clamp(24px, 5.6vw, 96px);
+  padding-right: clamp(24px, 5.6vw, 96px);
+}
+
+.site-header.landing-style-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  height: 100%;
+}
+
+.site-header.landing-style-header .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1.7px;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.site-header.landing-style-header .brand-text {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1.7px;
+  line-height: 1;
+}
+
+.site-header.landing-style-header .brand-mark {
+  background: transparent;
+  color: #fff;
+  --brand-mark-slash: #0b211f;
+}
+
+.site-header.landing-style-header .logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.7px solid currentColor;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.site-header.landing-style-header .logo-mark svg {
+  width: 22px;
+  height: 22px;
+}
+
+.site-header.landing-style-header .wordmark-light {
+  font-weight: 500;
+}
+
+.site-header.landing-style-header .wordmark-dot {
+  color: #c4e884;
+}
+
+.site-header.landing-style-header .nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.5vw, 40px);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  transform: translateY(-2px);
+}
+
+.site-header.landing-style-header .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity .2s;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.site-header.landing-style-header .nav-links a:hover {
+  opacity: .65;
+  color: #fff;
+  background: transparent;
+}
+
+.site-header.landing-style-header .header-tools {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-header.landing-style-header .lang-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.site-header.landing-style-header .lang-wrap .ico {
+  color: rgba(255, 255, 255, 0.85);
+  position: static;
+  width: 16px;
+  height: 16px;
+}
+
+.site-header.landing-style-header .lang-wrap .lang-code {
+  display: none;
+}
+
+.site-header.landing-style-header .lang-wrap select {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  padding: 0 16px 0 4px;
+  height: auto;
+  appearance: auto;
+  -webkit-appearance: auto;
+  background-image: none;
+}
+
+.site-header.landing-style-header .lang-wrap select option {
+  background: #17342f;
+  color: #fff;
+}
+
+.site-header.landing-style-header .header-tools .icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background .2s, border-color .2s;
+}
+
+.site-header.landing-style-header .header-tools .icon-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.site-header.landing-style-header .header-tools .icon-btn svg {
+  width: 19px;
+  height: 19px;
+}
+
+.site-header.landing-style-header .header-tools .menu-toggle {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .site-header.landing-style-header .mobile-nav {
+    display: none !important;
+  }
+}
+
+.site-header.landing-style-header .mobile-nav {
+  position: absolute;
+  top: 106px;
+  left: 0;
+  right: 0;
+  background: #15342f;
+  border-top: 1px solid #4b675b;
+  padding: 24px clamp(24px, 5.6vw, 96px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 49;
+}
+
+.site-header.landing-style-header .mobile-nav[hidden] {
+  display: none !important;
+}
+
+.site-header.landing-style-header .mobile-nav a {
+  color: #fff;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #2f5449;
+}
+
+.site-header.landing-style-header .mobile-nav a:hover {
+  color: #cdec8d;
+}
+
+@media (max-width: 768px) {
+  .site-header.landing-style-header {
+    height: 72px;
+  }
+  .site-header.landing-style-header .wordmark,
+  .site-header.landing-style-header .brand-text {
+    font-size: clamp(17px, 4.4vw, 20px);
+    letter-spacing: -0.9px;
+    gap: 8px;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .site-header.landing-style-header .logo-mark {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+  .site-header.landing-style-header .logo-mark svg {
+    width: 18px;
+    height: 18px;
+  }
+  .site-header.landing-style-header .header-tools {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .site-header.landing-style-header .header-tools .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .site-header.landing-style-header .header-tools .icon-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+  .site-header.landing-style-header .lang-wrap {
+    position: relative;
+    padding: 7px 10px;
+    gap: 5px;
+  }
+  .site-header.landing-style-header .lang-wrap .lang-code {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff;
+    line-height: 1;
+  }
+  .site-header.landing-style-header .lang-wrap select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .site-header.landing-style-header .nav-links {
+    display: none;
+  }
+  .site-header.landing-style-header .header-tools .menu-toggle {
+    display: flex;
+  }
+  .site-header.landing-style-header .mobile-nav {
+    top: 72px;
+  }
+}
+
+@media (max-width: 440px) {
+  .site-header.landing-style-header {
+    height: 66px;
+  }
+  .site-header.landing-style-header .wordmark,
+  .site-header.landing-style-header .brand-text {
+    font-size: 16px;
+    gap: 7px;
+  }
+  .site-header.landing-style-header .header-tools {
+    gap: 6px;
+  }
+  .site-header.landing-style-header .header-tools .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .site-header.landing-style-header .mobile-nav {
+    top: 66px;
+  }
+}
+
