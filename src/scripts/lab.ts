@@ -2044,7 +2044,25 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     }
   }
 
+  const fullBtn = labEl.querySelector("#labFullBtn");
+  const resetBtn = labEl.querySelector("#labResetBtn");
+
+  function enterFocus() {
+    labEl.classList.add("is-full");
+    document.body.classList.add("lab-locked");
+    if (fullBtn) fullBtn.textContent = t("lab.exitFocus");
+    setTimeout(() => window.dispatchEvent(new Event("resize")), 10);
+  }
+
+  function exitFocus() {
+    labEl.classList.remove("is-full");
+    document.body.classList.remove("lab-locked");
+    if (fullBtn) fullBtn.textContent = t("lab.focus");
+    setTimeout(() => window.dispatchEvent(new Event("resize")), 10);
+  }
+
   function exitTest() {
+    exitFocus();
     single = null;
     runMode = null;
     step = "calibrate";
@@ -2086,6 +2104,11 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       step = "calibrate";
     }
 
+    const isTestStarting = mode === "quick" || mode === "full" || Boolean(specificCheck);
+    if (isTestStarting) {
+      enterFocus();
+    }
+
     const exitBtn = labEl.querySelector("#labExitBtn");
     if (exitBtn) {
       exitBtn.style.display = "inline-block";
@@ -2097,30 +2120,29 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     labEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  const fullBtn = labEl.querySelector("#labFullBtn");
-  const resetBtn = labEl.querySelector("#labResetBtn");
-
-  function exitFocus() {
-    labEl.classList.remove("is-full");
-    document.body.classList.remove("lab-locked");
-    if (fullBtn) fullBtn.textContent = t("lab.focus");
-    setTimeout(() => window.dispatchEvent(new Event("resize")), 10);
-  }
-
   if (fullBtn) {
       fullBtn.addEventListener("click", () => {
         const on_ = !labEl.classList.contains("is-full");
-        labEl.classList.toggle("is-full", on_);
-        document.body.classList.toggle("lab-locked", on_);
-        fullBtn.textContent = on_ ? t("lab.exitFocus") : t("lab.focus");
-        setTimeout(() => window.dispatchEvent(new Event("resize")), 10);
+        if (on_) {
+          enterFocus();
+        } else {
+          exitFocus();
+        }
       });
   }
 
-  // Allow Escape key to exit focus/fullscreen mode
+  // Allow Escape key to exit test and return to normal page
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && labEl.classList.contains("is-full")) {
-      exitFocus();
+      const calibModal = document.getElementById("calibSaveModal");
+      if (calibModal) {
+        calibModal.remove();
+        if (typeof (window as any).__onCalibModalDismiss === "function") {
+          (window as any).__onCalibModalDismiss();
+        }
+        return;
+      }
+      exitTest();
     }
   });
 

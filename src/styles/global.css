@@ -136,8 +136,18 @@ body {
   overflow-x: hidden;
 }
 
-body.lab-locked { overflow: hidden; }
-body.lab-locked 
+body.lab-locked {
+  overflow: hidden;
+}
+body.lab-locked .site-header,
+body.lab-locked .site-footer,
+body.lab-locked .test-banner,
+body.lab-locked .header-langs,
+body.lab-locked .lang-wrap:not(.lab *),
+body.lab-locked .skip-link,
+body.lab-locked #testEntryChoice {
+  display: none !important;
+}
 
 /* Display Serif Headlines — tight tracking on display, solid ink, NEVER accent colors */
 h1, h2, h3, h4 {
@@ -886,6 +896,28 @@ html[data-theme="dark"] .btn.btn-primary {
   z-index: 120;
   border-radius: 0; border: 0;
   display: flex; flex-direction: column; overflow: hidden;
+}
+.lab.is-full #labFullBtn,
+.lab.is-full #labResetBtn {
+  display: none !important;
+}
+.lab.is-full #labExitBtn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--lab-border);
+  color: var(--lab-text);
+  padding: 6px 14px;
+  border-radius: var(--r-full, 999px);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.lab.is-full #labExitBtn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
 }
 .lab-bar {
   display: flex;
