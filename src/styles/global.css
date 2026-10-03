@@ -312,8 +312,7 @@ html[data-theme="dark"] .btn.btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  flex: 0 1 auto;
-  min-width: 0;
+  flex-shrink: 0;
   color: var(--text);
 }
 .brand-mark {
@@ -334,9 +333,6 @@ html[data-theme="dark"] .btn.btn-primary {
   font-size: 18px;
   letter-spacing: -.02em;
   color: var(--text);
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
 .brand-text b { font-weight: 800; }
@@ -1702,7 +1698,6 @@ html[data-theme="dark"] .dark-ink-panel h3 {
   .container { padding: 0 18px; }
   .header-inner { padding: 0 16px; gap: 12px; }
   .brand-text { font-size: 16px; }
-  .brand-tld { display: none; }
   .lang-wrap .ico { display: none; }
   .lang-wrap select { width: auto; padding: 6px 26px 6px 10px; font-size: 12px; }
 

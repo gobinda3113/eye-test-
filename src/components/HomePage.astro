@@ -48,6 +48,9 @@ const dict = DICT[locale] || DICT.en;
 const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
 const meta = seoFor(locale, isUS ? "us": "DMV Practice");
 const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
+const homeHref = isUS ? "/us/" : locale === "en" ? "/" : "/" + locale + "/";
+const aboutHref = locale === "en" ? "/about/" : "/" + locale + "/about/";
+const contactHref = locale === "en" ? "/contact/" : "/" + locale + "/contact/";
 
 const strip = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
@@ -148,10 +151,11 @@ const howToSchema = {
         </a>
 
         <nav class="header-nav nav-links" id="headerNav" aria-label="Main">
+          <a href={homeHref} data-i18n="nav.home">{d("nav.home")}</a>
           <a href="/checks/" data-i18n="nav.checks">{d("nav.checks")}</a>
-          <a href="/test/" data-i18n="nav.start">{d("nav.start")}</a>
           <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
-          <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
+          <a href={aboutHref} data-i18n="nav.about">{d("nav.about")}</a>
+          <a href={contactHref} data-i18n="nav.contact">{d("nav.contact")}</a>
         </nav>
 
         <div class="header-tools">
@@ -183,10 +187,11 @@ const howToSchema = {
         </div>
       </div>
       <div class="mobile-nav" id="mobileNav" hidden>
+        <a href={homeHref} data-i18n="nav.home">{d("nav.home")}</a>
         <a href="/checks/" data-i18n="nav.checks">{d("nav.checks")}</a>
-        <a href="/test/" data-i18n="nav.start">{d("nav.start")}</a>
         <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
-        <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
+        <a href={aboutHref} data-i18n="nav.about">{d("nav.about")}</a>
+        <a href={contactHref} data-i18n="nav.contact">{d("nav.contact")}</a>
       </div>
     </header>
 
@@ -433,6 +438,11 @@ const howToSchema = {
           );
         })}
       </div>
+      {!isUS && (
+        <p class="checks-cdl-note" data-i18n="checks.cdlNote" style="margin-top: 1.25rem; font-size: 0.88rem; color: var(--text-2, #4A5658); font-style: italic;">
+          {d("checks.cdlNote")}
+        </p>
+      )}
       <a class="button button-dark checks-button" href="/test/">
         <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>

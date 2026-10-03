@@ -97,6 +97,8 @@
   line-height: 1;
   color: #fff;
   text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .home-page .site-header .brand-text,

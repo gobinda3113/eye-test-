@@ -14,7 +14,7 @@
  * translation of a legal text is worse than none.
  */
 
-export const EMAIL = "support@onlinevisiontest.org";
+export const EMAIL = "contact@onlinevisiontest.org";
 
 const en = {
   home: {
