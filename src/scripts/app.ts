@@ -325,22 +325,25 @@ async function boot() {
     console.error("[vision] #lab element missing");
   }
 
-  const safe = (name, fn) => {
-    try {
-      return fn();
-    } catch (e) {
-      console.error("[vision] " + name + " failed", e);
-      return undefined;
-    }
-  };
+  let isTransitioning = false;
 
-  await safe("fonts", whenFontsReady);
-  safe("heroChart", renderHeroChart);
-  safe("language", () => initLanguage(lab));
-  safe("header", initHeader);
-  safe("states", initStates);
-  safe("dynamic", () => refreshDynamic(lab));
-  safe("reveal", initReveal);
+  function handleModeSelect(mode: string, check?: string | null) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    const entryChoice = document.getElementById("testEntryChoice");
+    const labContainer = document.getElementById("lab");
+    if (entryChoice && labContainer) {
+      entryChoice.style.display = "none";
+      labContainer.style.display = "block";
+    }
+    if (lab && typeof lab.startMode === "function") {
+      lab.startMode(mode, check || null);
+    }
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 120);
+  }
 
   document.addEventListener("click", (e: any) => {
     if (!lab) return;
@@ -348,18 +351,15 @@ async function boot() {
     // Test entry modes
     const modeCard = e.target.closest("[data-mode]");
     if (modeCard) {
+      e.preventDefault();
+      if (isTransitioning) return;
+
+      modeCard.classList.add("is-active");
       const mode = modeCard.dataset.mode;
-      const entryChoice = document.getElementById("testEntryChoice");
-      const labContainer = document.getElementById("lab");
-      if (entryChoice && labContainer) {
-        entryChoice.style.display = "none";
-        labContainer.style.display = "block";
-      }
-      if (typeof lab.startMode === "function") {
-        lab.startMode(mode);
-      } else {
-        lab.start("all"); // Fallback for now
-      }
+      setTimeout(() => {
+        modeCard.classList.remove("is-active");
+        handleModeSelect(mode);
+      }, 50);
       return;
     }
 
@@ -377,17 +377,29 @@ async function boot() {
 
   // Handle deep link /test/?mode=individual&check=color
   const params = new URLSearchParams(window.location.search);
-  if (params.get("mode") === "individual" && params.get("check") && lab) {
-    const entryChoice = document.getElementById("testEntryChoice");
-    const labContainer = document.getElementById("lab");
-    if (entryChoice && labContainer) {
-      entryChoice.style.display = "none";
-      labContainer.style.display = "block";
-    }
-    if (typeof lab.startMode === "function") {
-      lab.startMode("individual", params.get("check"));
-    }
+  const qMode = params.get("mode");
+  const qCheck = params.get("check");
+  if (qMode && lab) {
+    handleModeSelect(qMode, qCheck);
   }
+
+  const safe = (name, fn) => {
+    try {
+      return fn();
+    } catch (e) {
+      console.error("[vision] " + name + " failed", e);
+      return undefined;
+    }
+  };
+
+  await safe("fonts", whenFontsReady);
+  safe("heroChart", renderHeroChart);
+  safe("language", () => initLanguage(lab));
+  safe("header", initHeader);
+  safe("states", initStates);
+  safe("dynamic", () => refreshDynamic(lab));
+  safe("reveal", initReveal);
+
   document.addEventListener("keydown", (e: any) => {
     // Native <button> already fires click on Enter/Space; this guard is a no-op
     // for the check cards now that they are real buttons. Kept for safety.

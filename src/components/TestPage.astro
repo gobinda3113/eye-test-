@@ -35,7 +35,7 @@ const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.
         </div>
         <div class="lab-bar-right">
           <button class="btn btn-quiet btn-xs" id="labFullBtn" type="button" data-i18n="lab.focus">{d("lab.focus")}</button>
-          <button class="btn btn-quiet btn-xs" id="labExitBtn" type="button" style="display:none;">Exit test</button>
+          <button class="btn btn-quiet btn-xs" id="labExitBtn" type="button" style="display:none;" data-i18n="lab.exit">{d("lab.exit")}</button>
           <button class="btn btn-quiet btn-xs" id="labResetBtn" type="button" data-i18n="lab.reset">{d("lab.reset")}</button>
         </div>
       </div>
@@ -54,6 +54,21 @@ const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.
     </div>
   </div>
 </div>
+
+<style>
+  .mode-card {
+    transition: transform 0.1s ease, filter 0.1s ease, box-shadow 0.1s ease;
+    cursor: pointer;
+  }
+  .mode-card:hover {
+    filter: brightness(1.03);
+  }
+  .mode-card:active,
+  .mode-card.is-active {
+    transform: scale(0.985);
+    filter: brightness(0.92);
+  }
+</style>
 
 <script>
   import "../scripts/app.ts";

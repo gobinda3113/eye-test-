@@ -28,7 +28,7 @@ import {
   overallVerdict,
 } from "./vision.ts";
 import { lineSVG, tumblingESVG, landoltCSVG } from "./optotypes.ts";
-import { TEST_LINES, ANSWER_POOL, SIVTSEV_LINES, SIVTSEV_POOL } from "./data.ts";
+import { CHECKS, TEST_LINES, ANSWER_POOL, SIVTSEV_LINES, SIVTSEV_POOL } from "./data.ts";
 
 const READ_SECONDS = 6;
 const STORE_KEY = "dmv-eye-test.profile.v1";
@@ -41,7 +41,7 @@ function fitCount(avail, height, count) {
   return Math.max(1, Math.min(count, Math.floor((avail + gapW) / (boxW + gapW))));
 }
 
-let STEP_ORDER = [
+const FULL_ORDER = [
   "calibrate",
   "distance",
   "tumbling",
@@ -55,8 +55,24 @@ let STEP_ORDER = [
   "results",
 ];
 
+const QUICK_ORDER = [
+  "guidance",
+  "near",
+  "color",
+  "astigmatism",
+  "refraction",
+  "contrast",
+  "results",
+];
+
+const DISTANCE_CHECKS = ["distance", "tumbling", "landolt", "sivtsev", "peripheral", "cdl"];
+
+let STEP_ORDER = FULL_ORDER.slice();
+
 const STEP_LABEL = {
   calibrate: "calib.title",
+  guidance: "modes.guidanceTitle",
+  menu: "modes.indivTitle",
   distance: "checks.distance.name",
   tumbling: "checks.tumbling.name",
   landolt: "checks.landolt.name",
@@ -100,6 +116,7 @@ export function createLab(labEl) {
   let results = loadResults();
   let step = "calibrate";
   let single = null;
+  let runMode = "full";
 
   function on(target, type, handler, options) {
     target.addEventListener(type, handler, options);
@@ -117,6 +134,7 @@ export function createLab(labEl) {
 
   function isDone(id) {
     if (id === "calibrate") return config.calibrated;
+    if (id === "guidance" || id === "menu") return true;
     if (id === "distance") return results.both != null || results.right != null || results.left != null;
     if (id === "tumbling") return results.tumbling != null;
     if (id === "color") return results.color != null;
@@ -145,90 +163,250 @@ export function createLab(labEl) {
   }
 
   function renderStepper() {
-    stepper.innerHTML = STEP_ORDER.map((id, i) => {
-      const active = id === step;
-      const done = isDone(id);
-      const classes = ["step"];
-      if (active) classes.push("is-active");
-      if (done && !active) classes.push("is-done");
-      let label = t(STEP_LABEL[id]);
-      if (id === "distance") {
-        label += ` <span style="font-size:0.8em; opacity:0.75; font-weight:normal; margin-left:2px;">${t("lab.eyeSeqHint")}</span>`;
-      }
-      return `<button type="button" class="${classes.join(" ")}" data-step="${id}"><span class="step-n">${done && !active ? "&#10003;" : i + 1}</span>${label}</button>`;
-    }).join("");
-    stepper.querySelectorAll("[data-step]").forEach((btn) => {
-      on(btn, "click", () => go(btn.dataset.step));
-    });
-    const activeBtn = stepper.querySelector(".step.is-active");
-    if (activeBtn && stepper.scrollWidth > stepper.clientWidth) {
-      /* offsetLeft is relative to the offsetParent (a positioned ancestor), not
-         the scroller, so derive the button's offset within the stepper itself
-         from client rects instead. */
-      const sr = stepper.getBoundingClientRect();
-      const br = activeBtn.getBoundingClientRect();
-      const within = br.left - sr.left + stepper.scrollLeft;
-      stepper.scrollLeft = Math.max(0, within - (stepper.clientWidth - br.width) / 2);
-    }
-    /* The rail hides its scrollbar, so fade whichever edge still has steps
-       beyond it. Recomputed on scroll because the effect depends on position. */
-    const wrap = stepper.parentElement;
-    const paintMask = () => {
-      const max = stepper.scrollWidth - stepper.clientWidth;
-      const scrollable = max > 1;
-      wrap.classList.toggle("fade-left", scrollable && stepper.scrollLeft > 1);
-      wrap.classList.toggle("fade-right", scrollable && stepper.scrollLeft < max - 1);
-    };
-    on(stepper, "scroll", paintMask, { passive: true });
-    paintMask();
-  }
-
-  
-  function finishStep(currentId) {
-    if (currentId === "calibrate") {
-      // Calibrate doesn't need a sub-result screen, just move on
-      go(STEP_ORDER[STEP_ORDER.indexOf("calibrate") + 1]);
+    if (step === "results") {
+      stepper.innerHTML = `<li class="step is-active"><span class="step-n">&#10003;</span><span>${t("results.title")}</span></li>`;
       return;
     }
-    if (single || runMode === "quick") { // wait, section 4 says full mode, but what about individual/quick?
-      // "Section 4 - Full mode... After EACH check, show a compact per-test result"
-      // "Section 5 - Individual mode... After the single test, show its result screen"
-      // For quick mode, section 3 doesn't explicitly mention it, but it uses the same steps. Let's show sub-result always unless it's calibrate.
+    if (step === "calibrate") {
+      stepper.innerHTML = `<li class="step is-active"><span class="step-n">1</span><span>${t("calib.title")}</span></li>`;
+      return;
     }
-    
-    // Show sub result
-    stage.innerHTML = `<div class="stage-title">${t(STEP_LABEL[currentId])}</div>
-      <div style="margin:2rem 0; padding:2rem; background:var(--bg-card); border-radius:12px; text-align:center;">
-        <h3 style="margin-bottom:0.5rem;">Test Complete</h3>
-        <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">Screening only &mdash; not a medical diagnosis.</p>
+    if (step === "guidance") {
+      stepper.innerHTML = `<li class="step is-active"><span class="step-n">1</span><span>${t("modes.guidanceTitle")}</span></li>`;
+      return;
+    }
+    if (step === "menu") {
+      stepper.innerHTML = `<li class="step is-active"><span class="step-n">&bull;</span><span>${t("modes.indivTitle")}</span></li>`;
+      return;
+    }
+
+    const checksOnly = STEP_ORDER.filter((s) => !["calibrate", "guidance", "menu", "results"].includes(s));
+    const idx = checksOnly.indexOf(step);
+    const n = idx >= 0 ? idx + 1 : 1;
+    const total = checksOnly.length;
+    const name = t(STEP_LABEL[step] || "checks." + step + ".name");
+
+    stepper.innerHTML = `
+      <li class="step is-active">
+        <span class="step-n">${n}/${total}</span>
+        <span>${t("lab.checkOf", { n, total })}: <strong>${name}</strong></span>
+      </li>
+    `;
+  }
+
+  function getMetricString(checkId) {
+    if (checkId === "distance") {
+      const parts = [];
+      if (results.right != null) parts.push(`R: ${acuityLabel(results.right)}`);
+      if (results.left != null) parts.push(`L: ${acuityLabel(results.left)}`);
+      if (results.both != null) parts.push(`Both: ${acuityLabel(results.both)}`);
+      return parts.length ? parts.join(" · ") : "20/20";
+    }
+    if (checkId === "tumbling") {
+      return results.tumbling ? `${results.tumbling.correct}/${results.tumbling.total} (${Math.round((results.tumbling.correct / results.tumbling.total) * 100)}%)` : "—";
+    }
+    if (checkId === "landolt") {
+      return results.landolt ? `${results.landolt.correct}/${results.landolt.total}` : "—";
+    }
+    if (checkId === "sivtsev") {
+      const s = results.sivtsev;
+      if (!s) return "—";
+      return `R: ${acuityLabel(s.right)} · L: ${acuityLabel(s.left)}`;
+    }
+    if (checkId === "color") {
+      return results.color ? `${results.color.correct}/${results.color.total} plates` : "—";
+    }
+    if (checkId === "peripheral") {
+      return results.peripheral ? `${results.peripheral.angle || 140}° (${results.peripheral.hits}/${results.peripheral.total})` : "—";
+    }
+    if (checkId === "near") {
+      return results.near != null ? acuityLabel(results.near) : "—";
+    }
+    if (checkId === "contrast") {
+      return results.contrast ? `${results.contrast.lowest}%` : "—";
+    }
+    if (checkId === "astigmatism") {
+      return results.astigmatism ? (results.astigmatism.axis == null ? t("results.astigNone") : axisLabel(results.astigmatism.axis)) : "—";
+    }
+    if (checkId === "refraction") {
+      return results.refraction ? `${t("refraction." + results.refraction.kind)} · ${results.refraction.range}` : "—";
+    }
+    if (checkId === "stereo") {
+      return results.stereo ? (results.stereo.seen ? t("results.stereoSeen") : t("results.stereoNot")) : "—";
+    }
+    if (checkId === "amsler") {
+      return results.amsler != null ? (results.amsler ? t("amsler.noDistortion") : t("amsler.distortionFound")) : "—";
+    }
+    return "Complete";
+  }
+
+  function renderGuidance() {
+    stage.innerHTML = `
+      <div class="stage-title">${t("modes.guidanceTitle")}</div>
+      <p class="stage-sub">${t("modes.guidanceSub")}</p>
+      <div class="stage-grid" style="max-width: 600px; margin: 0 auto;">
+        <div class="stage-panel" style="width: 100%;">
+          <div class="panel-title">${t("how.kicker")}</div>
+          <div class="tips">
+            ${tip(t("modes.armsLength"))}
+            ${tip(t("calib.brightness"))}
+            ${tip(t("lab.wearGlasses"))}
+          </div>
+          <div style="margin-top: 2rem; text-align: center;">
+            <button type="button" class="btn btn-soft btn-lg" id="btnStartGuidance" style="padding: 0.8rem 2.2rem; font-size: 1.1rem; font-weight: 600;">
+              ${t("modes.startCheck")}
+            </button>
+          </div>
+        </div>
       </div>`;
-      
-    // The nav foot will have Prev / Next
+
+    const startBtn = stage.querySelector("#btnStartGuidance");
+    if (startBtn) {
+      on(startBtn, "click", () => {
+        const nextId = STEP_ORDER[STEP_ORDER.indexOf("guidance") + 1];
+        if (nextId) go(nextId);
+      });
+    }
+    setFoot("");
+  }
+
+  function renderMenu() {
+    stage.innerHTML = `
+      <div class="stage-title">${t("modes.indivTitle")}</div>
+      <p class="stage-sub">${t("modes.selectCheck")}</p>
+      <div style="margin-bottom: 1.5rem;">
+        <button type="button" class="btn btn-quiet btn-sm" id="btnBackToModes">
+          &larr; ${t("modes.backModes")}
+        </button>
+      </div>
+      <div class="indiv-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        ${CHECKS.map((c) => {
+          const isDist = DISTANCE_CHECKS.includes(c.id);
+          return `
+            <button type="button" class="check-menu-card button button-outline" data-check="${c.id}" style="text-align: left; padding: 1.25rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.5rem; height: auto;">
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <span style="font-weight: 700; font-size: 1.1rem;">${t(STEP_LABEL[c.id] || "checks." + c.id + ".name")}</span>
+                <span style="font-size: 0.75rem; padding: 2px 8px; border-radius: 20px; background: ${isDist ? "var(--bg-warn)" : "var(--bg-alt)"}; font-weight: 600;">
+                  ${isDist ? t("modes.distanceNeeded") : t("modes.shortRange")}
+                </span>
+              </div>
+              <p style="font-size: 0.85rem; opacity: 0.85; margin: 0; line-height: 1.4; font-weight: normal;">
+                ${t("checks." + c.id + ".desc")}
+              </p>
+            </button>
+          `;
+        }).join("")}
+      </div>`;
+
+    const backBtn = stage.querySelector("#btnBackToModes");
+    if (backBtn) {
+      on(backBtn, "click", exitTest);
+    }
+
+    stage.querySelectorAll("[data-check]").forEach((btn) => {
+      on(btn, "click", () => {
+        startMode("individual", btn.dataset.check);
+      });
+    });
+
+    setFoot("");
+  }
+
+  function finishStep(currentId) {
+    if (currentId === "calibrate" || currentId === "guidance") {
+      const nextIdx = STEP_ORDER.indexOf(currentId) + 1;
+      if (nextIdx < STEP_ORDER.length) {
+        go(STEP_ORDER[nextIdx]);
+      }
+      return;
+    }
+
+    const metric = getMetricString(currentId);
+
+    if (single) {
+      // Individual mode single test result screen (Section 5)
+      stage.innerHTML = `
+        <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
+        <div style="margin:2rem 0; padding:2.5rem 1.5rem; background:var(--bg-card); border: 1px solid var(--border); border-radius:12px; text-align:center;">
+          <div style="font-size:2.2rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem;">${metric}</div>
+          <p style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem;">${t("modes.disclaimerBanner")}</p>
+          <div style="display:flex; flex-direction:column; gap:0.75rem; max-width:320px; margin:0 auto;">
+            <button class="btn btn-soft btn-sm" id="btnIndivRetake">${t("results.retake")}</button>
+            <button class="btn btn-quiet btn-sm" id="btnIndivBackMenu">${t("modes.backMenu")}</button>
+            <button class="btn btn-primary btn-sm" id="btnIndivTryFull">${t("modes.tryFull")}</button>
+          </div>
+        </div>`;
+
+      setFoot("");
+
+      const retakeBtn = stage.querySelector("#btnIndivRetake");
+      const backMenuBtn = stage.querySelector("#btnIndivBackMenu");
+      const tryFullBtn = stage.querySelector("#btnIndivTryFull");
+
+      if (retakeBtn) {
+        on(retakeBtn, "click", () => {
+          if (results[currentId] !== undefined) results[currentId] = null;
+          if (currentId === "distance") { results.right = null; results.left = null; results.both = null; }
+          startMode("individual", currentId);
+        });
+      }
+      if (backMenuBtn) {
+        on(backMenuBtn, "click", () => {
+          startMode("individual");
+        });
+      }
+      if (tryFullBtn) {
+        on(tryFullBtn, "click", () => {
+          startMode("full");
+        });
+      }
+      return;
+    }
+
+    // Full mode or Quick mode: compact per-test result (Section 4)
+    const idx = STEP_ORDER.indexOf(currentId);
+    const nextId = idx >= 0 && idx + 1 < STEP_ORDER.length ? STEP_ORDER[idx + 1] : "results";
+
+    stage.innerHTML = `
+      <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
+      <div style="margin:2rem 0; padding:2rem 1.5rem; background:var(--bg-card); border: 1px solid var(--border); border-radius:12px; text-align:center;">
+        <div style="font-size:2rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem;">${metric}</div>
+        <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">${t("modes.disclaimerBanner")}</p>
+      </div>`;
+
+    const checksOnly = STEP_ORDER.filter((s) => !["calibrate", "guidance", "menu", "results"].includes(s));
+    const checkIdx = checksOnly.indexOf(currentId);
+
     setFoot(`
-      <button class="btn btn-quiet btn-sm" data-act="prev">${t("lab.prev")}</button>
-      <span class="trial-counter">${t("lab.stepOf", { n: STEP_ORDER.indexOf(currentId) + 1, total: STEP_ORDER.length - 1 })}</span>
+      <button class="btn btn-quiet btn-sm" data-act="prev"${checkIdx > 0 ? "" : " disabled"}>${t("lab.prev")}</button>
+      <span class="trial-counter">${t("lab.checkOf", { n: checkIdx + 1, total: checksOnly.length })}</span>
       <button class="btn btn-soft btn-sm" data-act="next">${t("lab.next")}</button>
     `);
-    
+
     const prevBtn = foot.querySelector('[data-act="prev"]');
     const nextBtn = foot.querySelector('[data-act="next"]');
-    
-    if (prevBtn) {
+
+    if (prevBtn && checkIdx > 0) {
       prevBtn.onclick = () => {
-        // "Previous: goes back one check, re-runs it; all results after that point are marked stale and re-run — never kept."
-        results[currentId] = null;
-        go(currentId);
+        // Stale results cleared on Previous
+        for (let i = idx; i < STEP_ORDER.length; i++) {
+          const stepId = STEP_ORDER[i];
+          if (results[stepId] !== undefined) results[stepId] = null;
+          if (stepId === "distance") { results.right = null; results.left = null; results.both = null; }
+        }
+        const prevCheck = checksOnly[checkIdx - 1];
+        if (results[prevCheck] !== undefined) results[prevCheck] = null;
+        if (prevCheck === "distance") { results.right = null; results.left = null; results.both = null; }
+        go(prevCheck);
       };
     }
-    
+
     if (nextBtn) {
       nextBtn.onclick = () => {
-        const nextId = STEP_ORDER[STEP_ORDER.indexOf(currentId) + 1];
         go(nextId);
       };
     }
   }
-
 
   function go(id) {
     if (!id || (id === step && !single)) return;
@@ -244,6 +422,8 @@ export function createLab(labEl) {
     paintNorm();
     const setters = {
       calibrate: renderCalibrate,
+      guidance: renderGuidance,
+      menu: renderMenu,
       distance: renderDistance,
       tumbling: renderTumbling,
       landolt: renderLandolt,
@@ -297,14 +477,12 @@ export function createLab(labEl) {
     const nativeW = CARD_MM / MM_PER_PX_FALLBACK;
     let want = config.cardWidthPx || Math.round(nativeW);
       let cardW = want;
-      if (runMode === "quick") config.calibrated = true;
 
     stage.innerHTML = `
       <div class="stage-title">${t("calib.title")}</div>
       <p class="stage-sub">${t("calib.sub")}</p>
       <div class="stage-grid">
-          ${runMode === "quick" ? "" : `
-          <div class="stage-panel">
+        <div class="stage-panel">
           <div class="calib-stage">
             <div class="calib-visual">
               <div style="display: flex; gap: 8px; margin-bottom: 12px; justify-content: center; width: 100%;">
@@ -333,7 +511,6 @@ export function createLab(labEl) {
             <p class="stage-sub" id="calibHold">${t("calib.hold")}</p>
           </div>
         </div>
-          `}
           <div class="stage-panel">
             <div class="panel-title">${t("how.kicker")}</div>
           <div class="tips">
@@ -342,7 +519,6 @@ export function createLab(labEl) {
             ${tip(t("calib.tip3"))}
               ${tip(t("calib.brightness"))}
           </div>
-          ${runMode === "quick" ? "" : `
             <div class="panel-title" style="margin-top:24px">${t("calib.distanceTitle")}</div>
           <p class="stage-sub" style="margin-bottom:14px">${t("calib.distanceSub")}</p>
           <div class="distance-opts">
@@ -356,7 +532,6 @@ export function createLab(labEl) {
               <b>${t("calib.dist5")}</b><span>${t("calib.dist5note")}</span>
             </button>
           </div>
-          `}
         </div>
       </div>`;
 
@@ -1737,7 +1912,8 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     if (id === "cdl") return "distance";
     if (id === "landolt") return "landolt";
     if (id === "sivtsev") return "sivtsev";
-    return STEP_ORDER.includes(id) ? id : "distance";
+    if (id === "amsler") return "amsler";
+    return id;
   }
 
   function start(checkId) {
@@ -1748,27 +1924,43 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     }
   }
 
+  function exitTest() {
+    single = null;
+    runMode = null;
+    step = "calibrate";
+    clearCleanups();
+    const entryChoice = document.getElementById("testEntryChoice");
+    if (entryChoice) entryChoice.style.display = "flex";
+    labEl.style.display = "none";
+    if (window.location.search) {
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+  }
+
   function startMode(mode, specificCheck = null) {
     runMode = mode;
     single = specificCheck ? { check: mapCheck(specificCheck) } : null;
+
     if (mode === "quick") {
-      STEP_ORDER = QUICK_ORDER;
-      step = "calibrate";
+      STEP_ORDER = QUICK_ORDER.slice();
+      step = "guidance";
     } else if (mode === "individual") {
-      const c = single.check;
-      const needsDistance = ["distance", "tumbling", "landolt", "sivtsev", "peripheral"].includes(c);
-      if (needsDistance && !config.calibrated) {
-        STEP_ORDER = ["calibrate", c, "results"];
-        step = "calibrate";
-      } else if (!needsDistance) {
-        STEP_ORDER = ["calibrate", c, "results"];
-        step = "calibrate";
+      if (!specificCheck) {
+        STEP_ORDER = ["menu"];
+        step = "menu";
       } else {
-        STEP_ORDER = [c, "results"];
-        step = c;
+        const c = single.check;
+        const needsDistance = DISTANCE_CHECKS.includes(c);
+        if (needsDistance) {
+          STEP_ORDER = ["calibrate", c, "results"];
+          step = config.calibrated ? c : "calibrate";
+        } else {
+          STEP_ORDER = ["guidance", c, "results"];
+          step = "guidance";
+        }
       }
     } else {
-      STEP_ORDER = FULL_ORDER;
+      STEP_ORDER = FULL_ORDER.slice();
       step = config.calibrated ? "distance" : "calibrate";
     }
 
@@ -1776,9 +1968,9 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     if (exitBtn) {
       exitBtn.style.display = "inline-block";
       exitBtn.textContent = t("lab.exit") || "Exit test";
-      exitBtn.onclick = () => window.location.href = "/test/";
+      exitBtn.onclick = exitTest;
     }
-    
+
     render();
     labEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -1816,7 +2008,9 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
   return {
     start,
+    startMode,
     reset,
+    exit: exitTest,
     rerender: render,
     get results() {
       return results;
