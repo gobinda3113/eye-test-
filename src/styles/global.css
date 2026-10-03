@@ -1246,18 +1246,21 @@ input[type="range"]::-moz-range-thumb {
 .tip { display: flex; gap: 10px; font-size: 13.5px; color: #A5B3AE; line-height: 1.5; }
 .tip .ico { width: 16px; height: 16px; color: var(--lab-accent); stroke-width: 2; margin-top: 2px; }
 
-.calib-how summary {
-  list-style: none;
+.calib-how-btn {
+  background: none;
+  border: none;
+  color: var(--lab-accent, #2EC4B6);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.15s;
 }
-.calib-how summary::-webkit-details-marker {
-  display: none;
-}
-.calib-how[open] .calib-how-arrow {
-  transform: rotate(180deg);
-}
-.calib-how .calib-how-arrow {
-  transition: transform 0.2s ease;
-  display: inline-block;
+.calib-how-btn:hover {
+  opacity: 0.8;
 }
 
 .calib-grid {

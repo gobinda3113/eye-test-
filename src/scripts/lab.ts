@@ -562,6 +562,70 @@ export function createLab(labEl) {
     document.addEventListener("keydown", onKeyDown);
   }
 
+  function showCalibHowModal() {
+    const existing = document.getElementById("calibHowModal");
+    if (existing) existing.remove();
+
+    const overlay = document.createElement("div");
+    overlay.className = "calib-modal-overlay";
+    overlay.id = "calibHowModal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-labelledby", "calibHowTitle");
+
+    overlay.innerHTML = `
+      <div class="calib-modal-box">
+        <button type="button" class="calib-modal-close" id="calibHowClose" aria-label="${t("calib.close")}">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="calib-modal-icon">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
+        </div>
+        <h3 id="calibHowTitle" class="calib-modal-title">${t("how.kicker")}</h3>
+        <div class="tips" style="margin-top: 16px; margin-bottom: 22px; text-align: left;">
+          ${tip(t("calib.tip1"))}
+          ${tip(t("calib.tip2"))}
+          ${tip(t("calib.tip3"))}
+          ${tip(t("calib.brightness"))}
+        </div>
+        <div class="calib-modal-actions">
+          <button type="button" class="btn btn-soft btn-sm" id="btnCalibHowOk" style="width: 100%; min-height: 42px;">${t("lab.noticeOk")}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    let closed = false;
+    const finish = () => {
+      if (closed) return;
+      closed = true;
+      document.removeEventListener("keydown", onKeyDown);
+      overlay.remove();
+    };
+
+    const okBtn = overlay.querySelector("#btnCalibHowOk");
+    const closeBtn = overlay.querySelector("#calibHowClose");
+
+    if (okBtn) okBtn.addEventListener("click", finish);
+    if (closeBtn) closeBtn.addEventListener("click", finish);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) finish();
+    });
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" || e.key === "Enter") {
+        e.preventDefault();
+        finish();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+  }
+
   function showCalibSavePopup(done: (saved: boolean) => void) {
     const existing = document.getElementById("calibSaveModal");
     if (existing) existing.remove();
@@ -715,7 +779,10 @@ export function createLab(labEl) {
           </div>
         </div>
         <div class="stage-panel">
-          <div class="panel-title" style="margin-bottom: 6px;">${t("calib.distanceTitle")}</div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <div class="panel-title" style="margin-bottom: 0;">${t("calib.distanceTitle")}</div>
+            <button type="button" class="calib-how-btn" id="btnHowItWorks">${t("how.kicker")}</button>
+          </div>
           <p class="stage-sub" style="margin-bottom: 10px; font-size: 13px;">${t("calib.distanceSub")}</p>
           <div class="distance-opts">
             <button type="button" class="dist-opt" data-dist="3">
@@ -728,18 +795,6 @@ export function createLab(labEl) {
               <b>${t("calib.dist5")}</b><span>${t("calib.dist5note")}</span>
             </button>
           </div>
-          <details class="calib-how" style="margin-top: 14px; border-top: 1px solid var(--lab-border); padding-top: 10px;">
-            <summary class="panel-title" style="cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0;">
-              <span>${t("how.kicker")}</span>
-              <span class="calib-how-arrow" style="font-size: 0.8em; opacity: 0.7;">▼</span>
-            </summary>
-            <div class="tips" style="margin-top: 10px;">
-              ${tip(t("calib.tip1"))}
-              ${tip(t("calib.tip2"))}
-              ${tip(t("calib.tip3"))}
-              ${tip(t("calib.brightness"))}
-            </div>
-          </details>
         </div>
       </div>`;
 
@@ -749,6 +804,10 @@ export function createLab(labEl) {
     const ticksEl = stage.querySelector("#rulerTicks");
     const btnCard = stage.querySelector("#btnModeCard");
     const btnRuler = stage.querySelector("#btnModeRuler");
+    const howBtn = stage.querySelector("#btnHowItWorks");
+    if (howBtn) {
+      on(howBtn, "click", () => showCalibHowModal());
+    }
     const hintEl = stage.querySelector("#calibHint");
     const holdEl = stage.querySelector("#calibHold");
     const range = stage.querySelector("#calibRange");
