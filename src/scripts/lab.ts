@@ -1670,10 +1670,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     stage.innerHTML = `
-      ${quickNoteHtml}
       ${disclaimerHtml}
       <div class="stage-title">${t("results.title")}</div>
       <p class="stage-sub">${t("results.sub")}</p>
+      ${quickNoteHtml}
       <div class="verdict ${verdict}" style="margin-top:22px">
         <span class="verdict-ico"><svg class="ico" viewBox="0 0 24 24">${icons[verdict] || icons.warn}</svg></span>
         <div>
