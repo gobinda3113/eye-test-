@@ -31,7 +31,36 @@ const pageSchema = {
   "name": `${stateData.name} DMV Eye Test & Vision Requirements`,
   "url": `https://onlinevisiontest.org/states/${slug}/`,
   "description": `Pass the ${stateData.name} DMV eye test in ${new Date().getFullYear()}. Learn the vision requirements, visual acuity minimums, and practice online.`,
-  "inLanguage": "en"
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Online Vision Test",
+        "item": "https://onlinevisiontest.org/",
+        "id": "https://onlinevisiontest.org/",
+        "@id": "https://onlinevisiontest.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "States",
+        "item": "https://onlinevisiontest.org/states/",
+        "id": "https://onlinevisiontest.org/states/",
+        "@id": "https://onlinevisiontest.org/states/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": stateData.name,
+        "item": `https://onlinevisiontest.org/states/${slug}/`,
+        "id": `https://onlinevisiontest.org/states/${slug}/`,
+        "@id": `https://onlinevisiontest.org/states/${slug}/`
+      }
+    ]
+  }
 };
 
 const faqSchema = {

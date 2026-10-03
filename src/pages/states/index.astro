@@ -21,27 +21,50 @@ const customXDefault = canonical;
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://onlinevisiontest.org/states/#webpage",
-      "url": "https://onlinevisiontest.org/states/",
-      "name": title,
-      "description": description,
-      "inLanguage": "en"
-    },
-    {
-      "@type": "ItemList",
-      "@id": "https://onlinevisiontest.org/states/#itemlist",
-      "name": "DMV Eye Test Requirements by State",
-      "itemListElement": STATES.map((s, idx) => ({
+  "@type": "WebPage",
+  "name": title,
+  "description": description,
+  "url": "https://onlinevisiontest.org/states/",
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
         "@type": "ListItem",
-        "position": idx + 1,
-        "name": `${s.name} DMV Eye Test`,
-        "url": `https://onlinevisiontest.org/states/${s.name.toLowerCase().replace(/ /g, "-")}/`
-      }))
-    }
-  ]
+        "position": 1,
+        "name": "Online Vision Test",
+        "item": "https://onlinevisiontest.org/",
+        "id": "https://onlinevisiontest.org/",
+        "@id": "https://onlinevisiontest.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "DMV Practice",
+        "item": "https://onlinevisiontest.org/us/",
+        "id": "https://onlinevisiontest.org/us/",
+        "@id": "https://onlinevisiontest.org/us/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "States",
+        "item": "https://onlinevisiontest.org/states/",
+        "id": "https://onlinevisiontest.org/states/",
+        "@id": "https://onlinevisiontest.org/states/"
+      }
+    ]
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "DMV Eye Test Requirements by State",
+    "itemListElement": STATES.map((s, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": `${s.name} DMV Eye Test`,
+      "url": `https://onlinevisiontest.org/states/${s.name.toLowerCase().replace(/ /g, "-")}/`
+    }))
+  }
 };
 
 const sortedStates = [...STATES].sort((a, b) => a.name.localeCompare(b.name));
