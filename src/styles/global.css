@@ -379,6 +379,9 @@ html[data-theme="dark"] .btn.btn-primary {
   color: var(--muted);
   pointer-events: none;
 }
+.lang-wrap .lang-code {
+  display: none;
+}
 .lang-wrap select {
   appearance: none;
   -webkit-appearance: none;
@@ -398,6 +401,10 @@ html[data-theme="dark"] .btn.btn-primary {
   transition: border-color .18s;
 }
 .lang-wrap select:hover { border-color: var(--border-strong); }
+.lang-wrap select option {
+  background: var(--surface);
+  color: var(--text);
+}
 
 .icon-btn {
   width: 34px;

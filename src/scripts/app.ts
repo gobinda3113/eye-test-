@@ -36,7 +36,8 @@ function initTheme() {
   document.documentElement.dataset.theme = theme;
 
   const btn = document.getElementById("themeBtn");
-  if (!btn) return;
+  if (!btn || (btn as any).dataset.boundTheme) return;
+  (btn as any).dataset.boundTheme = "1";
   btn.addEventListener("click", () => {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
@@ -65,12 +66,12 @@ function initLanguage(lab) {
 
   // The server-rendered route determines the language
   const code = document.documentElement.lang || "en";
-  if (select) select.value = code;
+  if (select) (select as HTMLSelectElement).value = code;
   setLang(code);
 
   if (select) {
     select.addEventListener("change", () => {
-      const newLang = select.value;
+      const newLang = (select as HTMLSelectElement).value;
       try {
         localStorage.setItem(LANG_KEY, newLang);
       } catch (e) {
@@ -103,6 +104,12 @@ function initLanguage(lab) {
       let newPath = "/" + pathSegments.join("/");
       if (window.location.pathname.endsWith("/") && newPath !== "/") {
         newPath += "/";
+      }
+      if (window.location.search) {
+        newPath += window.location.search;
+      }
+      if (window.location.hash) {
+        newPath += window.location.hash;
       }
       
       window.location.href = newPath || "/";
