@@ -1814,81 +1814,7 @@ html[data-theme="dark"] .dark-ink-panel h3 {
   margin: 0 auto 24px;
 }
 
-/* ---------------------------------------------------------------- footer */
-
-.site-footer {
-  border-top: 1px solid var(--border);
-  background: var(--bg);
-  padding: 56px 0 36px;
-  position: relative;
-  z-index: 2;
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, .85fr));
-  gap: 36px;
-}
-.footer-brand p {
-  margin-top: 14px;
-  color: var(--text-2);
-  font-size: 14px;
-  max-width: 32em;
-  line-height: 1.6;
-}
-.footer-langs { color: var(--muted) !important; font-size: 12.5px !important; margin-top: 8px !important; }
-.footer-col h3 {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.footer-col a {
-  display: block;
-  padding: 5px 0;
-  font-size: 14px;
-  color: var(--text-2);
-  transition: color .15s;
-}
-.footer-col a:hover { color: var(--primary); }
-.footer-col p { font-size: 13.5px; color: var(--text-2); }
-
-.disclaimer {
-  display: flex;
-  gap: 12px;
-  margin-top: 40px;
-  padding: 16px 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  background: var(--surface);
-}
-.disclaimer .ico {
-  width: 18px;
-  height: 18px;
-  color: var(--muted);
-  flex: none;
-  margin-top: 2px;
-}
-.disclaimer p {
-  font-size: 12.5px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-.copyright {
-  margin-top: 22px;
-  font-size: 12.5px;
-  color: var(--muted);
-}
-.copyright a {
-  color: var(--muted);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.copyright a:hover {
-  color: var(--primary);
-}
+/* ---------------------------------------------------------------- footer (unified in extra.css) */
 
 /* ---------------------------------------------------------------- reveal */
 
@@ -1920,7 +1846,6 @@ html[data-theme="dark"] .dark-ink-panel h3 {
   .how-timeline, 
   
   .featured-states { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
   .header-nav { display: none; }
   .menu-btn { display: grid; }
 }
@@ -1993,7 +1918,6 @@ html[data-theme="dark"] .dark-ink-panel h3 {
   .ref-card { padding: 18px; }
   .chart-view { padding: 24px 10px; }
   .state-table th, .state-table td { padding: 10px 14px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .distance-opts { grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .dist-opt { padding: 6px 4px; text-align: center; border-radius: 6px; }
   .dist-opt b { font-size: 13.5px; }

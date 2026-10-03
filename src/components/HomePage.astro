@@ -24,12 +24,10 @@ import {
 import { seoFor } from "../data/seo.ts";
 import { SITE } from "../lib/site.ts";
 import SiteHeader from "./SiteHeader.astro";
+import SiteFooter from "./SiteFooter.astro";
 import "../styles/landing.css";
 
 const { locale = "en", variant = "generic" } = Astro.props;
-
-const FOOTER_LINKS = {"en":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"es":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"fr":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"de":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"pt":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"it":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Blog"},"ja":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"ブログ"},"ru":{"chart": "Eye Test Chart","us": "DMV Practice","states": "States","blog":"Блог"}};
-const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
 // The US DMV practice screener lives only on /us/. Every homepage route (/,
 // /es/, ...) renders the generic vision check, whatever the language.
 const isUS = variant === "us";
@@ -483,77 +481,7 @@ const howToSchema = {
 
     </main>
 
-  <footer class="site-footer page-pad">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a class="brand wordmark dark-wordmark" href="#top">
-          <span class="brand-mark logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none">
-              <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1"/>
-              <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
-            </svg>
-          </span>
-          <span class="brand-text">Online<span class="wordmark-light">Vision</span>Test<span class="wordmark-dot">.</span></span>
-        </a>
-        <p data-i18n={K("footer.tagline")}>{d(K("footer.tagline"))}</p>
-      </div>
-      <nav class="footer-col" aria-label={d("footer.c1")}>
-        <h3 data-i18n="footer.c1">{d("footer.c1")}</h3>
-        {isUS ? (
-          <Fragment>
-            <a href={`${testHref}?mode=individual&check=distance`} data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-            <a href={`${testHref}?mode=individual&check=tumbling`} data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-            <a href={`${testHref}?mode=individual&check=color`} data-i18n="checks.color.name">{d("checks.color.name")}</a>
-            <a href={`${testHref}?mode=individual&check=peripheral`} data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-            <a href={`${testHref}?mode=individual&check=near`} data-i18n="checks.near.name">{d("checks.near.name")}</a>
-            <a href={`${testHref}?mode=individual&check=contrast`} data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-            <a href={`${testHref}?mode=individual&check=astigmatism`} data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-            <a href={`${testHref}?mode=individual&check=refraction`} data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-            <a href={`${testHref}?mode=individual&check=stereo`} data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
-            <a href={`${testHref}?mode=individual&check=cdl`} data-i18n="checks.cdl.name">{d("checks.cdl.name")}</a>
-            <a href={`${testHref}?mode=individual&check=landolt`} data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
-            <a href={`${testHref}?mode=individual&check=amsler`} data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
-            <a href={`${testHref}?mode=individual&check=sivtsev`} data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <a href={`${testHref}?mode=individual&check=distance`} data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-            <a href={`${testHref}?mode=individual&check=tumbling`} data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-            <a href={`${testHref}?mode=individual&check=color`} data-i18n="checks.color.name">{d("checks.color.name")}</a>
-            <a href={`${testHref}?mode=individual&check=peripheral`} data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-            <a href={`${testHref}?mode=individual&check=near`} data-i18n="checks.near.name">{d("checks.near.name")}</a>
-            <a href={`${testHref}?mode=individual&check=contrast`} data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-            <a href={`${testHref}?mode=individual&check=astigmatism`} data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-            <a href={`${testHref}?mode=individual&check=refraction`} data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-            <a href={`${testHref}?mode=individual&check=stereo`} data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
-            <a href={`${testHref}?mode=individual&check=landolt`} data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
-            <a href={`${testHref}?mode=individual&check=amsler`} data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
-            <a href={`${testHref}?mode=individual&check=sivtsev`} data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
-          </Fragment>
-        )}
-      </nav>
-      <nav class="footer-col" aria-label={d("footer.c2")}>
-        <h3 data-i18n="footer.c2">{d("footer.c2")}</h3>
-        <a href="/eye-test-chart/">{fl.chart}</a>
-        <a href="/us/">{fl.us}</a>
-        <a href="/states/">{fl.states}</a>
-        <a href={blogHref} data-i18n="nav.blog">{fl.blog}</a>
-        <a href="#faq" data-i18n="footer.g4">{d("footer.g4")}</a>
-        <a href="#reference" data-i18n="refs.kicker">{d("refs.kicker")}</a>
-      </nav>
-      <div class="footer-col">
-        <h3 data-i18n="footer.c3">{d("footer.c3")}</h3>
-        <p data-i18n="footer.p1">{d("footer.p1")}</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="disclaimer" role="note" aria-label="Medical and legal notice">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 19H3l9-15.5Z"/><path d="M12 10v4.2M12 16.6v.1"/></svg>
-        <p data-i18n="footer.disclaimer">{d("footer.disclaimer")}</p>
-      </div>
-      <p class="copyright"><span id="year">2026</span> <span data-i18n="footer.copy">{d("footer.copy")}</span></p>
-    </div>
-  </footer>
+  <SiteFooter locale={locale} page="home" variant={variant} />
 </div>
 
 <script>

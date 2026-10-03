@@ -7,6 +7,7 @@
  */
 import { LOCALES, pathFor, SITE } from "../lib/site.ts";
 import SiteHeader from "./SiteHeader.astro";
+import SiteFooter from "./SiteFooter.astro";
 
 const { locale = "en", page = "home", customAlts } = Astro.props;
 const L = {
@@ -97,49 +98,5 @@ const isBlog = page === "blog" || page.startsWith("blog");
   <slot />
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1"/>
-            <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
-          </svg>
-        </span>
-        <span class="brand-text"><b>Online</b>Vision<span class="brand-tld">Test</span></span>
-      </div>
-      <p>{t.privacyNote}</p>
-    </div>
-    <div class="footer-col">
-      <h3>{t.guides}</h3>
-      <ul>
-        <li><a href={pathFor(locale, "test")}>{t.cta}</a></li>
-        <li><a href="/eye-test-chart/">{t.chart}</a></li>
-        <li><a href="/us/">{t.us}</a></li>
-        <li><a href="/states/">{t.states}</a></li>
-        <li><a href={pathFor(locale, "blog")}>{t.blog}</a></li>
-        <li><a href={pathFor(locale, "about")}>{t.about}</a></li>
-        <li><a href={pathFor(locale, "contact")}>{t.contact}</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h3>{t.legal}</h3>
-      <ul>
-        <li><a href={pathFor(locale, "privacy")}>{t.privacy}</a></li>
-        <li><a href={pathFor(locale, "terms")}>{t.terms}</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <p class="disclaimer">{t.disclaimer}</p>
-    <p class="copyright">© <span id="year">2026</span> OnlineVisionTest.org, operated by Perchange AI · {t.rights} · <a href="mailto:contact@onlinevisiontest.org">contact@onlinevisiontest.org</a></p>
-  </div>
-</footer>
+<SiteFooter locale={locale} page={page} />
 
-<script is:inline>
-  (function () {
-    var y = document.getElementById("year");
-    if (y) y.textContent = String(new Date().getFullYear());
-  })();
-</script>
