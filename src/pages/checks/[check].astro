@@ -35,7 +35,7 @@ const schema = {
 <Layout locale="en" customMeta={{title, description, url: canonical}} schema={schema}>
   <SiteShell locale="en">
     <main class="page-pad" style="max-width: 800px; margin: 4rem auto; padding: 2rem;">
-      <a href="/#checks" style="color:var(--primary); text-decoration:none; display:inline-block; margin-bottom:2rem; font-weight: 500;">&larr; Back to all checks</a>
+      <a href="/checks/" style="color:var(--primary); text-decoration:none; display:inline-block; margin-bottom:2rem; font-weight: 500;">&larr; Back to all checks</a>
       
       <h1 style="font-size:2.5rem; margin-bottom:1rem; font-weight:700;">{d(`checks.${check.id}.name`)}</h1>
       <p style="font-size:1.2rem; color:var(--muted); line-height:1.6; margin-bottom:2rem;">{description}</p>

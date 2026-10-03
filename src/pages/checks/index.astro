@@ -1,0 +1,342 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import { CHECKS } from "../../scripts/data.ts";
+import { DICT } from "../../scripts/dict.ts";
+
+const dict = DICT.en;
+const d = (k: string) => (dict[k] != null ? dict[k] : k);
+
+const title = "All 13 Online Vision Checks — Complete Test Directory";
+const description = "Explore all 13 clinical vision tests: visual acuity, Snellen chart, astigmatism dial, color plates, peripheral vision, CDL prep, and more.";
+const canonical = "https://onlinevisiontest.org/checks/";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": title,
+  "description": description,
+  "url": canonical,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Online Vision Test",
+    "url": "https://onlinevisiontest.org/"
+  }
+};
+---
+
+<Layout locale="en" customMeta={{ title, description, url: canonical }} schema={schema}>
+  <SiteShell locale="en">
+    <main class="page-pad checks-index-wrap" id="main">
+      <div class="checks-hero">
+        <div class="checks-kicker">
+          <span class="kicker-line"></span>
+          <span>CLINICAL DIRECTORY</span>
+        </div>
+        <h1 class="checks-title">All 13 Online Vision Checks</h1>
+        <p class="checks-lede">
+          Explore every check in our screening battery. Read about what each test measures and standard clinical benchmarks, or launch any check directly in the interactive testing lab.
+        </p>
+      </div>
+
+      <div class="checks-grid">
+        {
+          CHECKS.map((c, idx) => {
+            const num = String(idx + 1).padStart(2, "0");
+            const name = d(`checks.${c.id}.name`);
+            const desc = d(`checks.${c.id}.desc`);
+            return (
+              <article class="check-card">
+                <a href={`/checks/${c.id}/`} class="check-card-link" aria-label={`Learn about ${name}`}>
+                  <div class="check-card-header">
+                    <span class="check-num">{num}</span>
+                    <span class="check-badge">{c.tag}</span>
+                  </div>
+                  <h2 class="check-title">{name}</h2>
+                  <p class="check-desc">{desc}</p>
+                </a>
+                <div class="check-card-actions">
+                  <a href={`/checks/${c.id}/`} class="action-info">
+                    <span>Test Guide</span>
+                    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                  <a href={`/test/?mode=individual&check=${c.id}`} class="action-run">
+                    <span>Start Test</span>
+                    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      <div class="checks-banner">
+        <div>
+          <h3>Ready for a comprehensive screening?</h3>
+          <p>Run the guided full-battery test to evaluate acuity, color, contrast, and field awareness in one calibrated 10-minute session.</p>
+        </div>
+        <a href="/test/" class="button-start-full">
+          <span>Start Full Vision Test</span>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </main>
+  </SiteShell>
+</Layout>
+
+<style>
+  .checks-index-wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .checks-hero {
+    max-width: 760px;
+    margin-bottom: 3rem;
+  }
+
+  .checks-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.85rem;
+  }
+
+  .checks-kicker .kicker-line {
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+  }
+
+  .checks-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.85rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .checks-lede {
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: var(--text-2);
+  }
+
+  .checks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .check-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
+  }
+
+  .check-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .check-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary);
+  }
+
+  .check-card:hover::before {
+    opacity: 1;
+  }
+
+  .check-card-link {
+    display: block;
+    padding: 1.5rem 1.5rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+  }
+
+  .check-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .check-num {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+  }
+
+  .check-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--primary-soft);
+    border: 1px solid rgba(13, 122, 106, 0.18);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+  }
+
+  .check-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .check-desc {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+
+  .check-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding: 0.85rem 1.25rem;
+    background: var(--surface-2);
+    gap: 0.5rem;
+  }
+
+  .action-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .action-info:hover {
+    color: var(--primary);
+  }
+
+  .action-info .ico {
+    width: 14px;
+    height: 14px;
+  }
+
+  .action-run {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    background: var(--primary-soft);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(13, 122, 106, 0.2);
+    transition: all 0.15s ease;
+  }
+
+  .action-run:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .action-run .ico {
+    width: 14px;
+    height: 14px;
+  }
+
+  .checks-banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .checks-banner h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .checks-banner p {
+    color: var(--text-2);
+    font-size: 0.98rem;
+    max-width: 620px;
+    line-height: 1.5;
+  }
+
+  .button-start-full {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.98rem;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(13, 122, 106, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .button-start-full:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(13, 122, 106, 0.35);
+  }
+
+  .button-start-full .ico {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .checks-banner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
