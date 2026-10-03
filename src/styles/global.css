@@ -1904,7 +1904,7 @@ html[data-theme="dark"] .dark-ink-panel h3 {
 
 /* ---------------------------------------------------------------- responsive */
 
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
   .header-nav + .header-tools { margin-left: auto; }
   .mobile-nav:not([hidden]) {
     display: grid; gap: 2px;
