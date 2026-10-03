@@ -765,7 +765,7 @@ export function createLab(labEl) {
                 <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
               </div>
               <p class="cc-hint" id="calibHint" style="margin-top: 6px;">${t("calib.cardHint")}</p>
-              <p style="font-size: 12px; color: var(--text-3); margin-top: 4px; text-align: center;">${t("calib.privacyNote")}</p>
+              <p class="calib-privacy-note" style="font-size: 12px; color: var(--text-3); margin-top: 4px; text-align: center;">${t("calib.privacyNote")}</p>
             </div>
             <div>
               <label class="panel-title" id="calibRangeLabel" for="calibRange" style="display:block; cursor:pointer; margin-bottom: 6px;">${t("calib.slider")}</label>
@@ -853,12 +853,15 @@ export function createLab(labEl) {
         const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
         const avail = Math.floor(visual.clientWidth - pad);
         const ch = Math.round(cardW * (53.98 / CARD_MM));
-        if (cardW > avail) {
-          cardWrap.style.width = ch + "px";
-          cardWrap.style.height = cardW + "px";
+        const maxH = window.innerHeight <= 700 ? 120 : 200;
+        const scale = Math.min(avail > 0 ? avail / cardW : 1, ch > 0 ? maxH / ch : 1, 1);
+        if (scale < 1) {
+          cardWrap.style.width = Math.round(cardW * scale) + "px";
+          cardWrap.style.height = Math.round(ch * scale) + "px";
           cardEl.style.width = cardW + "px";
           cardEl.style.height = ch + "px";
-          cardEl.style.transform = "rotate(90deg)";
+          cardEl.style.transform = `scale(${scale})`;
+          cardEl.style.transformOrigin = "center center";
         } else {
           cardWrap.style.width = cardW + "px";
           cardWrap.style.height = ch + "px";
@@ -891,7 +894,7 @@ export function createLab(labEl) {
       cardW = Math.max(CARD_MIN, Math.min(want, mx));
       range.value = String(cardW);
       paint();
-      noteEl.hidden = avail >= nativeW;
+      noteEl.hidden = avail >= nativeW || window.innerHeight <= 700;
     };
     fit();
 

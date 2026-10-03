@@ -948,9 +948,24 @@ html[data-theme="dark"] .btn.btn-primary {
   display: flex !important; flex-direction: column; overflow: hidden;
 }
 .lab.is-full .lab-bar,
-.lab.is-full #stepperWrap,
 .lab.is-full .lab-foot {
   flex-shrink: 0;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  justify-content: space-between;
+}
+.lab.is-full #stepperWrap {
+  display: none !important;
+}
+.lab.is-full .lab-bar-left {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+.lab.is-full #labStatus {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 .lab.is-full .lab-stage {
   flex: 1;
@@ -1279,30 +1294,87 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 768px) {
   .calib-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-    margin-top: 8px;
+    gap: 8px;
+    margin-top: 4px;
   }
   .calib-grid .stage-panel {
-    padding: 12px 14px;
-  }
-}
-@media (max-height: 760px) {
-  .lab.is-full .lab-stage {
-    padding: 12px 20px;
-  }
-  .calib-grid {
-    margin-top: 6px;
-    gap: 14px;
-  }
-  .calib-grid .stage-panel {
-    padding: 12px 16px;
+    padding: 8px 12px;
   }
   .calib-grid .calib-visual {
-    padding: 12px;
-    gap: 6px;
+    padding: 8px;
+    gap: 4px;
   }
-  .calib-grid .dist-opt {
-    padding: 10px 14px;
+}
+@media (max-width: 480px), (max-height: 720px) {
+  .lab.is-full .lab-bar {
+    padding: 6px 12px !important;
+  }
+  .lab.is-full .lab-foot {
+    padding: 6px 12px !important;
+  }
+  .lab.is-full .lab-stage {
+    padding: 4px 8px !important;
+  }
+  .calib-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+    margin-top: 2px !important;
+  }
+  .calib-grid .stage-panel {
+    padding: 6px 8px !important;
+  }
+  .calib-grid .calib-visual {
+    padding: 6px !important;
+    gap: 4px !important;
+  }
+  .calib-stage {
+    gap: 8px !important;
+  }
+  .calib-card-wrap {
+    max-height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slider-row {
+    gap: 8px !important;
+  }
+  .stage-panel .panel-title {
+    font-size: 13px !important;
+    margin-bottom: 2px !important;
+  }
+  .stage-panel .stage-sub {
+    font-size: 11px !important;
+    margin-bottom: 4px !important;
+  }
+  .cc-hint {
+    margin: 4px 0 0 !important;
+    font-size: 11px !important;
+  }
+  .calib-privacy-note {
+    display: none !important;
+  }
+  .distance-opts {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    margin-top: 4px !important;
+  }
+  .dist-opt {
+    padding: 5px 3px !important;
+    text-align: center !important;
+    border-radius: 6px !important;
+  }
+  .dist-opt b {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+  .dist-opt span {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
   }
 }
 
@@ -1922,7 +1994,10 @@ html[data-theme="dark"] .dark-ink-panel h3 {
   .chart-view { padding: 24px 10px; }
   .state-table th, .state-table td { padding: 10px 14px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .distance-opts { grid-template-columns: 1fr; }
+  .distance-opts { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .dist-opt { padding: 6px 4px; text-align: center; border-radius: 6px; }
+  .dist-opt b { font-size: 13.5px; }
+  .dist-opt span { font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
   .field-screen { height: 240px; }
   .arrows { width: 200px; }
   .arrow-btn { height: 58px; }
@@ -1935,9 +2010,9 @@ html[data-theme="dark"] .dark-ink-panel h3 {
   .ref-grid { grid-template-columns: minmax(0, 1fr); }
   
   .hero-cta .btn { width: 100%; }
-  .lab-bar { flex-wrap: wrap; justify-content: flex-end; row-gap: 8px; }
-  .lab-bar-left { flex: 1 1 100%; }
-  #labStatus { white-space: normal; overflow: visible; }
+  .lab:not(.is-full) .lab-bar { flex-wrap: wrap; justify-content: flex-end; row-gap: 8px; }
+  .lab:not(.is-full) .lab-bar-left { flex: 1 1 100%; }
+  .lab:not(.is-full) #labStatus { white-space: normal; overflow: visible; }
 }
 
 @media (max-width: 380px) {
