@@ -126,11 +126,6 @@ const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.
       <div class="stepper-wrap" id="stepperWrap">
         <ol class="stepper" id="stepper"></ol>
       </div>
-      <div class="lab-reminders" style="text-align: center; padding: 0.5rem 1rem; color: var(--muted); font-size: 0.85rem; background: var(--bg-card); border-bottom: 1px solid var(--border);">
-        <div data-i18n="lab.wearGlasses">{d("lab.wearGlasses")}</div>
-        <div data-i18n="lab.smallScreen" style="margin-top: 0.25rem;">{d("lab.smallScreen")}</div>
-      </div>
-
       <div class="lab-norm" id="labNorm" hidden></div>
       <div class="lab-stage" id="labStage"><p class="stage-sub" data-lab-fallback>{d("lab.ready")}</p></div>
       <div class="lab-foot" id="labFoot"></div>
