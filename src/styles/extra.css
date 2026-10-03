@@ -90,12 +90,7 @@
   gap: 8px;
   list-style: disc;
 }
-.prose .glance {
-  margin-top: 1.25rem;
-  padding-left: 0;
-  gap: 10px;
-  list-style: none;
-}
+.prose 
 .prose strong {
   color: var(--text);
   font-weight: 600;
@@ -115,13 +110,7 @@
   font-size: 0.8125rem;
   color: var(--muted);
 }
-.glance {
-  display: grid;
-  gap: 10px;
-  margin-top: 14px;
-  padding: 0;
-  list-style: none;
-}
+
 .glance li {
   padding: 12px 16px;
   border: 1px solid var(--border);
@@ -255,39 +244,16 @@
 }
 
 /* -------------------------------------------------------------- states pg */
-.table-scroll.states-scroll {
-  overflow-x: auto;
-  max-height: none;
-  -webkit-overflow-scrolling: touch;
-}
-.src-cell {
-  font-size: 12.5px;
-  line-height: 1.45;
-  min-width: 190px;
-}
-.src-wrap {
-  display: grid;
-  gap: 4px;
-  justify-items: start;
-}
+.table-scroll
+
+
 .src-cell a {
   color: var(--primary);
   overflow-wrap: anywhere;
 }
-.src-cell .asof {
-  display: block;
-  opacity: 0.7;
-}
-.table-card .verified-note {
-  margin-top: 0;
-  padding: 0 20px 16px;
-}
-.verified-note {
-  margin-top: 14px;
-  font-size: 13px;
-  color: var(--text-2);
-  text-align: left;
-}
+.src-cell 
+.table-card 
+
 
 /* --------------------------------------------------- minimal shell pages */
 .site-header.min-head {
@@ -432,9 +398,7 @@ body.is-doc .section {
   body.is-doc .state-table td {
     padding: 6px 8px;
   }
-  body.is-doc .src-cell {
-    min-width: 0;
-  }
+  body.is-doc 
   body.is-doc .prose a,
   body.is-doc .src-cell a {
     text-decoration: underline;

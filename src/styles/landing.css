@@ -1174,17 +1174,9 @@
   display: none;
 }
 
-.home-page .faq-chevron {
-  flex: none;
-  transition: transform .25s ease;
-  color: #657b6a;
-  width: 21px;
-  height: 21px;
-}
+.home-page 
 
-.home-page .faq-item[open] .faq-chevron {
-  transform: rotate(180deg);
-}
+.home-page .faq-item[open] 
 
 .home-page .faq-body p {
   color: #718075;
