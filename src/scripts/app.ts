@@ -71,6 +71,11 @@ function initLanguage(lab) {
 
   if (select) {
     select.addEventListener("change", () => {
+      const selectedOpt = (select as HTMLSelectElement).selectedOptions?.[0];
+      if (selectedOpt && selectedOpt.dataset.url) {
+        window.location.href = selectedOpt.dataset.url;
+        return;
+      }
       const newLang = (select as HTMLSelectElement).value;
       try {
         localStorage.setItem(LANG_KEY, newLang);

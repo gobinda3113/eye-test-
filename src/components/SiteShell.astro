@@ -84,6 +84,7 @@ const nav = [
   { label: t.about, href: pathFor(locale, "about") },
   { label: t.contact, href: pathFor(locale, "contact") },
 ];
+const isBlog = page === "blog" || page.startsWith("blog");
 ---
 
 <a class="skip-link" href="#main">{t.skip}</a>
@@ -154,6 +155,26 @@ const nav = [
       </nav>
 
       <div class="header-tools">
+        {isBlog && (
+          <label class="lang-wrap" title="Language">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+            <span class="lang-code" aria-hidden="true">{locale.toUpperCase()}</span>
+            <select id="langSelect" aria-label="Language" data-current={locale}>
+              {LOCALES.map((l) => {
+                let targetUrl = pathFor(l, "blog");
+                if (customAlts) {
+                  const alt = customAlts.find(a => a.locale === l);
+                  if (alt) targetUrl = alt.url.replace(SITE, "");
+                  else targetUrl = pathFor(l, "blog");
+                }
+                const label = l === "en" ? "English" : l === "es" ? "Español" : l === "fr" ? "Français" : l === "de" ? "Deutsch" : l === "pt" ? "Português" : l === "it" ? "Italiano" : l === "ja" ? "日本語" : "Русский";
+                return (
+                  <option value={l} data-url={targetUrl} selected={locale === l}>{label}</option>
+                );
+              })}
+            </select>
+          </label>
+        )}
         <button class="icon-btn" id="themeBtn" type="button" aria-label={t.theme}>
           <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
           <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
@@ -161,33 +182,35 @@ const nav = [
         <a class="btn btn-primary btn-sm header-cta" href={home + "#screener"}>{t.cta}</a>
       </div>
     </div>
-    <div class="header-langs">
-      <div class="container header-langs-inner">
-        <ul class="lang-links header-pills" aria-label={t.lang}>
-          {
-            LOCALES.map((l) => {
-              let targetUrl = pathFor(l, page);
-              if (customAlts) {
-                const alt = customAlts.find(a => a.locale === l);
-                if (alt) targetUrl = alt.url.replace(SITE, "");
-                else return null;
-              }
-              return (
-                <li>
-                  {l === locale ? (
-                    <span class="pill-active" aria-current="true">{l.toUpperCase()}</span>
-                  ) : (
-                    <a href={targetUrl} hreflang={l} lang={l}>
-                      {l.toUpperCase()}
-                    </a>
-                  )}
-                </li>
-              );
-            })
-          }
-        </ul>
+    {!isBlog && (
+      <div class="header-langs">
+        <div class="container header-langs-inner">
+          <ul class="lang-links header-pills" aria-label={t.lang}>
+            {
+              LOCALES.map((l) => {
+                let targetUrl = pathFor(l, page);
+                if (customAlts) {
+                  const alt = customAlts.find(a => a.locale === l);
+                  if (alt) targetUrl = alt.url.replace(SITE, "");
+                  else return null;
+                }
+                return (
+                  <li>
+                    {l === locale ? (
+                      <span class="pill-active" aria-current="true">{l.toUpperCase()}</span>
+                    ) : (
+                      <a href={targetUrl} hreflang={l} lang={l}>
+                        {l.toUpperCase()}
+                      </a>
+                    )}
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
       </div>
-    </div>
+    )}
   </header>
 )}
 
@@ -269,6 +292,60 @@ const nav = [
         try {
           localStorage.setItem("dmv-eye-test.theme", next);
         } catch (e) {}
+      });
+    }
+    var ls = document.getElementById("langSelect");
+    if (ls && !ls.dataset.boundLang) {
+      ls.dataset.boundLang = "1";
+      ls.addEventListener("change", function () {
+        var opt = ls.options[ls.selectedIndex];
+        if (opt && opt.dataset.url) {
+          window.location.href = opt.dataset.url;
+          return;
+        }
+        var newLang = ls.value;
+        try {
+          localStorage.setItem("dmv_eye_lang", newLang);
+        } catch (e) {}
+        var locales = ["es", "fr", "de", "pt", "it", "ja", "ru"];
+        var pathSegments = window.location.pathname.split("/").filter(Boolean);
+        if (pathSegments.length > 0 && pathSegments[0] === "us") {
+          window.location.href = newLang === "en" ? "/us/" : "/" + newLang + "/";
+          return;
+        }
+        if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+          if (newLang === "en") {
+            pathSegments.shift();
+          } else {
+            pathSegments[0] = newLang;
+          }
+        } else {
+          if (newLang !== "en") {
+            pathSegments.unshift(newLang);
+          }
+        }
+        var newPath = "/" + pathSegments.join("/");
+        if (window.location.pathname.endsWith("/") && newPath !== "/") {
+          newPath += "/";
+        }
+        if (window.location.search) newPath += window.location.search;
+        if (window.location.hash) newPath += window.location.hash;
+        window.location.href = newPath || "/";
+      });
+    }
+    var m = document.getElementById("menuBtn");
+    var mn = document.getElementById("mobileNav");
+    if (m && mn && !m.dataset.boundMenu) {
+      m.dataset.boundMenu = "1";
+      m.addEventListener("click", function () {
+        var isHidden = mn.hasAttribute("hidden");
+        if (isHidden) {
+          mn.removeAttribute("hidden");
+          m.setAttribute("aria-expanded", "true");
+        } else {
+          mn.setAttribute("hidden", "");
+          m.setAttribute("aria-expanded", "false");
+        }
       });
     }
     var y = document.getElementById("year");
