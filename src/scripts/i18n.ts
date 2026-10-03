@@ -436,7 +436,23 @@ const en = {
     "lab.wearGlasses": "Keep your glasses or contacts on for the entire check.",
     "lab.smallScreen": "On small screens some checks may render below recommended size — use the largest screen available.",
     "lab.disclaimer": "A vision screener — not an official medical test, diagnosis, or prescription.",
-  };
+      "profesional.kicker": "Professional Drivers",
+    "profesional.title": "Professional driver vision prep",
+    "profesional.body": "Interstate commercial licenses are held to a federal standard that is stricter than a regular license: acuity in each eye separately, a field-of-vision minimum, and the ability to tell red from green. Practice all three before your medical examiner visit.",
+    "profesional.l1": "Corrected acuity in each eye, and in both together",
+    "profesional.l2": "Field of vision in the worse eye",
+    "profesional.l3": "Able to recognise traffic red, green and amber",
+    "profesional.cta": "Run the CDL set",
+    "profesional.cardTitle": "Practice the federal set",
+    "profesional.cardBody": "Distance acuity per eye, a Tumbling-E pass for the field check, and the colour plate run — in one sequence.",
+    "refs.oficial": "Official Requirements",
+    "results.driveRef": "Driving Reference",
+    "results.driveSource": "Source",
+    "results.drive.de": "Group 1: 0.7/0.7 decimal (FeV Annex 6). An online test does not replace the eye test certificate.",
+    "results.drive.pt": "CNH: 0.50 decimal reference (CONTRAN). Online test is not approved by DETRAN.",
+    "results.drive.it": "License B: 7/10 binocular and 2/10 for the worse eye (IAPB). Online screening does not certify fitness.",
+    "results.drive.ja": "Regular license requires 0.7 or more in both eyes and 0.3 or more in each eye. For practice before driving license renewal vision test. Not an official vision test.",
+};
 
 const es = {
     "a11y.theme": "Alternar modo oscuro",
@@ -863,7 +879,18 @@ const es = {
     "lab.wearGlasses": "Mantén tus gafas o lentes de contacto puestos durante toda la prueba.",
     "lab.smallScreen": "En pantallas pequeñas, algunas pruebas pueden mostrarse por debajo del tamaño recomendado; usa la pantalla más grande disponible.",
     "lab.disclaimer": "Un evaluador visual, no una prueba médica oficial, diagnóstico o prescripción.",
-  };
+      "faq.q21": "¿Qué pasa si repruebo el examen de la vista del DMV?",
+    "faq.a21": "Si repruebas, el examinador te dará un formulario para un optometrista u oftalmólogo con licencia. Ellos realizarán un examen completo y determinarán si necesitas lentes.",
+    "faq.q22": "¿Puedo usar mis lentes durante el examen?",
+    "faq.a22": "Sí. Si necesitas lentes para aprobar, debes usarlos. Tu licencia tendrá una restricción (generalmente 'Restricción B') que requerirá que los uses al conducir.",
+    "faq.q23": "¿Qué es una restricción de conducir solo de día?",
+    "faq.a23": "Si tu visión es inferior al estándar (por ejemplo, entre 20/40 y 20/70) pero segura para algunas condiciones, el DMV puede emitir una licencia restringida para conducir solo de día.",
+    "us.schema.howTo.name": "Cómo aprobar el examen de la vista del DMV",
+    "results.drive.de": "Grupo 1: 0,7/0,7 decimal (FeV Anexo 6). Un examen online no sustituye al certificado oficial.",
+    "results.drive.pt": "CNH: referencia de 0,50 decimal (CONTRAN). El teste online no es aprobado por el DETRAN.",
+    "results.drive.it": "Licencia B: 7/10 binocular y 2/10 en el peor ojo (IAPB). El examen online no certifica aptitud.",
+    "results.drive.ja": "La licencia normal requiere 0.7 o más en ambos ojos y 0.3 o más en cada ojo. Para practicar. No es un examen oficial.",
+};
 
 const fr = {
     "a11y.theme": "Basculer le mode sombre",
@@ -1290,7 +1317,18 @@ const fr = {
     "lab.wearGlasses": "Gardez vos lunettes ou lentilles de contact pendant toute la vérification.",
     "lab.smallScreen": "Sur les petits écrans, certains tests peuvent s'afficher en dessous de la taille recommandée - utilisez le plus grand écran disponible.",
     "lab.disclaimer": "Un outil de dépistage visuel - pas un test médical officiel, un diagnostic ou une ordonnance.",
-  };
+      "faq.q21": "Que faire si j'échoue au test de la vue du DMV ?",
+    "faq.a21": "En cas d'échec, l'examinateur vous remettra un formulaire pour un optométriste ou ophtalmologiste agréé. Ils feront un examen complet et détermineront si des lunettes sont nécessaires.",
+    "faq.q22": "Puis-je porter mes lunettes pendant le test ?",
+    "faq.a22": "Oui. Si vous avez besoin de lunettes pour réussir, vous devez les porter. Votre permis aura alors une restriction (souvent 'Restriction B') vous obligeant à les porter en conduisant.",
+    "faq.q23": "Qu'est-ce qu'une restriction de conduite de jour uniquement ?",
+    "faq.a23": "Si votre vision est inférieure à la norme (ex. entre 20/40 et 20/70) mais reste sécuritaire dans certaines conditions, le DMV peut délivrer un permis restreint pour la conduite de jour uniquement.",
+    "us.schema.howTo.name": "Comment réussir le test de la vue du DMV",
+    "results.drive.de": "Groupe 1 : 0,7/0,7 décimal (FeV Annexe 6). Un test en ligne ne remplace pas le certificat officiel.",
+    "results.drive.pt": "CNH : référence de 0,50 décimal (CONTRAN). Le test en ligne n'est pas approuvé par le DETRAN.",
+    "results.drive.it": "Permis B : 7/10 binoculaire et 2/10 pour le pire œil (IAPB). Le test en ligne ne certifie pas l'aptitude.",
+    "results.drive.ja": "Le permis standard nécessite 0,7 ou plus pour les deux yeux et 0,3 ou plus pour chaque œil. Pour s'entraîner. Pas un test officiel.",
+};
 
 const de = {
     "a11y.theme": "Dunkelmodus umschalten",
@@ -1718,7 +1756,17 @@ const de = {
     "lab.wearGlasses": "Behalten Sie Ihre Brille oder Kontaktlinsen während der gesamten Prüfung auf.",
     "lab.smallScreen": "Auf kleinen Bildschirmen können einige Tests kleiner als empfohlen gerendert werden – verwenden Sie den größten verfügbaren Bildschirm.",
     "lab.disclaimer": "Ein Sehtest - kein offizieller medizinischer Test, keine Diagnose oder Verschreibung.",
-  };
+      "faq.q21": "Was passiert, wenn ich den DMV-Sehtest nicht bestehe?",
+    "faq.a21": "Wenn Sie durchfallen, erhalten Sie ein Formular für einen zugelassenen Optiker oder Augenarzt. Diese führen eine vollständige Untersuchung durch.",
+    "faq.q22": "Darf ich beim Test meine Brille tragen?",
+    "faq.a22": "Ja. Wenn Sie zum Bestehen eine Brille brauchen, müssen Sie diese tragen. Ihr Führerschein erhält dann eine Auflage (meist 'Auflage B').",
+    "faq.q23": "Was ist eine Beschränkung auf Fahrten nur bei Tageslicht?",
+    "faq.a23": "Wenn Ihre Sehkraft unter dem Standard liegt (z.B. zwischen 20/40 und 20/70), aber unter bestimmten Bedingungen sicher ist, kann das DMV einen auf Fahrten bei Tageslicht beschränkten Führerschein ausstellen.",
+    "us.schema.howTo.name": "Wie man den DMV-Sehtest besteht",
+    "results.drive.pt": "CNH: 0,50 dezimal (CONTRAN). Online-Test ersetzt keine DETRAN-Prüfung.",
+    "results.drive.it": "Führerschein B: 7/10 binokular und 2/10 für das schlechtere Auge (IAPB). Online-Test ersetzt kein ärztliches Gutachten.",
+    "results.drive.ja": "Regulärer Führerschein erfordert 0,7 oder mehr auf beiden Augen und 0,3 oder mehr auf jedem Auge. Zum Üben. Kein offizieller Test.",
+};
 
 const pt = {
     "a11y.theme": "Alternar modo escuro",
@@ -2146,7 +2194,17 @@ const pt = {
     "lab.wearGlasses": "Mantenha os óculos ou lentes de contato durante todo o teste.",
     "lab.smallScreen": "Em telas pequenas, alguns testes podem ser renderizados abaixo do tamanho recomendado — use a maior tela disponível.",
     "lab.disclaimer": "Um teste de visão — não um teste médico oficial, diagnóstico ou prescrição.",
-  };
+      "faq.q21": "O que fazer se eu reprovar no exame de vista do DMV?",
+    "faq.a21": "Se reprovar, o examinador dará um formulário para você levar a um optometrista ou oftalmologista licenciado. Eles farão um exame completo.",
+    "faq.q22": "Posso usar meus óculos durante o teste?",
+    "faq.a22": "Sim. Se precisar de óculos para passar, deve usá-los. Sua licença terá uma restrição (geralmente 'Restrição B') obrigando o uso ao dirigir.",
+    "faq.q23": "O que é uma restrição apenas para dirigir de dia?",
+    "faq.a23": "Se a sua visão estiver abaixo do padrão (ex. entre 20/40 e 20/70) mas for segura para algumas condições, o DMV pode emitir uma licença restrita apenas para condução diurna.",
+    "us.schema.howTo.name": "Como passar no exame de vista do DMV",
+    "results.drive.de": "Grupo 1: 0,7/0,7 decimal (FeV Anexo 6). Um teste online não substitui o certificado oficial.",
+    "results.drive.it": "Habilitação B: 7/10 binocular e 2/10 no pior olho (IAPB). O teste online não certifica aptidão.",
+    "results.drive.ja": "A licença normal exige 0,7 ou mais nos dois olhos e 0,3 ou mais em cada olho. Para praticar. Não é um teste oficial.",
+};
 
 
 const it = {
@@ -2562,7 +2620,30 @@ const it = {
     "lab.wearGlasses": "Tieni gli occhiali o le lenti a contatto per tutto il test.",
     "lab.smallScreen": "Su schermi piccoli, alcuni test potrebbero apparire più piccoli rispetto alle dimensioni consigliate: usa lo schermo più grande disponibile.",
     "lab.disclaimer": "Uno screening visivo: non un esame medico ufficiale, una diagnosi o una prescrizione.",
-  };
+      "gen.hero.badgeA": "Riferimento standard 20/40",
+    "gen.hero.badgeBTitle": "Nessuna registrazione",
+    "gen.hero.badgeB": "Privato e veloce",
+    "faq.q21": "Cosa fare se non supero il test della vista della Motorizzazione?",
+    "faq.a21": "Se non lo superi, l'esaminatore ti darà un modulo da portare a un oculista. Faranno un esame completo.",
+    "faq.q22": "Posso indossare gli occhiali durante il test?",
+    "faq.a22": "Sì. Se hai bisogno degli occhiali per superarlo, devi indossarli. La tua patente avrà una restrizione (obbligo di lenti).",
+    "faq.q23": "Cos'è una restrizione per la guida solo diurna?",
+    "faq.a23": "Se la tua vista è al di sotto degli standard ma comunque sicura in certe condizioni, può essere rilasciata una patente per la sola guida diurna.",
+    "us.schema.howTo.name": "Come superare il test della vista per la patente",
+    "profesional.kicker": "Autisti professionisti",
+    "profesional.title": "Preparazione visiva per professionisti",
+    "profesional.body": "Le patenti commerciali sono soggette a standard più severi: acuità per ciascun occhio, campo visivo minimo e percezione dei colori. Esercitati prima della visita medica.",
+    "profesional.l1": "Acuità corretta in ciascun occhio e in entrambi",
+    "profesional.l2": "Campo visivo nell'occhio peggiore",
+    "profesional.l3": "Riconoscimento dei colori del semaforo",
+    "profesional.cta": "Avvia il test professionale",
+    "profesional.cardTitle": "Esercitati con il test professionale",
+    "profesional.cardBody": "Acuità visiva, campo visivo e test dei colori in un'unica sequenza.",
+    "refs.oficial": "Requisiti Ufficiali",
+    "results.drive.de": "Gruppo 1: 0,7/0,7 decimale (FeV Allegato 6). Un test online non sostituisce il certificato ufficiale.",
+    "results.drive.pt": "CNH: riferimento di 0,50 decimale (CONTRAN). Il test online non è approvato dal DETRAN.",
+    "results.drive.ja": "La patente normale richiede 0,7 o più in entrambi gli occhi e 0,3 o più per occhio. Solo per esercitazione. Non è un test ufficiale.",
+};
 const ja = {
     "a11y.skip": "視力チェックへ進む",
     "a11y.theme": "ダークモード切替",
@@ -2976,7 +3057,30 @@ const ja = {
     "lab.wearGlasses": "検査中はメガネまたはコンタクトレンズを着用したままにしてください。",
     "lab.smallScreen": "小さな画面では、一部のテストが推奨サイズより小さく表示される場合があります。可能な限り大きな画面を使用してください。",
     "lab.disclaimer": "視力スクリーニング — 公式な医学的検査、診断、処方ではありません。",
-  };
+      "gen.hero.badgeA": "20/40基準ライン",
+    "gen.hero.badgeBTitle": "登録不要",
+    "gen.hero.badgeB": "プライベートで高速",
+    "faq.q21": "DMVの視力検査に落ちたらどうなりますか？",
+    "faq.a21": "不合格の場合、眼科医に提出する書類を渡されます。眼科医が精密検査を行い、眼鏡が必要かどうかを判断します。",
+    "faq.q22": "検査中に眼鏡をかけてもいいですか？",
+    "faq.a22": "はい。合格のために眼鏡が必要な場合は、必ず着用してください。運転免許証には眼鏡等の条件が付きます。",
+    "faq.q23": "昼間のみの運転制限とは何ですか？",
+    "faq.a23": "視力が基準を下回っていても特定の条件下で安全と判断された場合、DMVは昼間のみ運転可能な限定免許を発行することがあります。",
+    "us.schema.howTo.name": "DMV視力検査の合格方法",
+    "profesional.kicker": "事業用運転者",
+    "profesional.title": "事業用視力の準備",
+    "profesional.body": "州際事業用免許は一般免許より厳しい連邦基準の対象です：片目ごとの視力、視野、赤緑の区別。医療検査前に練習しましょう。",
+    "profesional.l1": "各目と両目の矯正視力",
+    "profesional.l2": "悪い方の目の視野",
+    "profesional.l3": "赤・緑・黄信号の区別",
+    "profesional.cta": "事業用セットを実行",
+    "profesional.cardTitle": "連邦セットを練習",
+    "profesional.cardBody": "片目ごとの視力、視野検査、色覚検査を一連で実行します。",
+    "refs.oficial": "公式要件",
+    "results.drive.de": "グループ1: 0.7/0.7 小数 (FeV 付録 6)。オンラインテストは公式の視力証明書の代わりにはなりません。",
+    "results.drive.pt": "CNH: 0.50 小数基準 (CONTRAN)。オンラインテストはDETRANによって承認されていません。",
+    "results.drive.it": "免許B: 両眼7/10、悪い方の目2/10 (IAPB)。オンライン検査は適性を証明するものではありません。",
+};
 const ru = {
     "a11y.skip": "Перейти к проверке зрения",
     "a11y.theme": "Переключить темную/светлую тему",
@@ -3389,7 +3493,31 @@ const ru = {
     "lab.wearGlasses": "Оставьте очки или контактные линзы на протяжении всей проверки.",
     "lab.smallScreen": "На маленьких экранах некоторые тесты могут отображаться меньше рекомендованного размера — используйте самый большой доступный экран.",
     "lab.disclaimer": "Проверка зрения — не является официальным медицинским тестом, диагнозом или рецептом.",
-  };
+      "gen.hero.badgeA": "Стандарт нормы 20/40",
+    "gen.hero.badgeBTitle": "Без регистрации",
+    "gen.hero.badgeB": "Конфиденциально и быстро",
+    "faq.q21": "Что делать, если я не пройду проверку зрения?",
+    "faq.a21": "Если вы не прошли, экзаменатор выдаст форму для окулиста или офтальмолога. Они проведут полное обследование.",
+    "faq.q22": "Могу ли я быть в очках во время проверки?",
+    "faq.a22": "Да. Если вам нужны очки для прохождения, вы должны их носить. На ваших правах будет отметка об обязательном ношении очков.",
+    "faq.q23": "Что такое ограничение на вождение только днем?",
+    "faq.a23": "Если ваше зрение ниже стандарта, но безопасно для определенных условий, вам могут выдать права с ограничением вождения только в светлое время суток.",
+    "us.schema.howTo.name": "Как пройти проверку зрения на права",
+    "profesional.kicker": "Профессиональные права",
+    "profesional.title": "Требования для профессиональных категорий",
+    "profesional.body": "Водители коммерческого транспорта проходят более строгий контроль: раздельная проверка каждого глаза, минимальное поле зрения и различение красного и зеленого. Потренируйтесь перед медосмотром.",
+    "profesional.l1": "Острота для каждого глаза раздельно и вместе",
+    "profesional.l2": "Поле зрения для худшего глаза",
+    "profesional.l3": "Способность различать цвета светофора",
+    "profesional.cta": "Запустить профессиональный тест",
+    "profesional.cardTitle": "Профессиональный водитель?",
+    "profesional.cardBody": "Проверьте остроту зрения, периферию и цветовосприятие в одной серии.",
+    "refs.oficial": "Официальные требования",
+    "results.drive.de": "Группа 1: 0,7/0,7 дес. (FeV Приложение 6). Онлайн-тест не заменяет официальный сертификат.",
+    "results.drive.pt": "CNH: 0,50 дес. (CONTRAN). Онлайн-тест не одобрен DETRAN.",
+    "results.drive.it": "Права B: 7/10 двумя глазами и 2/10 для худшего глаза (IAPB). Онлайн-тест не подтверждает годность.",
+    "results.drive.ja": "Обычные права требуют 0,7 и более двумя глазами и 0,3 и более каждым глазом. Не является официальным тестом.",
+};
 export const DICT = { en, es, fr, de, pt, it, ja, ru };
 
 
