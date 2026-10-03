@@ -11,6 +11,7 @@ import {
   ogLocale,
 } from "../lib/site.ts";
 import { seoFor } from "../data/seo.ts";
+import { DICT } from "../scripts/dict.ts";
 
 const { locale = DEFAULT_LOCALE, page = "home", noindex = false, customMeta, customAlts, customXDefault, schema } = Astro.props;
 const def = pageDef(page);
@@ -122,6 +123,8 @@ const fontHref =
 
     <slot name="structured-data" />
 
+
+    <script is:inline set:html={`window._dict=${JSON.stringify(DICT[locale] || DICT.en)};`} />
 
     <script is:inline>
       // Runs before first paint: applies the stored theme (no light/dark flash)

@@ -1,4 +1,4 @@
-﻿---
+---
 import { LOCALES, DEFAULT_LOCALE } from "../../../lib/site.ts";
 export const prerender = true;
 
@@ -8,7 +8,8 @@ export function getStaticPaths() {
   }));
 }
 
-import { K, DICT } from "../../../scripts/i18n";
+import { K } from "../../../scripts/i18n.ts";
+import { DICT } from "../../../scripts/dict.ts";
 const { locale } = Astro.params;
 const d = (key) => DICT[locale][key];
 

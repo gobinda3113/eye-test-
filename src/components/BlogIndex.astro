@@ -2,7 +2,7 @@
 import { seoFor } from "../data/seo.ts";
 import { pathFor, urlFor } from "../lib/site.ts";
 import { POSTS } from "../data/blog.ts";
-import { DICT } from "../scripts/i18n.ts";
+import { DICT } from "../scripts/dict.ts";
 
 const { locale = "en" } = Astro.props;
 const meta = seoFor(locale, "blog");

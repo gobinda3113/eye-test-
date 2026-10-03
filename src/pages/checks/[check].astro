@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import SiteShell from "../../components/SiteShell.astro";
 import { CHECKS } from "../../scripts/data.ts";
-import { DICT } from "../../scripts/i18n.ts";
+import { DICT } from "../../scripts/dict.ts";
 
 export function getStaticPaths() {
   return CHECKS.map((c) => ({
