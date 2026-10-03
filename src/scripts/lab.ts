@@ -41,7 +41,7 @@ function fitCount(avail, height, count) {
   return Math.max(1, Math.min(count, Math.floor((avail + gapW) / (boxW + gapW))));
 }
 
-const STEP_ORDER = [
+let STEP_ORDER = [
   "calibrate",
   "distance",
   "tumbling",
@@ -183,6 +183,53 @@ export function createLab(labEl) {
     paintMask();
   }
 
+  
+  function finishStep(currentId) {
+    if (currentId === "calibrate") {
+      // Calibrate doesn't need a sub-result screen, just move on
+      go(STEP_ORDER[STEP_ORDER.indexOf("calibrate") + 1]);
+      return;
+    }
+    if (single || runMode === "quick") { // wait, section 4 says full mode, but what about individual/quick?
+      // "Section 4 - Full mode... After EACH check, show a compact per-test result"
+      // "Section 5 - Individual mode... After the single test, show its result screen"
+      // For quick mode, section 3 doesn't explicitly mention it, but it uses the same steps. Let's show sub-result always unless it's calibrate.
+    }
+    
+    // Show sub result
+    stage.innerHTML = `<div class="stage-title">${t(STEP_LABEL[currentId])}</div>
+      <div style="margin:2rem 0; padding:2rem; background:var(--bg-card); border-radius:12px; text-align:center;">
+        <h3 style="margin-bottom:0.5rem;">Test Complete</h3>
+        <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">Screening only &mdash; not a medical diagnosis.</p>
+      </div>`;
+      
+    // The nav foot will have Prev / Next
+    setFoot(`
+      <button class="btn btn-quiet btn-sm" data-act="prev">${t("lab.prev")}</button>
+      <span class="trial-counter">${t("lab.stepOf", { n: STEP_ORDER.indexOf(currentId) + 1, total: STEP_ORDER.length - 1 })}</span>
+      <button class="btn btn-soft btn-sm" data-act="next">${t("lab.next")}</button>
+    `);
+    
+    const prevBtn = foot.querySelector('[data-act="prev"]');
+    const nextBtn = foot.querySelector('[data-act="next"]');
+    
+    if (prevBtn) {
+      prevBtn.onclick = () => {
+        // "Previous: goes back one check, re-runs it; all results after that point are marked stale and re-run — never kept."
+        results[currentId] = null;
+        go(currentId);
+      };
+    }
+    
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        const nextId = STEP_ORDER[STEP_ORDER.indexOf(currentId) + 1];
+        go(nextId);
+      };
+    }
+  }
+
+
   function go(id) {
     if (!id || (id === step && !single)) return;
     step = id;
@@ -249,13 +296,15 @@ export function createLab(labEl) {
     const CARD_MAX = 620;
     const nativeW = CARD_MM / MM_PER_PX_FALLBACK;
     let want = config.cardWidthPx || Math.round(nativeW);
-    let cardW = want;
+      let cardW = want;
+      if (runMode === "quick") config.calibrated = true;
 
     stage.innerHTML = `
       <div class="stage-title">${t("calib.title")}</div>
       <p class="stage-sub">${t("calib.sub")}</p>
       <div class="stage-grid">
-        <div class="stage-panel">
+          ${runMode === "quick" ? "" : `
+          <div class="stage-panel">
           <div class="calib-stage">
             <div class="calib-visual">
               <div style="display: flex; gap: 8px; margin-bottom: 12px; justify-content: center; width: 100%;">
@@ -284,15 +333,17 @@ export function createLab(labEl) {
             <p class="stage-sub" id="calibHold">${t("calib.hold")}</p>
           </div>
         </div>
-        <div class="stage-panel">
-          <div class="panel-title">${t("how.kicker")}</div>
+          `}
+          <div class="stage-panel">
+            <div class="panel-title">${t("how.kicker")}</div>
           <div class="tips">
             ${tip(t("calib.tip1"))}
             ${tip(t("calib.tip2"))}
             ${tip(t("calib.tip3"))}
               ${tip(t("calib.brightness"))}
           </div>
-          <div class="panel-title" style="margin-top:24px">${t("calib.distanceTitle")}</div>
+          ${runMode === "quick" ? "" : `
+            <div class="panel-title" style="margin-top:24px">${t("calib.distanceTitle")}</div>
           <p class="stage-sub" style="margin-bottom:14px">${t("calib.distanceSub")}</p>
           <div class="distance-opts">
             <button type="button" class="dist-opt" data-dist="3">
@@ -305,8 +356,9 @@ export function createLab(labEl) {
               <b>${t("calib.dist5")}</b><span>${t("calib.dist5note")}</span>
             </button>
           </div>
+          `}
         </div>
-      </div></details>`;
+      </div>`;
 
     const cardWrap = stage.querySelector("#calibCardWrap");
     const cardEl = stage.querySelector("#calibCard");
@@ -441,7 +493,7 @@ export function createLab(labEl) {
       config.calibrated = true;
       saveProfile(config);
       status(t("calib.locked"));
-      go(single ? single.check : "distance");
+      finishStep("calibrate");
     });
   }
 
@@ -466,7 +518,7 @@ export function createLab(labEl) {
       if (my !== token) return;
       saveResults(results);
     }
-    go(single ? "results" : "tumbling");
+    finishStep("distance");
   }
 
   /* Sivtsev Cyrillic chart: same adaptive ladder and answer-pad machinery as
@@ -492,7 +544,7 @@ export function createLab(labEl) {
       if (my !== token) return;
       saveResults(results);
     }
-    go("results");
+    finishStep("sivtsev");
   }
 
   function coverScreen(body, eye, dist) {
@@ -716,7 +768,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         results.tumbling = { correct, total: sizes.length, best: bestDen };
         saveResults(results);
         status(`${correct} / ${sizes.length}`);
-        go(single ? "results" : "color");
+        finishStep("tumbling");
         return;
       }
       const den = sizes[trial];
@@ -909,7 +961,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         results.color = { correct, total: COLOR_PLATES.length };
         saveResults(results);
         status(`${correct} / ${COLOR_PLATES.length}`);
-        go(single ? "results" : "peripheral");
+        finishStep("color");
         return;
       }
       locked = false;
@@ -980,7 +1032,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       results.peripheral = { hits, total, angle: bestAngle || 0, missed: missed.slice() };
       saveResults(results);
       status(`${hits} / ${total}`);
-      go(single ? "results" : "near");
+      finishStep("peripheral");
     };
 
     const runTrial = () => {
@@ -1089,7 +1141,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         results.near = line.denominator;
         saveResults(results);
         status(acuityLabel(line.denominator));
-        go(single ? "results" : "contrast");
+        finishStep("near");
       })
     );
     setFoot(`
@@ -1100,7 +1152,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     on(foot.querySelector('[data-act="skip"]'), "click", () => {
       results.near = 200;
       saveResults(results);
-      go(single ? "results" : "contrast");
+      finishStep("near");
     });
   }
 
@@ -1150,7 +1202,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       results.contrast = { lowest: lowest == null ? CONTRAST_LEVELS[0] : lowest, levels: CONTRAST_LEVELS.length, correct };
       saveResults(results);
       status(`${t("contrast.lowest")}: ${results.contrast.lowest}%`);
-      go(single ? "results" : "astigmatism");
+      finishStep("contrast");
     };
 
     const show = () => {
@@ -1285,7 +1337,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       }
       saveResults(results);
       status(t("astig.title"));
-      setTimeout(() => go(single ? "results" : "refraction"), 1600);
+      setTimeout(() => finishStep("astigmatism"), 1600);
     };
 
     stage.querySelectorAll(".dial-spoke").forEach((g) => on(g, "click", () => pick(Number(g.dataset.deg))));
@@ -1323,7 +1375,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         results.refraction = Object.assign(refractionRead(votes), { votes: votes.slice() });
         saveResults(results);
         status(t("refraction." + results.refraction.kind));
-        go(single ? "results" : "stereo");
+        finishStep("refraction");
         return;
       }
       locked = false;
@@ -1412,7 +1464,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       saveResults(results);
       note.textContent = results.stereo.seen ? t("results.stereoSeen") : t("results.stereoNot");
       note.style.color = results.stereo.seen ? "#4fd39a" : "#e0a53a";
-      setTimeout(() => go("results"), 1400);
+      setTimeout(() => finishStep("stereo"), 1400);
     };
 
     stage.querySelectorAll("[data-shape]").forEach((b) => on(b, "click", () => answer(b.dataset.shape)));
@@ -1436,6 +1488,8 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   }
 
   function renderResults() {
+    const quickNoteHtml = runMode === 'quick' ? `<div style="background:var(--bg-warn); color:var(--text); padding:1rem; border-radius:8px; margin-bottom:1rem; text-align:center; font-weight:500;">${t("modes.quickNote") || "Quick screen — short-range checks only. Not comparable to full distance results."}</div>` : '';
+    const disclaimerHtml = `<div style="text-align:center; font-size:0.9rem; color:var(--muted); margin-bottom:1.5rem;">${t("modes.disclaimerBanner") || "Screening only — not a medical diagnosis. If you have concerns, see an eye doctor."}</div>`;
     const verdict = overallVerdict(results);
     const acuity = (v) => (v == null ? t("results.notTested") : acuityNotations(v));
     const tone = (v) => (v == null ? null : v <= 40 ? "pass" : v <= 70 ? "warn" : "bad");
@@ -1616,6 +1670,8 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     stage.innerHTML = `
+      ${quickNoteHtml}
+      ${disclaimerHtml}
       <div class="stage-title">${t("results.title")}</div>
       <p class="stage-sub">${t("results.sub")}</p>
       <div class="verdict ${verdict}" style="margin-top:22px">
@@ -1686,12 +1742,43 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
   function start(checkId) {
     if (checkId && checkId !== "all") {
-      single = { check: mapCheck(checkId) };
-      step = config.calibrated ? single.check : "calibrate";
+      startMode("individual", checkId);
     } else {
-      single = null;
+      startMode("full");
+    }
+  }
+
+  function startMode(mode, specificCheck = null) {
+    runMode = mode;
+    single = specificCheck ? { check: mapCheck(specificCheck) } : null;
+    if (mode === "quick") {
+      STEP_ORDER = QUICK_ORDER;
+      step = "calibrate";
+    } else if (mode === "individual") {
+      const c = single.check;
+      const needsDistance = ["distance", "tumbling", "landolt", "sivtsev", "peripheral"].includes(c);
+      if (needsDistance && !config.calibrated) {
+        STEP_ORDER = ["calibrate", c, "results"];
+        step = "calibrate";
+      } else if (!needsDistance) {
+        STEP_ORDER = ["calibrate", c, "results"];
+        step = "calibrate";
+      } else {
+        STEP_ORDER = [c, "results"];
+        step = c;
+      }
+    } else {
+      STEP_ORDER = FULL_ORDER;
       step = config.calibrated ? "distance" : "calibrate";
     }
+
+    const exitBtn = labEl.querySelector("#labExitBtn");
+    if (exitBtn) {
+      exitBtn.style.display = "inline-block";
+      exitBtn.textContent = t("lab.exit") || "Exit test";
+      exitBtn.onclick = () => window.location.href = "/test/";
+    }
+    
     render();
     labEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -2008,11 +2095,11 @@ function shuffled(arr) {
 
     stage.querySelector('[data-act="pass"]').addEventListener('click', () => {
       results.amsler = true;
-      setTimeout(() => advance(), 100);
+      setTimeout(() => finishStep("amsler"), 100);
     });
     stage.querySelector('[data-act="fail"]').addEventListener('click', () => {
       results.amsler = false;
-      setTimeout(() => advance(), 100);
+      setTimeout(() => finishStep("amsler"), 100);
     });
     setFoot('');
   }

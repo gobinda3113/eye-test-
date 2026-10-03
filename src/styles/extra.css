@@ -404,3 +404,35 @@ body.is-doc .section {
     text-decoration: underline;
   }
 }
+
+/* Section 8: Focus Mode & Viewport Fixes */
+#labStage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: auto;
+}
+.stage-title, .stage-sub {
+  flex-shrink: 0;
+}
+.stage-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .stage-grid {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+.stage-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stage-panel:first-child {
+  /* Stimulus should stay visible */
+  flex-shrink: 0;
+}
+

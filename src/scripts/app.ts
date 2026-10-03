@@ -342,8 +342,27 @@ async function boot() {
   safe("dynamic", () => refreshDynamic(lab));
   safe("reveal", initReveal);
 
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", (e: any) => {
     if (!lab) return;
+
+    // Test entry modes
+    const modeCard = e.target.closest("[data-mode]");
+    if (modeCard) {
+      const mode = modeCard.dataset.mode;
+      const entryChoice = document.getElementById("testEntryChoice");
+      const labContainer = document.getElementById("lab");
+      if (entryChoice && labContainer) {
+        entryChoice.style.display = "none";
+        labContainer.style.display = "block";
+      }
+      if (typeof lab.startMode === "function") {
+        lab.startMode(mode);
+      } else {
+        lab.start("all"); // Fallback for now
+      }
+      return;
+    }
+
     const card = e.target.closest("[data-test]");
     if (card) {
       lab.start(card.dataset.test);
@@ -355,6 +374,20 @@ async function boot() {
       lab.start("cdl");
     }
   });
+
+  // Handle deep link /test/?mode=individual&check=color
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("mode") === "individual" && params.get("check") && lab) {
+    const entryChoice = document.getElementById("testEntryChoice");
+    const labContainer = document.getElementById("lab");
+    if (entryChoice && labContainer) {
+      entryChoice.style.display = "none";
+      labContainer.style.display = "block";
+    }
+    if (typeof lab.startMode === "function") {
+      lab.startMode("individual", params.get("check"));
+    }
+  }
   document.addEventListener("keydown", (e: any) => {
     // Native <button> already fires click on Enter/Space; this guard is a no-op
     // for the check cards now that they are real buttons. Kept for safety.
