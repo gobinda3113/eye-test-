@@ -416,13 +416,22 @@ export function createLab(labEl) {
     labEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function getStepLabel(s) {
+    const stepTitle = t(STEP_LABEL[s] || "checks." + s + ".name");
+    if (s === "menu") return stepTitle;
+    const idx = STEP_ORDER.indexOf(s);
+    if (idx >= 0) {
+      return `${idx + 1} ${stepTitle}`;
+    }
+    return stepTitle;
+  }
+
   function render() {
     token++;
     clearCleanups();
     renderStepper();
     paintNorm();
-    const stepTitle = t(STEP_LABEL[step] || "checks." + step + ".name");
-    status(`${t("lab.ready")} · ${stepTitle}`);
+    status(getStepLabel(step));
     const setters = {
       calibrate: renderCalibrate,
       guidance: renderGuidance,
@@ -857,7 +866,7 @@ export function createLab(labEl) {
     );
 
     setFoot(`
-      <span class="trial-counter">${hasValidCalibration(config) ? t("calib.locked") : t("lab.ready")}</span>
+      <span class="trial-counter">${hasValidCalibration(config) ? t("calib.locked") : ""}</span>
       <button class="btn btn-soft btn-sm" data-act="lock">${t("calib.lockIn")}</button>
     `);
     on(foot.querySelector('[data-act="lock"]'), "click", () => {
@@ -2106,7 +2115,6 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const isCalib = Boolean(keepCalibration && hasValidCalibration(config));
     config.calibrated = isCalib;
     step = isCalib ? "distance" : "calibrate";
-    status(t("lab.ready"));
     render();
   }
 
@@ -2149,7 +2157,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     runMode = null;
     step = "calibrate";
     clearCleanups();
-    status(t("lab.ready"));
+    status("");
     const entryChoice = document.getElementById("testEntryChoice");
     if (entryChoice) entryChoice.style.display = "flex";
     labEl.style.display = "none";

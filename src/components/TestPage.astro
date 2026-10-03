@@ -115,7 +115,7 @@ const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.
       <div class="lab-bar">
         <div class="lab-bar-left">
           <span class="lab-dot" aria-hidden="true"></span>
-          <span id="labStatus" data-i18n="lab.ready">{d("lab.ready")}</span>
+          <span id="labStatus"></span>
         </div>
         <div class="lab-bar-right">
           <button class="btn btn-quiet btn-xs" id="labFullBtn" type="button" data-i18n="lab.focus">{d("lab.focus")}</button>
@@ -127,9 +127,9 @@ const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.
         <ol class="stepper" id="stepper"></ol>
       </div>
       <div class="lab-norm" id="labNorm" hidden></div>
-      <div class="lab-stage" id="labStage"><p class="stage-sub" data-lab-fallback>{d("lab.ready")}</p></div>
+      <div class="lab-stage" id="labStage"></div>
       <div class="lab-foot" id="labFoot"></div>
-      <noscript><p class="stage-sub">{d("lab.ready")}</p></noscript>
+      <noscript><p class="stage-sub">Please enable JavaScript to run the vision screener.</p></noscript>
     </div>
   </div>
 </div>
