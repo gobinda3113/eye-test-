@@ -71,7 +71,7 @@
 }
 
 .home-page .site-header {
-  height: 106px;
+  height: 72px;
   position: relative;
   z-index: 50;
   display: flex;
@@ -276,7 +276,7 @@
 
 .home-page .mobile-nav {
   position: absolute;
-  top: 106px;
+  top: 72px;
   left: 0;
   right: 0;
   background: #15342f;

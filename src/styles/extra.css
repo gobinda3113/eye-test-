@@ -438,7 +438,7 @@ body.is-doc .section {
 
 /* -------------------------------------------------- Unified Landing Header for /test/ */
 .site-header.landing-style-header {
-  height: 106px;
+  height: 72px;
   position: relative;
   z-index: 50;
   display: flex;
@@ -648,7 +648,7 @@ body.is-doc .section {
 
 .site-header.landing-style-header .mobile-nav {
   position: absolute;
-  top: 106px;
+  top: 72px;
   left: 0;
   right: 0;
   background: #15342f;
