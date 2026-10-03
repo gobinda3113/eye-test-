@@ -51,6 +51,7 @@ const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
 const homeHref = isUS ? "/us/" : locale === "en" ? "/" : "/" + locale + "/";
 const aboutHref = locale === "en" ? "/about/" : "/" + locale + "/about/";
 const contactHref = locale === "en" ? "/contact/" : "/" + locale + "/contact/";
+const testHref = locale === "en" ? "/test/" : "/" + locale + "/test/";
 
 const strip = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
@@ -128,7 +129,7 @@ const howToSchema = {
 <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
 <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
 
-<a class="skip-link" href="/test/" data-i18n="a11y.skip">{d("a11y.skip")}</a>
+<a class="skip-link" href={testHref} data-i18n="a11y.skip">{d("a11y.skip")}</a>
 
 <div class="grain" aria-hidden="true"></div>
 
@@ -177,7 +178,7 @@ const howToSchema = {
             <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
             <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
           </button>
-          <a class="nav-cta" href="/test/" data-i18n="nav.cta">
+          <a class="nav-cta" href={testHref} data-i18n="nav.cta">
             <span>{d("nav.cta")}</span>
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </a>
@@ -192,6 +193,7 @@ const howToSchema = {
         <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
         <a href={aboutHref} data-i18n="nav.about">{d("nav.about")}</a>
         <a href={contactHref} data-i18n="nav.contact">{d("nav.contact")}</a>
+        <a href={testHref} data-i18n="nav.cta">{d("nav.cta")}</a>
       </div>
     </header>
 
@@ -212,7 +214,7 @@ const howToSchema = {
           <h1 data-i18n-html={heroTitleKey} set:html={d(heroTitleKey)}></h1>
           <p class="lede" data-i18n={K("hero.lede")}>{d(K("hero.lede"))}</p>
           <div class="hero-actions">
-            <a class="button button-lime" href="/test/">
+            <a class="button button-lime" href={testHref}>
               <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
@@ -350,7 +352,7 @@ const howToSchema = {
         <div class="intro-heading">
           <h2 data-i18n="how.title">{d("how.title")}</h2>
           <p data-i18n="how.sub">{d("how.sub")}</p>
-          <a class="underlined-link" href="/test/">
+          <a class="underlined-link" href={testHref}>
             <span>{d("nav.cta")}</span>
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </a>
@@ -424,7 +426,7 @@ const howToSchema = {
               type="button"
               class="check-row"
               data-test={c.test}
-              data-href={`${locale === "en" ? "" : `/${locale}`}/test/?mode=individual&check=${encodeURIComponent(c.test)}`}
+              data-href={`${testHref}?mode=individual&check=${encodeURIComponent(c.test)}`}
               aria-label={`${d(`checks.${c.id}.name`)} — ${d("checks.open")}`}
             >
               <span class="check-index">{num}</span>
@@ -443,7 +445,7 @@ const howToSchema = {
           {d("checks.cdlNote")}
         </p>
       )}
-      <a class="button button-dark checks-button" href="/test/">
+      <a class="button button-dark checks-button" href={testHref}>
         <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
       </a>
@@ -556,34 +558,34 @@ const howToSchema = {
         <h3 data-i18n="footer.c1">{d("footer.c1")}</h3>
         {isUS ? (
           <Fragment>
-            <a href="/test/" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-            <a href="/test/" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-            <a href="/test/" data-i18n="checks.color.name">{d("checks.color.name")}</a>
-            <a href="/test/" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-            <a href="/test/" data-i18n="checks.near.name">{d("checks.near.name")}</a>
-            <a href="/test/" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-            <a href="/test/" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-            <a href="/test/" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-            <a href="/test/" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
-            <a href="/test/" data-i18n="checks.cdl.name">{d("checks.cdl.name")}</a>
-            <a href="/test/" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
-            <a href="/test/" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
-            <a href="/test/" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
+            <a href={`${testHref}?mode=individual&check=distance`} data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+            <a href={`${testHref}?mode=individual&check=tumbling`} data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+            <a href={`${testHref}?mode=individual&check=color`} data-i18n="checks.color.name">{d("checks.color.name")}</a>
+            <a href={`${testHref}?mode=individual&check=peripheral`} data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+            <a href={`${testHref}?mode=individual&check=near`} data-i18n="checks.near.name">{d("checks.near.name")}</a>
+            <a href={`${testHref}?mode=individual&check=contrast`} data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+            <a href={`${testHref}?mode=individual&check=astigmatism`} data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+            <a href={`${testHref}?mode=individual&check=refraction`} data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+            <a href={`${testHref}?mode=individual&check=stereo`} data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+            <a href={`${testHref}?mode=individual&check=cdl`} data-i18n="checks.cdl.name">{d("checks.cdl.name")}</a>
+            <a href={`${testHref}?mode=individual&check=landolt`} data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
+            <a href={`${testHref}?mode=individual&check=amsler`} data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
+            <a href={`${testHref}?mode=individual&check=sivtsev`} data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
           </Fragment>
         ) : (
           <Fragment>
-            <a href="/test/" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-            <a href="/test/" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-            <a href="/test/" data-i18n="checks.color.name">{d("checks.color.name")}</a>
-            <a href="/test/" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-            <a href="/test/" data-i18n="checks.near.name">{d("checks.near.name")}</a>
-            <a href="/test/" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-            <a href="/test/" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-            <a href="/test/" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-            <a href="/test/" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
-            <a href="/test/" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
-            <a href="/test/" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
-            <a href="/test/" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
+            <a href={`${testHref}?mode=individual&check=distance`} data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+            <a href={`${testHref}?mode=individual&check=tumbling`} data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+            <a href={`${testHref}?mode=individual&check=color`} data-i18n="checks.color.name">{d("checks.color.name")}</a>
+            <a href={`${testHref}?mode=individual&check=peripheral`} data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+            <a href={`${testHref}?mode=individual&check=near`} data-i18n="checks.near.name">{d("checks.near.name")}</a>
+            <a href={`${testHref}?mode=individual&check=contrast`} data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+            <a href={`${testHref}?mode=individual&check=astigmatism`} data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+            <a href={`${testHref}?mode=individual&check=refraction`} data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+            <a href={`${testHref}?mode=individual&check=stereo`} data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+            <a href={`${testHref}?mode=individual&check=landolt`} data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
+            <a href={`${testHref}?mode=individual&check=amsler`} data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
+            <a href={`${testHref}?mode=individual&check=sivtsev`} data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
           </Fragment>
         )}
       </nav>

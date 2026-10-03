@@ -179,7 +179,7 @@ const isBlog = page === "blog" || page.startsWith("blog");
           <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
           <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
         </button>
-        <a class="btn btn-primary btn-sm header-cta" href={home + "#screener"}>{t.cta}</a>
+        <a class="btn btn-primary btn-sm header-cta" href={pathFor(locale, "test")}>{t.cta}</a>
       </div>
     </div>
     {!isBlog && (
@@ -258,7 +258,7 @@ const isBlog = page === "blog" || page.startsWith("blog");
     <div class="footer-col">
       <h3>{t.guides}</h3>
       <ul>
-        <li><a href={home + "#screener"}>{t.cta}</a></li>
+        <li><a href={pathFor(locale, "test")}>{t.cta}</a></li>
         <li><a href="/eye-test-chart/">{t.chart}</a></li>
         <li><a href="/us/">{t.us}</a></li>
         <li><a href="/states/">{t.states}</a></li>
