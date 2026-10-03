@@ -562,40 +562,32 @@ export function createLab(labEl) {
       letters = letters.slice(0, fitCount(avail, height, letters.length));
       chart.innerHTML = lineSVG(letters, height);
 
-      let remaining = READ_SECONDS;
+      
 
-      area.innerHTML = `<div class="eye-cover">
-        <p class="stage-sub">${t("test.linePrompt")}</p>
-        <p class="trial-counter" id="readTick"></p>
-      </div>`;
-      const tick = area.querySelector("#readTick");
-      const showTick = () => {
-        tick.textContent = `${acuityLabel(den)} \u00b7 ${remaining}s`;
-      };
-      showTick();
-      const iv = setInterval(() => {
-        if (my !== token) {
-          clearInterval(iv);
-          return;
-        }
-        remaining -= 1;
-        if (remaining <= 0) {
-          clearInterval(iv);
-          showPad();
-        } else {
-          showTick();
-        }
-      }, 1000);
-      cleanups.push(() => clearInterval(iv));
-
-      function showPad() {
-        chart.classList.add("is-blanked");
-        chart.innerHTML = "";
+      showPad();
+function showPad() {
+setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "nearest"}); }, 100);
+        // chart.classList.add("is-blanked");
+        // chart.innerHTML = "";
         let entered = [];
+
+          const correctStr = letters.join("");
+          const choices = [correctStr];
+          while(choices.length < 4) {
+            let rnd = letters.map(c => Math.random() < 0.3 ? pool[Math.floor(Math.random() * pool.length)] : c).join("");
+            if (!choices.includes(rnd)) choices.push(rnd);
+          }
+          choices.sort(() => Math.random() - 0.5);
+  
 
         area.innerHTML = `
           <div style="display:grid;gap:16px;justify-items:center">
-            <div class="answer-slots" id="slots">
+            
+              <div class="mc-choices" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:12px;">
+                ${choices.map(c => `<button type="button" class="btn btn-soft btn-sm mc-btn" data-val="${c}">${c}</button>`).join("")}
+              </div>
+  
+              <div class="answer-slots" id="slots">
               ${letters.map(() => '<span class="slot"></span>').join("")}
             </div>
             <div class="answer-pad" id="pad">
@@ -637,6 +629,17 @@ export function createLab(labEl) {
             if (entered.length === letters.length) setTimeout(grade, 280);
           })
         );
+        area.querySelectorAll(".mc-btn").forEach(b => {
+          on(b, "click", () => {
+            if (settled) return;
+            const val = b.dataset.val;
+            const ok = val === letters.join("");
+            note.textContent = ok ? t("test.correct") : t("test.wrongAnswer", { a: letters.join(" ") });
+            note.className = "stage-sub " + (ok ? "ok-text" : "err-text");
+            finish(ok);
+          });
+        });
+
         on(area.querySelector('[data-act="clear"]'), "click", () => {
           entered = [];
           paint();
@@ -1041,7 +1044,7 @@ export function createLab(labEl) {
       startBtn.disabled = true;
       runTrial();
     });
-    on(screen, "click", respond);
+    on(stage, "click", (e) => { if (!e.target.closest("button")) respond(); });
     on(document, "keydown", (e) => {
       if (e.code === "Space") {
         e.preventDefault();
@@ -1478,7 +1481,7 @@ export function createLab(labEl) {
           [t("results.eyeRight"), s.right],
           [t("results.eyeLeft"), s.left],
           [t("results.both"), s.both],
-        ];
+        ].filter(c => c && !c.includes(t("results.notTested")));
         const tested = parts.filter(([, v]) => v != null);
         const val = parts.map(([name, v]) => `${name[0]} ${acuityLabel(v)}`).join(" · ");
         const worst = tested.length ? Math.max(...tested.map(([, v]) => v)) : null;
@@ -1632,7 +1635,12 @@ export function createLab(labEl) {
       <button class="btn btn-soft btn-sm" data-act="print">${t("results.download")}</button>
     `);
     on(foot.querySelector('[data-act="restart"]'), "click", () => reset(false));
-    on(foot.querySelector('[data-act="print"]'), "click", () => window.print());
+    on(foot.querySelector('[data-act="print"]'), "click", (e) => {
+      const b = e.currentTarget;
+      b.disabled = true;
+      b.textContent = t("results.downloading") || "Loading...";
+      setTimeout(() => { window.print(); b.disabled = false; b.textContent = t("results.download"); }, 500);
+    });
 
     
     const histContainer = stage.querySelector("#history-list");
