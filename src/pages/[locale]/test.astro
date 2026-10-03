@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import SiteShell from "../../components/SiteShell.astro";
 import TestPage from "../../components/TestPage.astro";
 import { LOCALES, DEFAULT_LOCALE } from "../../lib/site.ts";
 
@@ -15,5 +16,7 @@ const { locale } = Astro.params;
 ---
 
 <Layout locale={locale} page="test" noindex={true}>
-  <TestPage locale={locale} />
+  <SiteShell locale={locale} page="test">
+    <TestPage locale={locale} />
+  </SiteShell>
 </Layout>

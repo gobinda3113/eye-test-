@@ -1,4 +1,13 @@
 const en = {
+    "modes.quickName": "Quick check",
+    "modes.fullName": "Full screening",
+    "modes.indivName": "Individual test",
+    "modes.quickDuration": "3 MIN",
+    "modes.fullDuration": "10 MIN",
+    "modes.indivDuration": "13 TESTS",
+    "modes.headingKicker": "Vision Screener",
+    "modes.headingTitle": "Choose your test mode",
+    "modes.headingSub": "Select a comprehensive distance examination, a fast short-range check, or target a single specific test.",
     "modes.quickTitle": "Quick check · 3 min",
     "modes.quickDesc": "Phone-friendly short-range checks. No card needed.",
     "modes.fullTitle": "Full screening · 10 min",
@@ -457,6 +466,15 @@ const en = {
 };
 
 const es = {
+    "modes.quickName": "Chequeo rápido",
+    "modes.fullName": "Examen completo",
+    "modes.indivName": "Prueba individual",
+    "modes.quickDuration": "3 MIN",
+    "modes.fullDuration": "10 MIN",
+    "modes.indivDuration": "13 PRUEBAS",
+    "modes.headingKicker": "Evaluador visual",
+    "modes.headingTitle": "Elige tu modo de prueba",
+    "modes.headingSub": "Selecciona un examen completo a distancia, un chequeo rápido de cerca o prueba un examen específico.",
     "modes.quickTitle": "Chequeo rápido · 3 min",
     "modes.quickDesc": "Pruebas de cerca ideales para teléfono. Sin tarjeta.",
     "modes.fullTitle": "Evaluación completa · 10 min",
@@ -915,6 +933,15 @@ const es = {
 };
 
 const fr = {
+    "modes.quickName": "Contrôle rapide",
+    "modes.fullName": "Dépistage complet",
+    "modes.indivName": "Test individuel",
+    "modes.quickDuration": "3 MIN",
+    "modes.fullDuration": "10 MIN",
+    "modes.indivDuration": "13 TESTS",
+    "modes.headingKicker": "Dépistage visuel",
+    "modes.headingTitle": "Choisissez votre mode de test",
+    "modes.headingSub": "Sélectionnez un examen complet à distance, un contrôle rapide de près ou ciblez un test spécifique.",
     "modes.quickTitle": "Contrôle rapide · 3 min",
     "modes.quickDesc": "Tests de près sur téléphone. Pas de carte nécessaire.",
     "modes.fullTitle": "Dépistage complet · 10 min",
@@ -1373,6 +1400,15 @@ const fr = {
 };
 
 const de = {
+    "modes.quickName": "Schnelltest",
+    "modes.fullName": "Vollständiger Sehtest",
+    "modes.indivName": "Einzeltest",
+    "modes.quickDuration": "3 MIN",
+    "modes.fullDuration": "10 MIN",
+    "modes.indivDuration": "13 TESTS",
+    "modes.headingKicker": "Sehtest-Screener",
+    "modes.headingTitle": "Wählen Sie Ihren Testmodus",
+    "modes.headingSub": "Wählen Sie eine vollständige Fernprüfung, einen schnellen Nahbereichstest oder einen gezielten Einzeltest.",
     "modes.quickTitle": "Schnelltest · 3 Min",
     "modes.quickDesc": "Nahbereichstests für Smartphones. Keine Karte nötig.",
     "modes.fullTitle": "Vollständiges Screening · 10 Min",
@@ -1831,6 +1867,15 @@ const de = {
 };
 
 const pt = {
+    "modes.quickName": "Verificação rápida",
+    "modes.fullName": "Triagem completa",
+    "modes.indivName": "Teste individual",
+    "modes.quickDuration": "3 MIN",
+    "modes.fullDuration": "10 MIN",
+    "modes.indivDuration": "13 TESTES",
+    "modes.headingKicker": "Rastreio visual",
+    "modes.headingTitle": "Escolha o modo de teste",
+    "modes.headingSub": "Selecione um exame completo à distância, uma verificação rápida de perto ou faça um teste específico.",
     "modes.quickTitle": "Verificação rápida · 3 min",
     "modes.quickDesc": "Testes de perto para celular. Sem necessidade de cartão.",
     "modes.fullTitle": "Triagem completa · 10 min",
@@ -2290,6 +2335,15 @@ const pt = {
 
 
 const it = {
+    "modes.quickName": "Controllo rapido",
+    "modes.fullName": "Screening completo",
+    "modes.indivName": "Test singolo",
+    "modes.quickDuration": "3 MIN",
+    "modes.fullDuration": "10 MIN",
+    "modes.indivDuration": "13 TEST",
+    "modes.headingKicker": "Screening visivo",
+    "modes.headingTitle": "Scegli la modalità del test",
+    "modes.headingSub": "Scegli un esame completo a distanza, un rapido controllo a breve distanza o un singolo test specifico.",
     "modes.quickTitle": "Controllo rapido · 3 min",
     "modes.quickDesc": "Test da vicino per smartphone. Nessuna carta necessaria.",
     "modes.fullTitle": "Screening completo · 10 min",
@@ -2747,6 +2801,15 @@ const it = {
     "results.drive.ja": "La patente normale richiede 0,7 o più in entrambi gli occhi e 0,3 o più per occhio. Solo per esercitazione. Non è un test ufficiale.",
 };
 const ja = {
+    "modes.quickName": "クイックチェック",
+    "modes.fullName": "完全スクリーニング",
+    "modes.indivName": "個別テスト",
+    "modes.quickDuration": "3分",
+    "modes.fullDuration": "10分",
+    "modes.indivDuration": "13項目",
+    "modes.headingKicker": "視力スクリーニング",
+    "modes.headingTitle": "テストモードを選択",
+    "modes.headingSub": "遠距離の総合検査、近距離の簡易チェック、または特定の個別検査を選択してください。",
     "modes.quickTitle": "クイックチェック · 3分",
     "modes.quickDesc": "スマホ向けの近距離テスト。カード不要。",
     "modes.fullTitle": "フルスクリーニング · 10分",
@@ -3204,6 +3267,15 @@ const ja = {
     "results.drive.it": "免許B: 両眼7/10、悪い方の目2/10 (IAPB)。オンライン検査は適性を証明するものではありません。",
 };
 const ru = {
+    "modes.quickName": "Быстрая проверка",
+    "modes.fullName": "Полный скрининг",
+    "modes.indivName": "Индивидуальный тест",
+    "modes.quickDuration": "3 МИН",
+    "modes.fullDuration": "10 МИН",
+    "modes.indivDuration": "13 ТЕСТОВ",
+    "modes.headingKicker": "Скрининг зрения",
+    "modes.headingTitle": "Выберите режим проверки",
+    "modes.headingSub": "Выберите комплексную проверку вдаль, быстрый тест вблизи или один конкретный тест.",
     "modes.quickTitle": "Быстрая проверка · 3 мин",
     "modes.quickDesc": "Тесты вблизи для телефона. Карта не нужна.",
     "modes.fullTitle": "Полный скрининг · 10 мин",
