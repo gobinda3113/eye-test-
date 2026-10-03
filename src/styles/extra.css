@@ -436,8 +436,8 @@ body.is-doc .section {
   flex-shrink: 0;
 }
 
-/* -------------------------------------------------- Unified Landing Header for /test/ */
-.site-header.landing-style-header {
+/* -------------------------------------------------- Unified Site Header (Source of Truth from commit 575b7fc5) */
+.site-header {
   height: 52px;
   position: relative;
   z-index: 50;
@@ -452,16 +452,16 @@ body.is-doc .section {
   -webkit-backdrop-filter: none;
 }
 
-.home-page .site-header.landing-style-header {
+.home-page .site-header {
   background: transparent;
 }
 
-.site-header.landing-style-header.page-pad {
+.site-header.page-pad {
   padding-left: clamp(24px, 5.6vw, 96px);
   padding-right: clamp(24px, 5.6vw, 96px);
 }
 
-.site-header.landing-style-header .header-inner {
+.site-header .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -471,11 +471,11 @@ body.is-doc .section {
   height: 100%;
 }
 
-.site-header.landing-style-header .wordmark {
+.site-header .wordmark {
   display: inline-flex;
   align-items: center;
   gap: clamp(8px, 0.8vw, 11px);
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(19px, 1.6vw, 25px);
   font-weight: 800;
   letter-spacing: -1.2px;
@@ -486,108 +486,107 @@ body.is-doc .section {
   white-space: nowrap;
 }
 
-.site-header.landing-style-header .brand-text {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+.site-header .brand-text {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #fff;
-  font-size: clamp(19px, 1.6vw, 25px);
-  font-weight: 800;
-  letter-spacing: -1.2px;
-  line-height: 1;
 }
 
-.site-header.landing-style-header .brand-mark {
+.site-header .brand-mark {
   background: transparent;
   color: #fff;
   --brand-mark-slash: #0b211f;
 }
 
-.site-header.landing-style-header .logo-mark {
+.site-header .logo-mark {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1.7px solid currentColor;
   border-radius: 50%;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
 }
 
-.site-header.landing-style-header .logo-mark svg {
-  width: 20px;
-  height: 20px;
+.site-header .logo-mark svg {
+  width: 22px;
+  height: 22px;
 }
 
-.site-header.landing-style-header .wordmark-light {
+.site-header .wordmark-light {
   font-weight: 500;
 }
 
-.site-header.landing-style-header .wordmark-dot {
+.site-header .wordmark-dot {
   color: #c4e884;
 }
 
-.site-header.landing-style-header .nav-links {
+.site-header .nav-links {
   display: flex;
   align-items: center;
   gap: clamp(12px, 1.6vw, 32px);
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 13px;
   font-weight: 600;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   flex-shrink: 1;
   min-width: 0;
 }
 
-.site-header.landing-style-header .nav-links a {
+.site-header .nav-links a {
   color: #fff;
   text-decoration: none;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   transition: opacity .2s;
+  white-space: nowrap;
   padding: 0;
   background: transparent;
   border-radius: 0;
 }
 
-.site-header.landing-style-header .nav-links a:hover {
+.site-header .nav-links a:hover {
   opacity: .65;
   color: #fff;
   background: transparent;
 }
 
-.site-header.landing-style-header .header-tools {
+.site-header .header-tools {
   display: flex;
   align-items: center;
   gap: clamp(8px, 1vw, 14px);
   flex-shrink: 0;
 }
 
-.site-header.landing-style-header .lang-wrap {
+.site-header .lang-wrap {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 6px;
-  padding: 6px 10px;
-  height: 34px;
-  box-sizing: border-box;
+  padding: 8px 12px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.site-header.landing-style-header .lang-wrap .ico {
+.site-header .lang-wrap .ico {
   color: rgba(255, 255, 255, 0.85);
   position: static;
   width: 16px;
   height: 16px;
 }
 
-.site-header.landing-style-header .lang-wrap .lang-code {
+.site-header .lang-wrap .lang-code {
   display: none;
 }
 
-.site-header.landing-style-header .lang-wrap select {
+.site-header .lang-wrap select {
   background: transparent;
   border: 0;
   color: #fff;
@@ -603,14 +602,14 @@ body.is-doc .section {
   background-image: none;
 }
 
-.site-header.landing-style-header .lang-wrap select option {
+.site-header .lang-wrap select option {
   background: #17342f;
   color: #fff;
 }
 
-.site-header.landing-style-header .header-tools .icon-btn {
-  width: 34px;
-  height: 34px;
+.site-header .header-tools .icon-btn {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.08);
@@ -623,23 +622,21 @@ body.is-doc .section {
   transition: background .2s, border-color .2s;
 }
 
-.site-header.landing-style-header .header-tools .icon-btn:hover {
+.site-header .header-tools .icon-btn:hover {
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-.site-header.landing-style-header .header-tools .icon-btn svg {
-  width: 17px;
-  height: 17px;
+.site-header .header-tools .icon-btn svg {
+  width: 19px;
+  height: 19px;
 }
 
-.site-header.landing-style-header .nav-cta {
+.site-header .nav-cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 8px clamp(12px, 1.2vw, 16px);
-  height: 34px;
-  box-sizing: border-box;
+  padding: 10px clamp(12px, 1.2vw, 18px);
   background: #f1f3e9;
   color: #13312d;
   border: 0;
@@ -651,48 +648,40 @@ body.is-doc .section {
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  transition: background .2s, transform .2s;
 }
 
-.site-header.landing-style-header .nav-cta:hover {
-  background: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+.site-header .nav-cta:hover {
+  background: #cdec8d;
+  transform: translateY(-2px);
 }
 
-.site-header.landing-style-header .nav-cta .ico {
-  width: 14px;
-  height: 14px;
-  stroke-width: 2.4;
-  transition: transform .2s;
+.site-header .nav-cta svg {
+  width: 17px;
+  height: 17px;
 }
 
-.site-header.landing-style-header .nav-cta:hover .ico {
-  transform: translate(2px, -2px);
-}
-
-.site-header.landing-style-header .header-tools .menu-toggle {
+.site-header .header-tools .menu-toggle {
   display: none;
 }
 
 @media (min-width: 1201px) {
-  .site-header.landing-style-header .mobile-nav {
+  .site-header .mobile-nav {
     display: none !important;
   }
 }
 
 @media (max-width: 1200px) {
-  .site-header.landing-style-header .nav-links,
-  .site-header.landing-style-header .nav-cta {
+  .site-header .nav-links,
+  .site-header .nav-cta {
     display: none !important;
   }
-  .site-header.landing-style-header .header-tools .menu-toggle {
+  .site-header .header-tools .menu-toggle {
     display: flex !important;
   }
 }
 
-.site-header.landing-style-header .mobile-nav {
+.site-header .mobile-nav {
   position: absolute;
   top: 52px;
   left: 0;
@@ -706,11 +695,11 @@ body.is-doc .section {
   z-index: 49;
 }
 
-.site-header.landing-style-header .mobile-nav[hidden] {
+.site-header .mobile-nav[hidden] {
   display: none !important;
 }
 
-.site-header.landing-style-header .mobile-nav a {
+.site-header .mobile-nav a {
   color: #fff;
   padding: 14px 0;
   font-size: 15px;
@@ -719,49 +708,49 @@ body.is-doc .section {
   border-bottom: 1px solid #2f5449;
 }
 
-.site-header.landing-style-header .mobile-nav a:hover {
+.site-header .mobile-nav a:hover {
   color: #cdec8d;
 }
 
 @media (max-width: 768px) {
-  .site-header.landing-style-header {
+  .site-header {
     height: 50px;
   }
-  .site-header.landing-style-header .wordmark,
-  .site-header.landing-style-header .brand-text {
+  .site-header .wordmark,
+  .site-header .brand-text {
     font-size: clamp(17px, 4.4vw, 20px);
     letter-spacing: -0.9px;
     gap: 8px;
     flex-shrink: 1;
     min-width: 0;
   }
-  .site-header.landing-style-header .logo-mark {
+  .site-header .logo-mark {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
   }
-  .site-header.landing-style-header .logo-mark svg {
+  .site-header .logo-mark svg {
     width: 18px;
     height: 18px;
   }
-  .site-header.landing-style-header .header-tools {
+  .site-header .header-tools {
     gap: 8px;
     flex-shrink: 0;
   }
-  .site-header.landing-style-header .header-tools .icon-btn {
-    width: 32px;
-    height: 32px;
+  .site-header .header-tools .icon-btn {
+    width: 36px;
+    height: 36px;
   }
-  .site-header.landing-style-header .header-tools .icon-btn svg {
+  .site-header .header-tools .icon-btn svg {
     width: 17px;
     height: 17px;
   }
-  .site-header.landing-style-header .lang-wrap {
+  .site-header .lang-wrap {
     position: relative;
     padding: 7px 10px;
     gap: 5px;
   }
-  .site-header.landing-style-header .lang-wrap .lang-code {
+  .site-header .lang-wrap .lang-code {
     display: inline-block;
     font-size: 12px;
     font-weight: 700;
@@ -769,7 +758,7 @@ body.is-doc .section {
     color: #fff;
     line-height: 1;
   }
-  .site-header.landing-style-header .lang-wrap select {
+  .site-header .lang-wrap select {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -777,34 +766,34 @@ body.is-doc .section {
     opacity: 0;
     cursor: pointer;
   }
-  .site-header.landing-style-header .nav-links {
+  .site-header .nav-links {
     display: none;
   }
-  .site-header.landing-style-header .header-tools .menu-toggle {
+  .site-header .header-tools .menu-toggle {
     display: flex;
   }
-  .site-header.landing-style-header .mobile-nav {
+  .site-header .mobile-nav {
     top: 50px;
   }
 }
 
 @media (max-width: 440px) {
-  .site-header.landing-style-header {
+  .site-header {
     height: 48px;
   }
-  .site-header.landing-style-header .wordmark,
-  .site-header.landing-style-header .brand-text {
+  .site-header .wordmark,
+  .site-header .brand-text {
     font-size: 16px;
     gap: 7px;
   }
-  .site-header.landing-style-header .header-tools {
+  .site-header .header-tools {
     gap: 6px;
   }
-  .site-header.landing-style-header .header-tools .icon-btn {
-    width: 30px;
-    height: 30px;
+  .site-header .header-tools .icon-btn {
+    width: 34px;
+    height: 34px;
   }
-  .site-header.landing-style-header .mobile-nav {
+  .site-header .mobile-nav {
     top: 48px;
   }
 }
