@@ -1,0 +1,189 @@
+---
+/**
+ * Shared site header used across ALL pages.
+ * Pixel-identical to the landing page nav bar.
+ */
+import { DICT } from "../scripts/dict.ts";
+import { LOCALES, SITE } from "../lib/site.ts";
+
+interface Props {
+  locale?: string;
+  page?: string;
+  customAlts?: Array<{ locale: string; hreflang: string; url: string }>;
+}
+
+const { locale = "en", page = "home", customAlts } = Astro.props;
+const dict = DICT[locale] || DICT.en;
+const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
+
+const isUS = page === "us";
+const homeHref = isUS ? "/us/" : locale === "en" ? "/" : "/" + locale + "/";
+const checksHref = "/checks/";
+const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
+const aboutHref = locale === "en" ? "/about/" : "/" + locale + "/about/";
+const contactHref = locale === "en" ? "/contact/" : "/" + locale + "/contact/";
+const testHref = locale === "en" ? "/test/" : "/" + locale + "/test/";
+
+// "Start free check" CTA stays removed on /test/, present everywhere else
+const hideCta = page === "test";
+const logoHref = page === "home" ? "#top" : homeHref;
+
+const navItems = [
+  { key: "nav.home", label: d("nav.home"), href: homeHref },
+  { key: "nav.checks", label: d("nav.checks"), href: checksHref },
+  { key: "nav.blog", label: d("nav.blog"), href: blogHref },
+  { key: "nav.about", label: d("nav.about"), href: aboutHref },
+  { key: "nav.contact", label: d("nav.contact"), href: contactHref },
+];
+---
+
+<header class="site-header page-pad landing-style-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand wordmark" href={logoHref} aria-label="Online Vision Test home">
+      <span class="brand-mark logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+          <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
+          <path d="M11.4 20.2 20.6 11.8" stroke="var(--brand-mark-slash, #fff)" stroke-width="1.5" stroke-linecap="round" opacity=".85"/>
+        </svg>
+      </span>
+      <span class="brand-text">Online<span class="wordmark-light">Vision</span>Test<span class="wordmark-dot">.</span></span>
+    </a>
+
+    <nav class="header-nav nav-links" id="headerNav" aria-label="Main">
+      {navItems.map((n) => (
+        <a href={n.href} data-i18n={n.key}>{n.label}</a>
+      ))}
+    </nav>
+
+    <div class="header-tools">
+      <label class="lang-wrap" title="Language">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+        <span class="lang-code" aria-hidden="true">{locale.toUpperCase()}</span>
+        <select id="langSelect" aria-label="Language" data-current={locale}>
+          {LOCALES.map((l) => {
+            let targetUrl: string | undefined = undefined;
+            if (customAlts) {
+              const alt = customAlts.find((a) => a.locale === l);
+              if (alt) targetUrl = alt.url.replace(SITE, "");
+            }
+            const label =
+              l === "en" ? "English" :
+              l === "es" ? "Español" :
+              l === "fr" ? "Français" :
+              l === "de" ? "Deutsch" :
+              l === "pt" ? "Português" :
+              l === "it" ? "Italiano" :
+              l === "ja" ? "日本語" : "Русский";
+            return (
+              <option value={l} data-url={targetUrl} selected={locale === l}>{label}</option>
+            );
+          })}
+        </select>
+      </label>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label={d("a11y.theme")} data-i18n-attr="aria-label:a11y.theme">
+        <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      {!hideCta && (
+        <a class="nav-cta" href={testHref} data-i18n="nav.cta">
+          <span>{d("nav.cta")}</span>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      )}
+      <button class="icon-btn menu-btn menu-toggle" id="menuBtn" type="button" aria-label={d("a11y.menu")} aria-expanded="false" data-i18n-attr="aria-label:a11y.menu">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav" hidden>
+    {navItems.map((n) => (
+      <a href={n.href} data-i18n={n.key}>{n.label}</a>
+    ))}
+    {!hideCta && (
+      <a href={testHref} data-i18n="nav.cta" style="color: #cdec8d; font-weight: 700;">{d("nav.cta")}</a>
+    )}
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    function initHeader() {
+      var b = document.getElementById("themeBtn");
+      if (b && !b.dataset.boundTheme) {
+        b.dataset.boundTheme = "1";
+        b.addEventListener("click", function () {
+          var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          try {
+            localStorage.setItem("dmv-eye-test.theme", next);
+          } catch (e) {}
+        });
+      }
+
+      var ls = document.getElementById("langSelect");
+      if (ls && !ls.dataset.boundLang) {
+        ls.dataset.boundLang = "1";
+        ls.addEventListener("change", function () {
+          var opt = ls.options[ls.selectedIndex];
+          if (opt && opt.dataset.url) {
+            window.location.href = opt.dataset.url;
+            return;
+          }
+          var newLang = ls.value;
+          try {
+            localStorage.setItem("dmv-eye-test.lang", newLang);
+            localStorage.setItem("dmv_eye_lang", newLang);
+          } catch (e) {}
+          var locales = ["es", "fr", "de", "pt", "it", "ja", "ru"];
+          var pathSegments = window.location.pathname.split("/").filter(Boolean);
+          var enOnly = ["us", "checks", "states", "eye-test-chart"];
+          if (pathSegments.length > 0 && enOnly.includes(pathSegments[0])) {
+            window.location.href = newLang === "en" ? "/" + pathSegments[0] + "/" : "/" + newLang + "/";
+            return;
+          }
+          if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+            if (newLang === "en") {
+              pathSegments.shift();
+            } else {
+              pathSegments[0] = newLang;
+            }
+          } else {
+            if (newLang !== "en") {
+              pathSegments.unshift(newLang);
+            }
+          }
+          var newPath = "/" + pathSegments.join("/");
+          if (window.location.pathname.endsWith("/") && newPath !== "/") {
+            newPath += "/";
+          }
+          if (window.location.search) newPath += window.location.search;
+          if (window.location.hash) newPath += window.location.hash;
+          window.location.href = newPath || "/";
+        });
+      }
+
+      var m = document.getElementById("menuBtn");
+      var mn = document.getElementById("mobileNav");
+      if (m && mn && !m.dataset.boundMenu) {
+        m.dataset.boundMenu = "1";
+        m.addEventListener("click", function () {
+          var isHidden = mn.hasAttribute("hidden");
+          if (isHidden) {
+            mn.removeAttribute("hidden");
+            m.setAttribute("aria-expanded", "true");
+          } else {
+            mn.setAttribute("hidden", "");
+            m.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initHeader);
+    } else {
+      initHeader();
+    }
+  })();
+</script>

@@ -6,6 +6,7 @@
  * locales crawlable.
  */
 import { LOCALES, pathFor, SITE } from "../lib/site.ts";
+import SiteHeader from "./SiteHeader.astro";
 
 const { locale = "en", page = "home", customAlts } = Astro.props;
 const L = {
@@ -90,129 +91,7 @@ const isBlog = page === "blog" || page.startsWith("blog");
 <a class="skip-link" href="#main">{t.skip}</a>
 <div class="grain" aria-hidden="true"></div>
 
-{page === "test" ? (
-  <header class="site-header page-pad landing-style-header" id="siteHeader">
-    <div class="header-inner">
-      <a class="brand wordmark" href={home} aria-label="Online Vision Test home">
-        <span class="brand-mark logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
-            <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
-            <path d="M11.4 20.2 20.6 11.8" stroke="var(--brand-mark-slash, #fff)" stroke-width="1.5" stroke-linecap="round" opacity=".85"/>
-          </svg>
-        </span>
-        <span class="brand-text">Online<span class="wordmark-light">Vision</span>Test<span class="wordmark-dot">.</span></span>
-      </a>
-
-      <nav class="header-nav nav-links" id="headerNav" aria-label="Main">
-        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-      </nav>
-
-      <div class="header-tools">
-        <label class="lang-wrap" title="Language">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
-          <span class="lang-code" aria-hidden="true">{locale.toUpperCase()}</span>
-          <select id="langSelect" aria-label="Language" data-current={locale}>
-            <option value="en" selected={locale === "en"}>English</option>
-            <option value="es" selected={locale === "es"}>Español</option>
-            <option value="fr" selected={locale === "fr"}>Français</option>
-            <option value="de" selected={locale === "de"}>Deutsch</option>
-            <option value="pt" selected={locale === "pt"}>Português</option>
-            <option value="it" selected={locale === "it"}>Italiano</option>
-            <option value="ja" selected={locale === "ja"}>日本語</option>
-            <option value="ru" selected={locale === "ru"}>Русский</option>
-          </select>
-        </label>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label={t.theme}>
-          <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
-          <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
-        </button>
-        <button class="icon-btn menu-btn menu-toggle" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="mobile-nav" id="mobileNav" hidden>
-      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-    </div>
-  </header>
-) : (
-  <header class="site-header min-head" id="siteHeader">
-    <div class="container header-inner">
-      <a class="brand" href={home} aria-label="Online Vision Test">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <path d="M2.5 16c3.4-6.2 8-9.3 13.5-9.3S26.1 9.8 29.5 16c-3.4 6.2-8 9.3-13.5 9.3S5.9 22.2 2.5 16Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
-            <circle cx="16" cy="16" r="4.6" fill="currentColor"/>
-            <path d="M11.4 20.2 20.6 11.8" stroke="var(--brand-mark-slash, #fff)" stroke-width="1.5" stroke-linecap="round" opacity=".85"/>
-          </svg>
-        </span>
-        <span class="brand-text"><b>Online</b>Vision<span class="brand-tld">Test</span></span>
-      </a>
-
-      <nav class="min-nav" aria-label="Main">
-        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-      </nav>
-
-      <div class="header-tools">
-        {isBlog && (
-          <label class="lang-wrap" title="Language">
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
-            <span class="lang-code" aria-hidden="true">{locale.toUpperCase()}</span>
-            <select id="langSelect" aria-label="Language" data-current={locale}>
-              {LOCALES.map((l) => {
-                let targetUrl = pathFor(l, "blog");
-                if (customAlts) {
-                  const alt = customAlts.find(a => a.locale === l);
-                  if (alt) targetUrl = alt.url.replace(SITE, "");
-                  else targetUrl = pathFor(l, "blog");
-                }
-                const label = l === "en" ? "English" : l === "es" ? "Español" : l === "fr" ? "Français" : l === "de" ? "Deutsch" : l === "pt" ? "Português" : l === "it" ? "Italiano" : l === "ja" ? "日本語" : "Русский";
-                return (
-                  <option value={l} data-url={targetUrl} selected={locale === l}>{label}</option>
-                );
-              })}
-            </select>
-          </label>
-        )}
-        <button class="icon-btn" id="themeBtn" type="button" aria-label={t.theme}>
-          <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
-          <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
-        </button>
-        <a class="btn btn-primary btn-sm header-cta" href={pathFor(locale, "test")}>{t.cta}</a>
-      </div>
-    </div>
-    {!isBlog && (
-      <div class="header-langs">
-        <div class="container header-langs-inner">
-          <ul class="lang-links header-pills" aria-label={t.lang}>
-            {
-              LOCALES.map((l) => {
-                let targetUrl = pathFor(l, page);
-                if (customAlts) {
-                  const alt = customAlts.find(a => a.locale === l);
-                  if (alt) targetUrl = alt.url.replace(SITE, "");
-                  else return null;
-                }
-                return (
-                  <li>
-                    {l === locale ? (
-                      <span class="pill-active" aria-current="true">{l.toUpperCase()}</span>
-                    ) : (
-                      <a href={targetUrl} hreflang={l} lang={l}>
-                        {l.toUpperCase()}
-                      </a>
-                    )}
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </div>
-      </div>
-    )}
-  </header>
-)}
+<SiteHeader locale={locale} page={page} customAlts={customAlts} />
 
 <main id="main">
   <slot />
@@ -231,29 +110,6 @@ const isBlog = page === "blog" || page.startsWith("blog");
         <span class="brand-text"><b>Online</b>Vision<span class="brand-tld">Test</span></span>
       </div>
       <p>{t.privacyNote}</p>
-      <ul class="lang-links" aria-label={t.lang}>
-        {
-          LOCALES.map((l) => {
-            let targetUrl = pathFor(l, page);
-            if (customAlts) {
-              const alt = customAlts.find(a => a.locale === l);
-              if (alt) targetUrl = alt.url.replace(SITE, "");
-              else return null;
-            }
-            return (
-              <li>
-                {l === locale ? (
-                  <span class="pill-active" aria-current="true">{l.toUpperCase()}</span>
-                ) : (
-                  <a href={targetUrl} hreflang={l} lang={l}>
-                    {l.toUpperCase()}
-                  </a>
-                )}
-              </li>
-            );
-          })
-        }
-      </ul>
     </div>
     <div class="footer-col">
       <h3>{t.guides}</h3>
@@ -283,71 +139,6 @@ const isBlog = page === "blog" || page.startsWith("blog");
 
 <script is:inline>
   (function () {
-    var b = document.getElementById("themeBtn");
-    if (b && !b.dataset.boundTheme) {
-      b.dataset.boundTheme = "1";
-      b.addEventListener("click", function () {
-        var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-        document.documentElement.dataset.theme = next;
-        try {
-          localStorage.setItem("dmv-eye-test.theme", next);
-        } catch (e) {}
-      });
-    }
-    var ls = document.getElementById("langSelect");
-    if (ls && !ls.dataset.boundLang) {
-      ls.dataset.boundLang = "1";
-      ls.addEventListener("change", function () {
-        var opt = ls.options[ls.selectedIndex];
-        if (opt && opt.dataset.url) {
-          window.location.href = opt.dataset.url;
-          return;
-        }
-        var newLang = ls.value;
-        try {
-          localStorage.setItem("dmv_eye_lang", newLang);
-        } catch (e) {}
-        var locales = ["es", "fr", "de", "pt", "it", "ja", "ru"];
-        var pathSegments = window.location.pathname.split("/").filter(Boolean);
-        if (pathSegments.length > 0 && pathSegments[0] === "us") {
-          window.location.href = newLang === "en" ? "/us/" : "/" + newLang + "/";
-          return;
-        }
-        if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
-          if (newLang === "en") {
-            pathSegments.shift();
-          } else {
-            pathSegments[0] = newLang;
-          }
-        } else {
-          if (newLang !== "en") {
-            pathSegments.unshift(newLang);
-          }
-        }
-        var newPath = "/" + pathSegments.join("/");
-        if (window.location.pathname.endsWith("/") && newPath !== "/") {
-          newPath += "/";
-        }
-        if (window.location.search) newPath += window.location.search;
-        if (window.location.hash) newPath += window.location.hash;
-        window.location.href = newPath || "/";
-      });
-    }
-    var m = document.getElementById("menuBtn");
-    var mn = document.getElementById("mobileNav");
-    if (m && mn && !m.dataset.boundMenu) {
-      m.dataset.boundMenu = "1";
-      m.addEventListener("click", function () {
-        var isHidden = mn.hasAttribute("hidden");
-        if (isHidden) {
-          mn.removeAttribute("hidden");
-          m.setAttribute("aria-expanded", "true");
-        } else {
-          mn.setAttribute("hidden", "");
-          m.setAttribute("aria-expanded", "false");
-        }
-      });
-    }
     var y = document.getElementById("year");
     if (y) y.textContent = String(new Date().getFullYear());
   })();
