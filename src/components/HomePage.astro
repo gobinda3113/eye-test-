@@ -125,7 +125,7 @@ const howToSchema = {
 <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
 <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
 
-<a class="skip-link" href="#screener" data-i18n="a11y.skip">{d("a11y.skip")}</a>
+<a class="skip-link" href="/test/" data-i18n="a11y.skip">{d("a11y.skip")}</a>
 
 <div class="grain" aria-hidden="true"></div>
 
@@ -149,7 +149,7 @@ const howToSchema = {
 
         <nav class="header-nav nav-links" id="headerNav" aria-label="Main">
           <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
-          <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
+          <a href="/test/" data-i18n="nav.start">{d("nav.start")}</a>
           <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
           <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
         </nav>
@@ -173,7 +173,7 @@ const howToSchema = {
             <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
             <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
           </button>
-          <a class="nav-cta" href="#screener" data-i18n="nav.cta">
+          <a class="nav-cta" href="/test/" data-i18n="nav.cta">
             <span>{d("nav.cta")}</span>
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </a>
@@ -184,7 +184,7 @@ const howToSchema = {
       </div>
       <div class="mobile-nav" id="mobileNav" hidden>
         <a href="#checks" data-i18n="nav.checks">{d("nav.checks")}</a>
-        <a href="#screener" data-i18n="nav.start">{d("nav.start")}</a>
+        <a href="/test/" data-i18n="nav.start">{d("nav.start")}</a>
         <a href={blogHref} data-i18n="nav.blog">{d("nav.blog")}</a>
         <a href="#faq" data-i18n="nav.faq">{d("nav.faq")}</a>
       </div>
@@ -207,7 +207,7 @@ const howToSchema = {
           <h1 data-i18n-html={heroTitleKey} set:html={d(heroTitleKey)}></h1>
           <p class="lede" data-i18n={K("hero.lede")}>{d(K("hero.lede"))}</p>
           <div class="hero-actions">
-            <a class="button button-lime" href="#screener">
+            <a class="button button-lime" href="/test/">
               <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
@@ -345,7 +345,7 @@ const howToSchema = {
         <div class="intro-heading">
           <h2 data-i18n="how.title">{d("how.title")}</h2>
           <p data-i18n="how.sub">{d("how.sub")}</p>
-          <a class="underlined-link" href="#screener">
+          <a class="underlined-link" href="/test/">
             <span>{d("nav.cta")}</span>
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </a>
@@ -432,59 +432,10 @@ const howToSchema = {
           );
         })}
       </div>
-      <a class="button button-dark checks-button" href="#screener">
+      <a class="button button-dark checks-button" href="/test/">
         <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
       </a>
-    </section>
-
-    <!-- The Eye Testing Tool: DO NOT MODIFY DESIGN OR FUNCTIONALITY -->
-    <section class="screener-section page-pad" id="screener">
-      <div class="section-label section-label-light">
-        <span class="label-dot"></span>
-        <span data-i18n="lab.kicker">{d("lab.kicker")}</span>
-        <span class="label-number">03 / 04</span>
-      </div>
-      <div class="screener-heading">
-        <div>
-          <h2 data-i18n="lab.title">{d("lab.title")}</h2>
-        </div>
-        <p data-i18n="lab.sub">{d("lab.sub")}</p>
-      </div>
-
-      <div class="lab" id="lab">
-        <div class="lab-bar">
-          <div class="lab-bar-left">
-            <span class="lab-dot" aria-hidden="true"></span>
-            <span id="labStatus" data-i18n="lab.ready">{d("lab.ready")}</span>
-          </div>
-          <div class="lab-bar-right">
-            <button class="btn btn-quiet btn-xs" id="labFullBtn" type="button" data-i18n="lab.focus">{d("lab.focus")}</button>
-            <button class="btn btn-quiet btn-xs" id="labResetBtn" type="button" data-i18n="lab.reset">{d("lab.reset")}</button>
-          </div>
-        </div>
-        <div class="stepper-wrap" id="stepperWrap">
-          <ol class="stepper" id="stepper"></ol>
-        </div>
-        <div class="lab-reminders" style="text-align: center; padding: 0.5rem 1rem; color: var(--muted); font-size: 0.85rem; background: var(--bg-card); border-bottom: 1px solid var(--border);">
-          <div data-i18n="lab.wearGlasses">{d("lab.wearGlasses")}</div>
-          <div data-i18n="lab.smallScreen" style="margin-top: 0.25rem;">{d("lab.smallScreen")}</div>
-        </div>
-
-        <div class="lab-norm" id="labNorm" hidden></div>
-        <div class="lab-stage" id="labStage"><p class="stage-sub" data-lab-fallback>{d("lab.ready")}</p></div>
-        <div class="lab-foot" id="labFoot"></div>
-        <noscript><p class="stage-sub">{d("lab.ready")}</p></noscript>
-        <div class="lab-disclaimer" style="text-align: center; padding: 0.75rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--bg-card); border-bottom-left-radius: inherit; border-bottom-right-radius: inherit;">
-          <strong style="color: var(--fg); font-weight: 500;">Note:</strong> <span data-i18n="lab.disclaimer">{d("lab.disclaimer")}</span>
-        </div>
-
-      </div>
-
-      <div class="screener-foot">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width: 19px; height: 19px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span data-i18n="screener.privacyNote">{d("screener.privacyNote")}</span>
-      </div>
     </section>
 
     <section class="refs-section page-pad" id="reference">
@@ -573,19 +524,7 @@ const howToSchema = {
       </section>
     )}
 
-    <section class="end-section page-pad" id="final-cta" style="border-bottom: 0;">
-      <div class="end-rings" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="end-content">
-        <span class="end-eyebrow" data-i18n="end.eyebrow">{d("end.eyebrow")}</span>
-        <h2 data-i18n="lab.title">{d("lab.title")}</h2>
-        <p data-i18n="lab.sub">{d("lab.sub")}</p>
-        <a class="button button-lime" href="#screener">
-          <span data-i18n="nav.cta">{d("nav.cta")}</span>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-        </a>
-      </div>
-    </section>
-  </main>
+    </main>
 
   <footer class="site-footer page-pad">
     <div class="footer-top">
@@ -606,34 +545,34 @@ const howToSchema = {
         <h3 data-i18n="footer.c1">{d("footer.c1")}</h3>
         {isUS ? (
           <Fragment>
-            <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-            <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-            <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
-            <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-            <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
-            <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-            <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-            <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-            <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
-            <a href="#screener" data-i18n="checks.cdl.name">{d("checks.cdl.name")}</a>
-            <a href="#screener" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
-            <a href="#screener" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
-            <a href="#screener" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
+            <a href="/test/" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+            <a href="/test/" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+            <a href="/test/" data-i18n="checks.color.name">{d("checks.color.name")}</a>
+            <a href="/test/" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+            <a href="/test/" data-i18n="checks.near.name">{d("checks.near.name")}</a>
+            <a href="/test/" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+            <a href="/test/" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+            <a href="/test/" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+            <a href="/test/" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+            <a href="/test/" data-i18n="checks.cdl.name">{d("checks.cdl.name")}</a>
+            <a href="/test/" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
+            <a href="/test/" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
+            <a href="/test/" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
           </Fragment>
         ) : (
           <Fragment>
-            <a href="#screener" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
-            <a href="#screener" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
-            <a href="#screener" data-i18n="checks.color.name">{d("checks.color.name")}</a>
-            <a href="#screener" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
-            <a href="#screener" data-i18n="checks.near.name">{d("checks.near.name")}</a>
-            <a href="#screener" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
-            <a href="#screener" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
-            <a href="#screener" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
-            <a href="#screener" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
-            <a href="#screener" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
-            <a href="#screener" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
-            <a href="#screener" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
+            <a href="/test/" data-i18n="checks.distance.name">{d("checks.distance.name")}</a>
+            <a href="/test/" data-i18n="checks.tumbling.name">{d("checks.tumbling.name")}</a>
+            <a href="/test/" data-i18n="checks.color.name">{d("checks.color.name")}</a>
+            <a href="/test/" data-i18n="checks.peripheral.name">{d("checks.peripheral.name")}</a>
+            <a href="/test/" data-i18n="checks.near.name">{d("checks.near.name")}</a>
+            <a href="/test/" data-i18n="checks.contrast.name">{d("checks.contrast.name")}</a>
+            <a href="/test/" data-i18n="checks.astigmatism.name">{d("checks.astigmatism.name")}</a>
+            <a href="/test/" data-i18n="checks.refraction.name">{d("checks.refraction.name")}</a>
+            <a href="/test/" data-i18n="checks.stereo.name">{d("checks.stereo.name")}</a>
+            <a href="/test/" data-i18n="checks.landolt.name">{d("checks.landolt.name")}</a>
+            <a href="/test/" data-i18n="checks.amsler.name">{d("checks.amsler.name")}</a>
+            <a href="/test/" data-i18n="checks.sivtsev.name">{d("checks.sivtsev.name")}</a>
           </Fragment>
         )}
       </nav>

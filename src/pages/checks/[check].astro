@@ -56,7 +56,7 @@ const schema = {
         <p style="color:var(--muted); line-height:1.5; font-size:0.9rem;">{d("lab.disclaimer")}</p>
       </div>
 
-      <a href={`/#screener`} class="button button-lime" style="display:inline-block; width:auto; text-decoration:none; font-weight:600; padding:1rem 2rem; font-size:1.1rem; border-radius:30px; background:var(--primary); color:var(--bg);">
+      <a href={`/test/?mode=individual&check=${check.id}`} class="button button-lime" style="display:inline-block; width:auto; text-decoration:none; font-weight:600; padding:1rem 2rem; font-size:1.1rem; border-radius:30px; background:var(--primary); color:var(--bg);">
         Start {d(`checks.${check.id}.name`)} Now
       </a>
     </main>

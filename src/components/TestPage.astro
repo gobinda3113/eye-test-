@@ -1,0 +1,56 @@
+---
+import { DICT } from "../scripts/dict.ts";
+
+const { locale = "en" } = Astro.props;
+const dict = DICT[locale] || DICT.en;
+const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
+---
+<div class="test-page-container" style="min-height: 100vh; display: flex; flex-direction: column; background: var(--bg);">
+  <div class="test-banner" style="background: var(--bg-alt); color: var(--fg); text-align: center; padding: 8px 16px; font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid var(--border);">
+    <span data-i18n="modes.disclaimerBanner">{d("modes.disclaimerBanner")}</span>
+  </div>
+  <div class="test-content" style="flex: 1; display: flex; flex-direction: column; max-width: 800px; margin: 0 auto; width: 100%; padding: 2rem 1rem;">
+    
+    <div id="testEntryChoice" class="test-entry-choice" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+      <button class="mode-card button button-lime" data-mode="quick" style="text-align: left; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; border-radius: 12px; height: auto;">
+        <span style="font-size: 1.25rem; font-weight: 700;" data-i18n="modes.quickTitle">{d("modes.quickTitle")}</span>
+        <span style="font-size: 0.95rem; opacity: 0.9;" data-i18n="modes.quickDesc">{d("modes.quickDesc")}</span>
+      </button>
+      <button class="mode-card button button-dark" data-mode="full" style="text-align: left; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; border-radius: 12px; height: auto;">
+        <span style="font-size: 1.25rem; font-weight: 700;" data-i18n="modes.fullTitle">{d("modes.fullTitle")}</span>
+        <span style="font-size: 0.95rem; opacity: 0.9;" data-i18n="modes.fullDesc">{d("modes.fullDesc")}</span>
+      </button>
+      <button class="mode-card button button-outline" data-mode="individual" style="text-align: left; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; border-radius: 12px; height: auto;">
+        <span style="font-size: 1.25rem; font-weight: 700;" data-i18n="modes.indivTitle">{d("modes.indivTitle")}</span>
+        <span style="font-size: 0.95rem; opacity: 0.9;" data-i18n="modes.indivDesc">{d("modes.indivDesc")}</span>
+      </button>
+    </div>
+
+    <!-- The actual test UI starts hidden -->
+    <div class="lab" id="lab" style="display: none;">
+      <div class="lab-bar">
+        <div class="lab-bar-left">
+          <span class="lab-dot" aria-hidden="true"></span>
+          <span id="labStatus" data-i18n="lab.ready">{d("lab.ready")}</span>
+        </div>
+        <div class="lab-bar-right">
+          <button class="btn btn-quiet btn-xs" id="labFullBtn" type="button" data-i18n="lab.focus">{d("lab.focus")}</button>
+          <button class="btn btn-quiet btn-xs" id="labExitBtn" type="button" style="display:none;">Exit test</button>
+          <button class="btn btn-quiet btn-xs" id="labResetBtn" type="button" data-i18n="lab.reset">{d("lab.reset")}</button>
+        </div>
+      </div>
+      <div class="stepper-wrap" id="stepperWrap">
+        <ol class="stepper" id="stepper"></ol>
+      </div>
+      <div class="lab-reminders" style="text-align: center; padding: 0.5rem 1rem; color: var(--muted); font-size: 0.85rem; background: var(--bg-card); border-bottom: 1px solid var(--border);">
+        <div data-i18n="lab.wearGlasses">{d("lab.wearGlasses")}</div>
+        <div data-i18n="lab.smallScreen" style="margin-top: 0.25rem;">{d("lab.smallScreen")}</div>
+      </div>
+
+      <div class="lab-norm" id="labNorm" hidden></div>
+      <div class="lab-stage" id="labStage"><p class="stage-sub" data-lab-fallback>{d("lab.ready")}</p></div>
+      <div class="lab-foot" id="labFoot"></div>
+      <noscript><p class="stage-sub">{d("lab.ready")}</p></noscript>
+    </div>
+  </div>
+</div>

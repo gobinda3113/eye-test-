@@ -1,4 +1,11 @@
 const en = {
+    "modes.quickTitle": "Quick check · 3 min",
+    "modes.quickDesc": "Phone-friendly short-range checks. No card needed.",
+    "modes.fullTitle": "Full screening · 10 min",
+    "modes.fullDesc": "Comprehensive distance checks. Needs room + card.",
+    "modes.indivTitle": "Individual test",
+    "modes.indivDesc": "Pick one specific check to run.",
+    "modes.disclaimerBanner": "Screening only — not a medical diagnosis. If you have concerns, see an eye doctor.",
     "a11y.skip": "Skip to the vision check",
     "a11y.theme": "Toggle dark mode",
     "a11y.menu": "Menu",
@@ -437,6 +444,13 @@ const en = {
 };
 
 const es = {
+    "modes.quickTitle": "Chequeo rápido · 3 min",
+    "modes.quickDesc": "Pruebas de cerca ideales para teléfono. Sin tarjeta.",
+    "modes.fullTitle": "Evaluación completa · 10 min",
+    "modes.fullDesc": "Pruebas de distancia completas. Requiere espacio y tarjeta.",
+    "modes.indivTitle": "Prueba individual",
+    "modes.indivDesc": "Elige una prueba específica para realizar.",
+    "modes.disclaimerBanner": "Solo detección — no es un diagnóstico médico. Si tiene dudas, consulte a un oculista.",
     "a11y.theme": "Alternar modo oscuro",
     "a11y.menu": "Menú",
     "nav.cdl": "Preparación CDL",
@@ -875,6 +889,13 @@ const es = {
 };
 
 const fr = {
+    "modes.quickTitle": "Contrôle rapide · 3 min",
+    "modes.quickDesc": "Tests de près sur téléphone. Pas de carte nécessaire.",
+    "modes.fullTitle": "Dépistage complet · 10 min",
+    "modes.fullDesc": "Tests de distance complets. Nécessite de l'espace et une carte.",
+    "modes.indivTitle": "Test individuel",
+    "modes.indivDesc": "Choisissez un test spécifique à effectuer.",
+    "modes.disclaimerBanner": "Dépistage uniquement — pas un diagnostic médical. En cas de doute, consultez un ophtalmologiste.",
     "a11y.theme": "Basculer le mode sombre",
     "a11y.menu": "Menu",
     "nav.cdl": "Préparation CDL",
@@ -1313,6 +1334,13 @@ const fr = {
 };
 
 const de = {
+    "modes.quickTitle": "Schnelltest · 3 Min",
+    "modes.quickDesc": "Nahbereichstests für Smartphones. Keine Karte nötig.",
+    "modes.fullTitle": "Vollständiges Screening · 10 Min",
+    "modes.fullDesc": "Umfassende Sehtests für die Ferne. Platz + Karte erforderlich.",
+    "modes.indivTitle": "Einzeltest",
+    "modes.indivDesc": "Wählen Sie einen bestimmten Test aus.",
+    "modes.disclaimerBanner": "Nur Vorsorgeuntersuchung — keine medizinische Diagnose. Bei Bedenken einen Augenarzt aufsuchen.",
     "a11y.theme": "Dunkelmodus umschalten",
     "a11y.menu": "Menü",
     "nav.cdl": "CDL-Vorbereitung",
@@ -1751,6 +1779,13 @@ const de = {
 };
 
 const pt = {
+    "modes.quickTitle": "Verificação rápida · 3 min",
+    "modes.quickDesc": "Testes de perto para celular. Sem necessidade de cartão.",
+    "modes.fullTitle": "Triagem completa · 10 min",
+    "modes.fullDesc": "Testes de distância completos. Requer espaço e cartão.",
+    "modes.indivTitle": "Teste individual",
+    "modes.indivDesc": "Escolha um teste específico para executar.",
+    "modes.disclaimerBanner": "Apenas triagem — não é um diagnóstico médico. Se tiver dúvidas, consulte um oftalmologista.",
     "a11y.theme": "Alternar modo escuro",
     "a11y.menu": "Menu",
     "nav.cdl": "Preparação CDL",
@@ -2190,6 +2225,13 @@ const pt = {
 
 
 const it = {
+    "modes.quickTitle": "Controllo rapido · 3 min",
+    "modes.quickDesc": "Test da vicino per smartphone. Nessuna carta necessaria.",
+    "modes.fullTitle": "Screening completo · 10 min",
+    "modes.fullDesc": "Test della vista da lontano. Richiede spazio e una carta.",
+    "modes.indivTitle": "Test individuale",
+    "modes.indivDesc": "Scegli un test specifico da eseguire.",
+    "modes.disclaimerBanner": "Solo screening — non una diagnosi medica. In caso di dubbi, consultare un oculista.",
     "a11y.skip": "Salta al test visivo",
     "a11y.theme": "Cambia tema chiaro/scuro",
     "a11y.menu": "Menu",
@@ -2627,6 +2669,13 @@ const it = {
     "results.drive.ja": "La patente normale richiede 0,7 o più in entrambi gli occhi e 0,3 o più per occhio. Solo per esercitazione. Non è un test ufficiale.",
 };
 const ja = {
+    "modes.quickTitle": "クイックチェック · 3分",
+    "modes.quickDesc": "スマホ向けの近距離テスト。カード不要。",
+    "modes.fullTitle": "フルスクリーニング · 10分",
+    "modes.fullDesc": "包括的な遠距離テスト。スペースとカードが必要。",
+    "modes.indivTitle": "個別テスト",
+    "modes.indivDesc": "実行する特定のテストを選択します。",
+    "modes.disclaimerBanner": "スクリーニングのみ — 医療診断ではありません。懸念がある場合は、眼科医に相談してください。",
     "a11y.skip": "視力チェックへ進む",
     "a11y.theme": "ダークモード切替",
     "a11y.menu": "メニュー",
@@ -3064,6 +3113,13 @@ const ja = {
     "results.drive.it": "免許B: 両眼7/10、悪い方の目2/10 (IAPB)。オンライン検査は適性を証明するものではありません。",
 };
 const ru = {
+    "modes.quickTitle": "Быстрая проверка · 3 мин",
+    "modes.quickDesc": "Тесты вблизи для телефона. Карта не нужна.",
+    "modes.fullTitle": "Полный скрининг · 10 мин",
+    "modes.fullDesc": "Комплексные тесты вдаль. Требуется место и карта.",
+    "modes.indivTitle": "Отдельный тест",
+    "modes.indivDesc": "Выберите один конкретный тест для прохождения.",
+    "modes.disclaimerBanner": "Только скрининг — не является медицинским диагнозом. При наличии сомнений обратитесь к офтальмологу.",
     "a11y.skip": "Перейти к проверке зрения",
     "a11y.theme": "Переключить темную/светлую тему",
     "a11y.menu": "Меню",

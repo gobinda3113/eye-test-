@@ -25,6 +25,7 @@ export const HREFLANG = {
  */
 export const PAGES = [
   { key: "home", path: "", nav: false },
+  { key: "test", path: "test", nav: false, noindex: true },
   // US DMV practice page. English-only single route (/us/), NOT crossed with
   // locales: never pass "us" to pathFor(), use usUrl() instead.
   { key: "us", path: "us", nav: false, singleLocale: "en" },
