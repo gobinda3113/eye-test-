@@ -321,11 +321,15 @@ async function boot() {
     } catch (e) {
       console.error("[vision] lab failed to start", e);
     }
-  } else {
-    console.error("[vision] #lab element missing");
   }
 
   let isTransitioning = false;
+
+  function getTestUrl(testId: string) {
+    const lang = document.documentElement.lang || "en";
+    const prefix = lang && lang !== "en" ? `/${lang}` : "";
+    return `${prefix}/test/?mode=individual&check=${encodeURIComponent(testId)}`;
+  }
 
   function handleModeSelect(mode: string, check?: string | null) {
     if (isTransitioning) return;
@@ -346,11 +350,9 @@ async function boot() {
   }
 
   document.addEventListener("click", (e: any) => {
-    if (!lab) return;
-
-    // Test entry modes
+    // Test entry modes (only relevant if #lab or entry choice is present)
     const modeCard = e.target.closest("[data-mode]");
-    if (modeCard) {
+    if (modeCard && lab) {
       e.preventDefault();
       if (isTransitioning) return;
 
@@ -365,13 +367,27 @@ async function boot() {
 
     const card = e.target.closest("[data-test]");
     if (card) {
-      lab.start(card.dataset.test);
+      if (lab) {
+        lab.start(card.dataset.test);
+      } else {
+        const testId = card.dataset.test;
+        if (testId) {
+          const targetUrl = card.dataset.href || getTestUrl(testId);
+          window.location.href = targetUrl;
+        }
+      }
       return;
     }
+
     const cdl = e.target.closest('[data-act="start-cdl"]');
     if (cdl) {
       e.preventDefault();
-      lab.start("cdl");
+      if (lab) {
+        lab.start("cdl");
+      } else {
+        window.location.href = getTestUrl("cdl");
+      }
+      return;
     }
   });
 
@@ -403,12 +419,19 @@ async function boot() {
   document.addEventListener("keydown", (e: any) => {
     // Native <button> already fires click on Enter/Space; this guard is a no-op
     // for the check cards now that they are real buttons. Kept for safety.
-    if (!lab) return;
     if (e.key === "Enter" || e.key === " ") {
       const row = e.target.closest("[data-test]");
       if (row) {
         e.preventDefault();
-        lab.start(row.dataset.test);
+        if (lab) {
+          lab.start(row.dataset.test);
+        } else {
+          const testId = row.dataset.test;
+          if (testId) {
+            const targetUrl = row.dataset.href || getTestUrl(testId);
+            window.location.href = targetUrl;
+          }
+        }
       }
     }
   });

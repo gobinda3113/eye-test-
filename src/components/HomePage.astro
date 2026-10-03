@@ -419,6 +419,7 @@ const howToSchema = {
               type="button"
               class="check-row"
               data-test={c.test}
+              data-href={`${locale === "en" ? "" : `/${locale}`}/test/?mode=individual&check=${encodeURIComponent(c.test)}`}
               aria-label={`${d(`checks.${c.id}.name`)} — ${d("checks.open")}`}
             >
               <span class="check-index">{num}</span>
