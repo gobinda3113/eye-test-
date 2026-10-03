@@ -113,6 +113,7 @@ export function createLab(labEl) {
   let cleanups = [];
   let token = 0;
   let config = loadProfile();
+  config.calibrated = hasValidCalibration(config);
   let results = loadResults();
   let step = "calibrate";
   let single = null;
@@ -133,7 +134,7 @@ export function createLab(labEl) {
   }
 
   function isDone(id) {
-    if (id === "calibrate") return config.calibrated;
+    if (id === "calibrate") return hasValidCalibration(config);
     if (id === "guidance" || id === "menu") return true;
     if (id === "distance") return results.both != null || results.right != null || results.left != null;
     if (id === "tumbling") return results.tumbling != null;
@@ -658,7 +659,7 @@ export function createLab(labEl) {
     );
 
     setFoot(`
-      <span class="trial-counter">${config.calibrated ? t("calib.locked") : t("lab.ready")}</span>
+      <span class="trial-counter">${hasValidCalibration(config) ? t("calib.locked") : t("lab.ready")}</span>
       <button class="btn btn-soft btn-sm" data-act="lock">${t("calib.lockIn")}</button>
     `);
     on(foot.querySelector('[data-act="lock"]'), "click", () => {
@@ -730,7 +731,7 @@ export function createLab(labEl) {
         <div class="eye-cover">
           <span class="eye-badge">${label}</span>
           <p class="stage-sub" style="max-width:52ch;margin:0 auto">${t("test.coverHint")}</p>
-          <p class="trial-counter">${distLabel} &middot; ${config.calibrated ? t("hero.calibrated") : t("calib.title")}</p>
+          <p class="trial-counter">${distLabel} &middot; ${hasValidCalibration(config) ? t("hero.calibrated") : t("calib.title")}</p>
           <div><button class="btn btn-soft" data-act="go">${t("test.getReady")}</button></div>
         </div>`;
       const btn = body.querySelector('[data-act="go"]');
@@ -1903,7 +1904,9 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     results = emptyResults();
     saveResults(results);
     single = null;
-    step = keepCalibration && config.calibrated ? "distance" : "calibrate";
+    const isCalib = Boolean(keepCalibration && hasValidCalibration(config));
+    config.calibrated = isCalib;
+    step = isCalib ? "distance" : "calibrate";
     status(t("lab.ready"));
     render();
   }
@@ -1940,6 +1943,8 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   function startMode(mode, specificCheck = null) {
     runMode = mode;
     single = specificCheck ? { check: mapCheck(specificCheck) } : null;
+    config = loadProfile();
+    config.calibrated = hasValidCalibration(config);
 
     if (mode === "quick") {
       STEP_ORDER = QUICK_ORDER.slice();
@@ -1952,8 +1957,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         const c = single.check;
         const needsDistance = DISTANCE_CHECKS.includes(c);
         if (needsDistance) {
+          const isCalib = hasValidCalibration(config);
+          config.calibrated = isCalib;
           STEP_ORDER = ["calibrate", c, "results"];
-          step = config.calibrated ? c : "calibrate";
+          step = isCalib ? c : "calibrate";
         } else {
           STEP_ORDER = ["guidance", c, "results"];
           step = "guidance";
@@ -1961,7 +1968,9 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       }
     } else {
       STEP_ORDER = FULL_ORDER.slice();
-      step = config.calibrated ? "distance" : "calibrate";
+      const isCalib = hasValidCalibration(config);
+      config.calibrated = isCalib;
+      step = isCalib ? "distance" : "calibrate";
     }
 
     const exitBtn = labEl.querySelector("#labExitBtn");
@@ -2160,8 +2169,26 @@ import { z } from "zod";
 const ProfileSchema = z.object({
   distanceM: z.number().default(3),
   calibrated: z.boolean().default(false),
+  cardWidthPx: z.number().optional(),
   mmPerPx: z.number().optional()
 }).catch({ distanceM: 3, calibrated: false });
+
+export function hasValidCalibration(p?: any): boolean {
+  try {
+    let profile = p;
+    if (!profile) {
+      const raw = typeof localStorage !== "undefined" ? localStorage.getItem(STORE_KEY) : null;
+      if (!raw) return false;
+      profile = ProfileSchema.parse(JSON.parse(raw));
+    }
+    if (!profile || profile.calibrated !== true) return false;
+    if (typeof profile.mmPerPx !== "number" || isNaN(profile.mmPerPx) || profile.mmPerPx <= 0) return false;
+    if (typeof profile.cardWidthPx !== "number" || isNaN(profile.cardWidthPx) || profile.cardWidthPx < 140 || profile.cardWidthPx > 620) return false;
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
 const ResultSchema = z.object({
   right: z.number().nullable().optional(),
@@ -2207,8 +2234,14 @@ export function clearHistory() {
 
 function loadProfile() {
   try {
-    const raw = localStorage.getItem(STORE_KEY);
-    if (raw) return ProfileSchema.parse(JSON.parse(raw));
+    const raw = typeof localStorage !== "undefined" ? localStorage.getItem(STORE_KEY) : null;
+    if (raw) {
+      const parsed = ProfileSchema.parse(JSON.parse(raw));
+      if (hasValidCalibration(parsed)) {
+        return parsed;
+      }
+      return { distanceM: parsed.distanceM || 3, calibrated: false };
+    }
   } catch (e) {
     /* private mode — use defaults */
   }
