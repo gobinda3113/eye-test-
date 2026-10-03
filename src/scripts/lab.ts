@@ -421,6 +421,8 @@ export function createLab(labEl) {
     clearCleanups();
     renderStepper();
     paintNorm();
+    const stepTitle = t(STEP_LABEL[step] || "checks." + step + ".name");
+    status(`${t("lab.ready")} · ${stepTitle}`);
     const setters = {
       calibrate: renderCalibrate,
       guidance: renderGuidance,
@@ -471,6 +473,85 @@ export function createLab(labEl) {
   }
 
   /* ------------------------------------------------------------- calibrate */
+
+  function showSessionNoticeModal(onDone?: () => void) {
+    try {
+      if (sessionStorage.getItem("eye_session_notice_seen")) {
+        if (onDone) onDone();
+        return;
+      }
+    } catch (_) {}
+
+    const existing = document.getElementById("sessionNoticeModal");
+    if (existing) existing.remove();
+
+    const overlay = document.createElement("div");
+    overlay.className = "calib-modal-overlay";
+    overlay.id = "sessionNoticeModal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-labelledby", "sessionNoticeTitle");
+
+    overlay.innerHTML = `
+      <div class="calib-modal-box">
+        <button type="button" class="calib-modal-close" id="sessionNoticeClose" aria-label="${t("calib.close")}">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="calib-modal-icon">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3 id="sessionNoticeTitle" class="calib-modal-title">${t("lab.noticeTitle")}</h3>
+        <div class="calib-modal-desc" style="text-align: left; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; font-size: 0.95rem; line-height: 1.5;">
+          <div style="display: flex; gap: 10px; align-items: flex-start;">
+            <span style="color: var(--primary, #2EC4B6); font-size: 1.2rem; line-height: 1.2;">•</span>
+            <span>${t("lab.wearGlasses")}</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: flex-start;">
+            <span style="color: var(--primary, #2EC4B6); font-size: 1.2rem; line-height: 1.2;">•</span>
+            <span>${t("lab.smallScreen")}</span>
+          </div>
+        </div>
+        <div class="calib-modal-actions">
+          <button type="button" class="btn btn-soft btn-sm" id="btnSessionNoticeOk" style="width: 100%; min-height: 42px;">${t("lab.noticeOk")}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    let resolved = false;
+    const finish = () => {
+      if (resolved) return;
+      resolved = true;
+      try {
+        sessionStorage.setItem("eye_session_notice_seen", "1");
+      } catch (_) {}
+      document.removeEventListener("keydown", onKeyDown);
+      overlay.remove();
+      if (onDone) onDone();
+    };
+
+    const okBtn = overlay.querySelector("#btnSessionNoticeOk");
+    const closeBtn = overlay.querySelector("#sessionNoticeClose");
+
+    if (okBtn) okBtn.addEventListener("click", finish);
+    if (closeBtn) closeBtn.addEventListener("click", finish);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) finish();
+    });
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" || e.key === "Enter") {
+        e.preventDefault();
+        finish();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+  }
 
   function showCalibSavePopup(done: (saved: boolean) => void) {
     const existing = document.getElementById("calibSaveModal");
@@ -544,8 +625,6 @@ export function createLab(labEl) {
   function renderCalibrate(forceFresh = false) {
     if (!forceFresh && hasValidCalibration()) {
       stage.innerHTML = `
-        <div class="stage-title">${t("calib.title")}</div>
-        <p class="stage-sub">${t("calib.savedFoundDesc")}</p>
         <div class="stage-grid" style="max-width: 580px; margin: 0 auto;">
           <div class="stage-panel" style="width: 100%; text-align: center; padding: 2.5rem 1.75rem;">
             <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--primary);">
@@ -596,13 +675,11 @@ export function createLab(labEl) {
     let cardW = want;
 
     stage.innerHTML = `
-      <div class="stage-title">${t("calib.title")}</div>
-      <p class="stage-sub">${t("calib.sub")}</p>
-      <div class="stage-grid">
+      <div class="stage-grid calib-grid">
         <div class="stage-panel">
           <div class="calib-stage">
             <div class="calib-visual">
-              <div style="display: flex; gap: 8px; margin-bottom: 12px; justify-content: center; width: 100%;">
+              <div style="display: flex; gap: 8px; margin-bottom: 8px; justify-content: center; width: 100%;">
                 <button type="button" id="btnModeCard" class="btn btn-quiet btn-xs" style="border: 2px solid var(--lab-accent);">${t("calib.modeCard")}</button>
                 <button type="button" id="btnModeRuler" class="btn btn-quiet btn-xs" style="border: 1px solid transparent;">${t("calib.modeRuler")}</button>
               </div>
@@ -614,30 +691,23 @@ export function createLab(labEl) {
               <div id="calibRuler" style="display:none; height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); position: relative;">
                 <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
               </div>
-              <p class="cc-hint" id="calibHint">${t("calib.cardHint")}</p>
-              <p style="font-size: 13px; color: var(--text-3); margin-top: 6px; text-align: center;">${t("calib.privacyNote")}</p>
+              <p class="cc-hint" id="calibHint" style="margin-top: 6px;">${t("calib.cardHint")}</p>
+              <p style="font-size: 12px; color: var(--text-3); margin-top: 4px; text-align: center;">${t("calib.privacyNote")}</p>
             </div>
             <div>
-              <label class="panel-title" id="calibRangeLabel" for="calibRange" style="display:block; cursor:pointer;">${t("calib.slider")}</label>
+              <label class="panel-title" id="calibRangeLabel" for="calibRange" style="display:block; cursor:pointer; margin-bottom: 6px;">${t("calib.slider")}</label>
               <div class="slider-row">
                 <input type="range" id="calibRange" min="${CARD_MIN}" max="${CARD_MAX}" step="1" value="${cardW}" aria-label="${t("calib.slider")}">
                 <span class="slider-val" id="calibVal"></span>
               </div>
             </div>
             <p class="stage-sub calib-note" id="calibNote" hidden>${t("calib.tooNarrow")}</p>
-            <p class="stage-sub" id="calibHold">${t("calib.hold")}</p>
+            <p class="stage-sub" id="calibHold" style="font-size: 13px; margin: 0;">${t("calib.hold")}</p>
           </div>
         </div>
-          <div class="stage-panel">
-            <div class="panel-title">${t("how.kicker")}</div>
-          <div class="tips">
-            ${tip(t("calib.tip1"))}
-            ${tip(t("calib.tip2"))}
-            ${tip(t("calib.tip3"))}
-              ${tip(t("calib.brightness"))}
-          </div>
-            <div class="panel-title" style="margin-top:24px">${t("calib.distanceTitle")}</div>
-          <p class="stage-sub" style="margin-bottom:14px">${t("calib.distanceSub")}</p>
+        <div class="stage-panel">
+          <div class="panel-title" style="margin-bottom: 6px;">${t("calib.distanceTitle")}</div>
+          <p class="stage-sub" style="margin-bottom: 10px; font-size: 13px;">${t("calib.distanceSub")}</p>
           <div class="distance-opts">
             <button type="button" class="dist-opt" data-dist="3">
               <b>${t("calib.dist3")}</b><span>${t("calib.dist3note")}</span>
@@ -649,6 +719,18 @@ export function createLab(labEl) {
               <b>${t("calib.dist5")}</b><span>${t("calib.dist5note")}</span>
             </button>
           </div>
+          <details class="calib-how" style="margin-top: 14px; border-top: 1px solid var(--lab-border); padding-top: 10px;">
+            <summary class="panel-title" style="cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0;">
+              <span>${t("how.kicker")}</span>
+              <span class="calib-how-arrow" style="font-size: 0.8em; opacity: 0.7;">▼</span>
+            </summary>
+            <div class="tips" style="margin-top: 10px;">
+              ${tip(t("calib.tip1"))}
+              ${tip(t("calib.tip2"))}
+              ${tip(t("calib.tip3"))}
+              ${tip(t("calib.brightness"))}
+            </div>
+          </details>
         </div>
       </div>`;
 
@@ -2067,6 +2149,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     runMode = null;
     step = "calibrate";
     clearCleanups();
+    status(t("lab.ready"));
     const entryChoice = document.getElementById("testEntryChoice");
     if (entryChoice) entryChoice.style.display = "flex";
     labEl.style.display = "none";
@@ -2107,6 +2190,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const isTestStarting = mode === "quick" || mode === "full" || Boolean(specificCheck);
     if (isTestStarting) {
       enterFocus();
+      showSessionNoticeModal();
     }
 
     const exitBtn = labEl.querySelector("#labExitBtn");
@@ -2140,6 +2224,14 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         if (typeof (window as any).__onCalibModalDismiss === "function") {
           (window as any).__onCalibModalDismiss();
         }
+        return;
+      }
+      const noticeModal = document.getElementById("sessionNoticeModal");
+      if (noticeModal) {
+        noticeModal.remove();
+        try {
+          sessionStorage.setItem("eye_session_notice_seen", "1");
+        } catch (_) {}
         return;
       }
       exitTest();
