@@ -56,7 +56,7 @@ const FULL_ORDER = [
 ];
 
 const QUICK_ORDER = [
-  "guidance",
+  "calibrate",
   "near",
   "color",
   "astigmatism",
@@ -472,12 +472,128 @@ export function createLab(labEl) {
 
   /* ------------------------------------------------------------- calibrate */
 
-  function renderCalibrate() {
+  function showCalibSavePopup(done: (saved: boolean) => void) {
+    const existing = document.getElementById("calibSaveModal");
+    if (existing) existing.remove();
+
+    const overlay = document.createElement("div");
+    overlay.className = "calib-modal-overlay";
+    overlay.id = "calibSaveModal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-labelledby", "calibModalTitle");
+
+    overlay.innerHTML = `
+      <div class="calib-modal-box">
+        <button type="button" class="calib-modal-close" id="calibModalClose" aria-label="${t("calib.close")}">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="calib-modal-icon">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+        </div>
+        <h3 id="calibModalTitle" class="calib-modal-title">${t("calib.savePromptTitle")}</h3>
+        <p class="calib-modal-desc">${t("calib.savePromptDesc")}</p>
+        <div class="calib-modal-actions">
+          <button type="button" class="btn btn-soft btn-sm" id="btnSaveCalib">${t("calib.saveBtn")}</button>
+          <button type="button" class="btn btn-quiet btn-sm" id="btnDontSaveCalib">${t("calib.dontSaveBtn")}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    let resolved = false;
+    const finish = (save: boolean) => {
+      if (resolved) return;
+      resolved = true;
+      document.removeEventListener("keydown", onKeyDown);
+      overlay.remove();
+      if (save) {
+        saveProfile(config);
+      }
+      done(save);
+    };
+
+    const saveBtn = overlay.querySelector("#btnSaveCalib");
+    const dontSaveBtn = overlay.querySelector("#btnDontSaveCalib");
+    const closeBtn = overlay.querySelector("#calibModalClose");
+
+    if (saveBtn) saveBtn.addEventListener("click", () => finish(true));
+    if (dontSaveBtn) dontSaveBtn.addEventListener("click", () => finish(false));
+    if (closeBtn) closeBtn.addEventListener("click", () => finish(false));
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        finish(false);
+      }
+    });
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        finish(false);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+  }
+
+  function renderCalibrate(forceFresh = false) {
+    if (!forceFresh && hasValidCalibration()) {
+      stage.innerHTML = `
+        <div class="stage-title">${t("calib.title")}</div>
+        <p class="stage-sub">${t("calib.savedFoundDesc")}</p>
+        <div class="stage-grid" style="max-width: 580px; margin: 0 auto;">
+          <div class="stage-panel" style="width: 100%; text-align: center; padding: 2.5rem 1.75rem;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--primary);">
+              <svg class="ico" viewBox="0 0 24 24" style="width: 28px; height: 28px;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="panel-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">${t("calib.savedFoundTitle")}</div>
+            <p style="color: var(--text-2); font-size: 0.95rem; margin-bottom: 2rem;">${t("calib.savedFoundDesc")}</p>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; max-width: 320px; margin: 0 auto; width: 100%;">
+              <button type="button" class="btn btn-soft btn-lg" id="btnUseSavedCalib" style="padding: 0.85rem 1.5rem; font-size: 1.05rem; font-weight: 600; width: 100%;">
+                ${t("calib.useSaved")}
+              </button>
+              <button type="button" class="btn btn-quiet btn-sm" id="btnCalibAgain" style="padding: 0.6rem 1.2rem; width: 100%;">
+                ${t("calib.calibrateAgain")}
+              </button>
+            </div>
+          </div>
+        </div>`;
+
+      setFoot("");
+
+      const useSavedBtn = stage.querySelector("#btnUseSavedCalib");
+      const calibAgainBtn = stage.querySelector("#btnCalibAgain");
+
+      if (useSavedBtn) {
+        on(useSavedBtn, "click", () => {
+          config = loadProfile();
+          config.calibrated = true;
+          status(t("calib.locked"));
+          finishStep("calibrate");
+        });
+      }
+
+      if (calibAgainBtn) {
+        on(calibAgainBtn, "click", () => {
+          renderCalibrate(true);
+        });
+      }
+      return;
+    }
+
     const CARD_MIN = 140;
     const CARD_MAX = 620;
     const nativeW = CARD_MM / MM_PER_PX_FALLBACK;
     let want = config.cardWidthPx || Math.round(nativeW);
-      let cardW = want;
+    let cardW = want;
 
     stage.innerHTML = `
       <div class="stage-title">${t("calib.title")}</div>
@@ -667,9 +783,10 @@ export function createLab(labEl) {
       config.cardWidthPx = cardW;
       config.mmPerPx = CARD_MM / cardW;
       config.calibrated = true;
-      saveProfile(config);
-      status(t("calib.locked"));
-      finishStep("calibrate");
+      showCalibSavePopup((saved) => {
+        status(t("calib.locked"));
+        finishStep("calibrate");
+      });
     });
   }
 
@@ -1948,7 +2065,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
     if (mode === "quick") {
       STEP_ORDER = QUICK_ORDER.slice();
-      step = "guidance";
+      step = "calibrate";
     } else if (mode === "individual") {
       if (!specificCheck) {
         STEP_ORDER = ["menu"];
@@ -1957,10 +2074,8 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         const c = single.check;
         const needsDistance = DISTANCE_CHECKS.includes(c);
         if (needsDistance) {
-          const isCalib = hasValidCalibration(config);
-          config.calibrated = isCalib;
           STEP_ORDER = ["calibrate", c, "results"];
-          step = isCalib ? c : "calibrate";
+          step = "calibrate";
         } else {
           STEP_ORDER = ["guidance", c, "results"];
           step = "guidance";
@@ -1968,9 +2083,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       }
     } else {
       STEP_ORDER = FULL_ORDER.slice();
-      const isCalib = hasValidCalibration(config);
-      config.calibrated = isCalib;
-      step = isCalib ? "distance" : "calibrate";
+      step = "calibrate";
     }
 
     const exitBtn = labEl.querySelector("#labExitBtn");
