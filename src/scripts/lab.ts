@@ -858,7 +858,7 @@ export function createLab(labEl) {
 
       if (mode === 'card') {
         const ch = Math.round(cardW * (53.98 / CARD_MM));
-        const maxH = window.innerWidth <= 520 ? 120 : 220;
+        const maxH = window.innerWidth <= 480 ? 120 : 220;
         const scale = Math.min(avail > 0 ? avail / cardW : 1, ch > 0 ? maxH / ch : 1, 1);
         effScale = scale;
         if (scale < 1) {
@@ -2492,7 +2492,7 @@ function legacyCopy(text) {
 import { z } from "zod";
 
 export function defaultDistanceM(): number {
-  if (typeof window !== "undefined" && window.innerWidth <= 520) return 2;
+  if (typeof window !== "undefined" && window.innerWidth <= 480) return 2;
   return 3;
 }
 
