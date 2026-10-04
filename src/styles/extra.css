@@ -887,6 +887,21 @@ body.is-doc .section {
   margin: 14px 0;
 }
 
+.site-footer .footer-brand .footer-cta-link {
+  display: inline-block;
+  color: #1b3c32;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s;
+  font-family: inherit;
+}
+
+.site-footer .footer-brand .footer-cta-link:hover {
+  color: #315a4d;
+}
+
 .site-footer .footer-col h3 {
   font-size: 14px;
   font-weight: 800;
@@ -990,6 +1005,14 @@ html[data-theme="dark"] .site-footer .wordmark {
 
 html[data-theme="dark"] .site-footer .footer-brand p {
   color: #9cb1a6;
+}
+
+html[data-theme="dark"] .site-footer .footer-brand .footer-cta-link {
+  color: #cdec8d;
+}
+
+html[data-theme="dark"] .site-footer .footer-brand .footer-cta-link:hover {
+  color: #e5f8b8;
 }
 
 html[data-theme="dark"] .site-footer .footer-col h3 {

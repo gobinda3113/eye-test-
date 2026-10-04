@@ -52,6 +52,7 @@ const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
         <span class="brand-text">Online<span class="wordmark-light">Vision</span>Test<span class="wordmark-dot">.</span></span>
       </a>
       <p data-i18n="gen.footer.tagline">{d("gen.footer.tagline")}</p>
+      <a class="footer-cta-link" href={testHref} data-i18n="nav.cta">{d("nav.cta")}</a>
     </div>
 
     <nav class="footer-col" aria-label={d("footer.c1")}>
@@ -72,15 +73,18 @@ const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
 
     <nav class="footer-col" aria-label={d("footer.c2")}>
       <h3 data-i18n="footer.c2">{d("footer.c2")}</h3>
-      <a href={testHref} data-i18n="nav.cta">{d("nav.cta")}</a>
       <a href="/eye-test-chart/">{fl.chart}</a>
       <a href="/us/">{fl.us}</a>
       <a href="/states/">{fl.states}</a>
       <a href={blogHref} data-i18n="nav.blog">{fl.blog}</a>
-      <a href={aboutHref} data-i18n="nav.about">{d("nav.about")}</a>
-      <a href={contactHref} data-i18n="nav.contact">{d("nav.contact")}</a>
       <a href={isHome ? "#faq" : `${homeHref}#faq`} data-i18n="footer.g4">{d("footer.g4")}</a>
       <a href={isHome ? "#reference" : `${homeHref}#reference`} data-i18n="refs.kicker">{d("refs.kicker")}</a>
+    </nav>
+
+    <nav class="footer-col" aria-label={d("footer.company")}>
+      <h3 data-i18n="footer.company">{d("footer.company")}</h3>
+      <a href={aboutHref} data-i18n="nav.about">{d("nav.about")}</a>
+      <a href={contactHref} data-i18n="nav.contact">{d("nav.contact")}</a>
     </nav>
 
     <nav class="footer-col" aria-label={d("footer.legal")}>
