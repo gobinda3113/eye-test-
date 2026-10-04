@@ -186,14 +186,13 @@ export interface NearLine {
 }
 
 export const NEAR_LINES: NearLine[] = [
-  { nPoint: 'N48', denominator: 200, equiv: '20/200 equiv', desc: 'large headlines', text: 'Hand this card to a friend and read the next line.' },
-  { nPoint: 'N24', denominator: 100, equiv: '20/100 equiv', desc: 'large print', text: 'Small print is still print, and it still has to be read.' },
-  { nPoint: 'N18', denominator: 70,  equiv: '20/70 equiv',  desc: 'subheadings', text: 'Most counter forms are printed somewhere near this size.' },
-  { nPoint: 'N12', denominator: 50,  equiv: '20/50 equiv',  desc: 'forms', text: 'Registration renewals and bank slips tend to use this.' },
-  { nPoint: 'N10', denominator: 40,  equiv: '20/40 equiv',  desc: 'book print', text: 'The DMV benchmark line for an unrestricted licence.' },
-  { nPoint: 'N8',  denominator: 30,  equiv: '20/30 equiv',  desc: 'newsprint', text: 'Newspaper body text sits comfortably around here.' },
-  { nPoint: 'N6',  denominator: 25,  equiv: '20/25 equiv',  desc: 'normal reading', text: 'Fine print on insurance policies is often this small.' },
-  { nPoint: 'N5',  denominator: 20,  equiv: '20/20 equiv',  desc: 'fine print', text: 'The smallest line on a standard near card.' },
+  { nPoint: 'N24', denominator: 200, equiv: '≈20/200', desc: 'large print', text: 'Hand this card to a friend and read the next line.' },
+  { nPoint: 'N14', denominator: 100, equiv: '≈20/100', desc: 'large text', text: 'Small print is still print, and it still has to be read.' },
+  { nPoint: 'N12', denominator: 80,  equiv: '≈20/80',  desc: 'official forms', text: 'Most counter forms are printed somewhere near this size.' },
+  { nPoint: 'N8',  denominator: 50,  equiv: '≈20/50',  desc: 'bank slips', text: 'Registration renewals and bank slips tend to use this.' },
+  { nPoint: 'N6',  denominator: 40,  equiv: '≈20/40',  desc: 'normal print', text: 'The DMV benchmark line for an unrestricted licence.' },
+  { nPoint: 'N5',  denominator: 30,  equiv: '≈20/30',  desc: 'book print', text: 'Newspaper body text sits comfortably around here.' },
+  { nPoint: 'N4.5', denominator: 20, equiv: '≈20/20',  desc: 'fine print', text: 'The smallest line on a standard near card.' },
 ];
 
 export function nearLineByDenominator(denominator: number | null): NearLine | undefined {
@@ -202,7 +201,7 @@ export function nearLineByDenominator(denominator: number | null): NearLine | un
 }
 
 export function nearLineTag(line: NearLine): string {
-  return `${line.nPoint} · 20/${line.denominator} equiv`;
+  return `${line.nPoint} · ${line.equiv}`;
 }
 
 /* ------------------------------- contrast ------------------------------ */

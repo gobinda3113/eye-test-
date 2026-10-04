@@ -1593,7 +1593,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         <div class="near-card" id="nearCard">
           ${NEAR_LINES.map((line, i) => `
             <button type="button" class="near-line" data-line="${i}">
-              <span class="near-tag">${line.nPoint} &middot; 20/${line.denominator} equiv</span>
+              <span class="near-tag">${line.nPoint} &middot; ${line.equiv}</span>
               <span class="near-text" style="font-size:${nearFontPx(line.denominator, mmPerPx).toFixed(1)}px">${line.text}</span>
             </button>`).join("")}
         </div>
@@ -1617,7 +1617,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     on(foot.querySelector('[data-act="skip"]'), "click", () => {
       results.near = 200;
       saveResults(results);
-      status("N48");
+      status("N24");
       finishStep("near");
     });
   }
@@ -1983,7 +1983,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         const descKey = line ? `near.desc.${line.nPoint}` : "";
         const desc = descKey ? t(descKey) : "";
         const val = desc ? `${nPoint} (${desc})` : nPoint;
-        const nearTone = results.near <= 25 ? "pass" : results.near <= 40 ? "warn" : "bad";
+        const nearTone = results.near <= 40 ? "pass" : results.near <= 80 ? "warn" : "bad";
         return card(t("results.near"), val, nearTone, t("near.bench"), true);
       })(),
       card(
