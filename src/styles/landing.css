@@ -89,7 +89,7 @@
   padding: 0;
 }
 
-.home-page .wordmark {
+.home-page .site-header .wordmark {
   display: inline-flex;
   align-items: center;
   gap: clamp(8px, 0.8vw, 11px);
@@ -114,7 +114,7 @@
   --brand-mark-slash: #0b211f;
 }
 
-.home-page .logo-mark {
+.home-page .site-header .logo-mark {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,17 +125,47 @@
   flex-shrink: 0;
 }
 
-.home-page .logo-mark svg {
+.home-page .site-header .logo-mark svg {
   width: 22px;
   height: 22px;
 }
 
-.home-page .wordmark-light {
+.home-page .site-header .wordmark-light {
   font-weight: 500;
 }
 
-.home-page .wordmark-dot {
+.home-page .site-header .wordmark-dot {
   color: #c4e884;
+}
+
+/* Footer brand & wordmark styles (explicit light & dark colors) */
+.home-page .site-footer .dark-wordmark,
+.home-page .site-footer .wordmark {
+  color: #1b3c32;
+}
+
+.home-page .site-footer .footer-brand .brand-mark {
+  background: transparent;
+  color: #1b3c32;
+  --brand-mark-slash: #f6f6f0;
+}
+
+.home-page .site-footer .footer-brand .brand-text {
+  color: #1b3c32;
+}
+
+html[data-theme="dark"] .home-page .site-footer .dark-wordmark,
+html[data-theme="dark"] .home-page .site-footer .wordmark {
+  color: #f1f4f2;
+}
+
+html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-mark {
+  color: #f1f4f2;
+  --brand-mark-slash: #0c1816;
+}
+
+html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
+  color: #f1f4f2;
 }
 
 .home-page .nav-links {
@@ -1428,19 +1458,19 @@ html[data-theme="dark"] .home-page .underlined-link {
   .home-page .site-header {
     height: 50px;
   }
-  .home-page .wordmark {
+  .home-page .site-header .wordmark {
     font-size: clamp(17px, 4.4vw, 20px);
     letter-spacing: -0.9px;
     gap: 8px;
     flex-shrink: 1;
     min-width: 0;
   }
-  .home-page .logo-mark {
+  .home-page .site-header .logo-mark {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
   }
-  .home-page .logo-mark svg {
+  .home-page .site-header .logo-mark svg {
     width: 18px;
     height: 18px;
   }
@@ -1558,16 +1588,6 @@ html[data-theme="dark"] .home-page .underlined-link {
     height: 480px;
     right: -240px;
   }
-  .home-page .footer-top {
-    flex-direction: column;
-    gap: 32px;
-  }
-  .home-page .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-top: 40px;
-  }
 }
 
 @media (max-width: 440px) {
@@ -1578,7 +1598,7 @@ html[data-theme="dark"] .home-page .underlined-link {
   .home-page .site-header {
     height: 48px;
   }
-  .home-page .wordmark {
+  .home-page .site-header .wordmark {
     font-size: 16px;
     gap: 7px;
   }

@@ -819,19 +819,16 @@ body.is-doc .section {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 40px;
+  gap: clamp(20px, 2.5vw, 40px);
   flex-wrap: wrap;
 }
 
 .site-footer .footer-brand {
-  max-width: 320px;
+  max-width: 280px;
+  flex: 0 1 280px;
 }
 
-.site-footer .dark-wordmark {
-  color: #1b3c32;
-  text-decoration: none;
-}
-
+.site-footer .dark-wordmark,
 .site-footer .wordmark {
   display: inline-flex;
   align-items: center;
@@ -849,7 +846,8 @@ body.is-doc .section {
 
 .site-footer .footer-brand .brand-mark {
   background: transparent;
-  color: currentColor;
+  color: #1b3c32;
+  --brand-mark-slash: #f6f6f0;
 }
 
 .site-footer .logo-mark {
@@ -869,7 +867,7 @@ body.is-doc .section {
 }
 
 .site-footer .footer-brand .brand-text {
-  color: inherit;
+  color: #1b3c32;
 }
 
 .site-footer .wordmark-light {
@@ -902,6 +900,10 @@ body.is-doc .section {
   color: #315a4d;
 }
 
+.site-footer .footer-col {
+  flex: 0 1 auto;
+}
+
 .site-footer .footer-col h3 {
   font-size: 14px;
   font-weight: 800;
@@ -929,9 +931,10 @@ body.is-doc .section {
 
 .site-footer .footer-col p {
   color: #718075;
-  font-size: 13.5px;
-  line-height: 1.6;
-  margin: 14px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 12px 0 0;
+  max-width: 220px;
   font-family: inherit;
 }
 
@@ -975,7 +978,15 @@ body.is-doc .section {
   color: #839087;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) and (min-width: 681px) {
+  .site-footer .footer-brand {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 680px) {
   .site-footer.page-pad {
     padding-left: 16px;
     padding-right: 16px;
@@ -983,6 +994,9 @@ body.is-doc .section {
   .site-footer .footer-top {
     flex-direction: column;
     gap: 32px;
+  }
+  .site-footer .footer-brand {
+    max-width: 100%;
   }
   .site-footer .footer-bottom {
     flex-direction: column;
@@ -1000,6 +1014,15 @@ html[data-theme="dark"] .site-footer {
 
 html[data-theme="dark"] .site-footer .dark-wordmark,
 html[data-theme="dark"] .site-footer .wordmark {
+  color: #f1f4f2;
+}
+
+html[data-theme="dark"] .site-footer .footer-brand .brand-mark {
+  color: #f1f4f2;
+  --brand-mark-slash: #0c1816;
+}
+
+html[data-theme="dark"] .site-footer .footer-brand .brand-text {
   color: #f1f4f2;
 }
 
