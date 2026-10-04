@@ -26,7 +26,7 @@ const testHref = locale === "en" ? "/test/" : "/" + locale + "/test/";
 
 // "Start free check" CTA stays removed on /test/, present everywhere else
 const hideCta = page === "test";
-const logoHref = page === "home" ? "#top" : homeHref;
+const logoHref = homeHref;
 
 const navItems = [
   { key: "nav.home", label: d("nav.home"), href: homeHref },
