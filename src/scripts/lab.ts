@@ -761,7 +761,7 @@ export function createLab(labEl) {
                 <span class="cc-chip"></span>
                 <span class="cc-label">${t("calib.modeId1")}</span>
               </div></div>
-              <div id="calibRuler" style="display:none; height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); position: relative;">
+              <div id="calibRuler" style="display:none; height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); border-bottom: none; border-radius: 0; box-sizing: border-box; position: relative;">
                 <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
               </div>
               <p class="cc-hint" id="calibHint" style="margin-top: 6px;">${t("calib.cardHint")}</p>
@@ -817,6 +817,7 @@ export function createLab(labEl) {
     const noteEl = stage.querySelector("#calibNote");
 
     let mode = 'card';
+    let effScale = 1;
     const RULER_MM = 50;
 
     on(btnCard, "click", () => {
@@ -848,13 +849,15 @@ export function createLab(labEl) {
     });
 
     const paint = () => {
+      const cs = getComputedStyle(visual);
+      const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+      const avail = Math.floor(visual.clientWidth - pad);
+
       if (mode === 'card') {
-        const cs = getComputedStyle(visual);
-        const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
-        const avail = Math.floor(visual.clientWidth - pad);
         const ch = Math.round(cardW * (53.98 / CARD_MM));
         const maxH = window.innerHeight <= 700 ? 120 : 200;
         const scale = Math.min(avail > 0 ? avail / cardW : 1, ch > 0 ? maxH / ch : 1, 1);
+        effScale = scale;
         if (scale < 1) {
           cardWrap.style.width = Math.round(cardW * scale) + "px";
           cardWrap.style.height = Math.round(ch * scale) + "px";
@@ -870,11 +873,16 @@ export function createLab(labEl) {
           cardEl.style.transform = "none";
         }
         valEl.textContent = Math.round((cardW / nativeW) * 100) + "%";
+        noteEl.hidden = (scale >= 1 && avail >= nativeW);
       } else {
         const rulerW = cardW * (RULER_MM / CARD_MM);
-        rulerEl.style.width = rulerW + "px";
-        ticksEl.style.backgroundSize = (rulerW / 5) + "px 10px";
+        const scale = Math.min(avail > 0 ? avail / rulerW : 1, 1);
+        effScale = scale;
+        const renderedRulerPx = Math.round(rulerW * scale);
+        rulerEl.style.width = renderedRulerPx + "px";
+        ticksEl.style.backgroundSize = (renderedRulerPx / 5) + "px 10px";
         valEl.textContent = Math.round((rulerW / (RULER_MM / MM_PER_PX_FALLBACK)) * 100) + "%";
+        noteEl.hidden = (scale >= 1);
       }
     };
 
@@ -894,7 +902,6 @@ export function createLab(labEl) {
       cardW = Math.max(CARD_MIN, Math.min(want, mx));
       range.value = String(cardW);
       paint();
-      noteEl.hidden = avail >= nativeW || window.innerHeight <= 700;
     };
     fit();
 
@@ -932,9 +939,17 @@ export function createLab(labEl) {
       <button class="btn btn-soft btn-sm" data-act="lock">${t("calib.lockIn")}</button>
     `);
     on(foot.querySelector('[data-act="lock"]'), "click", () => {
-      fit();
-      config.cardWidthPx = cardW;
-      config.mmPerPx = CARD_MM / cardW;
+      paint();
+      if (mode === 'card') {
+        const renderedPx = cardW * effScale;
+        config.cardWidthPx = Math.max(CARD_MIN, Math.min(CARD_MAX, Math.round(renderedPx)));
+        config.mmPerPx = CARD_MM / renderedPx;
+      } else {
+        const rulerW = cardW * (RULER_MM / CARD_MM);
+        const renderedRulerPx = Math.round(rulerW * effScale);
+        config.mmPerPx = RULER_MM / renderedRulerPx;
+        config.cardWidthPx = Math.max(CARD_MIN, Math.min(CARD_MAX, Math.round(CARD_MM / config.mmPerPx)));
+      }
       config.calibrated = true;
       showCalibSavePopup((saved) => {
         status(t("calib.locked"));
