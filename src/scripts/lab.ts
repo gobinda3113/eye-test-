@@ -785,16 +785,17 @@ export function createLab(labEl) {
           </div>
           <p class="stage-sub" style="margin-bottom: 10px; font-size: 13px;">${t("calib.distanceSub")}</p>
           <div class="distance-opts">
+            <button type="button" class="dist-opt" data-dist="2">
+              <b>${t("calib.dist2")}</b><span>${t("calib.dist2note")}</span>
+            </button>
             <button type="button" class="dist-opt" data-dist="3">
               <b>${t("calib.dist3")}</b><span>${t("calib.dist3note")}</span>
             </button>
             <button type="button" class="dist-opt" data-dist="6">
               <b>${t("calib.dist6")}</b><span>${t("calib.dist6note")}</span>
             </button>
-            <button type="button" class="dist-opt" data-dist="5">
-              <b>${t("calib.dist5")}</b><span>${t("calib.dist5note")}</span>
-            </button>
           </div>
+          <p class="stage-sub" style="margin-top: 6px; margin-bottom: 0; font-size: 11px; opacity: 0.82;">${t("calib.distLimit")}</p>
         </div>
       </div>`;
 
@@ -931,6 +932,7 @@ export function createLab(labEl) {
       on(b, "click", () => {
         config.distanceM = Number(b.dataset.dist);
         paintDist();
+        saveProfile(config);
       })
     );
 
@@ -1011,7 +1013,7 @@ export function createLab(labEl) {
   function coverScreen(body, eye, dist) {
     return new Promise((resolve) => {
       const label = eye === "right" ? t("test.coverRight") : eye === "left" ? t("test.coverLeft") : t("test.bothEyes");
-      const distLabel = dist === 6 ? t("calib.dist6") : dist === 5 ? t("calib.dist5") : t("calib.dist3");
+      const distLabel = dist === 6 ? t("calib.dist6") : dist === 2 ? t("calib.dist2") : dist === 5 ? t("calib.dist5") : t("calib.dist3");
       body.innerHTML = `
         <div class="eye-cover">
           <span class="eye-badge">${label}</span>
@@ -2148,7 +2150,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
     setFoot(`
       <button class="btn btn-quiet btn-sm" data-act="restart">${t("results.retake")}</button>
-      <span class="trial-counter">${config.distanceM === 6 ? t("calib.dist6") : config.distanceM === 5 ? t("calib.dist5") : t("calib.dist3")}</span>
+      <span class="trial-counter">${config.distanceM === 6 ? t("calib.dist6") : config.distanceM === 2 ? t("calib.dist2") : config.distanceM === 5 ? t("calib.dist5") : t("calib.dist3")}</span>
       <button class="btn btn-soft btn-sm" data-act="print">${t("results.download")}</button>
     `);
     on(foot.querySelector('[data-act="restart"]'), "click", () => reset(false));
@@ -2478,12 +2480,17 @@ function legacyCopy(text) {
 
 import { z } from "zod";
 
+export function defaultDistanceM(): number {
+  if (typeof window !== "undefined" && window.innerWidth <= 520) return 2;
+  return 3;
+}
+
 const ProfileSchema = z.object({
-  distanceM: z.number().default(3),
+  distanceM: z.number().optional(),
   calibrated: z.boolean().default(false),
   cardWidthPx: z.number().optional(),
   mmPerPx: z.number().optional()
-}).catch({ distanceM: 3, calibrated: false });
+}).catch({ calibrated: false });
 
 export function hasValidCalibration(p?: any): boolean {
   try {
@@ -2545,19 +2552,21 @@ export function clearHistory() {
 }
 
 function loadProfile() {
+  const defDist = defaultDistanceM();
   try {
     const raw = typeof localStorage !== "undefined" ? localStorage.getItem(STORE_KEY) : null;
     if (raw) {
       const parsed = ProfileSchema.parse(JSON.parse(raw));
+      const dist = parsed.distanceM ?? defDist;
       if (hasValidCalibration(parsed)) {
-        return parsed;
+        return { ...parsed, distanceM: dist };
       }
-      return { distanceM: parsed.distanceM || 3, calibrated: false };
+      return { distanceM: dist, calibrated: false };
     }
   } catch (e) {
     /* private mode — use defaults */
   }
-  return { distanceM: 3, calibrated: false };
+  return { distanceM: defDist, calibrated: false };
 }
 
 /**
