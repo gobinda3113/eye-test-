@@ -120,6 +120,19 @@ export function createLab(labEl) {
   let single = null;
   let runMode = "full";
 
+  if (stage) {
+    stage.addEventListener("click", (e: MouseEvent) => {
+      const btn = (e.target as HTMLElement)?.closest?.(".stage-info-btn") as HTMLElement | null;
+      if (!btn) return;
+      e.preventDefault();
+      const infoTitle = btn.dataset.infoTitle || "";
+      const infoSub = btn.dataset.infoSub || "";
+      if (infoTitle || infoSub) {
+        showCheckInfoModal(infoTitle, infoSub);
+      }
+    });
+  }
+
   function on(target, type, handler, options) {
     target.addEventListener(type, handler, options);
     cleanups.push(() => target.removeEventListener(type, handler, options));
@@ -792,6 +805,91 @@ export function createLab(labEl) {
     document.addEventListener("keydown", onKeyDown);
   }
 
+  function escapeHtml(str: string): string {
+    return String(str ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function renderStageTitle(titleKey: string, subKey: string): string {
+    const title = t(titleKey);
+    const sub = t(subKey);
+    return `
+      <div class="stage-title">
+        <span>${escapeHtml(title)}</span>
+        <button type="button" class="stage-info-btn" data-info-title="${escapeHtml(title)}" data-info-sub="${escapeHtml(sub)}" aria-label="${escapeHtml(t("how.kicker"))}" title="${escapeHtml(t("how.kicker"))}">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
+        </button>
+      </div>
+    `;
+  }
+
+  function showCheckInfoModal(titleText: string, subText: string) {
+    const existing = document.getElementById("checkInfoModal");
+    if (existing) existing.remove();
+
+    const overlay = document.createElement("div");
+    overlay.className = "calib-modal-overlay";
+    overlay.id = "checkInfoModal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-labelledby", "checkInfoTitle");
+
+    overlay.innerHTML = `
+      <div class="calib-modal-box">
+        <button type="button" class="calib-modal-close" id="checkInfoClose" aria-label="${escapeHtml(t("calib.close"))}">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="calib-modal-icon">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
+        </div>
+        <h3 id="checkInfoTitle" class="calib-modal-title">${escapeHtml(titleText)}</h3>
+        <p class="calib-modal-desc" style="font-size: 15px; line-height: 1.5; margin: 16px 0 24px;">${escapeHtml(subText)}</p>
+        <div class="calib-modal-actions">
+          <button type="button" class="btn btn-soft btn-sm" id="btnCheckInfoOk" style="width: 100%; min-height: 42px;">${escapeHtml(t("lab.noticeOk"))}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    let closed = false;
+    const finish = () => {
+      if (closed) return;
+      closed = true;
+      document.removeEventListener("keydown", onKeyDown, true);
+      overlay.remove();
+    };
+
+    const okBtn = overlay.querySelector("#btnCheckInfoOk");
+    const closeBtn = overlay.querySelector("#checkInfoClose");
+
+    if (okBtn) okBtn.addEventListener("click", finish);
+    if (closeBtn) closeBtn.addEventListener("click", finish);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) finish();
+    });
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" || e.key === "Enter") {
+        e.preventDefault();
+        e.stopPropagation();
+        finish();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown, true);
+  }
+
   function renderCalibrate(forceFresh = false) {
     if (!forceFresh && hasValidCalibration()) {
       stage.innerHTML = `
@@ -1055,8 +1153,7 @@ export function createLab(labEl) {
     const mmPerPx = config.mmPerPx || MM_PER_PX_FALLBACK;
     const dist = config.distanceM || 3;
     stage.innerHTML = `
-      <div class="stage-title">${t("checks.distance.name")}</div>
-      <p class="stage-sub">${t("test.eyeSub")}</p>
+      ${renderStageTitle("checks.distance.name", "test.eyeSub")}
       <div id="distBody" style="margin-top:24px"></div></details>`;
     const body = stage.querySelector("#distBody");
     navFoot({ next: false });
@@ -1080,8 +1177,7 @@ export function createLab(labEl) {
     const mmPerPx = config.mmPerPx || MM_PER_PX_FALLBACK;
     const dist = config.distanceM || 3;
     stage.innerHTML = `
-      <div class="stage-title">${t("checks.sivtsev.name")}</div>
-      <p class="stage-sub">${t("test.eyeSub")}</p>
+      ${renderStageTitle("checks.sivtsev.name", "test.eyeSub")}
       <div id="distBody" style="margin-top:24px"></div></details>`;
     const body = stage.querySelector("#distBody");
     navFoot({ next: false });
@@ -1293,8 +1389,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     let locked = false;
 
     stage.innerHTML = `
-      <div class="stage-title">${t("tumbling.title")}</div>
-      <p class="stage-sub">${t("tumbling.sub")}</p>
+      ${renderStageTitle("tumbling.title", "tumbling.sub")}
       <div class="stage-grid">
         <div class="stage-panel">
           <div class="e-view" id="eView"></div>
@@ -1394,8 +1489,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     let locked = false;
 
     stage.innerHTML = `
-      <div class="stage-title">${t("landolt.title")}</div>
-      <p class="stage-sub">${t("landolt.sub")}</p>
+      ${renderStageTitle("landolt.title", "landolt.sub")}
       <div class="stage-grid">
         <div class="stage-panel">
           <div class="e-view" id="landoltView"></div>
@@ -1481,8 +1575,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     let locked = false;
 
     stage.innerHTML = `
-      <div class="stage-title">${t("color.title")}</div>
-      <p class="stage-sub">${t("color.sub")}</p>
+      ${renderStageTitle("color.title", "color.sub")}
       <div class="stage-grid">
         <div class="stage-panel" style="display:grid;place-items:center">
           <div class="plate-wrap">
@@ -1559,8 +1652,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const missed = [];
 
     stage.innerHTML = `
-      <div class="stage-title">${t("peripheral.title")}</div>
-      <p class="stage-sub">${t("peripheral.sub")}</p>
+      ${renderStageTitle("peripheral.title", "peripheral.sub")}
       <div class="field-stage">
         <div class="field-screen" id="fieldScreen">
           <div class="fix-cross" aria-hidden="true"></div>
@@ -1673,8 +1765,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   function renderNear() {
     const mmPerPx = config.mmPerPx || MM_PER_PX_FALLBACK;
     stage.innerHTML = `
-      <div class="stage-title">${t("near.title")}</div>
-      <p class="stage-sub">${t("near.sub")}</p>
+      ${renderStageTitle("near.title", "near.sub")}
       <div style="margin-top:22px">
         <div class="near-card" id="nearCard">
           ${NEAR_LINES.map((line, i) => `
@@ -1726,8 +1817,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     let letters = [];
 
     stage.innerHTML = `
-      <div class="stage-title">${t("contrast.title")}</div>
-      <p class="stage-sub">${t("contrast.sub")}</p>
+      ${renderStageTitle("contrast.title", "contrast.sub")}
       <div class="stage-grid">
         <div class="stage-panel" style="display:grid;place-items:center">
           <div class="contrast-view" id="contrastView"></div>
@@ -1851,8 +1941,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     }).join("");
 
     stage.innerHTML = `
-      <div class="stage-title">${t("astig.title")}</div>
-      <p class="stage-sub">${t("astig.sub")}</p>
+      ${renderStageTitle("astig.title", "astig.sub")}
       <div class="stage-grid">
         <div class="stage-panel" style="display:grid;place-items:center">
           <svg class="dial-svg" viewBox="0 0 300 300" role="img" aria-label="${t("astig.title")}">
@@ -1909,8 +1998,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     let locked = false;
 
     stage.innerHTML = `
-      <div class="stage-title">${t("refraction.title")}</div>
-      <p class="stage-sub">${t("refraction.sub")}</p>
+      ${renderStageTitle("refraction.title", "refraction.sub")}
       <div class="duo-wrap" id="duoWrap"></div>
       <div class="duo-actions">
         <button class="btn btn-soft btn-sm" data-vote="red">${t("refraction.red")}</button>
@@ -1977,8 +2065,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     let settled = false;
 
     stage.innerHTML = `
-      <div class="stage-title">${t("stereo.title")}</div>
-      <p class="stage-sub">${t("stereo.sub")}</p>
+      ${renderStageTitle("stereo.title", "stereo.sub")}
       <div class="stereo-wrap">
         <canvas class="stereo-canvas" id="stereoCanvas" role="img" aria-label="${t("stereo.title")}"></canvas>
         <p class="stage-sub stereo-how">${t("stereo.how")}</p>
@@ -2398,6 +2485,21 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   // Allow Escape key to exit test and return to normal page
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && labEl.classList.contains("is-full")) {
+      const infoModal = document.getElementById("checkInfoModal");
+      if (infoModal) {
+        infoModal.remove();
+        return;
+      }
+      const howModal = document.getElementById("calibHowModal");
+      if (howModal) {
+        howModal.remove();
+        return;
+      }
+      const preModal = document.getElementById("calibPreModal") || document.getElementById("calibDistModal");
+      if (preModal) {
+        preModal.remove();
+        return;
+      }
       const calibModal = document.getElementById("calibSaveModal");
       if (calibModal) {
         calibModal.remove();
@@ -2719,8 +2821,7 @@ function shuffled(arr) {
     }
 
     stage.innerHTML = `
-      <div class="stage-title">${t("amsler.title")}</div>
-      <p class="stage-sub">${t("amsler.sub")}</p>
+      ${renderStageTitle("amsler.title", "amsler.sub")}
       <div class="stage-grid">
         <div class="stage-panel" style="display:grid;place-items:center;background:#fff;color:#000;padding:20px;border-radius:12px;">
           <svg viewBox="0 0 300 300" style="width: 100%; max-width: 300px;">

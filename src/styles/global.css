@@ -1108,6 +1108,46 @@ html[data-theme="dark"] .btn.btn-primary {
   letter-spacing: -.02em;
   margin-bottom: 8px;
   color: var(--lab-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stage-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--lab-border, var(--border));
+  background: var(--lab-bg-2, rgba(255, 255, 255, 0.06));
+  color: var(--lab-muted, var(--muted));
+  cursor: pointer;
+  padding: 0;
+  margin-left: 2px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.stage-info-btn:hover {
+  color: var(--primary, var(--lab-accent, #2ec4b6));
+  border-color: var(--primary, var(--lab-accent, #2ec4b6));
+  background: var(--primary-soft, rgba(46, 196, 182, 0.12));
+}
+
+.stage-info-btn:focus-visible {
+  outline: 2px solid var(--primary, var(--lab-accent, #2ec4b6));
+  outline-offset: 2px;
+}
+
+.stage-info-btn svg,
+.stage-info-btn .ico {
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
 }
 .stage-sub { color: var(--lab-muted); font-size: 14.5px; max-width: 62ch; line-height: 1.6; }
 .stage-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 24px; margin-top: 24px; }
@@ -1999,7 +2039,7 @@ html[data-theme="dark"] .dark-ink-panel h3 {
 }
 .calib-modal-close:hover {
   color: var(--text, #fff);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--surface-2, rgba(255, 255, 255, 0.08));
 }
 .calib-modal-close svg {
   width: 18px;
