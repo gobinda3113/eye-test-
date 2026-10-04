@@ -177,18 +177,33 @@ function digitMask(digit: string, size: number) {
 
 /* ------------------------------ near card ------------------------------ */
 
-export interface NearLine { denominator: number; text: string }
+export interface NearLine {
+  nPoint: string;
+  denominator: number;
+  equiv: string;
+  desc: string;
+  text: string;
+}
 
 export const NEAR_LINES: NearLine[] = [
-  { denominator: 200, text: 'Hand this card to a friend and read the next line.' },
-  { denominator: 100, text: 'Small print is still print, and it still has to be read.' },
-  { denominator: 70, text: 'Most counter forms are printed somewhere near this size.' },
-  { denominator: 50, text: 'Registration renewals and bank slips tend to use this.' },
-  { denominator: 40, text: 'The DMV benchmark line for an unrestricted licence.' },
-  { denominator: 30, text: 'Newspaper body text sits comfortably around here.' },
-  { denominator: 25, text: 'Fine print on insurance policies is often this small.' },
-  { denominator: 20, text: 'The smallest line on a standard near card.' },
+  { nPoint: 'N48', denominator: 200, equiv: '20/200 equiv', desc: 'large headlines', text: 'Hand this card to a friend and read the next line.' },
+  { nPoint: 'N24', denominator: 100, equiv: '20/100 equiv', desc: 'large print', text: 'Small print is still print, and it still has to be read.' },
+  { nPoint: 'N18', denominator: 70,  equiv: '20/70 equiv',  desc: 'subheadings', text: 'Most counter forms are printed somewhere near this size.' },
+  { nPoint: 'N12', denominator: 50,  equiv: '20/50 equiv',  desc: 'forms', text: 'Registration renewals and bank slips tend to use this.' },
+  { nPoint: 'N10', denominator: 40,  equiv: '20/40 equiv',  desc: 'book print', text: 'The DMV benchmark line for an unrestricted licence.' },
+  { nPoint: 'N8',  denominator: 30,  equiv: '20/30 equiv',  desc: 'newsprint', text: 'Newspaper body text sits comfortably around here.' },
+  { nPoint: 'N6',  denominator: 25,  equiv: '20/25 equiv',  desc: 'normal reading', text: 'Fine print on insurance policies is often this small.' },
+  { nPoint: 'N5',  denominator: 20,  equiv: '20/20 equiv',  desc: 'fine print', text: 'The smallest line on a standard near card.' },
 ];
+
+export function nearLineByDenominator(denominator: number | null): NearLine | undefined {
+  if (denominator == null) return undefined;
+  return NEAR_LINES.find((l) => l.denominator === denominator);
+}
+
+export function nearLineTag(line: NearLine): string {
+  return `${line.nPoint} · 20/${line.denominator} equiv`;
+}
 
 /* ------------------------------- contrast ------------------------------ */
 

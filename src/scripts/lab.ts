@@ -21,6 +21,7 @@ import {
   refractionRead,
   COLOR_PLATES,
   NEAR_LINES,
+  nearLineByDenominator,
   CARD_MM,
   MM_PER_PX_FALLBACK,
   acuityLabel,
@@ -221,7 +222,8 @@ export function createLab(labEl) {
       return results.peripheral ? `${results.peripheral.angle || 140}° (${results.peripheral.hits}/${results.peripheral.total})` : "—";
     }
     if (checkId === "near") {
-      return results.near != null ? acuityLabel(results.near) : "—";
+      const line = nearLineByDenominator(results.near);
+      return line ? `${line.nPoint} (${line.equiv})` : results.near != null ? acuityLabel(results.near) : "—";
     }
     if (checkId === "contrast") {
       return results.contrast ? `${results.contrast.lowest}%` : "—";
@@ -1591,7 +1593,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         <div class="near-card" id="nearCard">
           ${NEAR_LINES.map((line, i) => `
             <button type="button" class="near-line" data-line="${i}">
-              <span class="near-tag">${acuityLabel(line.denominator)}</span>
+              <span class="near-tag">${line.nPoint} &middot; 20/${line.denominator} equiv</span>
               <span class="near-text" style="font-size:${nearFontPx(line.denominator, mmPerPx).toFixed(1)}px">${line.text}</span>
             </button>`).join("")}
         </div>
@@ -1603,7 +1605,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         const line = NEAR_LINES[Number(btn.dataset.line)];
         results.near = line.denominator;
         saveResults(results);
-        status(acuityLabel(line.denominator));
+        status(line.nPoint);
         finishStep("near");
       })
     );
@@ -1615,6 +1617,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     on(foot.querySelector('[data-act="skip"]'), "click", () => {
       results.near = 200;
       saveResults(results);
+      status("N48");
       finishStep("near");
     });
   }
@@ -1973,12 +1976,16 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         results.peripheral ? (results.peripheral.hits / results.peripheral.total >= 0.85 ? "pass" : "warn") : null,
         results.peripheral && results.peripheral.angle ? `${results.peripheral.angle} ${t("peripheral.degrees")}` : null
       ),
-      card(
-        t("results.near"),
-        results.near != null ? acuityLabel(results.near) : t("results.notTested"),
-        tone(results.near),
-        t("results.bench")
-      ),
+      (() => {
+        if (results.near == null) return card(t("results.near"), t("results.notTested"), null, null);
+        const line = nearLineByDenominator(results.near);
+        const nPoint = line ? line.nPoint : acuityLabel(results.near);
+        const descKey = line ? `near.desc.${line.nPoint}` : "";
+        const desc = descKey ? t(descKey) : "";
+        const val = desc ? `${nPoint} (${desc})` : nPoint;
+        const nearTone = results.near <= 25 ? "pass" : results.near <= 40 ? "warn" : "bad";
+        return card(t("results.near"), val, nearTone, t("near.bench"), true);
+      })(),
       card(
         t("results.tumbling"),
         results.tumbling ? `${results.tumbling.correct}/${results.tumbling.total}` : t("results.notTested"),
@@ -2399,7 +2406,11 @@ function reportRows(results, acuity) {
     results.peripheral ? `${results.peripheral.hits}/${results.peripheral.total}` : notTested,
     "110\u00b0"
   );
-  add(t("results.near"), results.near != null ? acuityLabel(results.near) : notTested, "J3");
+  const nearLine = nearLineByDenominator(results.near);
+  const nearVal = nearLine
+    ? `${nearLine.nPoint} (${t("near.desc." + nearLine.nPoint) || nearLine.desc})`
+    : results.near != null ? acuityLabel(results.near) : notTested;
+  add(t("results.near"), nearVal, "N6 (40 cm)");
   add(t("results.contrast"), results.contrast ? `${results.contrast.lowest}%` : notTested, "\u2264 10%");
   add(
     t("results.astigmatism"),
