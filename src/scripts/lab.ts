@@ -564,6 +564,101 @@ export function createLab(labEl) {
     document.addEventListener("keydown", onKeyDown);
   }
 
+  function showCalibDistanceModal(done: (chosenDist: number) => void) {
+    const existing = document.getElementById("calibDistModal");
+    if (existing) existing.remove();
+
+    let selectedDist = config.distanceM;
+    if (selectedDist !== 2 && selectedDist !== 3 && selectedDist !== 6) {
+      selectedDist = window.innerWidth <= 480 ? 2 : 3;
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "calib-modal-overlay";
+    overlay.id = "calibDistModal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-labelledby", "calibDistTitle");
+
+    overlay.innerHTML = `
+      <div class="calib-modal-box calib-dist-modal-box">
+        <button type="button" class="calib-modal-close" id="calibDistClose" aria-label="${t("calib.close")}">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="calib-modal-icon">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12h20M18 8l4 4-4 4M6 8l-4 4 4 4"/>
+          </svg>
+        </div>
+        <h3 id="calibDistTitle" class="calib-modal-title">${t("calib.distanceTitle")}</h3>
+        <p class="calib-modal-desc" style="font-size: 0.92rem; line-height: 1.5; margin: 0 0 16px;">${t("calib.distanceSub")}</p>
+        <div class="calib-dist-opts" role="radiogroup" aria-label="${t("calib.distanceTitle")}">
+          <button type="button" class="dist-opt${selectedDist === 2 ? " is-on" : ""}" data-dist="2" role="radio" aria-checked="${selectedDist === 2}">
+            <b>${t("calib.dist2")}</b>
+            <span>${t("calib.dist2note")}</span>
+          </button>
+          <button type="button" class="dist-opt${selectedDist === 3 ? " is-on" : ""}" data-dist="3" role="radio" aria-checked="${selectedDist === 3}">
+            <b>${t("calib.dist3")}</b>
+            <span>${t("calib.dist3note")}</span>
+          </button>
+          <button type="button" class="dist-opt${selectedDist === 6 ? " is-on" : ""}" data-dist="6" role="radio" aria-checked="${selectedDist === 6}">
+            <b>${t("calib.dist6")}</b>
+            <span>${t("calib.dist6note")}</span>
+          </button>
+        </div>
+        <p class="calib-dist-limit-note">${t("calib.distLimit")}</p>
+        <div class="calib-modal-actions" style="margin-top: 20px;">
+          <button type="button" class="btn btn-soft btn-sm" id="btnDistContinue" style="width: 100%; min-height: 44px; font-weight: 600;">${t("lab.next")}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const distBtns = [...overlay.querySelectorAll<HTMLButtonElement>("[data-dist]")];
+    const updateSelection = (dist: number) => {
+      selectedDist = dist;
+      distBtns.forEach((btn) => {
+        const isMatch = Number(btn.dataset.dist) === dist;
+        btn.classList.toggle("is-on", isMatch);
+        btn.setAttribute("aria-checked", String(isMatch));
+      });
+    };
+
+    distBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        updateSelection(Number(btn.dataset.dist));
+      });
+    });
+
+    let closed = false;
+    const finish = () => {
+      if (closed) return;
+      closed = true;
+      document.removeEventListener("keydown", onKeyDown);
+      overlay.remove();
+      done(selectedDist);
+    };
+
+    const continueBtn = overlay.querySelector("#btnDistContinue");
+    const closeBtn = overlay.querySelector("#calibDistClose");
+
+    if (continueBtn) continueBtn.addEventListener("click", finish);
+    if (closeBtn) closeBtn.addEventListener("click", finish);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) finish();
+    });
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === "Escape") {
+        e.preventDefault();
+        finish();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+  }
+
   function showCalibHowModal() {
     const existing = document.getElementById("calibHowModal");
     if (existing) existing.remove();
@@ -743,6 +838,16 @@ export function createLab(labEl) {
       return;
     }
 
+    setFoot("");
+    showCalibDistanceModal((chosenDist) => {
+      config.distanceM = chosenDist;
+      saveProfile(config);
+      renderCalibScaleScreen();
+    });
+  }
+
+  function renderCalibScaleScreen() {
+    clearCleanups();
     const CARD_MIN = 140;
     const CARD_MAX = 620;
     const nativeW = CARD_MM / MM_PER_PX_FALLBACK;
@@ -750,13 +855,17 @@ export function createLab(labEl) {
     let cardW = want;
 
     stage.innerHTML = `
-      <div class="stage-grid calib-grid">
+      <div class="calib-grid">
         <div class="stage-panel">
           <div class="calib-stage">
             <div class="calib-visual">
-              <div style="display: flex; gap: 8px; margin-bottom: 8px; justify-content: center; width: 100%;">
+              <div style="display: flex; gap: 8px; margin-bottom: 8px; justify-content: center; width: 100%; align-items: center; flex-wrap: wrap;">
                 <button type="button" id="btnModeCard" class="btn btn-quiet btn-xs" style="border: 2px solid var(--lab-accent);">${t("calib.modeCard")}</button>
                 <button type="button" id="btnModeRuler" class="btn btn-quiet btn-xs" style="border: 1px solid transparent;">${t("calib.modeRuler")}</button>
+                <button type="button" id="btnChangeDist" class="btn btn-quiet btn-xs" style="border: 1px solid var(--lab-border); margin-left: 8px;" title="${t("calib.distanceTitle")}">
+                  <span id="calibDistBadge">${config.distanceM} m</span>
+                </button>
+                <button type="button" class="calib-how-btn" id="btnHowItWorks" style="margin-left: auto;">${t("how.kicker")}</button>
               </div>
               <div class="calib-card-wrap" id="calibCardWrap" style="display:flex; align-items:center; justify-content:center;"><div class="calib-card" id="calibCard">
                 <span class="cc-strip"></span>
@@ -780,25 +889,6 @@ export function createLab(labEl) {
             <p class="stage-sub" id="calibHold" style="font-size: 13px; margin: 0;">${t("calib.hold")}</p>
           </div>
         </div>
-        <div class="stage-panel">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-            <div class="panel-title" style="margin-bottom: 0;">${t("calib.distanceTitle")}</div>
-            <button type="button" class="calib-how-btn" id="btnHowItWorks">${t("how.kicker")}</button>
-          </div>
-          <p class="stage-sub" style="margin-bottom: 10px; font-size: 13px;">${t("calib.distanceSub")}</p>
-          <div class="distance-opts">
-            <button type="button" class="dist-opt" data-dist="2">
-              <b>${t("calib.dist2")}</b><span>${t("calib.dist2note")}</span>
-            </button>
-            <button type="button" class="dist-opt" data-dist="3">
-              <b>${t("calib.dist3")}</b><span>${t("calib.dist3note")}</span>
-            </button>
-            <button type="button" class="dist-opt" data-dist="6">
-              <b>${t("calib.dist6")}</b><span>${t("calib.dist6note")}</span>
-            </button>
-          </div>
-          <p class="stage-sub" style="margin-top: 6px; margin-bottom: 0; font-size: 11px; opacity: 0.82;">${t("calib.distLimit")}</p>
-        </div>
       </div>`;
 
     const cardWrap = stage.querySelector("#calibCardWrap");
@@ -807,9 +897,20 @@ export function createLab(labEl) {
     const ticksEl = stage.querySelector("#rulerTicks");
     const btnCard = stage.querySelector("#btnModeCard");
     const btnRuler = stage.querySelector("#btnModeRuler");
+    const btnChangeDist = stage.querySelector("#btnChangeDist");
     const howBtn = stage.querySelector("#btnHowItWorks");
     if (howBtn) {
       on(howBtn, "click", () => showCalibHowModal());
+    }
+    if (btnChangeDist) {
+      on(btnChangeDist, "click", () => {
+        showCalibDistanceModal((newDist) => {
+          config.distanceM = newDist;
+          saveProfile(config);
+          const badge = stage.querySelector("#calibDistBadge");
+          if (badge) badge.textContent = newDist + " m";
+        });
+      });
     }
     const hintEl = stage.querySelector("#calibHint");
     const holdEl = stage.querySelector("#calibHold");
@@ -858,7 +959,7 @@ export function createLab(labEl) {
 
       if (mode === 'card') {
         const ch = Math.round(cardW * (53.98 / CARD_MM));
-        const maxH = window.innerWidth <= 480 ? 120 : 220;
+        const maxH = window.innerWidth <= 480 ? 120 : 440;
         const scale = Math.min(avail > 0 ? avail / cardW : 1, ch > 0 ? maxH / ch : 1, 1);
         effScale = scale;
         if (scale < 1) {
@@ -920,23 +1021,8 @@ export function createLab(labEl) {
       ro.observe(visual);
       cleanups.push(() => ro.disconnect());
     }
-    /* Belt and braces: an embedded/zoomed viewport can change the layout width
-       without delivering resize or ResizeObserver promptly, which would leave
-       the card drawn wider than its panel. fit() is two cheap reads, and it
-       early-returns unless the maximum actually changed. */
     const watch = setInterval(fit, 400);
     cleanups.push(() => clearInterval(watch));
-
-    const distBtns = [...stage.querySelectorAll("[data-dist]")];
-    const paintDist = () => distBtns.forEach((b) => b.classList.toggle("is-on", Number(b.dataset.dist) === config.distanceM));
-    paintDist();
-    distBtns.forEach((b) =>
-      on(b, "click", () => {
-        config.distanceM = Number(b.dataset.dist);
-        paintDist();
-        saveProfile(config);
-      })
-    );
 
     setFoot(`
       <span class="trial-counter">${hasValidCalibration(config) ? t("calib.locked") : ""}</span>
