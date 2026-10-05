@@ -367,6 +367,12 @@ html[data-theme="dark"] .btn.btn-primary {
   color: var(--primary);
   background: var(--surface-2);
 }
+.header-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
+}
 
 .header-tools {
   display: flex;
@@ -495,6 +501,12 @@ html[data-theme="dark"] .btn.btn-primary {
 .mobile-nav a:hover {
   background: var(--surface-2);
   color: var(--text);
+}
+.mobile-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
 }
 
 /* ---------------------------------------------------------------- hero */

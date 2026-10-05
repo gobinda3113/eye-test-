@@ -201,6 +201,13 @@ html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
   opacity: .65;
 }
 
+.home-page .nav-links a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
+}
+
 .home-page .header-tools {
   display: flex;
   align-items: center;
@@ -348,6 +355,13 @@ html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
 
 .home-page .mobile-nav a:hover {
   color: #cdec8d;
+}
+
+.home-page .mobile-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
 }
 
 /* -------------------------------------------------- Hero Content */

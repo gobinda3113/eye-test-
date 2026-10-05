@@ -28,12 +28,36 @@ const testHref = locale === "en" ? "/test/" : "/" + locale + "/test/";
 const hideCta = page === "test";
 const logoHref = homeHref;
 
+// Determine active section from Astro.url.pathname (NOT page prop)
+const rawPath = (Astro.url.pathname || "/").replace(/^\/+|\/+$/g, "");
+const pathSegments = rawPath.split("/").filter(Boolean);
+const nonEnLocales = ["es", "fr", "de", "pt", "it", "ja", "ru"];
+if (pathSegments.length > 0 && nonEnLocales.includes(pathSegments[0])) {
+  pathSegments.shift();
+}
+const currentRoute = pathSegments.join("/");
+
+let activeSection = "";
+if (currentRoute.startsWith("test")) {
+  activeSection = "";
+} else if (currentRoute === "" || currentRoute === "us") {
+  activeSection = "home";
+} else if (currentRoute.startsWith("checks")) {
+  activeSection = "checks";
+} else if (currentRoute.startsWith("blog")) {
+  activeSection = "blog";
+} else if (currentRoute === "about" || currentRoute.startsWith("about/")) {
+  activeSection = "about";
+} else if (currentRoute === "contact" || currentRoute.startsWith("contact/")) {
+  activeSection = "contact";
+}
+
 const navItems = [
-  { key: "nav.home", label: d("nav.home"), href: homeHref },
-  { key: "nav.checks", label: d("nav.checks"), href: checksHref },
-  { key: "nav.blog", label: d("nav.blog"), href: blogHref },
-  { key: "nav.about", label: d("nav.about"), href: aboutHref },
-  { key: "nav.contact", label: d("nav.contact"), href: contactHref },
+  { key: "nav.home", section: "home", label: d("nav.home"), href: homeHref },
+  { key: "nav.checks", section: "checks", label: d("nav.checks"), href: checksHref },
+  { key: "nav.blog", section: "blog", label: d("nav.blog"), href: blogHref },
+  { key: "nav.about", section: "about", label: d("nav.about"), href: aboutHref },
+  { key: "nav.contact", section: "contact", label: d("nav.contact"), href: contactHref },
 ];
 ---
 
@@ -51,9 +75,19 @@ const navItems = [
     </a>
 
     <nav class="header-nav nav-links" id="headerNav" aria-label="Main">
-      {navItems.map((n) => (
-        <a href={n.href} data-i18n={n.key}>{n.label}</a>
-      ))}
+      {navItems.map((n) => {
+        const isActive = activeSection === n.section;
+        return (
+          <a
+            href={n.href}
+            data-i18n={n.key}
+            class={isActive ? "active" : undefined}
+            aria-current={isActive ? "page" : undefined}
+          >
+            {n.label}
+          </a>
+        );
+      })}
     </nav>
 
     <div class="header-tools">
@@ -97,9 +131,19 @@ const navItems = [
     </div>
   </div>
   <div class="mobile-nav" id="mobileNav" hidden>
-    {navItems.map((n) => (
-      <a href={n.href} data-i18n={n.key}>{n.label}</a>
-    ))}
+    {navItems.map((n) => {
+      const isActive = activeSection === n.section;
+      return (
+        <a
+          href={n.href}
+          data-i18n={n.key}
+          class={isActive ? "active" : undefined}
+          aria-current={isActive ? "page" : undefined}
+        >
+          {n.label}
+        </a>
+      );
+    })}
     {!hideCta && (
       <a href={testHref} data-i18n="nav.cta" style="color: #cdec8d; font-weight: 700;">{d("nav.cta")}</a>
     )}
