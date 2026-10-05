@@ -133,11 +133,11 @@ const howToSchema = {
 <div class="grain" aria-hidden="true"></div>
 
 <div class="home-page site-shell" id="top">
+  <SiteHeader locale={locale} page={isUS ? "us" : "home"} />
+
   <section class="hero">
     <div class="hero-image" aria-hidden="true"></div>
     <div class="hero-shade" aria-hidden="true"></div>
-
-    <SiteHeader locale={locale} page={isUS ? "us" : "home"} />
 
     {isUS && (
       <div class="page-pad" style="padding-top: 16px; position: relative; z-index: 5;">

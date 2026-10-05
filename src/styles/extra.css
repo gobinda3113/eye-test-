@@ -439,21 +439,34 @@ body.is-doc .section {
 /* -------------------------------------------------- Unified Site Header (Source of Truth from commit 575b7fc5) */
 .site-header {
   height: 52px;
-  position: relative;
-  z-index: 50;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  background: #0b211f;
+  background: rgba(11, 33, 31, 0.94);
   color: #fff;
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   box-sizing: border-box;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.site-header.is-stuck {
+  border-bottom-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .home-page .site-header {
   background: transparent;
+}
+
+.home-page .site-header.is-stuck {
+  background: rgba(11, 33, 31, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .site-header.page-pad {
