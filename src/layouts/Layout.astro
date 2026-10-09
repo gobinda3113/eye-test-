@@ -51,6 +51,12 @@ const fontHref =
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
     <meta name="robots" content={robots} />
+    <script is:inline>
+      if (typeof window !== 'undefined' && window.location.hostname && window.location.hostname !== 'onlinevisiontest.org' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var rMeta = document.querySelector('meta[name="robots"]');
+        if (rMeta) rMeta.setAttribute('content', 'noindex, nofollow');
+      }
+    </script>
     <meta name="theme-color" content="#FBFAF7" />
     <meta name="color-scheme" content="light dark" />
     <link rel="canonical" href={canonical} />
