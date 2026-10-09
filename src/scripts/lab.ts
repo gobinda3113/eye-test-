@@ -521,25 +521,22 @@ export function createLab(labEl) {
         <button type="button" class="calib-modal-close" id="sessionNoticeClose" aria-label="${t("calib.close")}">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <div class="calib-modal-icon">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
+        <div class="card-chips" style="justify-content: center; margin-bottom: 1.15rem;">
+          <span class="card-chip">${t("how.kicker")}</span>
         </div>
         <h3 id="sessionNoticeTitle" class="calib-modal-title">${t("lab.noticeTitle")}</h3>
-        <div class="calib-modal-desc" style="text-align: left; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; font-size: 0.95rem; line-height: 1.5;">
-          <div style="display: flex; gap: 10px; align-items: flex-start;">
-            <span style="color: var(--primary, #2EC4B6); font-size: 1.2rem; line-height: 1.2;">•</span>
-            <span>${t("lab.wearGlasses")}</span>
+        <div class="calib-notice-list">
+          <div class="calib-notice-row">
+            <span class="calib-notice-indicator" aria-hidden="true"></span>
+            <span class="calib-notice-text">${t("lab.wearGlasses")}</span>
           </div>
-          <div style="display: flex; gap: 10px; align-items: flex-start;">
-            <span style="color: var(--primary, #2EC4B6); font-size: 1.2rem; line-height: 1.2;">•</span>
-            <span>${t("lab.smallScreen")}</span>
+          <div class="calib-notice-row">
+            <span class="calib-notice-indicator" aria-hidden="true"></span>
+            <span class="calib-notice-text">${t("lab.smallScreen")}</span>
           </div>
         </div>
         <div class="calib-modal-actions">
-          <button type="button" class="btn btn-soft btn-sm" id="btnSessionNoticeOk" style="width: 100%; min-height: 42px;">${t("lab.noticeOk")}</button>
+          <button type="button" class="btn-card-pill" id="btnSessionNoticeOk">${t("lab.noticeOk")}</button>
         </div>
       </div>
     `;
@@ -598,30 +595,37 @@ export function createLab(labEl) {
         <button type="button" class="calib-modal-close" id="calibDistClose" aria-label="${t("calib.close")}">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <div class="calib-modal-icon">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 12h20M18 8l4 4-4 4M6 8l-4 4 4 4"/>
-          </svg>
+        <div class="card-chips" style="justify-content: center; margin-bottom: 1.15rem;">
+          <span class="card-chip">${t("calib.title")}</span>
         </div>
         <h3 id="calibDistTitle" class="calib-modal-title">${t("calib.distanceTitle")}</h3>
-        <p class="calib-modal-desc" style="font-size: 0.92rem; line-height: 1.5; margin: 0 0 16px;">${t("calib.distanceSub")}</p>
+        <p class="calib-modal-desc">${t("calib.distanceSub")}</p>
         <div class="calib-dist-opts" role="radiogroup" aria-label="${t("calib.distanceTitle")}">
           <button type="button" class="dist-opt${selectedDist === 2 ? " is-on" : ""}" data-dist="2" role="radio" aria-checked="${selectedDist === 2}">
-            <b>${t("calib.dist2")}</b>
-            <span>${t("calib.dist2note")}</span>
+            <div class="dist-opt-header">
+              <span class="dist-opt-val">${t("calib.dist2")}</span>
+              <span class="dist-opt-indicator" aria-hidden="true"></span>
+            </div>
+            <span class="dist-opt-sub">${t("calib.dist2note")}</span>
           </button>
           <button type="button" class="dist-opt${selectedDist === 3 ? " is-on" : ""}" data-dist="3" role="radio" aria-checked="${selectedDist === 3}">
-            <b>${t("calib.dist3")}</b>
-            <span>${t("calib.dist3note")}</span>
+            <div class="dist-opt-header">
+              <span class="dist-opt-val">${t("calib.dist3")}</span>
+              <span class="dist-opt-indicator" aria-hidden="true"></span>
+            </div>
+            <span class="dist-opt-sub">${t("calib.dist3note")}</span>
           </button>
           <button type="button" class="dist-opt${selectedDist === 6 ? " is-on" : ""}" data-dist="6" role="radio" aria-checked="${selectedDist === 6}">
-            <b>${t("calib.dist6")}</b>
-            <span>${t("calib.dist6note")}</span>
+            <div class="dist-opt-header">
+              <span class="dist-opt-val">${t("calib.dist6")}</span>
+              <span class="dist-opt-indicator" aria-hidden="true"></span>
+            </div>
+            <span class="dist-opt-sub">${t("calib.dist6note")}</span>
           </button>
         </div>
         <p class="calib-dist-limit-note">${t("calib.distLimit")}</p>
-        <div class="calib-modal-actions" style="margin-top: 20px;">
-          <button type="button" class="btn btn-soft btn-sm" id="btnDistContinue" style="width: 100%; min-height: 44px; font-weight: 600;">${t("lab.next")}</button>
+        <div class="calib-modal-actions">
+          <button type="button" class="btn-card-pill" id="btnDistContinue">${t("lab.next")}</button>
         </div>
       </div>
     `;
@@ -688,21 +692,30 @@ export function createLab(labEl) {
         <button type="button" class="calib-modal-close" id="calibHowClose" aria-label="${t("calib.close")}">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <div class="calib-modal-icon">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 16v-4M12 8h.01"/>
-          </svg>
+        <div class="card-chips" style="justify-content: center; margin-bottom: 1.15rem;">
+          <span class="card-chip">${t("how.kicker")}</span>
         </div>
         <h3 id="calibHowTitle" class="calib-modal-title">${t("how.kicker")}</h3>
-        <div class="tips" style="margin-top: 16px; margin-bottom: 22px; text-align: left;">
-          ${tip(t("calib.tip1"))}
-          ${tip(t("calib.tip2"))}
-          ${tip(t("calib.tip3"))}
-          ${tip(t("calib.brightness"))}
+        <div class="calib-notice-list">
+          <div class="calib-notice-row">
+            <span class="calib-notice-indicator" aria-hidden="true"></span>
+            <span class="calib-notice-text">${t("calib.tip1")}</span>
+          </div>
+          <div class="calib-notice-row">
+            <span class="calib-notice-indicator" aria-hidden="true"></span>
+            <span class="calib-notice-text">${t("calib.tip2")}</span>
+          </div>
+          <div class="calib-notice-row">
+            <span class="calib-notice-indicator" aria-hidden="true"></span>
+            <span class="calib-notice-text">${t("calib.tip3")}</span>
+          </div>
+          <div class="calib-notice-row">
+            <span class="calib-notice-indicator" aria-hidden="true"></span>
+            <span class="calib-notice-text">${t("calib.brightness")}</span>
+          </div>
         </div>
         <div class="calib-modal-actions">
-          <button type="button" class="btn btn-soft btn-sm" id="btnCalibHowOk" style="width: 100%; min-height: 42px;">${t("lab.noticeOk")}</button>
+          <button type="button" class="btn-card-pill" id="btnCalibHowOk">${t("lab.noticeOk")}</button>
         </div>
       </div>
     `;
@@ -752,18 +765,14 @@ export function createLab(labEl) {
         <button type="button" class="calib-modal-close" id="calibModalClose" aria-label="${t("calib.close")}">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <div class="calib-modal-icon">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
-            <polyline points="17 21 17 13 7 13 7 21"/>
-            <polyline points="7 3 7 8 15 8"/>
-          </svg>
+        <div class="card-chips" style="justify-content: center; margin-bottom: 1.15rem;">
+          <span class="card-chip">${t("calib.title")}</span>
         </div>
         <h3 id="calibModalTitle" class="calib-modal-title">${t("calib.savePromptTitle")}</h3>
         <p class="calib-modal-desc">${t("calib.savePromptDesc")}</p>
-        <div class="calib-modal-actions">
-          <button type="button" class="btn btn-soft btn-sm" id="btnSaveCalib">${t("calib.saveBtn")}</button>
-          <button type="button" class="btn btn-quiet btn-sm" id="btnDontSaveCalib">${t("calib.dontSaveBtn")}</button>
+        <div class="calib-modal-actions" style="flex-direction: column; gap: 0.65rem;">
+          <button type="button" class="btn-card-pill" id="btnSaveCalib">${t("calib.saveBtn")}</button>
+          <button type="button" class="btn-card-pill-secondary" id="btnDontSaveCalib">${t("calib.dontSaveBtn")}</button>
         </div>
       </div>
     `;
@@ -846,16 +855,13 @@ export function createLab(labEl) {
         <button type="button" class="calib-modal-close" id="checkInfoClose" aria-label="${escapeHtml(t("calib.close"))}">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <div class="calib-modal-icon">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 16v-4M12 8h.01"/>
-          </svg>
+        <div class="card-chips" style="justify-content: center; margin-bottom: 1.15rem;">
+          <span class="card-chip">${escapeHtml(titleText)}</span>
         </div>
         <h3 id="checkInfoTitle" class="calib-modal-title">${escapeHtml(titleText)}</h3>
-        <p class="calib-modal-desc" style="font-size: 15px; line-height: 1.5; margin: 16px 0 24px;">${escapeHtml(subText)}</p>
+        <p class="calib-modal-desc">${escapeHtml(subText)}</p>
         <div class="calib-modal-actions">
-          <button type="button" class="btn btn-soft btn-sm" id="btnCheckInfoOk" style="width: 100%; min-height: 42px;">${escapeHtml(t("lab.noticeOk"))}</button>
+          <button type="button" class="btn-card-pill" id="btnCheckInfoOk">${escapeHtml(t("lab.noticeOk"))}</button>
         </div>
       </div>
     `;
@@ -893,21 +899,18 @@ export function createLab(labEl) {
   function renderCalibrate(forceFresh = false) {
     if (!forceFresh && hasValidCalibration()) {
       stage.innerHTML = `
-        <div class="stage-grid" style="max-width: 580px; margin: 0 auto;">
-          <div class="stage-panel" style="width: 100%; text-align: center; padding: 2.5rem 1.75rem;">
-            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--primary);">
-              <svg class="ico" viewBox="0 0 24 24" style="width: 28px; height: 28px;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
+        <div class="stage-grid" style="max-width: 520px; margin: 0 auto;">
+          <div class="calib-modal-box" style="width: 100%; text-align: center; margin: 0 auto;">
+            <div class="card-chips" style="justify-content: center; margin-bottom: 1.15rem;">
+              <span class="card-chip">${t("calib.title")}</span>
             </div>
-            <div class="panel-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">${t("calib.savedFoundTitle")}</div>
-            <p style="color: var(--text-2); font-size: 0.95rem; margin-bottom: 2rem;">${t("calib.savedFoundDesc")}</p>
-            <div style="display: flex; flex-direction: column; gap: 0.85rem; max-width: 320px; margin: 0 auto; width: 100%;">
-              <button type="button" class="btn btn-soft btn-lg" id="btnUseSavedCalib" style="padding: 0.85rem 1.5rem; font-size: 1.05rem; font-weight: 600; width: 100%;">
+            <h3 class="calib-modal-title">${t("calib.savedFoundTitle")}</h3>
+            <p class="calib-modal-desc">${t("calib.savedFoundDesc")}</p>
+            <div class="calib-modal-actions" style="flex-direction: column; gap: 0.65rem;">
+              <button type="button" class="btn-card-pill" id="btnUseSavedCalib">
                 ${t("calib.useSaved")}
               </button>
-              <button type="button" class="btn btn-quiet btn-sm" id="btnCalibAgain" style="padding: 0.6rem 1.2rem; width: 100%;">
+              <button type="button" class="btn-card-pill-secondary" id="btnCalibAgain">
                 ${t("calib.calibrateAgain")}
               </button>
             </div>

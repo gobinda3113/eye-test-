@@ -7,7 +7,7 @@ import { DICT } from "../scripts/dict.ts";
 const { locale = "en" } = Astro.props;
 const meta = seoFor(locale, "blog");
 const dict = DICT[locale] || DICT.en;
-const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
+const d = (k: string) => (dict[k] != null ? dict[k] : k);
 
 const home = pathFor(locale, "home");
 
@@ -16,6 +16,19 @@ const visiblePosts = POSTS.filter(post => {
   const supportedLocales = post.locales || (post.englishOnly ? ["en"] : Object.keys(post.title || {}));
   return supportedLocales.includes(locale);
 });
+
+const POST_META: Record<string, [string, string]> = {
+  "online-eye-test-guide": ["Acuity Guide", "5 Min Read"],
+  "dmv-eye-test-practice": ["DMV Prep", "4 Min Read"],
+  "dmv-eye-test-fail-guide": ["Failure Protocol", "6 Min Read"],
+  "dmv-eye-test-machine": ["Optec 1000", "5 Min Read"],
+  "dmv-vision-requirements-by-state": ["State Standards", "8 Min Read"],
+  "6-6-vision-test-online": ["Metric Standards", "4 Min Read"],
+  "can-you-wear-glasses-for-dmv-eye-test": ["Corrective Lenses", "4 Min Read"],
+  "snellen-chart-explained": ["Snellen Formula", "5 Min Read"],
+  "dominant-eye-test": ["Ocular Dominance", "3 Min Read"],
+  "dmv-eye-test-faqs": ["DMV FAQs", "6 Min Read"],
+};
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -28,63 +41,6 @@ const breadcrumb = {
 ---
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
-
-<style>
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.75rem;
-    margin-top: 2rem;
-  }
-  .blog-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    padding: 1.75rem;
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.15s, border-color 0.15s;
-    display: flex;
-    flex-direction: column;
-  }
-  .blog-card:hover {
-    background: var(--surface-2);
-    border-color: var(--border-strong);
-  }
-  .blog-card h3 {
-    margin: 0 0 0.75rem 0;
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--text);
-    transition: color 0.15s;
-  }
-  .blog-card:hover h3 {
-    color: var(--primary);
-  }
-  .blog-card p {
-    color: var(--text-2);
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    flex-grow: 1;
-  }
-  .read-more {
-    margin-top: 1.5rem;
-    color: var(--muted);
-    font-size: 0.875rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.15s, transform 0.15s;
-  }
-  .blog-card:hover .read-more {
-    color: var(--primary);
-    transform: translateX(3px);
-  }
-</style>
 
 <section class="section">
   <div class="container">
@@ -102,16 +58,188 @@ const breadcrumb = {
     </div>
 
     <div class="blog-grid">
-      {visiblePosts.map(post => (
-        <a href={pathFor(locale, "blog") + post.slug + "/"} class="blog-card">
-          <h3>{post.title[locale] || post.title.en}</h3>
-          <p>{post.excerpt[locale] || post.excerpt.en}</p>
-          <span class="read-more" aria-hidden="true">
-            {d("blog.readGuide")}
-            <svg class="ico" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-      ))}
+      {visiblePosts.map(post => {
+        const titleText = post.title[locale] || post.title.en;
+        const excerptText = post.excerpt[locale] || post.excerpt.en;
+        const postUrl = pathFor(locale, "blog") + post.slug + "/";
+        const metaChips = POST_META[post.slug] || ["Clinical Guide", "4 Min Read"];
+        const isDmv = post.slug.includes("dmv");
+
+        return (
+          <article class="blog-card">
+            <div class="card-media">
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                <rect width="320" height="180" fill={isDmv ? "#0f171c" : "#0e1814"}/>
+                {isDmv ? (
+                  <g>
+                    <line x1="30" y1="130" x2="290" y2="130" stroke="rgba(56, 189, 248, 0.25)" stroke-width="2"/>
+                    <line x1="160" y1="130" x2="160" y2="60" stroke="#38bdf8" stroke-width="2"/>
+                    <rect x="110" y="45" width="100" height="55" rx="6" stroke="#cdec8d" stroke-width="1.5" fill="rgba(205, 236, 141, 0.08)"/>
+                    <text x="160" y="78" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="800" fill="#cdec8d">20/40</text>
+                  </g>
+                ) : (
+                  <g>
+                    <circle cx="160" cy="85" r="55" stroke="rgba(205, 236, 141, 0.18)" stroke-width="1.5"/>
+                    <text x="160" y="70" text-anchor="middle" font-family="monospace" font-size="34" font-weight="900" fill="#f0f6f2">E</text>
+                    <text x="160" y="105" text-anchor="middle" font-family="monospace" font-size="18" font-weight="800" fill="#cdec8d" letter-spacing="8">F P</text>
+                  </g>
+                )}
+              </svg>
+              <div class="card-scrim" aria-hidden="true"></div>
+            </div>
+
+            <div class="card-body">
+              <a href={postUrl} class="card-title-link">
+                <h3 class="blog-title">{titleText}</h3>
+              </a>
+              <p class="blog-desc">{excerptText}</p>
+
+              <div class="card-chips">
+                <span class="card-chip">{metaChips[0]}</span>
+                <span class="card-chip">{metaChips[1]}</span>
+              </div>
+
+              <a href={postUrl} class="btn-card-pill">
+                Read article
+              </a>
+            </div>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .blog-card {
+    position: relative;
+    background: #111a17;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 26px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.45);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+    border-color: rgba(205, 236, 141, 0.3);
+  }
+
+  .card-media {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #0d1613;
+  }
+
+  .card-art {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .card-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(17, 26, 23, 0) 0%,
+      rgba(17, 26, 23, 0.25) 45%,
+      rgba(17, 26, 23, 0.85) 80%,
+      #111a17 100%
+    );
+    pointer-events: none;
+  }
+
+  .card-body {
+    padding: 0.25rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .blog-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
+    transition: color 0.15s ease;
+  }
+
+  .card-title-link:hover .blog-title {
+    color: var(--primary, #cdec8d);
+  }
+
+  .blog-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #9bb0a5;
+    margin: 0 0 1.25rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.65rem;
+  }
+
+  .card-chips {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .card-chip {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: #d6e2d9;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+  }
+
+  .btn-card-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    background: #ffffff;
+    color: #0c1512;
+    font-weight: 700;
+    font-size: 0.94rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+  }
+
+  .btn-card-pill:hover {
+    background: #cdec8d;
+    color: #0b1311;
+    transform: scale(1.01);
+  }
+</style>

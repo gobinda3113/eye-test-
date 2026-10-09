@@ -23,6 +23,22 @@ const schema = {
     "url": "https://onlinevisiontest.org/"
   }
 };
+
+const CHECK_TAGS: Record<string, [string, string]> = {
+  distance: ["ISO 8596 Standard", "Distance 20/40"],
+  tumbling: ["Directional E", "Universal Optotype"],
+  color: ["Ishihara Mosaic", "Red-Green Screening"],
+  peripheral: ["Horizontal Field", "110 Meridian Arc"],
+  near: ["40 cm Distance", "Reading Acuity"],
+  contrast: ["Pelli-Robson", "Low Contrast"],
+  astigmatism: ["Clock Dial Fan", "Meridian Axis"],
+  refraction: ["Duochrome Filter", "Red-Green Balance"],
+  stereo: ["Stereoscopic Depth", "Binocular Fusion"],
+  cdl: ["DOT Regulation", "Commercial Driver"],
+  landolt: ["Landolt C Rings", "0.5 Ring Standard"],
+  amsler: ["Macular Grid", "Distortion Check"],
+  sivtsev: ["Sivtsev Table", "Cyrillic Set"],
+};
 ---
 
 <Layout locale="en" customMeta={{ title, description, url: canonical }} schema={schema}>
@@ -41,32 +57,166 @@ const schema = {
 
       <div class="checks-grid">
         {
-          CHECKS.map((c, idx) => {
-            const num = String(idx + 1).padStart(2, "0");
+          CHECKS.map((c) => {
             const name = d(`checks.${c.id}.name`);
             const desc = d(`checks.${c.id}.desc`);
+            const tags = CHECK_TAGS[c.id] || ["Clinical Standard", "Self-Screen"];
             return (
               <article class="check-card">
-                <a href={`/checks/${c.id}/`} class="check-card-link" aria-label={`Learn about ${name}`}>
-                  <div class="check-card-header">
-                    <span class="check-num">{num}</span>
-                    <span class="check-badge">{c.tag}</span>
-                  </div>
-                  <h2 class="check-title">{name}</h2>
-                  <p class="check-desc">{desc}</p>
-                </a>
-                <div class="check-card-actions">
-                  <a href={`/checks/${c.id}/`} class="action-info">
-                    <span>Test Guide</span>
-                    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
+                <div class="card-media">
+                  {c.id === "distance" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#0d1815"/>
+                      <circle cx="160" cy="85" r="70" stroke="rgba(205, 236, 141, 0.15)" stroke-width="1"/>
+                      <text x="160" y="60" text-anchor="middle" font-family="monospace" font-size="36" font-weight="900" fill="#f0f6f2">E</text>
+                      <text x="160" y="94" text-anchor="middle" font-family="monospace" font-size="20" font-weight="800" fill="#cdec8d" letter-spacing="8">F P</text>
+                      <text x="160" y="122" text-anchor="middle" font-family="monospace" font-size="14" font-weight="700" fill="#8ca89a" letter-spacing="6">T O Z</text>
                     </svg>
+                  )}
+                  {c.id === "tumbling" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#0e161c"/>
+                      <g transform="translate(160, 85)">
+                        <path d="M-40 -20 H0 V-10 H-28 V-4 H-10 V4 H-28 V10 H0 V20 H-40 Z" fill="#93c5fd"/>
+                        <path d="M20 -40 V0 H10 V-28 H4 V-10 H-4 V-28 H-10 V0 H-20 V-40 Z" fill="#cdec8d" transform="rotate(90)"/>
+                        <path d="M10 -20 H50 V-10 H22 V-4 H40 V4 H22 V10 H50 V20 H10 Z" fill="#e2e8f0" transform="rotate(180)"/>
+                      </g>
+                    </svg>
+                  )}
+                  {c.id === "color" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#181310"/>
+                      <circle cx="160" cy="85" r="55" fill="rgba(249, 115, 22, 0.08)" stroke="rgba(249, 115, 22, 0.2)" stroke-width="1"/>
+                      <circle cx="135" cy="70" r="7" fill="#fb923c"/>
+                      <circle cx="150" cy="65" r="9" fill="#4ade80"/>
+                      <circle cx="170" cy="68" r="8" fill="#fbbf24"/>
+                      <circle cx="185" cy="78" r="7" fill="#f87171"/>
+                      <circle cx="140" cy="90" r="8" fill="#34d399"/>
+                      <circle cx="160" cy="88" r="10" fill="#f97316"/>
+                      <circle cx="180" cy="94" r="7" fill="#2dd4bf"/>
+                      <circle cx="145" cy="110" r="8" fill="#fbbf24"/>
+                      <circle cx="165" cy="112" r="9" fill="#ef4444"/>
+                      <circle cx="130" cy="80" r="6" fill="#a3e635"/>
+                      <circle cx="190" cy="95" r="6" fill="#86efac"/>
+                    </svg>
+                  )}
+                  {c.id === "peripheral" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#0d1820"/>
+                      <path d="M60 125 A 100 100 0 0 1 260 125" stroke="rgba(56, 189, 248, 0.25)" stroke-width="2" stroke-dasharray="4 4"/>
+                      <path d="M90 125 A 70 70 0 0 1 230 125" stroke="rgba(205, 236, 141, 0.4)" stroke-width="2"/>
+                      <line x1="160" y1="125" x2="160" y2="45" stroke="#38bdf8" stroke-width="1.5"/>
+                      <circle cx="160" cy="125" r="5" fill="#38bdf8"/>
+                      <circle cx="85" cy="90" r="6" fill="#cdec8d"/>
+                      <circle cx="235" cy="90" r="6" fill="#cdec8d"/>
+                    </svg>
+                  )}
+                  {c.id === "near" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#17140e"/>
+                      <rect x="95" y="35" width="130" height="95" rx="8" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1"/>
+                      <line x1="110" y1="55" x2="210" y2="55" stroke="#fef3c7" stroke-width="3" stroke-linecap="round"/>
+                      <line x1="110" y1="70" x2="195" y2="70" stroke="#fde68a" stroke-width="2" stroke-linecap="round"/>
+                      <line x1="110" y1="83" x2="205" y2="83" stroke="#fcd34d" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="110" y1="94" x2="180" y2="94" stroke="#fbbf24" stroke-width="1" stroke-linecap="round"/>
+                      <line x1="110" y1="104" x2="190" y2="104" stroke="#d97706" stroke-width="0.8" stroke-linecap="round"/>
+                    </svg>
+                  )}
+                  {c.id === "contrast" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#14101e"/>
+                      <text x="80" y="95" font-family="sans-serif" font-size="34" font-weight="800" fill="rgba(255, 255, 255, 0.95)">V</text>
+                      <text x="130" y="95" font-family="sans-serif" font-size="34" font-weight="800" fill="rgba(255, 255, 255, 0.55)">R</text>
+                      <text x="180" y="95" font-family="sans-serif" font-size="34" font-weight="800" fill="rgba(255, 255, 255, 0.22)">S</text>
+                      <text x="230" y="95" font-family="sans-serif" font-size="34" font-weight="800" fill="rgba(255, 255, 255, 0.08)">K</text>
+                    </svg>
+                  )}
+                  {c.id === "astigmatism" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#17120e"/>
+                      <g transform="translate(160, 85)" stroke="#ea580c" stroke-width="1.5">
+                        <line x1="-50" y1="0" x2="50" y2="0" stroke="#f97316" stroke-width="3"/>
+                        <line x1="-43" y1="-25" x2="43" y2="25"/>
+                        <line x1="-25" y1="-43" x2="25" y2="43"/>
+                        <line x1="0" y1="-50" x2="0" y2="50"/>
+                        <line x1="25" y1="-43" x2="-25" y2="43"/>
+                        <line x1="43" y1="-25" x2="-43" y2="25"/>
+                      </g>
+                      <circle cx="160" cy="85" r="4" fill="#ffedd5"/>
+                    </svg>
+                  )}
+                  {c.id === "refraction" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="160" height="180" fill="#3b0d0d"/>
+                      <rect x="160" width="160" height="180" fill="#082f1b"/>
+                      <circle cx="100" cy="85" r="28" stroke="#ef4444" stroke-width="2" fill="rgba(239, 68, 68, 0.1)"/>
+                      <circle cx="220" cy="85" r="28" stroke="#22c55e" stroke-width="2" fill="rgba(34, 197, 94, 0.1)"/>
+                      <text x="100" y="93" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="900" fill="#ffffff">8</text>
+                      <text x="220" y="93" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="900" fill="#ffffff">8</text>
+                    </svg>
+                  )}
+                  {c.id === "stereo" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#0c1715"/>
+                      <circle cx="148" cy="85" r="42" stroke="rgba(205, 236, 141, 0.3)" stroke-width="2"/>
+                      <circle cx="172" cy="85" r="42" stroke="rgba(45, 212, 191, 0.4)" stroke-width="2"/>
+                      <circle cx="160" cy="85" r="20" fill="rgba(205, 236, 141, 0.2)" stroke="#cdec8d" stroke-width="2"/>
+                    </svg>
+                  )}
+                  {c.id === "cdl" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#0d1a14"/>
+                      <rect x="75" y="45" width="170" height="75" rx="6" stroke="rgba(74, 222, 128, 0.3)" stroke-width="1" fill="rgba(74, 222, 128, 0.05)"/>
+                      <text x="160" y="78" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="800" fill="#4ade80" letter-spacing="2">DOT MEDICAL</text>
+                      <text x="160" y="100" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="600" fill="#86efac">49 CFR 391.41</text>
+                    </svg>
+                  )}
+                  {c.id === "landolt" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#0c181a"/>
+                      <g transform="translate(160, 85)">
+                        <path d="M0 -38 A 38 38 0 1 1 -38 0" fill="none" stroke="#22d3ee" stroke-width="12" stroke-linecap="square"/>
+                      </g>
+                    </svg>
+                  )}
+                  {c.id === "amsler" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#140f1a"/>
+                      <g stroke="rgba(192, 132, 252, 0.25)" stroke-width="1">
+                        <line x1="100" y1="45" x2="220" y2="45"/><line x1="100" y1="65" x2="220" y2="65"/><line x1="100" y1="85" x2="220" y2="85"/><line x1="100" y1="105" x2="220" y2="105"/><line x1="100" y1="125" x2="220" y2="125"/>
+                        <line x1="100" y1="45" x2="100" y2="125"/><line x1="124" y1="45" x2="124" y2="125"/><line x1="148" y1="45" x2="148" y2="125"/><line x1="172" y1="45" x2="172" y2="125"/><line x1="196" y1="45" x2="196" y2="125"/><line x1="220" y1="45" x2="220" y2="125"/>
+                      </g>
+                      <circle cx="160" cy="85" r="5" fill="#f3e8ff"/>
+                    </svg>
+                  )}
+                  {c.id === "sivtsev" && (
+                    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="card-art" aria-hidden="true">
+                      <rect width="320" height="180" fill="#17130d"/>
+                      <text x="160" y="65" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="900" fill="#fef3c7">Ш</text>
+                      <text x="160" y="100" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="800" fill="#f59e0b" letter-spacing="8">Б  М</text>
+                      <text x="160" y="125" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#b45309" letter-spacing="5">Н  К  Ы</text>
+                    </svg>
+                  )}
+                  <div class="card-scrim" aria-hidden="true"></div>
+                </div>
+
+                <div class="card-body">
+                  <a href={`/checks/${c.id}/`} class="card-title-link">
+                    <h2 class="check-title">{name}</h2>
                   </a>
-                  <a href={`/test/?mode=individual&check=${c.id}`} class="action-run">
-                    <span>Start Test</span>
-                    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
+                  <p class="check-desc">{desc}</p>
+                  
+                  <div class="card-chips">
+                    <span class="card-chip">{tags[0]}</span>
+                    <span class="card-chip">{tags[1]}</span>
+                  </div>
+
+                  <a href={`/test/?mode=individual&check=${c.id}`} class="btn-card-pill">
+                    Start check
+                  </a>
+
+                  <a href={`/checks/${c.id}/`} class="card-guide-link">
+                    View clinical guide
                   </a>
                 </div>
               </article>
@@ -82,7 +232,6 @@ const schema = {
         </div>
         <a href="/test/" class="button-start-full">
           <span>Start Full Vision Test</span>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </a>
       </div>
     </main>
@@ -109,14 +258,14 @@ const schema = {
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--primary);
+    color: var(--primary, #cdec8d);
     margin-bottom: 0.85rem;
   }
 
   .checks-kicker .kicker-line {
     width: 24px;
     height: 2px;
-    background: var(--primary);
+    background: var(--primary, #cdec8d);
   }
 
   .checks-title {
@@ -135,156 +284,160 @@ const schema = {
     color: var(--text-2);
   }
 
+  /* Grid of cards matching the requested luxury app card style */
   .checks-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
+    gap: 1.75rem;
     margin-bottom: 3.5rem;
   }
 
   .check-card {
     position: relative;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
+    background: #111a17;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 26px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     overflow: hidden;
-  }
-
-  .check-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--primary);
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.45);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   }
 
   .check-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.12);
-    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+    border-color: rgba(205, 236, 141, 0.3);
   }
 
-  .check-card:hover::before {
-    opacity: 1;
+  .card-media {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #0d1613;
   }
 
-  .check-card-link {
+  .card-art {
+    width: 100%;
+    height: 100%;
     display: block;
-    padding: 1.5rem 1.5rem 1rem;
-    text-decoration: none;
-    color: inherit;
+    object-fit: cover;
+  }
+
+  /* Smooth gradient scrim fading top visual seamlessly into the dark card body */
+  .card-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(17, 26, 23, 0) 0%,
+      rgba(17, 26, 23, 0.25) 45%,
+      rgba(17, 26, 23, 0.85) 80%,
+      #111a17 100%
+    );
+    pointer-events: none;
+  }
+
+  .card-body {
+    padding: 0.25rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
     flex: 1;
   }
 
-  .check-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-
-  .check-num {
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--primary);
-    line-height: 1;
-  }
-
-  .check-badge {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--primary);
-    background: var(--primary-soft);
-    border: 1px solid rgba(13, 122, 106, 0.18);
-    padding: 0.25rem 0.65rem;
-    border-radius: 999px;
+  .card-title-link {
+    text-decoration: none;
+    color: inherit;
   }
 
   .check-title {
     font-family: var(--font-display);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 600;
-    line-height: 1.3;
-    color: var(--text);
-    margin-bottom: 0.6rem;
+    line-height: 1.25;
+    color: #ffffff;
+    margin: 0 0 0.45rem 0;
     letter-spacing: -0.01em;
+    transition: color 0.15s ease;
+  }
+
+  .card-title-link:hover .check-title {
+    color: var(--primary, #cdec8d);
   }
 
   .check-desc {
-    font-size: 0.94rem;
-    line-height: 1.55;
-    color: var(--text-2);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #9bb0a5;
+    margin: 0 0 1.2rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.65rem;
   }
 
-  .check-card-actions {
+  .card-chips {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .card-chip {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: #d6e2d9;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+  }
+
+  /* Full-width clean pill button matching the reference design */
+  .btn-card-pill {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--border);
-    padding: 0.85rem 1.25rem;
-    background: var(--surface-2);
-    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    background: #ffffff;
+    color: #0c1512;
+    font-weight: 700;
+    font-size: 0.94rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
   }
 
-  .action-info {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--text-2);
+  .btn-card-pill:hover {
+    background: #cdec8d;
+    color: #0b1311;
+    transform: scale(1.01);
+  }
+
+  .card-guide-link {
+    display: block;
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #7f958a;
     text-decoration: none;
     transition: color 0.15s ease;
   }
 
-  .action-info:hover {
-    color: var(--primary);
-  }
-
-  .action-info .ico {
-    width: 14px;
-    height: 14px;
-  }
-
-  .action-run {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
-    background: var(--primary-soft);
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
-    border: 1px solid rgba(13, 122, 106, 0.2);
-    transition: all 0.15s ease;
-  }
-
-  .action-run:hover {
-    background: var(--primary);
-    color: #fff;
-  }
-
-  .action-run .ico {
-    width: 14px;
-    height: 14px;
+  .card-guide-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
   }
 
   .checks-banner {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 18px;
+    border-radius: 20px;
     padding: 2.25rem;
     display: flex;
     align-items: center;
@@ -311,26 +464,20 @@ const schema = {
   .button-start-full {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    background: var(--primary);
-    color: #ffffff;
+    justify-content: center;
+    background: var(--primary, #cdec8d);
+    color: #0b1311;
     padding: 0.9rem 1.75rem;
     border-radius: 999px;
     font-weight: 700;
     font-size: 0.98rem;
     text-decoration: none;
-    box-shadow: 0 4px 14px rgba(13, 122, 106, 0.25);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, opacity 0.15s ease;
   }
 
   .button-start-full:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(13, 122, 106, 0.35);
-  }
-
-  .button-start-full .ico {
-    width: 16px;
-    height: 16px;
+    opacity: 0.92;
   }
 
   @media (max-width: 768px) {

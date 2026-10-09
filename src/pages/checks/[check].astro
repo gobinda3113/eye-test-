@@ -2,7 +2,10 @@
 import Layout from "../../layouts/Layout.astro";
 import SiteShell from "../../components/SiteShell.astro";
 import { CHECKS } from "../../scripts/data.ts";
+import { CHECKS_CONTENT } from "../../data/checksContent.ts";
 import { DICT } from "../../scripts/dict.ts";
+
+export const prerender = true;
 
 export function getStaticPaths() {
   return CHECKS.map((c) => ({
@@ -12,53 +15,129 @@ export function getStaticPaths() {
 }
 
 const { check } = Astro.props;
+const guide = CHECKS_CONTENT[check.id] || {
+  id: check.id,
+  name: check.id,
+  subtitle: "Visual screening check.",
+  whatItMeasures: "Evaluates visual function.",
+  opticalPrinciples: "Based on optical science.",
+  testingProcedure: "Calibrate your screen and follow instructions.",
+  clinicalBenchmarks: "Standard benchmarks apply.",
+  whenToSeeDoctor: "Consult an optometrist if you notice symptoms.",
+};
 
-const dict = DICT.en;
-const d = (k: string) => (dict[k] != null ? dict[k] : k);
-
-const title = `${d(`checks.${check.id}.name`)} — Online Vision Test`;
-const description = d(`checks.${check.id}.desc`);
+const title = `${guide.name}: Clinical Guide & Online Screening`;
+const description = guide.subtitle;
 const canonical = `https://onlinevisiontest.org/checks/${check.id}/`;
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": title,
+  "@type": ["WebPage", "MedicalWebPage"],
+  "name": title,
+  "headline": guide.name,
   "description": description,
   "url": canonical,
+  "inLanguage": "en",
   "publisher": {
     "@type": "Organization",
-    "name": "DMV Eye Test Online"
+    "name": "Online Vision Test",
+    "url": "https://onlinevisiontest.org/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Online Vision Test",
+        "item": "https://onlinevisiontest.org/",
+        "id": "https://onlinevisiontest.org/",
+        "@id": "https://onlinevisiontest.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Checks",
+        "item": "https://onlinevisiontest.org/checks/",
+        "id": "https://onlinevisiontest.org/checks/",
+        "@id": "https://onlinevisiontest.org/checks/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": guide.name,
+        "item": canonical,
+        "id": canonical,
+        "@id": canonical
+      }
+    ]
   }
 };
 ---
-<Layout locale="en" customMeta={{title, description, url: canonical}} schema={schema}>
-  <SiteShell locale="en">
-    <main class="page-pad" style="max-width: 800px; margin: 4rem auto; padding: 2rem;">
-      <a href="/checks/" style="color:var(--primary); text-decoration:none; display:inline-block; margin-bottom:2rem; font-weight: 500;">&larr; Back to all checks</a>
-      
-      <h1 style="font-size:2.5rem; margin-bottom:1rem; font-weight:700;">{d(`checks.${check.id}.name`)}</h1>
-      <p style="font-size:1.2rem; color:var(--muted); line-height:1.6; margin-bottom:2rem;">{description}</p>
-      
-      <h2 style="margin-top:2rem; margin-bottom:1rem; font-size:1.5rem; font-weight:600;">What it measures</h2>
-      <p style="line-height:1.6; margin-bottom:1.5rem;">This test evaluates your {d(`checks.${check.id}.name`).toLowerCase()}, a critical component of healthy vision and a standard requirement for driving and other activities.</p>
 
-      <h2 style="margin-top:2rem; margin-bottom:1rem; font-size:1.5rem; font-weight:600;">How to take it</h2>
-      <ul style="line-height:1.6; margin-bottom:2rem; padding-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem;">
-        <li>Calibrate your screen size using a standard credit card.</li>
-        <li>Sit at the recommended distance (usually 3 or 6 meters, depending on screen size).</li>
-        <li>Cover one eye at a time, followed by both eyes.</li>
-        <li>Follow the on-screen prompts to input what you see.</li>
-      </ul>
+<Layout locale="en" customMeta={{ title, description, url: canonical }} schema={schema}>
+  <SiteShell locale="en" page="checks">
+    <div class="container section">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Online Vision Test</a></li>
+          <li><a href="/checks/">Checks</a></li>
+          <li aria-current="page">{guide.name}</li>
+        </ol>
+      </nav>
 
-      <div style="background:var(--bg-card); border:1px solid var(--border); padding:1.5rem; border-radius:12px; margin-bottom:2rem;">
-        <h3 style="margin-bottom:0.5rem; font-size:1.1rem; font-weight:600;">Disclaimer</h3>
-        <p style="color:var(--muted); line-height:1.5; font-size:0.9rem;">{d("lab.disclaimer")}</p>
+      <div class="simple-hero">
+        <div class="eyebrow">Clinical Guide</div>
+        <h1>{guide.name}</h1>
+        <p>{guide.subtitle}</p>
+        <p style="margin-top: 20px;">
+          <a class="btn btn-primary" href={`/test/?mode=individual&check=${check.id}`}>
+            Launch Interactive {guide.name}
+          </a>
+        </p>
       </div>
 
-      <a href={`/test/?mode=individual&check=${check.id}`} class="button button-lime" style="display:inline-block; width:auto; text-decoration:none; font-weight:600; padding:1rem 2rem; font-size:1.1rem; border-radius:30px; background:var(--primary); color:var(--bg);">
-        Start {d(`checks.${check.id}.name`)} Now
-      </a>
-    </main>
+      <div class="snellen-divider" aria-hidden="true" style="margin: 24px 0 36px;">
+        <span class="snellen-motif">
+          <span class="m-1">E</span>
+          <span class="m-2">F P</span>
+          <span class="m-3">T O Z</span>
+          <span class="m-4">L P E D</span>
+        </span>
+      </div>
+
+      <div class="prose" style="max-width: 74ch; margin: 0 auto;">
+        <h2>What this check evaluates</h2>
+        <p>{guide.whatItMeasures}</p>
+
+        <h2>Optical principles and visual mechanisms</h2>
+        <p>{guide.opticalPrinciples}</p>
+
+        <h2>Standard testing procedure at home</h2>
+        <p>{guide.testingProcedure}</p>
+
+        <h2>Clinical standards and passing benchmarks</h2>
+        <p>{guide.clinicalBenchmarks}</p>
+
+        <h2>When to schedule an in-person eye exam</h2>
+        <p>{guide.whenToSeeDoctor}</p>
+
+        <div style="background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--r-sm); margin: 3rem 0 2rem;">
+          <h3 style="margin-top: 0; font-size: 1.1rem; font-weight: 600;">Practice Screener Notice</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0; line-height: 1.6;">
+            This browser-based check is an educational self-screening and rehearsal tool. It cannot replace a comprehensive medical examination, dilation, or intraocular pressure measurement by an optometrist or ophthalmologist. If you experience visual pain, floaters, flashes, or persistent blur, see an eye care professional.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2rem;">
+          <a class="btn btn-primary" href={`/test/?mode=individual&check=${check.id}`}>
+            Start {guide.name}
+          </a>
+          <a class="btn btn-ghost" href="/checks/">
+            Browse all 13 checks
+          </a>
+        </div>
+      </div>
+    </div>
   </SiteShell>
 </Layout>

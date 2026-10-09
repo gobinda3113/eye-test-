@@ -1,11 +1,228 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SiteShell from "../components/SiteShell.astro";
-import ProsePage from "../components/ProsePage.astro";
+import { SITE } from "../lib/site.ts";
+
+const customMeta = {
+  title: "Contact Online Vision Test — Support & State Rule Inquiries",
+  description: "Get in touch with the Online Vision Test team. Submit questions, report state DMV rule updates, or send technical feedback.",
+  url: `${SITE}/contact/`,
+};
+
+const customAlts = [{ hreflang: "en", url: customMeta.url }];
+const customXDefault = customMeta.url;
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Online Vision Test",
+  "url": "https://onlinevisiontest.org/contact/",
+  "description": customMeta.description,
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Online Vision Test",
+    "url": "https://onlinevisiontest.org/",
+    "email": "contact@onlinevisiontest.org",
+    "founder": {
+      "@type": "Person",
+      "name": "Gobinda Adhikari",
+      "url": "https://gobindaadhikari.com.np/"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "contact@onlinevisiontest.org"
+    }
+  }
+};
 ---
 
-<Layout locale="en" page="contact">
+<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={contactSchema}>
   <SiteShell locale="en" page="contact">
-    <ProsePage locale="en" page="contact" />
+    <div class="container section">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Online Vision Test</a></li>
+          <li aria-current="page">Contact</li>
+        </ol>
+      </nav>
+
+      <div class="simple-hero">
+        <div class="eyebrow">Support &amp; Feedback</div>
+        <h1>Contact Us</h1>
+        <p>Have questions about the practice screener, spotted an outdated state DMV rule, or need technical assistance? Send us a message.</p>
+      </div>
+
+      <div class="snellen-divider" aria-hidden="true" style="margin: 24px 0 36px;">
+        <span class="snellen-motif">
+          <span class="m-1">E</span>
+          <span class="m-2">F P</span>
+          <span class="m-3">T O Z</span>
+          <span class="m-4">L P E D</span>
+        </span>
+      </div>
+
+      <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 36px; max-width: 1040px; margin: 0 auto;">
+        
+        <!-- Contact Info & Guidelines -->
+        <div class="contact-info-col">
+          <h2 style="font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem;">Direct Contact</h2>
+          <p style="color: var(--text-2); line-height: 1.6;">
+            We welcome feedback from drivers, educators, and vision specialists. Corrections to state vision requirements or statutes are particularly appreciated.
+          </p>
+
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 20px; margin: 20px 0; display: grid; gap: 14px;">
+            <div>
+              <div style="font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">General &amp; Editorial Inquiries</div>
+              <a href="mailto:contact@onlinevisiontest.org" style="font-weight: 600; font-size: 1.05rem; color: var(--primary); text-decoration: none;">
+                contact@onlinevisiontest.org
+              </a>
+            </div>
+            <div style="border-top: 1px solid var(--border-soft); pt: 12px; margin-top: 4px; padding-top: 12px;">
+              <div style="font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Technical Lead</div>
+              <div style="font-weight: 600; color: var(--text);">Gobinda Adhikari</div>
+              <div style="font-size: 0.9rem; color: var(--muted); margin-top: 2px;">
+                <a href="https://gobindaadhikari.com.np/" target="_blank" rel="noopener noreferrer">Portfolio</a> · 
+                <a href="https://github.com/gobinda3113" target="_blank" rel="noopener noreferrer">GitHub</a> · 
+                <a href="https://www.linkedin.com/in/gobinda-adhikari-33bbb2213/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </div>
+            </div>
+            <div style="border-top: 1px solid var(--border-soft); margin-top: 4px; padding-top: 12px;">
+              <div style="font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Expected Response Time</div>
+              <div style="color: var(--text); font-size: 0.95rem;">Within 24 to 48 business hours</div>
+            </div>
+          </div>
+
+          <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 18px 20px; margin-top: 24px;">
+            <h3 style="margin-top: 0; font-size: 1.05rem; margin-bottom: 8px;">Medical Disclaimer Notice</h3>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-2); line-height: 1.55;">
+              Online Vision Test is a software screening and rehearsal tool, not a clinical eye examination facility. We cannot interpret your individual vision results, diagnose eye diseases, or provide prescription counsel. Please consult a licensed optometrist or ophthalmologist for clinical evaluation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="contact-form-col" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 28px; box-shadow: var(--shadow-sm);">
+          <h2 style="font-size: 1.5rem; margin-top: 0; margin-bottom: 8px;">Send a Message</h2>
+          <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 24px;">Fill out the form below and we will respond as soon as possible.</p>
+
+          <form id="contactForm" action="https://formspree.io/f/xvgzvkvb" method="POST" style="display: grid; gap: 18px;">
+            <!-- Anti-spam Honeypot -->
+            <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off" />
+
+            <div>
+              <label for="name" style="display: block; font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Your Name <span style="color: var(--danger);">*</span></label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder="Alex Morgan" 
+                style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: var(--r-xs); font-family: inherit; font-size: 0.95rem; background: var(--bg); color: var(--text); box-sizing: border-box;"
+              />
+            </div>
+
+            <div>
+              <label for="email" style="display: block; font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Email Address <span style="color: var(--danger);">*</span></label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder="alex@example.com" 
+                style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: var(--r-xs); font-family: inherit; font-size: 0.95rem; background: var(--bg); color: var(--text); box-sizing: border-box;"
+              />
+            </div>
+
+            <div>
+              <label for="subject" style="display: block; font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Inquiry Topic <span style="color: var(--danger);">*</span></label>
+              <select 
+                id="subject" 
+                name="subject" 
+                required 
+                style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: var(--r-xs); font-family: inherit; font-size: 0.95rem; background: var(--bg); color: var(--text); box-sizing: border-box;"
+              >
+                <option value="state-update">Report a State DMV Rule Correction</option>
+                <option value="bug">Report a Display or Calibration Issue</option>
+                <option value="clinical">Clinical or Methodological Feedback</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" style="display: block; font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Message <span style="color: var(--danger);">*</span></label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                required 
+                placeholder="Please describe your suggestion, question, or correction..." 
+                style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: var(--r-xs); font-family: inherit; font-size: 0.95rem; background: var(--bg); color: var(--text); line-height: 1.5; resize: vertical; box-sizing: border-box;"
+              ></textarea>
+            </div>
+
+            <div>
+              <button 
+                type="submit" 
+                id="submitBtn" 
+                class="btn btn-primary" 
+                style="width: 100%; padding: 12px 20px; font-size: 1rem; cursor: pointer;"
+              >
+                Send Message
+              </button>
+            </div>
+
+            <div id="formStatus" style="display: none; padding: 12px 16px; border-radius: var(--r-xs); font-size: 0.95rem; line-height: 1.5;" role="status"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
   </SiteShell>
 </Layout>
+
+<script is:inline>
+  const form = document.getElementById("contactForm");
+  const statusDiv = document.getElementById("formStatus");
+  const submitBtn = document.getElementById("submitBtn");
+
+  if (form && statusDiv && submitBtn) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+      statusDiv.style.display = "none";
+
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          statusDiv.style.display = "block";
+          statusDiv.style.background = "var(--ok-soft, #e5f3f0)";
+          statusDiv.style.color = "var(--ok, #0d7a6a)";
+          statusDiv.style.border = "1px solid var(--ok, #0d7a6a)";
+          statusDiv.textContent = "Thank you! Your message has been sent successfully. We will get back to you shortly.";
+          form.reset();
+        } else {
+          throw new Error("Form submission error");
+        }
+      } catch (err) {
+        statusDiv.style.display = "block";
+        statusDiv.style.background = "var(--amber-soft, #fbf0dd)";
+        statusDiv.style.color = "var(--amber, #9e5b00)";
+        statusDiv.style.border = "1px solid var(--amber, #9e5b00)";
+        statusDiv.innerHTML = 'There was an issue sending your message. Please email us directly at <a href="mailto:contact@onlinevisiontest.org" style="color:inherit; font-weight:600;">contact@onlinevisiontest.org</a>.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
+      }
+    });
+  }
+</script>

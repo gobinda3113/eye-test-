@@ -1,11 +1,140 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SiteShell from "../components/SiteShell.astro";
-import ProsePage from "../components/ProsePage.astro";
+import { SITE } from "../lib/site.ts";
+
+const customMeta = {
+  title: "About Online Vision Test — Creator & Clinical Methodology",
+  description: "Learn about the engineering and clinical optical standards behind Online Vision Test, created by Full Stack Architect Gobinda Adhikari.",
+  url: `${SITE}/about/`,
+};
+
+const customAlts = [{ hreflang: "en", url: customMeta.url }];
+const customXDefault = customMeta.url;
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://onlinevisiontest.org/about/",
+      "url": "https://onlinevisiontest.org/about/",
+      "name": "About Online Vision Test",
+      "description": customMeta.description,
+      "inLanguage": "en",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://gobindaadhikari.com.np/#person",
+        "name": "Gobinda Adhikari",
+        "jobTitle": "Full Stack Architect & Lead Developer",
+        "url": "https://gobindaadhikari.com.np/",
+        "sameAs": [
+          "https://github.com/gobinda3113",
+          "https://www.linkedin.com/in/gobinda-adhikari-33bbb2213/",
+          "https://gobindaadhikari.com.np/"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Perchange AI",
+          "url": "https://onlinevisiontest.org"
+        }
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://onlinevisiontest.org/#organization",
+      "name": "Online Vision Test",
+      "url": "https://onlinevisiontest.org/",
+      "logo": "https://onlinevisiontest.org/favicon.svg",
+      "founder": {
+        "@id": "https://gobindaadhikari.com.np/#person"
+      }
+    }
+  ]
+};
 ---
 
-<Layout locale="en" page="about">
+<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={aboutSchema}>
   <SiteShell locale="en" page="about">
-    <ProsePage locale="en" page="about" />
+    <div class="container section">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Online Vision Test</a></li>
+          <li aria-current="page">About</li>
+        </ol>
+      </nav>
+
+      <div class="simple-hero">
+        <div class="eyebrow">Methodology & Background</div>
+        <h1>About Online Vision Test</h1>
+        <p>A calibrated practice screening tool developed to help drivers and applicants prepare for licensing vision checks with optical precision.</p>
+      </div>
+
+      <div class="snellen-divider" aria-hidden="true" style="margin: 24px 0 36px;">
+        <span class="snellen-motif">
+          <span class="m-1">E</span>
+          <span class="m-2">F P</span>
+          <span class="m-3">T O Z</span>
+          <span class="m-4">L P E D</span>
+        </span>
+      </div>
+
+      <div class="prose" style="max-width: 76ch; margin: 0 auto;">
+        <h2>Why this tool was built</h2>
+        <p>
+          Most eye charts available online are static images that display inconsistently across different screens. A letter shown on a high-density smartphone screen appears at a fraction of the physical size of the same image viewed on an external monitor. When physical letter height varies, testing distance and angular resolution calculations become inaccurate.
+        </p>
+        <p>
+          Online Vision Test addresses this limitation through dynamic calibration. By placing a standard magnetic card (standardized at 85.6 mm under ISO/IEC 7810 ID-1) against the display, the application calculates the physical pixel density of your monitor. The software then renders vector optotypes scaled to subtend exactly five minutes of arc at your selected distance, matching clinical standards.
+        </p>
+
+        <h2>Creator and technical lead</h2>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 24px; margin: 24px 0;">
+          <h3 style="margin-top: 0; font-size: 1.25rem;">Gobinda Adhikari</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin-top: -6px; margin-bottom: 14px;">
+            Full Stack Architect & Systems Engineer · Founder of Perchange AI
+          </p>
+          <p style="margin-bottom: 14px; line-height: 1.6;">
+            Gobinda Adhikari is a software architect specializing in high-performance web applications, accessibility, and interactive systems. He engineered the responsive rendering engine, physical calibration matrix, and multilingual localization architecture for Online Vision Test.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.9rem;">
+            <a href="https://gobindaadhikari.com.np/" target="_blank" rel="noopener noreferrer" style="font-weight: 500;">
+              Portfolio &amp; Work &rarr;
+            </a>
+            <a href="https://github.com/gobinda3113" target="_blank" rel="noopener noreferrer" style="font-weight: 500;">
+              GitHub (@gobinda3113) &rarr;
+            </a>
+            <a href="https://www.linkedin.com/in/gobinda-adhikari-33bbb2213/" target="_blank" rel="noopener noreferrer" style="font-weight: 500;">
+              LinkedIn &rarr;
+            </a>
+          </div>
+        </div>
+
+        <h2>Scientific and statutory standards</h2>
+        <p>The screening tests incorporate established optometric and regulatory standards:</p>
+        <ul style="line-height: 1.7; padding-left: 20px;">
+          <li><strong>ISO 8596:</strong> Specifies the Landolt ring optotype, five-arcminute angular subtension, and one-arcminute stroke gap for visual acuity assessment.</li>
+          <li><strong>Herman Snellen (1862) Formulas:</strong> Governs 5x5 grid letter construction and distance denominators (20/20 through 20/200).</li>
+          <li><strong>Pelli-Robson Contrast Criteria:</strong> Principles for low-contrast letter discrimination and log-contrast sensitivity evaluation.</li>
+          <li><strong>Federal Motor Carrier Safety Administration (FMCSA):</strong> Driver vision benchmarks under 49 CFR § 391.41 for commercial vehicle operators.</li>
+          <li><strong>US State Motor Vehicle Codes:</strong> Individual visual acuity thresholds and field requirements compiled from official state licensing statutes.</li>
+        </ul>
+
+        <h2>Privacy architecture</h2>
+        <p>
+          Your privacy is protected by design. Calibration settings and test progress remain stored exclusively in your local browser storage (localStorage). No vision scores, webcam feeds, or personal identifiers are uploaded to remote servers.
+        </p>
+
+        <h2>Medical notice and limitations</h2>
+        <p>
+          Online Vision Test is an educational self-check and practice screener. It is not an official medical examination, cannot diagnose eye diseases, and does not replace an in-person exam by a licensed optometrist or ophthalmologist.
+        </p>
+
+        <div style="margin-top: 36px; padding: 20px 24px; background: var(--surface-2); border-radius: var(--r-sm); border: 1px solid var(--border);">
+          <p style="margin: 0 0 8px 0;">Need to report an update or have questions? <a href="/contact/">Get in touch on our contact page</a>.</p>
+          <p style="margin: 0;">Ready to check your vision? <a href="/#screener">Launch the interactive test</a>.</p>
+        </div>
+      </div>
+    </div>
   </SiteShell>
 </Layout>

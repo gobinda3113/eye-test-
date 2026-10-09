@@ -95,7 +95,7 @@ const faqSchema = {
 };
 ---
 
-<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
+<Layout locale="en" noindex={!stateData.verified} customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">
@@ -121,29 +121,49 @@ const faqSchema = {
         <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 20px 24px; margin: 16px 0 24px;">
           <ul style="margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px;">
             <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
-              <span>Standard Requirement:</span>
-              <strong style="font-family: var(--font-display); font-size: 17px; color: var(--text);">{stateData.min}</strong>
+              <span>Standard Acuity Requirement:</span>
+              <strong style="font-family: var(--font-display); font-size: 17px; color: var(--text);">{stateData.min} ({stateData.need === "both" ? "both eyes" : "better eye"})</strong>
             </li>
             <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
-              <span>Restricted License:</span>
+              <span>Restricted License Minimum:</span>
               <strong>{stateData.restrict ? `Possible down to ${stateData.restrict}` : "Not generally permitted below minimum"}</strong>
             </li>
             <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
-              <span>Tested During Renewal:</span>
+              <span>Renewal Testing Schedule:</span>
               <span>{stateData.renewal === "every" ? "Every renewal cycle" : stateData.renewal === "alternate" ? "Every other renewal cycle" : "Depending on age or longer cycles"}</span>
             </li>
-            {stateData.verified && stateData.field && (
-              <li style="display: flex; justify-content: space-between;">
+            {stateData.field && (
+              <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
                 <span>Field of Vision:</span>
-                <strong>{stateData.field}</strong>
+                <strong style="text-align: right; max-width: 60%;">{stateData.field}</strong>
+              </li>
+            )}
+            {stateData.statute && (
+              <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
+                <span>Governing Rule or Statute:</span>
+                <span style="font-family: var(--font-mono); font-size: 12px; text-align: right; max-width: 60%;">{stateData.statute}</span>
+              </li>
+            )}
+            {stateData.doctorForm && (
+              <li style="display: flex; justify-content: space-between;">
+                <span>Doctor Referral Form:</span>
+                <strong style="text-align: right; max-width: 60%;">{stateData.doctorForm}</strong>
               </li>
             )}
           </ul>
         </div>
 
+        {stateData.retestPolicy && (
+          <div style="background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--brand, #0284c7); border-radius: var(--r-sm); padding: 18px 22px; margin: 20px 0;">
+            <h3 style="font-size: 17px; margin: 0 0 8px 0; color: var(--text);">What Happens If You Fail the Counter Eye Test?</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text);">{stateData.retestPolicy}</p>
+          </div>
+        )}
+
         {stateData.dmvUrl && (
-          <p>
-            For the most up-to-date and official information, please check the <a href={stateData.dmvUrl} target="_blank" rel="noopener noreferrer">official {stateData.name} DMV website</a>.
+          <p style="margin: 16px 0; font-size: 14px; color: var(--muted);">
+            Official agency reference: <a href={stateData.dmvUrl} target="_blank" rel="noopener noreferrer">Visit official {stateData.name} DMV licensing portal</a>.
+            {stateData.asOf && <span> Verified against state administrative standards as of {stateData.asOf}.</span>}
           </p>
         )}
 

@@ -125,8 +125,26 @@ export default defineConfig({
         }
         return item;
       },
-      // error pages are noindex and must stay out of the sitemap
-      filter: (page) => !/\/(404|500)\/?$/.test(page),
+      // error pages and unverified state pages are noindex and must stay out of the sitemap
+      filter: (page) => {
+        if (/\/(404|500)\/?$/.test(page)) return false;
+        try {
+          const pathname = new URL(page).pathname;
+          const stateMatch = pathname.match(/^\/states\/([^/]+)\/$/);
+          const VERIFIED_STATE_SLUGS = new Set([
+            "alabama", "arizona", "arkansas", "california", "colorado",
+            "connecticut", "delaware", "district-of-columbia", "florida", "georgia",
+            "idaho", "illinois", "indiana", "kansas", "kentucky",
+            "louisiana", "maine", "maryland", "montana", "nebraska",
+            "new-york", "oregon", "south-carolina", "texas", "vermont",
+            "virginia", "washington", "wisconsin"
+          ]);
+          if (stateMatch && !VERIFIED_STATE_SLUGS.has(stateMatch[1])) {
+            return false;
+          }
+        } catch (e) {}
+        return true;
+      },
     }),
   ],
 });
