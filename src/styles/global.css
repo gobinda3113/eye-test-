@@ -1260,7 +1260,12 @@ html[data-theme="dark"] .btn.btn-primary {
   border: 1px solid var(--lab-border);
 }
 .calib-card-wrap,
-#calibRuler,
+.calib-ruler-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
 .calib-card {
   width: 320px; height: 202px; border-radius: 10px;

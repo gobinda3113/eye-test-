@@ -1069,15 +1069,26 @@ export function createLab(labEl) {
         const displayW = isPortrait ? rawH : rawW;
         const displayH = isPortrait ? rawW : rawH;
         
-        const maxH = window.innerWidth <= 480 ? (isPortrait ? 300 : 120) : 440;
-        const scale = Math.min(avail > 0 ? avail / displayW : 1, displayH > 0 ? maxH / displayH : 1, 1);
+        let scale = 1;
+        if (avail > 0 && displayW > avail) {
+          scale = Math.min(scale, avail / displayW);
+        }
+        if (!isPortrait) {
+          const maxH = window.innerWidth <= 480 ? 200 : 440;
+          if (displayH > maxH) {
+            scale = Math.min(scale, maxH / displayH);
+          }
+        }
+        scale = Math.min(scale, 1);
         effScale = scale;
         
         cardWrap.style.width = Math.round(displayW * scale) + "px";
         cardWrap.style.height = Math.round(displayH * scale) + "px";
         cardEl.style.width = rawW + "px";
         cardEl.style.height = rawH + "px";
-        cardEl.style.transform = `scale(${scale}) ${isPortrait ? 'rotate(90deg)' : ''}`;
+        cardEl.style.transform = scale < 1
+          ? `scale(${scale}) ${isPortrait ? 'rotate(90deg)' : ''}`
+          : (isPortrait ? 'rotate(90deg)' : 'none');
         cardEl.style.transformOrigin = "center center";
 
         valEl.textContent = Math.round((cardW / nativeW) * 100) + "%";
@@ -1088,8 +1099,17 @@ export function createLab(labEl) {
         const displayW = isPortrait ? rawH : rawW;
         const displayH = isPortrait ? rawW : rawH;
         
-        const maxH = window.innerWidth <= 480 ? (isPortrait ? 300 : 120) : 440;
-        const scale = Math.min(avail > 0 ? avail / displayW : 1, displayH > 0 ? maxH / displayH : 1, 1);
+        let scale = 1;
+        if (avail > 0 && displayW > avail) {
+          scale = Math.min(scale, avail / displayW);
+        }
+        if (!isPortrait) {
+          const maxH = window.innerWidth <= 480 ? 200 : 440;
+          if (displayH > maxH) {
+            scale = Math.min(scale, maxH / displayH);
+          }
+        }
+        scale = Math.min(scale, 1);
         effScale = scale;
         
         rulerWrap.style.width = Math.round(displayW * scale) + "px";
@@ -1097,7 +1117,9 @@ export function createLab(labEl) {
         const renderedRulerPx = Math.round(rawW);
         rulerEl.style.width = renderedRulerPx + "px";
         rulerEl.style.height = rawH + "px";
-        rulerEl.style.transform = `scale(${scale}) ${isPortrait ? 'rotate(90deg)' : ''}`;
+        rulerEl.style.transform = scale < 1
+          ? `scale(${scale}) ${isPortrait ? 'rotate(90deg)' : ''}`
+          : (isPortrait ? 'rotate(90deg)' : 'none');
         rulerEl.style.transformOrigin = "center center";
         
         ticksEl.style.backgroundSize = (renderedRulerPx / 5) + "px 10px";
