@@ -58,9 +58,12 @@ function getSourceFiles(url) {
   if (path === "/privacy/") return ["src/pages/privacy.astro", "src/layouts/Layout.astro"];
   if (path === "/contact/") return ["src/pages/contact.astro", "src/layouts/Layout.astro"];
   if (path === "/blog/") return ["src/pages/blog/index.astro", "src/data/blog.ts", "src/layouts/Layout.astro"];
+  if (path === "/test/") return ["src/pages/test.astro", ...HOME_DEPS];
+  if (path === "/checks/") return ["src/pages/checks/index.astro", "src/layouts/Layout.astro"];
   
   if (path.startsWith("/states/")) return ["src/pages/states/[state].astro", "src/data/states.ts", "src/layouts/Layout.astro"];
   if (path.match(/^\/blog\/[^/]+\/$/)) return ["src/pages/blog/[slug].astro", "src/data/blog.ts", "src/components/BlogPost.astro", "src/layouts/Layout.astro"];
+  if (path.match(/^\/checks\/[^/]+\/$/)) return ["src/pages/checks/[check].astro", "src/layouts/Layout.astro"];
   
   const localeMatch = path.match(/^\/([a-z]{2})\/(.*)$/);
   if (localeMatch) {
@@ -71,6 +74,7 @@ function getSourceFiles(url) {
      if (sub === "privacy/") return ["src/pages/[locale]/privacy.astro", "src/layouts/Layout.astro"];
      if (sub === "contact/") return ["src/pages/[locale]/contact.astro", "src/layouts/Layout.astro"];
      if (sub === "blog/") return ["src/pages/[locale]/blog/index.astro", "src/data/blog.ts", "src/layouts/Layout.astro"];
+     if (sub === "test/") return ["src/pages/[locale]/test.astro", ...HOME_DEPS];
      if (sub.startsWith("blog/")) return ["src/pages/[locale]/blog/[slug].astro", "src/data/blog.ts", "src/components/BlogPost.astro", "src/layouts/Layout.astro"];
   }
   return null;
