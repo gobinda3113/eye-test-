@@ -1887,13 +1887,13 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     );
 
     let resizeTimer;
-    const onResize = () => {
+    const scheduleRedraw = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         if (step === "near") redrawCanvases();
       }, 300);
     };
-    on(window, "resize", onResize);
+    on(window, "resize", scheduleRedraw);
 
     let resolutionQuery;
     const watchDPR = () => {
@@ -1905,15 +1905,20 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
     const onDprChange = () => {
       if (step === "near") {
-        redrawCanvases();
+        scheduleRedraw();
         watchDPR();
       }
     };
     watchDPR();
 
     if (typeof document !== "undefined" && document.fonts) {
-      document.fonts.load('16px "Fraunces"').then(() => {
-        if (step === "near") redrawCanvases();
+      document.fonts.load('400 16px "Fraunces"', "The DMV benchmark").then((loadedFaces) => {
+        const expectedFontLoaded = loadedFaces.some(face => 
+          face.family.replace(/["']/g, "") === "Fraunces" && face.status === "loaded"
+        );
+        if (expectedFontLoaded && step === "near") {
+          redrawCanvases();
+        }
       }).catch(() => {});
     }
 
