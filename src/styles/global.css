@@ -1380,8 +1380,8 @@ input[type="range"]::-moz-range-thumb {
   .calib-stage {
     gap: 8px !important;
   }
-  .calib-card-wrap {
-    max-height: 125px;
+  .calib-card-wrap,
+  .calib-ruler-wrap {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -973,8 +973,10 @@ export function createLab(labEl) {
                 <span class="cc-chip"></span>
                 <span class="cc-label">${t("calib.modeId1")}</span>
               </div></div>
-              <div id="calibRuler" style="display:none; height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); border-bottom: none; border-radius: 0; box-sizing: border-box; position: relative;">
-                <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
+              <div class="calib-ruler-wrap" id="calibRulerWrap" style="display:none; align-items:center; justify-content:center;">
+                <div id="calibRuler" style="height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); border-bottom: none; border-radius: 0; box-sizing: border-box; position: relative;">
+                  <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
+                </div>
               </div>
               <p class="cc-hint" id="calibHint" style="margin-top: 6px;">${t("calib.cardHint")}</p>
               <p class="calib-privacy-note" style="font-size: 12px; color: var(--text-3); margin-top: 4px; text-align: center;">${t("calib.privacyNote")}</p>
@@ -994,6 +996,7 @@ export function createLab(labEl) {
 
     const cardWrap = stage.querySelector("#calibCardWrap");
     const cardEl = stage.querySelector("#calibCard");
+    const rulerWrap = stage.querySelector("#calibRulerWrap");
     const rulerEl = stage.querySelector("#calibRuler");
     const ticksEl = stage.querySelector("#rulerTicks");
     const btnCard = stage.querySelector("#btnModeCard");
@@ -1031,7 +1034,7 @@ export function createLab(labEl) {
       btnRuler.style.border = "1px solid transparent";
       cardWrap.style.display = "flex";
       cardEl.style.display = "grid";
-      rulerEl.style.display = "none";
+      rulerWrap.style.display = "none";
       hintEl.textContent = t("calib.cardHint");
       holdEl.textContent = t("calib.hold");
       if (rangeLabel) rangeLabel.textContent = t("calib.slider");
@@ -1045,7 +1048,7 @@ export function createLab(labEl) {
       btnCard.style.border = "1px solid transparent";
       cardWrap.style.display = "none";
       cardEl.style.display = "none";
-      rulerEl.style.display = "block";
+      rulerWrap.style.display = "flex";
       hintEl.textContent = t("calib.rulerHint");
       holdEl.textContent = t("calib.rulerHold");
       if (rangeLabel) rangeLabel.textContent = t("calib.rulerScale");
@@ -1057,37 +1060,49 @@ export function createLab(labEl) {
       const cs = getComputedStyle(visual);
       const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
       const avail = Math.floor(visual.clientWidth - pad);
+      const isMobile = window.innerWidth <= 768;
+      const isPortrait = isMobile && window.innerHeight > window.innerWidth;
 
       if (mode === 'card') {
-        const ch = Math.round(cardW * (53.98 / CARD_MM));
-        const maxH = window.innerWidth <= 480 ? 120 : 440;
-        const scale = Math.min(avail > 0 ? avail / cardW : 1, ch > 0 ? maxH / ch : 1, 1);
+        const rawW = cardW;
+        const rawH = Math.round(cardW * (53.98 / CARD_MM));
+        const displayW = isPortrait ? rawH : rawW;
+        const displayH = isPortrait ? rawW : rawH;
+        
+        const maxH = window.innerWidth <= 480 ? (isPortrait ? 300 : 120) : 440;
+        const scale = Math.min(avail > 0 ? avail / displayW : 1, displayH > 0 ? maxH / displayH : 1, 1);
         effScale = scale;
-        if (scale < 1) {
-          cardWrap.style.width = Math.round(cardW * scale) + "px";
-          cardWrap.style.height = Math.round(ch * scale) + "px";
-          cardEl.style.width = cardW + "px";
-          cardEl.style.height = ch + "px";
-          cardEl.style.transform = `scale(${scale})`;
-          cardEl.style.transformOrigin = "center center";
-        } else {
-          cardWrap.style.width = cardW + "px";
-          cardWrap.style.height = ch + "px";
-          cardEl.style.width = cardW + "px";
-          cardEl.style.height = ch + "px";
-          cardEl.style.transform = "none";
-        }
+        
+        cardWrap.style.width = Math.round(displayW * scale) + "px";
+        cardWrap.style.height = Math.round(displayH * scale) + "px";
+        cardEl.style.width = rawW + "px";
+        cardEl.style.height = rawH + "px";
+        cardEl.style.transform = `scale(${scale}) ${isPortrait ? 'rotate(90deg)' : ''}`;
+        cardEl.style.transformOrigin = "center center";
+
         valEl.textContent = Math.round((cardW / nativeW) * 100) + "%";
-        noteEl.hidden = (scale >= 1 && avail >= nativeW);
+        noteEl.hidden = (scale >= 1 && avail >= displayW);
       } else {
-        const rulerW = cardW * (RULER_MM / CARD_MM);
-        const scale = Math.min(avail > 0 ? avail / rulerW : 1, 1);
+        const rawW = cardW * (RULER_MM / CARD_MM);
+        const rawH = 32;
+        const displayW = isPortrait ? rawH : rawW;
+        const displayH = isPortrait ? rawW : rawH;
+        
+        const maxH = window.innerWidth <= 480 ? (isPortrait ? 300 : 120) : 440;
+        const scale = Math.min(avail > 0 ? avail / displayW : 1, displayH > 0 ? maxH / displayH : 1, 1);
         effScale = scale;
-        const renderedRulerPx = Math.round(rulerW * scale);
+        
+        rulerWrap.style.width = Math.round(displayW * scale) + "px";
+        rulerWrap.style.height = Math.round(displayH * scale) + "px";
+        const renderedRulerPx = Math.round(rawW);
         rulerEl.style.width = renderedRulerPx + "px";
+        rulerEl.style.height = rawH + "px";
+        rulerEl.style.transform = `scale(${scale}) ${isPortrait ? 'rotate(90deg)' : ''}`;
+        rulerEl.style.transformOrigin = "center center";
+        
         ticksEl.style.backgroundSize = (renderedRulerPx / 5) + "px 10px";
-        valEl.textContent = Math.round((rulerW / (RULER_MM / MM_PER_PX_FALLBACK)) * 100) + "%";
-        noteEl.hidden = (scale >= 1);
+        valEl.textContent = Math.round((rawW / (RULER_MM / MM_PER_PX_FALLBACK)) * 100) + "%";
+        noteEl.hidden = (scale >= 1 && avail >= displayW);
       }
     };
 
@@ -1095,14 +1110,18 @@ export function createLab(labEl) {
 
     let lastMax = 0;
     let lastAvail = -1;
+    let lastPortrait = null;
     const fit = () => {
       const cs = getComputedStyle(visual);
       const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
       const avail = Math.floor(visual.clientWidth - pad);
+      const isMobile = window.innerWidth <= 768;
+      const isPortrait = isMobile && window.innerHeight > window.innerWidth;
       const mx = maxCard();
-      if (mx === lastMax && avail === lastAvail) return;
+      if (mx === lastMax && avail === lastAvail && isPortrait === lastPortrait) return;
       lastMax = mx;
       lastAvail = avail;
+      lastPortrait = isPortrait;
       range.max = String(mx);
       cardW = Math.max(CARD_MIN, Math.min(want, mx));
       range.value = String(cardW);
@@ -2421,7 +2440,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     clearCleanups();
     status("");
     const entryChoice = document.getElementById("testEntryChoice");
-    if (entryChoice) entryChoice.style.display = "flex";
+    if (entryChoice) entryChoice.style.display = "";
     labEl.style.display = "none";
     if (window.location.search) {
       window.history.replaceState({}, "", window.location.pathname);
