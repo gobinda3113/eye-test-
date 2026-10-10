@@ -974,7 +974,7 @@ export function createLab(labEl) {
                 <span class="cc-label">${t("calib.modeId1")}</span>
               </div></div>
               <div class="calib-ruler-wrap" id="calibRulerWrap" style="display:none; align-items:center; justify-content:center;">
-                <div id="calibRuler" style="height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); border-bottom: none; border-radius: 0; box-sizing: border-box; position: relative;">
+                <div id="calibRuler" style="height: 32px; border-top: 2px solid var(--lab-accent); border-left: 2px solid var(--lab-accent); border-right: 2px solid var(--lab-accent); border-bottom: none; border-radius: 0; box-sizing: border-box; position: relative; flex-shrink: 0;">
                   <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background-image: linear-gradient(to right, var(--lab-accent) 2px, transparent 2px); background-repeat: repeat-x;" id="rulerTicks"></div>
                 </div>
               </div>
@@ -1073,7 +1073,12 @@ export function createLab(labEl) {
         if (avail > 0 && displayW > avail) {
           scale = Math.min(scale, avail / displayW);
         }
-        if (!isPortrait) {
+        if (isPortrait) {
+          const maxH = Math.max(240, window.innerHeight - 260);
+          if (displayH > maxH) {
+            scale = Math.min(scale, maxH / displayH);
+          }
+        } else {
           const maxH = window.innerWidth <= 480 ? 200 : 440;
           if (displayH > maxH) {
             scale = Math.min(scale, maxH / displayH);
@@ -1103,7 +1108,12 @@ export function createLab(labEl) {
         if (avail > 0 && displayW > avail) {
           scale = Math.min(scale, avail / displayW);
         }
-        if (!isPortrait) {
+        if (isPortrait) {
+          const maxH = Math.max(240, window.innerHeight - 260);
+          if (displayH > maxH) {
+            scale = Math.min(scale, maxH / displayH);
+          }
+        } else {
           const maxH = window.innerWidth <= 480 ? 200 : 440;
           if (displayH > maxH) {
             scale = Math.min(scale, maxH / displayH);
