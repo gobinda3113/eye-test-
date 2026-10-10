@@ -472,9 +472,10 @@ export function createLab(labEl) {
 
     const checksOnly = STEP_ORDER.filter((s) => !["calibrate", "guidance", "menu", "results"].includes(s));
     const checkIdx = checksOnly.indexOf(currentId);
+    const prevId = idx > 0 ? STEP_ORDER[idx - 1] : null;
 
     setFoot(`
-      <button class="btn btn-quiet btn-sm" data-act="prev"${checkIdx > 0 ? "" : " disabled"}>${t("lab.prev")}</button>
+      <button class="btn btn-quiet btn-sm" data-act="prev"${prevId ? "" : " disabled"}>${t("lab.prev")}</button>
       <span class="trial-counter">${t("lab.checkOf", { n: checkIdx + 1, total: checksOnly.length })}</span>
       <button class="btn btn-soft btn-sm" data-act="next">${t("lab.next")}</button>
     `);
@@ -482,18 +483,19 @@ export function createLab(labEl) {
     const prevBtn = foot.querySelector('[data-act="prev"]');
     const nextBtn = foot.querySelector('[data-act="next"]');
 
-    if (prevBtn && checkIdx > 0) {
+    if (prevBtn && prevId) {
       prevBtn.onclick = () => {
         // Stale results cleared on Previous
         for (let i = idx; i < STEP_ORDER.length; i++) {
           const stepId = STEP_ORDER[i];
           if (results[stepId] !== undefined) results[stepId] = null;
           if (stepId === "distance") { results.right = null; results.left = null; results.both = null; }
+          if (stepId === "sivtsev") { results.sivtsev = null; }
         }
-        const prevCheck = checksOnly[checkIdx - 1];
-        if (results[prevCheck] !== undefined) results[prevCheck] = null;
-        if (prevCheck === "distance") { results.right = null; results.left = null; results.both = null; }
-        go(prevCheck);
+        if (results[prevId] !== undefined) results[prevId] = null;
+        if (prevId === "distance") { results.right = null; results.left = null; results.both = null; }
+        if (prevId === "sivtsev") { results.sivtsev = null; }
+        go(prevId);
       };
     }
 
@@ -568,7 +570,17 @@ export function createLab(labEl) {
     `);
     const prevBtn = foot.querySelector('[data-act="prev"]');
     const nextBtn = foot.querySelector('[data-act="next"]');
-    if (prevBtn && prevId) on(prevBtn, "click", () => go(prevId));
+    if (prevBtn && prevId) {
+      on(prevBtn, "click", () => {
+        if (results[step] !== undefined) results[step] = null;
+        if (step === "distance") { results.right = null; results.left = null; results.both = null; }
+        if (step === "sivtsev") { results.sivtsev = null; }
+        if (results[prevId] !== undefined) results[prevId] = null;
+        if (prevId === "distance") { results.right = null; results.left = null; results.both = null; }
+        if (prevId === "sivtsev") { results.sivtsev = null; }
+        go(prevId);
+      });
+    }
     if (nextBtn) on(nextBtn, "click", () => go(STEP_ORDER[Math.min(idx + 1, STEP_ORDER.length - 1)]));
   }
 
