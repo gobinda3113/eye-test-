@@ -1895,11 +1895,26 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
     on(window, "resize", onResize);
 
-    if (typeof document !== "undefined" && document.fonts && document.fonts.ready && !(window as any)._nearFontLoadHooked) {
-      (window as any)._nearFontLoadHooked = true;
-      document.fonts.ready.then(() => {
+    let resolutionQuery;
+    const watchDPR = () => {
+      if (typeof window === "undefined" || !window.matchMedia) return;
+      const currentDpr = window.devicePixelRatio || 1;
+      if (resolutionQuery) resolutionQuery.removeEventListener("change", onDprChange);
+      resolutionQuery = window.matchMedia(`(resolution: ${currentDpr}dppx)`);
+      resolutionQuery.addEventListener("change", onDprChange, { once: true });
+    };
+    const onDprChange = () => {
+      if (step === "near") {
+        redrawCanvases();
+        watchDPR();
+      }
+    };
+    watchDPR();
+
+    if (typeof document !== "undefined" && document.fonts) {
+      document.fonts.load('16px "Fraunces"').then(() => {
         if (step === "near") redrawCanvases();
-      });
+      }).catch(() => {});
     }
 
     setFoot(`

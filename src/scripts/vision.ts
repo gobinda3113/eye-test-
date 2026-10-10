@@ -109,8 +109,17 @@ export function renderNearVisionCanvas(options: {
 
   measureCtx.font = `${fontDevicePx}px ${fontFamily}`;
   const metricSample = measureCtx.measureText("E");
-  const ascentDevicePx = Math.ceil(metricSample.actualBoundingBoxAscent || (fontDevicePx * SERIF_CAP_RATIO));
-  const descentDevicePx = Math.ceil(measureCtx.measureText("gypqj").actualBoundingBoxDescent || (fontDevicePx * 0.28));
+  const ascentDevicePx = Math.round(metricSample.actualBoundingBoxAscent || (fontDevicePx * SERIF_CAP_RATIO));
+  const descentDevicePx = Math.round(measureCtx.measureText("gypqj").actualBoundingBoxDescent || (fontDevicePx * 0.28));
+
+  const errorPercent = Math.abs(ascentDevicePx - capHeightDevicePx) / capHeightDevicePx;
+  if (errorPercent > 0.06) {
+    return {
+      ok: false,
+      reason: `Display pixel grid cannot render this size accurately (error: ${(errorPercent*100).toFixed(1)}%)`,
+      devicePixels: capHeightDevicePx
+    };
+  }
 
   // Wrap words based on maxWidthCssPx
   const maxWidthDevicePx = Math.max(120, Math.floor(options.maxWidthCssPx * dpr));
