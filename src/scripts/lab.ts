@@ -10,6 +10,7 @@ import { t } from "./i18n.ts";
 import {
   lineHeightPx,
   nearFontPx,
+  renderNearVisionCanvas,
   drawPlate,
   drawStereogram,
   STEREO_SHAPES,
@@ -1823,16 +1824,51 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       <div style="margin-top:22px">
         <div class="near-card" id="nearCard">
           ${NEAR_LINES.map((line, i) => `
-            <button type="button" class="near-line" data-line="${i}">
+            <button type="button" class="near-line" data-line="${i}" id="nearLineBtn_${i}">
               <span class="near-tag">${line.nPoint} &middot; ${line.equiv}</span>
-              <span class="near-text" style="font-size:${nearFontPx(line.denominator, mmPerPx).toFixed(1)}px">${line.text}</span>
+              <span class="near-content" id="nearLineContent_${i}"></span>
             </button>`).join("")}
         </div>
       </div>
       <p class="trial-counter" style="text-align:center;margin-top:14px">${t("near.prompt")}</p>
     `;
+
+    const nearCard = stage.querySelector("#nearCard");
+    const cardRect = nearCard ? nearCard.getBoundingClientRect() : null;
+    const cardPadding = window.innerWidth <= 480 ? 28 : 64;
+    const availableWidth = cardRect ? (cardRect.width - cardPadding - 70) : (Math.min(window.innerWidth - 32, 600) - 100);
+    const maxTextWidth = Math.max(160, Math.floor(availableWidth));
+
+    NEAR_LINES.forEach((line, i) => {
+      const btn = stage.querySelector(`#nearLineBtn_${i}`);
+      const contentEl = stage.querySelector(`#nearLineContent_${i}`);
+      if (!btn || !contentEl) return;
+
+      const res = renderNearVisionCanvas({
+        text: line.text,
+        denominator: line.denominator,
+        mmPerPx,
+        maxWidthCssPx: maxTextWidth,
+      });
+
+      if (res.ok && res.canvas) {
+        contentEl.appendChild(res.canvas);
+      } else {
+        btn.classList.add("is-disabled");
+        btn.setAttribute("aria-disabled", "true");
+        btn.setAttribute("title", res.reason || "Screen resolution too low for this line");
+        contentEl.innerHTML = `
+          <div class="near-unsupported">
+            <span class="near-unsupported-badge">${t("near.limitBadge") !== "near.limitBadge" ? t("near.limitBadge") : "Display limit"}</span>
+            <span class="near-unsupported-msg">${t("near.lowRes") !== "near.lowRes" ? t("near.lowRes") : "Screen resolution too low to test this line accurately at 40 cm"}</span>
+          </div>
+        `;
+      }
+    });
+
     stage.querySelectorAll("[data-line]").forEach((btn) =>
       on(btn, "click", () => {
+        if (btn.classList.contains("is-disabled")) return;
         const line = NEAR_LINES[Number(btn.dataset.line)];
         results.near = line.denominator;
         saveResults(results);
@@ -1840,6 +1876,23 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         finishStep("near");
       })
     );
+
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (step === "near") renderNear();
+      }, 300);
+    };
+    on(window, "resize", onResize);
+
+    if (typeof document !== "undefined" && document.fonts && document.fonts.ready && !(window as any)._nearFontLoadHooked) {
+      (window as any)._nearFontLoadHooked = true;
+      document.fonts.ready.then(() => {
+        if (step === "near") renderNear();
+      });
+    }
+
     setFoot(`
       <button class="btn btn-quiet btn-sm" data-act="skip">${t("near.cantRead")}</button>
       <span class="trial-counter">${t("near.of", { n: 1, total: NEAR_LINES.length })}</span>

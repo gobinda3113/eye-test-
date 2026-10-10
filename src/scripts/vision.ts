@@ -55,6 +55,121 @@ export function nearFontPx(denominator: number, mmPerPx: number): number {
   return mmToPx(letterHeightMm(denominator, NEAR_DISTANCE_M), mmPerPx) / SERIF_CAP_RATIO;
 }
 
+export interface NearCanvasResult {
+  ok: boolean;
+  canvas?: HTMLCanvasElement;
+  reason?: string;
+  devicePixels?: number;
+}
+
+/**
+ * Renders a near-vision sentence onto a high-DPI canvas matching device pixels.
+ * Bypasses browser minimum-font-size and mobile text-autosizing rules.
+ * Automatically wraps words to prevent horizontal overflowing.
+ */
+export function renderNearVisionCanvas(options: {
+  text: string;
+  denominator: number;
+  mmPerPx: number;
+  maxWidthCssPx: number;
+  fontFamily?: string;
+  minDevicePixels?: number;
+}): NearCanvasResult {
+  if (typeof document === "undefined") {
+    return { ok: false, reason: "No DOM environment" };
+  }
+
+  const minDevicePixels = options.minDevicePixels ?? 7;
+  const targetCapHeightMm = letterHeightMm(options.denominator, NEAR_DISTANCE_M);
+  const dpr = typeof window !== "undefined" ? (window.devicePixelRatio || 1) : 1;
+  const capHeightCssPx = targetCapHeightMm / (options.mmPerPx || MM_PER_PX_FALLBACK);
+  const capHeightDevicePx = capHeightCssPx * dpr;
+
+  if (capHeightDevicePx < minDevicePixels) {
+    return {
+      ok: false,
+      reason: `Display resolution too low to render ${targetCapHeightMm.toFixed(2)} mm line accurately`,
+      devicePixels: capHeightDevicePx,
+    };
+  }
+
+  const fontFamily = options.fontFamily || '"Fraunces", Georgia, "Times New Roman", serif';
+  const measureCanvas = document.createElement("canvas");
+  const measureCtx = measureCanvas.getContext("2d");
+  if (!measureCtx) {
+    return { ok: false, reason: "Canvas 2D unavailable" };
+  }
+
+  // Find exact font size in device pixels that produces capHeightDevicePx for capital 'E'
+  const trialFontPx = 100;
+  measureCtx.font = `${trialFontPx}px ${fontFamily}`;
+  const metricE = measureCtx.measureText("E");
+  const measuredCapHeight = metricE.actualBoundingBoxAscent || (trialFontPx * SERIF_CAP_RATIO);
+  const fontDevicePx = (capHeightDevicePx / (measuredCapHeight > 0 ? measuredCapHeight : (trialFontPx * 0.7))) * trialFontPx;
+
+  measureCtx.font = `${fontDevicePx}px ${fontFamily}`;
+  const metricSample = measureCtx.measureText("E");
+  const ascentDevicePx = Math.ceil(metricSample.actualBoundingBoxAscent || (fontDevicePx * SERIF_CAP_RATIO));
+  const descentDevicePx = Math.ceil(measureCtx.measureText("gypqj").actualBoundingBoxDescent || (fontDevicePx * 0.28));
+
+  // Wrap words based on maxWidthCssPx
+  const maxWidthDevicePx = Math.max(120, Math.floor(options.maxWidthCssPx * dpr));
+  const words = options.text.split(" ");
+  const lines: string[] = [];
+  let currentLine = words[0] || "";
+
+  for (let i = 1; i < words.length; i++) {
+    const testLine = currentLine + " " + words[i];
+    const testWidth = measureCtx.measureText(testLine).width;
+    if (testWidth > maxWidthDevicePx && currentLine.length > 0) {
+      lines.push(currentLine);
+      currentLine = words[i];
+    } else {
+      currentLine = testLine;
+    }
+  }
+  if (currentLine.length > 0) {
+    lines.push(currentLine);
+  }
+
+  const lineHeightDevicePx = Math.max(ascentDevicePx + descentDevicePx, Math.ceil(fontDevicePx * 1.35));
+  const maxLineWidthDevicePx = Math.max(...lines.map((l) => measureCtx.measureText(l).width));
+  const padX = Math.max(2, Math.ceil(dpr));
+  const padY = Math.max(2, Math.ceil(dpr));
+
+  const canvasWidthDevicePx = Math.ceil(maxLineWidthDevicePx + padX * 2);
+  const canvasHeightDevicePx = Math.ceil((lines.length - 1) * lineHeightDevicePx + ascentDevicePx + descentDevicePx + padY * 2);
+
+  const canvas = document.createElement("canvas");
+  canvas.width = canvasWidthDevicePx;
+  canvas.height = canvasHeightDevicePx;
+  canvas.style.width = `${(canvasWidthDevicePx / dpr).toFixed(2)}px`;
+  canvas.style.height = `${(canvasHeightDevicePx / dpr).toFixed(2)}px`;
+  canvas.style.display = "block";
+  canvas.className = "near-canvas";
+
+  const ctx = canvas.getContext("2d", { alpha: true });
+  if (!ctx) {
+    return { ok: false, reason: "Canvas 2D unavailable" };
+  }
+
+  ctx.clearRect(0, 0, canvasWidthDevicePx, canvasHeightDevicePx);
+  ctx.fillStyle = "#101418";
+  ctx.textBaseline = "alphabetic";
+  ctx.font = `${fontDevicePx}px ${fontFamily}`;
+
+  lines.forEach((lineText, idx) => {
+    const lineY = padY + ascentDevicePx + (idx * lineHeightDevicePx);
+    ctx.fillText(lineText, padX, lineY);
+  });
+
+  return {
+    ok: true,
+    canvas,
+    devicePixels: capHeightDevicePx,
+  };
+}
+
 /* ------------------------- Ishihara-style plates ------------------------- */
 
 export interface PlateDef { digit: string; bgHue: number; fgHue: number }
