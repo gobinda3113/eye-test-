@@ -1032,8 +1032,8 @@ export function createLab(labEl) {
       mode = 'card';
       btnCard.style.border = "2px solid var(--lab-accent)";
       btnRuler.style.border = "1px solid transparent";
-      cardWrap.style.display = "flex";
-      cardEl.style.display = "grid";
+      cardWrap.style.display = "";
+      cardEl.style.display = "";
       rulerWrap.style.display = "none";
       hintEl.textContent = t("calib.cardHint");
       holdEl.textContent = t("calib.hold");
@@ -1048,7 +1048,7 @@ export function createLab(labEl) {
       btnCard.style.border = "1px solid transparent";
       cardWrap.style.display = "none";
       cardEl.style.display = "none";
-      rulerWrap.style.display = "flex";
+      rulerWrap.style.display = "";
       hintEl.textContent = t("calib.rulerHint");
       holdEl.textContent = t("calib.rulerHold");
       if (rangeLabel) rangeLabel.textContent = t("calib.rulerScale");
@@ -2484,7 +2484,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
     const exitBtn = labEl.querySelector("#labExitBtn");
     if (exitBtn) {
-      exitBtn.style.display = "inline-block";
+      exitBtn.style.display = "";
       exitBtn.textContent = t("lab.exit") || "Exit test";
       exitBtn.onclick = exitTest;
     }

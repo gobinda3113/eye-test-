@@ -351,7 +351,7 @@ async function boot() {
     const labContainer = document.getElementById("lab");
     if (entryChoice && labContainer) {
       entryChoice.style.display = "none";
-      labContainer.style.display = "block";
+      labContainer.style.display = "";
     }
     if (lab && typeof lab.startMode === "function") {
       lab.startMode(mode, check || null);
