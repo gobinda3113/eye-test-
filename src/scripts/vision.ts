@@ -60,6 +60,12 @@ export interface NearCanvasResult {
   canvas?: HTMLCanvasElement;
   reason?: string;
   devicePixels?: number;
+  isAdjusted?: boolean;
+  adjustedDenominator?: number;
+}
+
+export function reverseLetterHeightMm(heightMm: number, distanceM: number): number {
+  return (heightMm * 20 * 6) / (distanceM * 8.73);
 }
 
 /**
@@ -83,15 +89,7 @@ export function renderNearVisionCanvas(options: {
   const targetCapHeightMm = letterHeightMm(options.denominator, NEAR_DISTANCE_M);
   const dpr = typeof window !== "undefined" ? (window.devicePixelRatio || 1) : 1;
   const capHeightCssPx = targetCapHeightMm / (options.mmPerPx || MM_PER_PX_FALLBACK);
-  const capHeightDevicePx = capHeightCssPx * dpr;
-
-  if (capHeightDevicePx < minDevicePixels) {
-    return {
-      ok: false,
-      reason: `Display resolution too low to render ${targetCapHeightMm.toFixed(2)} mm line accurately`,
-      devicePixels: capHeightDevicePx,
-    };
-  }
+  let capHeightDevicePx = capHeightCssPx * dpr;
 
   const fontFamily = options.fontFamily || '"Fraunces", Georgia, "Times New Roman", serif';
   const measureCanvas = document.createElement("canvas");
@@ -105,20 +103,36 @@ export function renderNearVisionCanvas(options: {
   measureCtx.font = `${trialFontPx}px ${fontFamily}`;
   const metricE = measureCtx.measureText("E");
   const measuredCapHeight = metricE.actualBoundingBoxAscent || (trialFontPx * SERIF_CAP_RATIO);
-  const fontDevicePx = (capHeightDevicePx / (measuredCapHeight > 0 ? measuredCapHeight : (trialFontPx * 0.7))) * trialFontPx;
+  
+  let fontDevicePx = (capHeightDevicePx / (measuredCapHeight > 0 ? measuredCapHeight : (trialFontPx * 0.7))) * trialFontPx;
 
   measureCtx.font = `${fontDevicePx}px ${fontFamily}`;
-  const metricSample = measureCtx.measureText("E");
-  const ascentDevicePx = Math.round(metricSample.actualBoundingBoxAscent || (fontDevicePx * SERIF_CAP_RATIO));
-  const descentDevicePx = Math.round(measureCtx.measureText("gypqj").actualBoundingBoxDescent || (fontDevicePx * 0.28));
+  let metricSample = measureCtx.measureText("E");
+  let ascentDevicePx = Math.round(metricSample.actualBoundingBoxAscent || (fontDevicePx * SERIF_CAP_RATIO));
+  let descentDevicePx = Math.round(measureCtx.measureText("gypqj").actualBoundingBoxDescent || (fontDevicePx * 0.28));
 
-  const errorPercent = Math.abs(ascentDevicePx - capHeightDevicePx) / capHeightDevicePx;
-  if (errorPercent > 0.06) {
-    return {
-      ok: false,
-      reason: `Display pixel grid cannot render this size accurately (error: ${(errorPercent*100).toFixed(1)}%)`,
-      devicePixels: capHeightDevicePx
-    };
+  let errorPercent = Math.abs(ascentDevicePx - capHeightDevicePx) / capHeightDevicePx;
+  let isAdjusted = false;
+  let adjustedDenominator = options.denominator;
+
+  if (capHeightDevicePx < minDevicePixels || errorPercent > 0.06) {
+    isAdjusted = true;
+    let testPx = Math.max(Math.ceil(capHeightDevicePx), minDevicePixels);
+    for (; testPx < 100; testPx++) {
+      fontDevicePx = (testPx / (measuredCapHeight > 0 ? measuredCapHeight : (trialFontPx * 0.7))) * trialFontPx;
+      measureCtx.font = `${fontDevicePx}px ${fontFamily}`;
+      metricSample = measureCtx.measureText("E");
+      ascentDevicePx = Math.round(metricSample.actualBoundingBoxAscent || (fontDevicePx * SERIF_CAP_RATIO));
+      errorPercent = Math.abs(ascentDevicePx - testPx) / testPx;
+      if (errorPercent <= 0.06) {
+        capHeightDevicePx = testPx;
+        descentDevicePx = Math.round(measureCtx.measureText("gypqj").actualBoundingBoxDescent || (fontDevicePx * 0.28));
+        break;
+      }
+    }
+    const adjustedCapHeightCssPx = capHeightDevicePx / dpr;
+    const adjustedCapHeightMm = adjustedCapHeightCssPx * (options.mmPerPx || MM_PER_PX_FALLBACK);
+    adjustedDenominator = Math.round(reverseLetterHeightMm(adjustedCapHeightMm, NEAR_DISTANCE_M));
   }
 
   // Wrap words based on maxWidthCssPx

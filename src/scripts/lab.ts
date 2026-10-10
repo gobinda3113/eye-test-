@@ -1859,6 +1859,19 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
         if (res.ok && res.canvas) {
           contentEl.appendChild(res.canvas);
+          if (res.isAdjusted) {
+             const warning = document.createElement('div');
+             warning.className = 'near-adjusted-warning';
+             warning.style.fontSize = '0.75rem';
+             warning.style.color = '#d97706';
+             warning.style.marginTop = '4px';
+             warning.style.lineHeight = '1.2';
+             warning.innerText = `⚠️ Displayed at 20/${res.adjustedDenominator} (your screen's limit)`;
+             contentEl.appendChild(warning);
+             (btn as HTMLElement).dataset.adjustedDenominator = String(res.adjustedDenominator);
+          } else {
+             delete (btn as HTMLElement).dataset.adjustedDenominator;
+          }
         } else {
           btn.classList.add("is-disabled");
           btn.setAttribute("aria-disabled", "true");
@@ -1918,9 +1931,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       on(btn, "click", () => {
         if (btn.classList.contains("is-disabled")) return;
         const line = NEAR_LINES[Number((btn as HTMLElement).dataset.line)];
-        results.near = line.denominator;
+        const adj = (btn as HTMLElement).dataset.adjustedDenominator;
+        results.near = adj ? Number(adj) : line.denominator;
         saveResults(results);
-        status(line.nPoint);
+        status(adj ? `20/${adj}` : line.nPoint);
         finishStep("near");
       })
     );
