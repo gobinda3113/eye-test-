@@ -1840,6 +1840,8 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       const availableWidth = cardRect ? (cardRect.width - cardPadding - 70) : (Math.min(window.innerWidth - 32, 600) - 100);
       const maxTextWidth = Math.max(160, Math.floor(availableWidth));
 
+      let lastSeenDenominator = Infinity; // strictly decreasing sequence
+
       NEAR_LINES.forEach((line, i) => {
         const btn = stage.querySelector(`#nearLineBtn_${i}`);
         const contentEl = stage.querySelector(`#nearLineContent_${i}`);
@@ -1849,6 +1851,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         btn.classList.remove("is-disabled");
         btn.removeAttribute("aria-disabled");
         btn.removeAttribute("title");
+        (btn as HTMLElement).style.display = "";
 
         const res = renderNearVisionCanvas({
           text: line.text,
@@ -1858,6 +1861,15 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         });
 
         if (res.ok && res.canvas) {
+          const currentDenom = res.isAdjusted && res.adjustedDenominator ? res.adjustedDenominator : line.denominator;
+          
+          if (currentDenom >= lastSeenDenominator) {
+            // Screen is so bad that this row snaps to the exact same size as the previous one. Hide it to prevent duplicate identical rows.
+            (btn as HTMLElement).style.display = "none";
+            return;
+          }
+          lastSeenDenominator = currentDenom;
+
           contentEl.appendChild(res.canvas);
           if (res.isAdjusted) {
              const warning = document.createElement('div');
@@ -1866,7 +1878,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
              warning.style.color = '#d97706';
              warning.style.marginTop = '4px';
              warning.style.lineHeight = '1.2';
-             warning.innerText = `⚠️ Displayed at 20/${res.adjustedDenominator} (your screen's limit)`;
+             warning.innerText = `⚠️ Adjusted target: 20/${res.adjustedDenominator} at 40cm (screen limit)`;
              contentEl.appendChild(warning);
              (btn as HTMLElement).dataset.adjustedDenominator = String(res.adjustedDenominator);
           } else {
