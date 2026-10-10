@@ -343,16 +343,16 @@ async function boot() {
     return `${prefix}/test/?mode=individual&check=${encodeURIComponent(testId)}`;
   }
 
-  function handleModeSelect(mode: string, check?: string | null) {
+  function handleModeSelect(mode: string, check?: string | null, skipPush?: boolean) {
     if (isTransitioning) return;
     isTransitioning = true;
 
-    if (window.history && window.history.replaceState) {
+    if (window.history && window.history.pushState && !skipPush) {
       const url = new URL(window.location.href);
       url.searchParams.set("mode", mode);
       if (check) url.searchParams.set("check", check);
       else url.searchParams.delete("check");
-      window.history.replaceState({}, "", url.toString());
+      window.history.pushState({ inTest: true }, "", url.toString());
     }
 
     const entryChoice = document.getElementById("testEntryChoice");
@@ -453,6 +453,16 @@ async function boot() {
           }
         }
       }
+    }
+  });
+
+  window.addEventListener("popstate", (e) => {
+    const params = new URLSearchParams(window.location.search);
+    const qMode = params.get("mode");
+    if (!qMode) {
+      if (lab && typeof lab.exit === "function") lab.exit(); 
+    } else {
+      handleModeSelect(qMode, params.get("check"), true);
     }
   });
 
