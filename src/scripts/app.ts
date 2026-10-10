@@ -347,6 +347,14 @@ async function boot() {
     if (isTransitioning) return;
     isTransitioning = true;
 
+    if (window.history && window.history.replaceState) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("mode", mode);
+      if (check) url.searchParams.set("check", check);
+      else url.searchParams.delete("check");
+      window.history.replaceState({}, "", url.toString());
+    }
+
     const entryChoice = document.getElementById("testEntryChoice");
     const labContainer = document.getElementById("lab");
     if (entryChoice && labContainer) {

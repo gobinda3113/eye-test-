@@ -335,31 +335,67 @@ export function createLab(labEl) {
     
     const evalAcuity = (den) => {
         if (den == null) return null;
-        if (den <= 25) return { msg: "Excellent", color: "#16a34a" };
-        if (den <= 40) return { msg: "Good (Passes standard)", color: "#16a34a" };
-        if (den <= 70) return { msg: "Fair", color: "#d97706" };
-        return { msg: "Poor — Consider seeing an eye doctor", color: "#dc2626" };
+        if (den <= 25) return { msg: t("eval.excellent"), color: "#16a34a" };
+        if (den <= 40) return { msg: t("eval.goodPass"), color: "#16a34a" };
+        if (den <= 70) return { msg: t("eval.fair"), color: "#d97706" };
+        return { msg: t("eval.poorDistance"), color: "#dc2626" };
     };
 
     if (checkId === "near" || checkId === "cdl") {
         const ev = evalAcuity(results.near || results.both);
         if (ev) { tone = ev.color; msg = ev.msg; }
-    } else if (checkId === "distance") {
-        const worst = Math.max(results.both || 0, results.right || 0, results.left || 0);
+        if (ev && (results.near || results.both) > 70) msg = t("eval.poorNear");
+    } else if (checkId === "distance" || checkId === "sivtsev") {
+        const res = results[checkId] || {};
+        const worst = Math.max(res.both || 0, res.right || 0, res.left || 0);
         if (worst > 0) {
             const ev = evalAcuity(worst);
             if (ev) { tone = ev.color; msg = ev.msg; }
         }
+    } else if (checkId === "tumbling" || checkId === "landolt") {
+        const res = results[checkId];
+        if (res && res.best > 0) {
+            const ev = evalAcuity(res.best);
+            if (ev) { tone = ev.color; msg = ev.msg; }
+        }
     } else if (checkId === "color") {
         if (results.color) {
-            if (results.color.correct >= 12) { tone = "#16a34a"; msg = "Excellent"; }
-            else if (results.color.correct >= 10) { tone = "#d97706"; msg = "Fair"; }
-            else { tone = "#dc2626"; msg = "Color vision deficiency detected — See a doctor"; }
+            if (results.color.correct >= 12) { tone = "#16a34a"; msg = t("eval.excellent"); }
+            else if (results.color.correct >= 10) { tone = "#d97706"; msg = t("eval.fairPass"); }
+            else { tone = "#dc2626"; msg = t("eval.poorColor"); }
+        }
+    } else if (checkId === "peripheral") {
+        if (results.peripheral) {
+            if (results.peripheral.angle >= 140) { tone = "#16a34a"; msg = t("eval.excellent"); }
+            else if (results.peripheral.angle >= 110) { tone = "#16a34a"; msg = t("eval.goodPass"); }
+            else { tone = "#dc2626"; msg = t("eval.poorPeripheral"); }
+        }
+    } else if (checkId === "contrast") {
+        if (results.contrast) {
+            if (results.contrast.lowest <= 6.3) { tone = "#16a34a"; msg = t("eval.excellent"); }
+            else if (results.contrast.lowest <= 12.6) { tone = "#16a34a"; msg = t("eval.goodPass"); }
+            else if (results.contrast.lowest <= 25.1) { tone = "#d97706"; msg = t("eval.fair"); }
+            else { tone = "#dc2626"; msg = t("eval.poorContrast"); }
         }
     } else if (checkId === "astigmatism") {
         if (results.astigmatism) {
-            if (results.astigmatism.axis == null) { tone = "#16a34a"; msg = "Good (No astigmatism detected)"; }
-            else { tone = "#dc2626"; msg = "Astigmatism detected — Consider seeing an eye doctor"; }
+            if (results.astigmatism.axis == null) { tone = "#16a34a"; msg = t("eval.astigmatismGood"); }
+            else { tone = "#dc2626"; msg = t("eval.poorAstigmatism"); }
+        }
+    } else if (checkId === "refraction") {
+        if (results.refraction) {
+            if (results.refraction.kind === "balanced") { tone = "#16a34a"; msg = t("eval.refractBalanced"); }
+            else { tone = "#d97706"; msg = t("eval.poorRefraction"); }
+        }
+    } else if (checkId === "stereo") {
+        if (results.stereo) {
+            if (results.stereo.seen) { tone = "#16a34a"; msg = t("eval.stereoGood"); }
+            else { tone = "#dc2626"; msg = t("eval.poorStereo"); }
+        }
+    } else if (checkId === "amsler") {
+        if (results.amsler != null) {
+            if (results.amsler) { tone = "#16a34a"; msg = t("eval.amslerGood"); }
+            else { tone = "#dc2626"; msg = t("eval.poorAmsler"); }
         }
     }
     
@@ -2055,7 +2091,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   function renderContrast() {
     const mmPerPx = config.mmPerPx || MM_PER_PX_FALLBACK;
     const dist = config.distanceM || 3;
-    const height = lineHeightPx(40, dist, mmPerPx);
+    const height = lineHeightPx(200, dist, mmPerPx);
     let index = 0;
     let correct = 0;
     let lowest = null;
@@ -2107,7 +2143,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         return parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
       })();
       const avail = Math.max(0, view.clientWidth - pad);
-      letters = shuffled(TEST_LINES[40]).slice(0, fitCount(avail, height, 3));
+      letters = shuffled(TEST_LINES[200]).slice(0, fitCount(avail, height, 3));
       const grey = contrastInk(level);
       view.innerHTML = lineSVG(letters, height, { ink: `rgb(${grey},${grey},${grey})` });
       input.value = "";
@@ -2365,6 +2401,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   /* ---------------------------------------------------------------- results */
 
   function card(label, value, tone, note, small) {
+    if (value === t("results.notTested")) return "";
     return `<div class="result-card${tone ? " rc-" + tone : ""}">
       <span class="rc-label">${label}</span>
       <span class="rc-value${small ? " rc-small" : ""}">${value}</span>
@@ -2375,7 +2412,72 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   function renderResults() {
     const quickNoteHtml = runMode === 'quick' ? `<div style="background:var(--bg-warn); color:var(--text); padding:1rem; border-radius:8px; margin-bottom:1rem; text-align:center; font-weight:500;">${t("modes.quickNote") || "Quick screen — short-range checks only. Not comparable to full distance results."}</div>` : '';
     const disclaimerHtml = `<div style="text-align:center; font-size:0.9rem; color:var(--muted); margin-bottom:1.5rem;">${t("modes.disclaimerBanner") || "Screening only — not a medical diagnosis. If you have concerns, see an eye doctor."}</div>`;
-    const verdict = overallVerdict(results);
+    
+    // Calculate passing score
+    let passed = 0;
+    let totalTaken = 0;
+    let specificWarnings = [];
+    
+    const eyes = [results.right, results.left, results.both, results.sivtsev, results.landolt, results.tumbling].map(k => typeof k === 'number' ? k : k?.best).filter(v => v != null);
+    if (eyes.length > 0) {
+      totalTaken++;
+      if (Math.max(...eyes) <= 70) passed++;
+      else specificWarnings.push(t("eval.poorDistance") || "Low distance visual acuity. Consider visiting an optometrist for a check.");
+    }
+    if (results.near != null) {
+      totalTaken++;
+      if (results.near <= 60) passed++;
+      else specificWarnings.push(t("eval.poorNear") || "Low near vision. If you followed the instructions correctly, you may have an issue like presbyopia. Consider visiting an eye doctor.");
+    }
+    if (results.color != null) {
+      totalTaken++;
+      if (results.color.correct >= 10) passed++;
+      else specificWarnings.push(t("eval.poorColor") || "Color vision deficiency indicated. Consider seeing a doctor.");
+    }
+    if (results.peripheral != null) {
+      totalTaken++;
+      if (results.peripheral.angle >= 110) passed++;
+      else specificWarnings.push(t("eval.poorPeripheral") || "Reduced peripheral vision. This is critical for driving; see an eye doctor.");
+    }
+    if (results.contrast != null) {
+      totalTaken++;
+      if (results.contrast.lowest <= 25.1) passed++;
+      else specificWarnings.push(t("eval.poorContrast") || "Poor contrast sensitivity detected. This affects night driving.");
+    }
+    if (results.astigmatism != null) {
+      totalTaken++;
+      if (results.astigmatism.axis == null) passed++;
+      else specificWarnings.push(t("eval.poorAstigmatism") || "Astigmatism detected. Consider an eye exam.");
+    }
+    if (results.refraction != null) {
+      totalTaken++;
+      if (results.refraction.kind === "balanced") passed++;
+      else specificWarnings.push(t("eval.poorRefraction") || "Possible refractive error. Consider seeing an eye doctor.");
+    }
+    if (results.stereo != null) {
+      totalTaken++;
+      if (results.stereo.seen) passed++;
+      else specificWarnings.push(t("eval.poorStereo") || "Poor depth perception. Consider an eye exam.");
+    }
+    if (results.amsler != null) {
+      totalTaken++;
+      if (results.amsler) passed++;
+      else specificWarnings.push(t("eval.poorAmsler") || "Central vision distortions detected. Consult an eye doctor promptly.");
+    }
+    
+    // For single check mode
+    if (runMode === "individual" && totalTaken === 0 && specificWarnings.length === 0 && single) {
+      totalTaken = 1; passed = 1;
+    }
+    
+    // Make verdict strict based on pass score
+    let verdict = "ok";
+    if (passed < totalTaken) verdict = "warn";
+    if (passed < totalTaken - 2) verdict = "bad";
+    
+    let scoreTpl = t("results.score") || "Overall Score: {passed}/{total} Passed";
+    let scoreText = scoreTpl.replace("{passed}", passed).replace("{total}", totalTaken);
+
     const acuity = (v) => (v == null ? t("results.notTested") : acuityNotations(v));
     const tone = (v) => (v == null ? null : v <= 40 ? "pass" : v <= 70 ? "warn" : "bad");
 
@@ -2559,20 +2661,39 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     stage.innerHTML = `
-      ${disclaimerHtml}
-      <div class="stage-title">${t("results.title")}</div>
-      <p class="stage-sub">${t("results.sub")}</p>
-      ${quickNoteHtml}
-      <div class="verdict ${verdict}" style="margin-top:22px">
-        <span class="verdict-ico"><svg class="ico" viewBox="0 0 24 24">${icons[verdict] || icons.warn}</svg></span>
-        <div>
-          <h3>${t(`results.verdict.${verdict}.title`)}</h3>
-          <p>${t(`results.verdict.${verdict}.body`)}</p>
+      <div style="max-width:800px; margin:0 auto; padding-bottom:40px;">
+        ${disclaimerHtml}
+        <div style="text-align:center; margin-bottom: 24px;">
+          <h2 class="stage-title" style="margin-bottom:8px; font-size:32px;">${t("results.title")}</h2>
+          <p class="stage-sub" style="font-size:16px;">${t("results.sub")}</p>
         </div>
+        ${quickNoteHtml}
+        
+        <div class="verdict ${verdict}">
+          <span class="verdict-ico"><svg class="ico" viewBox="0 0 24 24">${icons[verdict] || icons.warn}</svg></span>
+          <div>
+            <h3><span style="display:inline-block; margin-right:8px; padding:2px 8px; border-radius:12px; background:var(--surface-2); font-size:12px; vertical-align:middle; margin-bottom:2px;">${scoreText}</span> ${t(`results.verdict.${verdict}.title`)}</h3>
+            <p>${t(`results.verdict.${verdict}.body`)}</p>
+            ${specificWarnings.length > 0 ? `<div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:14px; display:flex; flex-direction:column; gap:6px;">
+              ${specificWarnings.map(w => `<div style="display:flex; gap:8px;"><svg class="ico" viewBox="0 0 24 24" style="flex-shrink:0; width:16px; height:16px; color:var(--danger); margin-top:3px;"><path d="M12 9v2m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${w}</span></div>`).join("")}
+            </div>` : ''}
+          </div>
+        </div>
+        
+        <div class="result-grid">${cards.join("")}</div>
+        
+        <details class="ai-cta-details" style="margin-top:32px; background:var(--surface); border:1px solid var(--border); border-radius:calc(var(--r) * 1.5); overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.03);">
+          <summary style="padding:20px 24px; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; background:var(--surface-2); font-weight:700; color:var(--text); transition:background 0.2s;">
+            <span style="font-size:16px;">${t("results.seeOptom")}</span>
+            <svg class="ico" viewBox="0 0 24 24" style="width:20px;height:20px; color:var(--muted);"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </summary>
+          <div class="ai-cta" style="margin:0; border:none; border-top:1px solid var(--border); border-radius:0; background:transparent; box-shadow:none;">
+            <div><p>${t("results.seeOptomBody")}</p></div>
+            <span class="trial-counter" style="background:var(--bg); padding:6px 12px; border-radius:var(--r); font-size:13px;">${t("results.localNote")}</span>
+          </div>
+        </details>
       </div>
-      <div class="result-grid">${cards.join("")}</div>
-      <details class="ai-cta-details" style="margin-top:22px;"><summary class="btn btn-quiet btn-sm" style="width:100%; justify-content:space-between; cursor:pointer;"><strong>${t("results.seeOptom")}</strong><svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><div class="ai-cta" style="margin-top:8px;"><div><p>${t("results.seeOptomBody")}</p></div><span class="trial-counter">${t("results.localNote")}</span>
-      </div></details>`;
+    `;
 
     setFoot(`
       <button class="btn btn-quiet btn-sm" data-act="restart">${t("results.retake")}</button>
@@ -2671,6 +2792,48 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     }
   }
 
+  function promptExit() {
+    if (step === "menu" || step === "results" || step === "calibrate") {
+      exitTest();
+      return;
+    }
+    const existing = document.getElementById("exitConfirmModal");
+    if (existing) return;
+
+    const overlay = document.createElement("div");
+    overlay.className = "calib-modal-overlay";
+    overlay.id = "exitConfirmModal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+
+    overlay.innerHTML = `
+      <div class="calib-modal-box" style="text-align:center;">
+        <h3 class="calib-modal-title" style="margin-top:0">${t("lab.exitTitle") || "Exit Test?"}</h3>
+        <p class="calib-modal-desc">${t("lab.exitDesc") || "Are you sure you want to stop? You can discard your progress, or jump to the results for what you've completed so far."}</p>
+        <div class="calib-modal-actions" style="display:flex; flex-direction:column; gap:10px; margin-top:24px;">
+          <button type="button" class="btn-card-pill" id="btnResume" style="width:100%; justify-content:center;">${t("lab.resume") || "Resume test"}</button>
+          <button type="button" class="btn-card-pill-secondary" id="btnShowResults" style="width:100%; justify-content:center;">${t("lab.showResults") || "Show tested results"}</button>
+          <button type="button" class="btn-card-pill-secondary" id="btnExitDiscard" style="width:100%; justify-content:center; color:#EF6F7D;">${t("lab.exitDiscard") || "Exit & discard"}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const close = () => overlay.remove();
+
+    document.getElementById("btnResume").onclick = close;
+    document.getElementById("btnShowResults").onclick = () => {
+      close();
+      step = "results";
+      render();
+    };
+    document.getElementById("btnExitDiscard").onclick = () => {
+      close();
+      exitTest();
+    };
+  }
+
   function startMode(mode, specificCheck = null) {
     runMode = mode;
     single = specificCheck ? { check: mapCheck(specificCheck) } : null;
@@ -2710,7 +2873,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     if (exitBtn) {
       exitBtn.style.display = "";
       exitBtn.textContent = t("lab.exit") || "Exit test";
-      exitBtn.onclick = exitTest;
+      exitBtn.onclick = promptExit;
     }
 
     render();
@@ -2762,7 +2925,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         } catch (_) {}
         return;
       }
-      exitTest();
+      promptExit();
     }
   });
 
@@ -2811,7 +2974,9 @@ function emptyResults() {
 function reportRows(results, acuity) {
   const notTested = t("results.notTested");
   const rows = [];
-  const add = (name, value, bench) => rows.push([name, String(value), bench || ""]);
+  const add = (name, value, bench) => {
+    if (value !== notTested) rows.push([name, String(value), bench || ""]);
+  };
   add(t("results.eyeRight"), acuity(results.right), "20/40");
   add(t("results.eyeLeft"), acuity(results.left), "20/40");
   add(t("results.both"), acuity(results.both), "20/40");
@@ -3095,3 +3260,4 @@ function shuffled(arr) {
     });
     setFoot('');
   }
+

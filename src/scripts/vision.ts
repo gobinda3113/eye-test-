@@ -347,12 +347,19 @@ export function nearLineTag(line: NearLine): string {
 
 /* ------------------------------- contrast ------------------------------ */
 
-export const CONTRAST_LEVELS = [100, 25, 10, 5, 2.5, 1.25, 0.6];
+export const CONTRAST_LEVELS = [100, 50.1, 25.1, 12.6, 6.3, 3.2];
+
+export function linearToSrgb(linear: number): number {
+  const x = Math.min(1, Math.max(0, linear));
+  return x <= 0.0031308 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055;
+}
 
 export function contrastInk(percent: number): number {
-  const c = Math.min(1, Math.max(0.0001, percent / 100));
-  const lum = (1 - c) / (1 + c);
-  return Math.round(Math.pow(lum, 1 / 2.2) * 255);
+  const c = Math.min(1, Math.max(0, percent / 100));
+  // Weber contrast for letters: L_letter = L_bg * (1 - C)
+  // With normalized L_bg = 1.0:
+  const linearInkLuminance = 1 - c;
+  return Math.round(linearToSrgb(linearInkLuminance) * 255);
 }
 
 /* -------------------------------- stereo ------------------------------- */
