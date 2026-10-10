@@ -1873,7 +1873,46 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       });
     };
 
-    redrawCanvases();
+    const safeRedrawCanvases = () => {
+      const viewport = window.visualViewport;
+      if (viewport && (viewport.scale || 1) > 1.05) {
+        NEAR_LINES.forEach((line, i) => {
+          const btn = stage.querySelector(`#nearLineBtn_${i}`);
+          const contentEl = stage.querySelector(`#nearLineContent_${i}`);
+          if (!btn || !contentEl) return;
+          btn.classList.add("is-disabled");
+          btn.setAttribute("title", "Please reset pinch-zoom");
+          contentEl.innerHTML = `<div class="near-unsupported"><span class="near-unsupported-msg">Please reset zoom to 100% for an accurate test.</span></div>`;
+        });
+        return;
+      }
+
+      if (typeof document !== "undefined" && document.fonts) {
+        document.fonts.load('400 16px "Fraunces"', "The DMV benchmark").then((loadedFaces) => {
+          const expectedFontLoaded = loadedFaces.some(face => 
+            face.family.replace(/["']/g, "") === "Fraunces" && face.status === "loaded"
+          );
+          if (expectedFontLoaded) {
+            redrawCanvases();
+          } else {
+            NEAR_LINES.forEach((line, i) => {
+              const btn = stage.querySelector(`#nearLineBtn_${i}`);
+              const contentEl = stage.querySelector(`#nearLineContent_${i}`);
+              if (!btn || !contentEl) return;
+              btn.classList.add("is-disabled");
+              btn.setAttribute("title", "Clinical font failed to load");
+              contentEl.innerHTML = `<div class="near-unsupported"><span class="near-unsupported-msg">Required font unavailable.</span></div>`;
+            });
+          }
+        }).catch(() => {
+          redrawCanvases(); // Fallback if browser error
+        });
+      } else {
+        redrawCanvases();
+      }
+    };
+
+    safeRedrawCanvases();
 
     stage.querySelectorAll("[data-line]").forEach((btn) =>
       on(btn, "click", () => {
@@ -1886,14 +1925,27 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       })
     );
 
+    let redrawQueued = false;
     let resizeTimer;
-    const scheduleRedraw = () => {
+    const scheduleSafeRedraw = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (step === "near") redrawCanvases();
-      }, 300);
+        if (step !== "near") return;
+        if (redrawQueued) return;
+        redrawQueued = true;
+        requestAnimationFrame(() => {
+          redrawQueued = false;
+          safeRedrawCanvases();
+        });
+      }, 150);
     };
-    on(window, "resize", scheduleRedraw);
+
+    on(window, "resize", scheduleSafeRedraw);
+
+    if (window.visualViewport) {
+      on(window.visualViewport, "resize", scheduleSafeRedraw);
+      on(window.visualViewport, "scroll", scheduleSafeRedraw);
+    }
 
     let resolutionQuery;
     const watchDPR = () => {
@@ -1905,22 +1957,11 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
     const onDprChange = () => {
       if (step === "near") {
-        scheduleRedraw();
+        scheduleSafeRedraw();
         watchDPR();
       }
     };
     watchDPR();
-
-    if (typeof document !== "undefined" && document.fonts) {
-      document.fonts.load('400 16px "Fraunces"', "The DMV benchmark").then((loadedFaces) => {
-        const expectedFontLoaded = loadedFaces.some(face => 
-          face.family.replace(/["']/g, "") === "Fraunces" && face.status === "loaded"
-        );
-        if (expectedFontLoaded && step === "near") {
-          redrawCanvases();
-        }
-      }).catch(() => {});
-    }
 
     setFoot(`
       <button class="btn btn-quiet btn-sm" data-act="skip">${t("near.cantRead")}</button>

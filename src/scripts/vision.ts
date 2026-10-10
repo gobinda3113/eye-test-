@@ -164,6 +164,9 @@ export function renderNearVisionCanvas(options: {
 
   ctx.clearRect(0, 0, canvasWidthDevicePx, canvasHeightDevicePx);
   ctx.fillStyle = "#101418";
+  if ('textRendering' in ctx) {
+    (ctx as any).textRendering = "geometricPrecision";
+  }
   ctx.textBaseline = "alphabetic";
   ctx.font = `${fontDevicePx}px ${fontFamily}`;
 
