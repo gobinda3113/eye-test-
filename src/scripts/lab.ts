@@ -237,7 +237,7 @@ export function createLab(labEl) {
     }
     if (checkId === "near") {
       const line = nearLineByDenominator(results.near);
-      return line ? `${line.nPoint} (${line.equiv})` : results.near != null ? acuityLabel(results.near) : "—";
+      return results.near != null ? `20/${results.near}` : "—";
     }
     if (checkId === "contrast") {
       return results.contrast ? `${results.contrast.lowest}%` : "—";
@@ -345,8 +345,9 @@ export function createLab(labEl) {
       stage.innerHTML = `
         <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
         <div style="margin:2rem 0; padding:2.5rem 1.5rem; background:var(--bg-card); color:var(--text); border: 1px solid var(--border); border-radius:12px; text-align:center;">
-          <div style="font-size:2.2rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem;">${metric}</div>
-          <p style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem;">${t("modes.disclaimerBanner")}</p>
+          <div style="font-size:1.1rem; font-weight:500; color:var(--text); margin-bottom:0.5rem;">Your estimated result:</div>
+          <div style="font-size:2.4rem; font-weight:800; color:var(--primary); margin-bottom:1.5rem;">${metric}</div>
+          <p style="color:var(--muted); font-size:0.85rem; margin-bottom:2rem; padding-top:1rem; border-top: 1px solid var(--border);">${t("modes.disclaimerBanner")}</p>
           <div style="display:flex; flex-direction:column; gap:0.75rem; max-width:320px; margin:0 auto;">
             <button class="btn btn-soft btn-sm" id="btnIndivRetake">${t("results.retake")}</button>
             <button class="btn btn-quiet btn-sm" id="btnIndivBackMenu">${t("modes.backMenu")}</button>
@@ -387,8 +388,9 @@ export function createLab(labEl) {
     stage.innerHTML = `
       <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
       <div style="margin:2rem 0; padding:2rem 1.5rem; background:var(--bg-card); color:var(--text); border: 1px solid var(--border); border-radius:12px; text-align:center;">
-        <div style="font-size:2rem; font-weight:700; color:var(--primary); margin-bottom:0.5rem;">${metric}</div>
-        <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">${t("modes.disclaimerBanner")}</p>
+        <div style="font-size:1.1rem; font-weight:500; color:var(--text); margin-bottom:0.5rem;">Your estimated result:</div>
+        <div style="font-size:2.4rem; font-weight:800; color:var(--primary); margin-bottom:1.5rem;">${metric}</div>
+        <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.5rem; padding-top:1rem; border-top: 1px solid var(--border);">${t("modes.disclaimerBanner")}</p>
       </div>`;
 
     const checksOnly = STEP_ORDER.filter((s) => !["calibrate", "guidance", "menu", "results"].includes(s));
@@ -2355,10 +2357,8 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       (() => {
         if (results.near == null) return card(t("results.near"), t("results.notTested"), null, null);
         const line = nearLineByDenominator(results.near);
-        const nPoint = line ? line.nPoint : acuityLabel(results.near);
-        const descKey = line ? `near.desc.${line.nPoint}` : "";
-        const desc = descKey ? t(descKey) : "";
-        const val = desc ? `${nPoint} (${desc})` : nPoint;
+        const fraction = `20/${results.near}`;
+        const val = line ? `${fraction} (${line.nPoint})` : fraction;
         const nearTone = results.near <= 40 ? "pass" : results.near <= 80 ? "warn" : "bad";
         return card(t("results.near"), val, nearTone, t("near.bench"), true);
       })(),
