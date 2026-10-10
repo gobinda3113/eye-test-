@@ -1833,43 +1833,52 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       <p class="trial-counter" style="text-align:center;margin-top:14px">${t("near.prompt")}</p>
     `;
 
-    const nearCard = stage.querySelector("#nearCard");
-    const cardRect = nearCard ? nearCard.getBoundingClientRect() : null;
-    const cardPadding = window.innerWidth <= 480 ? 28 : 64;
-    const availableWidth = cardRect ? (cardRect.width - cardPadding - 70) : (Math.min(window.innerWidth - 32, 600) - 100);
-    const maxTextWidth = Math.max(160, Math.floor(availableWidth));
+    const redrawCanvases = () => {
+      const nearCard = stage.querySelector("#nearCard");
+      const cardRect = nearCard ? nearCard.getBoundingClientRect() : null;
+      const cardPadding = window.innerWidth <= 480 ? 28 : 64;
+      const availableWidth = cardRect ? (cardRect.width - cardPadding - 70) : (Math.min(window.innerWidth - 32, 600) - 100);
+      const maxTextWidth = Math.max(160, Math.floor(availableWidth));
 
-    NEAR_LINES.forEach((line, i) => {
-      const btn = stage.querySelector(`#nearLineBtn_${i}`);
-      const contentEl = stage.querySelector(`#nearLineContent_${i}`);
-      if (!btn || !contentEl) return;
+      NEAR_LINES.forEach((line, i) => {
+        const btn = stage.querySelector(`#nearLineBtn_${i}`);
+        const contentEl = stage.querySelector(`#nearLineContent_${i}`);
+        if (!btn || !contentEl) return;
 
-      const res = renderNearVisionCanvas({
-        text: line.text,
-        denominator: line.denominator,
-        mmPerPx,
-        maxWidthCssPx: maxTextWidth,
+        contentEl.innerHTML = "";
+        btn.classList.remove("is-disabled");
+        btn.removeAttribute("aria-disabled");
+        btn.removeAttribute("title");
+
+        const res = renderNearVisionCanvas({
+          text: line.text,
+          denominator: line.denominator,
+          mmPerPx,
+          maxWidthCssPx: maxTextWidth,
+        });
+
+        if (res.ok && res.canvas) {
+          contentEl.appendChild(res.canvas);
+        } else {
+          btn.classList.add("is-disabled");
+          btn.setAttribute("aria-disabled", "true");
+          btn.setAttribute("title", res.reason || "Screen resolution too low for this line");
+          contentEl.innerHTML = `
+            <div class="near-unsupported">
+              <span class="near-unsupported-badge">${t("near.limitBadge") !== "near.limitBadge" ? t("near.limitBadge") : "Display limit"}</span>
+              <span class="near-unsupported-msg">${t("near.lowRes") !== "near.lowRes" ? t("near.lowRes") : "Screen resolution too low to test this line accurately at 40 cm"}</span>
+            </div>
+          `;
+        }
       });
+    };
 
-      if (res.ok && res.canvas) {
-        contentEl.appendChild(res.canvas);
-      } else {
-        btn.classList.add("is-disabled");
-        btn.setAttribute("aria-disabled", "true");
-        btn.setAttribute("title", res.reason || "Screen resolution too low for this line");
-        contentEl.innerHTML = `
-          <div class="near-unsupported">
-            <span class="near-unsupported-badge">${t("near.limitBadge") !== "near.limitBadge" ? t("near.limitBadge") : "Display limit"}</span>
-            <span class="near-unsupported-msg">${t("near.lowRes") !== "near.lowRes" ? t("near.lowRes") : "Screen resolution too low to test this line accurately at 40 cm"}</span>
-          </div>
-        `;
-      }
-    });
+    redrawCanvases();
 
     stage.querySelectorAll("[data-line]").forEach((btn) =>
       on(btn, "click", () => {
         if (btn.classList.contains("is-disabled")) return;
-        const line = NEAR_LINES[Number(btn.dataset.line)];
+        const line = NEAR_LINES[Number((btn as HTMLElement).dataset.line)];
         results.near = line.denominator;
         saveResults(results);
         status(line.nPoint);
@@ -1881,7 +1890,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const onResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (step === "near") renderNear();
+        if (step === "near") redrawCanvases();
       }, 300);
     };
     on(window, "resize", onResize);
@@ -1889,7 +1898,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     if (typeof document !== "undefined" && document.fonts && document.fonts.ready && !(window as any)._nearFontLoadHooked) {
       (window as any)._nearFontLoadHooked = true;
       document.fonts.ready.then(() => {
-        if (step === "near") renderNear();
+        if (step === "near") redrawCanvases();
       });
     }
 
