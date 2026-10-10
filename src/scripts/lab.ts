@@ -237,7 +237,7 @@ export function createLab(labEl) {
     }
     if (checkId === "near") {
       const line = nearLineByDenominator(results.near);
-      return results.near != null ? `20/${results.near}` : "—";
+      return line ? `${line.nPoint} (${line.equiv})` : results.near != null ? acuityLabel(results.near) : "—";
     }
     if (checkId === "contrast") {
       return results.contrast ? `${results.contrast.lowest}%` : "—";
@@ -329,6 +329,44 @@ export function createLab(labEl) {
     setFoot("");
   }
 
+  function getEvalSubtitle(checkId) {
+    let tone = "var(--text)";
+    let msg = "";
+    
+    const evalAcuity = (den) => {
+        if (den == null) return null;
+        if (den <= 25) return { msg: "Excellent", color: "#16a34a" };
+        if (den <= 40) return { msg: "Good (Passes standard)", color: "#16a34a" };
+        if (den <= 70) return { msg: "Fair", color: "#d97706" };
+        return { msg: "Poor — Consider seeing an eye doctor", color: "#dc2626" };
+    };
+
+    if (checkId === "near" || checkId === "cdl") {
+        const ev = evalAcuity(results.near || results.both);
+        if (ev) { tone = ev.color; msg = ev.msg; }
+    } else if (checkId === "distance") {
+        const worst = Math.max(results.both || 0, results.right || 0, results.left || 0);
+        if (worst > 0) {
+            const ev = evalAcuity(worst);
+            if (ev) { tone = ev.color; msg = ev.msg; }
+        }
+    } else if (checkId === "color") {
+        if (results.color) {
+            if (results.color.correct >= 12) { tone = "#16a34a"; msg = "Excellent"; }
+            else if (results.color.correct >= 10) { tone = "#d97706"; msg = "Fair"; }
+            else { tone = "#dc2626"; msg = "Color vision deficiency detected — See a doctor"; }
+        }
+    } else if (checkId === "astigmatism") {
+        if (results.astigmatism) {
+            if (results.astigmatism.axis == null) { tone = "#16a34a"; msg = "Good (No astigmatism detected)"; }
+            else { tone = "#dc2626"; msg = "Astigmatism detected — Consider seeing an eye doctor"; }
+        }
+    }
+    
+    if (!msg) return "";
+    return `<div style="font-size:1.2rem; font-weight:600; color:${tone}; margin-bottom:1.5rem; margin-top:-0.5rem;">${msg}</div>`;
+  }
+
   function finishStep(currentId) {
     if (currentId === "calibrate" || currentId === "guidance") {
       const nextIdx = STEP_ORDER.indexOf(currentId) + 1;
@@ -339,6 +377,7 @@ export function createLab(labEl) {
     }
 
     const metric = getMetricString(currentId);
+    const evalSub = getEvalSubtitle(currentId);
 
     if (single) {
       // Individual mode single test result screen (Section 5)
@@ -346,7 +385,8 @@ export function createLab(labEl) {
         <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
         <div style="margin:2rem 0; padding:2.5rem 1.5rem; background:var(--bg-card); color:var(--text); border: 1px solid var(--border); border-radius:12px; text-align:center;">
           <div style="font-size:1.1rem; font-weight:500; color:var(--text); margin-bottom:0.5rem;">Your estimated result:</div>
-          <div style="font-size:2.4rem; font-weight:800; color:var(--primary); margin-bottom:1.5rem;">${metric}</div>
+          <div style="font-size:2.4rem; font-weight:800; color:var(--primary); margin-bottom:1rem;">${metric}</div>
+          ${evalSub}
           <p style="color:var(--muted); font-size:0.85rem; margin-bottom:2rem; padding-top:1rem; border-top: 1px solid var(--border);">${t("modes.disclaimerBanner")}</p>
           <div style="display:flex; flex-direction:column; gap:0.75rem; max-width:320px; margin:0 auto;">
             <button class="btn btn-soft btn-sm" id="btnIndivRetake">${t("results.retake")}</button>
@@ -389,7 +429,8 @@ export function createLab(labEl) {
       <div class="stage-title">${t(STEP_LABEL[currentId] || "checks." + currentId + ".name")}</div>
       <div style="margin:2rem 0; padding:2rem 1.5rem; background:var(--bg-card); color:var(--text); border: 1px solid var(--border); border-radius:12px; text-align:center;">
         <div style="font-size:1.1rem; font-weight:500; color:var(--text); margin-bottom:0.5rem;">Your estimated result:</div>
-        <div style="font-size:2.4rem; font-weight:800; color:var(--primary); margin-bottom:1.5rem;">${metric}</div>
+        <div style="font-size:2.4rem; font-weight:800; color:var(--primary); margin-bottom:1rem;">${metric}</div>
+        ${evalSub}
         <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.5rem; padding-top:1rem; border-top: 1px solid var(--border);">${t("modes.disclaimerBanner")}</p>
       </div>`;
 
@@ -2357,8 +2398,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       (() => {
         if (results.near == null) return card(t("results.near"), t("results.notTested"), null, null);
         const line = nearLineByDenominator(results.near);
-        const fraction = `20/${results.near}`;
-        const val = line ? `${fraction} (${line.nPoint})` : fraction;
+        const nPoint = line ? line.nPoint : acuityLabel(results.near);
+        const descKey = line ? `near.desc.${line.nPoint}` : "";
+        const desc = descKey ? t(descKey) : "";
+        const val = desc ? `${nPoint} (${desc})` : nPoint;
         const nearTone = results.near <= 40 ? "pass" : results.near <= 80 ? "warn" : "bad";
         return card(t("results.near"), val, nearTone, t("near.bench"), true);
       })(),
