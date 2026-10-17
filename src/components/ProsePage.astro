@@ -94,7 +94,7 @@ const breadcrumb = {
       {
         (page === "notFound" || page === "serverError") && (
           <div class="error-actions">
-            <a class="btn btn-primary" href={home + "#screener"}>{b.screener}</a>
+            <a class="btn btn-primary" href={pathFor(locale, "test")}>{b.screener}</a>
             <a class="btn btn-ghost" href={pathFor(locale, "blog")}>{b.states}</a>
             <a class="btn btn-quiet" href={home}>{b.home}</a>
           </div>

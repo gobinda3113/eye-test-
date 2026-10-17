@@ -112,7 +112,7 @@ const faqSchema = {
         <h1>DMV Eye Test Online: {stateData.name}</h1>
         <p>Preparing for your <strong>{stateData.name}</strong> driver's license renewal? The minimum visual acuity requirement in {stateData.name} is {stateData.min} in {stateData.need === "both" ? "both eyes" : "at least one eye"}.</p>
         <p style="margin-top: 20px;">
-          <a class="btn btn-primary" href="/us/#screener">Practice the US DMV Test Online</a>
+          <a class="btn btn-primary" href="/test/">Practice the US DMV Test Online</a>
         </p>
       </div>
 
@@ -163,7 +163,7 @@ const faqSchema = {
         {stateData.dmvUrl && (
           <p style="margin: 16px 0; font-size: 14px; color: var(--muted);">
             Official agency reference: <a href={stateData.dmvUrl} target="_blank" rel="noopener noreferrer">Visit official {stateData.name} DMV licensing portal</a>.
-            {stateData.asOf && <span> Verified against state administrative standards as of {stateData.asOf}.</span>}
+            {stateData.verified && stateData.asOf && <span> Verified against state administrative standards as of {stateData.asOf}.</span>}
           </p>
         )}
 

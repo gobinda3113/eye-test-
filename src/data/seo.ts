@@ -122,6 +122,14 @@ const en = {
       { h: "Changes and contact", p: "These terms may change; the date on this page changes with them. Questions: " + EMAIL + "." },
     ],
   },
+    test: {
+    title: "Free Online Eye Test — Visual Acuity Screening | OnlineVisionTest.org",
+    description:
+      "Take a calibrated online eye test from your computer or phone. Check your distance acuity, 20/40 benchmark, near vision, and color perception.",
+    h1: "Online Eye Test Screener",
+    lede: "Screening simulation for personal practice. Not a medical examination or diagnosis.",
+    body: [],
+  },
   notFound: {
     title: "Page not found — Online Vision Test",
     description: "That address does not exist. Head back to the practice vision screener or browse the 50-state vision rules.",
@@ -158,7 +166,7 @@ const es = {
     description:
       "Guías sobre el examen de la vista: agudeza visual 20/40, requisitos por estado, restricciones y consejos para aprobar tu revisión de conducir en casa.",
     h1: "Guías y artículos sobre el examen de la vista",
-    lede: "La mayoría de los estados exige 20/40 con ambos ojos para una licencia sin restricciones y permite seguir conduciendo con espejo exterior hasta 20/70. Cinco filas están verificadas con la norma; el resto te remite a tu organismo oficial de tráfico.",
+    lede: "Guías prácticas y artículos sobre la prueba de la vista en casa: aprende a evaluar gratis tu agudeza visual online, usar la tabla de Snellen y revisar tu visión.",
     body: [
       { h: "Cómo leer la tabla", p: "Agudeza mínima es el estándar para una licencia sin restricciones. Si quedas por debajo es la peor agudeza corregida que aún puede dar derecho a una licencia restringida: normalmente conducir solo de día o llevar espejo exterior. Visión al renovar indica si el estado te revisa en cada ciclo, en ciclos alternos o con más intervalo." },
       { h: "Por qué existen las restricciones", p: "Una restricción no es una prohibición. Es una nota en la licencia —lentes correctivos, espejos exteriores, solo de día— para que la norma refleje cómo ves de verdad. La mayoría de quienes fallan la primera prueba simplemente necesitaban sus gafas." },
@@ -206,6 +214,14 @@ const es = {
     body: [],
     englishBody: true,
   },
+    test: {
+    title: "Examen de la vista online gratis — Prueba de agudeza visual | OnlineVisionTest.org",
+    description:
+      "Realiza un examen visual calibrado en tu ordenador o móvil. Comprueba tu agudeza a distancia, el nivel 20/40, la visión de cerca y la percepción del color.",
+    h1: "Evaluador de agudeza visual online",
+    lede: "Simulación de detección para práctica personal. No es un examen médico ni un diagnóstico.",
+    body: [],
+  },
   notFound: {
     title: "Página no encontrada — Online Vision Test",
     description: "Esa dirección no existe. Vuelve al evaluador de práctica o consulta nuestras guías de visión.",
@@ -241,8 +257,8 @@ const fr = {
     title: "Guides et articles sur la vue — Online Vision Test",
     description:
       "Guides du test de vue : acuité visuelle 20/40, normes pour le permis de conduire, restrictions et conseils pour vérifier votre vue à la maison.",
-    h1: "Exigences de vision par État",
-    lede: "La plupart des États exigent 20/40 des deux yeux pour un permis sans restriction et autorisent la conduite avec rétroviseur extérieur jusqu'à 20/70. Cinq lignes sont vérifiées dans le texte de loi ; les autres vous renvoient à votre administration officielle.",
+    h1: "Guide du test de vue en ligne",
+    lede: "Guides pratiques et articles sur le test de vue à domicile : apprenez à évaluer gratuitement votre acuité visuelle en ligne, à utiliser l'échelle de Snellen et à vérifier votre vision.",
     body: [
       { h: "Comment lire le tableau", p: "L'acuité minimale est la norme pour un permis sans restriction. Si vous êtes en dessous indique la pire acuité corrigée qui peut encore ouvrir droit à un permis restreint — souvent la conduite de jour ou un rétroviseur extérieur. Vision au renouvellement précise si l'État contrôle à chaque cycle, un cycle sur deux, ou plus rarement." },
       { h: "Pourquoi les restrictions existent", p: "Une restriction n'est pas une interdiction. C'est une mention sur le permis — verres correcteurs, rétroviseurs extérieurs, conduite de jour — pour que la norme corresponde à votre vision réelle. La plupart des personnes recalées au premier contrôle avaient simplement besoin de leurs lunettes." },
@@ -289,6 +305,14 @@ const fr = {
     lede: "Un outil d'entraînement gratuit, fourni en l'état, sans conseil médical ni affiliation avec un organisme officiel.",
     body: [],
     englishBody: true,
+  },
+    test: {
+    title: "Test de vue en ligne gratuit — Contrôle de l'acuité visuelle | OnlineVisionTest.org",
+    description:
+      "Passez un test de vue calibré sur ordinateur ou smartphone. Vérifiez votre acuité de loin, le repère 20/40, la vision de près et la vision des couleurs.",
+    h1: "Dépistage visuel en ligne",
+    lede: "Simulation de dépistage pour pratique personnelle. Ne remplace pas un examen médical.",
+    body: [],
   },
   notFound: {
     title: "Page introuvable — Online Vision Test",
@@ -374,6 +398,14 @@ const de = {
     body: [],
     englishBody: true,
   },
+    test: {
+    title: "Kostenloser Sehtest online — Sehschärfe prüfen | OnlineVisionTest.org",
+    description:
+      "Führen Sie einen kalibrierten Sehtest am PC oder Smartphone durch. Überprüfen Sie Fernsehschärfe, die 20/40-Marke, Nahsicht und Farbsehen.",
+    h1: "Online-Sehtest Screening",
+    lede: "Praxis-Screening zur persönlichen Orientierung. Keine medizinische Untersuchung oder Diagnose.",
+    body: [],
+  },
   notFound: {
     title: "Seite nicht gefunden — Online Vision Test",
     description: "Diese Adresse gibt es nicht. Zurück zur Sehprüfung oder zu den Regeln der Ihre Region.",
@@ -409,8 +441,8 @@ const pt = {
     title: "Guias e artigos sobre visão — Online Vision Test",
     description:
       "Guias do exame de vista: acuidade visual 20/40, requisitos para CNH e Detran, restrições e dicas práticas para testar sua visão em casa.",
-    h1: "Requisitos de visão por estado",
-    lede: "A maioria dos estados exige 20/40 com os dois olhos para uma carta sem restrições e permite conduzir com espelho exterior até 20/70. Cinco linhas estão verificadas na lei; as demais remetem ao órgão oficial de trânsito.",
+    h1: "Guia de teste de visão online",
+    lede: "Guias práticos e artigos especializados sobre o teste de visão em casa: aprenda a avaliar gratuitamente a sua acuidade visual online, a usar a tabela de Snellen e a testar a sua visão.",
     body: [
       { h: "Como ler a tabela", p: "Acuidade mínima é a norma para uma carta sem restrições. Se ficar abaixo indica a pior acuidade corrigida que ainda pode dar carta restrita — normalmente conduzir só de dia ou com espelho exterior. Visão na renovação mostra se o estado reavalia em cada ciclo, em ciclos alternados ou com mais intervalo." },
       { h: "Porque existem restrições", p: "Uma restrição não é uma proibição. É uma nota na carta — lentes corretivas, espelhos exteriores, só de dia — para que a norma corresponda ao que realmente vê. Quem falha a primeira avaliação quase sempre só precisava dos óculos." },
@@ -457,6 +489,14 @@ const pt = {
     lede: "Uma ferramenta de prática gratuita, tal como está, sem aconselhamento médico nem vínculo com qualquer órgão oficial.",
     body: [],
     englishBody: true,
+  },
+    test: {
+    title: "Teste de visão online grátis — Exame de acuidade visual | OnlineVisionTest.org",
+    description:
+      "Faça um teste de visão calibrado no computador ou celular. Verifique acuidade à distância, marca 20/40, visão de perto e percepção de cores.",
+    h1: "Simulador de exame visual online",
+    lede: "Simulação para treino pessoal. Não substitui consulta médica ou diagnóstico clínico.",
+    body: [],
   },
   notFound: {
     title: "Página não encontrada — Online Vision Test",
@@ -550,6 +590,14 @@ const it = {
     ],
     englishBody: false,
   },
+    test: {
+    title: "Test della vista online gratis — Screening dell'acuità visiva | OnlineVisionTest.org",
+    description:
+      "Esegui un test della vista calibrato su computer o smartphone. Controlla acuità visiva da lontano, livello 20/40, visione da vicino e colori.",
+    h1: "Screening visivo online",
+    lede: "Simulazione per esercitazione personale. Non costituisce visita medica o diagnosi.",
+    body: [],
+  },
   notFound: {
     title: "Pagina non trovata — Online Vision Test",
     description: "Questo indirizzo non esiste. Torna allo screening gratuito o consulta le guide.",
@@ -626,6 +674,14 @@ const ja = {
     lede: "無料の練習ツール（現状有姿）、医療助言なし、提携なし。",
     body: [],
     englishBody: true,
+  },
+    test: {
+    title: "無料オンライン視力検査 — 視力測定スクリーニング | OnlineVisionTest.org",
+    description:
+      "PCやスマホで画面を調整して行える無料の簡易視力検査です。遠見視力、20/40基準ライン、近見視力、色覚などをセルフチェックできます。",
+    h1: "オンライン簡易視力検査",
+    lede: "個人練習用のスクリーニングです。医療診断や処方ではありません。",
+    body: [],
   },
   notFound: {
     title: "ページが見つかりません — Online Vision Test",
@@ -716,6 +772,14 @@ const ru = {
       { h: "Изменения и контакты", p: "Условия могут обновляться. По всем вопросам пишите на " + EMAIL + "." },
     ],
     englishBody: false,
+  },
+    test: {
+    title: "Бесплатная проверка зрения онлайн — Тест остроты зрения | OnlineVisionTest.org",
+    description:
+      "Пройдите калиброванную проверку зрения на компьютере или смартфоне: проверьте остроту зрения вдаль, стандарт 20/40, зрение вблизи и цветовосприятие.",
+    h1: "Онлайн-проверка зрения",
+    lede: "Тренировочный скрининг для личного пользования. Не является медицинским диагнозом.",
+    body: [],
   },
   notFound: {
     title: "Страница не найдена — Online Vision Test",

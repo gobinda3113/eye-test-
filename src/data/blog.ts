@@ -66,7 +66,7 @@ export const POSTS = [
       `,
       es: `
         <h2>Práctica para el examen de la vista de conducir</h2>
-        <p>Si necesitas renovar u obtener tu licencia de conducir, deberás superar una revisión visual básica. Puedes utilizar nuestra herramienta de <a href="/es/#screener">examen de la vista online gratis</a> como prueba de práctica para verificar si tu agudeza visual cumple los requisitos legales.</p>
+        <p>Si necesitas renovar u obtener tu licencia de conducir, deberás superar una revisión visual básica. Puedes utilizar nuestra herramienta de <a href="/es/test/">examen de la vista online gratis</a> como prueba de práctica para verificar si tu agudeza visual cumple los requisitos legales.</p>
         
         <h3>¿Cuál es la agudeza visual mínima exigida?</h3>
         <p>La mayoría de los organismos de tráfico exigen una agudeza visual de <strong>20/40</strong> con ambos ojos o al menos en el ojo dominante para una licencia sin restricciones. Si tu visión se sitúa entre 20/40 y 20/70, generalmente puedes obtener una licencia con restricciones (como el uso obligatorio de gafas correctoras o conducción exclusivamente diurna) previa autorización médica.</p>
@@ -76,7 +76,7 @@ export const POSTS = [
       `,
       de: `
         <h2>Übung für den Führerschein-Sehtest</h2>
-        <p>Wer den Führerschein erwerben oder verlängern möchte, muss eine amtliche Sehprüfung bestehen. Nutzen Sie unseren <a href="/de/#screener">kostenlosen Sehtest online</a> als Übungstest, um Ihre Sehschärfe im Vorfeld verlässlich zu überprüfen.</p>
+        <p>Wer den Führerschein erwerben oder verlängern möchte, muss eine amtliche Sehprüfung bestehen. Nutzen Sie unseren <a href="/de/test/">kostenlosen Sehtest online</a> als Übungstest, um Ihre Sehschärfe im Vorfeld verlässlich zu überprüfen.</p>
         
         <h3>Mindestanforderungen an die Sehstärke</h3>
         <p>Für die gängige Führerscheinklasse B wird meist eine Sehschärfe von mindestens 0,7 (entspricht 20/40) auf beiden Augen oder zentral verlangt. Werden diese Werte ohne Sehhilfe nicht erreicht, wird im Führerschein eine entsprechende Auflage für eine Brille oder Kontaktlinsen vermerkt.</p>
@@ -86,7 +86,7 @@ export const POSTS = [
       `,
       fr: `
         <h2>Entraînement pour le test de vue du permis</h2>
-        <p>Avant de vous présenter à l'examen du permis de conduire ou à votre visite médicale, entraînez-vous avec notre <a href="/fr/#screener">test de vue en ligne gratuit</a> pour vérifier si votre acuité visuelle est conforme aux normes officielles.</p>
+        <p>Avant de vous présenter à l'examen du permis de conduire ou à votre visite médicale, entraînez-vous avec notre <a href="/fr/test/">test de vue en ligne gratuit</a> pour vérifier si votre acuité visuelle est conforme aux normes officielles.</p>
         
         <h3>Quel est le score requis ?</h3>
         <p>Dans la plupart des pays, une acuité minimale de 20/40 (ou 5/10e à 7/10e selon les barèmes) est nécessaire pour conduire sans restriction. Si vous n'atteignez pas ce seuil sans correction, le port de lunettes ou lentilles correctrices sera mentionné sur votre permis.</p>
@@ -96,7 +96,7 @@ export const POSTS = [
       `,
       pt: `
         <h2>Simulado para o teste de visão do Detran (CNH)</h2>
-        <p>Se você vai tirar ou renovar a Carteira Nacional de Habilitação (CNH), terá que passar pelo exame de aptidão física e mental com avaliação oftalmológica. Use o nosso <a href="/pt/#screener">teste de visão online grátis</a> como um simulado prático para checar sua acuidade visual.</p>
+        <p>Se você vai tirar ou renovar a Carteira Nacional de Habilitação (CNH), terá que passar pelo exame de aptidão física e mental com avaliação oftalmológica. Use o nosso <a href="/pt/test/">teste de visão online grátis</a> como um simulado prático para checar sua acuidade visual.</p>
         
         <h3>Qual a acuidade visual mínima exigida pelo Detran?</h3>
         <p>Para motoristas da categoria B (veículos de passeio), a resolução do Contran exige acuidade visual igual ou superior a <strong>20/40</strong> no melhor olho. Quem não atinge essa marca com visão natural precisará utilizar lentes corretivas (óculos ou lentes de contato), recebendo a observação 'A' na CNH.</p>
@@ -106,7 +106,7 @@ export const POSTS = [
       `,
       it: `
         <h2>Esercitati per il Test della Vista della Patente</h2>
-        <p>Se devi rinnovare o conseguire la patente di guida, dovrai sottoporti alla visita medica di idoneità visiva. Puoi usare il nostro <a href="/it/#screener">test della vista online gratis</a> per verificare se la tua vista soddisfa i requisiti minimi di legge.</p>
+        <p>Se devi rinnovare o conseguire la patente di guida, dovrai sottoporti alla visita medica di idoneità visiva. Puoi usare il nostro <a href="/it/test/">test della vista online gratis</a> per verificare se la tua vista soddisfa i requisiti minimi di legge.</p>
         
         <h3>Requisiti minimi di acuità visiva</h3>
         <p>Per la patente B, la normativa richiede generalmente un'acuità visiva complessiva di almeno 0,7 (equivalente a 20/40), con non meno di 0,2 nell'occhio peggiore. Se raggiungi questo valore solo con occhiali o lenti a contatto, sulla patente verrà apposto il codice 01 (obbligo di lenti).</p>
@@ -116,7 +116,7 @@ export const POSTS = [
       `,
       ru: `
         <h2>Тренировка перед проверкой зрения на водительские права</h2>
-        <p>Если вам предстоит визит в ГИБДД или медкомиссию для получения либо продления водительских прав, воспользуйтесь нашим <a href="/ru/#screener">бесплатным онлайн-тестом зрения</a> для предварительной тренировки.</p>
+        <p>Если вам предстоит визит в ГИБДД или медкомиссию для получения либо продления водительских прав, воспользуйтесь нашим <a href="/ru/test/">бесплатным онлайн-тестом зрения</a> для предварительной тренировки.</p>
         
         <h3>Нормативы остроты зрения для водителей</h3>
         <p>Для категории B обычно требуется острота зрения не менее 0.6 на лучшем глазу и не менее 0.2 на худшем (или суммарно около 20/40 по шкале Снеллена). Если зрение не дотягивает до нормы без коррекции, в водительском удостоверении проставляется отметка об обязательном ношении очков или контактных линз (GCL).</p>
@@ -149,7 +149,7 @@ export const POSTS = [
         <p>Passing with glasses puts a corrective-lenses restriction on your licence, usually coded B. Weaker results can add daylight-only driving or an outside-mirror requirement. Texas is specific: the 20/60 to 20/70 band means daylight only and no faster than 45 mph. None of these end your driving. They match the licence to how you actually see.</p>
 
         <h2>How to come back and pass</h2>
-        <p>Get the correction first, then retest. If your prescription changed, new glasses or contacts usually settle it. After LASIK or a fresh pass without correction, most states lift the restriction at your next visit. In New York you can also submit a passing result through the <a href="https://dmv.ny.gov/driver-license/online-vision-registry">Online Vision Registry</a> instead of queuing at an office. Before you go, rehearse at home: <a href="/us/#screener">run the free practice screening</a>, calibrate the screen, and test each eye separately so there are no surprises.</p>
+        <p>Get the correction first, then retest. If your prescription changed, new glasses or contacts usually settle it. After LASIK or a fresh pass without correction, most states lift the restriction at your next visit. In New York you can also submit a passing result through the <a href="https://dmv.ny.gov/driver-license/online-vision-registry">Online Vision Registry</a> instead of queuing at an office. Before you go, rehearse at home: <a href="/test/">run the free practice screening</a>, calibrate the screen, and test each eye separately so there are no surprises.</p>
         <p>Practice is not the official test, and it cannot diagnose anything. If your results worry you, see an optometrist before your appointment. Our <a href="/about/">about page</a> explains what this screener can and cannot tell you.</p>
       `
     }
@@ -177,7 +177,7 @@ export const POSTS = [
         <p>Some offices still use a <a href="/eye-test-chart/">Snellen chart on the wall</a> at 10 or 20 feet. Same task, less ceremony: cover one eye with your palm, read the smallest line you can, swap eyes. You can also run our <a href="/">online eye test</a> to calibrate your screen before testing.</p>
 
         <h2>How to rehearse honestly</h2>
-        <p>Looking for a cheat sheet dmv eye test machine? Cheat sheets and memorised posters do not transfer because offices rotate charts. What transfers is procedure: calibrate the screen with a bank card, stand at a marked 3 metres, cover one eye without pressing on it, and read randomised letters. That is exactly what <a href="/us/#screener">the free practice screening</a> runs. If you wear glasses to drive, practise in them. Passing with correction is normal, and it is better to learn that at home than at the counter. Read <a href="/blog/dmv-eye-test-fail-guide/">what happens if you fail</a> so the worst case holds no surprises either.</p>
+        <p>Looking for a cheat sheet dmv eye test machine? Cheat sheets and memorised posters do not transfer because offices rotate charts. What transfers is procedure: calibrate the screen with a bank card, stand at a marked 3 metres, cover one eye without pressing on it, and read randomised letters. That is exactly what <a href="/test/">the free practice screening</a> runs. If you wear glasses to drive, practise in them. Passing with correction is normal, and it is better to learn that at home than at the counter. Read <a href="/blog/dmv-eye-test-fail-guide/">what happens if you fail</a> so the worst case holds no surprises either.</p>
       `
     }
   },
@@ -213,7 +213,7 @@ export const POSTS = [
         <p>North Carolina passes 20/40 or better in at least one eye for an unrestricted licence. The practical failure point is driver education: students who forget their glasses on screening day fail and cannot start behind-the-wheel training until they pass. Remote renewals use a self-attestation of no vision change.</p>
 
         <h2>What to bring in any state</h2>
-        <p>Glasses or contacts, your current prescription, photo ID, and any failed-test form already signed by your eye doctor. Confirm the current rule with your own agency before you go, since standards change. Then <a href="/us/#screener">practise the screening at home</a> so the counter holds no surprises. This guide is practice information only. It is not medical advice, and state summaries can go out of date. Our <a href="/about/">about page</a> states the limits plainly.</p>
+        <p>Glasses or contacts, your current prescription, photo ID, and any failed-test form already signed by your eye doctor. Confirm the current rule with your own agency before you go, since standards change. Then <a href="/test/">practise the screening at home</a> so the counter holds no surprises. This guide is practice information only. It is not medical advice, and state summaries can go out of date. Our <a href="/about/">about page</a> states the limits plainly.</p>
       `
     }
   },
@@ -282,7 +282,7 @@ export const POSTS = [
         </table>
 
         <h2>Cómo comprobar tu agudeza en casa</h2>
-        <p>Para comprobar si tienes visión 6/6 o 20/20, calibra tu pantalla con una tarjeta plástica en nuestra <a href="/es/#screener">prueba visual gratuita</a> y colócate a la distancia recomendada. Si notas dificultades para leer las líneas intermedias, es aconsejable consultar a un especialista.</p>
+        <p>Para comprobar si tienes visión 6/6 o 20/20, calibra tu pantalla con una tarjeta plástica en nuestra <a href="/es/test/">prueba visual gratuita</a> y colócate a la distancia recomendada. Si notas dificultades para leer las líneas intermedias, es aconsejable consultar a un especialista.</p>
       `,
       de: `
         <h2>Was bedeutet eine Sehkraft von 6/6?</h2>
@@ -300,7 +300,7 @@ export const POSTS = [
         </table>
 
         <h2>Sehtest zu Hause durchführen</h2>
-        <p>Mit unserem <a href="/de/#screener">kostenlosen Sehtest online</a> können Sie Ihre Sehschärfe schnell und kalibriert prüfen. Halten Sie den erforderlichen Abstand ein und testen Sie jedes Auge einzeln.</p>
+        <p>Mit unserem <a href="/de/test/">kostenlosen Sehtest online</a> können Sie Ihre Sehschärfe schnell und kalibriert prüfen. Halten Sie den erforderlichen Abstand ein und testen Sie jedes Auge einzeln.</p>
       `,
       fr: `
         <h2>Que signifie une acuité visuelle de 6/6 ?</h2>
@@ -318,7 +318,7 @@ export const POSTS = [
         </table>
 
         <h2>Comment vérifier votre vision chez vous</h2>
-        <p>Grâce à notre <a href="/fr/#screener">test de vue en ligne</a>, étalonnez votre affichage avec une carte bancaire et vérifiez votre vision à distance pour chaque œil séparément.</p>
+        <p>Grâce à notre <a href="/fr/test/">test de vue en ligne</a>, étalonnez votre affichage avec une carte bancaire et vérifiez votre vision à distance pour chaque œil séparément.</p>
       `,
       pt: `
         <h2>O que significa visão 6/6</h2>
@@ -337,7 +337,7 @@ export const POSTS = [
         </table>
 
         <h2>Como testar em casa</h2>
-        <p>Você pode testar sua visão em nosso <a href="/pt/#screener">teste de visão online gratuito</a>. Calibre a tela com seu cartão de banco e mantenha a distância correta para avaliar se a sua visão atinge o padrão 6/6 ou 20/40.</p>
+        <p>Você pode testar sua visão em nosso <a href="/pt/test/">teste de visão online gratuito</a>. Calibre a tela com seu cartão de banco e mantenha a distância correta para avaliar se a sua visão atinge o padrão 6/6 ou 20/40.</p>
       `,
       it: `
         <h2>Cosa significa visione 6/6</h2>
@@ -355,7 +355,7 @@ export const POSTS = [
         </table>
 
         <h2>Come controllare il 6/6 a casa</h2>
-        <p>Posizionati a 6 metri dallo schermo (o a 3 metri per la scala ridotta). Calibra il display con una carta bancaria sul nostro <a href="/it/#screener">test della vista gratuito</a>. Copri un occhio e leggi la riga più piccola per verificare se raggiungi i 10/10.</p>
+        <p>Posizionati a 6 metri dallo schermo (o a 3 metri per la scala ridotta). Calibra il display con una carta bancaria sul nostro <a href="/it/test/">test della vista gratuito</a>. Copri un occhio e leggi la riga più piccola per verificare se raggiungi i 10/10.</p>
       `,
       ru: `
         <h2>Что означает зрение 6/6</h2>
@@ -374,7 +374,7 @@ export const POSTS = [
         </table>
 
         <h2>Как проверить зрение 6/6 дома</h2>
-        <p>Начните с калибровки экрана по банковской карте в нашем <a href="/ru/#screener">бесплатном онлайн-тренажёре</a>. Встаньте на необходимое расстояние, проверяйте каждый глаз отдельно и сопоставьте результат с приведенной таблицей.</p>
+        <p>Начните с калибровки экрана по банковской карте в нашем <a href="/ru/test/">бесплатном онлайн-тренажёре</a>. Встаньте на необходимое расстояние, проверяйте каждый глаз отдельно и сопоставьте результат с приведенной таблицей.</p>
       `
     }
   },
@@ -405,7 +405,7 @@ export const POSTS = [
         <p>Yes. If your vision improves (for example, after LASIK or cataract surgery), or if you can meet the 20/40 benchmark without lenses, you can return to the DMV, retake the vision screening uncorrected, and have the restriction removed from your physical card.</p>
 
         <h2>How to prepare before going to the counter</h2>
-        <p>Before your appointment, test your eyesight at home with and without your corrective eyewear. Use <a href="/us/#screener">our free practice DMV vision screener</a> to verify which eye reaches 20/40. If your current glasses still feel blurry at 10 or 20 feet, visit an eye doctor for an updated prescription before visiting the DMV.</p>
+        <p>Before your appointment, test your eyesight at home with and without your corrective eyewear. Use <a href="/test/">our free practice DMV vision screener</a> to verify which eye reaches 20/40. If your current glasses still feel blurry at 10 or 20 feet, visit an eye doctor for an updated prescription before visiting the DMV.</p>
       `
     }
   },
@@ -601,7 +601,7 @@ export const POSTS = [
       <p>Nein, unser Angebot ist zu 100 % kostenlos, werbefrei und erfordert keinerlei Registrierung. Ihre Testergebnisse verbleiben ausschließlich im Speicher Ihres Browsers.</p>
 
       <h2>Starten Sie Ihre kostenlose Sehprüfung</h2>
-      <p>Nutzen Sie die Gelegenheit und überprüfen Sie Ihre Sehkraft jetzt gleich bequem am Smartphone. Klicken Sie auf <a href="/de/#screener">kostenlosen Sehtest starten</a>, kalibrieren Sie Ihr Display in wenigen Sekunden und erhalten Sie eine verlässliche Rückmeldung über Ihr Sehvermögen.</p>
+      <p>Nutzen Sie die Gelegenheit und überprüfen Sie Ihre Sehkraft jetzt gleich bequem am Smartphone. Klicken Sie auf <a href="/de/test/">kostenlosen Sehtest starten</a>, kalibrieren Sie Ihr Display in wenigen Sekunden und erhalten Sie eine verlässliche Rückmeldung über Ihr Sehvermögen.</p>
       `
     }
   },
@@ -676,7 +676,7 @@ export const POSTS = [
       <p>裸眼の視力だけでなく、現在使っているメガネやコンタクトレンズを装用した状態（矯正視力）でも測定してみてください。矯正視力で1.0や0.7が見えなくなっている場合は、度数の見直し時期です。</p>
 
       <h2>今すぐ無料視力チェックを体験</h2>
-      <p>準備は簡単です。画面の指示に従ってカードを画面に重ねるだけで、誰でも10秒で正確な測定環境が整います。まずは<a href="/ja/#screener">無料の視力測定を試す</a>から、ご自身の視力をチェックしてみましょう。</p>
+      <p>準備は簡単です。画面の指示に従ってカードを画面に重ねるだけで、誰でも10秒で正確な測定環境が整います。まずは<a href="/ja/test/">無料の視力測定を試す</a>から、ご自身の視力をチェックしてみましょう。</p>
       `
     }
   },
@@ -738,7 +738,7 @@ export const POSTS = [
       <p>Uma pessoa pode ter uma visão de longe perfeita (20/20) e, ao mesmo tempo, ser incapaz de ler um livro sem óculos de perto. Da mesma forma, um indivíduo com miopia pode enxergar perfeitamente de perto ao tirar os óculos, mas não distinguir uma placa de trânsito a 5 metros de distância. Por essa razão, uma autoavaliação completa deve conjugar a acuidade de perto com uma <a href="/eye-test-chart/">tabela de teste de visão Snellen</a> para distância.</p>
 
       <h2>A visão de perto em exames admissionais e na CNH</h2>
-      <p>Embora o exame do Detran para motoristas privilegie a acuidade visual de longe e o campo periférico, muitos concursos públicos, perícias militares e exames admissionais em indústrias exigem acuidade comprovada para perto. Fazer um <a href="/pt/#screener">simulado de exame visual</a> ajuda a verificar se sua visão está em conformidade com as normas profissionais antes da avaliação formal.</p>
+      <p>Embora o exame do Detran para motoristas privilegie a acuidade visual de longe e o campo periférico, muitos concursos públicos, perícias militares e exames admissionais em indústrias exigem acuidade comprovada para perto. Fazer um <a href="/pt/test/">simulado de exame visual</a> ajuda a verificar se sua visão está em conformidade com as normas profissionais antes da avaliação formal.</p>
 
       <h2>Perguntas frequentes sobre visão de perto</h2>
 
@@ -807,7 +807,7 @@ export const POSTS = [
       <h2>Como treinar em casa antes de ir ao Detran</h2>
       <p>Treinar em casa é a melhor estratégia para eliminar a insegurança e o medo do exame. Siga este roteiro prático:</p>
       <ol>
-        <li>Acesse o nosso <a href="/pt/#screener">simulado de visão do Detran</a> no navegador do seu computador.</li>
+        <li>Acesse o nosso <a href="/pt/test/">simulado de visão do Detran</a> no navegador do seu computador.</li>
         <li>Coloque um cartão de crédito ou débito sobre a tela para fazer a calibração precisa do tamanho físico dos optótipos.</li>
         <li>Meça a distância exata de 3 metros entre você e o monitor.</li>
         <li>Tape o olho esquerdo com a mão em concha (sem apertar a pálpebra) e leia as menores letras possíveis. Anote a menor linha em que acertou a maioria dos caracteres.</li>
@@ -901,7 +901,7 @@ export const POSTS = [
       <p>Нет. Онлайн-тренажер оценивает исключительно оптическую разрешающую способность. Он не измеряет внутриглазное давление (необходимо для диагностики глаукомы) и не позволяет осмотреть сетчатку и глазное дно. При появлении мушек, вспышек света, сужении полей зрения или резком падении четкости немедленно обратитесь к врачу.</p>
 
       <h2>Проверьте зрение прямо сейчас</h2>
-      <p>Уделите всего несколько минут своему здоровью. Нажмите <a href="/ru/#screener">запустить тест зрения онлайн</a>, откалибруйте экран по банковской карте и узнайте точную остроту своего зрения по классической таблице Сивцева.</p>
+      <p>Уделите всего несколько минут своему здоровью. Нажмите <a href="/ru/test/">запустить тест зрения онлайн</a>, откалибруйте экран по банковской карте и узнайте точную остроту своего зрения по классической таблице Сивцева.</p>
       `
     }
   },
@@ -1046,7 +1046,7 @@ export const POSTS = [
           <li><strong>Stand at the correct distance</strong> — 10 feet (3 m) for our short-distance screener, or 20 feet (6 m) if you have the space. Mark the floor.</li>
           <li><strong>Test each eye separately</strong>, palm flat over one eye without pressing the eyeball. Wear any corrective lenses you use when driving.</li>
         </ol>
-        <p>Run the <a href="/us/#screener">free practice screener</a> now and confirm you are comfortably above the 20/40 line before your appointment. This is a practice tool only and is not affiliated with any state DMV.</p>
+        <p>Run the <a href="/test/">free practice screener</a> now and confirm you are comfortably above the 20/40 line before your appointment. This is a practice tool only and is not affiliated with any state DMV.</p>
       `
     }
   },
@@ -1076,7 +1076,7 @@ export const POSTS = [
         <p>If you cannot read line 5 (20/40) at the counter, the examiner gives you a state vision examination form. You take it to an optometrist or ophthalmologist, who signs it after examining your corrected acuity. You return the form to the DMV. In most states you then retake the counter screening and receive your license with any applicable restrictions. Read our full guide on <a href="/blog/dmv-eye-test-fail-guide/">what happens if you fail the DMV eye test</a>.</p>
 
         <h2>How to practice reading line 5 at home</h2>
-        <p>You cannot accurately practice from an uncalibrated image. The physical size of the letters on your screen depends entirely on your monitor's pixel density, and an unverified online chart can be off by 30% or more. Our <a href="/us/#screener">free practice screener</a> requires a bank-card calibration step (ISO/IEC 7810, 85.6 mm) that establishes your screen's exact millimeter pitch and renders vector optotypes at precisely calibrated physical dimensions. The result is a real 20/40 letter at the correct angular size for your chosen test distance. Steps:</p>
+        <p>You cannot accurately practice from an uncalibrated image. The physical size of the letters on your screen depends entirely on your monitor's pixel density, and an unverified online chart can be off by 30% or more. Our <a href="/test/">free practice screener</a> requires a bank-card calibration step (ISO/IEC 7810, 85.6 mm) that establishes your screen's exact millimeter pitch and renders vector optotypes at precisely calibrated physical dimensions. The result is a real 20/40 letter at the correct angular size for your chosen test distance. Steps:</p>
         <ol>
           <li>Open the practice screener and complete the card calibration.</li>
           <li>Step back 10 feet (3 m) from your screen and mark the spot on the floor.</li>
