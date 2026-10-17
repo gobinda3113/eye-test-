@@ -998,5 +998,94 @@ export const POSTS = [
       <p>Don't leave your driver's license renewal to chance. Take ten minutes right now to calibrate your display and verify your distance visual acuity, color recognition, and peripheral awareness on our free <a href="/">online vision test</a>.</p>
       `
     }
-  }
+  },
+  {
+    slug: "dmv-eye-test-cheat-sheet",
+    englishOnly: true,
+    datePublished: "2026-10-17T09:00:00Z",
+    dateModified: "2026-10-17T09:00:00Z",
+    title: {
+      en: "DMV Eye Test Cheat Sheet: What to Know Before You Go",
+    },
+    excerpt: {
+      en: "A plain-English DMV eye test cheat sheet: the exact acuity standard, the form names by state, what the machine shows, and how to rehearse at home.",
+    },
+    content: {
+      en: `
+        <h2>The one number that matters: 20/40</h2>
+        <p>Nearly every US state requires 20/40 visual acuity for an unrestricted driver's license. On a standard Snellen chart at 20 feet, 20/40 is line 5. In a desktop DMV viewer (Optec or Titmus), it is the same line presented at simulated optical infinity. If you can read that line — with your glasses or contacts if you wear them to drive — you pass. You can practice right now with our <a href="/us/">free online DMV practice screener</a>.</p>
+
+        <h2>What "cheat sheet" actually gets you</h2>
+        <p>A memorized letter sequence does not transfer. DMV offices rotate slide sets, examiners swap charts, and randomized electronic boards mean the PECFD you memorized for line 5 may appear nowhere on test day. What does transfer is procedural fluency: knowing the distance, the occlusion technique, and the acuity benchmark. That is what this page gives you.</p>
+
+        <h2>The acuity standard by common outcome</h2>
+        <ul>
+          <li><strong>20/20 – 20/40:</strong> Pass unrestricted in all 50 states and DC.</li>
+          <li><strong>20/50 – 20/70:</strong> Most states issue a restricted license (corrective lenses, daylight only, outside mirror) after a doctor's form. Texas caps you at 45 mph on a daylight-only permit in this band.</li>
+          <li><strong>Worse than 20/70 best eye:</strong> Most states deny until corrected. A handful allow monocular exceptions with a specialist evaluation.</li>
+        </ul>
+
+        <h2>Doctor referral forms by major state</h2>
+        <p>If you fail the counter test, the examiner hands you a form. Do not lose it — it has specific instructions. Common forms:</p>
+        <ul>
+          <li><strong>California:</strong> DL-62 (Report of Vision Examination). Submit within 60 days.</li>
+          <li><strong>Texas:</strong> DL-63 (Certificate of Physical Examination). Submit to DPS.</li>
+          <li><strong>New York:</strong> MV-619 (Vision Test Report) for 20/40 pass; MV-80L for 20/40–20/70 band (goes to Medical Review Unit, not the counter).</li>
+          <li><strong>Florida:</strong> HSMV 72010 (Report of Eye Examination).</li>
+          <li><strong>Illinois:</strong> Form DSD X 20 (Vision Specialist Report).</li>
+          <li><strong>Arizona:</strong> Form 32-4001 (Vision Examination Report). Must be completed within 90 days.</li>
+        </ul>
+        <p>All 51 state forms are listed on our <a href="/states/">state vision requirements pages</a>.</p>
+
+        <h2>What the DMV machine actually shows you</h2>
+        <p>Most offices use an Optec 1000, Optec 2000, or Titmus V-1. You rest your forehead against the eyepiece hood and look at small illuminated slides. The examiner asks you to read a numbered line — usually "read line 5" — first binocularly, then monocularly. The machine may also show a peripheral flash test (red lights at the edges) and a traffic-signal color check (red, amber, green). No surprises if you know this before you sit down.</p>
+
+        <h2>The three-step home rehearsal</h2>
+        <ol>
+          <li><strong>Calibrate your screen</strong> with a physical bank card (85.6 mm, ISO/IEC 7810). An uncalibrated chart is physically meaningless.</li>
+          <li><strong>Stand at the correct distance</strong> — 10 feet (3 m) for our short-distance screener, or 20 feet (6 m) if you have the space. Mark the floor.</li>
+          <li><strong>Test each eye separately</strong>, palm flat over one eye without pressing the eyeball. Wear any corrective lenses you use when driving.</li>
+        </ol>
+        <p>Run the <a href="/us/#screener">free practice screener</a> now and confirm you are comfortably above the 20/40 line before your appointment. This is a practice tool only and is not affiliated with any state DMV.</p>
+      `
+    }
+  },
+  {
+    slug: "line-5-dmv-eye-test",
+    englishOnly: true,
+    datePublished: "2026-10-17T09:05:00Z",
+    dateModified: "2026-10-17T09:05:00Z",
+    title: {
+      en: "Line 5 DMV Eye Test: What It Is and How to Read It",
+    },
+    excerpt: {
+      en: "What 'line 5' means on the DMV eye test, why examiners call it out, what letters are on it, and how to practice passing it at home.",
+    },
+    content: {
+      en: `
+        <h2>Why examiners say "read line 5"</h2>
+        <p>When a DMV examiner says "read line 5," they are asking you to read the 20/40 line — the statutory minimum for an unrestricted driver's license in most US states. On a standard Snellen chart calibrated for 20-foot viewing, line 5 from the top is the row where each letter subtends a 5-minute visual angle and each stroke subtends exactly 1 minute of arc. If you can identify those letters, you meet the acuity minimum. Practice the line right now with our <a href="/us/">free DMV practice screener</a>.</p>
+
+        <h2>What letters are on line 5?</h2>
+        <p>Standard Snellen charts often have PECFD or DFEPC on the 20/40 line, but the exact sequence varies by chart version, manufacturer, and whether the office uses an optical viewer or a wall chart. DMV offices frequently rotate slide sets specifically to prevent memorization. The letters that matter are any randomized combination of the standard Sloan optotype set: C, D, E, F, H, K, N, O, R, S, V, Z. Memorizing one specific sequence does not work. Practicing the visual acuity threshold does.</p>
+
+        <h2>Line 5 in a DMV viewer machine vs. a wall chart</h2>
+        <p>In an Optec or Titmus desktop viewer, "line 5" refers to the fifth row on the internal slide, presented at simulated 20-foot optical infinity inside the light-controlled hood. On an illuminated Snellen wall chart at 10 feet, line 5 corresponds to the 20/40 row at that reduced distance. On a 20-foot wall chart, it is the same row. The visual angle requirement — 5 arcminutes total letter height — is identical in all configurations. What changes is only the physical letter size, which scales with testing distance.</p>
+
+        <h2>What if you cannot read line 5?</h2>
+        <p>If you cannot read line 5 (20/40) at the counter, the examiner gives you a state vision examination form. You take it to an optometrist or ophthalmologist, who signs it after examining your corrected acuity. You return the form to the DMV. In most states you then retake the counter screening and receive your license with any applicable restrictions. Read our full guide on <a href="/blog/dmv-eye-test-fail-guide/">what happens if you fail the DMV eye test</a>.</p>
+
+        <h2>How to practice reading line 5 at home</h2>
+        <p>You cannot accurately practice from an uncalibrated image. The physical size of the letters on your screen depends entirely on your monitor's pixel density, and an unverified online chart can be off by 30% or more. Our <a href="/us/#screener">free practice screener</a> requires a bank-card calibration step (ISO/IEC 7810, 85.6 mm) that establishes your screen's exact millimeter pitch and renders vector optotypes at precisely calibrated physical dimensions. The result is a real 20/40 letter at the correct angular size for your chosen test distance. Steps:</p>
+        <ol>
+          <li>Open the practice screener and complete the card calibration.</li>
+          <li>Step back 10 feet (3 m) from your screen and mark the spot on the floor.</li>
+          <li>Cover your left eye with your palm (no pressure on the eyeball).</li>
+          <li>Read the smallest line you can. If you can read line 5, you pass the 20/40 benchmark.</li>
+          <li>Repeat with the other eye.</li>
+        </ol>
+        <p>This is a practice tool and is not affiliated with or endorsed by any state DMV agency. For official requirements, consult your <a href="/states/">state's DMV vision page</a>.</p>
+      `
+    }
+  },
 ];

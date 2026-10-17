@@ -95,7 +95,7 @@ const faqSchema = {
 };
 ---
 
-<Layout locale="en" noindex={!stateData.verified} customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
+<Layout locale="en" noindex={false} customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">
@@ -165,6 +165,16 @@ const faqSchema = {
             Official agency reference: <a href={stateData.dmvUrl} target="_blank" rel="noopener noreferrer">Visit official {stateData.name} DMV licensing portal</a>.
             {stateData.asOf && <span> Verified against state administrative standards as of {stateData.asOf}.</span>}
           </p>
+        )}
+
+        {stateData.code === "CA" && (
+          <div style="margin: 28px 0 0;">
+            <h2>California-Specific DMV Vision Questions</h2>
+            <h3>What is the California DMV two-eye vision standard?</h3>
+            <p>California Vehicle Code § 12804.9 requires 20/40 visual acuity in both eyes together, and additionally 20/40 in at least one eye with a minimum of 20/70 in the other eye. If you meet the 20/40 combined standard but one eye falls below 20/40, the DMV evaluates your monocular performance separately. Failing the 20/40 combined standard triggers a 60-day temporary license during which you must return a completed DL-62 (Report of Vision Examination) from a licensed optometrist or ophthalmologist. The DMV may then require a supplemental driving performance test, particularly if your left eye falls below the minimum — because the left eye is the driver-side eye in California traffic conditions.</p>
+            <h3>What is California DMV Form DL-62 and when is it needed?</h3>
+            <p>Form DL-62 (Report of Vision Examination) is the California-specific document your eye doctor completes when you fail the counter acuity screening. Your optometrist or ophthalmologist fills in your corrected and uncorrected acuity, peripheral field measurements, and any relevant pathology, then signs and returns it to you. You submit it to the DMV within 60 days. Based on the DL-62 findings, the DMV determines whether to issue your license with a corrective-lenses restriction (code B), a daylight-only restriction, or require a behind-the-wheel driving test. The form is available at any California DMV office or from the <a href="https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/vision-requirements/" target="_blank" rel="noopener noreferrer">CA DMV vision requirements page</a>.</p>
+          </div>
         )}
 
         <h2>Why Practice Online?</h2>

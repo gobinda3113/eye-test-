@@ -16,6 +16,7 @@ dist/
 coverage/
 *.tsbuildinfo
 old_index.html
+audit-data.json
 
 # Environment & Secrets
 .env
