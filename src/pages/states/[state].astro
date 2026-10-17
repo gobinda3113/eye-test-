@@ -18,7 +18,7 @@ const slug = stateData.name.toLowerCase().replace(/ /g, "-");
 
 const customMeta = {
   title: `DMV Eye Test Online ${stateData.name} - Free Practice Screening`,
-  description: `Practice the ${stateData.name} DMV eye test online before you go. Minimum acuity required for a ${stateData.name} driver's license: ${stateData.min}.`,
+  description: `Practice the ${stateData.name} DMV eye test online before you go. Minimum acuity required for ${"AEIOUaeiou".includes(stateData.name[0]) ? "an" : "a"} ${stateData.name} driver's license: ${stateData.min}.`,
   url: `${SITE}/states/${slug}/`,
 };
 

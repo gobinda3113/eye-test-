@@ -325,7 +325,7 @@ const de = {
     title: "Sehtest-Ratgeber & Artikel — Online Vision Test",
     description:
       "Ratgeber zum Sehtest: Mindestsehschärfe 20/40, Führerschein-Auflagen, Snellen-Tafel und praktische Tipps zur Überprüfung Ihrer Sehkraft zu Hause.",
-    h1: "Sehanforderungen nach Bundesstaat",
+    h1: "Sehtest-Ratgeber: Guides, Anleitungen und Artikel",
     lede: "Die meisten Staaten verlangen 20/40 mit beiden Augen für eine unbeschränkte Fahrerlaubnis und erlauben mit Außenspiegel noch 20/70. Fünf Zeilen sind am Gesetzestext geprüft; der Rest verweist Sie an die zuständige Führerscheinstelle.",
     body: [
       { h: "So lesen Sie die Tabelle", p: "Mindest-Sehschärfe ist der Standard für eine unbeschränkte Fahrerlaubnis. Wenn Sie darunter liegen nennt die schlechteste korrigierte Sehschärfe, die noch für eine Auflage reicht — meist Fahren nur bei Tag oder Außenspiegel. Sehen bei Erneuerung zeigt, ob der Staat in jedem Zyklus, in jedem zweiten oder seltener nachprüft." },

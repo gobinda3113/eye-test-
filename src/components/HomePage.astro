@@ -45,7 +45,7 @@ const checkList = isUS
   : CHECKS.filter((c) => !US_ONLY_CHECK_IDS.includes(c.id));
 const dict = DICT[locale] || DICT.en;
 const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
-const meta = seoFor(locale, isUS ? "us": "DMV Practice");
+const meta = seoFor(locale, isUS ? "us" : "home");
 const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
 const homeHref = isUS ? "/us/" : locale === "en" ? "/" : "/" + locale + "/";
 const aboutHref = locale === "en" ? "/about/" : "/" + locale + "/about/";
