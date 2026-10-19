@@ -37,7 +37,18 @@ const fontHref =
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+      var initStorage = 'denied';
+      try {
+        if (localStorage.getItem('dmv-eye-test.consent') === 'granted') {
+          initStorage = 'granted';
+        }
+      } catch (e) {}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: initStorage,
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
     </script>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-55QRZ61B47"></script>
     <script is:inline>
@@ -102,20 +113,7 @@ const fontHref =
       )
     }
 
-    <!--
-      Analytics are loaded above with Consent Mode v2 (denied by default),
-      as disclosed in the privacy policy. The snippet below is kept parked
-      for legacy reference.
 
-      GA4
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-      <script is:inline>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag("js", new Date());
-        gtag("config", "G-XXXXXXXXXX");
-      </script>
-    -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -232,5 +230,62 @@ const fontHref =
   </head>
   <body class={page === "home" ? undefined : "is-doc"}>
     <slot />
+
+    <!-- Non-blocking consent banner -->
+    <aside id="cookieConsentBanner" class="consent-banner" aria-label="Cookie and Analytics Consent" style="display:none;">
+      <div class="consent-banner-inner">
+        <p class="consent-banner-text">
+          {(DICT[locale] || DICT.en)["consent.banner"]}
+          <a href={locale === "en" ? "/privacy/" : `/${locale}/privacy/`} class="consent-policy-link">
+            {(DICT[locale] || DICT.en)["footer.privacy"] || "Privacy"}
+          </a>
+        </p>
+        <div class="consent-banner-actions">
+          <button type="button" id="consentDeclineBtn" class="btn btn-sm btn-quiet">
+            {(DICT[locale] || DICT.en)["consent.decline"]}
+          </button>
+          <button type="button" id="consentAcceptBtn" class="btn btn-sm btn-primary">
+            {(DICT[locale] || DICT.en)["consent.accept"]}
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <script is:inline>
+      (function() {
+        var banner = document.getElementById("cookieConsentBanner");
+        var acceptBtn = document.getElementById("consentAcceptBtn");
+        var declineBtn = document.getElementById("consentDeclineBtn");
+        var consent = null;
+        try { consent = localStorage.getItem("dmv-eye-test.consent"); } catch(e){}
+
+        if (consent === "granted") {
+          if (typeof gtag === "function") {
+            gtag("consent", "update", { analytics_storage: "granted" });
+          }
+        } else if (!consent) {
+          if (banner) banner.style.display = "block";
+        }
+
+        if (acceptBtn) {
+          acceptBtn.addEventListener("click", function() {
+            try { localStorage.setItem("dmv-eye-test.consent", "granted"); } catch(e){}
+            if (typeof gtag === "function") {
+              gtag("consent", "update", { analytics_storage: "granted" });
+            }
+            if (banner) banner.style.display = "none";
+          });
+        }
+        if (declineBtn) {
+          declineBtn.addEventListener("click", function() {
+            try { localStorage.setItem("dmv-eye-test.consent", "denied"); } catch(e){}
+            if (typeof gtag === "function") {
+              gtag("consent", "update", { analytics_storage: "denied" });
+            }
+            if (banner) banner.style.display = "none";
+          });
+        }
+      })();
+    </script>
 </body>
 </html>

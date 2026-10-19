@@ -246,7 +246,6 @@ html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  outline: none;
 }
 
 .home-page .lang-wrap select option {

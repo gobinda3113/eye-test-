@@ -51,6 +51,7 @@ env/
 .aider*
 .gemini/
 *.cjs
+!check-*.cjs
 *.py
 
 # Internal / SEO working files (not for public repo)

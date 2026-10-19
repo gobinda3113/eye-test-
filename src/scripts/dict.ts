@@ -1,4 +1,7 @@
 const en = {
+    "consent.banner": "We use anonymous analytics to measure screener completion and improve test accuracy. No vision scores or personal data are collected.",
+    "consent.accept": "Accept",
+    "consent.decline": "Decline",
     "modes.quickName": "Quick check",
     "modes.fullName": "Full screening",
     "modes.indivName": "Individual test",
@@ -518,6 +521,9 @@ const en = {
 };
 
 const es = {
+    "consent.banner": "Utilizamos analíticas anónimas para medir la finalización del test y mejorar su precisión. No se recopilan resultados visuales ni datos personales.",
+    "consent.accept": "Aceptar",
+    "consent.decline": "Rechazar",
     "modes.quickName": "Chequeo rápido",
     "modes.fullName": "Examen completo",
     "modes.indivName": "Prueba individual",
@@ -1037,6 +1043,9 @@ const es = {
 };
 
 const fr = {
+    "consent.banner": "Nous utilisons des outils d'analyse anonymes pour mesurer l'utilisation et améliorer la précision du test. Aucun résultat visuel ni donnée personnelle n'est collecté.",
+    "consent.accept": "Accepter",
+    "consent.decline": "Refuser",
     "modes.quickName": "Contrôle rapide",
     "modes.fullName": "Dépistage complet",
     "modes.indivName": "Test individuel",
@@ -1556,6 +1565,9 @@ const fr = {
 };
 
 const de = {
+    "consent.banner": "Wir verwenden anonyme Analysen, um die Durchführung des Tests zu messen und die Genauigkeit zu verbessern. Es werden keine Testergebnisse oder persönlichen Daten erfasst.",
+    "consent.accept": "Akzeptieren",
+    "consent.decline": "Ablehnen",
     "modes.quickName": "Schnelltest",
     "modes.fullName": "Vollständiger Sehtest",
     "modes.indivName": "Einzeltest",
@@ -2075,6 +2087,9 @@ const de = {
 };
 
 const pt = {
+    "consent.banner": "Usamos análises anônimas para medir a conclusão do teste e melhorar a precisão. Nenhum resultado visual ou dado pessoal é coletado.",
+    "consent.accept": "Aceitar",
+    "consent.decline": "Recusar",
     "modes.quickName": "Verificação rápida",
     "modes.fullName": "Triagem completa",
     "modes.indivName": "Teste individual",
@@ -2595,6 +2610,9 @@ const pt = {
 
 
 const it = {
+    "consent.banner": "Utilizziamo analisi anonime per misurare il completamento del test e migliorarne la precisione. Non vengono raccolti risultati visivi o dati personali.",
+    "consent.accept": "Accetta",
+    "consent.decline": "Rifiuta",
     "modes.quickName": "Controllo rapido",
     "modes.fullName": "Screening completo",
     "modes.indivName": "Test singolo",
@@ -3113,6 +3131,9 @@ const it = {
     "results.drive.ja": "La patente normale richiede 0,7 o più in entrambi gli occhi e 0,3 o più per occhio. Solo per esercitazione. Non è un test ufficiale.",
 };
 const ja = {
+    "consent.banner": "テストの完了状況を測定し精度を向上させるため、匿名のアクセス解析を使用しています。視力測定結果や個人データは収集されません。",
+    "consent.accept": "同意する",
+    "consent.decline": "拒否する",
     "modes.quickName": "クイックチェック",
     "modes.fullName": "完全スクリーニング",
     "modes.indivName": "個別テスト",
@@ -3631,6 +3652,9 @@ const ja = {
     "results.drive.it": "免許B: 両眼7/10、悪い方の目2/10 (IAPB)。オンライン検査は適性を証明するものではありません。",
 };
 const ru = {
+    "consent.banner": "Мы используем анонимную аналитику для оценки прохождения теста и повышения его точности. Результаты проверки зрения и личные данные не собираются.",
+    "consent.accept": "Принять",
+    "consent.decline": "Отклонить",
     "modes.quickName": "Быстрая проверка",
     "modes.fullName": "Полный скрининг",
     "modes.indivName": "Индивидуальный тест",

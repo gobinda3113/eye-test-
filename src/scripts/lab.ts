@@ -121,6 +121,17 @@ export function createLab(labEl) {
   let single = null;
   let runMode = "full";
 
+  function trackFunnel(eventName: string, params: Record<string, any> = {}) {
+    try {
+      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", eventName, {
+          ...params,
+          event_category: "screener_funnel",
+        });
+      }
+    } catch (e) {}
+  }
+
   if (stage) {
     stage.addEventListener("click", (e: MouseEvent) => {
       const btn = (e.target as HTMLElement)?.closest?.(".stage-info-btn") as HTMLElement | null;
@@ -404,6 +415,10 @@ export function createLab(labEl) {
   }
 
   function finishStep(currentId) {
+    trackFunnel("screener_step_completed", {
+      step_name: currentId,
+      mode: runMode || "full",
+    });
     if (currentId === "calibrate" || currentId === "guidance") {
       const nextIdx = STEP_ORDER.indexOf(currentId) + 1;
       if (nextIdx < STEP_ORDER.length) {
@@ -509,6 +524,15 @@ export function createLab(labEl) {
   function go(id) {
     if (!id || (id === step && !single)) return;
     step = id;
+    trackFunnel("screener_step_entered", {
+      step_name: id,
+      mode: runMode || "full",
+    });
+    if (id === "results") {
+      trackFunnel("screener_results_reached", {
+        mode: runMode || "full",
+      });
+    }
     render();
     labEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -2422,6 +2446,9 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
   }
 
   function renderResults() {
+    trackFunnel("screener_results_reached", {
+      mode: runMode || "full",
+    });
     const quickNoteHtml = runMode === 'quick' ? `<div style="background:var(--bg-warn); color:var(--text); padding:1rem; border-radius:8px; margin-bottom:1rem; text-align:center; font-weight:500;">${t("modes.quickNote") || "Quick screen — short-range checks only. Not comparable to full distance results."}</div>` : '';
     const disclaimerHtml = `<div style="text-align:center; font-size:0.9rem; color:var(--muted); margin-bottom:1.5rem;">${t("modes.disclaimerBanner") || "Screening only — not a medical diagnosis. If you have concerns, see an eye doctor."}</div>`;
     
@@ -2841,6 +2868,11 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
       render();
     };
     document.getElementById("btnExitDiscard").onclick = () => {
+      trackFunnel("screener_abandoned", {
+        step_name: step,
+        mode: runMode || "full",
+        reason: "exit_discard",
+      });
       close();
       exitTest();
     };
@@ -2877,6 +2909,14 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
     const isTestStarting = mode === "quick" || mode === "full" || Boolean(specificCheck);
     if (isTestStarting) {
+      trackFunnel("screener_started", {
+        mode,
+        check: specificCheck || "all",
+      });
+      trackFunnel("screener_step_entered", {
+        step_name: step,
+        mode,
+      });
       enterFocus();
       showSessionNoticeModal();
     }
