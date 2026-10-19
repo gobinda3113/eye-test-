@@ -49,11 +49,21 @@ const fontHref =
         ad_user_data: 'denied',
         ad_personalization: 'denied'
       });
-    </script>
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-55QRZ61B47"></script>
-    <script is:inline>
       gtag('js', new Date());
       gtag('config', 'G-55QRZ61B47');
+
+      function loadGtag() {
+        if (document.getElementById('gtag-js')) return;
+        var s = document.createElement('script');
+        s.id = 'gtag-js';
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-55QRZ61B47';
+        document.head.appendChild(s);
+      }
+      window.__loadGtag = loadGtag;
+      if (initStorage === 'granted') {
+        loadGtag();
+      }
     </script>
     <meta charset="utf-8" />
     <meta name="yandex-verification" content="b13d3f1622cfc654" />
@@ -232,7 +242,7 @@ const fontHref =
     <slot />
 
     <!-- Non-blocking consent banner -->
-    <aside id="cookieConsentBanner" class="consent-banner" aria-label="Cookie and Analytics Consent" style="display:none;">
+    <aside id="cookieConsentBanner" class="consent-banner" aria-label={(DICT[locale] || DICT.en)["consent.ariaLabel"] || "Cookie and analytics consent"} style="display:none;">
       <div class="consent-banner-inner">
         <p class="consent-banner-text">
           {(DICT[locale] || DICT.en)["consent.banner"]}
@@ -263,6 +273,9 @@ const fontHref =
           if (typeof gtag === "function") {
             gtag("consent", "update", { analytics_storage: "granted" });
           }
+          if (typeof window.__loadGtag === "function") {
+            window.__loadGtag();
+          }
         } else if (!consent) {
           if (banner) banner.style.display = "block";
         }
@@ -272,6 +285,9 @@ const fontHref =
             try { localStorage.setItem("dmv-eye-test.consent", "granted"); } catch(e){}
             if (typeof gtag === "function") {
               gtag("consent", "update", { analytics_storage: "granted" });
+            }
+            if (typeof window.__loadGtag === "function") {
+              window.__loadGtag();
             }
             if (banner) banner.style.display = "none";
           });

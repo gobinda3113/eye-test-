@@ -299,6 +299,8 @@ export function createLab(labEl) {
   }
 
   function renderMenu() {
+    const isUS = typeof window !== "undefined" && (window.location.pathname.startsWith("/us/") || window.location.pathname === "/us");
+    const checkList = CHECKS.filter((c) => isUS || c.id !== "cdl");
     stage.innerHTML = `
       <div class="stage-title">${t("modes.indivTitle")}</div>
       <p class="stage-sub">${t("modes.selectCheck")}</p>
@@ -308,7 +310,7 @@ export function createLab(labEl) {
         </button>
       </div>
       <div class="indiv-grid">
-        ${CHECKS.map((c) => {
+        ${checkList.map((c) => {
           const isDist = DISTANCE_CHECKS.includes(c.id);
           return `
             <button type="button" class="check-menu-card" data-check="${c.id}">
