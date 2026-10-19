@@ -50,7 +50,7 @@ const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
 const homeHref = isUS ? "/us/" : locale === "en" ? "/" : "/" + locale + "/";
 const aboutHref = locale === "en" ? "/about/" : "/" + locale + "/about/";
 const contactHref = locale === "en" ? "/contact/" : "/" + locale + "/contact/";
-const testHref = locale === "en" ? "/test/" : "/" + locale + "/test/";
+const testHref = isUS ? "/us/test/" : locale === "en" ? "/test/" : "/" + locale + "/test/";
 
 const strip = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
@@ -160,7 +160,7 @@ const howToSchema = {
               <span data-i18n="hero.cta1">{d("hero.cta1")}</span>
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
-            <a class="text-link light" href="#how">
+            <a class="text-link light" href="#checks">
               <span data-i18n="hero.cta2">{d("hero.cta2")}</span>
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
             </a>

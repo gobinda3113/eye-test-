@@ -7,8 +7,8 @@ import { DICT } from "../../scripts/dict.ts";
 const dict = DICT.en;
 const d = (k: string) => (dict[k] != null ? dict[k] : k);
 
-const title = "All 13 Online Vision Checks — Complete Test Directory";
-const description = "Explore all 13 clinical vision tests: visual acuity, Snellen chart, astigmatism dial, color plates, peripheral vision, CDL prep, and more.";
+const title = "All 12 Online Vision Checks — Complete Test Directory";
+const description = "Explore all 12 clinical vision tests: visual acuity, Snellen chart, astigmatism dial, color plates, peripheral vision, and more.";
 const canonical = "https://onlinevisiontest.org/checks/";
 
 const schema = {
@@ -49,7 +49,7 @@ const CHECK_TAGS: Record<string, [string, string]> = {
           <span class="kicker-line"></span>
           <span>CLINICAL DIRECTORY</span>
         </div>
-        <h1 class="checks-title">All 13 Online Vision Checks</h1>
+        <h1 class="checks-title">All 12 Online Vision Checks</h1>
         <p class="checks-lede">
           Explore every check in our screening battery. Read about what each test measures and standard clinical benchmarks, or launch any check directly in the interactive testing lab.
         </p>
@@ -57,7 +57,7 @@ const CHECK_TAGS: Record<string, [string, string]> = {
 
       <div class="checks-grid">
         {
-          CHECKS.map((c) => {
+          CHECKS.filter((c) => c.id !== "cdl").map((c) => {
             const name = d(`checks.${c.id}.name`);
             const desc = d(`checks.${c.id}.desc`);
             const tags = CHECK_TAGS[c.id] || ["Clinical Standard", "Self-Screen"];

@@ -16,13 +16,13 @@ const { locale = "en", page = "home", customAlts } = Astro.props;
 const dict = DICT[locale] || DICT.en;
 const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
 
-const isUS = page === "us";
+const isUS = page === "us" || (Astro.url.pathname && Astro.url.pathname.startsWith("/us/"));
 const homeHref = isUS ? "/us/" : locale === "en" ? "/" : "/" + locale + "/";
-const checksHref = "/checks/";
+const checksHref = locale === "en" ? "/checks/" : `${homeHref}#checks`;
 const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
 const aboutHref = locale === "en" ? "/about/" : "/" + locale + "/about/";
 const contactHref = locale === "en" ? "/contact/" : "/" + locale + "/contact/";
-const testHref = locale === "en" ? "/test/" : "/" + locale + "/test/";
+const testHref = isUS ? "/us/test/" : locale === "en" ? "/test/" : "/" + locale + "/test/";
 
 // "Start free check" CTA stays removed on /test/, present everywhere else
 const hideCta = page === "test";

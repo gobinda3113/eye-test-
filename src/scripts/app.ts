@@ -4,7 +4,7 @@
  */
 
 import { LANGS, setLang, getLang, t, apply } from "./i18n.ts";
-import { CHECKS, ICONS, CHART_LINES, STATES, FAQ_COUNT, REFS, SOURCES, DMV_LINKS, US_ONLY_CHECK_IDS, US_ONLY_FAQ_NUMS } from "./data.ts";
+import { ICONS, CHART_LINES, STATES, FAQ_COUNT, REFS, SOURCES, DMV_LINKS, US_ONLY_FAQ_NUMS } from "./data.ts";
 import { lineSVG } from "./optotypes.ts";
 import { createLab } from "./lab.ts";
 

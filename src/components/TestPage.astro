@@ -1,9 +1,11 @@
 ---
 import { DICT } from "../scripts/dict.ts";
 
-const { locale = "en" } = Astro.props;
+const { locale = "en", isUS = false } = Astro.props;
 const dict = DICT[locale] || DICT.en;
 const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
+const indivDurationKey = isUS ? "us.modes.indivDuration" : "modes.indivDuration";
+const indivDuration = d(indivDurationKey);
 ---
 <div class="test-page-wrap">
   <div class="test-banner" role="note" aria-label="Medical disclaimer">
@@ -86,7 +88,7 @@ const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.
           type="button"
           class="mode-card"
           data-mode="individual"
-          aria-label={`${d("modes.indivName")} — ${d("modes.indivDuration")}: ${d("modes.indivDesc")}`}
+          aria-label={`${d("modes.indivName")} — ${indivDuration}: ${d("modes.indivDesc")}`}
         >
           <span class="mode-accent-bar" aria-hidden="true"></span>
           <div class="mode-num-col">
@@ -95,7 +97,7 @@ const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.
           <div class="mode-info-col">
             <div class="mode-title-row">
               <h2 class="mode-title" data-i18n="modes.indivName">{d("modes.indivName")}</h2>
-              <span class="mode-pill" data-i18n="modes.indivDuration">{d("modes.indivDuration")}</span>
+              <span class="mode-pill" data-i18n={indivDurationKey}>{indivDuration}</span>
             </div>
             <p class="mode-desc" data-i18n="modes.indivDesc">{d("modes.indivDesc")}</p>
           </div>

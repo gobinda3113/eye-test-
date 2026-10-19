@@ -81,7 +81,7 @@ const home = pathFor(locale, "home");
 
 const nav = [
   { label: t.home, href: home },
-  { label: t.checks, href: "/checks/" },
+  { label: t.checks, href: locale === "en" ? "/checks/" : `${home}#checks` },
   { label: t.blog, href: pathFor(locale, "blog") },
   { label: t.about, href: pathFor(locale, "about") },
   { label: t.contact, href: pathFor(locale, "contact") },

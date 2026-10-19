@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteShell from "../../components/SiteShell.astro";
+import TestPage from "../../components/TestPage.astro";
+---
+
+<Layout locale="en" page="test" noindex={true}>
+  <SiteShell locale="en" page="test">
+    <TestPage locale="en" isUS={true} />
+  </SiteShell>
+</Layout>
