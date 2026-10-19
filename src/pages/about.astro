@@ -9,9 +9,6 @@ const customMeta = {
   url: `${SITE}/about/`,
 };
 
-const customAlts = [{ hreflang: "en", url: customMeta.url }];
-const customXDefault = customMeta.url;
-
 const aboutSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -54,7 +51,7 @@ const aboutSchema = {
 };
 ---
 
-<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={aboutSchema}>
+<Layout locale="en" page="about" customMeta={customMeta} schema={aboutSchema}>
   <SiteShell locale="en" page="about">
     <div class="container section">
       <nav class="crumbs" aria-label="Breadcrumb">

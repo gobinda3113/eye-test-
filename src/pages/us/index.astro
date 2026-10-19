@@ -26,7 +26,7 @@ const sortedStates = [...STATES].sort((a, b) => a.name.localeCompare(b.name));
     <div class="container section" style="padding-top: 0;">
       <div style="margin-bottom: 48px;">
         <h2 style="font-size: 22px; margin-bottom: 8px;">DMV Eye Test Requirements — All 51 Jurisdictions</h2>
-        <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">Select your state for specific vision standards, the doctor referral form name, field-of-vision thresholds, and renewal schedules.</p>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">Select your state for specific vision standards, the doctor referral form name, field-of-vision thresholds, and renewal schedules. Commercial driver license applicant? Read the <a href="/checks/cdl/" style="color: var(--brand, #0e7c86); font-weight: 600; text-decoration: underline;">CDL vision requirements guide</a>.</p>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px;">
           {sortedStates.map((s) => {
             const slug = s.name.toLowerCase().replace(/ /g, "-");

@@ -9,9 +9,6 @@ const customMeta = {
   url: `${SITE}/contact/`,
 };
 
-const customAlts = [{ hreflang: "en", url: customMeta.url }];
-const customXDefault = customMeta.url;
-
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
@@ -37,7 +34,7 @@ const contactSchema = {
 };
 ---
 
-<Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={contactSchema}>
+<Layout locale="en" page="contact" customMeta={customMeta} schema={contactSchema}>
   <SiteShell locale="en" page="contact">
     <div class="container section">
       <nav class="crumbs" aria-label="Breadcrumb">

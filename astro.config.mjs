@@ -127,6 +127,20 @@ export default defineConfig({
         if (files) {
            item.lastmod = getFileMtime(files);
         }
+        if (item.url.includes("/privacy/")) {
+          const PRIVACY_URLS = [
+            "https://onlinevisiontest.org/privacy/",
+            "https://onlinevisiontest.org/it/privacy/",
+            "https://onlinevisiontest.org/ru/privacy/",
+          ];
+          if (PRIVACY_URLS.includes(item.url)) {
+            if (item.links) {
+              item.links = item.links.filter((l) => ["en-US", "it-IT", "ru-RU"].includes(l.lang));
+            }
+          } else {
+            item.links = [];
+          }
+        }
         return item;
       },
       // error and test screener pages are noindex and must stay out of the sitemap

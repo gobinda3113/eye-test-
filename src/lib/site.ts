@@ -77,8 +77,20 @@ export function homeAlternates() {
   }));
 }
 
+export const PRIVACY_LOCALES = ["en", "it", "ru"];
+
 /** Every locale variant of one page, for the hreflang alternate set. */
-export function alternates(pageKey) {
+export function alternates(pageKey, currentLocale) {
+  if (pageKey === "privacy") {
+    if (currentLocale && !PRIVACY_LOCALES.includes(currentLocale)) {
+      return [];
+    }
+    return PRIVACY_LOCALES.map((locale) => ({
+      locale,
+      hreflang: HREFLANG[locale],
+      url: urlFor(locale, pageKey),
+    }));
+  }
   return LOCALES.map((locale) => ({
     locale,
     hreflang: HREFLANG[locale],

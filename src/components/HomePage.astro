@@ -382,6 +382,11 @@ const howToSchema = {
           );
         })}
       </div>
+      {isUS && (
+        <p class="checks-cdl-note" style="margin-top: 1.25rem; font-size: 0.88rem; color: var(--text-2, #4A5658);">
+          Commercial driver license applicant? Read our <a href="/checks/cdl/" style="color: var(--brand, #0e7c86); font-weight: 600; text-decoration: underline;">CDL vision test requirements & clinical guide</a>.
+        </p>
+      )}
       {!isUS && (
         <p class="checks-cdl-note" data-i18n="checks.cdlNote" style="margin-top: 1.25rem; font-size: 0.88rem; color: var(--text-2, #4A5658); font-style: italic;">
           {d("checks.cdlNote")}
