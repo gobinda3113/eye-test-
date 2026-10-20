@@ -185,7 +185,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "Idaho Code § 49-313 (official text not re-verified on legislature.idaho.gov)",
     "dmvUrl": "https://itd.idaho.gov/guide/new-to-idaho/",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "Not tested during routine screening",
     "doctorForm": "No named public form",
     "retestPolicy": "Best-effort (unverified): failing the screening results in referral to an eye care specialist for examination before licensing proceeds."
@@ -302,7 +302,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "MCA 61-5-107",
     "dmvUrl": "https://mvdmt.gov/new-driver-license/adult-driver-license/",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "Not tested during routine screening",
     "doctorForm": "Eye Evaluation 22-1801",
     "retestPolicy": "Best-effort (unverified): failing the screening results in referral to an eye care professional, who completes Eye Evaluation form 22-1801 for MVD review."
