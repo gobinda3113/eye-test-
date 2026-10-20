@@ -9,7 +9,6 @@
 import { t } from "./i18n.ts";
 import {
   lineHeightPx,
-  nearFontPx,
   renderNearVisionCanvas,
   drawPlate,
   drawStereogram,
@@ -27,17 +26,15 @@ import {
   MM_PER_PX_FALLBACK,
   acuityLabel,
   acuityNotations,
-  overallVerdict,
 } from "./vision.ts";
 import { lineSVG, tumblingESVG, landoltCSVG } from "./optotypes.ts";
 import { CHECKS, TEST_LINES, ANSWER_POOL, SIVTSEV_LINES, SIVTSEV_POOL } from "./data.ts";
 
-const READ_SECONDS = 6;
 const STORE_KEY = "dmv-eye-test.profile.v1";
 const RESULT_KEY = "dmv-eye-test.results.v1";
 
 /** How many optotypes fit at their true size in `avail` px (never zero). */
-function fitCount(avail, height, count) {
+function fitCount(avail: number, height: number, count: number) {
   const boxW = height * 1.2;
   const gapW = height * 1.05;
   return Math.max(1, Math.min(count, Math.floor((avail + gapW) / (boxW + gapW))));
@@ -86,6 +83,7 @@ const STEP_LABEL = {
   astigmatism: "checks.astigmatism.name",
   refraction: "checks.refraction.name",
   stereo: "checks.stereo.name",
+  amsler: "checks.amsler.name",
   results: "results.title",
 };
 
@@ -105,20 +103,20 @@ const STEP_INFO = {
 /** Big symbol shown on the refraction result card. */
 const REFRACT_SYM = { myopic: "\u2212", hyperopic: "+", balanced: "\u00b10" };
 
-export function createLab(labEl) {
-  const stage = labEl.querySelector("#labStage");
-  const foot = labEl.querySelector("#labFoot");
-  const stepper = labEl.querySelector("#stepper");
-  const statusEl = labEl.querySelector("#labStatus");
-  const normEl = labEl.querySelector("#labNorm");
+export function createLab(labEl: any) {
+  const stage = labEl.querySelector("#labStage") as any;
+  const foot = labEl.querySelector("#labFoot") as any;
+  const stepper = labEl.querySelector("#stepper") as any;
+  const statusEl = labEl.querySelector("#labStatus") as any;
+  const normEl = labEl.querySelector("#labNorm") as any;
 
-  let cleanups = [];
+  let cleanups: Array<() => void> = [];
   let token = 0;
-  let config = loadProfile();
+  let config: any = loadProfile();
   config.calibrated = hasValidCalibration(config);
-  let results = loadResults();
+  let results: Record<string, any> = loadResults();
   let step = "calibrate";
-  let single = null;
+  let single: { check: string } | null = null;
   let runMode = "full";
 
   function trackFunnel(eventName: string, params: Record<string, any> = {}) {
@@ -145,7 +143,8 @@ export function createLab(labEl) {
     });
   }
 
-  function on(target, type, handler, options) {
+  function on(target: any, type: string, handler: any, options?: any) {
+    if (!target) return;
     target.addEventListener(type, handler, options);
     cleanups.push(() => target.removeEventListener(type, handler, options));
   }
@@ -155,23 +154,8 @@ export function createLab(labEl) {
     cleanups = [];
   }
 
-  function status(text) {
+  function status(text: string) {
     statusEl.textContent = text;
-  }
-
-  function isDone(id) {
-    if (id === "calibrate") return hasValidCalibration(config);
-    if (id === "guidance" || id === "menu") return true;
-    if (id === "distance") return results.both != null || results.right != null || results.left != null;
-    if (id === "tumbling") return results.tumbling != null;
-    if (id === "color") return results.color != null;
-    if (id === "peripheral") return results.peripheral != null;
-    if (id === "near") return results.near != null;
-    if (id === "contrast") return results.contrast != null;
-    if (id === "astigmatism") return results.astigmatism != null;
-    if (id === "refraction") return results.refraction != null;
-    if (id === "stereo") return results.stereo != null;
-    return false;
   }
 
   /** Published normal / benchmark values for the current step, if we have any. */
@@ -333,7 +317,7 @@ export function createLab(labEl) {
       on(backBtn, "click", exitTest);
     }
 
-    stage.querySelectorAll("[data-check]").forEach((btn) => {
+    stage.querySelectorAll("[data-check]").forEach((btn: any) => {
       on(btn, "click", () => {
         startMode("individual", btn.dataset.check);
       });
@@ -342,11 +326,11 @@ export function createLab(labEl) {
     setFoot("");
   }
 
-  function getEvalSubtitle(checkId) {
+  function getEvalSubtitle(checkId: string) {
     let tone = "var(--text)";
     let msg = "";
     
-    const evalAcuity = (den) => {
+    const evalAcuity = (den: any) => {
         if (den == null) return null;
         if (den <= 25) return { msg: t("eval.excellent"), color: "#16a34a" };
         if (den <= 40) return { msg: t("eval.goodPass"), color: "#16a34a" };
@@ -1311,7 +1295,7 @@ export function createLab(labEl) {
         config.cardWidthPx = Math.max(CARD_MIN, Math.min(CARD_MAX, Math.round(CARD_MM / config.mmPerPx)));
       }
       config.calibrated = true;
-      showCalibSavePopup((saved) => {
+      showCalibSavePopup(() => {
         status(t("calib.locked"));
         finishStep("calibrate");
       });
@@ -1326,7 +1310,7 @@ export function createLab(labEl) {
     const dist = config.distanceM || 3;
     stage.innerHTML = `
       ${renderStageTitle("checks.distance.name", "test.eyeSub")}
-      <div id="distBody" style="margin-top:24px"></div></details>`;
+      <div id="distBody" style="margin-top:24px"></div>`;
     const body = stage.querySelector("#distBody");
     navFoot({ next: false });
 
@@ -1350,7 +1334,7 @@ export function createLab(labEl) {
     const dist = config.distanceM || 3;
     stage.innerHTML = `
       ${renderStageTitle("checks.sivtsev.name", "test.eyeSub")}
-      <div id="distBody" style="margin-top:24px"></div></details>`;
+      <div id="distBody" style="margin-top:24px"></div>`;
     const body = stage.querySelector("#distBody");
     navFoot({ next: false });
 
@@ -1366,7 +1350,7 @@ export function createLab(labEl) {
     finishStep("sivtsev");
   }
 
-  function coverScreen(body, eye, dist) {
+  function coverScreen(body: any, eye: any, dist: any) {
     return new Promise((resolve) => {
       const label = eye === "right" ? t("test.coverRight") : eye === "left" ? t("test.coverLeft") : t("test.bothEyes");
       const distLabel = dist === 6 ? t("calib.dist6") : dist === 2 ? t("calib.dist2") : dist === 5 ? t("calib.dist5") : t("calib.dist3");
@@ -1378,24 +1362,22 @@ export function createLab(labEl) {
           <div><button class="btn btn-soft" data-act="go">${t("test.getReady")}</button></div>
         </div>`;
       const btn = body.querySelector('[data-act="go"]');
-      const handler = () => resolve(true);
+      const handler = () => resolve(undefined);
       on(btn, "click", handler);
     });
   }
 
-  async function runAcuityRun(body, eye, mmPerPx, dist, my, lines = TEST_LINES, pool = ANSWER_POOL) {
-    const ladder = [200, 100, 70, 50, 40, 30, 25, 20];
-    let best = null;
+  async function runAcuityRun(body: any, eye: any, mmPerPx: any, dist: any, my: any, lines = TEST_LINES, pool = ANSWER_POOL) {
+    const dens = Object.keys(lines).map(Number).sort((a, b) => b - a);
     let index = 0;
+    let best = null;
     let retry = false;
-    let guard = 0;
 
-    while (index < ladder.length && guard < 16) {
+    while (index < dens.length) {
       if (my !== token) return best;
-      guard++;
-      const den = ladder[index];
+      const den = dens[index];
       const letters = shuffled(lines[den]);
-      const correct = await presentLine(body, den, letters, mmPerPx, dist, index, ladder.length, eye, my, pool);
+      const correct = await presentLine(body, den, letters, mmPerPx, dist, index, dens.length, eye, my, pool);
       if (my !== token) return best;
       if (correct) {
         best = den;
@@ -1410,7 +1392,7 @@ export function createLab(labEl) {
     return best;
   }
 
-  function presentLine(body, den, letters, mmPerPx, dist, index, total, eye, my, pool = ANSWER_POOL) {
+  function presentLine(body: any, den: any, letters: any, mmPerPx: any, dist: any, index: any, total: any, eye: any, my: any, pool = ANSWER_POOL) {
     return new Promise((resolve) => {
       const height = lineHeightPx(den, dist, mmPerPx);
       const eyeLabel = eye === "right" ? t("results.eyeRight") : eye === "left" ? t("results.eyeLeft") : t("results.both");
@@ -1418,7 +1400,7 @@ export function createLab(labEl) {
         <div class="progress-line"><i style="width:${Math.round(((index + 1) / total) * 100)}%"></i></div>
         <div class="eye-badge" style="margin-bottom:14px">${eyeLabel} &middot; ${t("test.line", { n: index + 1 })}</div>
         <div class="chart-view" id="chartView"></div>
-        <div id="answerArea" style="margin-top:20px"></div></details>`;
+        <div id="answerArea" style="margin-top:20px"></div>`;
       const chart = body.querySelector("#chartView");
       const area = body.querySelector("#answerArea");
 
@@ -1577,7 +1559,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="trial-counter" id="tumbleCount" style="text-align:center;margin-top:16px"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const view = stage.querySelector("#eView");
     const countEl = stage.querySelector("#tumbleCount");
 
@@ -1677,7 +1659,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="trial-counter" id="landoltCount" style="text-align:center;margin-top:16px"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const view = stage.querySelector("#landoltView");
     const countEl = stage.querySelector("#landoltCount");
 
@@ -1686,7 +1668,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         results.landolt = { correct, total: sizes.length, best: bestDen };
         saveResults(results);
         status(`${correct} / ${sizes.length}`);
-        go("results");
+        finishStep("landolt");
         return;
       }
       const den = sizes[trial];
@@ -1766,7 +1748,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="stage-sub" id="plateNote" style="margin-top:16px;min-height:1.4em"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const canvas = stage.querySelector("#plateCanvas");
     const input = stage.querySelector("#plateInput");
     const note = stage.querySelector("#plateNote");
@@ -2154,7 +2136,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="stage-sub" id="contrastNote" style="margin-top:16px;min-height:1.4em"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const view = stage.querySelector("#contrastView");
     const input = stage.querySelector("#contrastInput");
     const note = stage.querySelector("#contrastNote");
@@ -2276,7 +2258,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           <button class="btn btn-quiet btn-sm" data-act="equal">${t("astig.equal")}</button>
           <p class="stage-sub" id="astigNote" style="margin-top:18px;min-height:1.4em"></p>
         </div>
-      </div></details>`;
+      </div>`;
 
     const note = stage.querySelector("#astigNote");
     let settled = false;
@@ -2346,7 +2328,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         <div class="duo-row">
           <div class="duo-half duo-red"></div>
           <div class="duo-half duo-green"></div>
-        </div></details>`;
+        </div>`;
       const halves = wrap.querySelectorAll(".duo-half");
       const cs = getComputedStyle(halves[0]);
       const avail = Math.max(60, halves[0].clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight));
@@ -2399,7 +2381,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         <button class="btn btn-ghost btn-xs" data-act="flip">${t("stereo.flip")}</button>
         <p class="stage-sub stereo-tip">${t("stereo.tip")}</p>
         <p class="stage-sub" id="stereoNote" style="min-height:1.4em"></p>
-      </div></details>`;
+      </div>`;
     const canvas = stage.querySelector("#stereoCanvas");
     const note = stage.querySelector("#stereoNote");
     const wrap = stage.querySelector(".stereo-wrap");
@@ -2436,9 +2418,51 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     navFoot({ next: false });
   }
 
+  /* ------------------------------------------------------------------ amsler */
+
+  function renderAmsler() {
+    let gridLines = "";
+    for (let i = 0; i <= 20; i++) {
+      const pos = 10 + i * 14;
+      gridLines += `<line x1="10" y1="${pos}" x2="290" y2="${pos}" stroke="currentColor" stroke-width="1.5" />`;
+      gridLines += `<line x1="${pos}" y1="10" x2="${pos}" y2="290" stroke="currentColor" stroke-width="1.5" />`;
+    }
+
+    stage.innerHTML = `
+      ${renderStageTitle("amsler.title", "amsler.sub")}
+      <div class="stage-grid">
+        <div class="stage-panel" style="display:grid;place-items:center;background:#fff;color:#000;padding:20px;border-radius:12px;">
+          <svg viewBox="0 0 300 300" style="width: 100%; max-width: 300px;" role="img" aria-label="${t("amsler.title")}">
+            <rect width="300" height="300" fill="#fff" />
+            ${gridLines}
+            <circle cx="150" cy="150" r="4" fill="#000" />
+          </svg>
+        </div>
+        <div class="stage-panel">
+          <div class="panel-title">${t("amsler.prompt")}</div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
+            <button class="btn btn-primary" data-act="pass">${t("amsler.noDistortion")}</button>
+            <button class="btn btn-quiet" data-act="fail">${t("amsler.distortionFound")}</button>
+          </div>
+        </div>
+      </div>`;
+
+    on(stage.querySelector('[data-act="pass"]'), "click", () => {
+      results.amsler = true;
+      saveResults(results);
+      setTimeout(() => finishStep("amsler"), 100);
+    });
+    on(stage.querySelector('[data-act="fail"]'), "click", () => {
+      results.amsler = false;
+      saveResults(results);
+      setTimeout(() => finishStep("amsler"), 100);
+    });
+    setFoot("");
+  }
+
   /* ---------------------------------------------------------------- results */
 
-  function card(label, value, tone, note, small) {
+  function card(label: any, value: any, tone: any, note: any, small = false) {
     if (value === t("results.notTested")) return "";
     return `<div class="result-card${tone ? " rc-" + tone : ""}">
       <span class="rc-label">${label}</span>
@@ -2517,7 +2541,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     if (passed < totalTaken - 2) verdict = "bad";
     
     let scoreTpl = t("results.score") || "Overall Score: {passed}/{total} Passed";
-    let scoreText = scoreTpl.replace("{passed}", passed).replace("{total}", totalTaken);
+    let scoreText = scoreTpl.replace("{passed}", String(passed)).replace("{total}", String(totalTaken));
 
     const acuity = (v) => (v == null ? t("results.notTested") : acuityNotations(v));
     const tone = (v) => (v == null ? null : v <= 40 ? "pass" : v <= 70 ? "warn" : "bad");
@@ -3001,7 +3025,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
 /* -------------------------------------------------------------- storage */
 
-function emptyResults() {
+function emptyResults(): Record<string, any> {
   return {
     right: null,
     left: null,
@@ -3016,6 +3040,7 @@ function emptyResults() {
     astigmatism: null,
     refraction: null,
     stereo: null,
+    amsler: null,
   };
 }
 
@@ -3086,60 +3111,16 @@ function reportRows(results, acuity) {
     results.stereo ? (results.stereo.seen ? t("results.stereoSeen") : t("results.stereoNot")) : notTested,
     "shape seen"
   );
+  add(
+    t("results.amsler"),
+    results.amsler != null ? (results.amsler ? t("results.amslerPass") : t("results.amslerFail")) : notTested,
+    t("results.amslerPass")
+  );
   const driveLang = typeof document !== "undefined" ? document.documentElement.lang || "en" : "en";
   if (["de", "it", "ja", "pt"].includes(driveLang)) {
     add(t("results.driveRef"), t("results.drive." + driveLang), "");
   }
   return rows;
-}
-
-function buildReport(rows) {
-  const head = [t("report.check"), t("report.result"), t("report.normal")];
-  const width = Math.max(head[0].length, ...rows.map((r) => r[0].length));
-  const line = (r) => `${r[0].padEnd(width)}  ${r[1]}${r[2] ? "   [" + r[2] + "]" : ""}`;
-  return [
-    t("report.title"),
-    t("report.line", { date: new Date().toLocaleString() }),
-    "",
-    line(head),
-    "-".repeat(width + 26),
-    ...rows.map(line),
-    "",
-    t("report.disclaimer"),
-    t("report.local"),
-    "",
-  ].join("\n");
-}
-
-/** Clipboard with a synchronous fallback for browsers that refuse the async API. */
-function copyText(text) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    return navigator.clipboard.writeText(text).catch(() => legacyCopy(text));
-  }
-  try {
-    return Promise.resolve(legacyCopy(text));
-  } catch (err) {
-    return Promise.reject(err);
-  }
-}
-
-function legacyCopy(text) {
-  const ta = document.createElement("textarea");
-  ta.value = text;
-  ta.setAttribute("readonly", "");
-  ta.style.position = "fixed";
-  ta.style.top = "-2000px";
-  ta.style.opacity = "0";
-  document.body.appendChild(ta);
-  ta.select();
-  let ok = false;
-  try {
-    ok = document.execCommand("copy");
-  } catch (e) {
-    ok = false;
-  }
-  ta.remove();
-  if (!ok) throw new Error("copy failed");
 }
 
 import { z } from "zod";
@@ -3177,22 +3158,25 @@ const ResultSchema = z.object({
   right: z.number().nullable().optional(),
   left: z.number().nullable().optional(),
   both: z.number().nullable().optional(),
-  color: z.object({ correct: z.number() }).nullable().optional(),
+  tumbling: z.object({ correct: z.number(), total: z.number(), best: z.number().nullable().optional() }).nullable().optional(),
+  landolt: z.object({ correct: z.number(), total: z.number(), best: z.number().nullable().optional() }).nullable().optional(),
+  sivtsev: z.object({ right: z.number().nullable().optional(), left: z.number().nullable().optional(), both: z.number().nullable().optional() }).nullable().optional(),
+  color: z.object({ correct: z.number(), total: z.number().optional() }).nullable().optional(),
   peripheral: z.object({ hits: z.number(), total: z.number(), angle: z.number() }).nullable().optional(),
   near: z.number().nullable().optional(),
   contrast: z.object({ lowest: z.number(), correct: z.number() }).nullable().optional(),
   stereo: z.object({ seen: z.boolean() }).nullable().optional(),
   astigmatism: z.object({ blurred: z.number().nullable(), axis: z.number().nullable() }).nullable().optional(),
-  refraction: z.object({ kind: z.string(), red: z.number(), green: z.number(), equal: z.number(), range: z.string() }).nullable().optional()
+  refraction: z.object({ kind: z.string(), red: z.number(), green: z.number(), equal: z.number(), range: z.string() }).nullable().optional(),
+  amsler: z.boolean().nullable().optional()
 }).catch({});
-
 
 const HISTORY_KEY = "dmv_eye_history";
 const MAX_HISTORY_ENTRIES = 10;
 const HistoryEntrySchema = z.any();
 const HistorySchema = z.array(HistoryEntrySchema);
 
-export function saveResultToHistory(result) {
+export function saveResultToHistory(result: any) {
   const raw = localStorage.getItem(HISTORY_KEY);
   const previous = HistorySchema.safeParse(JSON.parse(raw ?? "[]"));
   const history = previous.success ? previous.data : [];
@@ -3264,7 +3248,7 @@ function saveResults(r: any) {
   }
 }
 
-function shuffled(arr) {
+function shuffled(arr: any[]) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -3272,46 +3256,4 @@ function shuffled(arr) {
   }
   return a;
 }
-
-
-
-
-
-  function renderAmsler() {
-    let gridLines = '';
-    for (let i = 0; i <= 20; i++) {
-      const pos = 10 + i * 14;
-      gridLines += `<line x1="10" y1="${pos}" x2="290" y2="${pos}" stroke="currentColor" stroke-width="1.5" />`;
-      gridLines += `<line x1="${pos}" y1="10" x2="${pos}" y2="290" stroke="currentColor" stroke-width="1.5" />`;
-    }
-
-    stage.innerHTML = `
-      ${renderStageTitle("amsler.title", "amsler.sub")}
-      <div class="stage-grid">
-        <div class="stage-panel" style="display:grid;place-items:center;background:#fff;color:#000;padding:20px;border-radius:12px;">
-          <svg viewBox="0 0 300 300" style="width: 100%; max-width: 300px;">
-            <rect width="300" height="300" fill="#fff" />
-            ${gridLines}
-            <circle cx="150" cy="150" r="4" fill="#000" />
-          </svg>
-        </div>
-        <div class="stage-panel">
-          <div class="panel-title">${t("amsler.prompt")}</div>
-          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
-            <button class="btn btn-primary" data-act="pass">${t("amsler.noDistortion")}</button>
-            <button class="btn btn-quiet" data-act="fail">${t("amsler.distortionFound")}</button>
-          </div>
-        </div>
-      </div>`;
-
-    stage.querySelector('[data-act="pass"]').addEventListener('click', () => {
-      results.amsler = true;
-      setTimeout(() => finishStep("amsler"), 100);
-    });
-    stage.querySelector('[data-act="fail"]').addEventListener('click', () => {
-      results.amsler = false;
-      setTimeout(() => finishStep("amsler"), 100);
-    });
-    setFoot('');
-  }
 

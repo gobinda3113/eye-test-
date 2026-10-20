@@ -34,7 +34,7 @@ const isUS = variant === "us";
 // English generic homepage uses neutral gen.* keys (DMV wording stays on /us/).
 // Other locales already render their own generic copy, so they are untouched.
 const useGen = !isUS && locale === "en";
-const K = (k) => (useGen ? "gen." + k : k);
+const K = (k: string) => (useGen ? "gen." + k : k);
 // /us/ carries the exact main keyword in its H1; every other page keeps its own.
 const heroTitleKey = isUS ? "us.hero.title" : K("hero.title");
 const faqNums = Array.from({ length: FAQ_COUNT }, (_, i) => i + 1).filter(
@@ -44,15 +44,11 @@ const checkList = isUS
   ? CHECKS
   : CHECKS.filter((c) => !US_ONLY_CHECK_IDS.includes(c.id));
 const dict = DICT[locale] || DICT.en;
-const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
+const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
 const meta = seoFor(locale, isUS ? "us" : "home");
-const blogHref = locale === "en" ? "/blog/" : "/" + locale + "/blog/";
-const homeHref = isUS ? "/us/" : locale === "en" ? "/" : "/" + locale + "/";
-const aboutHref = locale === "en" ? "/about/" : "/" + locale + "/about/";
-const contactHref = locale === "en" ? "/contact/" : "/" + locale + "/contact/";
 const testHref = isUS ? "/us/test/" : locale === "en" ? "/test/" : "/" + locale + "/test/";
 
-const strip = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+const strip = (s: string) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
 const appSchema = {
   "@context": "https://schema.org",
@@ -474,7 +470,7 @@ const howToSchema = {
         </div>
         <h2>{meta.articleTitle || (isUS ? "DMV Vision Guide" : d("nav.start"))}</h2>
         <article class="prose" style="max-width: 800px;">
-          {meta.body.map((sec) => (
+          {meta.body.map((sec: { h: string; p: string }) => (
             <div style="margin-bottom: 28px;">
               <h3>{sec.h}</h3>
               <p>{sec.p}</p>

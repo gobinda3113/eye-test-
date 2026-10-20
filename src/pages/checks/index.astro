@@ -42,8 +42,8 @@ const CHECK_TAGS: Record<string, [string, string]> = {
 ---
 
 <Layout locale="en" customMeta={{ title, description, url: canonical }} schema={schema}>
-  <SiteShell locale="en">
-    <main class="page-pad checks-index-wrap" id="main">
+  <SiteShell locale="en" page="checks">
+    <div class="page-pad checks-index-wrap">
       <div class="checks-hero">
         <div class="checks-kicker">
           <span class="kicker-line"></span>
@@ -234,7 +234,7 @@ const CHECK_TAGS: Record<string, [string, string]> = {
           <span>Start Full Vision Test</span>
         </a>
       </div>
-    </main>
+    </div>
   </SiteShell>
 </Layout>
 

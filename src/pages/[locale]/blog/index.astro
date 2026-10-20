@@ -8,10 +8,9 @@ export function getStaticPaths() {
   }));
 }
 
-import { K } from "../../../scripts/i18n.ts";
 import { DICT } from "../../../scripts/dict.ts";
 const { locale } = Astro.params;
-const d = (key) => DICT[locale][key];
+const d = (key: string) => DICT[locale][key];
 
 const datasetSchema = {
   "@context": "https://schema.org",

@@ -5,91 +5,24 @@
  * and the language pills are real navigable URLs, which is what makes the
  * locales crawlable.
  */
-import { LOCALES, pathFor, SITE } from "../lib/site.ts";
 import SiteHeader from "./SiteHeader.astro";
 import SiteFooter from "./SiteFooter.astro";
 
 const { locale = "en", page = "home", customAlts } = Astro.props;
-const L = {
-  en: {
-    home: "Home", checks: "Checks", blog: "Blog", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "About", contact: "Contact", cta: "Start free check",
-    privacy: "Privacy", terms: "Terms", guides: "Guides", legal: "Legal", lang: "Language",
-    skip: "Skip to content", theme: "Toggle dark mode",
-    privacyNote: "No account · No uploads · Privacy-first analytics. Results stay in your browser.",
-    disclaimer: "Practice screener only. Not an official test, not a medical examination, and no diagnosis or prescription.",
-    rights: "Practice screener, free to use.",
-  },
-  es: {
-    home: "Inicio", checks: "Pruebas", blog: "Blog", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "Acerca de", contact: "Contacto", cta: "Empezar gratis",
-    privacy: "Privacidad", terms: "Términos", guides: "Guías", legal: "Legal", lang: "Idioma",
-    skip: "Saltar al contenido", theme: "Cambiar tema oscuro/claro",
-    privacyNote: "Sin cuenta · Sin subidas · Analítica centrada en la privacidad. Los resultados se quedan en tu navegador.",
-    disclaimer: "Evaluación de práctica únicamente. No es un examen oficial ni médico, y no ofrece diagnóstico ni receta.",
-    rights: "Evaluador de práctica, uso gratuito.",
-  },
-  fr: {
-    home: "Accueil", checks: "Tests", blog: "Blog", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "À propos", contact: "Contact", cta: "Commencer gratuitement",
-    privacy: "Confidentialité", terms: "Conditions", guides: "Guides", legal: "Mentions légales", lang: "Langue",
-    skip: "Aller au contenu", theme: "Basculer le mode sombre",
-    privacyNote: "Sans compte · Sans envoi · Analyse respectueuse de la vie privée. Les résultats restent dans votre navigateur.",
-    disclaimer: "Outil d'entraînement uniquement. Ce n'est ni un examen officiel ni un acte médical, sans diagnostic ni ordonnance.",
-    rights: "Outil d'entraînement, gratuit.",
-  },
-  de: {
-    home: "Start", checks: "Tests", blog: "Blog", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "Über", contact: "Kontakt", cta: "Kostenlos starten",
-    privacy: "Datenschutz", terms: "Nutzung", guides: "Ratgeber", legal: "Rechtliches", lang: "Sprache",
-    skip: "Zum Inhalt springen", theme: "Dunkelmodus umschalten",
-    privacyNote: "Kein Konto · Keine Uploads · Datenschutzfreundliche Analysen. Ergebnisse bleiben in Ihrem Browser.",
-    disclaimer: "Nur zur Übung. Kein offizieller Sehtest, keine ärztliche Untersuchung und keine Diagnose oder Verordnung.",
-    rights: "Übungsprüfung, kostenlos.",
-  },
-  pt: {
-    home: "Início", checks: "Testes", blog: "Blog", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "Sobre", contact: "Contato", cta: "Começar grátis",
-    privacy: "Privacidade", terms: "Termos", guides: "Guias", legal: "Legal", lang: "Idioma",
-    skip: "Pular para o conteúdo", theme: "Alternar modo escuro",
-    privacyNote: "Sem conta · Sem envios · Análise com foco na privacidade. Os resultados ficam no seu navegador.",
-    disclaimer: "Apenas avaliação de prática. Não é um exame oficial nem médico, e não fornece diagnóstico ou receita.",
-    rights: "Avaliação de prática, gratuita.",
-  },
-  it: {
-    home: "Home", checks: "Test", blog: "Blog", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "Chi siamo", contact: "Contatti", cta: "Inizia gratis",
-    privacy: "Privacy", terms: "Termini", guides: "Guide", legal: "Note legali", lang: "Lingua",
-    skip: "Salta al contenuto", theme: "Cambia tema chiaro/scuro",
-    privacyNote: "Nessun account · Nessun upload · Analisi attenta alla privacy. I risultati restano nel tuo browser.",
-    disclaimer: "Solo strumento di esercitazione. Non è un esame ufficiale né una visita medica, e non fornisce diagnosi o prescrizioni.",
-    rights: "Screening gratuito, libero.",
-  },
-  ja: {
-    home: "ホーム", checks: "検査一覧", blog: "ブログ", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "概要", contact: "お問い合わせ", cta: "無料で開始",
-    privacy: "プライバシー", terms: "利用規約", guides: "ガイド", legal: "法的情報", lang: "言語",
-    skip: "本文へスキップ", theme: "ダークモード切替",
-    privacyNote: "アカウント不要 · 送信なし · プライバシー最優先のアクセス解析。結果はブラウザ内にのみ保存されます。",
-    disclaimer: "練習用スクリーニングです。公式試験や医療検査ではなく、診断や処方は行いません。",
-    rights: "無料の練習用スクリーニング。",
-  },
-  ru: {
-    home: "Главная", checks: "Тесты", blog: "Блог", chart: "Eye Test Chart", us: "DMV Practice", states: "States", about: "О проекте", contact: "Контакты", cta: "Начать бесплатно",
-    privacy: "Конфиденциальность", terms: "Условия", guides: "Руководства", legal: "Право", lang: "Язык",
-    skip: "Перейти к содержимому", theme: "Переключить темную тему",
-    privacyNote: "Без аккаунта · Без загрузок · Аналитика с заботой о приватности. Результаты остаются в вашем браузере.",
-    disclaimer: "Только для тренировки и ознакомления. Не является официальным осмотром, диагнозом или рецептом на очки.",
-    rights: "Бесплатный тренажёр.",
-  },
+const SKIP_L: Record<string, string> = {
+  en: "Skip to content",
+  es: "Saltar al contenido",
+  fr: "Aller au contenu",
+  de: "Zum Inhalt springen",
+  pt: "Pular para o conteúdo",
+  it: "Salta al contenuto",
+  ja: "本文へスキップ",
+  ru: "Перейти к содержимому",
 };
-const t = L[locale] || L.en;
-const home = pathFor(locale, "home");
-
-const nav = [
-  { label: t.home, href: home },
-  { label: t.checks, href: locale === "en" ? "/checks/" : `${home}#checks` },
-  { label: t.blog, href: pathFor(locale, "blog") },
-  { label: t.about, href: pathFor(locale, "about") },
-  { label: t.contact, href: pathFor(locale, "contact") },
-];
-const isBlog = page === "blog" || page.startsWith("blog");
+const skipLabel = SKIP_L[locale] || SKIP_L.en;
 ---
 
-<a class="skip-link" href="#main">{t.skip}</a>
+<a class="skip-link" href="#main">{skipLabel}</a>
 <div class="grain" aria-hidden="true"></div>
 
 <SiteHeader locale={locale} page={page} customAlts={customAlts} />

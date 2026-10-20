@@ -4,9 +4,10 @@ import { pathFor, urlFor } from "../lib/site.ts";
 
 const { locale = "en", post } = Astro.props;
 const dict = DICT[locale] || DICT.en;
-const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
+const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
 
 const home = pathFor(locale, "home");
+const testHref = pathFor(locale, "test");
 const blogHome = pathFor(locale, "blog");
 const BLOG_LABEL = { en: "Blog", es: "Blog", fr: "Blog", de: "Blog", pt: "Blog", it: "Blog", ja: "ブログ", ru: "Блог" }[locale] || "Blog";
 
@@ -73,7 +74,7 @@ const m = META_L[locale] || META_L.en;
       <div class="dark-ink-panel" style="margin-top: 36px;">
         <h3 style="margin-top: 0; font-size: clamp(1.6rem, 2.5vw, 2.2rem);">{locale === "en" ? "Ready to test your vision?" : d("nav.start")}</h3>
         <p style="margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
-        <a class="btn btn-primary btn-lg" href={home}>{d("nav.cta")}</a>
+        <a class="btn btn-primary btn-lg" href={testHref}>{d("nav.cta")}</a>
       </div>
     </div>
   </div>

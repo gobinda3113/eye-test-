@@ -3,24 +3,13 @@
  * launches the screener from the marketing side of the page.
  */
 
-import { LANGS, setLang, getLang, t, apply } from "./i18n.ts";
-import { ICONS, CHART_LINES, STATES, FAQ_COUNT, REFS, SOURCES, DMV_LINKS, US_ONLY_FAQ_NUMS } from "./data.ts";
+import { setLang, getLang, t, apply } from "./i18n.ts";
+import { CHART_LINES, STATES, DMV_LINKS } from "./data.ts";
 import { lineSVG } from "./optotypes.ts";
 import { createLab } from "./lab.ts";
 
 const THEME_KEY = "dmv-eye-test.theme";
 const LANG_KEY = "dmv-eye-test.lang";
-
-/* The homepage ships in two variants: the generic vision check (every locale
-   route) and the US DMV screener (/us/). The server marks <main> accordingly;
-   the URL is the fallback so a missing marker can never leak DMV content. */
-function isUSPage() {
-  const marked = document.querySelector("main[data-variant]")?.getAttribute("data-variant");
-  if (marked) return marked === "us";
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  if (path === "/us") return true;
-  return (document.documentElement.lang || "en") === "en";
-}
 
 /* ---------------------------------------------------------------- theme */
 
@@ -51,7 +40,7 @@ function initTheme() {
 
 /* --------------------------------------------------------------- language */
 
-function initLanguage(lab) {
+function initLanguage() {
   const select = document.getElementById("langSelect");
   // Live region for screen readers — announces language change without page reload
   let liveRegion = document.getElementById("langAnnounce");
@@ -135,25 +124,32 @@ function initHeader() {
   const menuBtn = document.getElementById("menuBtn");
   const mobileNav = document.getElementById("mobileNav");
 
-  const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
+  const onScroll = () => {
+    if (header) header.classList.toggle("is-stuck", window.scrollY > 8);
+  };
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
   if (menuBtn && mobileNav) {
-    menuBtn.addEventListener("click", () => {
-      const open = mobileNav.hidden;
-      mobileNav.hidden = !open;
-      menuBtn.setAttribute("aria-expanded", String(open));
-    });
+    if (!(menuBtn as any).dataset.boundMenu) {
+      (menuBtn as any).dataset.boundMenu = "1";
+      menuBtn.addEventListener("click", () => {
+        const open = mobileNav.hidden;
+        mobileNav.hidden = !open;
+        menuBtn.setAttribute("aria-expanded", String(open));
+      });
+    }
     mobileNav.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") {
+      const target = e.target as HTMLElement | null;
+      if (target && target.tagName === "A") {
         mobileNav.hidden = true;
         menuBtn.setAttribute("aria-expanded", "false");
       }
     });
     // Close mobile nav on outside click
     document.addEventListener("click", (e) => {
-      if (!mobileNav.hidden && !mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
+      const target = e.target as Node | null;
+      if (!mobileNav.hidden && target && !mobileNav.contains(target) && !menuBtn.contains(target)) {
         mobileNav.hidden = true;
         menuBtn.setAttribute("aria-expanded", "false");
       }
@@ -252,13 +248,14 @@ function renderTable(filter = "") {
 }
 
 function initStates() {
-  const search = document.getElementById("stateSearch");
+  const search = document.getElementById("stateSearch") as HTMLInputElement | null;
   if (search) search.addEventListener("input", () => renderTable(search.value));
 
   const wrap = document.getElementById("featuredStates");
   if (wrap) {
     wrap.addEventListener("click", (e) => {
-      const card = e.target.closest("[data-state]");
+      const target = e.target as HTMLElement | null;
+      const card = target ? target.closest("[data-state]") as HTMLElement | null : null;
       if (!card) return;
       const row = document.getElementById("row-" + card.dataset.state);
       if (row) {
@@ -286,19 +283,19 @@ function initStates() {
  */
 function initReveal() {
   const targets = [
-    ...document.querySelectorAll(".section-head"),
-    ...document.querySelectorAll(".how-step"),
-    ...document.querySelectorAll(".how-card"),
-    ...document.querySelectorAll(".check-row"),
-    ...document.querySelectorAll(".check-card"),
-    ...document.querySelectorAll(".stat-strip"),
-    ...document.querySelectorAll(".cdl-copy"),
-    ...document.querySelectorAll(".cdl-card"),
-    ...document.querySelectorAll(".featured-states"),
-    ...document.querySelectorAll(".table-card"),
-    ...document.querySelectorAll(".ref-card"),
-    ...document.querySelectorAll(".ref-col"),
-    ...document.querySelectorAll(".faq-item"),
+    ...document.querySelectorAll<HTMLElement>(".section-head"),
+    ...document.querySelectorAll<HTMLElement>(".how-step"),
+    ...document.querySelectorAll<HTMLElement>(".how-card"),
+    ...document.querySelectorAll<HTMLElement>(".check-row"),
+    ...document.querySelectorAll<HTMLElement>(".check-card"),
+    ...document.querySelectorAll<HTMLElement>(".stat-strip"),
+    ...document.querySelectorAll<HTMLElement>(".cdl-copy"),
+    ...document.querySelectorAll<HTMLElement>(".cdl-card"),
+    ...document.querySelectorAll<HTMLElement>(".featured-states"),
+    ...document.querySelectorAll<HTMLElement>(".table-card"),
+    ...document.querySelectorAll<HTMLElement>(".ref-card"),
+    ...document.querySelectorAll<HTMLElement>(".ref-col"),
+    ...document.querySelectorAll<HTMLElement>(".faq-item"),
   ];
   if (document.hidden) return;
   let maxDelay = 0;
@@ -419,7 +416,7 @@ async function boot() {
     handleModeSelect(qMode, qCheck);
   }
 
-  const safe = (name, fn) => {
+  const safe = (name: string, fn: () => any) => {
     try {
       return fn();
     } catch (e) {
@@ -430,10 +427,10 @@ async function boot() {
 
   await safe("fonts", whenFontsReady);
   safe("heroChart", renderHeroChart);
-  safe("language", () => initLanguage(lab));
+  safe("language", initLanguage);
   safe("header", initHeader);
   safe("states", initStates);
-  safe("dynamic", () => refreshDynamic(lab));
+  safe("dynamic", refreshDynamic);
   safe("reveal", initReveal);
 
   document.addEventListener("keydown", (e: any) => {
@@ -456,7 +453,7 @@ async function boot() {
     }
   });
 
-  window.addEventListener("popstate", (e) => {
+  window.addEventListener("popstate", () => {
     const params = new URLSearchParams(window.location.search);
     const qMode = params.get("mode");
     if (!qMode) {
@@ -466,7 +463,7 @@ async function boot() {
     }
   });
 
-  window.dmvEyeTest = { lab, lang: getLang, t };
+  (window as any).dmvEyeTest = { lab, lang: getLang, t };
 }
 
 function whenFontsReady() {

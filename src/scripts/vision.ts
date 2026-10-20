@@ -112,11 +112,8 @@ export function renderNearVisionCanvas(options: {
   let descentDevicePx = Math.round(measureCtx.measureText("gypqj").actualBoundingBoxDescent || (fontDevicePx * 0.28));
 
   let errorPercent = Math.abs(ascentDevicePx - capHeightDevicePx) / capHeightDevicePx;
-  let isAdjusted = false;
-  let adjustedDenominator = options.denominator;
 
   if (capHeightDevicePx < minDevicePixels || errorPercent > 0.06) {
-    isAdjusted = true;
     let testPx = Math.max(Math.ceil(capHeightDevicePx), minDevicePixels);
     for (; testPx < 100; testPx++) {
       fontDevicePx = (testPx / (measuredCapHeight > 0 ? measuredCapHeight : (trialFontPx * 0.7))) * trialFontPx;
@@ -130,9 +127,6 @@ export function renderNearVisionCanvas(options: {
         break;
       }
     }
-    const adjustedCapHeightCssPx = capHeightDevicePx / dpr;
-    const adjustedCapHeightMm = adjustedCapHeightCssPx * (options.mmPerPx || MM_PER_PX_FALLBACK);
-    adjustedDenominator = Math.round(reverseLetterHeightMm(adjustedCapHeightMm, NEAR_DISTANCE_M));
   }
 
   // Wrap words based on maxWidthCssPx

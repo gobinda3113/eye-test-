@@ -95,7 +95,6 @@
   gap: 8px;
   list-style: disc;
 }
-.prose 
 .prose strong {
   color: var(--text);
   font-weight: 600;
@@ -249,16 +248,10 @@
 }
 
 /* -------------------------------------------------------------- states pg */
-.table-scroll
-
-
 .src-cell a {
   color: var(--primary);
   overflow-wrap: anywhere;
 }
-.src-cell 
-.table-card 
-
 
 /* --------------------------------------------------- minimal shell pages */
 .site-header.min-head {
@@ -403,7 +396,6 @@ body.is-doc .section {
   body.is-doc .state-table td {
     padding: 6px 8px;
   }
-  body.is-doc 
   body.is-doc .prose a,
   body.is-doc .src-cell a {
     text-decoration: underline;

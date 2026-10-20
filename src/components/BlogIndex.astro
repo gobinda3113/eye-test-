@@ -30,6 +30,18 @@ const POST_META: Record<string, [string, string]> = {
   "dmv-eye-test-faqs": ["DMV FAQs", "6 Min Read"],
 };
 
+const READ_MORE_L: Record<string, string> = {
+  en: "Read article",
+  es: "Leer artículo",
+  fr: "Lire l'article",
+  de: "Artikel lesen",
+  pt: "Ler artigo",
+  it: "Leggi l'articolo",
+  ja: "記事を読む",
+  ru: "Читать статью",
+};
+const readMoreLabel = READ_MORE_L[locale] || READ_MORE_L.en;
+
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -100,7 +112,7 @@ const breadcrumb = {
               </div>
 
               <a href={postUrl} class="btn-card-pill">
-                Read article
+                {readMoreLabel}
               </a>
             </div>
           </article>
