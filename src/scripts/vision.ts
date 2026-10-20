@@ -1,36 +1,3 @@
-export const KEYS = { snellen: 'snellen_result', tumbling: 'tumbling_score', color: 'color_score', ppi: 'calibrated_ppi' } as const;
-export function loadScore(key: string): { correct: number; total: number } {
-  try { return JSON.parse(localStorage.getItem(key) || '{"correct":0,"total":0}'); } catch { return { correct: 0, total: 0 }; }
-}
-export function saveScore(key: string, correct: number, total: number) {
-  localStorage.setItem(key, JSON.stringify({ correct, total }));
-}
-export function ppiFromPx(px: number, mmWidth = 85.6): number {
-  return Math.round((px / mmWidth) * 25.4);
-}
-
-/** Viewing distance in feet → CSS px at a given PPI */
-export function ftToPx(distanceFt: number, ppi: number): number {
-  return distanceFt * 12 * ppi;
-}
-
-/**
- * Snellen letter height in CSS px for a 10-ft simulated mode.
- * Angular size: a 20/20 letter subtends 5 arcmin → height = 2·d·tan(5′),
- * scaled by denominator/20 for each row.
- */
-export function snellenLetterPx(distanceFt: number, denominator: number, ppi: number): number {
-  const TAN_5_ARCMIN = Math.tan((5 / 60) * (Math.PI / 180));
-  const dInches = distanceFt * 12;
-  const baseInches = 2 * dInches * TAN_5_ARCMIN;
-  return baseInches * (denominator / 20) * ppi;
-}
-
-/** 10-ft simulated mode shorthand */
-export function simulate10ftMode(denominator: number, ppi: number): number {
-  return snellenLetterPx(10, denominator, ppi);
-}
-
 /* ------------------------------------------------------------------ */
 /* Ported from zip src/vision.js — geometrically correct optics.       */
 /* A 20/20 letter subtends 5 arc-min = 8.73mm at 6m. Scale linearly.   */
