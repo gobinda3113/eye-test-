@@ -10,7 +10,7 @@
     "check": "astro check",
     "check:suite": "node check-breadcrumbs.cjs && node check-bundle.cjs && node check-css.cjs && node check-i18n.cjs && node check-img.cjs && node check-privacy.cjs && node check-strings.cjs && node check-unused-keys.cjs",
     "test": "astro check && npm run check:suite",
-    "deploy": "wrangler pages deploy"
+    "deploy": "npx wrangler pages deploy ./dist"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
