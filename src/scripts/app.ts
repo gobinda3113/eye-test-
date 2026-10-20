@@ -3,24 +3,13 @@
  * launches the screener from the marketing side of the page.
  */
 
-import { LANGS, setLang, getLang, t, apply } from "./i18n.ts";
-import { ICONS, CHART_LINES, STATES, FAQ_COUNT, REFS, SOURCES, DMV_LINKS, US_ONLY_FAQ_NUMS } from "./data.ts";
+import { setLang, getLang, t, apply } from "./i18n.ts";
+import { CHART_LINES, STATES, DMV_LINKS } from "./data.ts";
 import { lineSVG } from "./optotypes.ts";
 import { createLab } from "./lab.ts";
 
 const THEME_KEY = "dmv-eye-test.theme";
 const LANG_KEY = "dmv-eye-test.lang";
-
-/* The homepage ships in two variants: the generic vision check (every locale
-   route) and the US DMV screener (/us/). The server marks <main> accordingly;
-   the URL is the fallback so a missing marker can never leak DMV content. */
-function isUSPage() {
-  const marked = document.querySelector("main[data-variant]")?.getAttribute("data-variant");
-  if (marked) return marked === "us";
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  if (path === "/us") return true;
-  return (document.documentElement.lang || "en") === "en";
-}
 
 /* ---------------------------------------------------------------- theme */
 
@@ -90,11 +79,14 @@ function initHeader() {
   }
 
   if (menuBtn && mobileNav) {
-    menuBtn.addEventListener("click", () => {
-      const open = mobileNav.hidden;
-      mobileNav.hidden = !open;
-      menuBtn.setAttribute("aria-expanded", String(open));
-    });
+    if (!(menuBtn as any).dataset.boundMenu) {
+      (menuBtn as any).dataset.boundMenu = "1";
+      menuBtn.addEventListener("click", () => {
+        const open = mobileNav.hidden;
+        mobileNav.hidden = !open;
+        menuBtn.setAttribute("aria-expanded", String(open));
+      });
+    }
     mobileNav.addEventListener("click", (e) => {
       if ((e.target as HTMLElement).tagName === "A") {
         mobileNav.hidden = true;

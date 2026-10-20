@@ -160,21 +160,6 @@ export function createLab(labEl) {
     statusEl.textContent = text;
   }
 
-  function isDone(id) {
-    if (id === "calibrate") return hasValidCalibration(config);
-    if (id === "guidance" || id === "menu") return true;
-    if (id === "distance") return results.both != null || results.right != null || results.left != null;
-    if (id === "tumbling") return results.tumbling != null;
-    if (id === "color") return results.color != null;
-    if (id === "peripheral") return results.peripheral != null;
-    if (id === "near") return results.near != null;
-    if (id === "contrast") return results.contrast != null;
-    if (id === "astigmatism") return results.astigmatism != null;
-    if (id === "refraction") return results.refraction != null;
-    if (id === "stereo") return results.stereo != null;
-    return false;
-  }
-
   /** Published normal / benchmark values for the current step, if we have any. */
   function paintNorm() {
     if (!normEl) return;
@@ -1327,7 +1312,7 @@ export function createLab(labEl) {
     const dist = config.distanceM || 3;
     stage.innerHTML = `
       ${renderStageTitle("checks.distance.name", "test.eyeSub")}
-      <div id="distBody" style="margin-top:24px"></div></details>`;
+      <div id="distBody" style="margin-top:24px"></div>`;
     const body = stage.querySelector("#distBody");
     navFoot({ next: false });
 
@@ -1351,7 +1336,7 @@ export function createLab(labEl) {
     const dist = config.distanceM || 3;
     stage.innerHTML = `
       ${renderStageTitle("checks.sivtsev.name", "test.eyeSub")}
-      <div id="distBody" style="margin-top:24px"></div></details>`;
+      <div id="distBody" style="margin-top:24px"></div>`;
     const body = stage.querySelector("#distBody");
     navFoot({ next: false });
 
@@ -1419,7 +1404,7 @@ export function createLab(labEl) {
         <div class="progress-line"><i style="width:${Math.round(((index + 1) / total) * 100)}%"></i></div>
         <div class="eye-badge" style="margin-bottom:14px">${eyeLabel} &middot; ${t("test.line", { n: index + 1 })}</div>
         <div class="chart-view" id="chartView"></div>
-        <div id="answerArea" style="margin-top:20px"></div></details>`;
+        <div id="answerArea" style="margin-top:20px"></div>`;
       const chart = body.querySelector("#chartView");
       const area = body.querySelector("#answerArea");
 
@@ -1578,7 +1563,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="trial-counter" id="tumbleCount" style="text-align:center;margin-top:16px"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const view = stage.querySelector("#eView");
     const countEl = stage.querySelector("#tumbleCount");
 
@@ -1678,7 +1663,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="trial-counter" id="landoltCount" style="text-align:center;margin-top:16px"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const view = stage.querySelector("#landoltView");
     const countEl = stage.querySelector("#landoltCount");
 
@@ -1767,7 +1752,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="stage-sub" id="plateNote" style="margin-top:16px;min-height:1.4em"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const canvas = stage.querySelector("#plateCanvas");
     const input = stage.querySelector("#plateInput");
     const note = stage.querySelector("#plateNote");
@@ -1839,7 +1824,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
             <button class="btn btn-soft" data-act="start">${t("peripheral.start")}</button>
           </div>
         </div>
-      </div></details>`;
+      </div>`;
     const screen = stage.querySelector("#fieldScreen");
     const countEl = stage.querySelector("#fieldCount");
     const startBtn = stage.querySelector('[data-act="start"]');
@@ -2155,7 +2140,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           </div>
           <p class="stage-sub" id="contrastNote" style="margin-top:16px;min-height:1.4em"></p>
         </div>
-      </div></details>`;
+      </div>`;
     const view = stage.querySelector("#contrastView");
     const input = stage.querySelector("#contrastInput");
     const note = stage.querySelector("#contrastNote");
@@ -2277,7 +2262,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
           <button class="btn btn-quiet btn-sm" data-act="equal">${t("astig.equal")}</button>
           <p class="stage-sub" id="astigNote" style="margin-top:18px;min-height:1.4em"></p>
         </div>
-      </div></details>`;
+      </div>`;
 
     const note = stage.querySelector("#astigNote");
     let settled = false;
@@ -2347,7 +2332,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         <div class="duo-row">
           <div class="duo-half duo-red"></div>
           <div class="duo-half duo-green"></div>
-        </div></details>`;
+        </div>`;
       const halves = wrap.querySelectorAll(".duo-half");
       const cs = getComputedStyle(halves[0]);
       const avail = Math.max(60, halves[0].clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight));
@@ -2400,7 +2385,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         <button class="btn btn-ghost btn-xs" data-act="flip">${t("stereo.flip")}</button>
         <p class="stage-sub stereo-tip">${t("stereo.tip")}</p>
         <p class="stage-sub" id="stereoNote" style="min-height:1.4em"></p>
-      </div></details>`;
+      </div>`;
     const canvas = stage.querySelector("#stereoCanvas");
     const note = stage.querySelector("#stereoNote");
     const wrap = stage.querySelector(".stereo-wrap");
