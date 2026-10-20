@@ -121,6 +121,82 @@ export function createLab(labEl) {
   let single = null;
   let runMode = "full";
 
+  const LINE_TESTS = new Set(["distance", "sivtsev", "tumbling", "landolt", "contrast", "refraction"]);
+  const DRIFT_TOLERANCE = 0.05;
+  let displayDrift = false;
+  let pendingResume: (() => void) | null = null;
+  let driftTimer: ReturnType<typeof setTimeout> | null = null;
+
+  const driftBanner = document.createElement("div");
+  driftBanner.id = "displayDriftBanner";
+  driftBanner.setAttribute("role", "alert");
+  driftBanner.style.cssText = "display:none;position:sticky;top:8px;z-index:60;margin:0 0 16px;padding:12px 14px;border:1px solid var(--amber,#9e5b00);border-radius:10px;background:var(--amber-soft,#fbf0dd);color:var(--text);align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:0 6px 18px rgba(0,0,0,.08);";
+  driftBanner.innerHTML = `
+    <span style="font-size:.95rem;line-height:1.4;">Display size changed. Recalibrate before answering to keep the test accurate.</span>
+    <button type="button" class="btn btn-soft btn-sm" id="btnRecalibrateDisplay">Recalibrate display</button>`;
+  if (stage && stage.parentNode) stage.parentNode.insertBefore(driftBanner, stage);
+
+  const currentDpr = () => window.devicePixelRatio || 1;
+  const currentScale = () => window.visualViewport?.scale ?? 1;
+
+  function displayDriftActive() {
+    if (!LINE_TESTS.has(step)) return false;
+    if (!Number.isFinite(config.calibDpr) || !Number.isFinite(config.calibScale)) return false;
+    return Math.abs(currentDpr() - config.calibDpr) > DRIFT_TOLERANCE
+      || Math.abs(currentScale() - config.calibScale) > DRIFT_TOLERANCE;
+  }
+
+  function whenStable(fn: () => void) {
+    if (!displayDrift) {
+      fn();
+      return;
+    }
+    pendingResume = fn;
+  }
+
+  function flushPendingResume() {
+    if (displayDrift || !pendingResume) return;
+    const fn = pendingResume;
+    pendingResume = null;
+    fn();
+  }
+
+  function checkDisplayDrift() {
+    displayDrift = displayDriftActive();
+    if (displayDrift) {
+      driftBanner.style.display = "flex";
+    } else {
+      driftBanner.style.display = "none";
+      flushPendingResume();
+    }
+  }
+
+  function recalibrateDisplay() {
+    pendingResume = null;
+    displayDrift = false;
+    driftBanner.style.display = "none";
+    step = "calibrate";
+    token++;
+    clearCleanups();
+    renderStepper();
+    paintNorm();
+    status(getStepLabel("calibrate"));
+    renderCalibrate(true);
+    labEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  driftBanner.querySelector("#btnRecalibrateDisplay")?.addEventListener("click", recalibrateDisplay);
+
+  const scheduleDriftCheck = () => {
+    if (driftTimer) clearTimeout(driftTimer);
+    driftTimer = setTimeout(() => {
+      driftTimer = null;
+      checkDisplayDrift();
+    }, 120);
+  };
+  window.addEventListener("resize", scheduleDriftCheck);
+  if (window.visualViewport) window.visualViewport.addEventListener("resize", scheduleDriftCheck);
+
   function trackFunnel(eventName: string, params: Record<string, any> = {}) {
     try {
       if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
@@ -537,7 +613,9 @@ export function createLab(labEl) {
 
   function render() {
     token++;
+    pendingResume = null;
     clearCleanups();
+    checkDisplayDrift();
     renderStepper();
     paintNorm();
     status(getStepLabel(step));
@@ -560,6 +638,7 @@ export function createLab(labEl) {
       results: renderResults,
     };
     (setters[step] || renderCalibrate)();
+    checkDisplayDrift();
   }
 
   function setFoot(html) {
@@ -1053,6 +1132,8 @@ export function createLab(labEl) {
 
   function renderCalibScaleScreen() {
     clearCleanups();
+    const startDpr = currentDpr();
+    const startScale = currentScale();
     const CARD_MIN = 140;
     const CARD_MAX = 620;
     const nativeW = CARD_MM / MM_PER_PX_FALLBACK;
@@ -1286,6 +1367,12 @@ export function createLab(labEl) {
     `);
     on(foot.querySelector('[data-act="lock"]'), "click", () => {
       paint();
+      const nowDpr = currentDpr();
+      const nowScale = currentScale();
+      if (Math.abs(nowDpr - startDpr) > DRIFT_TOLERANCE || Math.abs(nowScale - startScale) > DRIFT_TOLERANCE) {
+        renderCalibrate(true);
+        return;
+      }
       if (mode === 'card') {
         const renderedPx = cardW * effScale;
         config.cardWidthPx = Math.max(CARD_MIN, Math.min(CARD_MAX, Math.round(renderedPx)));
@@ -1296,6 +1383,8 @@ export function createLab(labEl) {
         config.mmPerPx = RULER_MM / renderedRulerPx;
         config.cardWidthPx = Math.max(CARD_MIN, Math.min(CARD_MAX, Math.round(CARD_MM / config.mmPerPx)));
       }
+      config.calibDpr = nowDpr;
+      config.calibScale = nowScale;
       config.calibrated = true;
       showCalibSavePopup((saved) => {
         status(t("calib.locked"));
@@ -1398,6 +1487,13 @@ export function createLab(labEl) {
 
   function presentLine(body, den, letters, mmPerPx, dist, index, total, eye, my, pool = ANSWER_POOL) {
     return new Promise((resolve) => {
+      if (displayDrift) {
+        pendingResume = () => {
+          if (my !== token) return;
+          presentLine(body, den, letters, mmPerPx, dist, index, total, eye, my, pool).then(resolve);
+        };
+        return;
+      }
       const height = lineHeightPx(den, dist, mmPerPx);
       const eyeLabel = eye === "right" ? t("results.eyeRight") : eye === "left" ? t("results.eyeLeft") : t("results.both");
       body.innerHTML = `
@@ -1475,11 +1571,12 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         const finish = (ok) => {
           if (settled) return;
           settled = true;
-          setTimeout(() => resolve(ok), ok ? 620 : 1150);
+          setTimeout(() => whenStable(() => resolve(ok)), ok ? 620 : 1150);
         };
 
         pad.querySelectorAll(".key-btn").forEach((btn) =>
           on(btn, "click", () => {
+            if (displayDrift) return;
             if (entered.length >= letters.length || entered.includes(btn.dataset.key)) return;
             entered.push(btn.dataset.key);
             paint();
@@ -1488,7 +1585,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         );
         area.querySelectorAll(".mc-btn").forEach(b => {
           on(b, "click", () => {
-            if (settled) return;
+            if (displayDrift || settled) return;
             const val = b.dataset.val;
             const ok = val === letters.join("");
             note.textContent = ok ? t("test.correct") : t("test.wrongAnswer", { a: letters.join(" ") });
@@ -1498,10 +1595,12 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         });
 
         on(area.querySelector('[data-act="clear"]'), "click", () => {
+          if (displayDrift) return;
           entered = [];
           paint();
         });
         on(area.querySelector('[data-act="blind"]'), "click", () => {
+          if (displayDrift) return;
           slots.forEach((s, i) => {
             s.textContent = letters[i];
             s.classList.add("is-wrong");
@@ -1512,6 +1611,11 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
         });
 
         function grade() {
+          if (settled) return;
+          if (displayDrift) {
+            pendingResume = grade;
+            return;
+          }
           const ok = entered.every((c, i) => c === letters[i]);
           slots.forEach((s, i) => {
             s.textContent = letters[i];
@@ -1568,6 +1672,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const countEl = stage.querySelector("#tumbleCount");
 
     const next = () => {
+      if (displayDrift) {
+        pendingResume = next;
+        return;
+      }
       if (trial >= sizes.length) {
         results.tumbling = { correct, total: sizes.length, best: bestDen };
         saveResults(results);
@@ -1582,7 +1690,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     const answer = (dir) => {
-      if (locked || trial >= sizes.length) return;
+      if (displayDrift || locked || trial >= sizes.length) return;
       locked = true;
       const den = sizes[trial];
       const ok = dir === current;
@@ -1614,6 +1722,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
     stage.querySelectorAll(".arrow-btn").forEach((btn) => on(btn, "click", () => answer(btn.dataset.dir)));
     on(document, "keydown", (e) => {
+      if (displayDrift) return;
       const map = { ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right" };
       if (map[e.key]) {
         e.preventDefault();
@@ -1668,6 +1777,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const countEl = stage.querySelector("#landoltCount");
 
     const next = () => {
+      if (displayDrift) {
+        pendingResume = next;
+        return;
+      }
       if (trial >= sizes.length) {
         results.landolt = { correct, total: sizes.length, best: bestDen };
         saveResults(results);
@@ -1682,7 +1795,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     const answer = (dir) => {
-      if (locked || trial >= sizes.length) return;
+      if (displayDrift || locked || trial >= sizes.length) return;
       locked = true;
       const den = sizes[trial];
       const ok = dir === current;
@@ -1714,6 +1827,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
     stage.querySelectorAll(".arrow-btn").forEach((btn) => on(btn, "click", () => answer(btn.dataset.dir)));
     on(document, "keydown", (e) => {
+      if (displayDrift) return;
       const map = { ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right" };
       if (map[e.key]) {
         e.preventDefault();
@@ -2147,6 +2261,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const countEl = stage.querySelector("#contrastCount");
 
     const finish = () => {
+      if (displayDrift) {
+        pendingResume = finish;
+        return;
+      }
       results.contrast = { lowest: lowest == null ? CONTRAST_LEVELS[0] : lowest, levels: CONTRAST_LEVELS.length, correct };
       saveResults(results);
       status(`${t("contrast.lowest")}: ${results.contrast.lowest}%`);
@@ -2154,6 +2272,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     const show = () => {
+      if (displayDrift) {
+        pendingResume = show;
+        return;
+      }
       if (index >= CONTRAST_LEVELS.length) {
         finish();
         return;
@@ -2187,7 +2309,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     const submit = (value) => {
-      if (locked) return;
+      if (displayDrift || locked) return;
       const guess = String(value).toUpperCase().replace(/[^A-Z]/g, "");
       if (!guess) return;
       locked = true;
@@ -2206,7 +2328,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
 
     on(stage.querySelector('[data-act="check"]'), "click", () => submit(input.value));
     on(stage.querySelector('[data-act="blind"]'), "click", () => {
-      if (locked) return;
+      if (displayDrift || locked) return;
       locked = true;
       miss(1500);
     });
@@ -2317,6 +2439,10 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     const note = stage.querySelector("#duoNote");
 
     const show = () => {
+      if (displayDrift) {
+        pendingResume = show;
+        return;
+      }
       if (round >= dens.length) {
         results.refraction = Object.assign(refractionRead(votes), { votes: votes.slice() });
         saveResults(results);
@@ -2348,7 +2474,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     };
 
     const vote = (kind) => {
-      if (locked) return;
+      if (displayDrift || locked) return;
       locked = true;
       votes.push(kind);
       note.textContent = t(`refraction.${kind}Note`);
@@ -3188,7 +3314,9 @@ const ProfileSchema = z.object({
   distanceM: z.number().optional(),
   calibrated: z.boolean().default(false),
   cardWidthPx: z.number().optional(),
-  mmPerPx: z.number().optional()
+  mmPerPx: z.number().optional(),
+  calibDpr: z.number().optional(),
+  calibScale: z.number().optional()
 }).catch({ calibrated: false });
 
 export function hasValidCalibration(p?: any): boolean {
