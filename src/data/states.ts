@@ -167,19 +167,19 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "Haw. Admin. R. § 19-122-356",
     "dmvUrl": "https://hidot.hawaii.gov/highways/files/2020/10/19-122-Ramseyer-8-3-20-FB.pdf",
     "asOf": "2026-10",
-    "verified": false,
+    "verified": true,
     "field": "70° or more using one eye",
     "doctorForm": "No named public form",
-    "retestPolicy": "Under § 19-122-357, the vision test may be waived with a certificate of eye examination by a licensed ophthalmologist/optometrist within the last six months; failure to meet minimum standards means no license is issued, with restrictions under § 19-122-358 where appropriate."
+    "retestPolicy": "The vision test may be waived with a certificate of eye examination completed by a licensed ophthalmologist or optometrist within the last six months (§ 19-122-357). If the standards are not met, no license is issued; restrictions under § 19-122-358 may apply."
   },
   "IA": {
-    "statute": "Iowa Code §§ 321.186, 321.186A; 761 IAC 604.10, 604.13(2)",
+    "statute": "Iowa Code §§ 321.186, 321.186A; 761 IAC 604.5, 604.6, 604.8, 604.13",
     "dmvUrl": "https://iowadot.gov/mvd",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "110° binocular / 100° monocular (denial thresholds per 761 IAC 604.13(2))",
-    "doctorForm": "Form 430032",
-    "retestPolicy": "Fail → a vision report from a licensed vision specialist based on an examination within 30 days; denial if binocular field is below 110° or monocular below 100°."
+    "verified": true,
+    "field": "110° binocular / 100° monocular (denial thresholds; 140° binocular for no restriction)",
+    "doctorForm": "Form 430032 Driver's Visual Acuity Report",
+    "retestPolicy": "Fail → a vision report on Form 430032 signed by a licensed vision specialist within 30 days prior to submission; denial if binocular field is below 110° or monocular below 100°."
   },
   "ID": {
     "statute": "Idaho Code § 49-313 (official text not re-verified on legislature.idaho.gov)",
@@ -200,13 +200,13 @@ export const VERIFIED_DATA: Record<string, {
     "retestPolicy": "Applicants who fail the counter screening must submit a completed Vision Specialist Report (Form DSD X 20) from a licensed eye care professional before a driver license can be issued."
   },
   "IN": {
-    "statute": "Ind. Code tit. 9, art. 24 (exact section unconfirmed)",
+    "statute": "Ind. Code § 9-24-10-4",
     "dmvUrl": "https://www.in.gov/bmv/licenses-permits-ids/learners-permits-and-drivers-licenses-overview/learners-permit/vision-screening/",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "Not tested during routine screening",
+    "verified": true,
+    "field": "120° horizontal (Form 22106; the 20/70 category requires proof of normal peripheral fields, at least 60° temporally in each eye)",
     "doctorForm": "Certificate of Vision (Eye Referral), State Form 22106",
-    "retestPolicy": "Fail → the examiner provides State Form 22106 for an eye doctor; the examination must be completed and the form returned within 6 months."
+    "retestPolicy": "Fail → the examiner provides State Form 22106 for an eye doctor; the examination is valid for six months from the exam date and must be mailed or faxed to the Driver Ability Department."
   },
   "KS": {
     "statute": "K.S.A. 8-295",
@@ -263,31 +263,31 @@ export const VERIFIED_DATA: Record<string, {
     "retestPolicy": "Fail → the applicant may have the screening done at their own expense by an eye care specialist who completes Form MVE-103; the medical unit updates the record on receipt."
   },
   "MI": {
-    "statute": "Mich. Admin. Code R 257.2 (official text not re-verified on michigan.gov)",
+    "statute": "Mich. Admin. Code R 257.2",
     "dmvUrl": "https://www.michigan.gov/sos",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "140° (official confirmation pending)",
-    "doctorForm": "DI-4V Vision Specialist's Statement of Examination",
-    "retestPolicy": "Fail → the applicant is given the DI-4V Vision Specialist's Statement of Examination for completion by an eye care specialist; the Department reviews it for eligibility."
+    "verified": true,
+    "field": "140° peripheral field",
+    "doctorForm": "DA-4V Vision Statement of Examination",
+    "retestPolicy": "Fail → submit a Vision Statement of Examination (DA-4V) completed by an ophthalmologist or optometrist; the Department reviews it for eligibility."
   },
   "MN": {
     "statute": "Minn. Stat. §§ 171.04, 171.13, 171.14; Minn. R. 7410.2400",
     "dmvUrl": "https://dps.mn.gov/",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "105°",
-    "doctorForm": "Vision Report PS30338-18",
-    "retestPolicy": "Fail → the applicant must see an eye doctor and return the completed Vision Report; licensing follows the report's findings."
+    "verified": true,
+    "field": "105° horizontal diameter with one or both eyes",
+    "doctorForm": "Vision Report PS30338-19",
+    "retestPolicy": "Fail → submit a Vision Report completed by a licensed vision examiner; the exam must be within six months of the report."
   },
   "MO": {
     "statute": "§ 302.175 RSMo; 12 CSR 10-24.090",
     "dmvUrl": "https://dor.mo.gov/",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "55° each eye / 85° one eye (non-official source; official rule-text confirmation pending)",
-    "doctorForm": "No named public form",
-    "retestPolicy": "Best-effort (unverified): failing the screening results in referral to an eye care specialist; the Department reviews the specialist's statement for eligibility."
+    "verified": true,
+    "field": "No field-degree standard in § 302.175 RSMo or 12 CSR 10-24.090",
+    "doctorForm": "No numbered public form; statement from a registered optometrist or physician",
+    "retestPolicy": "Fail → referred to a registered optometrist or physician; a conditional license may be issued under 12 CSR 10-24.090(6) based on the corrected readings (20/60–20/74 with daylight and 45 mph restrictions; 20/75–21/160 requires a departmental examination)."
   },
   "MS": {
     "statute": "31 Miss. Code R. 1-9.4 (official text not re-verified on sos.ms.gov)",
@@ -326,31 +326,31 @@ export const VERIFIED_DATA: Record<string, {
     "retestPolicy": "Per rule 37-08-01-05, applicants not meeting standards face restriction codes including daylight-only driving, vision-specialist recommendations, recheck within 1–2 years, road test, and outside-mirror requirements."
   },
   "NE": {
-    "statute": "Neb. Rev. Stat. § 60-4,105 (unconfirmed)",
+    "statute": "Neb. Rev. Stat. § 60-4,118",
     "dmvUrl": "http://dmv.nebraska.gov/sites/dmv.nebraska.gov/files/doc/dls/DLE_Policies_and_Procedures_Manual.pdf",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "140° total (120–139° → restriction F; 100–119° → restrictions F,V,G,X; below 100° denied)",
-    "doctorForm": "Statement of Vision",
-    "retestPolicy": "Best-effort (unverified): failing the screening requires a Statement of Vision from an eye care professional; DMV applies restrictions per the field-vision schedule."
+    "verified": true,
+    "field": "140° total horizontal field (120–139° → restriction F; 100–119° → restrictions F, V, G, X; below 100° denied)",
+    "doctorForm": "Statement of Vision (DMV06-181)",
+    "retestPolicy": "Fail → the examiner requires an optometrist's or ophthalmologist's Statement of Vision certifying the reading within 90 days of the license examination; DMV applies restrictions per the field-vision schedule."
   },
   "NH": {
-    "statute": "N.H. Admin. R. Saf-C 1002 (unconfirmed)",
+    "statute": "N.H. Admin. R. Saf-C 1004.05, 1004.08",
     "dmvUrl": "https://www.dmv.nh.gov/drivers-licensenon-driver-ids/driver-licensing-testing-requirements",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "Not tested during routine screening (official confirmation pending)",
-    "doctorForm": "Form DSMV 61 Eye Examination (official confirmation pending)",
-    "retestPolicy": "Fail → the applicant must have an eye doctor certify capability to drive safely; the completed form is returned to DMV."
+    "verified": true,
+    "field": "Not tested during routine screening",
+    "doctorForm": "Form DSMV 61 Eye Examination",
+    "retestPolicy": "Fail → the applicant must have an eye doctor certify capability to drive safely on Form DSMV 61; the completed form must be returned within 30 days."
   },
   "NJ": {
-    "statute": "N.J.S.A. 39:3-10 (vision provision unconfirmed)",
+    "statute": "N.J.S.A. 39:3-10; N.J. Admin. Code § 13:21-8.10",
     "dmvUrl": "https://www.nj.gov/mvc/",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "Not tested during routine screening (no official field-degree standard found)",
-    "doctorForm": "No named public form",
-    "retestPolicy": "The MVC may refer applicants with impaired vision to a physician for evaluation (per the NJ Driver Manual)."
+    "verified": true,
+    "field": "Not tested during routine screening",
+    "doctorForm": "Form ST-14",
+    "retestPolicy": "Fail → visit your doctor and complete Form ST-14; return it to MVC for review."
   },
   "NM": {
     "statute": "NMSA § 66-5-9",
@@ -380,13 +380,13 @@ export const VERIFIED_DATA: Record<string, {
     "retestPolicy": "Applicants who fail the counter screening can take the test with an approved provider enrolled in the NY DMV Vision Registry or submit Form MV-619 completed by a licensed vision professional."
   },
   "OH": {
-    "statute": "Ohio R.C. 4507.12",
-    "dmvUrl": "https://www.bmvonline.dps.ohio.gov/",
+    "statute": "Ohio R.C. 4507.12; Ohio Admin. Code 4501:1-1-20",
+    "dmvUrl": "https://www.bmv.ohio.gov/",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "70° each eye (official confirmation pending)",
-    "doctorForm": "BMV 2407 Vision Examination",
-    "retestPolicy": "Best-effort (unverified): failing the screening requires Vision Examination form BMV 2407 completed by an eye care professional; BMV reviews it for eligibility."
+    "verified": true,
+    "field": "70° one side / 45° other side of fixation",
+    "doctorForm": "BMV 6317 Vision Screening Referral",
+    "retestPolicy": "Fail → the examiner provides BMV 6317 for completion by an ophthalmologist or optometrist; the completed form must be returned within 30 days."
   },
   "OK": {
     "statute": "47 O.S. § 6-110; OAC 670:15-11-7",
@@ -410,10 +410,10 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "75 Pa.C.S. § 1508; 67 Pa. Code § 83.3",
     "dmvUrl": "https://www.pa.gov/agencies/dmv/driver-services/pennsylvania-drivers-manual/online-drivers-manual/applying-for-a-learners-permit",
     "asOf": "2026-10",
-    "verified": false,
-    "field": "120° horizontal using both eyes (official confirmation pending)",
+    "verified": true,
+    "field": "120° combined horizontal field",
     "doctorForm": "DL-102 Report of Eye Examination",
-    "retestPolicy": "Fail → the examiner provides Form DL-102, completed by an optometrist, ophthalmologist, or family physician, and returned to a Driver License Center for review."
+    "retestPolicy": "Fail → submit Form DL-102 completed by an optometrist, ophthalmologist, physician assistant, CRNP, or licensed physician; return it to the Bureau of Driver Licensing by mail, fax, or email for review."
   },
   "RI": {
     "statute": "R.I. Gen. Laws § 31-10 (exact section unconfirmed)",

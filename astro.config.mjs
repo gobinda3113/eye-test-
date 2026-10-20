@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import { execSync } from "child_process";
 import fsSync from "fs";
+import { VERIFIED_STATE_SLUGS } from "./src/data/states.ts";
 
 // Single source of truth for the canonical origin. Every canonical tag,
 // hreflang alternate, OG url, JSON-LD @id and the sitemap derive from this,
@@ -150,6 +151,8 @@ export default defineConfig({
       filter: (page) => {
         if (/\/(404|500|test)\/?$/.test(page)) return false;
         if (/\/(es|fr|de|pt|ja)\/(privacy|terms)\/?$/.test(page)) return false;
+        const stateMatch = page.match(/\/states\/([^/]+)\/?$/);
+        if (stateMatch && !VERIFIED_STATE_SLUGS.has(stateMatch[1])) return false;
         return true;
       },
     }),
