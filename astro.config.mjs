@@ -127,13 +127,16 @@ export default defineConfig({
         if (files) {
            item.lastmod = getFileMtime(files);
         }
-        if (item.url.includes("/privacy/")) {
-          const PRIVACY_URLS = [
+        if (item.url.includes("/privacy/") || item.url.includes("/terms/")) {
+          const LEGAL_URLS = [
             "https://onlinevisiontest.org/privacy/",
             "https://onlinevisiontest.org/it/privacy/",
             "https://onlinevisiontest.org/ru/privacy/",
+            "https://onlinevisiontest.org/terms/",
+            "https://onlinevisiontest.org/it/terms/",
+            "https://onlinevisiontest.org/ru/terms/",
           ];
-          if (PRIVACY_URLS.includes(item.url)) {
+          if (LEGAL_URLS.includes(item.url)) {
             if (item.links) {
               item.links = item.links.filter((l) => ["en-US", "it-IT", "ru-RU"].includes(l.lang));
             }
@@ -146,6 +149,7 @@ export default defineConfig({
       // error and test screener pages are noindex and must stay out of the sitemap
       filter: (page) => {
         if (/\/(404|500|test)\/?$/.test(page)) return false;
+        if (/\/(es|fr|de|pt|ja)\/(privacy|terms)\/?$/.test(page)) return false;
         return true;
       },
     }),

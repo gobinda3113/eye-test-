@@ -145,7 +145,8 @@ export function createLab(labEl) {
     });
   }
 
-  function on(target, type, handler, options) {
+  function on(target: any, type: string, handler: any, options?: any) {
+    if (!target) return;
     target.addEventListener(type, handler, options);
     cleanups.push(() => target.removeEventListener(type, handler, options));
   }
@@ -2436,9 +2437,57 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     navFoot({ next: false });
   }
 
+  /* ------------------------------------------------------------------ amsler */
+
+  function renderAmsler() {
+    let gridLines = '';
+    for (let i = 0; i <= 20; i++) {
+      const pos = 10 + i * 14;
+      gridLines += `<line x1="10" y1="${pos}" x2="290" y2="${pos}" stroke="currentColor" stroke-width="1.5" />`;
+      gridLines += `<line x1="${pos}" y1="10" x2="${pos}" y2="290" stroke="currentColor" stroke-width="1.5" />`;
+    }
+
+    stage.innerHTML = `
+      ${renderStageTitle("amsler.title", "amsler.sub")}
+      <div class="stage-grid">
+        <div class="stage-panel" style="display:grid;place-items:center;background:#fff;color:#000;padding:20px;border-radius:12px;">
+          <svg viewBox="0 0 300 300" style="width: 100%; max-width: 300px;">
+            <rect width="300" height="300" fill="#fff" />
+            ${gridLines}
+            <circle cx="150" cy="150" r="4" fill="#000" />
+          </svg>
+        </div>
+        <div class="stage-panel">
+          <div class="panel-title">${t("amsler.prompt")}</div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
+            <button class="btn btn-primary" data-act="pass">${t("amsler.noDistortion")}</button>
+            <button class="btn btn-quiet" data-act="fail">${t("amsler.distortionFound")}</button>
+          </div>
+        </div>
+      </div>`;
+
+    const passBtn = stage.querySelector('[data-act="pass"]');
+    if (passBtn) {
+      on(passBtn, 'click', () => {
+        results.amsler = true;
+        saveResults(results);
+        setTimeout(() => finishStep("amsler"), 100);
+      });
+    }
+    const failBtn = stage.querySelector('[data-act="fail"]');
+    if (failBtn) {
+      on(failBtn, 'click', () => {
+        results.amsler = false;
+        saveResults(results);
+        setTimeout(() => finishStep("amsler"), 100);
+      });
+    }
+    setFoot('');
+  }
+
   /* ---------------------------------------------------------------- results */
 
-  function card(label, value, tone, note, small) {
+  function card(label: any, value: any, tone?: any, note?: any, small?: any) {
     if (value === t("results.notTested")) return "";
     return `<div class="result-card${tone ? " rc-" + tone : ""}">
       <span class="rc-label">${label}</span>
@@ -2517,7 +2566,7 @@ setTimeout(() => { if (area) area.scrollIntoView({behavior: "smooth", block: "ne
     if (passed < totalTaken - 2) verdict = "bad";
     
     let scoreTpl = t("results.score") || "Overall Score: {passed}/{total} Passed";
-    let scoreText = scoreTpl.replace("{passed}", passed).replace("{total}", totalTaken);
+    let scoreText = scoreTpl.replace("{passed}", String(passed)).replace("{total}", String(totalTaken));
 
     const acuity = (v) => (v == null ? t("results.notTested") : acuityNotations(v));
     const tone = (v) => (v == null ? null : v <= 40 ? "pass" : v <= 70 ? "warn" : "bad");
@@ -3016,6 +3065,7 @@ function emptyResults() {
     astigmatism: null,
     refraction: null,
     stereo: null,
+    amsler: null,
   };
 }
 
@@ -3183,7 +3233,8 @@ const ResultSchema = z.object({
   contrast: z.object({ lowest: z.number(), correct: z.number() }).nullable().optional(),
   stereo: z.object({ seen: z.boolean() }).nullable().optional(),
   astigmatism: z.object({ blurred: z.number().nullable(), axis: z.number().nullable() }).nullable().optional(),
-  refraction: z.object({ kind: z.string(), red: z.number(), green: z.number(), equal: z.number(), range: z.string() }).nullable().optional()
+  refraction: z.object({ kind: z.string(), red: z.number(), green: z.number(), equal: z.number(), range: z.string() }).nullable().optional(),
+  amsler: z.boolean().nullable().optional(),
 }).catch({});
 
 
@@ -3272,46 +3323,4 @@ function shuffled(arr) {
   }
   return a;
 }
-
-
-
-
-
-  function renderAmsler() {
-    let gridLines = '';
-    for (let i = 0; i <= 20; i++) {
-      const pos = 10 + i * 14;
-      gridLines += `<line x1="10" y1="${pos}" x2="290" y2="${pos}" stroke="currentColor" stroke-width="1.5" />`;
-      gridLines += `<line x1="${pos}" y1="10" x2="${pos}" y2="290" stroke="currentColor" stroke-width="1.5" />`;
-    }
-
-    stage.innerHTML = `
-      ${renderStageTitle("amsler.title", "amsler.sub")}
-      <div class="stage-grid">
-        <div class="stage-panel" style="display:grid;place-items:center;background:#fff;color:#000;padding:20px;border-radius:12px;">
-          <svg viewBox="0 0 300 300" style="width: 100%; max-width: 300px;">
-            <rect width="300" height="300" fill="#fff" />
-            ${gridLines}
-            <circle cx="150" cy="150" r="4" fill="#000" />
-          </svg>
-        </div>
-        <div class="stage-panel">
-          <div class="panel-title">${t("amsler.prompt")}</div>
-          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
-            <button class="btn btn-primary" data-act="pass">${t("amsler.noDistortion")}</button>
-            <button class="btn btn-quiet" data-act="fail">${t("amsler.distortionFound")}</button>
-          </div>
-        </div>
-      </div>`;
-
-    stage.querySelector('[data-act="pass"]').addEventListener('click', () => {
-      results.amsler = true;
-      setTimeout(() => finishStep("amsler"), 100);
-    });
-    stage.querySelector('[data-act="fail"]').addEventListener('click', () => {
-      results.amsler = false;
-      setTimeout(() => finishStep("amsler"), 100);
-    });
-    setFoot('');
-  }
 

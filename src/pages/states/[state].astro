@@ -95,7 +95,7 @@ const faqSchema = {
 };
 ---
 
-<Layout locale="en" noindex={false} customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
+<Layout locale="en" noindex={!stateData.verified} customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={pageSchema}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">

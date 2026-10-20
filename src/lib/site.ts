@@ -77,15 +77,16 @@ export function homeAlternates() {
   }));
 }
 
-export const PRIVACY_LOCALES = ["en", "it", "ru"];
+export const LEGAL_LOCALES = ["en", "it", "ru"];
+export const PRIVACY_LOCALES = LEGAL_LOCALES;
 
 /** Every locale variant of one page, for the hreflang alternate set. */
 export function alternates(pageKey, currentLocale) {
-  if (pageKey === "privacy") {
-    if (currentLocale && !PRIVACY_LOCALES.includes(currentLocale)) {
+  if (pageKey === "privacy" || pageKey === "terms") {
+    if (currentLocale && !LEGAL_LOCALES.includes(currentLocale)) {
       return [];
     }
-    return PRIVACY_LOCALES.map((locale) => ({
+    return LEGAL_LOCALES.map((locale) => ({
       locale,
       hreflang: HREFLANG[locale],
       url: urlFor(locale, pageKey),

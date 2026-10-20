@@ -8,7 +8,7 @@ Online Vision Test (https://onlinevisiontest.org) provides calibrated eye screen
 
 - [Online Vision Screening Test](https://onlinevisiontest.org/): Standard interactive eye screening including Snellen letter chart, Tumbling E orientation, color plates, and near vision checks.
 - [DMV Practice Eye Test (US)](https://onlinevisiontest.org/us/): Practice screener tailored for US driver's license vision requirements (20/40 standard).
-- [Printable & Digital Snellen Chart](https://onlinevisiontest.org/eye-test-chart/): Complete Snellen chart reference with line-by-line visual acuity ratings from 20/200 down to 20/10.
+- [Digital Snellen Eye Test Chart](https://onlinevisiontest.org/eye-test-chart/): Complete Snellen chart reference with line-by-line visual acuity ratings from 20/200 down to 20/10.
 
 ## Calibration & Methodology
 

@@ -13,9 +13,10 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.params;
+const isEnglishBody = ["es", "fr", "de", "pt", "ja"].includes(locale as string);
 ---
 
-<Layout locale={locale} page="privacy">
+<Layout locale={locale} page="privacy" noindex={isEnglishBody}>
   <SiteShell locale={locale} page="privacy">
     <ProsePage locale={locale} page="privacy" />
   </SiteShell>

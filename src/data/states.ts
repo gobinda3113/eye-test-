@@ -131,7 +131,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "D.C. Code § 50-1401.01a (vision provision unconfirmed)",
     "dmvUrl": "https://dmv.dc.gov/ar/service/obtain-a-real-id-driver-license",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "140° using both eyes (best-effort; official degree unconfirmed)",
     "doctorForm": "Medical/Eye Form (name unconfirmed)",
     "retestPolicy": "Best-effort (unverified): failing the screening results in referral to an eye care professional; the Medical/Eye Form is submitted to DMV for review."
@@ -140,7 +140,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "21 Del. Code § 2713 (vision standards set by DMV policy; section text unconfirmed)",
     "dmvUrl": "https://services.dmv.de.gov/DriverServices/drivers_license/index.shtml?dc=dr_lic_gdl_instruction",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "Not tested during routine screening",
     "doctorForm": "No named public form",
     "retestPolicy": "Best-effort (unverified): the eye screening is required at application; failing it results in referral for further eye examination before licensing proceeds."
@@ -203,7 +203,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "Ind. Code tit. 9, art. 24 (exact section unconfirmed)",
     "dmvUrl": "https://www.in.gov/bmv/licenses-permits-ids/learners-permits-and-drivers-licenses-overview/learners-permit/vision-screening/",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "Not tested during routine screening",
     "doctorForm": "Certificate of Vision (Eye Referral), State Form 22106",
     "retestPolicy": "Fail → the examiner provides State Form 22106 for an eye doctor; the examination must be completed and the form returned within 6 months."
@@ -230,7 +230,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "La. R.S. 32:408 (official text not re-verified on legis.la.gov)",
     "dmvUrl": "https://expresslane.la.gov/omv/drivers/personal-driver-s-licenses/new-licenses/",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "Not tested during routine screening (official degree standard unconfirmed)",
     "doctorForm": "Vision Examination Form (name unconfirmed)",
     "retestPolicy": "Best-effort (unverified): failing the screening results in referral to an eye care specialist; OMV reviews the specialist's report before issuing the license."
@@ -248,7 +248,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "Md. Transportation Code § 16-110.1 (unconfirmed)",
     "dmvUrl": "https://mva.maryland.gov/drivers/Pages/vision-requirements.aspx",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "140° continuous (unrestricted) / 110° (restricted)",
     "doctorForm": "Vision Screening Form DL-043A",
     "retestPolicy": "Best-effort (unverified): failing the screening requires Vision Screening Form DL-043A completed by an eye care professional; MVA determines eligibility and restrictions from the report."
@@ -329,7 +329,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "Neb. Rev. Stat. § 60-4,105 (unconfirmed)",
     "dmvUrl": "http://dmv.nebraska.gov/sites/dmv.nebraska.gov/files/doc/dls/DLE_Policies_and_Procedures_Manual.pdf",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "140° total (120–139° → restriction F; 100–119° → restrictions F,V,G,X; below 100° denied)",
     "doctorForm": "Statement of Vision",
     "retestPolicy": "Best-effort (unverified): failing the screening requires a Statement of Vision from an eye care professional; DMV applies restrictions per the field-vision schedule."
@@ -482,7 +482,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "23 V.S.A. § 631",
     "dmvUrl": "https://dmv.vermont.gov/tags/medical",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "60° temporal in each eye (60° temporal + nasal in one eye) — best-effort; official degree unconfirmed",
     "doctorForm": "Driver Eyesight Evaluation",
     "retestPolicy": "Best-effort (unverified): failing the screening results in the DMV requesting a Driver Eyesight Evaluation completed by an eye care professional."

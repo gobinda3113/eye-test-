@@ -51,8 +51,8 @@ function initTheme() {
 
 /* --------------------------------------------------------------- language */
 
-function initLanguage(lab) {
-  const select = document.getElementById("langSelect");
+function initLanguage(lab?: any) {
+  const select = document.getElementById("langSelect") as HTMLSelectElement | null;
   // Live region for screen readers — announces language change without page reload
   let liveRegion = document.getElementById("langAnnounce");
   if (!liveRegion) {
@@ -66,60 +66,8 @@ function initLanguage(lab) {
 
   // The server-rendered route determines the language
   const code = document.documentElement.lang || "en";
-  if (select) (select as HTMLSelectElement).value = code;
+  if (select) select.value = code;
   setLang(code);
-
-  if (select) {
-    select.addEventListener("change", () => {
-      const selectedOpt = (select as HTMLSelectElement).selectedOptions?.[0];
-      if (selectedOpt && selectedOpt.dataset.url) {
-        window.location.href = selectedOpt.dataset.url;
-        return;
-      }
-      const newLang = (select as HTMLSelectElement).value;
-      try {
-        localStorage.setItem(LANG_KEY, newLang);
-      } catch (e) {
-        /* ignore */
-      }
-      
-      // Calculate new URL based on Astro routing
-      const locales = ["es", "fr", "de", "pt", "it", "ja", "ru"];
-      const pathSegments = window.location.pathname.split("/").filter(Boolean);
-
-      // The /us/ DMV page has no locale variants: switching language lands on
-      // the generic homepage in that language, switching back returns to /us/.
-      if (pathSegments.length > 0 && pathSegments[0] === "us") {
-        window.location.href = newLang === "en" ? "/us/" : "/" + newLang + "/";
-        return;
-      }
-      
-      if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
-        if (newLang === "en") {
-          pathSegments.shift();
-        } else {
-          pathSegments[0] = newLang;
-        }
-      } else {
-        if (newLang !== "en") {
-          pathSegments.unshift(newLang);
-        }
-      }
-      
-      let newPath = "/" + pathSegments.join("/");
-      if (window.location.pathname.endsWith("/") && newPath !== "/") {
-        newPath += "/";
-      }
-      if (window.location.search) {
-        newPath += window.location.search;
-      }
-      if (window.location.hash) {
-        newPath += window.location.hash;
-      }
-      
-      window.location.href = newPath || "/";
-    });
-  }
 }
 
 function refreshDynamic() {
@@ -135,9 +83,11 @@ function initHeader() {
   const menuBtn = document.getElementById("menuBtn");
   const mobileNav = document.getElementById("mobileNav");
 
-  const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  if (header) {
+    const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
 
   if (menuBtn && mobileNav) {
     menuBtn.addEventListener("click", () => {
@@ -146,14 +96,14 @@ function initHeader() {
       menuBtn.setAttribute("aria-expanded", String(open));
     });
     mobileNav.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") {
+      if ((e.target as HTMLElement).tagName === "A") {
         mobileNav.hidden = true;
         menuBtn.setAttribute("aria-expanded", "false");
       }
     });
     // Close mobile nav on outside click
     document.addEventListener("click", (e) => {
-      if (!mobileNav.hidden && !mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
+      if (!mobileNav.hidden && !mobileNav.contains(e.target as Node) && !menuBtn.contains(e.target as Node)) {
         mobileNav.hidden = true;
         menuBtn.setAttribute("aria-expanded", "false");
       }
@@ -252,14 +202,14 @@ function renderTable(filter = "") {
 }
 
 function initStates() {
-  const search = document.getElementById("stateSearch");
+  const search = document.getElementById("stateSearch") as HTMLInputElement | null;
   if (search) search.addEventListener("input", () => renderTable(search.value));
 
   const wrap = document.getElementById("featuredStates");
   if (wrap) {
     wrap.addEventListener("click", (e) => {
-      const card = e.target.closest("[data-state]");
-      if (!card) return;
+      const card = (e.target as HTMLElement | null)?.closest("[data-state]") as HTMLElement | null;
+      if (!card || !card.dataset.state) return;
       const row = document.getElementById("row-" + card.dataset.state);
       if (row) {
         row.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -272,9 +222,6 @@ function initStates() {
     });
   }
 }
-
-/* ------------------------------------------------------------------- faq */
-
 
 /* --------------------------------------------------------------- reveal */
 
@@ -306,11 +253,11 @@ function initReveal() {
     const delay = Math.min(i % 8, 7) * 55;
     maxDelay = Math.max(maxDelay, delay);
     el.classList.add("reveal");
-    el.style.animationDelay = delay + "ms";
+    (el as HTMLElement).style.animationDelay = delay + "ms";
   });
   setTimeout(() => {
     targets.forEach((el) => {
-      if (parseFloat(getComputedStyle(el).opacity) < 0.05) el.style.animation = "none";
+      if (parseFloat(getComputedStyle(el).opacity) < 0.05) (el as HTMLElement).style.animation = "none";
     });
   }, maxDelay + 1200);
 }
@@ -326,7 +273,7 @@ async function boot() {
   setLang(code);
 
   const labEl = document.getElementById("lab");
-  let lab = null;
+  let lab: any = null;
   if (labEl) {
     try {
       lab = createLab(labEl);
@@ -433,7 +380,7 @@ async function boot() {
   safe("language", () => initLanguage(lab));
   safe("header", initHeader);
   safe("states", initStates);
-  safe("dynamic", () => refreshDynamic(lab));
+  safe("dynamic", refreshDynamic);
   safe("reveal", initReveal);
 
   document.addEventListener("keydown", (e: any) => {
@@ -466,7 +413,7 @@ async function boot() {
     }
   });
 
-  window.dmvEyeTest = { lab, lang: getLang, t };
+  (window as any).dmvEyeTest = { lab, lang: getLang, t };
 }
 
 function whenFontsReady() {

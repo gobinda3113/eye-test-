@@ -189,10 +189,22 @@ const navItems = [
           var locales = ["es", "fr", "de", "pt", "it", "ja", "ru"];
           var pathSegments = window.location.pathname.split("/").filter(Boolean);
           var enOnly = ["us", "checks", "states", "eye-test-chart"];
+
+          // 1. En-only routes: redirect to root of new locale or stay en
           if (pathSegments.length > 0 && enOnly.includes(pathSegments[0])) {
             window.location.href = newLang === "en" ? "/" + pathSegments[0] + "/" : "/" + newLang + "/";
             return;
           }
+
+          // 2. Blog posts without a translation fall back to locale blog index, not a 404
+          var isBlogDetail = (pathSegments.length > 1 && pathSegments[0] === "blog") ||
+                             (pathSegments.length > 2 && locales.includes(pathSegments[0]) && pathSegments[1] === "blog");
+          if (isBlogDetail) {
+            window.location.href = newLang === "en" ? "/blog/" : "/" + newLang + "/blog/";
+            return;
+          }
+
+          // 3. Standard routes
           if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
             if (newLang === "en") {
               pathSegments.shift();

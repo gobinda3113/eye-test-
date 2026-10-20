@@ -15,28 +15,14 @@ const customXDefault = customMeta.url;
 const chartSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Printable Eye Test Chart",
+  "name": "Online Eye Test Chart",
   "url": "https://onlinevisiontest.org/eye-test-chart/",
-  "description": "Download and print a free, clinically accurate Snellen eye chart.",
+  "description": "Clinically calibrated online Snellen eye chart for visual acuity screening.",
   "inLanguage": "en"
-};
-
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Use the Printable Eye Chart",
-  "step": [
-    { "@type": "HowToStep", "name": "Print", "text": "Print the PDF chart on US Letter or A4 paper without scaling." },
-    { "@type": "HowToStep", "name": "Calibrate", "text": "Verify the printed chart scale using a standard credit card." },
-    { "@type": "HowToStep", "name": "Position", "text": "Tape the chart to a wall at eye level in a well-lit room." },
-    { "@type": "HowToStep", "name": "Measure", "text": "Stand exactly 10 feet or 20 feet away." },
-    { "@type": "HowToStep", "name": "Read", "text": "Cover one eye and read the lowest line possible." }
-  ]
 };
 ---
 
 <Layout locale="en" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={chartSchema}>
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(howToSchema)} />
   <SiteShell locale="en" page="home">
     <div class="container section">
       <nav class="crumbs" aria-label="Breadcrumb">

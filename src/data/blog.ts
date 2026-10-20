@@ -392,7 +392,7 @@ export const POSTS = [
     content: {
       en: `
         <h2>Can you wear glasses during the DMV vision screening?</h2>
-        <p><strong>Yes, you can absolutely wear glasses or contact lenses during your DMV eye test.</strong> Millions of drivers take and pass their vision screening with corrective lenses every day. In fact, if you need prescription lenses to see clearly at distance, you should always bring them to the DMV counter. You can pre-check your acuity using our <a href="/">online eye test</a> or printable <a href="/eye-test-chart/">Snellen eye test chart</a>.</p>
+        <p><strong>Yes, you can absolutely wear glasses or contact lenses during your DMV eye test.</strong> Millions of drivers take and pass their vision screening with corrective lenses every day. In fact, if you need prescription lenses to see clearly at distance, you should always bring them to the DMV counter. You can pre-check your acuity using our <a href="/">online eye test</a> or <a href="/eye-test-chart/">Snellen eye test chart</a>.</p>
 
         <h2>What about reading glasses?</h2>
         <p>A common question applicants search for is: <em>can you use reading glasses for the DMV eye test?</em> <strong>The short answer is generally no for distance acuity.</strong></p>
