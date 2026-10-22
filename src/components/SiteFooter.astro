@@ -4,6 +4,7 @@
  * Design language and styling matches the landing page footer.
  */
 import { DICT } from "../scripts/dict.ts";
+import { LOCALES, HREFLANG } from "../lib/site.ts";
 
 interface Props {
   locale?: string;
@@ -96,6 +97,13 @@ const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
     </nav>
   </div>
 
+  <nav class="footer-langs" aria-label="Languages">
+    <span>Languages</span>
+    {LOCALES.map((l) => (
+      <a href={l === "en" ? "/" : `/${l}/`} hreflang={HREFLANG[l]}>{l.toUpperCase()}</a>
+    ))}
+  </nav>
+
   <div class="footer-bottom">
     <div class="disclaimer" role="note" aria-label="Medical and legal notice">
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 19H3l9-15.5Z"/><path d="M12 10v4.2M12 16.6v.1"/></svg>
@@ -104,6 +112,33 @@ const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
     <p class="copyright"><span id="year">2026</span> <span data-i18n="footer.copy">{d("footer.copy")}</span></p>
   </div>
 </footer>
+
+<style>
+  .footer-langs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+    margin-top: 36px;
+    font-size: 12px;
+    color: #839087;
+  }
+
+  .footer-langs > span {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-langs a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .footer-langs a:hover {
+    text-decoration: underline;
+  }
+</style>
 
 <script is:inline>
   (function () {

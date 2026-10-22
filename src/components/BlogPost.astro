@@ -1,6 +1,18 @@
 ---
 import { DICT } from "../scripts/dict.ts";
 import { pathFor, urlFor } from "../lib/site.ts";
+import { POSTS } from "../data/blog.ts";
+
+const RELATED_LABEL = {
+  en: "Related reading",
+  es: "Lecturas relacionadas",
+  fr: "À lire aussi",
+  de: "Weiterlesen",
+  pt: "Leia também",
+  it: "Leggi anche",
+  ja: "関連記事",
+  ru: "Читайте также",
+};
 
 const { locale = "en", post } = Astro.props;
 const dict = DICT[locale] || DICT.en;
@@ -31,6 +43,18 @@ const META_L = {
   ru: { by: "Написано Online Vision Test", rev: "Последнее обновление: Сентябрь 2026", src: "Источники: официальные агентства, оптометрические справочники" },
 };
 const m = META_L[locale] || META_L.en;
+
+// Start after the current post and wrap, so related links rotate instead of
+// every post pointing at the same three entries.
+const postIndex = POSTS.findIndex((p) => p.slug === post.slug);
+const rotatedPosts =
+  postIndex >= 0 ? [...POSTS.slice(postIndex + 1), ...POSTS.slice(0, postIndex)] : POSTS;
+
+const related = rotatedPosts.filter((p) => {
+  if (p.slug === post.slug) return false;
+  const supported = p.locales || (p.englishOnly ? ["en"] : Object.keys(p.title || {}));
+  return supported.includes(locale);
+}).slice(0, 3);
 ---
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
@@ -75,6 +99,60 @@ const m = META_L[locale] || META_L.en;
         <p style="margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
         <a class="btn btn-primary btn-lg" href={home}>{d("nav.cta")}</a>
       </div>
+
+      {related.length > 0 && (
+        <aside class="related-posts" aria-labelledby="related-heading">
+          <h2 id="related-heading">{RELATED_LABEL[locale] || RELATED_LABEL.en}</h2>
+          <ul>
+            {related.map((p) => (
+              <li>
+                <a href={pathFor(locale, "blog") + p.slug + "/"}>
+                  {p.title[locale] || p.title.en}
+                </a>
+                <p>{p.excerpt[locale] || p.excerpt.en}</p>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
     </div>
   </div>
 </section>
+
+<style>
+  .related-posts {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .related-posts h2 {
+    font-size: 20px;
+    margin: 0 0 18px;
+  }
+
+  .related-posts ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 18px;
+  }
+
+  .related-posts a {
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .related-posts a:hover {
+    text-decoration: underline;
+  }
+
+  .related-posts p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+</style>

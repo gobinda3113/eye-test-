@@ -16,9 +16,27 @@ export function getStaticPaths() {
 const { stateData } = Astro.props;
 const slug = stateData.name.toLowerCase().replace(/ /g, "-");
 
+// Rotate the sibling list so every state in a region receives inbound links.
+// Starting after the current state and wrapping means each state appears in
+// the lists of the five states that follow it, instead of the same five
+// alphabetical entries appearing on every page.
+const regionStates = STATES.filter((s) => s.region === stateData.region);
+const regionIndex = regionStates.findIndex((s) => s.code === stateData.code);
+const rotatedRegion =
+  regionIndex >= 0
+    ? [...regionStates.slice(regionIndex + 1), ...regionStates.slice(0, regionIndex)]
+    : regionStates;
+const relatedStates = rotatedRegion.filter((s) => s.code !== stateData.code).slice(0, 5);
+
+const article = "AEIOUaeiou".includes(stateData.name[0]) && stateData.name.toLowerCase() !== "utah" ? "an" : "a";
+
 const customMeta = {
   title: `DMV Eye Test Online ${stateData.name} - Free Practice Screening`,
-  description: `Practice the ${stateData.name} DMV eye test online before you go. Minimum acuity required for ${"AEIOUaeiou".includes(stateData.name[0]) && stateData.name.toLowerCase() !== "utah" ? "an" : "a"} ${stateData.name} driver's license: ${stateData.min}.`,
+  description: `Practice the ${stateData.name} DMV eye test online before you go. ${
+    stateData.verified
+      ? `Minimum acuity required for ${article} ${stateData.name} driver's license: ${stateData.min}.`
+      : `Published guidance for ${article} ${stateData.name} driver's license lists ${stateData.min}; not yet verified against the official rule.`
+  }`,
   url: `${SITE}/states/${slug}/`,
 };
 
@@ -110,18 +128,34 @@ const faqSchema = {
       <div class="simple-hero">
         <div class="eyebrow">State Requirements</div>
         <h1>DMV Eye Test Online: {stateData.name}</h1>
-        <p>Preparing for your <strong>{stateData.name}</strong> driver's license renewal? The minimum visual acuity requirement in {stateData.name} is {stateData.min} in {stateData.need === "both" ? "both eyes" : "at least one eye"}.</p>
+        <p>
+          Preparing for your <strong>{stateData.name}</strong> driver's license renewal?{" "}
+          {stateData.verified
+            ? `The minimum visual acuity requirement in ${stateData.name} is ${stateData.min} in ${stateData.need === "both" ? "both eyes" : "at least one eye"}.`
+            : `Published guidance lists a minimum visual acuity of ${stateData.min} in ${stateData.need === "both" ? "both eyes" : "at least one eye"}; we have not yet confirmed it against the current official rule.`}
+        </p>
         <p style="margin-top: 20px;">
           <a class="btn btn-primary" href="/test/">Practice the US DMV Test Online</a>
         </p>
       </div>
+
+      {!stateData.verified && (
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; background: color-mix(in srgb, var(--primary) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--primary) 40%, var(--border)); border-radius: var(--r-sm); padding: 16px 20px; margin: 0 0 8px;">
+          <span style="display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); background: color-mix(in srgb, var(--primary) 18%, transparent); border: 1px solid color-mix(in srgb, var(--primary) 45%, transparent); white-space: nowrap;">
+            Not yet verified
+          </span>
+          <p style="margin: 0; flex: 1 1 320px; font-size: 14px; line-height: 1.6; color: var(--text-2);">
+            These values are general guidance from public DMV sources. We have not confirmed them against the current {stateData.name} statute or agency page. Check the official {stateData.name} DMV before you rely on them.
+          </p>
+        </div>
+      )}
 
       <div class="prose" style="max-width: 72ch;">
         <h2>Vision Requirements for {stateData.name}</h2>
         <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 20px 24px; margin: 16px 0 24px;">
           <ul style="margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px;">
             <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
-              <span>Standard Acuity Requirement:</span>
+              <span>{stateData.verified ? "Standard Acuity Requirement:" : "Typical Requirement (unverified):"}</span>
               <strong style="font-family: var(--font-display); font-size: 17px; color: var(--text);">{stateData.min} ({stateData.need === "both" ? "both eyes" : "better eye"})</strong>
             </li>
             <li style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
@@ -185,10 +219,10 @@ const faqSchema = {
         <h2>Related States in the {stateData.region}</h2>
         <p>Vision requirements and DMV eye test standards for other states in the {stateData.region} region:</p>
         <ul>
-          {STATES.filter((s) => s.region === stateData.region && s.code !== stateData.code).slice(0, 5).map((rs) => (
+          {relatedStates.map((rs) => (
             <li>
               <a href={`/states/${rs.name.toLowerCase().replace(/ /g, "-")}/`}>
-                {rs.name} DMV Eye Test (Minimum Acuity: {rs.min})
+                {rs.name} DMV Eye Test ({rs.verified ? "Minimum Acuity" : "Typical Acuity"}: {rs.min})
               </a>
             </li>
           ))}

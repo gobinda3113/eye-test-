@@ -54,13 +54,9 @@ if (currentRoute.startsWith("test")) {
   activeSection = "contact";
 }
 
-const showStatesInNav = isUS || currentRoute === "us" || currentRoute.startsWith("states");
-
 const navItems = [
   { key: "nav.home", section: "home", label: d("nav.home"), href: homeHref },
-  ...(showStatesInNav
-    ? [{ key: "nav.states", section: "states", label: "States", href: "/states/" }]
-    : []),
+  { key: "nav.states", section: "states", label: d("nav.states"), href: "/states/" },
   { key: "nav.checks", section: "checks", label: d("nav.checks"), href: checksHref },
   { key: "nav.blog", section: "blog", label: d("nav.blog"), href: blogHref },
   { key: "nav.about", section: "about", label: d("nav.about"), href: aboutHref },

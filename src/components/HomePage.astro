@@ -25,6 +25,7 @@ import { seoFor } from "../data/seo.ts";
 import { SITE } from "../lib/site.ts";
 import SiteHeader from "./SiteHeader.astro";
 import SiteFooter from "./SiteFooter.astro";
+import StateLinks from "./StateLinks.astro";
 import "../styles/landing.css";
 
 const { locale = "en", variant = "generic" } = Astro.props;
@@ -240,6 +241,22 @@ const howToSchema = {
       </section>
     )}
 
+    {!isUS && locale === "en" && (
+      <section class="states-section page-pad" id="states">
+        <div class="section-label">
+          <span class="label-dot"></span>
+          <span>STATE REQUIREMENTS</span>
+        </div>
+        <div class="section-head" style="margin-top: 20px;">
+          <h2>Vision Requirements by State</h2>
+          <p class="section-sub">
+            Minimum acuity, restricted license rules and renewal schedules for the 30 states we have verified against official sources.
+          </p>
+        </div>
+        <StateLinks />
+      </section>
+    )}
+
     {isUS && (
       <section class="states-section page-pad" id="states">
         <div class="section-label">
@@ -280,6 +297,10 @@ const howToSchema = {
             </table>
           </div>
           <p class="table-foot" data-i18n="states.foot">{d("states.foot")}</p>
+        </div>
+        <div style="margin-top: 32px;">
+          <h3 style="font-size: 18px; margin-bottom: 14px;">Browse state requirements</h3>
+          <StateLinks />
         </div>
       </section>
     )}
