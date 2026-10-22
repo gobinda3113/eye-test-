@@ -102,7 +102,7 @@ export const VERIFIED_DATA: Record<string, {
   },
   "CA": {
     "statute": "Cal. Veh. Code § 12804.9",
-    "dmvUrl": "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/vision-requirements/",
+    "dmvUrl": "https://www.dmv.ca.gov/portal/driver-education-and-safety/medical-conditions-and-driving/vision-conditions/",
     "asOf": "2026-10",
     "verified": true,
     "field": "Not part of routine counter vision screening",
@@ -273,7 +273,7 @@ export const VERIFIED_DATA: Record<string, {
   },
   "MN": {
     "statute": "Minn. Stat. §§ 171.04, 171.13, 171.14; Minn. R. 7410.2400",
-    "dmvUrl": "https://dps.mn.gov/",
+    "dmvUrl": "https://www.revisor.mn.gov/rules/7410.2400/",
     "asOf": "2026-10",
     "verified": true,
     "field": "105° horizontal diameter with one or both eyes",
@@ -372,7 +372,7 @@ export const VERIFIED_DATA: Record<string, {
   },
   "NY": {
     "statute": "N.Y. Veh. & Traf. Law § 502; 15 NYCRR § 3.2",
-    "dmvUrl": "https://dmv.ny.gov/driver-license/vision-requirements",
+    "dmvUrl": "https://dmv.ny.gov/driver-license/vision-requirements-and-restrictions",
     "asOf": "2026-10",
     "verified": true,
     "field": "Not part of routine counter vision screening (acuity 20/40 required)",
@@ -428,7 +428,7 @@ export const VERIFIED_DATA: Record<string, {
     "statute": "S.C. Code § 56-1-220",
     "dmvUrl": "https://dmv.sc.gov/sites/scdmv/files/2026-01/412-IS.pdf",
     "asOf": "2026-10",
-    "verified": true,
+    "verified": false,
     "field": "120° horizontal both eyes / 70° temporal + 35° nasal one eye (non-official source; official confirmation pending)",
     "doctorForm": "Certificate of Vision Examination, SCDMV Form 412-NC (non-commercial) / 412-CDL",
     "retestPolicy": "If you are unable to pass the SCDMV vision screening at a branch office, you must have your eyes examined by a licensed eye care professional; the Certificate of Vision Examination is valid 36 months from the exam date."

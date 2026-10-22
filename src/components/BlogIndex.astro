@@ -57,6 +57,8 @@ const breadcrumb = {
       <p>{meta.lede}</p>
     </div>
 
+    <h2 class="blog-list-heading">{d("blog.allArticles")}</h2>
+
     <div class="blog-grid">
       {visiblePosts.map(post => {
         const titleText = post.title[locale] || post.title.en;
@@ -111,11 +113,16 @@ const breadcrumb = {
 </section>
 
 <style>
+  .blog-list-heading {
+    margin: 2.5rem 0 1rem;
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+  }
+
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.75rem;
-    margin-top: 2.5rem;
+    margin-top: 0;
     margin-bottom: 3.5rem;
   }
 
