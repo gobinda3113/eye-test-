@@ -216,22 +216,35 @@ html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
 }
 
 .home-page .lang-wrap {
+  position: relative;
   display: inline-flex;
-  flex-shrink: 0;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
+  flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
+  transition: background 0.18s, border-color 0.18s;
   cursor: pointer;
+  padding: 0;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.home-page .lang-wrap:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .home-page .lang-wrap .ico {
   color: rgba(255, 255, 255, 0.85);
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .home-page .lang-wrap .lang-code {
@@ -239,13 +252,30 @@ html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
 }
 
 .home-page .lang-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background: transparent;
   border: 0;
+  outline: none;
+  box-shadow: none;
   color: #fff;
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  padding: 0 28px 0 32px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  background-size: 12px;
+}
+
+.home-page .lang-wrap select::-ms-expand {
+  display: none;
 }
 
 .home-page .lang-wrap select option {
@@ -1512,17 +1542,23 @@ html[data-theme="dark"] .home-page .underlined-link {
     height: 17px;
   }
   .home-page .lang-wrap {
-    position: relative;
-    padding: 7px 10px;
-    gap: 5px;
+    height: 34px;
+    padding: 0;
+  }
+  .home-page .lang-wrap .ico {
+    left: 8px;
+    width: 14px;
+    height: 14px;
   }
   .home-page .lang-wrap .lang-code {
     display: inline-block;
+    padding: 0 10px 0 28px;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
     color: #fff;
-    line-height: 1;
+    line-height: 32px;
+    pointer-events: none;
   }
   .home-page .lang-wrap select {
     position: absolute;
@@ -1531,6 +1567,8 @@ html[data-theme="dark"] .home-page .underlined-link {
     height: 100%;
     opacity: 0;
     cursor: pointer;
+    padding: 0;
+    background-image: none;
   }
   .home-page .nav-links,
   .home-page .nav-cta {

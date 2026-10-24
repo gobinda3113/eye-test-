@@ -10,7 +10,7 @@
 .lang-wrap:focus-within {
   outline: 2px solid var(--primary, #0D7A6A);
   outline-offset: 2px;
-  border-radius: var(--r-full, 9999px);
+  border-radius: 6px;
 }
 .skip-link:focus {
   outline: 2px solid var(--primary, #0D7A6A);
@@ -585,26 +585,35 @@ body.is-doc .section {
 }
 
 .site-header .lang-wrap {
+  position: relative;
   display: inline-flex;
-  flex-shrink: 0;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
+  flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
+  transition: background 0.18s, border-color 0.18s;
   cursor: pointer;
+  padding: 0;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.site-header .lang-wrap:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .site-header .lang-wrap .ico {
   color: rgba(255, 255, 255, 0.85);
-  position: static;
-  width: 16px;
-  height: 16px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .site-header .lang-wrap .lang-code {
@@ -612,18 +621,30 @@ body.is-doc .section {
 }
 
 .site-header .lang-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background: transparent;
   border: 0;
+  outline: none;
+  box-shadow: none;
   color: #fff;
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  padding: 0 16px 0 4px;
-  height: auto;
-  appearance: auto;
-  -webkit-appearance: auto;
-  background-image: none;
+  padding: 0 28px 0 32px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  background-size: 12px;
+}
+
+.site-header .lang-wrap select::-ms-expand {
+  display: none;
 }
 
 .site-header .lang-wrap select option {
@@ -777,17 +798,23 @@ body.is-doc .section {
     height: 17px;
   }
   .site-header .lang-wrap {
-    position: relative;
-    padding: 7px 10px;
-    gap: 5px;
+    height: 34px;
+    padding: 0;
+  }
+  .site-header .lang-wrap .ico {
+    left: 8px;
+    width: 14px;
+    height: 14px;
   }
   .site-header .lang-wrap .lang-code {
     display: inline-block;
+    padding: 0 10px 0 28px;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
     color: #fff;
-    line-height: 1;
+    line-height: 32px;
+    pointer-events: none;
   }
   .site-header .lang-wrap select {
     position: absolute;
@@ -796,6 +823,8 @@ body.is-doc .section {
     height: 100%;
     opacity: 0;
     cursor: pointer;
+    padding: 0;
+    background-image: none;
   }
   .site-header .nav-links {
     display: none;
