@@ -4,7 +4,7 @@
  * Pixel-identical to the landing page nav bar.
  */
 import { DICT } from "../scripts/dict.ts";
-import { LOCALES, HREFLANG, SITE } from "../lib/site.ts";
+import { LOCALES, SITE } from "../lib/site.ts";
 
 interface Props {
   locale?: string;
@@ -118,11 +118,6 @@ const navItems = [
           })}
         </select>
       </label>
-      <nav class="header-lang-codes" aria-label="Languages">
-        {LOCALES.map((l) => (
-          <a href={l === "en" ? "/" : `/${l}/`} hreflang={HREFLANG[l]}>{l.toUpperCase()}</a>
-        ))}
-      </nav>
       <button class="icon-btn" id="themeBtn" type="button" aria-label={d("a11y.theme")} data-i18n-attr="aria-label:a11y.theme">
         <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
         <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
@@ -252,30 +247,4 @@ const navItems = [
   })();
 </script>
 
-<style>
-  .header-lang-codes {
-    display: none;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-  }
 
-  .header-lang-codes a {
-    color: rgba(255, 255, 255, 0.72);
-    text-decoration: none;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-
-  .header-lang-codes a:hover {
-    color: #fff;
-  }
-
-  @media (min-width: 1401px) {
-    .header-lang-codes {
-      display: flex;
-    }
-  }
-</style>
