@@ -24,10 +24,7 @@ function initTheme() {
   const theme = stored || (prefersDark ? "dark" : "light");
   document.documentElement.dataset.theme = theme;
 
-  const btn = document.getElementById("themeBtn");
-  if (!btn || (btn as any).dataset.boundTheme) return;
-  (btn as any).dataset.boundTheme = "1";
-  btn.addEventListener("click", () => {
+  const toggleTheme = () => {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     try {
@@ -35,7 +32,19 @@ function initTheme() {
     } catch (e) {
       /* ignore */
     }
-  });
+  };
+
+  const btn = document.getElementById("themeBtn");
+  if (btn && !(btn as any).dataset.boundTheme) {
+    (btn as any).dataset.boundTheme = "1";
+    btn.addEventListener("click", toggleTheme);
+  }
+
+  const labThemeBtn = document.getElementById("labThemeBtn");
+  if (labThemeBtn && !(labThemeBtn as any).dataset.boundTheme) {
+    (labThemeBtn as any).dataset.boundTheme = "1";
+    labThemeBtn.addEventListener("click", toggleTheme);
+  }
 }
 
 /* --------------------------------------------------------------- language */

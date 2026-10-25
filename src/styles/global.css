@@ -937,19 +937,29 @@ html[data-theme="dark"] .btn.btn-primary {
 
 
 .lab {
+  --lab-bg: var(--bg);
+  --lab-bg-2: var(--surface);
+  --lab-border: var(--border);
+  --lab-text: var(--text);
+  --lab-muted: var(--text-2);
+  --lab-accent: var(--primary);
+  background: var(--lab-bg);
+  color: var(--lab-text);
+  border: 1px solid var(--lab-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+html[data-theme="dark"] .lab {
   --lab-bg: #0C1210;
   --lab-bg-2: #131B18;
   --lab-border: #23342E;
   --lab-text: #EDEFEA;
   --lab-muted: #758681;
   --lab-accent: #2EC4B6;
-  background: var(--lab-bg);
-  color: var(--lab-text);
-  border: 1px solid var(--lab-border);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  scroll-margin-top: calc(var(--header-h) + 24px);
 }
 .lab.is-full {
   position: fixed;
@@ -992,7 +1002,7 @@ html[data-theme="dark"] .btn.btn-primary {
   display: inline-flex !important;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--lab-text) 8%, transparent);
   border: 1px solid var(--lab-border);
   color: var(--lab-text);
   padding: 6px 14px;
@@ -1003,8 +1013,8 @@ html[data-theme="dark"] .btn.btn-primary {
   transition: background 0.15s, color 0.15s;
 }
 .lab.is-full #labExitBtn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
+  background: color-mix(in srgb, var(--lab-text) 16%, transparent);
+  color: var(--lab-text);
 }
 .lab-bar {
   display: flex;
@@ -1013,7 +1023,8 @@ html[data-theme="dark"] .btn.btn-primary {
   gap: 16px;
   padding: 14px 22px;
   border-bottom: 1px solid var(--lab-border);
-  background: rgba(255, 255, 255, .02);
+  background: color-mix(in srgb, var(--lab-text) 3%, var(--lab-bg));
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .lab-bar-left {
   display: inline-flex;
@@ -1032,10 +1043,14 @@ html[data-theme="dark"] .btn.btn-primary {
   background: var(--lab-accent);
   flex: none;
 }
-.lab-bar-right { display: flex; gap: 6px; flex: 0 0 auto; }
-.lab .btn-quiet { color: var(--lab-muted); border: 1px solid transparent; }
+.lab-bar-right { display: flex; gap: 6px; flex: 0 0 auto; align-items: center; }
+.lab .btn-quiet {
+  color: var(--lab-muted);
+  border: 1px solid transparent;
+  transition: background 0.18s ease, color 0.18s ease;
+}
 .lab .btn-quiet:hover {
-  background: rgba(255, 255, 255, .06);
+  background: color-mix(in srgb, var(--lab-text) 7%, transparent);
   color: var(--lab-text);
 }
 
@@ -1073,32 +1088,36 @@ html[data-theme="dark"] .btn.btn-primary {
   background: transparent;
   transition: background .18s, color .18s, border-color .18s;
 }
-.step:hover { background: rgba(255, 255, 255, .04); color: var(--lab-text); }
+.step:hover { background: color-mix(in srgb, var(--lab-text) 5%, transparent); color: var(--lab-text); }
 .step-n {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, .08);
+  background: color-mix(in srgb, var(--lab-text) 8%, transparent);
+  color: var(--lab-muted);
   font-size: 11px;
   font-weight: 700;
   font-family: var(--font-mono);
 }
 .step.is-active {
   color: var(--lab-text);
-  background: rgba(255, 255, 255, .07);
+  background: color-mix(in srgb, var(--lab-text) 6%, transparent);
   border-color: var(--lab-border);
 }
 .step.is-active .step-n {
   background: var(--lab-accent);
+  color: #FFFFFF;
+}
+html[data-theme="dark"] .step.is-active .step-n {
   color: #0C1210;
 }
 .step.is-done .step-n {
   background: color-mix(in srgb, var(--lab-accent) 26%, transparent);
   color: var(--lab-accent);
 }
-.step.is-done { color: #A5B3AE; }
+.step.is-done { color: var(--lab-muted); }
 
 .lab-stage { padding: 32px 28px; min-height: 340px; }
 .lab.is-full .lab-stage { flex: 1; overflow: auto; }
@@ -1109,7 +1128,8 @@ html[data-theme="dark"] .btn.btn-primary {
   gap: 16px;
   padding: 16px 22px;
   border-top: 1px solid var(--lab-border);
-  background: rgba(255, 255, 255, .02);
+  background: color-mix(in srgb, var(--lab-text) 3%, var(--lab-bg));
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .lab-foot:empty { display: none; }
 
@@ -1256,7 +1276,7 @@ html[data-theme="dark"] .btn.btn-primary {
   display: grid; place-items: center; gap: 12px; padding: 24px; border-radius: var(--r);
   min-width: 0;
   overflow-x: auto;
-  background: repeating-conic-gradient(from 0deg, #101B17 0% 25%, #14231E 0% 50%) 50%/20px 20px;
+  background: repeating-conic-gradient(from 0deg, var(--surface-2) 0% 25%, var(--surface-3) 0% 50%) 50%/20px 20px;
   border: 1px solid var(--lab-border);
 }
 .calib-card-wrap,
@@ -1270,7 +1290,7 @@ html[data-theme="dark"] .btn.btn-primary {
 .calib-card {
   width: 320px; height: 202px; border-radius: 10px;
   border: 1.5px dashed var(--lab-accent);
-  background: rgba(255, 255, 255, .04);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
   display: grid; align-content: center; justify-items: center; gap: 6px;
   position: relative;
   flex-shrink: 0;
@@ -1281,8 +1301,8 @@ html[data-theme="dark"] .btn.btn-primary {
   border-left: 2px solid var(--amber);
   padding-left: 10px;
 }
-.calib-card .cc-strip { position: absolute; left: 7%; right: 7%; top: 13%; height: 17%; border-radius: 4px; background: rgba(255,255,255,.09); }
-.calib-card .cc-chip { position: absolute; left: 7%; top: 37%; width: 14%; height: 17%; border-radius: 4px; background: rgba(255,255,255,.09); }
+.calib-card .cc-strip { position: absolute; left: 7%; right: 7%; top: 13%; height: 17%; border-radius: 4px; background: color-mix(in srgb, var(--lab-text) 12%, transparent); }
+.calib-card .cc-chip { position: absolute; left: 7%; top: 37%; width: 14%; height: 17%; border-radius: 4px; background: color-mix(in srgb, var(--lab-text) 12%, transparent); }
 .calib-card .cc-label { position: absolute; right: 7%; bottom: 22%; font-family: var(--font-mono); font-size: 11px; color: var(--lab-muted); }
 .cc-hint { font-size: 12px; color: var(--lab-muted); text-align: center; margin: 12px 0 0; }
 
@@ -1291,7 +1311,7 @@ html[data-theme="dark"] .btn.btn-primary {
 input[type="range"] {
   -webkit-appearance: none; appearance: none;
   flex: 1; min-width: 0; height: 4px; border-radius: var(--r-full);
-  background: rgba(255, 255, 255, .15);
+  background: color-mix(in srgb, var(--lab-text) 16%, transparent);
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
@@ -1315,7 +1335,7 @@ input[type="range"]::-moz-range-thumb {
 .dist-opt span { font-size: 12.5px; color: var(--lab-muted); }
 
 .tips { display: grid; gap: 10px; }
-.tip { display: flex; gap: 10px; font-size: 13.5px; color: #A5B3AE; line-height: 1.5; }
+.tip { display: flex; gap: 10px; font-size: 13.5px; color: var(--lab-muted); line-height: 1.5; }
 .tip .ico { width: 16px; height: 16px; color: var(--lab-accent); stroke-width: 2; margin-top: 2px; }
 
 .calib-how-btn {
@@ -1465,14 +1485,14 @@ input[type="range"]::-moz-range-thumb {
 .answer-slots { display: flex; gap: 8px; }
 .slot {
   width: 48px; height: 48px; border-radius: var(--r-sm); display: grid; place-items: center;
-  border: 1px dashed #2A3E38; font-family: var(--font-mono); font-size: 19px; font-weight: 600;
-  color: var(--lab-text); background: rgba(255, 255, 255, .02);
+  border: 1px dashed var(--lab-border); font-family: var(--font-mono); font-size: 19px; font-weight: 600;
+  color: var(--lab-text); background: color-mix(in srgb, var(--lab-text) 3%, transparent);
 }
 .slot.is-filled { border-style: solid; border-color: var(--lab-accent); background: color-mix(in srgb, var(--lab-accent) 10%, transparent); }
 .slot.is-right { border-color: var(--ok); color: var(--ok); }
 .slot.is-wrong { border-color: var(--danger); color: var(--danger); }
 
-.progress-line { height: 4px; border-radius: var(--r-full); background: rgba(255, 255, 255, .1); overflow: hidden; margin-bottom: 20px; }
+.progress-line { height: 4px; border-radius: var(--r-full); background: color-mix(in srgb, var(--lab-text) 12%, transparent); overflow: hidden; margin-bottom: 20px; }
 .progress-line i { display: block; height: 100%; background: var(--lab-accent); border-radius: inherit; transition: width .3s ease; }
 
 .trial-counter { font-family: var(--font-mono); font-size: 12.5px; color: var(--lab-muted); }
@@ -1483,7 +1503,7 @@ input[type="range"]::-moz-range-thumb {
   color: var(--lab-text); cursor: pointer; display: grid; place-items: center;
   transition: border-color .15s, background .15s;
 }
-.arrow-btn:hover { border-color: var(--lab-accent); background: rgba(255, 255, 255, .04); }
+.arrow-btn:hover { border-color: var(--lab-accent); background: color-mix(in srgb, var(--lab-text) 5%, transparent); }
 .arrow-btn:active { transform: translateY(1px); }
 .arrow-btn .ico { width: 28px; height: 28px; stroke-width: 1.9; }
 .arrow-btn[data-dir="up"] { grid-area: 1 / 2; }
@@ -1626,7 +1646,7 @@ input[type="range"]::-moz-range-thumb {
 .lab-norm {
   display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center;
   padding: 10px 24px; border-bottom: 1px solid var(--lab-border);
-  background: rgba(255, 255, 255, .02);
+  background: color-mix(in srgb, var(--lab-text) 2%, var(--lab-bg));
   font-size: 12.5px; color: var(--lab-muted);
 }
 .lab-norm[hidden] { display: none; }
@@ -1644,7 +1664,8 @@ input[type="range"]::-moz-range-thumb {
 .dial-svg { width: 100%; max-width: 300px; height: auto; touch-action: manipulation; }
 .dial-spoke { cursor: pointer; }
 .dial-hit { stroke: transparent; stroke-width: 30; pointer-events: stroke; }
-.dial-visible { stroke: #CCD9D5; stroke-width: 1.6; stroke-linecap: round; transition: stroke .15s, stroke-width .15s; }
+.dial-visible { stroke: var(--text-2); stroke-width: 1.6; stroke-linecap: round; transition: stroke .15s, stroke-width .15s; }
+html[data-theme="dark"] .dial-visible { stroke: #CCD9D5; }
 .dial-spoke:hover .dial-visible { stroke: var(--lab-accent); stroke-width: 3; }
 .dial-spoke.is-picked .dial-visible { stroke: var(--amber); stroke-width: 3.2; }
 .dial-rim { fill: none; stroke: var(--lab-border); stroke-width: 1; }

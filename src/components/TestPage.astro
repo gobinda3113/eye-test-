@@ -120,6 +120,10 @@ const indivDuration = d(indivDurationKey);
           <span id="labStatus"></span>
         </div>
         <div class="lab-bar-right">
+          <button class="btn btn-quiet btn-xs" id="labThemeBtn" type="button" aria-label={d("a11y.theme")} title={d("a11y.theme")}>
+            <svg class="ico ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+            <svg class="ico ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+          </button>
           <button class="btn btn-quiet btn-xs" id="labFullBtn" type="button" data-i18n="lab.focus">{d("lab.focus")}</button>
           <button class="btn btn-quiet btn-xs" id="labExitBtn" type="button" style="display:none;" data-i18n="lab.exit">{d("lab.exit")}</button>
           <button class="btn btn-quiet btn-xs" id="labResetBtn" type="button" data-i18n="lab.reset">{d("lab.reset")}</button>
