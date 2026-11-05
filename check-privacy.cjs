@@ -33,7 +33,9 @@ function isAllowedHost(hostname) {
     return host === 'onlinevisiontest.org'
         || host.endsWith('.onlinevisiontest.org')
         || host === 'googletagmanager.com'
-        || host.endsWith('.googletagmanager.com');
+        || host.endsWith('.googletagmanager.com')
+        || host === 'googlesyndication.com'
+        || host.endsWith('.googlesyndication.com');
 }
 
 if (!fs.existsSync('dist')) {
