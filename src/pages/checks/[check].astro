@@ -73,9 +73,24 @@ const schema = {
     ]
   }
 };
+const faqSchema = guide.faqs?.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": guide.faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a,
+        },
+      })),
+    }
+  : null;
 ---
 
 <Layout locale="en" customMeta={{ title, description, url: canonical }} schema={schema}>
+  {faqSchema && <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   <SiteShell locale="en" page="checks">
     <div class="container section">
       <nav class="crumbs" aria-label="Breadcrumb">
@@ -122,6 +137,38 @@ const schema = {
 
         <h2>When to schedule an in-person eye exam</h2>
         <p>{guide.whenToSeeDoctor}</p>
+
+        {guide.scoringTable && (
+          <>
+            <h2>Scoring &amp; Clinical Thresholds</h2>
+            <table>
+              <thead>
+                <tr>
+                  {guide.scoringTable.cols.map((col: string) => <th>{col}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {guide.scoringTable.rows.map((row: string[]) => (
+                  <tr>
+                    {row.map((cell: string) => <td>{cell}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
+
+        {guide.faqs && guide.faqs.length > 0 && (
+          <>
+            <h2>Frequently Asked Questions</h2>
+            {guide.faqs.map((faq: { q: string; a: string }) => (
+              <>
+                <h3>{faq.q}</h3>
+                <p>{faq.a}</p>
+              </>
+            ))}
+          </>
+        )}
 
         <div style="background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--r-sm); margin: 3rem 0 2rem;">
           <h3 style="margin-top: 0; font-size: 1.1rem; font-weight: 600;">Practice Screener Notice</h3>

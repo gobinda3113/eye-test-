@@ -83,6 +83,43 @@ const chartSchema = {
         <p>
           <strong>Check your state's requirements:</strong> Acuity cutoffs and restricted license policies differ by state. <a href="/states/">Check your state's requirements</a> across all 50 US states and DC.
         </p>
+        <h2>Snellen Row-by-Row Millimeter &amp; Arcminute Reference</h2>
+        <p>Every calibrated optotype row follows Hermann Snellen's 1862 angular rule: at the intended viewing distance, a normal <strong>20/20 (6/6)</strong> capital letter subtends <strong>5 minutes of arc vertically</strong> and each individual bar or opening measures <strong>1 minute of arc</strong>. Using exact geometry (<code>Height = 2 * Distance * tan(2.5') * (Denominator / 20)</code>), you can verify physical height across both standard clinical lanes and home living rooms:</p>
+        <table>
+          <thead>
+            <tr><th>Chart Line</th><th>Imperial</th><th>Metric (6m)</th><th>Decimal</th><th>LogMAR</th><th>Height @ 20ft</th><th>Height @ 10ft (3m)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Line 1</td><td>20/200</td><td>6/60</td><td>0.10</td><td>+1.00</td><td>88.7 mm</td><td>43.6 mm</td></tr>
+            <tr><td>Line 2</td><td>20/100</td><td>6/30</td><td>0.20</td><td>+0.70</td><td>44.3 mm</td><td>21.8 mm</td></tr>
+            <tr><td>Line 3</td><td>20/70</td><td>6/21</td><td>0.29</td><td>+0.54</td><td>31.0 mm</td><td>15.3 mm</td></tr>
+            <tr><td>Line 4</td><td>20/50</td><td>6/15</td><td>0.40</td><td>+0.40</td><td>22.2 mm</td><td>10.9 mm</td></tr>
+            <tr><td><strong>Line 5 (DMV)</strong></td><td><strong>20/40</strong></td><td><strong>6/12</strong></td><td><strong>0.50</strong></td><td><strong>+0.30</strong></td><td><strong>17.7 mm</strong></td><td><strong>8.73 mm</strong></td></tr>
+            <tr><td>Line 6</td><td>20/30</td><td>6/9</td><td>0.67</td><td>+0.18</td><td>13.3 mm</td><td>6.54 mm</td></tr>
+            <tr><td>Line 7</td><td>20/25</td><td>6/7.5</td><td>0.80</td><td>+0.10</td><td>11.1 mm</td><td>5.45 mm</td></tr>
+            <tr><td><strong>Line 8 (Ref)</strong></td><td><strong>20/20</strong></td><td><strong>6/6</strong></td><td><strong>1.00</strong></td><td><strong>0.00</strong></td><td><strong>8.87 mm</strong></td><td><strong>4.36 mm</strong></td></tr>
+          </tbody>
+        </table>
+
+        <h2>10-Foot Living Room Distance vs 20-Foot Clinical Lanes</h2>
+        <p>Many people wonder whether stepping back only 10 feet (3 meters) produces overly easy results compared with a 20-foot hallway poster. Optically, they produce the identical challenge as long as every row scales proportionally. At 10 feet, a 20/40 letter shrinks to <strong>8.73 mm</strong> instead of <strong>17.7 mm</strong>, preserving the exact 10-arcminute retinal projection angle on your macula. That same angular principle explains why eye clinics install illuminated charts behind a patient's chair aimed into a flat mirror 10 feet away: reflecting light doubles the path to 20 optical feet while keeping exam rooms compact.</p>
+
+        <h2>Calibrated Vector Chart vs Static Images or Printable PDFs</h2>
+        <p>Searching online for a printable PNG eye chart rarely works cleanly because browsers, printer drivers ("Shrink to Fit" checkboxes), and high-DPI laptops apply arbitrary scaling between 96 DPI and 220+ PPI. A 4.36 mm 20/20 row rendered half a millimeter too wide silently slides down toward 20/25 difficulty.</p>
+        <ul>
+          <li><strong>Card-locked SVG geometry:</strong> Our <a href="/test/">interactive chart suite</a> calibrates CSS pixels per millimeter once using any ISO 85.60 mm credit card or ID card, then renders mathematically crisp vector Sloan letters, <a href="/checks/tumbling/">Tumbling E</a>, <a href="/checks/landolt/">Landolt C</a>, and <a href="/checks/sivtsev/">Cyrillic Sivtsev optotypes</a> with razor-sharp ink edges on Retina and desktop screens.</li>
+          <li><strong>Anti-memorization shuffling:</strong> Real DMV screeners randomize monocular columns so you cannot recall yesterday's row order. Each run here deals randomized Sloan sequences (<code>C, D, E, F, L, N, O, P, T, Z</code>) instead of repeating static posters.</li>
+          <li><strong>Full multi-domain screening:</strong> Beyond high-contrast letters, check hidden <a href="/checks/astigmatism/">astigmatic meridian tilt</a>, <a href="/checks/contrast/">low-contrast twilight sensitivity</a>, and <a href="/checks/near/">near reading acuity at 40 cm</a>.</li>
+        </ul>
+
+        <h2>Eye Test Chart Frequently Asked Questions</h2>
+        <h3>Why can I pass Row 5 (20/40) on this screen chart yet miss letters at dusk?</h3>
+        <p>Standard Snellen eye charts display 100% black ink on high-luminance white backgrounds. Early lens clouding, dry eye tear scatter, or mild night myopia typically degrade <a href="/checks/contrast/">low-contrast vision</a> before high-contrast daytime acuity falls below 20/40.</p>
+        <h3>Should I test wearing progressive or reading glasses?</h3>
+        <p>Wear single-vision distance eyeglasses or contacts when testing at 10 feet (3 meters). Never use reading glasses for distance chart rows, and tilt your head calmly so multifocal lenses look straight through the upper distance corridor.</p>
+        <h3>How many correct letters pass a Snellen line?</h3>
+        <p>Optometrists and licensing examiners normally credit a row when you read more than half of the characters accurately (at least 3 of 5 or 4 of 6 optotypes) without guessing.</p>
+
       </div>
 
       <div style="margin-top: 50px;">
