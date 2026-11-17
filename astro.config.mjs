@@ -151,6 +151,7 @@ export default defineConfig({
       filter: (page) => {
         if (/\/(404|500|test)\/?$/.test(page)) return false;
         if (/\/(es|fr|de|pt|ja)\/(privacy|terms)\/?$/.test(page)) return false;
+        if (/\/(es|fr|de|pt|it|ja|ru)\/contact\/?$/.test(page)) return false;
         const stateMatch = page.match(/\/states\/([^/]+)\/?$/);
         if (stateMatch && !VERIFIED_STATE_SLUGS.has(stateMatch[1])) return false;
         return true;

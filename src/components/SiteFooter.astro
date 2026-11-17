@@ -30,13 +30,13 @@ const termsHref = locale === "en" ? "/terms/" : "/" + locale + "/terms/";
 
 const FOOTER_LINKS: Record<string, { chart: string; us: string; states: string; blog: string }> = {
   en: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "Blog" },
-  es: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "Blog" },
-  fr: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "Blog" },
-  de: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "Blog" },
-  pt: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "Blog" },
-  it: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "Blog" },
-  ja: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "ブログ" },
-  ru: { chart: "Eye Test Chart", us: "DMV Practice", states: "States", blog: "Блог" }
+  es: { chart: "Tabla de Snellen", us: "Práctica DMV (EE. UU.)", states: "Requisitos por estado", blog: "Blog" },
+  fr: { chart: "Échelle de Snellen", us: "Entraînement DMV (US)", states: "Règles par État", blog: "Blog" },
+  de: { chart: "Snellen-Sehtafel", us: "US-DMV-Übung", states: "US-Bundesstaaten", blog: "Blog" },
+  pt: { chart: "Tabela de Snellen", us: "Simulado DMV (EUA)", states: "Regras por estado", blog: "Blog" },
+  it: { chart: "Tabella di Snellen", us: "Pratica DMV (USA)", states: "Regole per Stato", blog: "Blog" },
+  ja: { chart: "スネレン視力表", us: "米国DMV模擬テスト", states: "米国州別基準", blog: "ブログ" },
+  ru: { chart: "Таблица Снеллена", us: "Тренажёр DMV США", states: "Нормы по штатам", blog: "Блог" }
 };
 const fl = FOOTER_LINKS[locale] || FOOTER_LINKS.en;
 ---

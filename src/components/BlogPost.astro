@@ -19,6 +19,8 @@ const dict = DICT[locale] || DICT.en;
 const d = (k) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
 
 const home = pathFor(locale, "home");
+const testHref = pathFor(locale, "test");
+const aboutHref = pathFor(locale, "about");
 const blogHome = pathFor(locale, "blog");
 const BLOG_LABEL = { en: "Blog", es: "Blog", fr: "Blog", de: "Blog", pt: "Blog", it: "Blog", ja: "ブログ", ru: "Блог" }[locale] || "Blog";
 
@@ -33,14 +35,14 @@ const breadcrumb = {
 };
 
 const META_L = {
-  en: { by: "Written by Online Vision Test", rev: "Last reviewed: September 2026", src: "Sources: official DMV agencies, optometry references" },
-  es: { by: "Escrito por Online Vision Test", rev: "Última revisión: Septiembre 2026", src: "Fuentes: agencias oficiales, referencias de optometría" },
-  fr: { by: "Écrit par Online Vision Test", rev: "Dernière révision : Septembre 2026", src: "Sources : agences officielles, références en optométrie" },
-  de: { by: "Geschrieben von Online Vision Test", rev: "Zuletzt überprüft: September 2026", src: "Quellen: offizielle Agenturen, Optometrie-Referenzen" },
-  pt: { by: "Escrito por Online Vision Test", rev: "Última revisão: Setembro 2026", src: "Fontes: agências oficiais, referências de optometria" },
-  it: { by: "Scritto da Online Vision Test", rev: "Ultima revisione: Settembre 2026", src: "Fonti: agenzie ufficiali, riferimenti di optometria" },
-  ja: { by: "執筆: Online Vision Test", rev: "最終確認: 2026年9月", src: "情報源: 公式機関、検眼資料" },
-  ru: { by: "Написано Online Vision Test", rev: "Последнее обновление: Сентябрь 2026", src: "Источники: официальные агентства, оптометрические справочники" },
+  en: { by: "Written by Gobinda Adhikari · Online Vision Test", rev: "Last reviewed: November 2026", src: "Sources: official DMV agencies, ISO 8596 & optometry references" },
+  es: { by: "Escrito por Gobinda Adhikari · Online Vision Test", rev: "Última revisión: Noviembre 2026", src: "Fuentes: agencias oficiales, ISO 8596 y optometría" },
+  fr: { by: "Écrit par Gobinda Adhikari · Online Vision Test", rev: "Dernière révision : Novembre 2026", src: "Sources : agences officielles, ISO 8596 et optométrie" },
+  de: { by: "Verfasst von Gobinda Adhikari · Online Vision Test", rev: "Zuletzt überprüft: November 2026", src: "Quellen: offizielle Behörden, ISO 8596 & Optometrie" },
+  pt: { by: "Escrito por Gobinda Adhikari · Online Vision Test", rev: "Última revisão: Novembro 2026", src: "Fontes: agências oficiais, ISO 8596 e optometria" },
+  it: { by: "Scritto da Gobinda Adhikari · Online Vision Test", rev: "Ultima revisione: Novembre 2026", src: "Fonti: enti ufficiali, ISO 8596 e optometria" },
+  ja: { by: "執筆: Gobinda Adhikari · Online Vision Test", rev: "最終確認: 2026年11月", src: "情報源: 公的機関・ISO 8596・検眼資料" },
+  ru: { by: "Автор: Gobinda Adhikari · Online Vision Test", rev: "Последнее обновление: Ноябрь 2026", src: "Источники: официальные ведомства, ISO 8596 и оптометрия" },
 };
 const m = META_L[locale] || META_L.en;
 
@@ -74,11 +76,11 @@ const related = rotatedPosts.filter((p) => {
       <h1>{post.title[locale] || post.title.en}</h1>
       <p>{post.excerpt[locale] || post.excerpt.en}</p>
       <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 6px 18px;">
-        <div><strong>{m.by}</strong></div>
+        <div><a href={aboutHref} style="color: inherit; font-weight: 600; text-decoration: underline;">{m.by}</a></div>
         <span aria-hidden="true" style="opacity: 0.4;">·</span>
         <div>{m.rev}</div>
         <span aria-hidden="true" style="opacity: 0.4;">·</span>
-        <div>{m.src}</div>
+        <div><a href={`${home}#reference`} style="color: inherit; text-decoration: underline;">{m.src}</a></div>
       </div>
     </div>
 
@@ -98,7 +100,7 @@ const related = rotatedPosts.filter((p) => {
         <div class="dark-ink-panel" style="margin-top: 36px;">
           <h3 style="margin-top: 0; font-size: clamp(1.6rem, 2.5vw, 2.2rem);">{locale === "en" ? "Ready to test your vision?" : d("nav.start")}</h3>
           <p style="margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
-          <a class="btn btn-primary btn-lg" href={home}>{d("nav.cta")}</a>
+          <a class="btn btn-primary btn-lg" href={testHref}>{d("nav.cta")}</a>
         </div>
 
         {related.length > 0 && (

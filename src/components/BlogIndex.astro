@@ -18,16 +18,23 @@ const visiblePosts = POSTS.filter(post => {
 });
 
 const POST_META: Record<string, [string, string]> = {
-  "online-eye-test-guide": ["Acuity Guide", "5 Min Read"],
-  "dmv-eye-test-practice": ["DMV Prep", "4 Min Read"],
-  "dmv-eye-test-fail-guide": ["Failure Protocol", "6 Min Read"],
-  "dmv-eye-test-machine": ["Optec 1000", "5 Min Read"],
+  "online-eye-test-guide": ["Acuity Guide", "6 Min Read"],
+  "dmv-eye-test-practice": ["DMV Prep", "6 Min Read"],
+  "dmv-eye-test-fail-guide": ["Failure Protocol", "7 Min Read"],
+  "dmv-eye-test-machine": ["Optec 1000", "6 Min Read"],
   "dmv-vision-requirements-by-state": ["State Standards", "8 Min Read"],
-  "6-6-vision-test-online": ["Metric Standards", "4 Min Read"],
-  "can-you-wear-glasses-for-dmv-eye-test": ["Corrective Lenses", "4 Min Read"],
-  "snellen-chart-explained": ["Snellen Formula", "5 Min Read"],
-  "dominant-eye-test": ["Ocular Dominance", "3 Min Read"],
-  "dmv-eye-test-faqs": ["DMV FAQs", "6 Min Read"],
+  "6-6-vision-test-online": ["Metric Standards", "6 Min Read"],
+  "can-you-wear-glasses-for-dmv-eye-test": ["Corrective Lenses", "6 Min Read"],
+  "snellen-chart-explained": ["Snellen Formula", "6 Min Read"],
+  "dominant-eye-test": ["Ocular Dominance", "6 Min Read"],
+  "dmv-eye-test-faqs": ["DMV FAQs", "8 Min Read"],
+  "dmv-eye-test-cheat-sheet": ["DMV Checklist", "5 Min Read"],
+  "line-5-dmv-eye-test": ["20/40 Line 5", "5 Min Read"],
+  "sehtest-online-handy": ["Handy-Sehtest", "6 Min Read"],
+  "sumaho-shiryoku-kensa": ["スマホ視力検査", "6 Min Read"],
+  "teste-de-visao-para-perto": ["Visão de Perto", "6 Min Read"],
+  "tabela-teste-de-visao-detran": ["Exame Detran", "7 Min Read"],
+  "proverka-zreniya-tablitsa-sivtseva": ["Таблица Сивцева", "7 Min Read"],
 };
 
 const breadcrumb = {
@@ -102,7 +109,7 @@ const breadcrumb = {
               </div>
 
               <a href={postUrl} class="btn-card-pill">
-                Read article
+                {d("blog.readGuide")}
               </a>
             </div>
           </article>

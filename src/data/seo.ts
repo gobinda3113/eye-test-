@@ -177,15 +177,17 @@ const es = {
     ],
   },
   about: {
-    title: "Sobre Online Vision Test — Evaluador de práctica gratuito",
+    title: "Sobre Online Vision Test — Creador y metodología óptica",
     description:
-      "Quién construye Online Vision Test, por qué el optotipo se dibuja y no se fotografía, y qué puede y qué no puede decirte un evaluador en el navegador.",
+      "Conoce los estándares ópticos y la ingeniería detrás de Online Vision Test, creado por Gobinda Adhikari para realizar pruebas calibradas en el navegador.",
     h1: "Acerca de este evaluador",
-    lede: "Un evaluador de práctica gratuito para quienes van a hacer el examen de la vista para la licencia de conducir.",
+    lede: "Un evaluador de práctica calibrado creado para ayudarte a verificar tu agudeza visual con precisión geométrica desde casa.",
     body: [
-      { h: "Qué es esto", p: "Online Vision Test es un evaluador de práctica gratuito que funciona en el navegador. Reproduce el orden de una revisión de visión en ventanilla —calibrar, situarse a distancia, tapar un ojo, leer la línea más pequeña— y añade las pruebas que importan para las licencias de tu país y los certificados médicos profesionales: agudeza a distancia, dirección con la E, láminas de color, visión periférica, visión cercana, sensibilidad al contraste, dial de astigmatismo y cribado de refracción duo­croma." },
-      { h: "Qué no es", p: "No es un examen oficial ni médico, no es una exploración médica y no puede diagnosticar nada ni emitir una receta. Los resultados dependen de tu monitor, la luz de la sala y la distancia. Si una prueba sugiere un problema, acude a un optometrista u oftalmólogo." },
-      { h: "Cómo está hecho", p: "Sin cuentas, sin analíticas, sin subidas. Los optotipos se dibujan como trazos vectoriales sobre una rejilla de 5x5, así la proporción trazo/altura es correcta a cualquier tamaño, y los tamaños físicos derivan de una calibración con tarjeta bancaria. Todo se ejecuta en tu dispositivo y cada resultado se queda en tu navegador." },
+      { h: "Por qué se creó esta herramienta", p: "La mayoría de las tablas oculares publicadas en internet son imágenes estáticas que se muestran con tamaños físicos distintos en cada dispositivo. Una letra de 20/40 en un móvil de alta densidad puede verse la mitad de pequeña que en un monitor externo. Cuando cambia la altura real de los optotipos, el cálculo del ángulo visual pierde validez." },
+      { h: "Calibración con tarjeta y vectores 5x5", p: "Online Vision Test resuelve este problema mediante una calibración física obligatoria. Al colocar una tarjeta bancaria estándar (85,6 mm según la norma ISO/IEC 7810 ID-1) frente al recuadro en pantalla, el software calcula la densidad real de píxeles por milímetro de tu monitor. A partir de ese dato, cada optotipo se dibuja como trazado vectorial en una cuadrícula 5x5 para que subtenda exactamente 5 minutos de arco a la distancia elegida." },
+      { h: "Estándares ópticos utilizados", p: "El conjunto de 13 pruebas se apoya en normas clínicas establecidas: ISO 8596 para los anillos de Landolt y la apertura de 1 minuto de arco, las fórmulas de Herman Snellen (1862) para las filas desde 20/20 hasta 20/200, los criterios de Pelli-Robson para la sensibilidad al contraste y los umbrales de visión para conducción (20/40 habitual en licencias estándar y normativa 49 CFR § 391.41 para conductores profesionales)." },
+      { h: "Autoría y privacidad en el dispositivo", p: "Online Vision Test es desarrollado por Gobinda Adhikari (Perchange AI) con fuentes tipográficas alojadas en el propio dominio y sin cuentas ni registros obligatorios. Tanto el perfil de calibración como el historial de respuestas permanecen exclusivamente en el almacenamiento local (localStorage) de tu navegador." },
+      { h: "Qué no es esta herramienta", p: "No es un examen oficial de tráfico ni una consulta médica, y no puede diagnosticar enfermedades oculares ni generar una receta de gafas o lentillas. Los resultados dependen de la iluminación, el brillo del monitor y la distancia medida. Si notas visión borrosa persistente o distorsiones, acude a un optometrista u oftalmólogo." },
     ],
   },
   contact: {
@@ -269,15 +271,17 @@ const fr = {
     ],
   },
   about: {
-    title: "À propos de Online Vision Test — Dépistage d'entraînement gratuit",
+    title: "À propos de Online Vision Test — Créateur et méthodologie clinique",
     description:
-      "Qui construit Online Vision Test, pourquoi l'optotype est dessiné plutôt que photographié, et ce qu'un dépistage dans le navigateur peut ou ne peut pas vous dire.",
+      "Découvrez l'architecture technique et les normes optiques derrière Online Vision Test, conçu par Gobinda Adhikari pour des tests visuels calibrés sur navigateur.",
     h1: "À propos de ce dépistage",
-    lede: "Un outil d'entraînement gratuit pour les personnes qui vont passer l'examen de vue du permis officiel.",
+    lede: "Un outil d'entraînement calibré conçu pour vérifier votre acuité visuelle avec une précision géométrique réelle.",
     body: [
-      { h: "Ce que c'est", p: "Online Vision Test est un dépistage d'entraînement gratuit qui tourne dans le navigateur. Il reproduit l'ordre d'un contrôle au guichet — calibrer, se placer à distance, cacher un œil, lire la plus petite ligne — et ajoute les tests qui comptent pour un permis officiel et un certificat médical professionnel : acuité de loin, sens du E, planches de couleurs, vision périphérique, vision de près, sensibilité aux contrastes, cadran d'astigmatisme et dépistage de réfraction duo­chrome." },
-      { h: "Ce que ce n'est pas", p: "Ce n'est pas un examen officiel ou médical, ni un examen médical, et cela ne peut ni diagnostiquer ni prescrire. Les résultats dépendent de votre écran, de l'éclairage et de la distance. Si un test suggère un problème, consultez un optométriste ou un ophtalmologue." },
-      { h: "Comment c'est construit", p: "Aucun compte, aucune mesure d'audience, aucun envoi. Les optotypes sont dessinés en tracés vectoriels sur une grille 5x5, donc le rapport trait/hauteur reste juste à toute taille, et les dimensions physiques viennent d'une calibration par carte bancaire. Tout s'exécute sur votre appareil et chaque résultat reste dans votre navigateur." },
+      { h: "Pourquoi cet outil a été conçu", p: "La plupart des échelles visuelles en ligne utilisent des images statiques dont la taille physique varie fortement d'un écran à l'autre. Une ligne affichée sur un smartphone haute densité peut paraître beaucoup plus petite que sur un moniteur de bureau, faussant immédiatement le calcul angulaire." },
+      { h: "Calibrage par carte bancaire et tracés vectoriels", p: "Online Vision Test corrige ce défaut grâce à un calibrage physique obligatoire. En plaçant une carte standard (85,6 mm selon la norme ISO/IEC 7810 ID-1) face au repère affiché, l'outil mesure la densité réelle de pixels de votre écran. Chaque optotype est ensuite tracé en vectoriel sur une grille 5x5 afin que la lettre sous-tende exactement 5 minutes d'arc à la distance choisie." },
+      { h: "Normes optiques de référence", p: "Les contrôles s'appuient sur des références établies : la norme ISO 8596 pour les anneaux de Landolt et la fente d'une minute d'arc, les formules de Herman Snellen (1862) pour l'acuité de 20/20 à 20/200, les critères de Pelli-Robson pour la sensibilité aux contrastes, ainsi que les seuils usuels de conduite et les critères fédéraux 49 CFR § 391.41." },
+      { h: "Auteur et confidentialité locale", p: "Le projet est développé par Gobinda Adhikari (Perchange AI) avec des polices hébergées localement et sans création de compte. Vos réglages d'écran et vos scores d'entraînement restent stockés uniquement dans le stockage local (localStorage) de votre navigateur." },
+      { h: "Limites et avis médical", p: "Ce dépistage d'entraînement n'est ni un examen officiel pour le permis de conduire ni un acte médical. Il ne peut ni poser de diagnostic ni établir d'ordonnance. Consultez un ophtalmologue ou un optométriste si vous constatez une baisse d'acuité ou une distorsion visuelle." },
     ],
   },
   contact: {
@@ -361,15 +365,17 @@ const de = {
     ],
   },
   about: {
-    title: "Über Online Vision Test — Kostenlose Sehprüfung zum Üben",
+    title: "Über Online Vision Test — Entwickler & optische Methodik",
     description:
-      "Wer Online Vision Test baut, warum die Sehzeichen gezeichnet statt fotografiert werden und was eine Browser-Prüfung aussagen kann und was nicht.",
+      "Erfahren Sie mehr über die technische Kalibrierung und optischen Normen hinter Online Vision Test, entwickelt von Gobinda Adhikari.",
     h1: "Über diese Prüfung",
-    lede: "Eine kostenlose Übungsprüfung für alle, die den Sehtest für den Führerschein vor sich haben.",
+    lede: "Ein kalibriertes Übungswerkzeug zur geometrisch präzisen Überprüfung Ihrer Sehschärfe direkt im Browser.",
     body: [
-      { h: "Was das ist", p: "Online Vision Test ist eine kostenlose Übungsprüfung im Browser. Sie bildet die Reihenfolge einer Sehprüfung am Schalter nach — kalibrieren, Abstand einnehmen, ein Auge abdecken, kleinste Zeile lesen — und ergänzt die Tests, auf die es bei Führerscheinen und Berufskraftfahrer-Untersuchungen ankommt: Fern-Sehschärfe, Richtungs-E, Farbtafeln, peripheres Sehen, Nahsicht, Kontrastempfindlichkeit, Astigmatismus-Tafel und Duochrom-Refraktion." },
-      { h: "Was das nicht ist", p: "Es ist kein offizieller Führerschein- oder Sehtest, keine ärztliche Untersuchung, und es kann weder diagnostizieren noch eine Verordnung ausstellen. Ergebnisse hängen von Bildschirm, Licht und Abstand ab. Wenn ein Test auffällt, gehen Sie zu Optometrist oder Augenarzt." },
-      { h: "Wie es gebaut ist", p: "Keine Konten, keine Analyse, keine Uploads. Die Sehzeichen sind Vektorpfade auf einem 5x5-Raster, damit das Verhältnis Strich zu Höhe in jeder Größe stimmt, und die physischen Größen folgen aus einer Kalibrierung per Bankkarte. Alles läuft auf Ihrem Gerät, jedes Ergebnis bleibt in Ihrem Browser." },
+      { h: "Warum dieses Werkzeug entwickelt wurde", p: "Viele im Internet verfügbare Sehtafeln sind statische Rastergrafiken, deren physische Größe auf Smartphones, Laptops und externen Monitoren stark schwankt. Stimmt die reale Buchstabenhöhe in Millimetern nicht, werden Testabstand und Sehwinkel unbrauchbar." },
+      { h: "Kartenkalibrierung und 5x5-Vektoroptotypen", p: "Online Vision Test löst dieses Problem durch eine obligatorische Bildschirmkalibrierung. Indem Sie eine Standardkarte (85,6 mm Breite nach ISO/IEC 7810 ID-1) an den Rahmen auf dem Display halten, berechnet die Anwendung die exakte Pixeldichte Ihres Bildschirms. Danach werden sämtliche Sehzeichen als Vektorpfade auf einem 5x5-Raster so skaliert, dass sie aus der gewählten Entfernung genau fünf Winkelminuten einnehmen." },
+      { h: "Zugrundeliegende optische Normen", p: "Die Prüfmodule orientieren sich an etablierten Standards der Optometrie: ISO 8596 und DIN-Prinzipien für den Landoltring mit einer Winkelminute Spaltbreite, den Formeln von Herman Snellen (1862) für Visusstufen von 20/20 bis 20/200, den Pelli-Robson-Kriterien für Kontrastempfindlichkeit sowie gängigen Führerschein-Grenzwerten." },
+      { h: "Entwicklung und lokale Datenspeicherung", p: "Verantwortlicher Entwickler ist Gobinda Adhikari (Perchange AI). Schriftarten werden lokal vom eigenen Server ausgeliefert, und es gibt keine Benutzerkonten. Kalibrierungsdaten und Übungsergebnisse verbleiben ausschließlich im localStorage Ihres Browsers." },
+      { h: "Medizinischer Hinweis und Grenzen", p: "Dieser Browser-Screener ist eine Übungs- und Orientierungshilfe. Er ersetzt weder eine anerkannte amtliche Sehtestbescheinigung für den Führerschein noch eine augenärztliche Untersuchung, stellt keine Diagnose und verordnet keine Sehhilfe. Bei Sehbeschwerden wenden Sie sich bitte an einen Augenarzt oder Augenoptiker." },
     ],
   },
   contact: {
@@ -453,15 +459,17 @@ const pt = {
     ],
   },
   about: {
-    title: "Sobre o Online Vision Test — Avaliação de prática gratuita",
+    title: "Sobre o Online Vision Test — Criador e metodologia clínica",
     description:
-      "Quem faz o Online Vision Test, porque o optotipo é desenhado em vez de fotografado, e o que uma avaliação no navegador pode e não pode dizer.",
+      "Conheça a engenharia de calibração e os padrões ópticos por trás do Online Vision Test, desenvolvido por Gobinda Adhikari.",
     h1: "Sobre esta avaliação",
-    lede: "Uma avaliação de prática gratuita para quem vai fazer o exame de vista da carteira de motorista (CNH).",
+    lede: "Uma ferramenta de prática calibrada para ajudar condutores e utilizadores a verificar a acuidade visual com precisão óptica.",
     body: [
-      { h: "O que é isto", p: "O Online Vision Test é uma avaliação de prática gratuita que corre no navegador. Reproduz a ordem de uma verificação ao balcão — calibrar, afastar-se, tapar um olho, ler a linha mais pequena — e acrescenta os testes que contam para as cartas dos EUA e para o exame médico profissional: acuidade ao longe, sentido do E, placas de cor, visão periférica, visão de perto, sensibilidade ao contraste, mostrador de astigmatismo e rastreio de refração duocroma." },
-      { h: "O que não é", p: "Não é um exame oficial do Detran nem médico, não é um exame médico e não pode diagnosticar nem receitar. Os resultados dependem da tela, da luz e da distância. Se um teste sugerir um problema, procure um optometrista ou oftalmologista." },
-      { h: "Como é feito", p: "Sem contas, sem analítica, sem envios. Os optotipos são desenhados como traços vetoriais numa grelha 5x5, para que a razão traço/altura esteja certa em qualquer tamanho, e os tamanhos físicos vêm de uma calibração com cartão bancário. Tudo corre no seu dispositivo e cada resultado fica no seu navegador." },
+      { h: "Por que esta ferramenta foi criada", p: "A maioria das tabelas de visão disponíveis na internet usa imagens estáticas que mudam completamente de tamanho físico entre telas de celulares, notebooks e monitores grandes. Quando a altura física da letra varia, o cálculo angular da acuidade deixa de ser confiável." },
+      { h: "Calibração por cartão e optótipos vetoriais 5x5", p: "O Online Vision Test resolve essa distorção com uma etapa obrigatória de calibração física. Ao encostar um cartão padrão (85,6 mm pela norma ISO/IEC 7810 ID-1) à caixa exibida na tela, o software calcula a densidade exata de pixels por milímetro do seu monitor e desenha cada optótipo em vetor na proporção 5x5 com ângulo visual de cinco minutos de arco." },
+      { h: "Normas científicas e de trânsito adotadas", p: "Os módulos de avaliação incorporam referências consolidadas: ISO 8596 para anéis de Landolt e abertura de um minuto de arco, fórmulas de Herman Snellen (1862) para linhas de 20/20 a 20/200, critérios de Pelli-Robson para sensibilidade ao contraste e requisitos oficiais de habilitação (incluindo o corte comum 20/40 e diretrizes de condutores profissionais)." },
+      { h: "Autoria e privacidade no navegador", p: "Desenvolvido por Gobinda Adhikari (Perchange AI), o site hospeda as próprias fontes localmente e dispensa cadastro ou conta. Os dados de calibração e o resumo dos exercícios permanecem exclusivamente no localStorage do seu navegador." },
+      { h: "Aviso médico e limitações", p: "Esta avaliação é um simulador educativo de triagem pessoal. Não substitui o exame médico oficial do Detran nem a consulta clínica com oftalmologista ou optometrista, e não emite diagnósticos ou receitas. Caso note embaçamento persistente, agende uma avaliação presencial." },
     ],
   },
   contact: {
@@ -544,14 +552,17 @@ const it = {
     ],
   },
   about: {
-    title: "Chi siamo — Online Vision Test, screening gratuito",
-    description: "Chi crea Online Vision Test, perché gli ottotipi sono disegnati e non fotografati, e cosa può e non può dire uno screening nel browser.",
+    title: "Chi siamo — Creatore e metodologia clinica | Online Vision Test",
+    description:
+      "Scopri l'architettura tecnica e gli standard ottici di Online Vision Test, sviluppato da Gobinda Adhikari per lo screening visivo calibrato nel browser.",
     h1: "Informazioni su questo screening",
-    lede: "Uno screening gratuito per chi deve affrontare l'esame della vista per la patente.",
+    lede: "Uno strumento pratico calibrato per aiutare gli utenti a controllare la vista e prepararsi all'esame per la patente con precisione geometrica.",
     body: [
-      { h: "Cos'è", p: "Online Vision Test è uno screening gratuito nel browser. Replica l'ordine di un controllo allo sportello — calibra, allontanati, copri un occhio, leggi la riga più piccola — e aggiunge i test che contano: acutezza da lontano, E direzionale, tavole dei colori, visione periferica e da vicino, contrasto, astigmatismo e refrazione duocromatica." },
-      { h: "Cosa non è", p: "Non è un esame ufficiale, non è una visita medica e non può diagnosticare né prescrivere. I risultati dipendono da monitor, luce e distanza. Se un test suggerisce un problema, vai da un optometrista o un oculista." },
-      { h: "Come è fatto", p: "Nessun account, nessuna analisi, nessun upload. Gli ottotipi sono tracciati vettoriali su griglia 5x5 e le dimensioni reali derivano dalla calibrazione con carta bancaria. Tutto gira sul tuo dispositivo." },
+      { h: "Perché è nato questo strumento", p: "Quasi tutte le tabelle visive online mostrano immagini statiche le cui dimensioni fisiche cambiano drasticamente tra smartphone, laptop e monitor esterni. Quando l'altezza reale delle lettere non corrisponde al calcolo angolare, il risultato della distanza diventa impreciso." },
+      { h: "Calibrazione con tessera e tracciati vettoriali 5x5", p: "Online Vision Test risolve questo limite tramite una calibrazione fisica obbligatoria. Appoggiando una normale carta bancaria o tessera sanitaria (85,6 mm secondo lo standard ISO/IEC 7810 ID-1) sullo schermo, il software ricava i pixel per millimetro del display e disegna ogni ottotipo in formato vettoriale su griglia 5x5 affinché sottenda esattamente cinque primi d'arco." },
+      { h: "Standard ottici e normativi di riferimento", p: "I test integrano principi optometrici riconosciuti: la norma ISO 8596 per gli anelli di Landolt e l'apertura da un primo d'arco, le formule di Herman Snellen (1862) da 20/20 a 20/200, i criteri Pelli-Robson per la sensibilità al contrasto e i principali requisiti visivi per la guida." },
+      { h: "Autore e architettura della privacy", p: "Il progetto è sviluppato da Gobinda Adhikari (Perchange AI). I caratteri tipografici sono ospitati direttamente sul dominio senza richieste esterne e non è richiesto alcun account: profili di calibrazione e risultati restano esclusivamente nel localStorage locale del browser." },
+      { h: "Limiti e avvertenza medica", p: "Questo strumento ha finalità esclusivamente orientative ed educative. Non costituisce un dispositivo medico, non sostituisce la visita oculistica ufficiale per la patente né un esame clinico da parte di un oculista o optometrista, e non formula diagnosi o prescrizioni." },
     ],
   },
   contact: {
@@ -644,14 +655,17 @@ const ja = {
     ],
   },
   about: {
-    title: "このサイトについて — Online Vision Test 無料スクリーニング",
-    description: "Online Vision Testの制作者、視標を写真ではなく描画する理由、ブラウザ検査で分かることと分からないこと。",
-    h1: "この検査について",
-    lede: "運転免許の視力検査に備える人のための無料練習ツール。",
+    title: "このサイトについて — 開発者情報と測定設計 | Online Vision Test",
+    description:
+      "Online Vision Test の開発者 Gobinda Adhikari による物理カード校正技術、5x5ベクター視標、および ISO 8596 などの光学基準について解説します。",
+    h1: "この視力検査ツールについて",
+    lede: "カード校正とベクター描画により、画面サイズに左右されにくい自宅向けの無料簡易視力チェックツールです。",
     body: [
-      { h: "概要", p: "Online Vision Testはブラウザで動く無料の練習用スクリーニングです。窓口の手順（調整、距離、片目隠し、最小行の読み取り）を再現し、遠見視力、ランドルト環、色覚、周辺視野、近見視力、コントラスト、乱視、レッドグリーン検査を加えています。" },
-      { h: "対象外", p: "公式試験でも医療検査でもなく、診断や処方はできません。結果は画面・照明・距離に依存します。問題が示唆されたら眼科医や検眼医に相談してください。" },
-      { h: "仕組み", p: "アカウント、分析、アップロードはありません。視標は5x5グリッドのベクターパスで描画され、実寸は銀行カード調整から算出されます。すべて端末内で処理され、結果はブラウザに残ります。" },
+      { h: "開発の目的と背景", p: "インターネット上で公開されている多くの視力表は固定サイズの画像ファイルであるため、高解像度のスマートフォン画面とデスクトップモニターでは文字の実際の大きさが大きく異なります。物理的な文字の高さがずれると、測定距離に基づく視角計算が成り立たず、正確な目安が得られません。" },
+      { h: "カード校正と5x5ベクター視標の仕組み", p: "Online Vision Test では、最初に国際規格 ISO/IEC 7810 ID-1 準拠の標準カード（横幅 85.6 mm のクレジットカードや交通系ICカードなど）を画面上の枠に合わせてピクセル密度（mmあたりの画素数）を測定します。その実測値をもとに、5x5 グリッド上のベクターパスで視標を描画し、設定距離に対して視覚角5分角・線幅1分角の条件を保ちます。" },
+      { h: "採用している光学・国際基準", p: "各チェック項目は確立された検眼理論と公的基準を参照しています。国際規格 ISO 8596 のランドルト環（視力0.5〜1.0に相当する切れ目構造）、Herman Snellen（1862年）のスネレン視標計算式、Pelli-Robson のコントラスト感度基準、ならびに一般的な運転免許の視力基準を組み合わせて構成しています。" },
+      { h: "制作者およびプライバシー設計", p: "本ツールはフルスタック設計者 Gobinda Adhikari（Perchange AI）によって開発・運用されています。フォント資産は自ドメイン内で配信し、アカウント登録やサーバーへの検査結果送信は一切行いません。画面校正値や回答履歴はお使いのブラウザの localStorage のみに保存されます。" },
+      { h: "医療上の免責事項とご利用上の注意", p: "本ツールは家庭での練習およびセルフチェック用の補助ツールであり、運転免許センターの適性検査や眼科医・視能訓練士による医学的診断・眼鏡処方の代わりにはなりません。結果は室内の明るさ、モニター反射、測定距離の誤差に影響を受けます。見え方に不安や違和感がある場合は、速やかに眼科専門医を受診してください。" },
     ],
   },
   contact: {
@@ -729,14 +743,17 @@ const ru = {
     ],
   },
   about: {
-    title: "О проекте — Online Vision Test, бесплатный скрининг",
-    description: "Кто создаёт Online Vision Test, почему оптотипы нарисованы, а не сфотографированы, и что может и не может показать браузерный скрининг.",
+    title: "О проекте Online Vision Test — Автор и оптическая методика",
+    description:
+      "Инженерные принципы калибровки экрана по банковской карте, векторные оптотипы 5x5 и оптические стандарты проекта Online Vision Test от Gobinda Adhikari.",
     h1: "Об этом скрининге",
-    lede: "Бесплатный тренировочный скрининг для тех, кто готовится к проверке зрения для прав.",
+    lede: "Калиброванный браузерный тренажёр для предварительной проверки остроты зрения по таблице Сивцева, кольцам Ландольта и шкале Снеллена.",
     body: [
-      { h: "Что это", p: "Online Vision Test — бесплатный браузерный тренировочный скрининг. Повторяет порядок проверки — калибровка, дистанция, закрытие глаза, самая мелкая строка — и добавляет важные тесты: острота вдаль, кольца Ландольта, цвет, периферия, зрение вблизи, контраст, астигматизм и дуохром." },
-      { h: "Чем не является", p: "Это не официальный экзамен и не медицинское обследование, он не ставит диагноз и не выписывает рецепт. Результаты зависят от экрана, света и расстояния. Если тест показал проблему, обратитесь к оптометристу или офтальмологу." },
-      { h: "Как устроено", p: "Без аккаунтов, аналитики и загрузок. Оптотипы — векторные контуры на сетке 5x5, физические размеры выводятся из калибровки банковской картой. Всё работает на вашем устройстве." },
+      { h: "Зачем создан этот инструмент", p: "Большинство онлайн-таблиц для проверки зрения представляют собой обычные растровые картинки. На экране смартфона и на большом мониторе одна и та же картинка отображается в совершенно разном физическом масштабе, что делает проверку с фиксированного расстояния оптически некорректной." },
+      { h: "Калибровка банковской картой и векторные оптотипы 5x5", p: "Online Vision Test решает эту проблему обязательным этапом калибровки. Когда вы прикладываете стандартную банковскую карту (85,6 мм по стандарту ISO/IEC 7810 ID-1) к контуру на экране, приложение вычисляет физическую плотность пикселей вашего дисплея. После этого каждый символ — буква Снеллена, кольцо Ландольта или буква таблицы Сивцева — рисуется в виде векторного контура на сетке 5x5 строго в заданном угловом размере." },
+      { h: "Оптические и нормативные стандарты", p: "Методика тестов опирается на стандарт ISO 8596 для колец Ландольта и разрыва в одну угловую минуту, формулы Германа Снеллена (1862) и классическую таблицу Головина–Сивцева (1923), критерии контрастной чувствительности Пелли–Робсона, а также типовые пороговые требования к зрению водителей." },
+      { h: "Разработка и архитектура конфиденциальности", p: "Платформу разработал и поддерживает архитектор веб-систем Gobinda Adhikari (Perchange AI). Шрифты размещаются локально на домене сайта, а результаты проверок, настройки темы и коэффициент калибровки хранятся исключительно в localStorage вашего браузера без передачи на внешние серверы." },
+      { h: "Медицинское предупреждение и ограничения", p: "Online Vision Test предназначен исключительно для домашней самопроверки и тренировки. Сервис не заменяет официальную водительскую медкомиссию, не является диагностическим медицинским прибором и не выписывает рецепты на очки или линзы. При снижении остроты зрения, двоении или дискомфорте обратитесь к врачу-офтальмологу." },
     ],
   },
   contact: {

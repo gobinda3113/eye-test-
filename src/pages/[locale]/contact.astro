@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import SiteShell from "../../components/SiteShell.astro";
 import ProsePage from "../../components/ProsePage.astro";
-import { LOCALES, DEFAULT_LOCALE } from "../../lib/site.ts";
+import { LOCALES, DEFAULT_LOCALE, HREFLANG, urlFor } from "../../lib/site.ts";
 
 export const prerender = true;
 
@@ -13,9 +13,11 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.params;
+const selfUrl = urlFor(locale, "contact");
+const customAlts = [{ locale, hreflang: HREFLANG[locale], url: selfUrl }];
 ---
 
-<Layout locale={locale} page="contact">
+<Layout locale={locale} page="contact" noindex={true} customAlts={customAlts} customXDefault={null}>
   <SiteShell locale={locale} page="contact">
     <ProsePage locale={locale} page="contact" />
   </SiteShell>

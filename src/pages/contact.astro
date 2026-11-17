@@ -8,6 +8,8 @@ const customMeta = {
   description: "Get in touch with the Online Vision Test team. Submit questions, report state DMV rule updates, or send technical feedback.",
   url: `${SITE}/contact/`,
 };
+const customAlts = [{ locale: "en", hreflang: "en-US", url: `${SITE}/contact/` }];
+const customXDefault = `${SITE}/contact/`;
 
 const contactSchema = {
   "@context": "https://schema.org",
@@ -41,7 +43,7 @@ const contactSchema = {
 };
 ---
 
-<Layout locale="en" page="contact" customMeta={customMeta} schema={contactSchema}>
+<Layout locale="en" page="contact" customMeta={customMeta} customAlts={customAlts} customXDefault={customXDefault} schema={contactSchema}>
   <SiteShell locale="en" page="contact">
     <div class="container section">
       <nav class="crumbs" aria-label="Breadcrumb">
@@ -181,6 +183,24 @@ const contactSchema = {
         </div>
 
       </div>
+
+      <section class="prose" style="max-width: 1040px; margin: 48px auto 0;">
+        <h2>Common questions before writing</h2>
+        <h3>How do I report a stale state DMV vision rule or form number?</h3>
+        <p>
+          Include the state name, the section or form number (for example, DL-62 in California or MV-619 in New York), and the official agency URL or state administrative code citation. We review primary statutory sources directly before updating our <a href="/states/">state requirements directory</a> and publishing the revision date on the state page.
+        </p>
+
+        <h3>Why does screen calibration ask for an 85.6 mm bank card?</h3>
+        <p>
+          Browser pixel density varies dramatically across laptops, external monitors, and smartphones. Placing a standard ISO/IEC 7810 ID-1 card against the calibration box measures your device's exact pixels per millimeter so that a 20/40 optotype subtends five arcminutes at your chosen viewing distance. If the calibration card appears clipped or zoomed, reset your browser zoom to 100% before starting the <a href="/test/">interactive screening test</a>.
+        </p>
+
+        <h3>Can you tell me whether my score will pass at the DMV?</h3>
+        <p>
+          No. Because lighting, screen glare, posture, and actual viewing distance affect home practice results, we cannot certify fitness to drive or interpret individual results. If you struggle to read the 20/40 line at home with your everyday glasses or contacts, schedule an eye examination with a licensed optometrist or ophthalmologist before visiting your licensing office.
+        </p>
+      </section>
     </div>
   </SiteShell>
 </Layout>

@@ -56,7 +56,7 @@ if (currentRoute.startsWith("test")) {
 
 const navItems = [
   { key: "nav.home", section: "home", label: d("nav.home"), href: homeHref },
-  { key: "nav.states", section: "states", label: d("nav.states"), href: "/states/" },
+  ...(locale === "en" || isUS ? [{ key: "nav.states", section: "states", label: d("nav.states"), href: "/states/" }] : []),
   { key: "nav.checks", section: "checks", label: d("nav.checks"), href: checksHref },
   { key: "nav.blog", section: "blog", label: d("nav.blog"), href: blogHref },
   { key: "nav.about", section: "about", label: d("nav.about"), href: aboutHref },
