@@ -92,7 +92,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "110° horizontal temporal field from center (per Ala. Admin. Code r. 760-X-20)",
     "doctorForm": "Certificate of Vision Examination / ALEA Specialist Report",
-    "retestPolicy": "Applicants failing the counter vision screening must obtain a licensed eye specialist report; licensing continues upon submission, and corrective-lens restrictions may apply."
+    "retestPolicy": "Applicants failing the counter vision screening must obtain a licensed eye specialist report; licensing continues upon submission, and corrective-lens restrictions may apply.",
+    "renewalCycle": "Alabama standard Class D licenses renew on a 4-year cycle across adult age groups.",
+    "onlineEligible": "Eligible Alabama drivers under age 62 may alternate online renewals every other 4-year cycle through the ALEA portal; starting at age 62+, online renewal ends and in-person renewal becomes mandatory.",
+    "seniorRules": "Alabama sets its electronic cutoff at age 62: drivers aged 62 and older cannot renew remotely online and must appear in person at an ALEA Driver License Examining Office every 4 years.",
+    "screeningFormat": "ALEA examining offices screen 20/40 visual acuity in at least one eye alongside a 110-degree temporal field, issuing an ALEA Vision Specialist Report whenever counter acuity falls short.",
+    "stateGuide": `
+<p>Alabama Law Enforcement Agency (ALEA) administers passenger licensing on a straightforward 4-year renewal interval while setting an important remote milestone at <strong>age 62</strong>. Drivers aged 61 and younger can typically renew remotely every other cycle when no new restrictions exist, whereas drivers aged 62 and older must visit a county or ALEA exam location in person for updated counter checks.</p>
+      <p>Counter boxes require <strong>20/40 or better visual acuity in at least one eye</strong> (with or without eyeglasses or contacts) plus a horizontal temporal span of at least <strong>110 degrees</strong>. When an applicant misses 20/40 or presents single-eye vision impairments, examiners issue an <strong>ALEA Vision Specialist Report</strong> for optometrist or ophthalmologist completion, documenting corrective lens needs, daylight restrictions, or dual outside rearview mirror conditions before credential issuance.</p>
+      <p>Before queuing at a county office, test both eyes individually on <a href="/checks/distance/">calibrated Snellen columns</a> and run our <a href="/checks/peripheral/">horizontal visual field check</a>.</p>
+    `,
+    "extraFaqs": [{"q":"At what age must Alabama drivers renew in person?","a":"Beginning at age 62, Alabama prohibits online driver's license renewals and requires in-person renewal at an ALEA licensing office every 4 years."},{"q":"Do both eyes have to pass 20/40 in Alabama?","a":"No. Passing 20/40 in at least one eye with acceptable 110-degree peripheral span meets standard Alabama Class D acuity criteria, though monocular drivers may carry outside mirror conditions."},{"q":"Can you wear contact lenses during the Alabama DMV vision test?","a":"Yes. Prescription contacts and eyeglasses are permitted at ALEA counters and apply a corrective lens restriction if needed to pass."}],
   },
   "AR": {
     "statute": "Ark. Code Ann. § 27-16-704(b)(3)-(6)",
@@ -120,7 +130,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "105° total horizontal (70° temporal + 35° nasal) in at least one eye",
     "doctorForm": "Form 32-4001 — Vision Examination Report",
-    "retestPolicy": "Applicants who fail the counter screening must have an eye specialist complete Form 32-4001 within 90 days. ADOT reviews the report for licensing conditions."
+    "retestPolicy": "Applicants who fail the counter screening must have an eye specialist complete Form 32-4001 within 90 days. ADOT reviews the report for licensing conditions.",
+    "renewalCycle": "Arizona issues extended-validity credentials up to age 65 (requiring photo/vision updates every 12 years), then transitions to a mandatory 5-year renewal cycle beginning at age 65+.",
+    "onlineEligible": "Drivers under 65 with updated photos/vision can manage select services through AZMVDNow.gov; starting at age 65, licenses renew every 5 years and require in-person MVD appearance when triggered for updated photo and vision testing.",
+    "seniorRules": "At age 65+, Arizona shortens renewal terms sharply to every 5 years and mandates updated photo and vision clearance via ADOT MVD offices (with eye doctor forms accepted when needed).",
+    "screeningFormat": "Arizona Motor Vehicle Division counters test 20/40 acuity in the better eye alongside a 105-degree horizontal field (plus 70° temporal + 35° nasal check), using Form 32-4001 within 90 days for specialist reports.",
+    "stateGuide": `
+<p>Arizona stands out nationally for long initial credential spans prior to age 65, requiring photo and vision refreshes approximately every 12 years for younger adults. Once motorists reach <strong>age 65</strong>, however, Arizona Department of Transportation (ADOT) Motor Vehicle Division rules switch every driver cleanly onto a standard <strong>5-year renewal cycle</strong> through <code>AZMVDNow.gov</code> and MVD field offices.</p>
+      <p>Arizona checks two primary limits: <strong>20/40 visual acuity in at least the better eye</strong> (20/50 to 20/60 corrected may qualify for daytime-only restrictions under medical review) and a continuous <strong>105-degree horizontal field</strong> (measured as at least 70 degrees temporally and 35 degrees nasally on the tested eye). Referrals or pre-cleared medical documentation rely on <strong>Vision Examination Report Form 32-4001</strong>, valid within <strong>90 calendar days</strong> of doctor signature.</p>
+      <p>Run <a href="/checks/distance/">distance Snellen rows</a> and <a href="/checks/peripheral/">peripheral flash screening</a> ahead of any triggered Arizona MVD update.</p>
+    `,
+    "extraFaqs": [{"q":"At what age does Arizona require 5-year driver's license renewals?","a":"At age 65 and older, Arizona transitions drivers from long-term credentials to a 5-year renewal cycle with periodic in-person vision and photo updates."},{"q":"What peripheral field angle does Arizona require?","a":"Arizona requires a continuous 105-degree horizontal field of view (specifically at least 70 degrees temporal and 35 degrees nasal on the better eye)."},{"q":"How long is Arizona MVD Vision Form 32-4001 valid?","a":"Form 32-4001 signed by an optometrist or ophthalmologist remains valid for 90 days from the examination date."}],
   },
   "CA": {
     "statute": "Cal. Veh. Code § 12804.9",
@@ -129,7 +149,11 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "Not part of routine counter vision screening",
     "doctorForm": "DL 62 — Report of Vision Examination",
-    "retestPolicy": "If an applicant does not meet the 20/40 acuity screening standard, DMV provides Form DL 62 for an optometrist or ophthalmologist to complete. DMV then determines whether a driving performance test or daylight-only restriction is necessary."
+    "retestPolicy": "If an applicant does not meet the 20/40 acuity screening standard, DMV provides Form DL 62 for an optometrist or ophthalmologist to complete. DMV then determines whether a driving performance test or daylight-only restriction is necessary.",
+    "renewalCycle": "California issues standard Class C licenses on a 5-year renewal cycle across adult ages (moving toward flexible mail/online extensions when eligible, with age-70 in-person checks historically phased under state policy).",
+    "onlineEligible": "Eligible California drivers may renew by mail or online at dmv.ca.gov when invited on alternating terms; drivers directed to complete vision or knowledge verification must appear at a California DMV field office.",
+    "seniorRules": "California senior drivers aged 70+ should watch renewal notices closely for in-person DMV office visit instructions verifying counter vision screening under California Vehicle Code § 12804.9.",
+    "screeningFormat": "California DMV field offices require 20/40 with both eyes together AND 20/40 in one eye with at least 20/70 in the other eye; failing triggers a 60-day temporary license pending Report of Vision Examination Form DL 62.",
   },
   "CO": {
     "statute": "C.R.S. § 42-2-111(1)(a); 1 CCR 204-30:26",
@@ -138,7 +162,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "120° total combined horizontal field",
     "doctorForm": "Form DR 2402 — Confidential Eye Examination Report (rev. 08/15/25)",
-    "retestPolicy": "Applicants who fail the counter screening must submit Form DR 2402 completed by an eye care specialist. Colorado DMV evaluates the report to determine if corrective lenses or daylight restrictions are required."
+    "retestPolicy": "Applicants who fail the counter screening must submit Form DR 2402 completed by an eye care specialist. Colorado DMV evaluates the report to determine if corrective lenses or daylight restrictions are required.",
+    "renewalCycle": "Colorado adult driver's licenses run on a standard 5-year renewal cycle across adult age groups.",
+    "onlineEligible": "Eligible drivers aged 21 through 79 may renew online via myDMV with an electronic 1-year eye exam self-attestation; drivers aged 80+ can ONLY renew online if uploading signed Form DR 2498 from an eye exam within 6 months (otherwise in person).",
+    "seniorRules": "At age 80 and older, Colorado prohibits simple self-attestation online renewals: seniors 80+ must either test in person at a Division of Motor Vehicles office OR upload Form DR 2498 certified by an eye doctor within 6 months.",
+    "screeningFormat": "Colorado DMV offices verify 20/40 acuity in both/better eye criteria; routine online age-80 clearances use Form DR 2498 (Eye Examination Certification), whereas failed counter referrals use Form DR 2402.",
+    "stateGuide": `
+<p>Colorado Division of Motor Vehicles structures renewal convenience around clean eye exam documentation on a uniform 5-year cycle. Drivers aged <strong>21 through 79</strong> can regularly renew online on <code>myDMV</code> simply by attesting that they completed an eye check or still see safely within state rules. Once reaching <strong>age 80</strong>, however, self-attestation disappears: Colorado seniors 80+ may renew online <em>only</em> by uploading a formal eye specialist certification (<strong>Form DR 2498</strong>) completed within the past <strong>6 months</strong>, or by appearing at a DMV counter in person.</p>
+      <p>Unrestricted Colorado driving requires <strong>20/40 acuity</strong> with or without corrective lenses. Applicants whose counter exam fails below 20/40 receive referral <strong>Form DR 2402 (Colorado Confidential Medical / Vision Statement)</strong> for specialist review, which assesses stability, restricted hours, or updated glasses before releasing the renewed card.</p>
+      <p>Screen both eyes cleanly at <a href="/checks/distance/">calibrated 3-meter distance</a> weeks prior to booking a Colorado DMV slot or optometry visit.</p>
+    `,
+    "extraFaqs": [{"q":"Can an 80-year-old renew a Colorado driver license online?","a":"Yes, ONLY if the driver uploads completed Form DR 2498 from an eye exam conducted within the prior 6 months; otherwise an in-person Colorado DMV counter vision test is required."},{"q":"What is the difference between Colorado Form DR 2498 and DR 2402?","a":"Form DR 2498 allows drivers (notably seniors 80+) to verify passing eye exam results remotely within 6 months, whereas Form DR 2402 is a medical referral after a failed counter screening."},{"q":"Do drivers aged 21-79 need a doctor form to renew online in Colorado?","a":"Usually no, provided they hold clean standing and self-attest vision compliance when prompted on myDMV."}],
   },
   "CT": {
     "statute": "Regs. Conn. State Agencies § 14-45a-1",
@@ -147,7 +181,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "140° binocular",
     "doctorForm": "Eye Care Professional's State of Connecticut Medical Report",
-    "retestPolicy": "A failed vision test may be rescheduled and retaken; applicants who cannot pass are referred to an eye care professional whose report DMV reviews."
+    "retestPolicy": "A failed vision test may be rescheduled and retaken; applicants who cannot pass are referred to an eye care professional whose report DMV reviews.",
+    "renewalCycle": "Connecticut issues standard adult licenses on a 6-year to 8-year cycle (REAL ID / standard options), with an optional reduced-fee 2-year renewal available starting at age 65.",
+    "onlineEligible": "Because Connecticut does NOT require routine vision testing on standard renewals, eligible drivers can alternate online renewals cleanly without counter eye screening.",
+    "seniorRules": "Connecticut enforces NO mandatory age-based vision or road tests on senior renewals; motorists aged 65+ may optionally select a 2-year license term instead of the multi-year cycle.",
+    "screeningFormat": "Vision screening (20/40 acuity and 140 degrees binocular field) applies during initial licensing, out-of-state transfers, and targeted medical referrals rather than routine renewals.",
+    "stateGuide": `
+<p>Connecticut Department of Motor Vehicles (CT DMV) differs sharply from states that screen eyes on every counter visit: routine passenger license renewals in Connecticut do <em>not</em> include a mandatory counter vision test, and Connecticut imposes zero senior age cutoffs forcing older adults back into branch lines strictly for age-based eye exams or road evaluations.</p>
+      <p>Instead, CT DMV administers formal vision testing during first-time licensing, out-of-state driver transfers, or Medical Review evaluations. To pass unrestricted, applicants need at least <strong>20/40 visual acuity</strong> (with or without lenses) plus a minimum <strong>140-degree binocular horizontal visual field</strong> (monocular applicants face tighter 100-degree field and 20/40 requirements). Where an eye specialist evaluation is requested by Medical Review, corrective lens endorsements, dual side mirrors, or restricted daylight allowances are reviewed formally before card issuance.</p>
+      <p>If transferring an out-of-state license to Connecticut or renewing an initial permit, test yourself beforehand with <a href="/checks/distance/">calibrated distance rows</a> and our <a href="/checks/peripheral/">peripheral field check</a>.</p>
+    `,
+    "extraFaqs": [{"q":"Do you take a vision test when renewing a Connecticut driver's license?","a":"No. Standard Connecticut driver's license renewals do not require a routine vision screening, though first-time applicants, out-of-state transfers, and medical review cases are tested."},{"q":"Does Connecticut require extra eye tests for seniors?","a":"No. Connecticut has no mandatory senior-only eye exam or road test triggers; drivers age 65+ simply gain an optional 2-year renewal period."},{"q":"What peripheral vision does Connecticut require?","a":"Standard initial Connecticut licensing requires 140 degrees binocular horizontal field of vision (or 100 degrees if functionally monocular)."}],
   },
   "DC": {
     "statute": "D.C. Code § 50-1401.01a (vision provision unconfirmed)",
@@ -193,7 +237,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "140°",
     "doctorForm": "Vision Report Form DDS-MR-274 (DS-274)",
-    "retestPolicy": "Fail → the applicant is given Vision Report Form DS-274 to take to an optometrist/ophthalmologist; DDS evaluates the completed form to determine eligibility or restrictions."
+    "retestPolicy": "Fail → the applicant is given Vision Report Form DS-274 to take to an optometrist/ophthalmologist; DDS evaluates the completed form to determine eligibility or restrictions.",
+    "renewalCycle": "Georgia issues standard adult Class C licenses on an 8-year validity cycle.",
+    "onlineEligible": "Georgia motorists under 64 may renew remotely on DDS Online Services on alternating terms. Drivers aged 64 and older can STILL renew online ONLY by uploading Vision Report Form DDS-MR-274 (DS-274) from an eye exam completed within 2 years (otherwise in person).",
+    "seniorRules": "Beginning at age 64, Georgia mandates vision screening on every 8-year renewal: applicants either screen free at a DDS Customer Service Center or upload Form DDS-MR-274 signed within the prior 2 years to renew online.",
+    "screeningFormat": "Georgia DDS counters enforce a distinctive 20/60 visual acuity pass standard in at least one eye alongside a minimum 140-degree horizontal visual field (with Form DDS-MR-274 for doctor reports).",
+    "stateGuide": `
+<p>Georgia Department of Driver Services (DDS) blends a relatively generous <strong>20/60</strong> visual acuity cutoff with strict age-64 renewal documentation rules. Unlike typical 20/40 states, Georgia clears standard non-commercial Class C drivers when at least one eye achieves <strong>20/60 or better</strong> (corrected or unaided) paired with a wide <strong>140-degree horizontal field of vision</strong>.</p>
+      <p>Once a Georgia driver turns <strong>64 years old</strong>, passing an eye screening becomes mandatory on every 8-year renewal. Crucially, Georgia allows seniors 64+ to avoid in-person lines altogether by having a licensed optometrist or ophthalmologist complete <strong>Form DDS-MR-274 (Report of Vision Examination)</strong> within <strong>2 years</strong> prior and uploading that report through DDS Online Services or the DDS 2 GO portal.</p>
+      <p>Check both eyes individually using our <a href="/checks/distance/">calibrated Snellen test</a> and <a href="/checks/peripheral/">140-degree horizontal peripheral screener</a> before your DDS visit.</p>
+    `,
+    "extraFaqs": [{"q":"What is Georgia's minimum vision standard for a driver's license?","a":"Georgia passes non-commercial Class C drivers with at least 20/60 visual acuity in one eye and at least 140 degrees total horizontal visual field."},{"q":"At what age does Georgia require a vision test to renew?","a":"Starting at age 64, every Georgia 8-year renewal requires either an in-person DDS eye check or uploading Form DDS-MR-274 from an exam within the last 2 years."},{"q":"Can seniors 64+ renew a Georgia license online?","a":"Yes, provided they submit Vision Report Form DDS-MR-274 completed within 2 years prior to renewal."}],
   },
   "HI": {
     "statute": "Haw. Admin. R. § 19-122-356",
@@ -221,7 +275,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "110° binocular / 100° monocular (denial thresholds; 140° binocular for no restriction)",
     "doctorForm": "Form 430032 Driver's Visual Acuity Report",
-    "retestPolicy": "Fail → a vision report on Form 430032 signed by a licensed vision specialist within 30 days prior to submission; denial if binocular field is below 110° or monocular below 100°."
+    "retestPolicy": "Fail → a vision report on Form 430032 signed by a licensed vision specialist within 30 days prior to submission; denial if binocular field is below 110° or monocular below 100°.",
+    "renewalCycle": "Iowa issues standard adult licenses up to an 8-year cycle (shortening in higher age brackets toward 2-year maximums in older seniors).",
+    "onlineEligible": "Eligible Iowa drivers age 18 to 69 can alternate online renewals on Iowa DOT when clean; starting at age 70+, Iowa prohibits online renewal and mandates an in-person DOT service center visit.",
+    "seniorRules": "At age 70 and older, Iowa bars remote online renewals and requires every senior driver to appear in person at an Iowa DOT driver service center for mandatory vision screening (with shortened validity brackets above age 72/78).",
+    "screeningFormat": "Iowa DOT stations require 20/40 unrestricted acuity and screen 20/50 to 20/70 conditional/daylight restricted tiers, issuing Form 430032 (Vision Report) due within 30 calendar days on counter referrals.",
+    "stateGuide": `
+<p>Iowa Department of Transportation (Iowa DOT) conducts vision screening directly at driver service centers on every in-person renewal while stopping remote online renewals cleanly at <strong>age 70</strong>. Drivers 70 and older must test in person with shorter renewal intervals so sudden age-related cataract or macular drops are spotted early.</p>
+      <p>Unrestricted Iowa driving permits clear at <strong>20/40 acuity</strong> (better/both eyes). When acuity falls between <strong>20/50 and 20/70</strong>, drivers receive a <strong>Form 430032 (Vision Report)</strong> to take to an eye specialist, which must be returned within <strong>30 calendar days</strong>. Based on specialist recommendations and Iowa administrative tiers, DOT can authorize daylight-only hours, speed caps (such as 35-45 mph), or dual outside rearview mirror endorsements.</p>
+      <p>Preview both eyes separately at <a href="/checks/distance/">3-meter calibrated scale</a> weeks before walking into an Iowa DOT center.</p>
+    `,
+    "extraFaqs": [{"q":"Can drivers 70+ renew an Iowa driver's license online?","a":"No. Iowa prohibits online renewals starting at age 70, requiring an in-person DOT visit with counter vision screening."},{"q":"What happens if you get between 20/50 and 20/70 in Iowa?","a":"Applicants must have an optometrist or ophthalmologist complete Iowa Form 430032 within 30 days and may qualify for daylight-only or speed-restricted driving."},{"q":"How many days do you have to return Iowa Form 430032?","a":"Iowa Form 430032 must be signed and returned within 30 days of a counter vision referral."}],
   },
   "ID": {
     "statute": "Idaho Code § 49-313 (official text not re-verified on legislature.idaho.gov)",
@@ -258,7 +322,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "120° horizontal (Form 22106; the 20/70 category requires proof of normal peripheral fields, at least 60° temporally in each eye)",
     "doctorForm": "Certificate of Vision (Eye Referral), State Form 22106",
-    "retestPolicy": "Fail → the examiner provides State Form 22106 for an eye doctor; the examination is valid for six months from the exam date and must be mailed or faxed to the Driver Ability Department."
+    "retestPolicy": "Fail → the examiner provides State Form 22106 for an eye doctor; the examination is valid for six months from the exam date and must be mailed or faxed to the Driver Ability Department.",
+    "renewalCycle": "Indiana licenses are valid for 6 years under age 75, shortening to a 3-year cycle for ages 75-84 and a 2-year cycle starting at age 85+.",
+    "onlineEligible": "Drivers under 75 can renew online cleanly through myBMV. Starting at age 75+, online renewal is permitted ONLY if your eye specialist submits State Form 56520 directly to DriverAbility@bmv.IN.gov beforehand (typically within 30/60 days); otherwise in person.",
+    "seniorRules": "Indiana enforces strict senior validity steps: 3-year cycles for ages 75-84 and 2-year cycles at 85+, with mandatory vision screening on every renewal beginning at age 75 (counter box or doctor-emailed State Form 56520).",
+    "screeningFormat": "Indiana BMV branches screen 20/40 unrestricted acuity and horizontal field standards, routing counter failure referrals via State Form 22106 (Medical Examination) while remote age-75+ clearances use State Form 56520.",
+    "stateGuide": `
+<p>Indiana Bureau of Motor Vehicles (BMV) pairs one of the nation's clearest digital doctor-submission rules with shortened senior cycles. While motorists under 75 renew on a 6-year schedule with easy <code>myBMV</code> access, turning <strong>75</strong> trims validity to <strong>3 years</strong> (and <strong>2 years at age 85+</strong>) and makes a passed vision check mandatory on every single renewal.</p>
+      <p>Uniquely, seniors aged 75+ do <em>not</em> automatically lose online renewal access if they plan ahead: an optometrist or ophthalmologist can complete <strong>Indiana State Form 56520</strong> and submit it directly to <code>DriverAbility@bmv.IN.gov</code> within the pre-renewal window so the BMV system unlocks remote renewal. If a walk-in branch check below 20/40 triggers referral instead, specialists use <strong>State Form 22106</strong> to authorize daylight or mirror restrictions.</p>
+      <p>Check both eyes cleanly on our <a href="/us/test/">Indiana DMV eye screener</a> before deciding between an in-person BMV line or pre-submitting State Form 56520.</p>
+    `,
+    "extraFaqs": [{"q":"How often must seniors 75 and 85 renew in Indiana?","a":"Indiana drivers ages 75-84 renew every 3 years, and drivers aged 85+ renew every 2 years, with a vision check mandatory on every cycle."},{"q":"Can an 80-year-old renew an Indiana driver's license online?","a":"Yes, provided their eye specialist submits completed Indiana State Form 56520 directly to DriverAbility@bmv.IN.gov within the BMV validity window before renewal."},{"q":"What is the difference between State Form 56520 and State Form 22106?","a":"State Form 56520 enables remote doctor-verified vision clearance for age 75+ renewals, while State Form 22106 is the formal medical referral after failing a counter test."}],
   },
   "KS": {
     "statute": "K.S.A. 8-295",
@@ -332,7 +406,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "Peripheral vision is screened; degree standard not stated on the public page",
     "doctorForm": "MVE-103 Eye Examinations Form",
-    "retestPolicy": "Fail → the applicant may have the screening done at their own expense by an eye care specialist who completes Form MVE-103; the medical unit updates the record on receipt."
+    "retestPolicy": "Fail → the applicant may have the screening done at their own expense by an eye care specialist who completes Form MVE-103; the medical unit updates the record on receipt.",
+    "renewalCycle": "Maine issues licenses for 6 years under age 65 and shortens renewal validity to 4 years starting at age 65 (29-A MRSA § 1406).",
+    "onlineEligible": "Eligible Maine residents may renew online ONLY during cycles when a vision test is NOT due; under 29-A MRSA § 1303, drivers must renew in person whenever a statutory age-triggered eye test is required (or supply doctor Form MVE-103).",
+    "seniorRules": "Maine enforces structured vision triggers under 29-A MRSA § 1303: mandatory at the first renewal after turning 40, every second renewal up to age 62, and every single renewal starting at age 62+ (switching to 4-year cycles at age 65+).",
+    "screeningFormat": "Maine BMV counters test 20/40 acuity in the better eye (or 20/70 daylight-restricted tiers with doctor sign-off) plus peripheral field, using Form MVE-103 (Eye Examinations Form) for external specialist reporting.",
+    "stateGuide": `
+<p>Maine Bureau of Motor Vehicles ties vision testing closely to statutory age milestones codified under <strong>29-A MRSA §§ 1258 and 1303</strong>. Specifically, every Maine motorist must complete a vision screening at their <strong>first renewal after age 40</strong>, then at every <strong>second renewal until age 62</strong>, and finally at <strong>every single renewal starting at age 62 and older</strong> (with license duration trimming from 6 years to 4 years starting at age 65).</p>
+      <p>Whenever a cycle triggers a mandatory eye check under Maine law, online renewal is unavailable unless valid clinical certification is filed: applicants either screen directly at a Maine BMV branch (20/40 in the better eye with or without eyewear) or bring completed <strong>Form MVE-103 (Eye Examinations Form)</strong> signed by an optometrist or ophthalmologist if needing specialist review for reduced visual acuity or peripheral restrictions.</p>
+      <p>Preview your clarity at <a href="/checks/distance/">3-meter calibrated scale</a> and verify your <a href="/checks/peripheral/">side field</a> ahead of your milestone renewal year.</p>
+    `,
+    "extraFaqs": [{"q":"At what ages does Maine require a DMV eye test?","a":"Under 29-A MRSA § 1303, vision testing is mandatory at the first renewal after age 40, every second renewal through age 61, and every renewal starting at age 62."},{"q":"Can you renew a Maine license online if a vision test is due?","a":"No. Whenever statutory age milestones trigger a vision check, you cannot use standard online renewal without completing the required screening."},{"q":"What is Maine BMV Form MVE-103?","a":"Form MVE-103 is the Eye Examinations Form completed by an eye specialist for referrals or external clinical clearance."}],
   },
   "MI": {
     "statute": "Mich. Admin. Code R 257.2",
@@ -444,7 +528,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "140° total horizontal field (120–139° → restriction F; 100–119° → restrictions F, V, G, X; below 100° denied)",
     "doctorForm": "Statement of Vision (DMV06-181)",
-    "retestPolicy": "Fail → the examiner requires an optometrist's or ophthalmologist's Statement of Vision certifying the reading within 90 days of the license examination; DMV applies restrictions per the field-vision schedule."
+    "retestPolicy": "Fail → the examiner requires an optometrist's or ophthalmologist's Statement of Vision certifying the reading within 90 days of the license examination; DMV applies restrictions per the field-vision schedule.",
+    "renewalCycle": "Nebraska standard adult driver's licenses run on a 5-year renewal cycle across adult age groups.",
+    "onlineEligible": "Drivers under age 72 may renew online repeatedly through Nebraska DMV online services when holding clean standing (self-attesting medical/vision fitness); starting at age 72+, online renewal ends and an in-person exam office visit is mandatory.",
+    "seniorRules": "Starting at age 72, Nebraska requires every driver to renew in person every 5 years and pass counter vision screening (or supply an external Statement of Vision DMV06-181 signed within 90 days).",
+    "screeningFormat": "Nebraska DMV examiners verify 20/40 unrestricted acuity and 140 degrees total horizontal peripheral field (assigning restricted codes between 100° and 139° field and disqualifying below 100°), using Form DMV06-181 within 90 days.",
+    "stateGuide": `
+<p>Nebraska Department of Motor Vehicles operates a 5-year licensing rhythm where drivers under 72 enjoy generous consecutive online renewals without frequent office trips, followed by mandatory in-person renewals starting at <strong>age 72</strong> under <strong>Neb. Rev. Stat. § 60-4,118</strong>.</p>
+      <p>In addition to <strong>20/40 visual acuity</strong>, Nebraska enforces one of the country's most explicit peripheral field schedules: <strong>140 degrees total horizontal field</strong> passes unrestricted; <strong>120-139 degrees</strong> adds outside mirror restrictions (Code F); <strong>100-119 degrees</strong> triggers multiple geographic/daylight restrictions (F, V, G, X); and horizontal field below 100 degrees is denied. Referred or pre-checked drivers must submit <strong>Statement of Vision Form DMV06-181</strong> dated within <strong>90 calendar days</strong> of the licensing visit.</p>
+      <p>Test both central Snellen rows and side-flash boundaries using our <a href="/checks/distance/">distance tester</a> and <a href="/checks/peripheral/">peripheral screener</a> before your age-72 visit.</p>
+    `,
+    "extraFaqs": [{"q":"At what age do Nebraska drivers have to renew in person?","a":"Starting at age 72, Nebraska motorists can no longer renew online and must appear in person at a DMV exam office every 5 years."},{"q":"What happens in Nebraska if your horizontal visual field is under 140 degrees?","a":"Fields of 120-139° trigger mirror Restriction F, 100-119° add Codes F/V/G/X conditional limits, and fields below 100° do not qualify for Nebraska licensing."},{"q":"How long is Nebraska Statement of Vision Form DMV06-181 valid?","a":"Specialist eye measurements certified on Form DMV06-181 must be taken within 90 days prior to your Nebraska DMV licensing examination."}],
   },
   "NH": {
     "statute": "N.H. Admin. R. Saf-C 1004.05, 1004.08",
@@ -472,7 +566,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "Not tested during routine screening",
     "doctorForm": "Form ST-14",
-    "retestPolicy": "Fail → visit your doctor and complete Form ST-14; return it to MVC for review."
+    "retestPolicy": "Fail → visit your doctor and complete Form ST-14; return it to MVC for review.",
+    "renewalCycle": "New Jersey issues standard adult driver's licenses on a 4-year renewal cycle, requiring periodic vision screening at least once every 10 years under N.J.S.A. 39:3-10c.",
+    "onlineEligible": "Eligible New Jersey motorists receive Skip the Trip / online renewal invitations through NJMVC when their existing photo and 10-year vision check remain current.",
+    "seniorRules": "New Jersey imposes NO special senior-only accelerated renewal frequency or extra road retests based strictly on chronological age; every driver follows the same 4-year cycle and 10-year vision mandate.",
+    "screeningFormat": "New Jersey MVC enforces a unique 20/50 minimum cutoff in EACH eye separately (with or without lenses), using Form ST-14 (Physician/Optometrist Certificate) when either eye misses 20/50.",
+    "stateGuide": `
+<p>New Jersey Motor Vehicle Commission (NJMVC) maintains two unusual statutory rules under <strong>N.J.S.A. 39:3-10c</strong> that surprise drivers moving from neighboring states. First, rather than using the national 20/40 standard, New Jersey sets a base acuity threshold of <strong>20/50 in EACH eye individually</strong> (corrected or unaided). Second, statute requires every New Jersey licensee to complete an updated vision test <strong>at least once every 10 years</strong> alongside standard 4-year card renewals.</p>
+      <p>Notice that because NJMVC evaluates each eye independently against <strong>20/50</strong>, strong vision in one eye alone does not automatically carry a weak fellow eye past initial counter screening. If either eye misses 20/50 inside the MVC counter unit, examiners provide <strong>Form ST-14</strong> for clinical evaluation by your optometrist or ophthalmologist before restoring full or monocular-endorsed privileges (including left/right outside mirror checks for single-eye weakness).</p>
+      <p>Always test right and left eyes separately on our <a href="/checks/distance/">calibrated distance screener</a> rather than relying on binocular reading before visiting an NJMVC Licensing Center.</p>
+    `,
+    "extraFaqs": [{"q":"Why does New Jersey require 20/50 in EACH eye instead of 20/40 combined?","a":"Under N.J.S.A. 39:3-10c, NJMVC tests each eye separately against a 20/50 floor rather than relying solely on binocular 20/40 reading."},{"q":"How often is an eye test required under New Jersey law?","a":"New Jersey statute mandates vision verification at least once every 10 years across regular 4-year license renewals."},{"q":"What form does NJMVC issue if one eye fails the 20/50 screening?","a":"Drivers whose eye falls short of 20/50 receive New Jersey MVC Form ST-14 to have an optometrist or ophthalmologist certify corrected vision status."}],
   },
   "NM": {
     "statute": "NMSA § 66-5-9",
