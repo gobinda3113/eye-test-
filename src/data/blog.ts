@@ -455,162 +455,319 @@ export const POSTS = [
   {
     slug: "6-6-vision-test-online",
     englishOnly: false,
-    datePublished: "2025-11-12T09:00:00Z",
-    dateModified: "2026-09-23T07:10:00Z",
+    datePublished: "2025-07-05T14:00:00Z",
+    dateModified: "2026-11-17T12:00:00Z",
     title: {
-      en: "6/6 Vision Test Online: What 6/6 Means and How to Check",
-      es: "Test de visión 6/6 online: qué significa y tabla de conversión 20/20",
-      de: "6/6 Sehtest online: Bedeutung und 20/20 Umrechnungstabelle",
-      fr: "Test de vision 6/6 en ligne : signification et équivalence 20/20",
-      pt: "Teste de visão 6/6 online: o que significa e conversão para 20/20",
-      it: "Test della vista 6/6 online: Significato e come verificare",
-      ru: "Онлайн-тест зрения 6/6: что значит 6/6 и как проверить",
+      en: "6/6 Vision Test Online: What It Means, 20/20 & LogMAR Conversion Table",
+      es: "Prueba de Visión 6/6 Online: Qué Significa y Equivalencia con 20/20",
+      de: "6/6 Sehtest (Visus 1,0) Online: Umrechnung zu 20/20, LogMAR & Tabelle",
+      fr: "Test de Vue 6/6 et 10/10 en Ligne : Équivalence 20/20 et Échelle LogMAR",
+      pt: "Teste de Visão 6/6 Online: O Que Significa e Tabela Comparativa 20/20",
+      it: "Test Vista 6/6 Online: Significato, 10/10 in Decimi e Tabella 20/20",
+      ru: "Тест зрения 6/6 онлайн: что означает, таблица перевода в 20/20 и 1,0",
     },
     excerpt: {
-      en: "6/6 is the metric form of 20/20. See the full 6/6 to 20/20 conversion chart and how to check 6/6 vision at home.",
-      es: "6/6 es la forma métrica de 20/20. Consulta la tabla de conversión y cómo comprobar tu visión 6/6 en casa.",
-      de: "6/6 ist das metrische Äquivalent zu 20/20. Entdecken Sie die Umrechnungstabelle und wie Sie Ihre Sehkraft zu Hause testen.",
-      fr: "6/6 est la notation métrique de 20/20. Consultez le tableau de conversion et testez votre vision chez vous.",
-      pt: "6/6 é a forma métrica de 20/20. Veja a tabela de conversão completa e como verificar sua visão em casa.",
-      it: "6/6 è la forma metrica di 20/20. Scopri la tabella di conversione e come controllare la vista a casa.",
-      ru: "6/6 — это метрический эквивалент 20/20. Ознакомьтесь с таблицей перевода и узнайте, как проверить зрение дома.",
+      en: "Understand 6/6 metric acuity, compare 6/6 vs 20/20, decimal and LogMAR scores with exact millimeter letter heights at 3m and 6m, and run a calibrated screen check.",
+      es: "Descubre qué significa ver 6/6 en metros, compara las escalas 6/6, 20/20, decimal y LogMAR con alturas en milímetros a 3 m y 6 m.",
+      de: "Was bedeutet Visus 6/6 im metrischen System? Vollständige Umrechnungstabelle zu 20/20, Dezimalvisus, LogMAR und exakten Buchstabengrößen bei 3 m.",
+      fr: "Comprenez l'acuité métrique 6/6, ses correspondances en dixièmes (10/10), 20/20 et LogMAR avec hauteurs millimétriques à 3 m et 6 m.",
+      pt: "Entenda o padrão métrico 6/6, compare com 20/20, escala decimal e LogMAR, veja medidas em milímetros a 3 metros e faça o teste calibrado.",
+      it: "Scopri cosa significa acutezza visiva 6/6 in metri, il confronto con 10/10, 20/20 e LogMAR e le altezze ottotipiche calibrate a 3 metri.",
+      ru: "Узнайте, что означает острота зрения 6/6 в метрах, сравните с 1,0 по Сивцеву, 20/20 и LogMAR с точными размерами букв на 3 и 6 метров.",
     },
     content: {
       en: `
-        <h2>What 6/6 vision means</h2>
-        <p>6/6 is the metric form of 20/20. It indicates that you can read at 6 metres what an eye with standard visual acuity reads at 6 metres. Many Commonwealth countries and Indian clinical centers report vision using metric notation, while North America measures at 20 feet (about 6.1 metres). 6/6, 20/20, and decimal 1.0 all describe normal baseline distance acuity.</p>
+<p>Hearing that you have <strong>6/6 vision</strong> often puzzles patients accustomed to hearing <strong>20/20</strong> on American charts, or vice versa. Both fractions describe identical visual performance measured in different length units: 6/6 expresses testing at <strong>6 meters</strong> (the standard across the UK, Australia, Canada, India, and New Zealand), while 20/20 expresses testing at <strong>20 feet</strong> in the United States. Neither figure represents "perfect human eyesight" as a biological ceiling; instead, both define a clinical baseline resolution of <strong>1 arcminute per stroke</strong>.</p>
+      <p>Measure your current acuity accurately using our <a href="/test/">card-calibrated online eye test</a>, which locks optotype size to physical millimeters at your selected 3-meter or closer screening distance.</p>
 
-        <h2>6/6 to 20/20 conversion chart</h2>
-        <p>Every row below represents one line on a standardized <a href="/eye-test-chart/">visual acuity chart</a> written in metric, imperial, and decimal formats:</p>
-        <table class="state-table">
-          <thead><tr><th>Metric (6 m)</th><th>Feet (20 ft)</th><th>Decimal</th><th>Clinical Significance</th></tr></thead>
-          <tbody>
-            <tr><td>6/6</td><td>20/20</td><td>1.0</td><td>Normal baseline distance acuity</td></tr>
-            <tr><td>6/7.5</td><td>20/25</td><td>0.8</td><td>Near normal; passes all driving standards</td></tr>
-            <tr><td>6/9</td><td>20/30</td><td>0.67</td><td>Mild distance blur</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>0.5</td><td>Standard <a href="/us/">DMV minimum driving cutoff</a> in most jurisdictions</td></tr>
-            <tr><td>6/18</td><td>20/60</td><td>0.33</td><td>Restricted license or corrective lens requirement</td></tr>
-            <tr><td>6/24</td><td>20/80</td><td>0.25</td><td>Requires corrective lenses for safe driving</td></tr>
-            <tr><td>6/30</td><td>20/100</td><td>0.2</td><td>Substantial distance impairment</td></tr>
-            <tr><td>6/60</td><td>20/200</td><td>0.1</td><td>Statutory legal blindness cutoff without correction</td></tr>
-          </tbody>
-        </table>
+      <h2>The Optical Geometry Behind 6/6, 20/20, and 1 Arcminute</h2>
+      <p>Hermann Snellen standardized optotype design in 1862 around angular subtense rather than fixed millimeter paper sizes. Every standard letter or Tumbling E sits inside a 5x5 grid whose total height subtends <strong>5 minutes of arc (1/12 of a degree)</strong> at the designated viewing distance, so each bar and gap equals <strong>1 arcminute</strong>.</p>
+      <p>At a 6-meter test lane, exact trigonometry gives a total optotype height of <code>2 * 6000 * tan(2.5 arcminutes) = 8.73 mm</code> (stroke width 1.75 mm). When an optometrist folds a 3-meter exam room in half with a front-surface mirror to create a 6-meter optical path, light travels 6 meters total while you sit comfortably in a compact office. When our digital <a href="/checks/distance/">distance Snellen module</a> scales letters for a <strong>3-meter (10 ft)</strong> living room test, every letter halves proportionally to <strong>4.36 mm</strong> while keeping the exact same 5-arcminute angular demand on your retina.</p>
 
-        <h2>How to check 6/6 acuity at home</h2>
-        <p>Position yourself exactly 6 metres (or 20 feet) from your screen. Calibrate your display using a physical bank card or ID card, because an uncalibrated optotype cannot provide accurate angular measurements. Gently cover one eye with your palm without pressing against the eyelid, read the smallest row of optotypes, and then repeat with the other eye. You can run <a href="/">our free practice screener</a> directly in your browser.</p>
+      <h2>Complete Acuity Conversion Table: 6/6, 20/20, Decimal, LogMAR &amp; Letter Height</h2>
+      <table>
+        <thead>
+          <tr><th>Metric (6m)</th><th>Imperial (20ft)</th><th>Decimal (EU / Asia)</th><th>LogMAR</th><th>Letter Height @ 3m</th><th>Practical Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/3</td><td>20/10</td><td>2.00</td><td>-0.30</td><td>2.18 mm</td><td>Twice standard resolution (rare in young unaided eyes)</td></tr>
+          <tr><td>6/4.5</td><td>20/15</td><td>1.33</td><td>-0.12</td><td>3.27 mm</td><td>Sharper than normal clinical baseline</td></tr>
+          <tr><td><strong>6/6</strong></td><td><strong>20/20</strong></td><td><strong>1.00</strong></td><td><strong>0.00</strong></td><td><strong>4.36 mm</strong></td><td>Standard healthy reference baseline</td></tr>
+          <tr><td>6/7.5</td><td>20/25</td><td>0.80</td><td>+0.10</td><td>5.45 mm</td><td>Mild blur; passes civilian driving effortlessly</td></tr>
+          <tr><td>6/9</td><td>20/30</td><td>0.67</td><td>+0.18</td><td>6.54 mm</td><td>Clears standard 0.7 German FeV cutoff near borderline</td></tr>
+          <tr><td><strong>6/12</strong></td><td><strong>20/40</strong></td><td><strong>0.50</strong></td><td><strong>+0.30</strong></td><td><strong>8.73 mm</strong></td><td>Minimum driving standard in most US states &amp; UK 20m plate read</td></tr>
+          <tr><td>6/15</td><td>20/50</td><td>0.40</td><td>+0.40</td><td>10.91 mm</td><td>New Jersey standard; daylight limits in stricter states</td></tr>
+          <tr><td>6/18</td><td>20/60</td><td>0.33</td><td>+0.48</td><td>13.09 mm</td><td>Georgia pass baseline; noticeable distance blur</td></tr>
+          <tr><td>6/21</td><td>20/70</td><td>0.29</td><td>+0.54</td><td>15.27 mm</td><td>Common restricted/daylight threshold if uncorrectable</td></tr>
+          <tr><td>6/30</td><td>20/100</td><td>0.20</td><td>+0.70</td><td>21.82 mm</td><td>Significant refractive error or clinical eye review needed</td></tr>
+          <tr><td>6/60</td><td>20/200</td><td>0.10</td><td>+1.00</td><td>43.63 mm</td><td>Best-corrected statutory threshold for legal blindness in US/UK</td></tr>
+        </tbody>
+      </table>
+
+      <h2>How LogMAR Charts Improve on Traditional Snellen Scoring</h2>
+      <p>Notice in the table above how traditional Snellen lines jump unevenly: stepping from 6/6 to 6/9 increases size by 50%, whereas stepping from 6/18 to 6/21 increases size by only 17%. Clinical research and ETDRS trials solve that inconsistency with <strong>LogMAR (Logarithm of the Minimum Angle of Resolution)</strong>, where each line multiplies letter height by a constant geometric factor of <code>10^0.1</code> (roughly 1.2589x) and places exactly five equal-difficulty letters on every row. Lower LogMAR scores mean sharper eyesight: 0.00 equals 6/6, negative values like -0.10 denote above-average resolution, and +0.30 corresponds directly to 6/12 or 20/40.</p>
+
+      <h2>Why Card Calibration Matters Before Running a 6/6 Screen Test</h2>
+      <p>Browser pixels do not have a fixed physical width. A 14-inch laptop running at 150% display scaling, a 27-inch desktop monitor, and an external 4K display all render a "24px font" at completely different millimeter heights. Without physical calibration against a <strong>85.60 mm credit card or ID card</strong>, an uncalibrated webpage can make 6/9 look as large as 6/15 and give false confidence before an eye exam. Always calibrate once per device, then test at 3 meters with each eye individually using clean lenses.</p>
+
+      <h2>Can You Have Better Than 6/6 Vision?</h2>
+      <p>Yes. Many young healthy eyes and precisely corrected spectacle wearers comfortably read the <strong>6/4.5 (20/15)</strong> or even <strong>6/3 (20/10)</strong> line in bright examination lighting. Conversely, reading 6/6 without glasses still does not rule out latent hyperopia (farsightedness that strains focusing muscles up close), mild astigmatism, or near focusing presbyopia. Follow distance acuity with our <a href="/checks/astigmatism/">astigmatism dial check</a> and <a href="/checks/near/">near vision test</a> for a fuller picture.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is 6/6 vision the same as 20/20?</h3>
+      <p>Yes. Both mean you resolve at 6 meters (or 20 feet) what a standard observer with 1-arcminute minimum resolution resolves at the exact same distance, equivalent to 1.0 decimal or 0.0 LogMAR.</p>
+      <h3>What does 6/12 vision mean?</h3>
+      <p>The numerator (6) is your testing distance in meters; the denominator (12) is the distance at which a standard eye could read that same letter size. 6/12 equals 20/40 or 0.50 decimal acuity.</p>
+      <h3>What is considered poor eyesight on the 6/6 scale?</h3>
+      <p>Correctable acuity below 6/12 affects daytime driving safety in most jurisdictions, while best-corrected visual acuity of 6/60 (20/200) or worse in the better eye qualifies clinically as severe vision loss or legal blindness.</p>
       `,
       es: `
-        <h2>Qué significa una visión 6/6</h2>
-        <p>6/6 es la notación métrica equivalente a 20/20 en el sistema imperial. Indica que a 6 metros puedes leer lo que una persona con visión estándar distingue a esa misma distancia. En la escala decimal, 6/6 y 20/20 corresponden a 1.0 (visión normal al 100%).</p>
-        
-        <h2>Tabla de equivalencias 6/6 a 20/20</h2>
-        <p>La siguiente tabla muestra cómo se corresponden los resultados entre sistemas:</p>
-        <table class="state-table">
-          <thead><tr><th>Métrico (6 m)</th><th>Pies (20 ft)</th><th>Decimal</th><th>Significado</th></tr></thead>
-          <tbody>
-            <tr><td>6/6</td><td>20/20</td><td>1.0</td><td>Visión normal</td></tr>
-            <tr><td>6/7.5</td><td>20/25</td><td>0.8</td><td>Excelente agudeza</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>0.5</td><td>Mínimo legal estándar para conducir</td></tr>
-            <tr><td>6/18</td><td>20/60</td><td>0.33</td><td>Requiere corrección óptica</td></tr>
-            <tr><td>6/60</td><td>20/200</td><td>0.1</td><td>Límite de ceguera legal sin lentes</td></tr>
-          </tbody>
-        </table>
+<p>En consultas oftalmológicas internacionales es frecuente escuchar el resultado <strong>6/6</strong>, mientras que en América se utiliza <strong>20/20</strong> y en España o Europa continental predomina la escala decimal de <strong>1,0 (o 10/10)</strong>. Aunque cambien las cifras, las tres notaciones expresan exactamente el mismo rendimiento óptico: la capacidad de distinguir detalles separados por <strong>1 minuto de arco</strong> a la distancia clínica estándar.</p>
+      <p>Comprueba tu agudeza actual de forma fiable con nuestro <a href="/es/test/">test de visión calibrado con tarjeta bancaria</a>, que ajusta el tamaño exacto en milímetros para evaluar tu vista a 3 metros o a distancia corta.</p>
 
-        <h2>Cómo comprobar tu agudeza en casa</h2>
-        <p>Para comprobar si tienes visión 6/6 o 20/20, calibra tu pantalla con una tarjeta plástica en nuestra <a href="/es/test/">prueba visual gratuita</a> y colócate a la distancia recomendada. Si notas dificultades para leer las líneas intermedias, es aconsejable consultar a un especialista.</p>
+      <h2>Geometría Óptica Detrás de 6/6, 20/20 y 1 Minuto de Arco</h2>
+      <p>El oftalmólogo neerlandés Hermann Snellen definió en 1862 la carta optométrica universal partiendo del ángulo visual en lugar de tamaños fijos impresos. Cada letra estándar encaja en una cuadrícula de 5x5 módulos cuyo alto total subtiende <strong>5 minutos de arco</strong> a la distancia de referencia, de modo que cada trazo o espacio blanco mide <strong>1 minuto de arco</strong>.</p>
+      <p>En la escala métrica de 6 metros (utilizada en Reino Unido, Australia o Canadá), la altura exacta de la letra 6/6 es de <strong>8,73 mm</strong> (\`2 * 6000 * tan(2,5')\`). En la mayoría de gabinetes actuales o mediante nuestro <a href="/checks/distance/">módulo de agudeza a distancia</a> a <strong>3 metros</strong>, el tamaño se reduce exactamente a la mitad (<strong>4,36 mm</strong>), manteniendo idéntica exigencia angular sobre la fóvea retiniana.</p>
+
+      <h2>Tabla Completa de Equivalencias: 6/6, 20/20, Decimal y LogMAR</h2>
+      <table>
+        <thead>
+          <tr><th>Escala 6 m</th><th>Escala 20 pies</th><th>Decimal (ES / EU)</th><th>LogMAR</th><th>Altura a 3 m</th><th>Interpretación Práctica</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/3</td><td>20/10</td><td>2,00</td><td>-0,30</td><td>2,18 mm</td><td>Agudeza superior al promedio (frecuente en ojos jóvenes sanos)</td></tr>
+          <tr><td>6/4,5</td><td>20/15</td><td>1,33</td><td>-0,12</td><td>3,27 mm</td><td>Nitidez por encima de la línea clínica estándar</td></tr>
+          <tr><td><strong>6/6</strong></td><td><strong>20/20</strong></td><td><strong>1,00</strong></td><td><strong>0,00</strong></td><td><strong>4,36 mm</strong></td><td>Referencia clínica normal (100% estándar)</td></tr>
+          <tr><td>6/7,5</td><td>20/25</td><td>0,80</td><td>+0,10</td><td>5,45 mm</td><td>Leve desenfoque; supera con margen permisos profesionales</td></tr>
+          <tr><td>6/9</td><td>20/30</td><td>0,67</td><td>+0,18</td><td>6,54 mm</td><td>Desenfoque moderado leve perceptible en señales lejanas</td></tr>
+          <tr><td><strong>6/12</strong></td><td><strong>20/40</strong></td><td><strong>0,50</strong></td><td><strong>+0,30</strong></td><td><strong>8,73 mm</strong></td><td>Mínimo legal para permiso B en España DGT y DMV EE. UU.</td></tr>
+          <tr><td>6/15</td><td>20/50</td><td>0,40</td><td>+0,40</td><td>10,91 mm</td><td>Requiere nueva graduación óptica para conducir con seguridad</td></tr>
+          <tr><td>6/20</td><td>20/63</td><td>0,32</td><td>+0,50</td><td>14,54 mm</td><td>Baja agudeza de lejos; precisa valoración oftalmológica</td></tr>
+          <tr><td>6/30</td><td>20/100</td><td>0,20</td><td>+0,70</td><td>21,82 mm</td><td>Límite mínimo en el ojo débil para licencia italiana o revisión</td></tr>
+          <tr><td>6/60</td><td>20/200</td><td>0,10</td><td>+1,00</td><td>43,63 mm</td><td>Umbral legal de baja visión severa cuando no mejora con lentes</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Por Qué LogMAR Corrige las Irregularidades de Snellen</h2>
+      <p>Las cartas Snellen tradicionales cambian de tamaño de manera desigual entre filas. Las cartillas clínicas <strong>LogMAR</strong> resuelven este sesgo aplicando un crecimiento geométrico constante de <code>10^0,1</code> (factor 1,2589x por fila) con cinco optotipos por nivel. En esta escala, 0,00 equivale exactamente a 6/6 (1,0 decimal), los valores negativos indican visión más fina que el estándar y +0,30 corresponde directamente a 6/12 (0,5 decimal o 20/40).</p>
+
+      <h2>Cómo Calibrar Correctamente Tu Pantalla para 6/6</h2>
+      <p>Cada navegador y portátil cambia el tamaño físico del píxel según la densidad DPI y el escalado del sistema operativo (100%, 125%, 150%). Antes de evaluar una fila 6/6 de apenas 4,36 mm a 3 metros, ajusta siempre el rectángulo de calibración con una tarjeta estándar de 85,60 mm de ancho. Realiza la prueba primero con ambos ojos, luego cubriendo suavemente un ojo por vez sin apretar el párpado, y compleméntala con la <a href="/checks/astigmatism/">comprobación de astigmatismo</a> y el <a href="/checks/near/">test de lectura de cerca</a>.</p>
+
+      <h2>Preguntas Frecuentes</h2>
+      <h3>¿6/6 significa tener "100% de vista máxima"?</h3>
+      <p>No es un máximo biológico, sino el punto de referencia clínico promedio. Muchas personas jóvenes sin defecto refractivo leen con facilidad la fila 6/4,5 (20/15) o incluso 6/3.</p>
+      <h3>¿Qué significa tener visión 6/9 o 6/12?</h3>
+      <p>Significa que a 6 metros necesitas un tamaño de letra que un ojo estándar distingue ya desde 9 o 12 metros respectivamente. En escala decimal corresponden a 0,67 y 0,50.</p>
+      <h3>¿Ver 6/6 descarta cualquier problema ocular?</h3>
+      <p>No. La agudeza central no detecta glaucoma periférico, presbicia incipiente de cerca ni astigmatismos leves compensados mediante esfuerzo muscular continuo.</p>
       `,
       de: `
-        <h2>Was bedeutet eine Sehkraft von 6/6?</h2>
-        <p>6/6 ist die metrische Angabe für eine Sehschärfe von 20/20 oder einen Dezimal-Visus von 1,0. Es bedeutet, dass Sie auf 6 Meter Entfernung das erkennen können, was ein normalsichtiges Auge auf 6 Meter sieht.</p>
-        
-        <h2>Umrechnungstabelle von 6/6 zu 20/20</h2>
-        <table class="state-table">
-          <thead><tr><th>Metrisch (6 m)</th><th>Fuß (20 ft)</th><th>Dezimal</th><th>Bedeutung</th></tr></thead>
-          <tbody>
-            <tr><td>6/6</td><td>20/20</td><td>1.0</td><td>Normale Sehschärfe</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>0.5</td><td>Mindestwert für den Führerschein</td></tr>
-            <tr><td>6/18</td><td>20/60</td><td>0.33</td><td>Sehhilfe erforderlich</td></tr>
-            <tr><td>6/60</td><td>20/200</td><td>0.1</td><td>Gesetzliche Erblindungsgrenze</td></tr>
-          </tbody>
-        </table>
+<p>In englischsprachigen Arztberichten taucht häufig der Wert <strong>6/6</strong> oder <strong>20/20</strong> auf, während deutsche Augenoptiker und Augenärzte fast ausschließlich den <strong>Dezimalvisus 1,0</strong> verwenden. Alle drei Angaben beschreiben exakt dieselbe optische Auflösung: das Erkennen feiner Details unter einem Sehwinkel von <strong>1 Winkelminute</strong>. Der einzige Unterschied liegt in der Maßeinheit der Prüfentfernung: 6 Meter in Europa, Australien und Asien gegenüber 20 Fuß in den Vereinigten Staaten.</p>
+      <p>Prüfen Sie Ihre Sehleistung exakt unter normierter Größe mit unserem <a href="/de/test/">kartenkalibrierten Online-Sehtest</a>, bevor Sie einen Sehtest beim Optiker oder eine Führerscheinuntersuchung absolvieren.</p>
 
-        <h2>Sehtest zu Hause durchführen</h2>
-        <p>Mit unserem <a href="/de/test/">kostenlosen Sehtest online</a> können Sie Ihre Sehschärfe schnell und kalibriert prüfen. Halten Sie den erforderlichen Abstand ein und testen Sie jedes Auge einzeln.</p>
+      <h2>Geometrie hinter Visus 6/6, 20/20 und Dezimal 1,0</h2>
+      <p>Hermann Snellen definierte 1862 das Normzeichen über ein 5x5-Raster: Die gesamte Höhe eines Buchstabens oder Landolt-Rings erscheint aus der Prüfentfernung unter exakt <strong>5 Winkelminuten</strong>, sodass ein einzelner Balken oder die Ringöffnung genau <strong>1 Winkelminute</strong> einnimmt.</p>
+      <p>Bei 6 Metern Prüfdistanz beträgt die rechnerische Zeichengröße für Visus 1,0 exakt <code>8,73 mm</code>. Da viele Praxisräume kürzer geschnitten sind, arbeiten unser <a href="/checks/distance/">Fernvisus-Testmodul</a> und moderne Prüfgeräte häufig mit <strong>3 Metern Distanz</strong> oder gefalteten Spiegelsystemen: Bei 3 Metern halbiert sich die Zeichengröße linear auf exakt <strong>4,36 mm</strong>, während der Netzhautwinkel unverändert 5 Winkelminuten beträgt.</p>
+
+      <h2>Umrechnungstabelle: 6/6, 20/20, Dezimalvisus, LogMAR &amp; Größe bei 3 m</h2>
+      <table>
+        <thead>
+          <tr><th>Metrisch (6 m)</th><th>Imperial (20 ft)</th><th>Dezimalvisus (DE)</th><th>LogMAR</th><th>Zeichenhöhe @ 3 m</th><th>Alltags- &amp; FeV-Einordnung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/3</td><td>20/10</td><td>2,00</td><td>-0,30</td><td>2,18 mm</td><td>Überdurchschnittliche Auflösung bei jungen gesunden Augen</td></tr>
+          <tr><td>6/4,8</td><td>20/16</td><td>1,25</td><td>-0,10</td><td>3,49 mm</td><td>Sehr gute Fernsicht oberhalb des Standardwerts</td></tr>
+          <tr><td><strong>6/6</strong></td><td><strong>20/20</strong></td><td><strong>1,00</strong></td><td><strong>0,00</strong></td><td><strong>4,36 mm</strong></td><td>Klinischer Richtwert normaler Tagessehschärfe (100%)</td></tr>
+          <tr><td>6/7,5</td><td>20/25</td><td>0,80</td><td>+0,10</td><td>5,45 mm</td><td>Erfüllt auch LKW-/Bus-Mindestanforderung besseres Auge (FeV)</td></tr>
+          <tr><td>6/8,5</td><td>20/28</td><td>0,70</td><td>+0,15</td><td>6,23 mm</td><td>Gesetzliche FeV-Grenze je Auge für Führerschein-Sehtest Klasse B</td></tr>
+          <tr><td><strong>6/12</strong></td><td><strong>20/40</strong></td><td><strong>0,50</strong></td><td><strong>+0,30</strong></td><td><strong>8,73 mm</strong></td><td>Augenärztliche Mindestgrenze Klasse B (Nr. 1.2 FeV) &amp; US-DMV</td></tr>
+          <tr><td>6/15</td><td>20/50</td><td>0,40</td><td>+0,40</td><td>10,91 mm</td><td>Deutliche Unschärfe; Brillenbestimmung beim Optiker ratsam</td></tr>
+          <tr><td>6/30</td><td>20/100</td><td>0,20</td><td>+0,70</td><td>21,82 mm</td><td>Erhebliche Sehminderung ohne Korrektur</td></tr>
+          <tr><td>6/60</td><td>20/200</td><td>0,10</td><td>+1,00</td><td>43,63 mm</td><td>Starke Sehbehinderung bei bestkorrigierter Messung</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Warum LogMAR wissenschaftlich genauer misst als klassische Tafeln</h2>
+      <p>Bei klassischen Snellen-Reihen schwanken die Größensprünge stark. Die in Studien genutzte <strong>LogMAR-Skala</strong> wählt stattdessen von Zeile zu Zeile einen einheitlichen Faktor von <code>10^0,1</code> (etwa 1,2589x) mit jeweils fünf Zeichen gleicher Erkennbarkeit. Visus 1,0 entspricht dabei genau <code>0,00 LogMAR</code>, schärfere Augen erzielen negative Werte wie -0,10, und Visus 0,5 entspricht exakt +0,30 LogMAR. Eine ausführlichere Bewertung der Öffnungsrichtungen finden Sie zudem im <a href="/checks/landolt/">Landolt-Ring-Check</a>.</p>
+
+      <h2>Warum Bildschirmkalibrierung vor dem Online-Test unverzichtbar ist</h2>
+      <p>Windows-Skalierung (125% oder 150%), macOS Retina-Auflösung und unterschiedliche Monitorgrößen führen dazu, dass dieselbe Pixelzahl auf zwei Laptops völlig verschieden groß erscheint. Da ein 6/6-Zeichen auf 3 Metern exakt 4,36 mm hoch sein muss, kalibrieren Sie Ihren Bildschirm einmalig mit einer 85,60 mm breiten EC- oder Kreditkarte. Prüfen Sie jedes Auge einzeln bei gleichmäßiger Raumbeleuchtung ohne Gegenlicht hinter dem Display und reinigen Sie zuvor Ihre Brillengläser.</p>
+
+      <h2>Kann man besser als 6/6 sehen?</h2>
+      <p>Ja. Viele junge gesunde Augen sowie optimal korrigierte Kontaktlinsenträger erreichen im hellen Untersuchungszimmer Werte von <strong>1,25 (6/4,8)</strong> oder sogar <strong>1,6 bis 2,0 (6/3)</strong>. Gleichzeitig schließt ein scharfer Wert von 6/6 in der Ferne weder eine leichte altersbedingte Leseschwäche noch einen versteckten Astigmatismus oder eine beginnende Weitsichtigkeit aus, bei der der Ziliarmuskel kleine Unschärfen anstrengend ausgleicht. Ergänzen Sie die Messung daher stets mit dem <a href="/checks/astigmatism/">Astigmatismus-Check</a> und dem <a href="/checks/near/">Nahvisus-Test</a>.</p>
+
+      <h2>Häufige Fragen zu 6/6 und Visus 1,0</h2>
+      <h3>Ist Visus 6/6 dasselbe wie 100% Sehkraft?</h3>
+      <p>Umgangssprachlich ja, optisch ist 1,0 (6/6) jedoch ein statistischer Durchschnittswert normaler Sehschärfe und kein biologisches Maximum. Viele Menschen erreichen mit passender Brille 1,25 oder 1,6.</p>
+      <h3>Reicht 6/6 für den deutschen Führerschein-Sehtest?</h3>
+      <p>Ja, eindeutig. Die Führerscheinstelle verlangt für Klasse B beim Optiker mindestens 0,7 auf jedem Auge einzeln, was deutlich unter 1,0 (6/6) liegt.</p>
+      <h3>Warum sehe ich 6/6 scharf, bekomme aber beim Lesen Kopfschmerzen?</h3>
+      <p>Leichte Weitsichtigkeit (Hyperopie), Hornhautverkrümmung oder beginnende Alterssichtigkeit lassen sich in der Ferne muskulär ausgleichen, ermüden aber im Nahbereich.</p>
       `,
       fr: `
-        <h2>Que signifie une acuité visuelle de 6/6 ?</h2>
-        <p>6/6 est la notation métrique de l'acuité 20/20. Elle signifie que vous distinguez à 6 mètres ce qu'un œil standard lit à 6 mètres. Dans le système décimal couramment utilisé en Europe, cela équivaut à 10/10e (1.0).</p>
-        
-        <h2>Tableau de conversion 6/6, 20/20 et décimal</h2>
-        <table class="state-table">
-          <thead><tr><th>Métrique</th><th>Impérial</th><th>Décimal</th><th>Statut</th></tr></thead>
-          <tbody>
-            <tr><td>6/6</td><td>20/20</td><td>10/10 (1.0)</td><td>Vision normale</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>5/10 (0.5)</td><td>Seuil légal pour le permis de conduire</td></tr>
-            <tr><td>6/18</td><td>20/60</td><td>3/10 (0.33)</td><td>Nécessite des verres correcteurs</td></tr>
-            <tr><td>6/60</td><td>20/200</td><td>1/10 (0.1)</td><td>Seuil de malvoyance sévère</td></tr>
-          </tbody>
-        </table>
+<p>Sur un compte-rendu médical étranger, l'acuité visuelle apparaît souvent sous la forme <strong>6/6</strong> (système métrique britannique ou australien) ou <strong>20/20</strong> (système impérial nord-américain), tandis qu'en France l'échelle Monoyer exprime le même résultat en <strong>10/10</strong>. Ces trois notations désignent exactement la même finesse optique : la capacité de l'œil à résoudre deux détails séparés par un angle de <strong>1 minute d'arc</strong>.</p>
+      <p>Vérifiez votre propre acuité dans des conditions géométriques fiables grâce à notre <a href="/fr/test/">test de vue calibré en ligne</a> avant de consulter un ophtalmologue.</p>
 
-        <h2>Comment vérifier votre vision chez vous</h2>
-        <p>Grâce à notre <a href="/fr/test/">test de vue en ligne</a>, étalonnez votre affichage avec une carte bancaire et vérifiez votre vision à distance pour chaque œil séparément.</p>
+      <h2>Principes Optiques de l'Acuité 6/6, 20/20 et 10/10</h2>
+      <p>Conçue par Hermann Snellen en 1862, la règle géométrique impose qu'une lettre de référence soit inscrite dans un carré de 5x5 unités dont la hauteur totale sous-tend <strong>5 minutes d'arc</strong> à la distance prévue, soit <strong>1 minute d'arc par barre ou espace</strong>.</p>
+      <p>À 6 mètres, une lettre 6/6 mesure précisément <strong>8,73 mm</strong> de haut. Dans un salon ou un cabinet de <strong>3 mètres</strong> comme dans notre <a href="/checks/distance/">module d'acuité à distance</a>, cette hauteur est exactement divisée par deux (<strong>4,36 mm</strong>), préservant strictement le même angle visuel sur la macula. Les ophtalmologues utilisent d'ailleurs souvent un miroir plan face au patient dans une salle de 3 mètres afin de reconstituer un trajet optique complet de 6 mètres sans fausser l'accommodation.</p>
+
+      <h2>Tableau Complet : 6/6, 20/20, Dixièmes (10/10) et LogMAR</h2>
+      <table>
+        <thead>
+          <tr><th>Métrique (6 m)</th><th>Impérial (20 ft)</th><th>Dixièmes (FR)</th><th>LogMAR</th><th>Hauteur @ 3 m</th><th>Signification Clinique</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/3</td><td>20/10</td><td>20/10 (2,0)</td><td>-0,30</td><td>2,18 mm</td><td>Résolution très supérieure à la normale de référence</td></tr>
+          <tr><td>6/4,8</td><td>20/16</td><td>12,5/10 (1,25)</td><td>-0,10</td><td>3,49 mm</td><td>Vision nette au-delà du seuil clinique 10/10</td></tr>
+          <tr><td><strong>6/6</strong></td><td><strong>20/20</strong></td><td><strong>10/10 (1,0)</strong></td><td><strong>0,00</strong></td><td><strong>4,36 mm</strong></td><td>Acuité standard de référence sans perte détectée</td></tr>
+          <tr><td>6/7,5</td><td>20/25</td><td>8/10 (0,8)</td><td>+0,10</td><td>5,45 mm</td><td>Seuil minimal meilleur œil pour permis groupe lourd</td></tr>
+          <tr><td>6/9</td><td>20/30</td><td>6,7/10 (0,67)</td><td>+0,18</td><td>6,54 mm</td><td>Légère myopie ou astigmatisme discret de loin</td></tr>
+          <tr><td><strong>6/12</strong></td><td><strong>20/40</strong></td><td><strong>5/10 (0,5)</strong></td><td><strong>+0,30</strong></td><td><strong>8,73 mm</strong></td><td>Minimum binoculaire réglementaire permis B en France</td></tr>
+          <tr><td>6/15</td><td>20/50</td><td>4/10 (0,4)</td><td>+0,40</td><td>10,91 mm</td><td>Nécessite une mise à jour optique avant conduite nocturne</td></tr>
+          <tr><td>6/30</td><td>20/100</td><td>2/10 (0,2)</td><td>+0,70</td><td>21,82 mm</td><td>Baisse d'acuité marquée justifiant un bilan complet</td></tr>
+          <tr><td>6/60</td><td>20/200</td><td>1/10 (0,1)</td><td>+1,00</td><td>43,63 mm</td><td>Seuil de malvoyance sévère en l'absence de correction efficace</td></tr>
+        </tbody>
+      </table>
+
+      <h2>L'Intérêt de l'Échelle LogMAR par Rapport aux Échelles Classiques</h2>
+      <p>Les échelles traditionnelles présentent des écarts irréguliers entre lignes : passer de 6/6 à 6/9 augmente la taille de 50%, alors que passer de 6/18 à 6/21 ne l'augmente que de 17%. L'échelle scientifique <strong>LogMAR</strong> applique au contraire une progression géométrique rigoureuse de <code>10^0,1</code> (environ 1,2589x entre chaque ligne) avec cinq caractères d'égale difficulté par rangée. Un score de 0,00 correspond à 6/6 (10/10), un score négatif indique une acuité supérieure à la moyenne, et +0,30 équivaut à 6/12 (5/10).</p>
+
+      <h2>Calibration par Carte Bancaire et Tests Complémentaires</h2>
+      <p>Le zoom système de Windows ou l'affichage haute densité Retina faussent la taille physique d'un caractère HTML non calibré. Avant de mesurer la ligne 6/6 (4,36 mm à 3 m), ajustez toujours l'outil à la largeur exacte d'une carte bancaire de 85,60 mm. Vérifiez chaque œil séparément en couvrant l'œil opposé sans appuyer sur la paupière. Même avec 10/10 de loin, un léger astigmatisme ou une presbytie naissante peuvent fatiguer la lecture ; complétez si besoin par le <a href="/checks/astigmatism/">cadran d'astigmatisme</a> et le <a href="/checks/near/">test de vision de près</a>.</p>
+
+      <h2>Questions Fréquentes</h2>
+      <h3>Avoir 6/6 ou 10/10 est-il le maximum possible ?</h3>
+      <p>Non. 6/6 et 10/10 constituent une norme clinique de référence, mais de nombreux jeunes adultes ou porteurs de lentilles bien adaptées atteignent 12/10 ou 15/10 (6/4).</p>
+      <h3>Que veut dire un résultat de 6/12 ?</h3>
+      <p>Un observateur à vision standard distingue à 12 mètres ce que vous déchiffrez à 6 mètres. Cela correspond exactement à 5/10 en France ou 20/40 aux États-Unis.</p>
+      <h3>Une acuité 6/6 garantit-elle une conduite nocturne sans gêne ?</h3>
+      <p>Pas toujours : la sensibilité aux contrastes et l'éblouissement peuvent baisser avant même une perte sur lettres noires sur fond blanc.</p>
       `,
       pt: `
-        <h2>O que significa visão 6/6</h2>
-        <p>6/6 é a representação métrica de 20/20 (ou 1.0 na escala decimal). Isso indica que você consegue ler a 6 metros o que uma pessoa com visão padrão enxerga a 6 metros. É o padrão internacional para visão normal à distância.</p>
+<p>Quem busca informações sobre saúde ocular na internet encontra com frequência os termos <strong>visão 6/6</strong>, <strong>20/20</strong> ou <strong>1,0 (10/10)</strong>. Apesar dos números distintos, todas essas frações representam exatamente a mesma acuidade visual normal: a capacidade de identificar detalhes separados por um ângulo visual de <strong>1 minuto de arco</strong>. A diferença está apenas na unidade adotada para a distância padrão da consulta: <strong>6 metros</strong> no padrão métrico internacional (Reino Unido, Austrália, Índia e Europa) contra <strong>20 pés</strong> nos Estados Unidos.</p>
+      <p>Faça uma medição fiel no navegador utilizando nosso <a href="/pt/test/">teste de visão calibrado por cartão</a>, que converte cada letra para a altura milimétrica exata na sua distância de leitura.</p>
 
-        <h2>Tabela de conversão 6/6 para 20/20 e escala decimal</h2>
-        <table class="state-table">
-          <thead><tr><th>Métrico (6 m)</th><th>Pés (20 ft)</th><th>Decimal</th><th>Significado</th></tr></thead>
-          <tbody>
-            <tr><td>6/6</td><td>20/20</td><td>1.0</td><td>Visão normal perfeita</td></tr>
-            <tr><td>6/7.5</td><td>20/25</td><td>0.8</td><td>Excelente acuidade</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>0.5</td><td>Limite mínimo para CNH sem restrição</td></tr>
-            <tr><td>6/18</td><td>20/60</td><td>0.33</td><td>Exige lentes corretivas para dirigir</td></tr>
-            <tr><td>6/60</td><td>20/200</td><td>0.1</td><td>Limite de cegueira legal</td></tr>
-          </tbody>
-        </table>
+      <h2>A Geometria Clínica do Padrão 6/6 e 20/20</h2>
+      <p>Em 1862, Hermann Snellen criou a tabela optométrica a partir de ângulos retinianos fixos. Cada letra encaixa-se em uma grade 5x5 cuja altura total ocupa exatamente <strong>5 minutos de arco</strong> à distância padrão, tornando cada traço e espaço igual a <strong>1 minuto de arco</strong>.</p>
+      <p>A 6 metros reais, a letra da linha 6/6 mede exatos <strong>8,73 mm</strong> de altura. Como muitos consultórios e salas domésticas têm <strong>3 metros</strong> de comprimento útil, oftalmologistas usam espelhos frontais para dobrar o percurso luminoso até 6 metros ou reduzem os caracteres proporcionalmente. Em nosso <a href="/checks/distance/">módulo calibrado à distância</a> a 3 metros, a linha 6/6 mede exatos <strong>4,36 mm</strong>, mantendo exatamente a mesma exigência óptica sobre a retina.</p>
 
-        <h2>Como testar em casa</h2>
-        <p>Você pode testar sua visão em nosso <a href="/pt/test/">teste de visão online gratuito</a>. Calibre a tela com seu cartão de banco e mantenha a distância correta para avaliar se a sua visão atinge o padrão 6/6 ou 20/40.</p>
+      <h2>Tabela Comparativa: 6/6, 20/20, Decimal, LogMAR e Altura em 3 m</h2>
+      <table>
+        <thead>
+          <tr><th>Padrão 6 m</th><th>Padrão 20 ft</th><th>Decimal (BR/PT)</th><th>LogMAR</th><th>Altura @ 3 m</th><th>Interpretação Clínica</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/3</td><td>20/10</td><td>2,00</td><td>-0,30</td><td>2,18 mm</td><td>Acuidade excepcional acima da referência padrão</td></tr>
+          <tr><td>6/4,5</td><td>20/15</td><td>1,33</td><td>-0,12</td><td>3,27 mm</td><td>Visão mais nítida que a linha clínica básica</td></tr>
+          <tr><td><strong>6/6</strong></td><td><strong>20/20</strong></td><td><strong>1,00</strong></td><td><strong>0,00</strong></td><td><strong>4,36 mm</strong></td><td>Referência saudável padrão de acuidade distante</td></tr>
+          <tr><td>6/7,5</td><td>20/25</td><td>0,80</td><td>+0,10</td><td>5,45 mm</td><td>Leve variação; atende categorias profissionais rigorosas</td></tr>
+          <tr><td>6/9</td><td>20/30</td><td>0,67</td><td>+0,18</td><td>6,54 mm</td><td>Desfoque discreto perceptível em placas distantes à noite</td></tr>
+          <tr><td><strong>6/12</strong></td><td><strong>20/40</strong></td><td><strong>0,50</strong></td><td><strong>+0,30</strong></td><td><strong>8,73 mm</strong></td><td>Referência mínima comum para CNH categorias A e B</td></tr>
+          <tr><td>6/15</td><td>20/50</td><td>0,40</td><td>+0,40</td><td>10,91 mm</td><td>Recomenda-se exame oftalmológico para novos óculos</td></tr>
+          <tr><td>6/30</td><td>20/100</td><td>0,20</td><td>+0,70</td><td>21,82 mm</td><td>Redução acentuada da nitidez sem correção óptica</td></tr>
+          <tr><td>6/60</td><td>20/200</td><td>0,10</td><td>+1,00</td><td>43,63 mm</td><td>Patamar clínico de baixa visão acentuada quando não corrigível</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Escala LogMAR vs Tabela de Snellen Convencional</h2>
+      <p>Na tabela tradicional de Snellen, a variação percentual entre linhas próximas não é uniforme: passar de 6/6 para 6/9 aumenta a letra em 50%, mas passar de 6/18 para 6/21 altera apenas 17%. Para pesquisas científicas e acompanhamentos precisos, a tabela <strong>LogMAR</strong> utiliza progressão geométrica fixa de <code>10^0,1</code> (cerca de 1,2589x por linha) com cinco letras de dificuldade equivalente em cada nível. Nessa escala, 0,00 corresponde a 6/6 (1,0 decimal), valores negativos revelam visão acima da média e +0,30 equivale a 6/12 (0,5 ou 20/40).</p>
+
+      <h2>Por Que Calibrar o Monitor e Avaliar Além de 6/6</h2>
+      <p>Sem calibração física, notebooks Windows com zoom de 125% ou telas Retina alteram completamente a altura das letras na tela. Ajustar o quadro inicial usando um cartão bancário de 85,60 mm assegura que a linha 6/6 meça exatamente 4,36 mm a 3 metros. Além disso, alcançar 6/6 para longe não descarta astigmatismo leve nem dificuldade de foco próximo após os 40 anos; complemente sempre com o <a href="/checks/astigmatism/">teste de astigmatismo</a> e o <a href="/checks/near/">teste de visão para perto</a>.</p>
+
+      <h2>Perguntas Frequentes</h2>
+      <h3>Visão 6/6 é sinônimo exato de 20/20?</h3>
+      <p>Sim. Ambos significam que você enxerga a 6 metros (ou 20 pés) o mesmo detalhe mínimo definido como padrão de 1 minuto de arco, equivalente a 1,0 na escala decimal do Detran.</p>
+      <h3>O que significa ter visão 6/12 ou 0,5?</h3>
+      <p>Significa que você precisa estar a 6 metros para distinguir um detalhe que a visão de referência enxerga a 12 metros de distância, exigindo atenção redobrada ou lentes corretivas.</p>
+      <h3>Ter visão 6/6 garante que não preciso de óculos para ler?</h3>
+      <p>Não. A escala 6/6 mede nitidez para longe; após os 40 anos é comum surgir presbiopia ("vista cansada") para leitura próxima mantendo 6/6 à distância.</p>
       `,
       it: `
-        <h2>Cosa significa visione 6/6</h2>
-        <p>6/6 è la forma metrica di 20/20 (o 10/10 nel sistema decimale europeo). Significa che leggi a 6 metri ciò che un occhio standard legge a 6 metri. 6/6, 20/20 e 1.0 indicano tutti una normale e ottimale visione da lontano.</p>
-        
-        <h2>Tabella di conversione da 6/6 a 20/20</h2>
-        <table class="state-table">
-          <thead><tr><th>Metrico (6 m)</th><th>Piedi (20 ft)</th><th>Decimale</th><th>Significato</th></tr></thead>
-          <tbody>
-            <tr><td>6/6</td><td>20/20</td><td>1.0 (10/10)</td><td>Visione normale ottimale</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>0.5 (5/10)</td><td>Soglia minima per idoneità patente</td></tr>
-            <tr><td>6/18</td><td>20/60</td><td>0.33 (3/10)</td><td>Richiede correzione visiva</td></tr>
-            <tr><td>6/60</td><td>20/200</td><td>0.1 (1/10)</td><td>Soglia di cecità legale</td></tr>
-          </tbody>
-        </table>
+<p>Chi consulta referti oculistici anglofoni o guide internazionali incontra spesso l'espressione <strong>vista 6/6</strong> oppure <strong>20/20</strong>, mentre in Italia il visus viene abitualmente espresso in <strong>decimi (10/10)</strong>. Nonostante i numeri diversi, tutte e tre le scale indicano la medesima capacità visiva normale: distinguere dettagli separati da un angolo visivo di <strong>1 primo d'arco</strong> alla distanza di prova stabilita.</p>
+      <p>Misura la tua acutezza visiva con precisione geometrica grazie al nostro <a href="/it/test/">test della vista calibrato con tessera</a>, impostato per riprodurre fedelmente l'ottotipo anche a 3 metri in casa.</p>
 
-        <h2>Come controllare il 6/6 a casa</h2>
-        <p>Posizionati a 6 metri dallo schermo (o a 3 metri per la scala ridotta). Calibra il display con una carta bancaria sul nostro <a href="/it/test/">test della vista gratuito</a>. Copri un occhio e leggi la riga più piccola per verificare se raggiungi i 10/10.</p>
+      <h2>La Geometria Ottica Dietro 6/6, 20/20 e 10/10</h2>
+      <p>Nel 1862 Hermann Snellen basò i caratteri ottotipici sull'angolo retinico anziché su dimensioni cartacee arbitrarie: ogni lettera occupa una griglia 5x5 la cui altezza totale sottende <strong>5 primi d'arco</strong> alla distanza di riferimento, lasciando <strong>1 primo d'arco</strong> a ciascun tratto e spazio.</p>
+      <p>Alla distanza metrica di 6 metri, la lettera corrispondente ai 10/10 (6/6) misura esattamente <strong>8,73 mm</strong>. Negli studi moderni lunghi 3 metri con specchio riflettente per raddoppiare il percorso ottico o nel nostro <a href="/checks/distance/">modulo per visione da lontano a 3 metri</a>, l'altezza dei caratteri si dimezza esattamente a <strong>4,36 mm</strong>, conservando identico l'impegno angolare sulla macula.</p>
+
+      <h2>Tabella di Conversione Completa: 6/6, 20/20, Decimi e LogMAR</h2>
+      <table>
+        <thead>
+          <tr><th>Scala 6 m</th><th>Scala 20 ft</th><th>Decimi (IT)</th><th>LogMAR</th><th>Altezza @ 3 m</th><th>Significato Pratico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/3</td><td>20/10</td><td>20/10 (2,0)</td><td>-0,30</td><td>2,18 mm</td><td>Risoluzione visiva nettamente superiore allo standard</td></tr>
+          <tr><td>6/4,5</td><td>20/15</td><td>13/10 (1,33)</td><td>-0,12</td><td>3,27 mm</td><td>Visione nitida oltre la soglia di riferimento clinica</td></tr>
+          <tr><td><strong>6/6</strong></td><td><strong>20/20</strong></td><td><strong>10/10 (1,0)</strong></td><td><strong>0,00</strong></td><td><strong>4,36 mm</strong></td><td>Acutezza visiva standard normale da lontano</td></tr>
+          <tr><td>6/7,5</td><td>20/25</td><td>8/10 (0,8)</td><td>+0,10</td><td>5,45 mm</td><td>Ottimo livello, idoneo anche per patenti superiori Gruppo 2</td></tr>
+          <tr><td>6/9</td><td>20/30</td><td>7/10 (0,67)</td><td>+0,18</td><td>6,54 mm</td><td>Soglia complessiva minima richiesta per rinnovo patente B</td></tr>
+          <tr><td><strong>6/12</strong></td><td><strong>20/40</strong></td><td><strong>5/10 (0,5)</strong></td><td><strong>+0,30</strong></td><td><strong>8,73 mm</strong></td><td>Lieve deficit da lontano, utile controllo ottico</td></tr>
+          <tr><td>6/15</td><td>20/50</td><td>4/10 (0,4)</td><td>+0,40</td><td>10,91 mm</td><td>Opportuna verifica di miopia o astigmatismo</td></tr>
+          <tr><td>6/30</td><td>20/100</td><td>2/10 (0,2)</td><td>+0,70</td><td>21,82 mm</td><td>Limite minimo nell'occhio peggiore per patente B binoculare</td></tr>
+          <tr><td>6/60</td><td>20/200</td><td>1/10 (0,1)</td><td>+1,00</td><td>43,63 mm</td><td>Riduzione visiva severa in assenza di correzione</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Perché la Scala LogMAR Supera le Tabelle Snellen Classiche</h2>
+      <p>Nelle tabelle tradizionali gli incrementi tra righe consecutive non sono uniformi: passare da 6/6 a 6/9 aumenta la lettera del 50%, mentre da 6/18 a 6/21 cambia solo del 17%. La scala clinica <strong>LogMAR</strong> mantiene invece un fattore geometrico costante di <code>10^0,1</code> (circa 1,2589x) fra ogni livello, presentando sempre cinque lettere di uguale leggibilità. Il punteggio 0,00 corrisponde a 6/6 (10/10), i numeri negativi indicano vista più acuta e +0,30 equivale a 6/12 (5/10).</p>
+
+      <h2>Importanza della Calibrazione Fisica e dei Test Complementari</h2>
+      <p>Schermi Retina o portatili Windows impostati al 125% o 150% alterano sensibilmente la dimensione in millimetri delle lettere sul browser. Allineando il riquadro iniziale con una tessera fisica da 85,60 mm garantisci che la riga 6/6 misuri esattamente 4,36 mm a 3 metri. Ricorda inoltre che vedere 10/10 da lontano non esclude un lieve astigmatismo compensato o una presbiopia iniziale: controlla sempre ciascun occhio singolarmente e integra con il <a href="/checks/astigmatism/">test per astigmatismo</a> e la <a href="/checks/near/">verifica da vicino</a>.</p>
+
+      <h2>Domande Frequenti</h2>
+      <h3>6/6 corrisponde esattamente a 10/10 in Italia?</h3>
+      <p>Sì. Entrambi i valori rappresentano una capacità visiva di 1,0 decimale (uguale a 20/20 negli Stati Uniti).</p>
+      <h3>È possibile vedere più di 6/6 (più di 10/10)?</h3>
+      <p>Sì. Giovani senza difetti refrattivi o portatori di lenti calibrate al decimo possono leggere righe fino a 12/10 o 15/10 (6/4).</p>
+      <h3>Che differenza c'è tra avere 6/6 e avere bisogno di occhiali da lettura?</h3>
+      <p>La misura 6/6 riguarda esclusivamente la messa a fuoco da lontano; la presbiopia riduce la nitidezza da vicino mantenendo spesso inalterati i 10/10 a distanza.</p>
       `,
       ru: `
-        <h2>Что означает зрение 6/6</h2>
-        <p>6/6 — это метрическая форма записи остроты зрения 20/20 (или 1.0 в десятичной шкале, принятой в странах СНГ). Это означает, что вы видите с расстояния 6 метров те знаки, которые человек с нормальным зрением должен видеть с 6 метров.</p>
-        
-        <h2>Таблица перевода 6/6, 20/20 и десятичной шкалы</h2>
-        <table class="state-table">
-          <thead><tr><th>Метрическая (6 м)</th><th>Шкала Снеллена (20 ft)</th><th>Десятичная (Сивцев)</th><th>Клиническое значение</th></tr></thead>
-          <tbody>
-            <tr><td>6/6</td><td>20/20</td><td>1.0</td><td>Нормальное зрение 100%</td></tr>
-            <tr><td>6/7.5</td><td>20/25</td><td>0.8</td><td>Хорошая острота зрения</td></tr>
-            <tr><td>6/12</td><td>20/40</td><td>0.5</td><td>Минимальный порог для водительских прав</td></tr>
-            <tr><td>6/18</td><td>20/60</td><td>0.33</td><td>Требуется очковая коррекция</td></tr>
-            <tr><td>6/60</td><td>20/200</td><td>0.1</td><td>Тяжелое нарушение зрения</td></tr>
-          </tbody>
-        </table>
+<p>В зарубежных медицинских источниках остроту зрения часто обозначают дробью <strong>6/6</strong> или <strong>20/20</strong>, тогда как в России и странах СНГ привычнее десятичная запись <strong>1,0</strong> по таблице Сивцева. Все три записи описывают одинаковый физический предел детализации: способность различать элементы размером <strong>1 угловую минуту</strong>. Отличается лишь единица расстояния: <strong>6 метров</strong> в метрической системе (Великобритания, Австралия, Индия) против <strong>20 футов</strong> в США или <strong>5 метров</strong> в российских поликлиниках.</p>
+      <p>Проверьте текущую остроту зрения с геометрической точностью на нашем <a href="/ru/test/">калиброванном онлайн-тесте зрения</a>, настроив масштаб экрана обычной пластиковой картой.</p>
 
-        <h2>Как проверить зрение 6/6 дома</h2>
-        <p>Начните с калибровки экрана по банковской карте в нашем <a href="/ru/test/">бесплатном онлайн-тренажёре</a>. Встаньте на необходимое расстояние, проверяйте каждый глаз отдельно и сопоставьте результат с приведенной таблицей.</p>
-      `
+      <h2>Оптическая геометрия стандартов 6/6, 20/20 и 1,0</h2>
+      <p>В 1862 году Герман Снеллен привязал размеры тестовых символов к угловой величине: вся буква вписывается в сетку 5x5 и с контрольной дистанции занимает ровно <strong>5 угловых минут</strong>, а толщина каждого штриха и пробела составляет <strong>1 угловую минуту</strong>.</p>
+      <p>На расстоянии 6 метров высота знака строки 6/6 равна <strong>8,73 мм</strong> (на дистанции 5 метров по стандарту Сивцева она составляет 7,27 мм, как подробно разобрано в статье <a href="/ru/blog/proverka-zreniya-tablitsa-sivtseva/">Проверка зрения по таблице Сивцева</a>). В небольших кабинетах врачи нередко используют зеркала, чтобы удвоить 3-метровую комнату до 6 метров оптического пути. В <a href="/checks/distance/">модуле дальней проверки на 3 метрах</a> программа пропорционально уменьшает знак до <strong>4,36 мм</strong>, сохраняя идентичную угловую нагрузку на сетчатку глаза.</p>
+
+      <h2>Таблица перевода: 6/6, 20/20, десятичная шкала, LogMAR и высота на 3 м</h2>
+      <table>
+        <thead>
+          <tr><th>Шкала 6 м</th><th>Шкала 20 футов</th><th>Сивцев (RU)</th><th>LogMAR</th><th>Высота @ 3 м</th><th>Практическое значение</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/3</td><td>20/10</td><td>2,0</td><td>-0,30</td><td>2,18 мм</td><td>Острота зрения вдвое выше клинического стандарта</td></tr>
+          <tr><td>6/4,5</td><td>20/15</td><td>1,33</td><td>-0,12</td><td>3,27 мм</td><td>Высокая четкость выше базовой нормы</td></tr>
+          <tr><td><strong>6/6</strong></td><td><strong>20/20</strong></td><td><strong>1,0</strong></td><td><strong>0,00</strong></td><td><strong>4,36 мм</strong></td><td>Международный эталон нормального зрения</td></tr>
+          <tr><td>6/7,5</td><td>20/25</td><td>0,8</td><td>+0,10</td><td>5,45 мм</td><td>Норма с запасом для профессиональных водительских прав</td></tr>
+          <tr><td>6/10</td><td>20/33</td><td>0,6</td><td>+0,22</td><td>7,27 мм</td><td>Минимальный порог лучшего глаза для категории B в РФ</td></tr>
+          <tr><td><strong>6/12</strong></td><td><strong>20/40</strong></td><td><strong>0,5</strong></td><td><strong>+0,30</strong></td><td><strong>8,73 мм</strong></td><td>Базовый водительский стандарт в большинстве штатов США</td></tr>
+          <tr><td>6/15</td><td>20/50</td><td>0,4</td><td>+0,40</td><td>10,91 мм</td><td>Заметное снижение четкости вдаль, нужна проверка рефракции</td></tr>
+          <tr><td>6/30</td><td>20/100</td><td>0,2</td><td>+0,70</td><td>21,82 мм</td><td>Нижний допуск для худшего глаза при правах категории B</td></tr>
+          <tr><td>6/60</td><td>20/200</td><td>0,1</td><td>+1,00</td><td>43,63 мм</td><td>Соответствует первой верхней строке («Ш Б») таблицы Сивцева</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Чем шкала LogMAR отличается от классических таблиц</h2>
+      <p>В традиционных таблицах шаги между строками неравномерны (например, переход с 0,1 до 0,2 увеличивает размер вдвое, а с 0,9 до 1,0 лишь на 10%). В научных таблицах <strong>LogMAR</strong> каждая следующая строка меняется строго с коэффициентом <code>10^0,1</code> (примерно 1,2589x) и содержит ровно по пять знаков равной читаемости. Значение 0,00 соответствует 6/6 (1,0), отрицательные значения говорят о зрении выше стандарта, а +0,30 равно 0,5.</p>
+
+      <h2>Зачем нужна калибровка экрана картой перед проверкой 6/6</h2>
+      <p>На ноутбуках с масштабом Windows 125% или 150% и экранах высокого разрешения физический размер пикселя сильно различается. Без калибровки по банковской карте шириной 85,60 мм высота букв на экране искажается, превращая тест 6/9 в легкую строку 6/15. Откалибруйте экран один раз, проверяйте правый и левый глаз отдельно без давления на веко и дополните тест проверками в модулях <a href="/checks/astigmatism/">теста астигматизма</a> и <a href="/checks/near/">зрения вблизи</a>.</p>
+
+      <h2>Можно ли видеть лучше стандарта 6/6?</h2>
+      <p>Да. Многие молодые люди без аномалий рефракции и пользователи точно подобранных линз легко различают строки <strong>1,25 (6/4,8)</strong> и даже <strong>1,6 или 2,0 (6/3)</strong> при хорошем освещении. В то же время четкое зрение 6/6 вдаль не исключает скрытую дальнозоркость, легкий астигматизм или возрастные трудности фокусировки на мелком тексте.</p>
+
+      <h2>Частые вопросы о зрении 6/6</h2>
+      <h3>Является ли 6/6 абсолютным максимумом человеческого зрения?</h3>
+      <p>Нет. Значение 6/6 (1,0 или 20/20) представляет собой клинический ориентир нормы, тогда как многие молодые люди без патологий читают строки 1,25 или 1,5 (6/4).</p>
+      <h3>Что означает запись 6/12 или 6/18 в медицинской выписке?</h3>
+      <p>Она показывает, что мелкий объект, который человек с нормальным зрением различает с 12 или 18 метров, пациент уверенно видит лишь с 6 метров (0,5 и 0,33 по Сивцеву соответственно).</p>
+      <h3>Если зрение вдаль 6/6, может ли требоваться коррекция для чтения?</h3>
+      <p>Да. Тест 6/6 оценивает только фокусировку на дальнюю дистанцию, тогда как возрастная пресбиопия после 40 лет ухудшает четкость текста вблизи на расстоянии 35-40 см.</p>
+      `,
     }
   },
   {
