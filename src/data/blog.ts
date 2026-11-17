@@ -31,99 +31,334 @@ export const POSTS = [
     slug: "dmv-eye-test-practice",
     englishOnly: false,
     datePublished: "2025-06-20T09:00:00Z",
-    dateModified: "2026-09-21T11:00:00Z",
+    dateModified: "2026-11-17T12:00:00Z",
     title: {
-      en: "DMV Eye Test Online - Practice Test",
-      es: "Examen de la vista para licencia de conducir - Prueba de práctica",
-      de: "Führerschein Sehtest online - Übungstest",
-      fr: "Test de vue permis de conduire - Entraînement en ligne",
-      pt: "Simulado teste de visão Detran - Treino CNH online",
-      it: "Test Vista Patente Online - Esercitati",
-      ru: "Онлайн-тест зрения для водительских прав - Практика",
+      en: "DMV Eye Test Practice Online: Exact 20/40 Standards & How to Pass",
+      es: "Práctica de Examen Visual para Licencia DGT y DMV: Reglas y Cómo Aprobar",
+      de: "Führerschein-Sehtest üben: FeV 0,7 Regeln, Landolt-Ringe & Tipps",
+      fr: "Test de Vue Permis de Conduire : Règle des 5/10 et Préparation",
+      pt: "Simulado Exame de Vista Detran CNH: Regras CONTRAN 927/2022",
+      it: "Test Vista Rinnovo Patente B: Requisiti 7/10, 2/10 e Preparazione",
+      ru: "Проверка зрения на права ГИБДД (форма 003-В/у): нормы и тренировка",
     },
     excerpt: {
-      en: "Get ready for your official DMV vision screening with our free practice eye test.",
-      es: "Prepárate para la prueba de visión del DMV o licencia de conducir con nuestro examen de práctica gratuito.",
-      de: "Bereiten Sie sich mit unserem kostenlosen Sehtest-Übungstest auf die amtliche Sehprüfung vor.",
-      fr: "Préparez-vous à l'examen de vue pour le permis avec notre test d'entraînement gratuit.",
-      pt: "Prepare-se para o exame de vista da CNH no Detran com o nosso teste de treino gratuito.",
-      it: "Preparati per l'esame della vista con il nostro test pratico gratuito.",
-      ru: "Подготовьтесь к официальной проверке зрения с помощью нашего бесплатного тренировочного теста.",
+      en: "Practice with calibrated 20/40 Snellen lines at true angular size, understand optical stereo-viewer machines, and review official licensing thresholds before counter day.",
+      es: "Practica con líneas Snellen calibradas antes del examen psicotécnico DGT o DMV. Compara mínimos de 0,5 y 20/40, campo visual y códigos de gafas.",
+      de: "Bereiten Sie sich mit kalibrierten Landolt-Ringen auf den amtlichen Sehtest nach § 12 FeV vor: Visus 0,7 für Klasse B, Ablauf beim Optiker und Schlüsselzahl 01.",
+      fr: "Préparez le contrôle visuel du permis B selon l'arrêté du 28 mars 2022 : acuité binoculaire de 5/10, champ horizontal de 120° et test calibré en ligne.",
+      pt: "Treine a tabela de Snellen calibrada e entenda os requisitos oficiais da Resolução CONTRAN nº 927/2022 para categorias A, B, C, D e E na clínica do Detran.",
+      it: "Esercitati prima della visita medica per il rinnovo della patente B: soglia minima di 7/10 complessivi, almeno 2/10 nell'occhio peggiore e codice 01.",
+      ru: "Подготовьтесь к медкомиссии ГИБДД по Постановлению № 1604: нормы 0,6 и 0,2 для категории B, таблица Сивцева и кольца Ландольта с калибровкой.",
     },
     content: {
       en: `
-        <h2>Practice for the DMV Eye Test</h2>
-        <p>If you are heading to the Department of Motor Vehicles to renew or obtain your driver's license, you must pass a basic vision screening. You can use our <a href="/">free online eye test</a> tool as a <a href="/us/">DMV practice test</a> to determine whether your visual acuity meets your state's minimum legal benchmarks, or practice with our <a href="/eye-test-chart/">Snellen eye test chart</a>.</p>
-        
-        <h3>What is the DMV passing score?</h3>
-        <p>In almost every US state, an unrestricted driver's license requires <strong>20/40 visual acuity</strong> in both eyes combined or in at least one eye. If your eyesight falls between 20/40 and 20/70, most licensing agencies still allow you to drive with a restriction (such as corrective lenses or daylight-only driving) after an eye specialist completes an official evaluation form.</p>
-        
-        <h3>How the screening works at the counter</h3>
-        <p>At the DMV counter, examiners typically ask applicants to look into an optical viewer machine (such as an Optec or Titmus viewer) or read an illuminated Snellen chart on a wall 10 or 20 feet away. You will be asked to read a specific line—frequently line 5, corresponding to the 20/40 mark—first with both eyes open, then monocularly with one eye occluded.</p>
-        
-        <h3>How to practice accurately at home</h3>
-        <p>Ensure your screen is calibrated using a standard credit card (85.6 mm). Mark a line exactly 10 feet (3 meters) away from your display. Cover one eye with your palm without pressing on the eyeball, and read down the randomized letters. Testing each eye individually at home eliminates test anxiety and tells you immediately if you should renew your prescription glasses before your appointment.</p>
+<p>Counter vision screenings trigger avoidable retests every single day, not because drivers lack safe road vision, but because applicants arrive tired, wearing scratched or outdated eyewear, or caught off guard by how desktop optical stereo-viewers present letter rows. Practicing ahead of time on a physically calibrated monitor removes guesswork and confirms weeks before your appointment whether your prescription still clears the <strong>20/40 legal standard</strong>.</p>
+      <p>Launch our calibrated <a href="/us/test/">US DMV Practice Eye Test</a> after sizing the calibration box to a standard bank card. That step locks every optotype stroke to 1 arcminute at 20/20 scale for your real viewing distance instead of relying on uncalibrated browser zoom.</p>
+
+      <h2>What Happens Inside the DMV Vision Machine vs Wall Charts?</h2>
+      <p>Depending on the field office you visit, clerks screen vision either on a printed wall chart placed 10 to 20 feet behind the counter or through a hooded stereo-optical machine such as an Optec 1000 or Titmus vision tester. Desktop screeners use internal lenses and mirrors to simulate an optical viewing distance of 20 feet while sitting directly on the desk.</p>
+      <p>When you lean your forehead against the headrest sensor, the examiner switches internal lights between both eyes, right eye only, and left eye only while calling out column numbers or colored slide targets. Because the forehead cushion places glasses lenses close to the eyepiece, smudge marks, progressive bifocal corridors, and dry eyes from driving with cabin vents blowing can cause temporary blur. Clean your lenses thoroughly and blink several times before pressing into the viewer.</p>
+
+      <h2>Licensing Acuity Standards by State &amp; License Class</h2>
+      <table>
+        <thead>
+          <tr><th>Jurisdiction / License Class</th><th>Minimum Unrestricted Acuity</th><th>Visual Field &amp; Key Restrictions</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Most US States (Class C / D)</td><td>20/40 (0.50 decimal / 6/12)</td><td>Monocular applicants typically need 20/40 + 105° to 140° horizontal field</td></tr>
+          <tr><td>New Jersey &amp; New York</td><td>NJ: 20/50 each eye; NY: 20/40 better eye</td><td>NJ screens at least once every 10 years; NY accepts Online Vision Registry</td></tr>
+          <tr><td>Georgia &amp; Florida</td><td>GA: 20/60 either eye; FL: 20/70 either/both</td><td>If one FL eye is 20/200 or worse, the better eye must read 20/40</td></tr>
+          <tr><td>Interstate CDL (49 CFR § 391.41)</td><td>20/40 in each eye AND both eyes</td><td>At least 70° horizontal meridian per eye plus red, green, amber recognition</td></tr>
+        </tbody>
+      </table>
+      <p>Rules on senior renewal frequency, daylight-only tiers, and specialist forms (such as Form DL 62 in California or MV-619 in New York) vary across every jurisdiction. Verify your local threshold in our <a href="/states/">50-State DMV Vision Requirements Directory</a>.</p>
+
+      <h2>Step-by-Step Home Practice Protocol</h2>
+      <ol>
+        <li><strong>Calibrate physical screen scale first:</strong> Align the reference box with any ISO/IEC 7810 ID-1 card (85.60 mm wide). Never skip calibration, since laptop display scaling between 100% and 200% changes true angular height dramatically.</li>
+        <li><strong>Position at your test distance:</strong> Mark 3 meters (10 feet) from your chair to the display for the <a href="/checks/distance/">distance Snellen module</a>, keeping ambient room light steady and eliminating bright windows behind the screen.</li>
+        <li><strong>Check distance glasses separately from readers:</strong> Always wear your distance driving glasses or contact lenses during practice if you normally wear them on the road. Reading glasses blur targets beyond arm's length and will fail a distance screening.</li>
+        <li><strong>Test both eyes open, then right eye, then left eye:</strong> Rest the heel of a cupped palm lightly over your cheek bone rather than pressing your fingers onto the closed eyelid. Pressing deforms the corneal surface temporarily and blurs the next round.</li>
+        <li><strong>Verify peripheral width and signal colors:</strong> Follow acuity practice with our <a href="/checks/peripheral/">horizontal visual field screening</a> and <a href="/checks/color/">traffic signal color test</a> so nothing at the counter catches you off guard.</li>
+      </ol>
+
+      <h2>Troubleshooting Borderline Line 5 (20/40) Results</h2>
+      <p>If letters on the 20/40 row look washed out or slightly doubled at home, test early in the morning after a full night of sleep and artificial tears if your eyes run dry. Digital eye strain late in the afternoon frequently drops borderline acuity by one full Snellen line. When you consistently miss letters on 20/40 or 20/50, schedule an optometrist visit two to four weeks ahead of renewal so an updated lens prescription or state medical vision form is already in hand before your DMV appointment.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is 20/40 tested with both eyes open or one eye at a time?</h3>
+      <p>Most states pass an applicant who reaches 20/40 binocularly or in the better eye, while individual eye checks determine whether an outside mirror restriction or monocular specialist report applies. Practicing each eye separately prepares you for both checks.</p>
+      <h3>What if I wear multifocal or progressive lenses inside a stereo viewer?</h3>
+      <p>Ask the clerk before reading if you need to tilt your chin slightly upward or downward to look through the upper distance corridor rather than the bottom reading zone of your lens.</p>
+      <h3>Does an online vision practice score count at the DMV?</h3>
+      <p>No. Self-tests on your monitor do not replace official DMV counter testing or a signed doctor certificate, though they accurately preview whether you are ready to pass.</p>
       `,
       es: `
-        <h2>Práctica para el examen de la vista de conducir</h2>
-        <p>Si necesitas renovar u obtener tu licencia de conducir, deberás superar una revisión visual básica. Puedes utilizar nuestra herramienta de <a href="/es/test/">examen de la vista online gratis</a> como prueba de práctica para verificar si tu agudeza visual cumple los requisitos legales.</p>
-        
-        <h3>¿Cuál es la agudeza visual mínima exigida?</h3>
-        <p>La mayoría de los organismos de tráfico exigen una agudeza visual de <strong>20/40</strong> con ambos ojos o al menos en el ojo dominante para una licencia sin restricciones. Si tu visión se sitúa entre 20/40 y 20/70, generalmente puedes obtener una licencia con restricciones (como el uso obligatorio de gafas correctoras o conducción exclusivamente diurna) previa autorización médica.</p>
-        
-        <h3>Cómo prepararte en casa</h3>
-        <p>Calibra tu pantalla con una tarjeta bancaria para asegurar que el tamaño de las letras sea exacto. Colócate a 3 metros de distancia, tápate un ojo sin presionar el párpado y lee la línea más pequeña que distingas. Esta práctica casera te permite saber si necesitas visitar al optometrista antes de tu cita oficial.</p>
+<p>No superar el reconocimiento visual para obtener o renovar el carné de conducir suele deberse a causas completamente evitables: cansancio ocular tras trabajar frente a ordenadores, gafas rayadas o con graduación desactualizada, o desconocimiento de cómo funciona el aparato óptico en el centro médico o ventanilla del DMV. Practicar antes en una pantalla calibrada elimina esa incertidumbre y permite comprobar si alcanzas sin esfuerzo el mínimo legal antes de tu cita.</p>
+      <p>Empieza calibrando tu monitor con una tarjeta física estándar en nuestro <a href="/es/test/">test de visión calibrado en español</a>. Sin esta calibración inicial, cada sistema operativo escala el tamaño de las fuentes a su manera y desvirtúa el ángulo real de lectura.</p>
+
+      <h2>Normativa Oficial: DGT España (RD 818/2009) y DMV Estados Unidos</h2>
+      <p>Los requisitos varían según el organismo emisor y la categoría de vehículo. En España, el <strong>Anexo IV del Real Decreto 818/2009</strong> fija los criterios psicofísicos de obligada comprobación en los Centros de Reconocimiento de Conductores (CRC):</p>
+      <table>
+        <thead>
+          <tr><th>Organismo / Grupo de Permiso</th><th>Agudeza Visual Mínima</th><th>Campo Visual y Condiciones Asociadas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>España DGT Grupo 1 (Permisos AM, A, B)</td><td>0,5 binocular (equivalente a 20/40)</td><td>Con o sin corrección; código armonizado 01 en el permiso si requiere lentes</td></tr>
+          <tr><td>España DGT Grupo 2 (C, D, E profesionales)</td><td>0,8 ojo mejor y 0,1 ojo peor</td><td>Campo binocular mínimo de 160° horizontales y ausencia total de diplopía</td></tr>
+          <tr><td>Visión monocular (Grupo 1 España)</td><td>0,5 en el único ojo funcional</td><td>Campo visual íntegro en ese ojo y periodo mínimo de adaptación de seis meses</td></tr>
+          <tr><td>DMV EE. UU. (Licencia Clase C / D)</td><td>20/40 (0,5 decimal o 6/12)</td><td>Comprobación en visor óptico de mostrador con lectura binocular y monocular</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Equivalencias Entre Escala Decimal, Snellen y LogMAR</h2>
+      <p>Aunque cada país imprime su cartilla en décimas, fracciones en pies o escala métrica, todas respetan la geometría de Snellen de 5 minutos de arco por letra completa y 1 minuto de arco por cada trazo:</p>
+      <ul>
+        <li><strong>1,0 decimal (20/20 o 6/6 métrico):</strong> Agudeza estándar completa sin pérdida detectable en visión lejana.</li>
+        <li><strong>0,8 decimal (20/25):</strong> Nivel exigido al ojo director para conductores profesionales de mercancías y viajeros en el Grupo 2.</li>
+        <li><strong>0,5 decimal (20/40):</strong> Mínimo legal vigente para turismos y motocicletas tanto en España (Grupo 1) como en la mayoría de estados de EE. UU.</li>
+        <li><strong>0,3 decimal (20/63 o 20/70):</strong> Valor insuficiente para permiso ordinario sin restricción específica o informe favorable del oftalmólogo.</li>
+      </ul>
+
+      <h2>Cómo Preparar y Ejecutar el Simulacro en Casa</h2>
+      <ol>
+        <li><strong>Ajusta el recuadro de calibración con una tarjeta:</strong> Coloca una tarjeta bancaria estándar de 85,60 mm sobre el rectángulo en pantalla hasta que los bordes coincidan exactamente.</li>
+        <li><strong>Respeta la distancia de tres metros:</strong> Ubica tu silla a 3 metros exactos de la pantalla para el <a href="/checks/distance/">test de agudeza lejana</a>, con iluminación ambiente uniforme y sin reflejos de ventanas detrás del equipo.</li>
+        <li><strong>Evalúa primero ambos ojos y luego cada ojo separado:</strong> Tapa un ojo formando una concha suave con la palma apoyada en el pómulo, nunca presionando el párpado. Presionar el ojo altera temporalmente la curvatura corneal y empeora artificialmente la lectura posterior.</li>
+        <li><strong>Utiliza tus gafas de conducir habituales:</strong> Nunca realices pruebas de visión lejana con gafas de lectura o progresivos mal centrados. Quien necesita lentes para llegar a 0,5 recibe la anotación del código europeo 01 que obliga a conducir siempre con corrección óptica.</li>
+        <li><strong>Revisa amplitud lateral y discriminación cromática:</strong> Completa la sesión evaluando la <a href="/checks/peripheral/">amplitud periférica horizontal</a> y el <a href="/checks/color/">test de colores de señalización vial</a>.</li>
+      </ol>
+
+      <h2>Errores Frecuentes y Cómo Evitar un Apto Restringido</h2>
+      <p>Las lágrimas insuficientes, el uso de lentes progresivas mirando por el pasillo inferior cercano o acudir al reconocimiento psicotécnico a última hora tras jornadas largas frente al ordenador pueden hacer bajar tu rendimiento en una o dos décimas. Limpia tus cristales antes de entrar en el gabinete, descansa la vista de pantallas treinta minutos antes y reserva tu cita por la mañana. Si en el ensayo en casa dudaste en la línea de 0,5 o notaste sombras en una dirección, visita a tu óptico u oftalmólogo semanas antes de caducar el permiso.</p>
+
+      <h2>Preguntas Frecuentes</h2>
+      <h3>¿Sirve este simulador para evitar el psicotécnico presencial?</h3>
+      <p>No. La prueba en línea sirve únicamente para entrenar y detectar cambios en tu graduación antes de acudir a un centro médico homologado o oficina de tráfico.</p>
+      <h3>¿Puedo llevar lentillas durante el examen oficial?</h3>
+      <p>Sí. Avisa al examinador antes de comenzar para que registre el uso de corrección óptica si superas el umbral mínimo gracias a ellas.</p>
+      <h3>¿Qué ocurre si tengo visión monocular desde hace años?</h3>
+      <p>En Grupo 1 la normativa permite renovar si el ojo único alcanza al menos 0,5 y conserva un campo visual periférico normal, acompañado del informe oftalmológico correspondiente.</p>
       `,
       de: `
-        <h2>Übung für den Führerschein-Sehtest</h2>
-        <p>Wer den Führerschein erwerben oder verlängern möchte, muss eine amtliche Sehprüfung bestehen. Nutzen Sie unseren <a href="/de/test/">kostenlosen Sehtest online</a> als Übungstest, um Ihre Sehschärfe im Vorfeld verlässlich zu überprüfen.</p>
-        
-        <h3>Mindestanforderungen an die Sehstärke</h3>
-        <p>Für die gängige Führerscheinklasse B wird meist eine Sehschärfe von mindestens 0,7 (entspricht 20/40) auf beiden Augen oder zentral verlangt. Werden diese Werte ohne Sehhilfe nicht erreicht, wird im Führerschein eine entsprechende Auflage für eine Brille oder Kontaktlinsen vermerkt.</p>
-        
-        <h3>So üben Sie zu Hause</h3>
-        <p>Kalibrieren Sie Ihren Monitor mit einer Standardkarte auf die exakte Millimetergröße. Halten Sie 3 Meter Abstand, decken Sie ein Auge ab und lesen Sie die Zeilen ab. So stellen Sie rechtzeitig fest, ob Ihre Sehhilfe noch optimal angepasst ist.</p>
+<p>Ein nicht bestandener Sehtest beim Optiker verzögert den gesamten Führerscheinantrag um Wochen, weil danach zwingend ein augenärztliches Gutachten erforderlich wird. Dabei liegt ein schlechtes Ergebnis oft nicht an schweren Augenerkrankungen, sondern an veralteten Brillengläsern, abendlicher Bildschirmmüdigkeit oder ungewohnten Sehtestgeräten. Mit einer kalibrierten Vorprüfung zu Hause sehen Sie rechtzeitig, ob Ihre aktuelle Sehstärke die Vorgaben der Fahrerlaubnis-Verordnung sicher erfüllt.</p>
+      <p>Starten Sie den <a href="/de/test/">kalibrierten Online-Sehtest</a> direkt im Browser, indem Sie die Skalierung einmalig exakt mit einer Standard-Bankkarte einmessen.</p>
+
+      <h2>Gesetzliche Grenzwerte nach § 12 und Anlage 6 FeV</h2>
+      <p>Die Verordnung über die Zulassung von Personen zum Straßenverkehr (FeV) unterscheidet zwischen der einfachen Sehteststelle (Gruppe 1) und tiefergehenden augenärztlichen Untersuchungen (Gruppe 2 sowie Nachuntersuchungen):</p>
+      <table>
+        <thead>
+          <tr><th>Prüfstelle &amp; Fahrerlaubnisklasse</th><th>Geforderte zentrale Tagessehschärfe</th><th>Ablauf &amp; rechtliche Konsequenzen</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sehteststelle Klasse B, A, AM, L, T</td><td>Mindestens 0,7 auf dem rechten UND linken Auge</td><td>Prüfung mit genormten Landolt-Ringen am Gerät; bei Bestehen sofortige Bescheinigung</td></tr>
+          <tr><td>Augenärztliches Zeugnis Klasse B (Nr. 1.2)</td><td>Mindestens 0,5 auf dem besseren oder beidäugig</td><td>Notwendig, falls ein Auge unter 0,7 liegt; schließt Gesichtsfeld und Beweglichkeit ein</td></tr>
+          <tr><td>Klassen C, C1, CE, D, D1, DE (LKW/Bus)</td><td>0,8 besseres Auge und mindestens 0,5 schlechteres</td><td>Stets augenärztliche Untersuchung inkl. Dämmerungssehen, Farbsehen und Gesichtsfeld</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Warum amtliche Stellen in Deutschland Landolt-Ringe prüfen</h2>
+      <p>Anders als Buchstabentafeln, bei denen geübte Prüflinge Zeichen anhand ihrer Umrisse erraten können, schreibt <strong>DIN EN ISO 8596</strong> für den amtlichen Sehtest geschlossene Kreise mit einer genau definierten Lücke vor. Bei diesen Landolt-Ringen misst die Öffnung exakt ein Fünftel des gesamten Ringdurchmessers und erscheint wahlweise oben, unten, links, rechts oder in einer von vier diagonalen Richtungen. Gerade ein unkorrigierter Astigmatismus fällt durch diagonale Lücken zuverlässig auf.</p>
+      <p>Trainieren Sie diese Richtungserkennung gezielt in unserem <a href="/checks/landolt/">Landolt-Ring-Prüfmodul</a>.</p>
+
+      <h2>Vorbereitung in fünf konkreten Schritten</h2>
+      <ol>
+        <li><strong>Monitor maßstabsgetreu kalibrieren:</strong> Legen Sie eine Scheckkarte im ISO-Format (85,60 mm Breite) an den Kalibrierungsrahmen und ziehen Sie den Regler exakt passend.</li>
+        <li><strong>Abstand und Beleuchtung normgerecht wählen:</strong> Halten Sie beim <a href="/checks/distance/">Fernvisus-Check</a> 3 Meter Abstand ein und vermeiden Sie direktes Fensterlicht hinter dem Monitor.</li>
+        <li><strong>Rechtes und linkes Auge konsequent einzeln prüfen:</strong> Da die einfache Sehteststelle nach Anlage 6 Nummer 1.1 auf beiden Augen jeweils den Wert 0,7 verlangt, zählt das schwächere Auge genauso wie das starke. Bedecken Sie das Gegenauge locker mit der hohlen Hand, ohne auf das Lid zu drücken.</li>
+        <li><strong>Sehhilfe beim Vortest direkt überprüfen:</strong> Erreichen Sie 0,7 erst mit aktueller Brille oder Kontaktlinsen, gilt der Sehtest mit der Schlüsselzahl 01 („Sehhilfe erforderlich“) als bestanden.</li>
+        <li><strong>Kontrast und seitliches Sehen zusätzlich prüfen:</strong> Prüfen Sie ergänzend das <a href="/checks/peripheral/">Gesichtsfeld-Screening</a> und die <a href="/checks/contrast/">Kontrastempfindlichkeit</a>, da Dämmerungsblendung im Straßenverkehr häufig unterschätzt wird.</li>
+      </ol>
+
+      <h2>Unterschied zwischen Optiker-Gerät und augenärztlichem Gutachten</h2>
+      <p>In der amtlich anerkannten Sehteststelle blicken Sie in ein geschlossenes optisches Gerät, das über interne Linsen eine Prüfentfernung von rund fünf Metern simuliert. Putzen Sie Ihre Brille unmittelbar vorher und blinzeln Sie ruhig, bevor Sie die Öffnungsrichtungen nennen. Fällt ein Auge knapp unter 0,7, lohnt vor der Weiterleitung zum Facharzt eine klassische Brillenglasbestimmung beim Augenoptiker, da oft schon 0,5 Dioptrien Unterschied den Ausschlag geben. Besteht das Defizit auch mit optimaler Korrektur, prüft der Augenarzt nach Anlage 6 Nummer 1.2 ausführlicher Gesichtsfeld, Stereosehen, Augenbeweglichkeit und Dämmerungsvisus; ab einem Gesamtvisus von 0,5 kann bei unauffälligen Nebenbefunden die Fahrerlaubnis Klasse B dennoch erteilt werden.</p>
+
+      <h2>Häufige Fragen zum Führerschein-Sehtest</h2>
+      <h3>Wie viele Fehler pro Landolt-Ring-Reihe sind erlaubt?</h3>
+      <p>Eine Visusstufe gilt gemäß Prüfnorm in der Regel als erkannt, wenn von fünf angezeigten Ringen mindestens drei Öffnungsrichtungen fehlerfrei benannt werden.</p>
+      <h3>Darf man den Sehtest mit Kontaktlinsen absolvieren?</h3>
+      <p>Ja. Tragen Sie beim Termin Ihre gewohnten Tages- oder Monatslinsen, wird die Sehhilfe per Schlüsselzahl 01 (beziehungsweise 01.02 für Kontaktlinsen oder 01.06 für Brille oder Linsen) im Dokument eingetragen.</p>
+      <h3>Wie lange bleibt eine ausgestellte Sehtestbescheinigung gültig?</h3>
+      <p>Die Sehtestbescheinigung für Fahrerlaubnisbewerber der Klassen A und B verliert nach Ablauf von zwei Jahren ab Ausstellungsdatum ihre Gültigkeit bei der Behörde.</p>
+      <h3>Ersetzt das Online-Ergebnis den Stempel der Sehteststelle?</h3>
+      <p>Nein. Eine offizielle Bescheinigung nach § 12 FeV darf ausschließlich eine amtlich anerkannte Sehteststelle, ein Augenarzt oder ein Amtsarzt ausstellen.</p>
       `,
       fr: `
-        <h2>Entraînement pour le test de vue du permis</h2>
-        <p>Avant de vous présenter à l'examen du permis de conduire ou à votre visite médicale, entraînez-vous avec notre <a href="/fr/test/">test de vue en ligne gratuit</a> pour vérifier si votre acuité visuelle est conforme aux normes officielles.</p>
-        
-        <h3>Quel est le score requis ?</h3>
-        <p>Dans la plupart des pays, une acuité minimale de 20/40 (ou 5/10e à 7/10e selon les barèmes) est nécessaire pour conduire sans restriction. Si vous n'atteignez pas ce seuil sans correction, le port de lunettes ou lentilles correctrices sera mentionné sur votre permis.</p>
-        
-        <h3>Conseils d'entraînement</h3>
-        <p>Calibrez votre écran à l'aide d'une carte bancaire, reculez de 3 mètres et testez chaque œil séparément. Cela vous évitera toute surprise lors du contrôle officiel.</p>
+<p>Avant de vous présenter devant un médecin agréé ou pour un renouvellement de titre professionnel, vérifier votre acuité sur un écran correctement calibré évite une inaptitude temporaire liée à une correction optique dépassée. Une légère baisse d'acuité de loin, une fatigue visuelle en fin de journée ou des verres rayés suffisent parfois à bloquer la validation du dossier médical le jour de l'examen.</p>
+      <p>Lancez notre <a href="/fr/test/">test de vision calibré en ligne</a> en ajustant d'abord le cadre de référence avec une carte bancaire standard de 85,60 mm afin d'annuler les variations de zoom entre écrans.</p>
+
+      <h2>Normes Visuelles de l'Arrêté du 28 mars 2022</h2>
+      <p>En France, l'<strong>arrêté du 28 mars 2022</strong> détaille les critères officiels appliqués lors du contrôle médical de l'aptitude à la conduite :</p>
+      <table>
+        <thead>
+          <tr><th>Catégorie de Permis</th><th>Acuité Visuelle Minimale Exigée</th><th>Champ Visuel &amp; Obligations Complémentaires</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Groupe léger (A1, A2, A, B1, B, BE)</td><td>Au moins 5/10 en vision binoculaire (deux yeux ouverts)</td><td>Avec ou sans lunettes ; champ horizontal d'au moins 120° et centre intact sur 20°</td></tr>
+          <tr><td>Vision monoculaire (Groupe léger)</td><td>Au moins 5/10 sur l'œil unique</td><td>Champ horizontal minimal de 120° sans déficit central et délai d'adaptation médicale</td></tr>
+          <tr><td>Groupe lourd (C, CE, D, DE)</td><td>Au moins 8/10 sur le meilleur œil et 1/10 sur le moins bon</td><td>Champ visuel minimal de 160° horizontalement ; contrôle strict de l'éblouissement</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Correspondances entre l'Échelle Monoyer (Dixièmes) et Snellen</h2>
+      <p>En cabinet français, on mesure l'acuité en dixièmes, tandis que les tests anglo-saxons emploient la fraction en pieds ou le score décimal. La géométrie angulaire reste strictement identique :</p>
+      <ul>
+        <li><strong>10/10 (1,0 décimal ou 20/20) :</strong> Acuité de référence normale à distance.</li>
+        <li><strong>8/10 (0,8 décimal ou 20/25) :</strong> Minimum requis sur le meilleur œil pour les conducteurs du groupe lourd.</li>
+        <li><strong>5/10 (0,5 décimal ou 20/40) :</strong> Seuil binoculaire réglementaire pour conduire les véhicules légers des catégories A et B.</li>
+        <li><strong>1/10 (0,1 décimal ou 20/200) :</strong> Plancher absolu toléré pour l'œil faible dans le cadre des licences poids lourds lorsque le meilleur atteint 8/10.</li>
+      </ul>
+
+      <h2>Méthode Fiable d'Auto-Contrôle à Domicile</h2>
+      <ol>
+        <li><strong>Calibrez impérativement la taille d'affichage :</strong> Sans réglage sur une carte ISO réelle de 85,60 mm, un écran Retina ou Windows configuré à 125% modifie artificiellement la difficulté du test.</li>
+        <li><strong>Installez-vous à 3 mètres exacts :</strong> Utilisez le <a href="/checks/distance/">module d'acuité à distance</a> dans une pièce lumineuse sans fenêtre en contre-jour derrière l'écran.</li>
+        <li><strong>Comparez vision binoculaire et chaque œil séparément :</strong> Placez la paume légèrement incurvée devant un œil sans appuyer sur la paupière. Presser le globe oculaire provoque un flou cornéen momentané lorsque vous changez de côté.</li>
+        <li><strong>Gardez vos lunettes de conduite habituelles :</strong> Ne passez pas un contrôle de vision lointaine avec des verres de lecture. Si la correction est nécessaire pour obtenir 5/10, le titre comportera le code restrictif 01 imposant le port de verres ou lentilles au volant.</li>
+        <li><strong>Testez le champ horizontal et le contraste :</strong> Complétez l'épreuve des lettres avec le <a href="/checks/peripheral/">contrôle du champ périphérique</a> et le <a href="/checks/contrast/">test de sensibilité aux contrastes</a>.</li>
+      </ol>
+
+      <h2>Déroulement chez le Médecin Agréé et Vision Crépusculaire</h2>
+      <p>Lors de la visite médicale hors commission ou en préfecture, le médecin agréé contrôle d'abord les dixièmes sur l'échelle de Monoyer, puis interroge les antécédents ophtalmologiques comme le glaucome, la cataracte ou la rétinopathie diabétique. Au-delà de la lecture simple, la réglementation examine la sensibilité aux contrastes, la récupération après éblouissement nocturne et l'absence de diplopie. Si vous hésitez à 3 mètres sur la ligne des 5/10 avec vos lunettes actuelles, consultez un ophtalmologue avant votre convocation officielle afin d'actualiser votre ordonnance optique.</p>
+
+      <h2>Questions Fréquentes</h2>
+      <h3>Un test en ligne remplace-t-il le certificat médical officiel ?</h3>
+      <p>Non. Ce simulateur permet uniquement une évaluation préparatoire avant une consultation en cabinet ophtalmologique ou devant un médecin agréé.</p>
+      <h3>Que signifie le code 01 inscrit au dos du permis ?</h3>
+      <p>Ce code européen indique l'obligation légale de porter des lunettes ou des lentilles correctrices lors de la conduite de tout véhicule de la catégorie concernée.</p>
+      <h3>Peut-on obtenir ou renouveler le permis B en cas de vision monoculaire ?</h3>
+      <p>Oui pour le groupe léger, à condition que l'œil fonctionnel atteigne au moins 5/10 avec correction éventuelle, présente un champ horizontal de 120° minimum et ait respecté une période d'adaptation.</p>
       `,
       pt: `
-        <h2>Simulado para o teste de visão do Detran (CNH)</h2>
-        <p>Se você vai tirar ou renovar a Carteira Nacional de Habilitação (CNH), terá que passar pelo exame de aptidão física e mental com avaliação oftalmológica. Use o nosso <a href="/pt/test/">teste de visão online grátis</a> como um simulado prático para checar sua acuidade visual.</p>
-        
-        <h3>Qual a acuidade visual mínima exigida pelo Detran?</h3>
-        <p>Para motoristas da categoria B (veículos de passeio), a resolução do Contran exige acuidade visual igual ou superior a <strong>20/40</strong> no melhor olho. Quem não atinge essa marca com visão natural precisará utilizar lentes corretivas (óculos ou lentes de contato), recebendo a observação 'A' na CNH.</p>
-        
-        <h3>Como fazer o simulado em casa</h3>
-        <p>Calibre a tela usando um cartão magnético para garantir a escala correta dos optótipos. Afaste-se 3 metros da tela, cubra o olho esquerdo com a mão em concha (sem apertar o olho) e leia as menores letras possíveis. Em seguida, repita o teste com o outro olho. Se tiver dificuldades na linha de 20/40, consulte um oftalmologista antes do exame oficial.</p>
+<p>O exame médico de aptidão física e mental nas clínicas credenciadas pelos Detrans estaduais determina se sua visão atende aos requisitos mínimos de segurança no trânsito. Boa parte dos casos de inaptidão temporária ocorre simplesmente porque o motorista comparece com grau desatualizado, lentes arranhadas ou fadiga visual ao final do expediente. Fazer uma checagem prévia em monitor calibrado revela com semanas de antecedência se vale a pena atualizar seus óculos antes de pagar as taxas do exame.</p>
+      <p>Para começar com tamanho real fiel ao consultório, calibre sua tela usando um cartão bancário no <a href="/pt/test/">teste de visão online calibrado</a>.</p>
+
+      <h2>Exigências da Resolução CONTRAN nº 927/2022 por Categoria</h2>
+      <p>A <strong>Resolução CONTRAN nº 927, de 28 de março de 2022</strong>, regulamenta os parâmetros do exame oftalmológico realizado pelo médico perito examinador de trânsito na primeira habilitação, renovação ou mudança de categoria da CNH em todo o Brasil:</p>
+      <table>
+        <thead>
+          <tr><th>Grupo de Categorias CNH</th><th>Critérios Visuais Avaliados pelo Perito</th><th>Restrições e Regras Adicionais</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Categorias A e B (motos e carros)</td><td>Acuidade visual central compatível com direção segura, campo horizontal e senso cromático</td><td>Necessidade de óculos ou lentes registra o Código A obrigatório no verso da CNH</td></tr>
+          <tr><td>Categorias C, D e E (profissionais)</td><td>Padrões mais rigorosos de acuidade binocular, visão de profundidade, campo visual e ofuscamento</td><td>Exige ainda avaliação obrigatória de distúrbios do sono conforme Art. 4º</td></tr>
+          <tr><td>Laudo Inapto Temporário (Art. 8º)</td><td>Indicado quando o déficit de visão pode ser corrigido por novas lentes ou tratamento</td><td>Permite refazer a etapa médica após ajuste oftalmológico</td></tr>
+        </tbody>
+      </table>
+
+      <h2>O Que É Verificado no Consultório Além da Tabela de Snellen</h2>
+      <p>Durante o atendimento presencial no Detran ou clínica credenciada, o médico examinador costuma verificar quatro aspectos visuais essenciais:</p>
+      <ul>
+        <li><strong>Acuidade visual central:</strong> Leitura de letras da tabela de Snellen ou símbolos direcionais em visor óptico fechado ou quadro iluminado na parede. Veja a correspondência detalhada de linhas no artigo <a href="/pt/blog/tabela-teste-de-visao-detran/">Tabela do Teste de Visão do Detran</a>.</li>
+        <li><strong>Campo visual horizontal:</strong> Capacidade de perceber movimentos laterais sem tirar os olhos do ponto central, fundamental em cruzamentos e trocas de faixa.</li>
+        <li><strong>Senso cromático:</strong> Identificação rápida de luzes vermelha, amarela e verde de semáforos, que você pode exercitar no <a href="/checks/color/">módulo de percepção de cores</a>.</li>
+        <li><strong>Sensibilidade ao contraste e ofuscamento:</strong> Recuperação visual após exposição a faróis noturnos em sentido contrário, avaliada também no <a href="/checks/contrast/">teste de contraste</a>.</li>
+      </ul>
+
+      <h2>Guia Prático para Treinar em Casa Sem Distorções</h2>
+      <ol>
+        <li><strong>Execute a calibração física primeiro:</strong> Notebooks Windows e Mac aplicam escalas de zoom diferentes (100%, 125%, 150%). Ajustar o retângulo ao cartão padrão de 85,60 mm assegura altura milimétrica exata de cada caractere.</li>
+        <li><strong>Posicione-se a 3 metros do monitor:</strong> No <a href="/checks/distance/">teste de distância online</a>, mantenha boa iluminação uniforme no ambiente e evite janelas diretamente atrás da tela para não reduzir o contraste.</li>
+        <li><strong>Avalie primeiro os dois olhos e depois um de cada vez:</strong> Cubra o olho oposto com a palma em concha apoiada levemente na bochecha, sem pressionar a pálpebra. Pressionar o globo ocular embaça a visão na rodada seguinte.</li>
+        <li><strong>Use seus óculos de direção, nunca óculos de leitura:</strong> Lentes para perto focam apenas a 40 centímetros e impedem a leitura correta em exames de distância.</li>
+      </ol>
+
+      <h2>Prazos de Renovação da CNH, Idade e Restrição Código A</h2>
+      <p>O Código de Trânsito Brasileiro vincula a validade do exame médico à faixa etária do condutor: até 10 anos para motoristas abaixo de 50 anos, 5 anos entre 50 e 69 anos e 3 anos para condutores com 70 anos ou mais, salvo redução estabelecida pelo médico perito em razão de condições clínicas progressivas. Quando o candidato só alcança a acuidade mínima utilizando óculos ou lentes de contato, o verso da CNH recebe o Código A de observação obrigatória. Dirigir sem a correção registrada constitui infração gravíssima sujeita a multa e retenção do veículo. Caso note dificuldade em casa na leitura de linhas médias, atualize seu exame de vista particular antes de agendar a perícia.</p>
+
+      <h2>Dúvidas Frequentes sobre o Exame da CNH</h2>
+      <h3>Posso usar lentes de contato durante a perícia do Detran?</h3>
+      <p>Sim. Avise o médico examinador no início da consulta para que avalie seu desempenho com lentes de contato. Se forem indispensáveis para atingir a nota de aprovação, o Código A aparecerá nas observações da CNH.</p>
+      <h3>Pessoas com daltonismo conseguem aprovação nas categorias A e B?</h3>
+      <p>Na grande maioria dos casos sim, desde que o candidato identifique de forma segura as cores e a ordem dos sinais luminosos semafóricos durante o teste na clínica credenciada.</p>
+      <h3>Este teste online gera documento aceito pelo Detran?</h3>
+      <p>Não. O simulador oferece triagem educativa para ajudar você a verificar se precisa de nova consulta oftalmológica antes da avaliação presencial obrigatória.</p>
       `,
       it: `
-        <h2>Esercitati per il Test della Vista della Patente</h2>
-        <p>Se devi rinnovare o conseguire la patente di guida, dovrai sottoporti alla visita medica di idoneità visiva. Puoi usare il nostro <a href="/it/test/">test della vista online gratis</a> per verificare se la tua vista soddisfa i requisiti minimi di legge.</p>
-        
-        <h3>Requisiti minimi di acuità visiva</h3>
-        <p>Per la patente B, la normativa richiede generalmente un'acuità visiva complessiva di almeno 0,7 (equivalente a 20/40), con non meno di 0,2 nell'occhio peggiore. Se raggiungi questo valore solo con occhiali o lenti a contatto, sulla patente verrà apposto il codice 01 (obbligo di lenti).</p>
-        
-        <h3>Come fare pratica a casa</h3>
-        <p>Assicurati di calibrare lo schermo con una carta bancomat per garantire le dimensioni corrette delle lettere di Snellen. Posizionati a 3 metri di distanza, copri un occhio con la mano senza premere e leggi le lettere più piccole che riesci a distinguere. Esercitarti a casa riduce l'ansia da prestazione e ti aiuta a capire se hai bisogno di una nuova visita oculistica.</p>
+<p>Superare con sicurezza il controllo della vista alla visita medica per il rilascio o il rinnovo della patente B richiede soprattutto che la propria correzione ottica sia aggiornata. Molti automobilisti riscontrano difficoltà in ambulatorio non per patologie improvvise, ma per occhiali vecchi di anni, stanchezza serale davanti al PC oppure lenti sporche davanti al visore luminoso. Esercitarsi a casa su uno schermo calibrato consente di verificare in anticipo il proprio livello reale in decimi.</p>
+      <p>Avvia il nostro <a href="/it/test/">test della vista online calibrato</a> allineando subito il riquadro sullo schermo a una tessera rigida standard da 85,60 mm.</p>
+
+      <h2>Parametri Legali per la Patente B (Art. 119 Codice della Strada)</h2>
+      <p>L'<strong>Articolo 119 del Codice della Strada</strong> e l'Articolo 322 del relativo Regolamento di esecuzione definiscono con esattezza le soglie visive per i conducenti del Gruppo 1 (patenti AM, A1, A2, A, B1, B, BE):</p>
+      <table>
+        <thead>
+          <tr><th>Categoria / Situazione Visiva</th><th>Requisito Minimo di Visus</th><th>Campo Visivo &amp; Annotazioni Patente</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Visione binoculare (Patente A / B)</td><td>Almeno 7/10 complessivi con minimo 2/10 nell'occhio peggiore</td><td>Con o senza lenti correttive; obbligo segnalato con codice 01 sul retro patente</td></tr>
+          <tr><td>Visione monoculare (occhio singolo)</td><td>Almeno 8/10 nell'occhio residuo</td><td>Campo visivo orizzontale >= 120° senza deficit centrali; valutazione spesso in CML</td></tr>
+          <tr><td>Gruppo 2 (Patenti C, CE, D, DE)</td><td>Almeno 8/10 nell'occhio migliore e 4/10 nel peggiore</td><td>Campo minimo 160° orizzontali e controllo stretto su abbagliamento e contrasto</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Scala in Decimi, Frazioni Snellen e Differenza per Occhio</h2>
+      <p>Durante la visita alla ASL, in autoscuola o agli uffici abilitati, l'ottotipo mostra righe numerate da 1/10 fino a 10/10. Ricorda che il requisito italiano combina due soglie distinte: raggiungere almeno 7/10 totali con entrambi gli occhi aperti e mantenere comunque almeno 2/10 nell'occhio più debole:</p>
+      <ul>
+        <li><strong>10/10 (equivalente a 20/20):</strong> Massima nitidezza di riferimento nella scala standard.</li>
+        <li><strong>7/10 (circa 20/30):</strong> Soglia complessiva minima richiesta alla visita ordinaria per la patente B.</li>
+        <li><strong>5/10 (equivalente a 20/40):</strong> Valore intermedio molto comune quando uno dei due occhi necessita di una piccola correzione per astigmatismo o miopia.</li>
+        <li><strong>2/10 (equivalente a 20/100):</strong> Limite minimo assoluto per l'occhio che vede meno in presenza di visione binoculare.</li>
+      </ul>
+
+      <h2>Come Simulare Correttamente la Prova a Casa</h2>
+      <ol>
+        <li><strong>Calibra fisicamente la larghezza delle lettere:</strong> Ogni laptop applica un fattore di ingrandimento diverso; usare la tessera da 85,60 mm blocca la scala angolare reale a ogni risoluzione.</li>
+        <li><strong>Mantieni la distanza esatta di 3 metri:</strong> Utilizza il <a href="/checks/distance/">modulo di acuità da lontano</a> in una stanza illuminata in modo uniforme, senza finestre alle spalle dello schermo.</li>
+        <li><strong>Prova prima con due occhi e poi ciascuno singolarmente:</strong> Copri l'occhio opposto con il palmo curvo appoggiato sullo zigomo senza schiacciare le palpebre, evitando deformazioni temporanee della cornea prima della lettura successiva.</li>
+        <li><strong>Verifica anche visione laterale e colori semaforici:</strong> Integra l'allenamento sulle lettere con il <a href="/checks/peripheral/">test del campo periferico</a> e il <a href="/checks/color/">test del senso cromatico</a>.</li>
+      </ol>
+
+      <h2>Quando Interviene la Commissione Medica Locale (CML)</h2>
+      <p>Se durante la visita monocratica il medico rileva un visus inferiore ai limiti ordinari, una patologia oculare progressiva come glaucoma, cheratocono o retinopatia diabetica, oppure una visione monoculare, l'idoneità viene demandata alla Commissione Medica Locale provinciale. Oltre alla lettura dei decimi su tabellone luminoso, la Commissione può verificare visione crepuscolare, sensibilità al contrasto, assenza di diplopia e tempi di recupero dopo abbagliamento da fari notturni. Eseguire una prova domestica settimane prima della scadenza consente di prenotare per tempo l'oculista e portare eventuali referti già pronti alla visita.</p>
+
+      <h2>Domande Frequenti sul Rinnovo Patente</h2>
+      <h3>Posso indossare lenti a contatto durante la visita medica?</h3>
+      <p>Sì, basta informare il medico prima di leggere il tabellone. Sulla patente verrà riportato il codice armonizzato 01 relativo all'obbligo di correzione ottica.</p>
+      <h3>In cosa consiste la prova di sensibilità al contrasto e abbagliamento?</h3>
+      <p>Il dispositivo proietta lettere a basso contrasto o subito dopo un breve fascio luminoso per valutare in quanti secondi l'occhio recupera la leggibilità notturna.</p>
+      <h3>Il test su browser ha validità legale per il rinnovo?</h3>
+      <p>No. La prova online ha finalità esclusivamente preparatoria per scoprire in anticipo se occorre rinnovare la prescrizione presso il proprio ottico o oculista.</p>
       `,
       ru: `
-        <h2>Тренировка перед проверкой зрения на водительские права</h2>
-        <p>Если вам предстоит визит в ГИБДД или медкомиссию для получения либо продления водительских прав, воспользуйтесь нашим <a href="/ru/test/">бесплатным онлайн-тестом зрения</a> для предварительной тренировки.</p>
-        
-        <h3>Нормативы остроты зрения для водителей</h3>
-        <p>Для категории B обычно требуется острота зрения не менее 0.6 на лучшем глазу и не менее 0.2 на худшем (или суммарно около 20/40 по шкале Снеллена). Если зрение не дотягивает до нормы без коррекции, в водительском удостоверении проставляется отметка об обязательном ношении очков или контактных линз (GCL).</p>
-        
-        <h3>Как правильно тренироваться дома</h3>
-        <p>Обязательно откалибруйте экран по банковской карте. Встаньте на расстояние 3 метров от монитора, прикройте один глаз ладонью и назовите буквы проверочной таблицы. Домашняя тренировка помогает снять стресс перед медосмотром и заблаговременно проверить актуальность ваших очков.</p>
-      `
+<p>Прохождение водительской медицинской комиссии по форме 003-В/у часто затягивается не из-за серьезных заболеваний глаз, а по банальной причине: водитель давно не обновлял очки, пришел на прием уставшим вечером или не знает юридических нюансов допуска по каждому глазу. Домашняя самопроверка на откалиброванном мониторе позволяет за несколько недель до осмотра понять, проходит ли текущая коррекция по закону.</p>
+      <p>Начните проверку на <a href="/ru/test/">калиброванном онлайн-тесте зрения</a>, предварительно выставив точный физический масштаб с помощью стандартной банковской карты шириной 85,60 мм. Без этой настройки браузер искажает реальный угловой размер символов.</p>
+
+      <h2>Официальные нормы по Постановлению Правительства РФ № 1604</h2>
+      <p>Требования к зрению кандидатов и действующих водителей установлены <strong>Постановлением Правительства РФ № 1604</strong>. Ключевое правило категории B учитывает показатели обоих глаз по отдельности:</p>
+      <table>
+        <thead>
+          <tr><th>Категория водительских прав</th><th>Минимальная острота с коррекцией</th><th>Особые условия допуска и отметки</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Категория B, BE, A, A1 (легковые и мото)</td><td>Не ниже 0,6 на лучшем глазу и не ниже 0,2 на худшем</td><td>При слепоте одного глаза допускается минимум 0,8 на единственном глазу</td></tr>
+          <tr><td>Категории C, D, CE, DE (грузовые и автобусы)</td><td>Не ниже 0,8 на лучшем глазу и не ниже 0,4 на худшем</td><td>Монокулярное зрение (слепота одного глаза) является противопоказанием</td></tr>
+          <tr><td>Использование очков или контактных линз</td><td>Допускается при переносимой разнице рефракции</td><td>В раздел 12 прав вносится обязательная отметка GCL</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Почему важна проверка по таблице Сивцева и кольцам Ландольта</h2>
+      <p>В российских поликлиниках зрение проверяют либо по буквенной <strong>таблице Сивцева</strong> (строки со знаками Ш, Б, М, Н, К, Ы, И, где шестая строка соответствует 0,6, а десятая равна 1,0), либо по <a href="/checks/landolt/">кольцам Ландольта</a> с разрывом в разных направлениях. Обратите внимание на важную деталь закона: если оба глаза без очков показывают по 0,5, комиссия не выдаст допуск категории B, так как минимум 0,6 должен обеспечивать хотя бы один глаз.</p>
+      <p>Подробная разметка строк и дистанций описана в статье <a href="/ru/blog/proverka-zreniya-tablitsa-sivtseva/">Проверка зрения по таблице Сивцева</a>.</p>
+
+      <h2>Как правильно подготовиться и провести самопроверку дома</h2>
+      <ol>
+        <li><strong>Обязательная калибровка экрана по пластиковой карте:</strong> Масштабирование Windows (125% или 150%) или экранов Retina меняет высоту букв; калибровка картой 85,60 мм приводит символы к точной угловой минуте Снеллена.</li>
+        <li><strong>Соблюдение дистанции 3 метра:</strong> Расположитесь строго на расстоянии 3 метров при тестировании в <a href="/checks/distance/">модуле дальней остроты зрения</a>, обеспечив ровное освещение комнаты без бликов от окна.</li>
+        <li><strong>Поочередная проверка правого и левого глаза:</strong> Прикрывайте свободный глаз ладонью-лодочкой, опираясь на скулу и не надавливая на веко, чтобы не исказить форму роговицы перед следующей попыткой.</li>
+        <li><strong>Дополнительный контроль периферии и цветовосприятия:</strong> Врач на комиссии также проверяет различение оттенков по полихроматическим таблицам и ширину обзора, которые можно предварительно оценить в <a href="/checks/color/">тесте цветовосприятия</a> и <a href="/checks/peripheral/">проверке периферического зрения</a>.</li>
+      </ol>
+
+      <h2>Что проверяет офтальмолог кроме букв и как пересдать комиссию</h2>
+      <p>Помимо таблицы Сивцева врач оценивает границы периферического поля зрения (допускается сужение не более чем на 20 градусов) и отсутствие выраженного нарушения цветоощущения. Важную роль играет и переносимая разница между линзами для правого и левого глаза (обычно не более трех диоптрий при подборе очковой коррекции). Если вы не прошли комиссию с первого раза, не переживайте: достаточно обратиться к оптометристу, подобрать современные очки или контактные линзы с актуальными диоптриями и вернуться к офтальмологу. С правильно подобранной оптикой повторное освидетельствование обычно проходит с первой попытки.</p>
+
+      <h2>Частые вопросы перед медкомиссией ГИБДД</h2>
+      <h3>Что означает код GCL в водительском удостоверении?</h3>
+      <p>Это международное обозначение медицинского ограничения, обязывающего водителя управлять автомобилем исключительно в очках или контактных линзах, в которых была пройдена медкомиссия.</p>
+      <h3>Разрешено ли проходить осмотр в контактных линзах?</h3>
+      <p>Да, осмотр в контактных линзах полностью разрешен, однако об их наличии необходимо заранее сообщить офтальмологу, чтобы проверить переносимость коррекции и корректно оформить допуск.</p>
+      <h3>Заменяет ли онлайн-тренажер визит к офтальмологу?</h3>
+      <p>Нет. Онлайн-проверка служит исключительно для домашней самооценки перед походом к врачу, чтобы вовремя подобрать новые очки и не тратить время на повторную комиссию.</p>
+      `,
     }
   },
   {
