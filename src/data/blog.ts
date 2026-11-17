@@ -1617,4 +1617,73 @@ export const POSTS = [
       `
     }
   },
+  {
+    slug: "cdl-dot-eye-exam-requirements",
+    englishOnly: true,
+    datePublished: "2026-11-17T10:00:00Z",
+    dateModified: "2026-11-17T10:00:00Z",
+    title: {
+      en: "CDL & DOT Eye Exam Requirements: 49 CFR § 391.41, Chart & MCSA-5871",
+    },
+    excerpt: {
+      en: "Complete guide to interstate DOT commercial driver vision standards: 20/40 in each eye, 70° peripheral field, traffic signal colors, Form MCSA-5875, and 49 CFR § 391.44.",
+    },
+    content: {
+      en: `
+<p>Commercial drivers face significantly stricter eye examination standards than passenger Class C motorists. Under Federal Motor Carrier Safety Administration regulations in <strong>49 CFR § 391.41(b)(10)</strong>, missing a single line in your weaker eye during a Department of Transportation (DOT) physical can hold up your Medical Examiner's Certificate (MEC) even when both eyes open together read cleanly.</p>
+      <p>Before walking into an NRCME-certified occupational clinic, screen both eyes independently and check your 70-degree side vision and red-green-amber differentiation in our <a href="/checks/cdl/">dedicated CDL vision compliance simulator</a> alongside <a href="/checks/distance/">calibrated distance rows</a>.</p>
+
+      <h2>The Three Core DOT Vision Standards (49 CFR § 391.41(b)(10))</h2>
+      <p>Every interstate commercial driver operating under FMCSA rules (Class A, B, or C vehicles over 10,001 lbs GVWR, hazmat placards, or 16+ passengers) must pass all three components with or without corrective eyewear:</p>
+      <table>
+        <thead>
+          <tr><th>DOT Requirement</th><th>Federal Threshold (§ 391.41)</th><th>Key Difference From State Passenger DMV</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Distant Visual Acuity</td><td>At least <strong>20/40</strong> in RIGHT eye, LEFT eye, AND both eyes together</td><td>Most state passenger licenses require 20/40 only in better eye or binocularly</td></tr>
+          <tr><td>Horizontal Field of Vision</td><td>Minimum <strong>70 degrees</strong> in horizontal meridian of EACH eye</td><td>Evaluated independently per eye rather than combined total alone</td></tr>
+          <tr><td>Signal Color Recognition</td><td>Distinguish standard <strong>red, green, and amber</strong> traffic control colors</td><td>Checked actively during DOT medical exams even where state counters skip it</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What Eye Charts Do DOT Certified Medical Examiners Use?</h2>
+      <p>NRCME medical clinics administer distance acuity testing using either a traditional wall-mounted <strong>20-foot Snellen / Sloan letter poster</strong> or a counter stereo-optical vision tester (such as a Titmus or Optec desktop machine). Unlike quick licensing renewals where examiners sometimes only test both eyes together first, DOT clinics follow a rigid three-column checklist recorded directly onto <strong>Form MCSA-5875 (Medical Examination Report Form)</strong>:</p>
+      <ol>
+        <li><strong>Right eye covered, read left eye alone:</strong> Must clear the 20/40 (or finer) line with minimal errors (&gt;=3 of 5 or 4 of 6 letters).</li>
+        <li><strong>Left eye covered, read right eye alone:</strong> Must independently clear 20/40 on a fresh column or line.</li>
+        <li><strong>Both eyes open (binocular):</strong> Confirms combined fusion clears 20/40 or better without diplopia (double vision).</li>
+        <li><strong>Peripheral confrontation or perimeter flash:</strong> Verifies at least 70 degrees laterally on both right and left temporal sides.</li>
+      </ol>
+      <p>If corrective eyewear is worn during any step, the medical examiner marks the corrective-lens box on Form MCSA-5875 and your Medical Card carries the mandatory eyewear notation alongside any state driver license code.</p>
+
+      <h2>What If One Eye Fails 20/40? The Alternative Vision Standard (49 CFR § 391.44)</h2>
+      <p>Prior to 2022, drivers with amblyopia, monocular vision loss, or one eye unable to reach 20/40 faced a lengthy Federal Vision Exemption application packet. Today, FMCSA's finalized <strong>Alternative Vision Standard (49 CFR § 391.44)</strong> creates a clear medical pathway governed by <strong>Form MCSA-5871 (Vision Evaluation Report)</strong>:</p>
+      <ul>
+        <li><strong>Better-eye baseline must qualify cleanly:</strong> Your better eye must independently achieve at least <strong>20/40 distance acuity</strong> (with or without lenses), at least a <strong>70-degree horizontal visual field</strong>, and accurate red-green-amber recognition.</li>
+        <li><strong>Eye specialist completes Form MCSA-5871:</strong> An optometrist or ophthalmologist examines your ocular health, diagnoses stable monocular or worse-eye impairment, and signs the 3-page MCSA-5871 report.</li>
+        <li><strong>Strict 45-day physical deadline:</strong> Your Certified Medical Examiner must receive the signed Form MCSA-5871 and initiate your DOT physical exam (Form MCSA-5875) <strong>within 45 calendar days</strong> of the specialist's signature date.</li>
+        <li><strong>Annual recertification cap:</strong> Drivers qualified under 49 CFR § 391.44 receive a Medical Examiner's Certificate valid for a maximum of <strong>1 year</strong> (rather than the usual 24 months), requiring fresh annual MCSA-5871 specialist checks alongside DOT physicals.</li>
+      </ul>
+
+      <h2>Color Vision Rules: Do Color Plates Disqualify CDL Drivers?</h2>
+      <p>Standard Ishihara dot plates frequently flag mild congenital red-green anomalies even in drivers who separate traffic signal reds, yellows, and greens reliably on highway corridors. Importantly, FMCSA regulations under § 391.41 require the functional ability to recognize traffic signal red, green, and amber rather than reading subtle numeric dot patterns. If you fail standard clinic dot plates, request a secondary chromatic test (such as the Farnsworth D-15, Optec traffic lamp slide, or formal specialist confirmation on signal lamp discrimination) and review signal contrasts ahead of time on our <a href="/checks/color/">color vision screener</a>.</p>
+
+      <h2>DOT Physical Prep Checklist for Commercial Drivers</h2>
+      <ol>
+        <li>Check each eye individually on <a href="/checks/distance/">calibrated Snellen columns at 3 meters</a> before scheduling; if either eye hovers around 20/40 or 20/50, update your glasses first so you keep full 24-month certification instead of triggering MCSA-5871 annual renewals.</li>
+        <li>Clean anti-glare coatings and allow transition lenses to fade completely clear outdoors-to-indoors before stepping to the chart.</li>
+        <li>Test peripheral responsiveness on our <a href="/checks/peripheral/">horizontal visual field check</a> wearing your driving frames to confirm thick temple arms do not obscure 70 degrees.</li>
+        <li>Check your home state's counter requirements in our <a href="/states/">50-State DMV Vision Directory</a> for state-level CDL self-certification filing rules.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Can you hold a CDL if you are blind in one eye or have amblyopia?</h3>
+      <p>Yes, provided your better eye satisfies 20/40 acuity, 70-degree horizontal field, and traffic signal color detection, and you follow the 49 CFR § 391.44 pathway using Form MCSA-5871 completed by an optometrist or ophthalmologist within 45 days of your DOT exam.</p>
+      <h3>Does Form MCSA-5871 replace the regular DOT physical (MCSA-5875)?</h3>
+      <p>No. MCSA-5871 is a supplemental Vision Evaluation Report prepared by an eye doctor; your NRCME Certified Medical Examiner still completes the full health physical on Form MCSA-5875 and decides certification fitness.</p>
+      <h3>Are intrastate CDL rules different from interstate FMCSA rules?</h3>
+      <p>Some states offer intrastate-only commercial exemptions or legacy grandfather provisions restricted strictly inside state borders without hazmat or interstate commerce, whereas any interstate CDL carrier must satisfy full 49 CFR § 391.41 / § 391.44 federal rules.</p>
+      `,
+    }
+  },
 ];
