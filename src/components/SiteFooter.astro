@@ -13,8 +13,9 @@ interface Props {
 }
 
 const { locale = "en", page = "home", variant = "generic" } = Astro.props;
-const isHome = page === "home";
-const isUS = variant === "us" || page === "us" || (Astro.url.pathname && Astro.url.pathname.startsWith("/us/"));
+const currentPath = Astro.url.pathname || "/";
+const isHome = (page === "home" || page === "us") && (currentPath === "/" || currentPath === "/us/" || /^\/[a-z]{2}\/?$/.test(currentPath));
+const isUS = variant === "us" || page === "us" || currentPath.startsWith("/us/");
 
 const dict = DICT[locale] || DICT.en;
 const d = (k: string) => (dict[k] != null ? dict[k] : DICT.en[k] != null ? DICT.en[k] : k);
