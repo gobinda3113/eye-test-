@@ -108,7 +108,15 @@ const faqSchema = {
         "@type": "Answer",
         "text": `The vision test is required ${stateData.renewal === "every" ? "every renewal cycle" : stateData.renewal === "alternate" ? "every other renewal cycle" : "depending on age or longer renewal cycles"}.`
       }
-    }
+    },
+    ...((stateData.extraFaqs ?? []).map((f: { q: string; a: string }) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    })))
   ]
 };
 ---
@@ -209,6 +217,37 @@ const faqSchema = {
             <p>California Vehicle Code § 12804.9 requires 20/40 visual acuity in both eyes together, and additionally 20/40 in at least one eye with a minimum of 20/70 in the other eye. If you meet the 20/40 combined standard but one eye falls below 20/40, the DMV evaluates your monocular performance separately. Failing the 20/40 combined standard triggers a 60-day temporary license during which you must return a completed DL-62 (Report of Vision Examination) from a licensed optometrist or ophthalmologist. The DMV may then require a supplemental driving performance test, particularly if your left eye falls below the minimum — because the left eye is the driver-side eye in California traffic conditions.</p>
             <h3>What is California DMV Form DL-62 and when is it needed?</h3>
             <p>Form DL-62 (Report of Vision Examination) is the California-specific document your eye doctor completes when you fail the counter acuity screening. Your optometrist or ophthalmologist fills in your corrected and uncorrected acuity, peripheral field measurements, and any relevant pathology, then signs and returns it to you. You submit it to the DMV within 60 days. Based on the DL-62 findings, the DMV determines whether to issue your license with a corrective-lenses restriction (code B), a daylight-only restriction, or require a behind-the-wheel driving test. The form is available at any California DMV office or from the <a href="https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/vision-requirements/" target="_blank" rel="noopener noreferrer">CA DMV vision requirements page</a>.</p>
+          </div>
+        )}
+
+        {stateData.renewalCycle && (
+          <div style="margin: 28px 0 0;">
+            <h2>{stateData.name} Renewal Schedule, Online Rules &amp; Counter Screening</h2>
+            <ul>
+              <li><strong>Renewal Cycle:</strong> {stateData.renewalCycle}</li>
+              {stateData.onlineEligible && <li><strong>Online / Mail Eligibility:</strong> {stateData.onlineEligible}</li>}
+              {stateData.seniorRules && <li><strong>Senior Driver Rules:</strong> {stateData.seniorRules}</li>}
+              {stateData.screeningFormat && <li><strong>Counter Screening Format:</strong> {stateData.screeningFormat}</li>}
+            </ul>
+          </div>
+        )}
+
+        {stateData.stateGuide && (
+          <div style="margin: 24px 0 0;">
+            <h2>Complete {stateData.name} DMV Eye Exam Guide</h2>
+            <Fragment set:html={stateData.stateGuide} />
+          </div>
+        )}
+
+        {stateData.extraFaqs && stateData.extraFaqs.length > 0 && (
+          <div style="margin: 24px 0 0;">
+            <h2>{stateData.name} Driver Vision FAQs</h2>
+            {stateData.extraFaqs.map((faq: { q: string; a: string }) => (
+              <>
+                <h3>{faq.q}</h3>
+                <p>{faq.a}</p>
+              </>
+            ))}
           </div>
         )}
 
