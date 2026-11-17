@@ -202,7 +202,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "70° or more using one eye",
     "doctorForm": "No named public form",
-    "retestPolicy": "The vision test may be waived with a certificate of eye examination completed by a licensed ophthalmologist or optometrist within the last six months (§ 19-122-357). If the standards are not met, no license is issued; restrictions under § 19-122-358 may apply."
+    "retestPolicy": "The vision test may be waived with a certificate of eye examination completed by a licensed ophthalmologist or optometrist within the last six months (§ 19-122-357). If the standards are not met, no license is issued; restrictions under § 19-122-358 may apply.",
+    "renewalCycle": "Hawaii ties license duration closely to driver age: 8-year validity ages 25-71, shortened to 4-year validity for ages 72-79, and shortened to 2-year renewals at age 80+.",
+    "onlineEligible": "Hawaii residents must renew in person with a physical vision screening (mail-in renewal pathways apply mainly to active-duty military or temporary out-of-state situations rather than routine resident online renewal).",
+    "seniorRules": "At age 72, Hawaii shortens renewal intervals to 4 years, and starting at age 80+ requires an updated in-person vision test (or valid 6-month external eye exam form) every 2 years.",
+    "screeningFormat": "County Driver Licensing Centers test 20/40 acuity and 140 degrees binocular horizontal field (70 degrees per eye); private eye doctor exams remain valid for 6 months, with Form DOT-H2058 used for documented medical conditions.",
+    "stateGuide": `
+<p>Unlike mainland states offering alternating online renewals, Hawaii county licensing offices (City and County of Honolulu Satellite City Halls, Hawaii County, Maui, and Kauai) generally handle routine renewals in person with vision testing at every visit. Renewal duration steps down noticeably with age: drivers ages 25 through 71 enjoy an 8-year cycle, drivers aged <strong>72 to 79 renew every 4 years</strong>, and seniors aged <strong>80 and older renew every 2 years</strong>.</p>
+      <p>Counter optical testers screen for <strong>20/40 visual acuity</strong> alongside a wide <strong>140-degree binocular visual field</strong> (at least 70 degrees temporally per eye). If you prefer completing your screening with your personal eye specialist before waiting at a county counter, Hawaii accepts external optometrist or ophthalmologist examination results issued within the prior <strong>6 months</strong>; medical eye conditions use standardized certificate <strong>DOT-H2058</strong>.</p>
+      <p>Prepare by running our <a href="/checks/distance/">distance Snellen module</a> and <a href="/checks/peripheral/">horizontal visual field check</a> before booking your county satellite appointment.</p>
+    `,
+    "extraFaqs": [{"q":"At what ages does Hawaii shorten driver license renewal cycles?","a":"Hawaii switches from an 8-year cycle to every 4 years at age 72, and every 2 years starting at age 80."},{"q":"Can I bring an eye doctor exam instead of taking the Hawaii DMV machine test?","a":"Yes. An examination report completed by a licensed eye doctor within 6 months prior to renewal can verify acuity in place of counter screening, with Form DOT-H2058 covering underlying medical eye conditions."},{"q":"Does Hawaii allow routine online driver license renewal?","a":"Routine resident renewals require an in-person county office visit with vision verification and updated photo."}],
   },
   "IA": {
     "statute": "Iowa Code §§ 321.186, 321.186A; 761 IAC 604.5, 604.6, 604.8, 604.13",
@@ -276,7 +286,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "60° total horizontal (30° left/right of fixation, better eye)",
     "doctorForm": "TC 94-202",
-    "retestPolicy": "Failing the initial screening results in referral to a vision specialist (Form TC 94-202); an applicant with 20/60 in the better eye meeting the 60° field standard remains eligible."
+    "retestPolicy": "Failing the initial screening results in referral to a vision specialist (Form TC 94-202); an applicant with 20/60 in the better eye meeting the 60° field standard remains eligible.",
+    "renewalCycle": "Kentucky issues driver licenses with an applicant choice of 4-year or 8-year validity (under KRS 186.577 mandatory renewal screening enacted effective January 1, 2025).",
+    "onlineEligible": "Under Kentucky's 2025 mandate, online or mail renewals are permitted ONLY if a KYTC-credentialed eye care specialist submits or provides your signed vision screening within 12 months prior; otherwise you must test in person.",
+    "seniorRules": "Kentucky applies mandatory renewal vision testing identically across ALL adult ages beginning January 1, 2025, with no separate senior-only testing intervals.",
+    "screeningFormat": "KYTC Regional Licensing Offices offer free counter vision testing for 20/40 acuity and peripheral screening, or accept Form TC 94-202 (Vision Specialist Report) completed within 12 months.",
+    "stateGuide": `
+<p>Effective <strong>January 1, 2025</strong>, Kentucky fully rolled out mandatory vision screening for every driver's license renewal under KRS 186.577. Historically, Kentucky motorists rarely took eye exams after initial licensing; today, every renewing driver choosing either a 4-year or 8-year card must demonstrate passing eyesight at each renewal cycle regardless of age.</p>
+      <p>You have two clean options: walk into any Kentucky Transportation Cabinet (KYTC) Regional Driver Licensing Office for a <strong>free counter screening</strong> checking standard <strong>20/40 visual acuity</strong>, OR visit a KYTC-credentialed optometrist, ophthalmologist, or qualified osteopathic/medical physician up to <strong>12 months ahead</strong> to obtain signed <strong>Form TC 94-202</strong> (which then unlocks convenient online or mail-in renewal). Borderline corrected cases between 20/45 and 20/60 or specialized bioptic drivers undergo Medical Review Board assessment via Form TC 94-202 before final credential issuance.</p>
+      <p>Check whether your glasses clear 20/40 comfortably with our <a href="/us/test/">free Kentucky practice eye test</a> weeks before your expiration month.</p>
+    `,
+    "extraFaqs": [{"q":"Does Kentucky now require an eye test every time you renew?","a":"Yes. Effective January 1, 2025, every Kentucky driver's license renewal requires a passed vision check either free at a KYTC regional office or via an approved specialist form."},{"q":"Can you still renew a Kentucky license online after 2025?","a":"Yes, provided a credentialed eye doctor or physician completes your vision exam (Form TC 94-202) within the preceding 12 months before you submit online."},{"q":"What acuity is required to pass the Kentucky KYTC vision test?","a":"Standard unrestricted licensing requires 20/40 or better visual acuity with or without corrective lenses."}],
   },
   "LA": {
     "statute": "La. R.S. 32:408 (official text not re-verified on legis.la.gov)",
@@ -340,7 +360,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "105° horizontal diameter with one or both eyes",
     "doctorForm": "Vision Report PS30338-19",
-    "retestPolicy": "Fail → submit a Vision Report completed by a licensed vision examiner; the exam must be within six months of the report."
+    "retestPolicy": "Fail → submit a Vision Report completed by a licensed vision examiner; the exam must be within six months of the report.",
+    "renewalCycle": "Minnesota issues standard adult Class D driver's licenses on a 4-year cycle, requiring a counter vision screening on every renewal.",
+    "onlineEligible": "Minnesota provides NO fully remote online driver's license renewal; motorists may pre-apply online via drive.mn.gov to shorten counter time, then finish photo capture and mandatory vision testing in person at a DVS office or Deputy Registrar.",
+    "seniorRules": "Minnesota imposes no shortened renewal duration or extra senior road tests based on age; adult drivers of every age complete the identical 4-year in-person renewal screening.",
+    "screeningFormat": "Minnesota Driver and Vehicle Services (DVS) counters test 20/40 distance acuity and a continuous 105-degree horizontal field, routing restricted tiers (20/50 or narrower field) through Vision Report Form PS30338-19.",
+    "stateGuide": `
+<p>Every four years, Minnesota drivers must appear in person at a Department of Public Safety Driver and Vehicle Services (DVS) exam station or Deputy Registrar location to pass a counter vision screening. Although you can start renewal paperwork ahead of time through Minnesota's online pre-application portal (<code>drive.mn.gov</code>), you cannot bypass the physical counter eye check regardless of your age or driving history.</p>
+      <p>To earn an unrestricted Minnesota Class D card, your better eye (or both eyes together) must read <strong>20/40 or better</strong> alongside at least a <strong>105-degree horizontal visual field</strong>. When best acuity slips between <strong>20/50 and 20/70</strong> or peripheral span narrows, clerks provide <strong>Vision Report Form PS30338-19</strong> for completion by an optometrist or ophthalmologist, who certifies whether updated eyewear or restricted driving terms (daylight-only, local speed caps, or outside mirrors) safely apply.</p>
+      <p>Test each eye individually using <a href="/checks/distance/">calibrated Snellen columns</a> and run our <a href="/checks/peripheral/">105-degree peripheral field check</a> before heading to your Minnesota Deputy Registrar visit.</p>
+    `,
+    "extraFaqs": [{"q":"Can I renew my Minnesota driver's license online without an eye test?","a":"No. While Minnesota lets you fill out pre-application forms online at drive.mn.gov, an in-person vision screening at a DVS or Deputy Registrar counter is mandatory at every 4-year renewal."},{"q":"What is the minimum visual field required in Minnesota?","a":"Minnesota requires at least 105 degrees of continuous horizontal field of vision in addition to 20/40 visual acuity for unrestricted licensing."},{"q":"What form does a Minnesota eye specialist fill out?","a":"DVS uses Vision Report Form PS30338-19 when counter screening reveals vision worse than standard thresholds."}],
   },
   "MO": {
     "statute": "§ 302.175 RSMo; 12 CSR 10-24.090",
@@ -380,13 +410,23 @@ export const VERIFIED_DATA: Record<string, {
     "retestPolicy": "Best-effort (unverified): failing the screening results in referral to an eye care professional, who completes Eye Evaluation form 22-1801 for MVD review."
   },
   "NC": {
-    "statute": "N.C. Gen. Stat. § 20-7 (vision provision unconfirmed)",
-    "dmvUrl": "https://www.ncdot.gov/dmv/license-id/driver-licenses/new-drivers/Pages/default.aspx",
-    "asOf": "2026-10",
-    "verified": false,
-    "field": "60° horizontal using one eye, i.e., 30° each side of fixation (non-official source; official confirmation pending)",
-    "doctorForm": "Vision Specialist Form",
-    "retestPolicy": "Best-effort (unverified): failing the screening results in referral to an eye care specialist, who records the horizontal field of view in each eye on the Vision Specialist Form for DMV review."
+    "statute": "N.C. Gen. Stat. § 20-7(t); 19A NCAC 03B .0201",
+    "dmvUrl": "https://www.ncdot.gov/dmv/renewals/pages/default.aspx",
+    "asOf": "2026-11",
+    "verified": true,
+    "field": "70° horizontal field required for bioptic carrier lenses (or 40° temporal + 30° nasal if monocular)",
+    "doctorForm": "Form DL77 (Vision Specialist Form) reviewed by NCDMV Medical Review Unit",
+    "retestPolicy": "Fail -> referral to a licensed optometrist or ophthalmologist who completes Vision Specialist Form DL77 for NCDMV Medical Review Unit evaluation.",
+    "renewalCycle": "North Carolina licenses remain valid for 8 years between ages 18 and 65, shortening to a 5-year renewal cycle beginning at age 66.",
+    "onlineEligible": "Eligible North Carolina drivers may renew online at ncdot.gov (non-REAL ID up to two consecutive remote renewals; REAL ID eligible if the prior renewal occurred in person) with vision attestation, returning periodically for in-person photo, vision, and road-sign checks.",
+    "seniorRules": "Beginning at age 66, North Carolina reduces license duration from 8 years to every 5 years; every in-person renewal at any adult age requires both an eye screening and a road-sign recognition check.",
+    "screeningFormat": "NCDMV field counters test 20/40 acuity in either or both eyes alongside highway road signs; medical/bioptic referrals require Vision Specialist Form DL77 submitted to the Medical Review Unit.",
+    "stateGuide": `
+<p>North Carolina Division of Motor Vehicles (NCDMV) regulates driver vision under <strong>19A NCAC 03B .0201</strong> and statutory bioptic provisions in <strong>N.C. Gen. Stat. § 20-7(t)</strong>. Standard Class C passenger drivers pass unrestricted counter testing by reading <strong>20/40 or better</strong> in either eye or with both eyes together, paired with a quick road-sign shape and meaning identification check on every in-person office visit.</p>
+      <p>While North Carolina allows qualifying drivers to alternate online renewals via <code>ncdot.gov</code> (REAL ID requires an intervening in-person update), drivers aged <strong>66 and older</strong> transition from an 8-year card to a <strong>5-year renewal cycle</strong>. When an applicant cannot meet 20/40 with conventional lenses, NCDMV evaluates complex cases or bioptic telescopic driving on <strong>Form DL77 (Vision Specialist Form)</strong>: bioptic drivers need at least 20/200 carrier vision, <strong>70 degrees horizontal field</strong> (or 40° temporal plus 30° nasal if monocular), and <strong>20/70 through the telescope</strong> for daytime privileges (20/40 with doctor sign-off for night driving).</p>
+      <p>Verify your current eyeglasses against <a href="/us/test/">calibrated 20/40 rows</a> weeks before visiting an NCDMV office.</p>
+    `,
+    "extraFaqs": [{"q":"At what age does North Carolina shorten license renewal periods?","a":"Starting at age 66, North Carolina driver licenses renew every 5 years instead of every 8 years."},{"q":"Does every in-person NCDMV renewal include an eye test and road sign test?","a":"Yes. Every in-person North Carolina license renewal includes both a vision acuity screening and highway road-sign identification regardless of age."},{"q":"What is NCDMV Form DL77?","a":"Form DL77 is North Carolina's official Vision Specialist Form reviewed by the NCDMV Medical Review Unit for progressive eye conditions, restrictions, and N.C.G.S. § 20-7(t) bioptic permits."}],
   },
   "ND": {
     "statute": "N.D. Admin. Code 37-08-01-05",
@@ -413,7 +453,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "Not tested during routine screening",
     "doctorForm": "Form DSMV 61 Eye Examination",
-    "retestPolicy": "Fail → the applicant must have an eye doctor certify capability to drive safely on Form DSMV 61; the completed form must be returned within 30 days."
+    "retestPolicy": "Fail → the applicant must have an eye doctor certify capability to drive safely on Form DSMV 61; the completed form must be returned within 30 days.",
+    "renewalCycle": "New Hampshire driver's licenses run on a standard 5-year renewal cycle expiring on the holder's birthday.",
+    "onlineEligible": "Eligible New Hampshire residents may renew online every other 5-year renewal cycle by submitting an electronic vision attestation, returning to a DMV office in person at least once every 10 years for photo and vision screening.",
+    "seniorRules": "New Hampshire repealed mandatory age-triggered senior road tests in 2011 and enforces the same 5-year licensing cycle and counter acuity benchmarks across all adult ages.",
+    "screeningFormat": "NH Division of Motor Vehicles (DMV) counters screen for 20/40 acuity with both eyes open (or 20/30 when vision exists in only one eye), issuing Form DSMV 61 (Visual Acuity Form) due within 30 days on referrals.",
+    "stateGuide": `
+<p>New Hampshire pairs a clean 5-year renewal cycle with alternating online eligibility, letting eligible motorists renew remotely every second term while requiring an in-person DMV counter vision screening at least every ten years. Notably, New Hampshire repealed special senior road testing requirements in 2011, applying uniform screening criteria to all adult drivers.</p>
+      <p>At a New Hampshire DMV office, applicants clear unrestricted screening with <strong>20/40 visual acuity when using both eyes</strong>. However, if you only have functional sight in one eye, New Hampshire raises the single-eye requirement cleanly to <strong>20/30 or better</strong>. Whenever counter results fall below benchmark, examiners hand you <strong>Form DSMV 61 (Visual Acuity Form)</strong>, which an optometrist or ophthalmologist must complete within <strong>30 calendar days</strong> so DMV Medical Review can clear updated eyewear or conditional permissions.</p>
+      <p>Practice both binocular and individual eye reading at <a href="/checks/distance/">3-meter calibrated scale</a> weeks before your birthday renewal notice expires.</p>
+    `,
+    "extraFaqs": [{"q":"Does New Hampshire require special eye or road tests for senior drivers?","a":"No. New Hampshire eliminated age-75 road test mandates in 2011 and tests all adult drivers under the same 5-year schedule."},{"q":"What acuity does a one-eyed driver need in New Hampshire?","a":"Drivers with functional vision in only one eye must achieve at least 20/30 visual acuity on that eye to meet New Hampshire DMV standards."},{"q":"How long is a New Hampshire DMV vision referral valid?","a":"Eye care specialists must complete Visual Acuity Form DSMV 61 within 30 days when referred from a DMV counter."}],
   },
   "NJ": {
     "statute": "N.J.S.A. 39:3-10; N.J. Admin. Code § 13:21-8.10",
@@ -449,7 +499,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "Not part of routine counter vision screening (acuity 20/40 required)",
     "doctorForm": "MV-619 — Vision Test Report",
-    "retestPolicy": "Applicants who fail the counter screening can take the test with an approved provider enrolled in the NY DMV Vision Registry or submit Form MV-619 completed by a licensed vision professional."
+    "retestPolicy": "Applicants who fail the counter screening can take the test with an approved provider enrolled in the NY DMV Vision Registry or submit Form MV-619 completed by a licensed vision professional.",
+    "renewalCycle": "New York issues driver's licenses on an 8-year cycle across all adult age groups, mandating a passed vision test at every single renewal.",
+    "onlineEligible": "Eligible New Yorkers can renew online via MyDMV only when a vision test score has been uploaded directly into the NY DMV Online Vision Registry by an approved enrolled provider (pharmacy or optometrist) within 12 months.",
+    "seniorRules": "New York enforces zero age-triggered shortened renewal schedules or extra senior driving tests; all licensed New Yorkers pass a vision screening every 8 years.",
+    "screeningFormat": "NY DMV counters pass 20/40 acuity in at least the better eye freely at offices, or accept paper Form MV-619 (>=20/40 valid 12 mos) and Form MV-80L (20/40-20/70 submitted to the DMV Medical Review Unit).",
+    "stateGuide": `
+<p>Unlike states that allow electronic self-attestation during alternating renewals, New York State mandates an objectively verified eye exam on <strong>every single 8-year renewal</strong>, including online renewals. When renewing online via <code>MyDMV</code>, your score must first appear in the <strong>NY DMV Online Vision Registry</strong>, uploaded electronically within 24 hours by an enrolled retail vision provider, pharmacy clinic, or eye care office.</p>
+      <p>Standard unrestricted New York licensing requires at least <strong>20/40 visual acuity in the better eye</strong> (and minimum horizontal field standards). If you visit a doctor whose paper report shows >=20/40, Form <strong>MV-619</strong> remains valid for 12 months. Applicants whose best-corrected better eye lands between <strong>20/40 and 20/70</strong> require <strong>Form MV-80L</strong>, which adds horizontal field data and routes directly to the NY DMV Medical Review Unit for conditional clearance.</p>
+      <p>Test both eyes independently at <a href="/checks/distance/">calibrated distance</a> beforehand so your Online Vision Registry appointment finishes cleanly on the first visit.</p>
+    `,
+    "extraFaqs": [{"q":"How does the New York DMV Online Vision Registry work?","a":"Approved eye doctors and enrolled clinics upload your 20/40 vision test results directly to NY DMV within 24 hours, unlocking instant online renewal on MyDMV."},{"q":"What is the difference between Form MV-619 and MV-80L in New York?","a":"Form MV-619 certifies standard 20/40 or better acuity (valid 12 months), whereas Form MV-80L documents borderline 20/40 to 20/70 acuity and field measurements for the Medical Review Unit."},{"q":"Are New York senior drivers tested more often than 8 years?","a":"No. Every New York driver renews on the standard 8-year cycle regardless of age."}],
   },
   "OH": {
     "statute": "Ohio R.C. 4507.12; Ohio Admin. Code 4501:1-1-20",
@@ -486,7 +546,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "110° intact horizontal visual field",
     "doctorForm": "DMV Form 735-24 — Certificate of Vision",
-    "retestPolicy": "Unrestricted driving requires 110° field and 20/40 acuity. Drivers failing counter screening take Form 735-24 to a licensed eye specialist; acuity between 20/40 and 20/70 qualifies for daylight-only restrictions."
+    "retestPolicy": "Unrestricted driving requires 110° field and 20/40 acuity. Drivers failing counter screening take Form 735-24 to a licensed eye specialist; acuity between 20/40 and 20/70 qualifies for daylight-only restrictions.",
+    "renewalCycle": "Oregon issues standard adult Class C driver's licenses on an 8-year renewal cycle, mandating vision screening on every renewal beginning at age 50 (OAR 735-062-0060).",
+    "onlineEligible": "Under Oregon DMV rules, drivers under 50 generally rotate remote renewals smoothly; drivers aged 50+ require mandatory vision verification at each renewal (either counter testing or 6-month Certificate of Vision Form 735-24), and drivers 65+ must appear in person.",
+    "seniorRules": "Under Oregon Administrative Rule 735-062-0060, mandatory vision screening triggers at age 50 and continues on every subsequent 8-year renewal; drivers age 65+ must renew in person.",
+    "screeningFormat": "Oregon DMV counters check 20/40 unrestricted distance acuity (down to 20/70 daylight-restricted floor) paired with at least 110 degrees continuous horizontal visual field, accepting external Form 735-24 dated within 6 months.",
+    "stateGuide": `
+<p>Oregon sets its mandatory renewal screening milestone earlier than most states: under <strong>OAR 735-062-0060</strong>, every Oregon driver <strong>age 50 and older</strong> must pass a vision screening on every 8-year license renewal, with in-person visits required starting at <strong>age 65+</strong>.</p>
+      <p>Standard unrestricted Oregon Class C credentials clear at <strong>20/40 acuity</strong> (best or better eye) and <strong>110 degrees horizontal peripheral field</strong>. If distance sight with best eyewear lands between <strong>20/41 and 20/70</strong>, applicants may qualify for a <strong>daylight-driving-only restricted license</strong> (plus corrective-lens restrictions as required) supported by an eye doctor's Certificate of Vision (<strong>Form 735-24</strong>). Note that even drivers wishing to verify readiness ahead of counter lines can present external Certificate Form 735-24 signed within <strong>6 months</strong> by an optometrist or ophthalmologist.</p>
+      <p>Practice both binocular reading and peripheral flash detection via our <a href="/checks/distance/">calibrated distance Snellen check</a> and <a href="/checks/peripheral/">field screener</a> days before your Oregon DMV appointment.</p>
+    `,
+    "extraFaqs": [{"q":"At what age does Oregon require an eye test to renew your license?","a":"Under OAR 735-062-0060, Oregon mandates a vision test on every renewal starting at age 50 (and in-person office visits starting at age 65)."},{"q":"How long is Oregon DMV Certificate of Vision Form 735-24 valid?","a":"External eye specialist exams documented on Oregon Form 735-24 remain valid for 6 months from the examination date."},{"q":"Can you get a restricted license in Oregon with 20/70 vision?","a":"Yes, if acuity measures between 20/41 and 20/70 with 110-degree peripheral field, Oregon DMV can issue a daylight-driving-only license upon Form 735-24 approval."}],
   },
   "PA": {
     "statute": "75 Pa.C.S. § 1508; 67 Pa. Code § 83.3",
@@ -495,7 +565,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "120° combined horizontal field",
     "doctorForm": "DL-102 Report of Eye Examination",
-    "retestPolicy": "Fail → submit Form DL-102 completed by an optometrist, ophthalmologist, physician assistant, CRNP, or licensed physician; return it to the Bureau of Driver Licensing by mail, fax, or email for review."
+    "retestPolicy": "Fail → submit Form DL-102 completed by an optometrist, ophthalmologist, physician assistant, CRNP, or licensed physician; return it to the Bureau of Driver Licensing by mail, fax, or email for review.",
+    "renewalCycle": "Pennsylvania licenses renew on a 4-year cycle (with an optional 2-year reduced-fee renewal cycle for drivers aged 65 and older).",
+    "onlineEligible": "Because Pennsylvania does NOT perform routine vision testing at standard 4-year renewals, nearly all eligible motorists can renew online through PennDOT without an in-person eye chart check.",
+    "seniorRules": "PennDOT conducts NO automatic age-cutoff vision test for all seniors; instead, the Medical Advisory unit randomly selects roughly 2,000 drivers aged 45+ per month for a mandatory physician and vision examination.",
+    "screeningFormat": "Learner permits, out-of-state transfers, and selected medical re-exams screen 20/40 unrestricted acuity and 120 degrees combined horizontal field, routing daylight tiers (20/60 to 20/70) through Form DL-102.",
+    "stateGuide": `
+<p>Pennsylvania operates differently from almost every neighboring state: PennDOT does <em>not</em> administer routine eye screenings during ordinary 4-year license renewals. Instead, formal vision testing occurs during initial permit applications, out-of-state transfers, or when selected under Pennsylvania's <strong>Mature Driver Medical Reporting Program</strong>, which randomly audits roughly 2,000 licensed drivers aged 45 and older each month for medical and vision fitness. Seniors aged 65+ may also choose a reduced-fee 2-year renewal term without extra automatic eye exams.</p>
+      <p>Unrestricted Pennsylvania status requires <strong>20/40 distance acuity</strong> (combined and better-eye rules) alongside a combined horizontal field of at least <strong>120 degrees</strong>. When drivers fall between <strong>20/60 and 20/70 best-corrected</strong> (combined) on initial licensing or physician re-exam, PennDOT evaluates daylight-only restricted privileges (plus approved bioptic telescope pathways after specialized training) certified directly by an optometrist or ophthalmologist on <strong>Form DL-102</strong>.</p>
+      <p>Whether preparing for a new Pennsylvania permit or a random DL-102 evaluation, run our <a href="/us/test/">calibrated distance practice</a> and <a href="/checks/peripheral/">120-degree peripheral check</a> beforehand.</p>
+    `,
+    "extraFaqs": [{"q":"Do you take an eye test every 4 years when renewing a PA license?","a":"No. Standard Pennsylvania 4-year renewals do not include a routine PennDOT counter vision check unless selected for medical audit or holding specific restrictions."},{"q":"What is PennDOT's random senior vision selection?","a":"Every month, PennDOT randomly selects approximately 2,000 drivers aged 45+ to have their doctor complete a physical and vision fitness check (Form DL-102 for vision findings)."},{"q":"Does Pennsylvania allow bioptic telescopic driving?","a":"Yes, under PennDOT medical regulations with Form DL-102 specialist certification, daylight limits, and approved training."}],
   },
   "RI": {
     "statute": "R.I. Gen. Laws § 31-10 (exact section unconfirmed)",
@@ -540,7 +620,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "Not part of routine counter vision screening",
     "doctorForm": "DL-63 — Certificate of Physical Examination (Vision Specialist)",
-    "retestPolicy": "Applicants failing the counter screening are issued Form DL-63 for an optometrist or ophthalmologist to complete. TxDPS reviews the specialist evaluation to apply corrective lens or daylight restrictions."
+    "retestPolicy": "Applicants failing the counter screening are issued Form DL-63 for an optometrist or ophthalmologist to complete. TxDPS reviews the specialist evaluation to apply corrective lens or daylight restrictions.",
+    "renewalCycle": "Texas driver's licenses remain valid for 8 years through age 84, dropping to a 2-year renewal cycle beginning at age 85 (Texas Transportation Code Chapter 521).",
+    "onlineEligible": "Eligible Texans aged 18 through 78 can renew online via Texas.gov on alternating cycles; starting at age 79+, Texas strictly requires in-person DPS office renewal with vision screening on every cycle.",
+    "seniorRules": "Texas prohibits online/mail renewals starting at age 79 (8-year term through age 84, switching to a 2-year term at age 85+), mandating an in-person DPS eye check at every renewal visit.",
+    "screeningFormat": "Texas DPS driver license offices require 20/40 unaided or with glasses/contacts for unrestricted driving, permit 20/50 with a specialist note, and assign daylight-only + 45 mph restrictions for 20/60 to 20/70 via Form DL-63.",
+    "stateGuide": `
+<p>Texas Department of Public Safety (DPS) relies heavily on age-gated in-person visits. Through age 78, Texans with clean records normally qualify to renew online every second term through <code>Texas.gov</code>. Starting at <strong>age 79</strong>, remote renewal ends: drivers aged 79 to 84 renew in person every 8 years with mandatory counter eye screening, and at <strong>age 85 and older</strong> renewal shrinks sharply to every <strong>2 years</strong> in person.</p>
+      <p>DPS applies clear graduated acuity bands: <strong>20/40 or better</strong> clears unrestricted passenger Class C licensing cleanly (with Code A corrective lenses noted if glasses/contacts are worn). Results of <strong>20/50 best eye</strong> typically require an eye specialist evaluation confirming stability via <strong>Form DL-63</strong>, while <strong>20/60 to 20/70</strong> usually carries <strong>daylight-only hours and a 45 mph maximum speed restriction</strong>.</p>
+      <p>Prepare for busy Texas Mega Centers by screening both eyes separately on <a href="/checks/distance/">calibrated distance Snellen rows</a> days before your scheduled appointment.</p>
+    `,
+    "extraFaqs": [{"q":"At what age do you have to renew a Texas driver's license in person?","a":"Starting at age 79, Texans can no longer renew online or by mail and must appear in person at a DPS office for vision screening (switching to every 2 years at age 85+)."},{"q":"What happens if you measure 20/60 or 20/70 at the Texas DPS eye test?","a":"After submitting Vision Specialist Form DL-63, Texas DPS commonly approves restricted driving limited to daylight hours and speeds of 45 mph or less."},{"q":"How does Texas Form DL-63 work?","a":"Form DL-63 (Examination by Vision Specialist) is completed by a licensed optometrist or ophthalmologist whenever counter screening falls short of 20/40."}],
   },
   "UT": {
     "statute": "Utah Code § 53-3-303 (unconfirmed)",
@@ -558,7 +648,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "110° total horizontal field in one or both eyes (70° for daylight-only restriction)",
     "doctorForm": "MED 4 — Customer Vision Report",
-    "retestPolicy": "An unrestricted license requires 20/40 acuity and at least 110° horizontal field. A daylight-only restricted license may be issued with 20/70 acuity and 70° horizontal field. An eye specialist report on Form MED 4 is required if screening fails."
+    "retestPolicy": "An unrestricted license requires 20/40 acuity and at least 110° horizontal field. A daylight-only restricted license may be issued with 20/70 acuity and 70° horizontal field. An eye specialist report on Form MED 4 is required if screening fails.",
+    "renewalCycle": "Virginia issues adult licenses for 8 years through age 74, shortening validity to 5 years starting at age 75.",
+    "onlineEligible": "Motorists under age 75 may renew online every other renewal cycle on dmvNOW if holding no medical holds; starting at age 75+, Virginia bars online and mail renewals and mandates an in-person DMV visit.",
+    "seniorRules": "Beginning at age 75, Virginia drivers must appear in person at a DMV Customer Service Center every 5 years and pass either the counter screening or supply a specialist vision report dated within 90 days.",
+    "screeningFormat": "Virginia DMV offices verify 20/40 or better acuity and 110 degrees horizontal peripheral field unrestricted (or 70 degrees daylight-only threshold via Form MED 4 Customer Vision Report).",
+    "stateGuide": `
+<p>Virginia DMV splits licensing cadence clearly at age 75. Motorists under 75 hold an 8-year card and usually qualify to renew remotely via <code>dmvNOW</code> every second cycle, meaning formal vision testing occurs in office at least every 16 years unless triggered earlier. Once you turn <strong>75</strong>, however, renewal validity trims to <strong>5 years</strong> and online or mail renewals turn off permanently so every renewal includes a verified vision check.</p>
+      <p>Standard unrestricted Virginia credentials require <strong>20/40 visual acuity</strong> and a <strong>110-degree horizontal field</strong>. Applicants whose daytime-corrected vision reaches <strong>20/70</strong> paired with at least a <strong>70-degree field</strong> may still retain daytime-only driving privileges after filing <strong>Form MED 4 (Customer Vision Report)</strong>. Virginia also supports certified bioptic telescopic lens programs subject to Medical Review Board clearance.</p>
+      <p>Note that Virginia seniors age 75+ may skip the counter viewer altogether by bringing a private optometrist or ophthalmologist vision examination signed within <strong>90 calendar days</strong> of their office visit. Run our <a href="/us/test/">DMV practice screener</a> beforehand to verify crisp 20/40 margin.</p>
+    `,
+    "extraFaqs": [{"q":"Can a 75-year-old renew a Virginia driver's license online?","a":"No. Starting at age 75, Virginia prohibits online and mail renewals and requires an in-person DMV visit every 5 years with passed vision verification."},{"q":"Can an eye doctor test replace the Virginia DMV counter box at age 75+?","a":"Yes. Presenting a Vision Specialist exam completed within the preceding 90 days satisfies the renewal vision check without needing counter box screening."},{"q":"What is Virginia Form MED 4?","a":"Form MED 4 (Customer Vision Report) is the official DMV specialist document used for medical vision review, daylight-only restricted driving (20/70 / 70° field), and bioptic evaluations."}],
   },
   "VT": {
     "statute": "23 V.S.A. § 631",
@@ -595,7 +695,17 @@ export const VERIFIED_DATA: Record<string, {
     "verified": true,
     "field": "70° total horizontal field of vision for unrestricted licensing",
     "doctorForm": "MV3030V — Certificate of Vision Examination",
-    "retestPolicy": "Vision worse than 20/40 or visual field less than 70 degrees requires referral to an eye specialist via Form MV3030V, possible driving skills evaluation, and restrictions such as daylight-only driving."
+    "retestPolicy": "Vision worse than 20/40 or visual field less than 70 degrees requires referral to an eye specialist via Form MV3030V, possible driving skills evaluation, and restrictions such as daylight-only driving.",
+    "renewalCycle": "Wisconsin issues standard and REAL ID adult licenses on an 8-year renewal schedule.",
+    "onlineEligible": "Eligible Wisconsin drivers under age 65 with no medical changes or certain license restrictions may renew online via WisDOT; drivers aged 65+ cannot renew online and must visit a DMV Customer Service Center in person.",
+    "seniorRules": "Starting at age 65, Wisconsin disallows online renewal so all motorists 65 and older appear in person at a WisDOT DMV counter every 8 years to pass vision screening.",
+    "screeningFormat": "WisDOT counters screen 20/40 acuity and 70 degrees temporal field per eye unrestricted (down to 20/100 floor / 20 degrees field via specialist Form MV3030V; bioptic telescopic lenses are disallowed).",
+    "stateGuide": `
+<p>Wisconsin Department of Transportation (WisDOT) maintains an 8-year validity schedule across adults while setting a clear electronic cutoff at age 65. Residents under 65 who qualify cleanly can renew online through WisDOT, whereas every motorist <strong>age 65 and older</strong> must visit a DMV Customer Service Center in person at each 8-year cycle for photo capture and mandatory vision screening.</p>
+      <p>To keep full unrestricted Class D driving privileges, Wisconsin requires at least <strong>20/40 acuity</strong> and <strong>70 degrees of temporal horizontal field</strong> from center in at least one qualified eye setup. Drivers needing clinical documentation between 20/50 and the absolute minimum <strong>20/100</strong> floor (or narrowed field down to 20 degrees from center) must file <strong>Form MV3030V (Certificate of Vision Examination)</strong> with an optometrist or ophthalmologist recommending corrective eyewear, daylight limits, or area restrictions. Importantly, Wisconsin state rules prohibit the use of <strong>bioptic telescopic glasses</strong> to satisfy driver licensing vision standards.</p>
+      <p>Confirm comfortable 20/40 clarity and side-field responsiveness on our <a href="/checks/distance/">Snellen checker</a> and <a href="/checks/peripheral/">visual field test</a> ahead of your DMV Customer Service Center visit.</p>
+    `,
+    "extraFaqs": [{"q":"At what age must Wisconsin drivers stop renewing online?","a":"Starting at age 65, Wisconsin drivers are ineligible for online renewal and must screen in person at a DMV office every 8 years."},{"q":"Are bioptic telescopic glasses allowed for driving in Wisconsin?","a":"No. Wisconsin WisDOT rules disallow bioptic telescopic lenses to meet Class D licensing vision minimums."},{"q":"What is Wisconsin Form MV3030V?","a":"Form MV3030V is the Certificate of Vision Examination filled out by an optometrist or ophthalmologist whenever counter screening cannot verify unrestricted 20/40 acuity or 70-degree field."}],
   },
   "WV": {
     "statute": "W. Va. Code § 17B-2-3 (unconfirmed)",
