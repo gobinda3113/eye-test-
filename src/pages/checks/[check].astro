@@ -106,7 +106,8 @@ const schema = {
         </span>
       </div>
 
-      <div class="prose" style="max-width: 74ch; margin: 0 auto;">
+      <div class="doc-layout">
+        <div class="prose">
         <h2>What this check evaluates</h2>
         <p>{guide.whatItMeasures}</p>
 
@@ -137,6 +138,21 @@ const schema = {
             Browse all 13 checks
           </a>
         </div>
+        </div>
+
+        <aside class="doc-aside" aria-label="Quick check launch">
+          <div class="doc-aside-card">
+            <h3>Run This Check Online</h3>
+            <p>Calibrate with a standard 85.6 mm bank card before measuring your score.</p>
+            <ul class="doc-aside-list">
+              <li><span>Format</span><strong>Vector 5x5</strong></li>
+              <li><span>Privacy</span><strong>In-browser only</strong></li>
+            </ul>
+            <a class="btn btn-primary" style="width: 100%; justify-content: center;" href={`/test/?mode=individual&check=${check.id}`}>
+              Start Check
+            </a>
+          </div>
+        </aside>
       </div>
     </div>
   </SiteShell>

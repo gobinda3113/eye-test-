@@ -610,6 +610,19 @@ html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
   gap: 12px;
 }
 
+.home-page .chart-lines .chart-row svg {
+  color: #ffffff;
+}
+
+.home-page .chart-lines .chart-row .row-tag {
+  color: #c7d8cf;
+}
+
+.home-page .chart-lines .chart-row.is-bench::before {
+  border-color: #cbea88;
+  opacity: 0.75;
+}
+
 .home-page .chart-lines svg text {
   fill: #ffffff !important;
 }
@@ -1241,6 +1254,14 @@ html[data-theme="dark"] .home-page .site-footer .footer-brand .brand-text {
   grid-template-columns: 1fr 1.15fr;
   gap: 13%;
   margin-top: 59px;
+}
+
+@media (min-width: 821px) {
+  .home-page .faq-grid > div:first-child {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
 }
 
 .home-page .faq-grid > div:first-child p {

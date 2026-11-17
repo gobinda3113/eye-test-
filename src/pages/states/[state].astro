@@ -150,7 +150,8 @@ const faqSchema = {
         </div>
       )}
 
-      <div class="prose" style="max-width: 72ch;">
+      <div class="doc-layout" style="margin-top: 20px;">
+      <div class="prose">
         <h2>Vision Requirements for {stateData.name}</h2>
         <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 20px 24px; margin: 16px 0 24px;">
           <ul style="margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px;">
@@ -232,6 +233,25 @@ const faqSchema = {
           <p style="margin: 0 0 8px 0;">Looking for other state requirements? <a href="/states/">Browse vision requirements in all 50 states</a>.</p>
           <p style="margin: 0;">Getting ready for your test? <a href="/us/">Practice the US DMV eye test online</a>.</p>
         </div>
+      </div>
+
+      <aside class="doc-aside" aria-label={`${stateData.name} quick summary`}>
+        <div class="doc-aside-card">
+          <h3>{stateData.name} Quick Snapshot</h3>
+          <p>Verify your eyesight against the {stateData.name} standard before visiting the counter.</p>
+          <ul class="doc-aside-list">
+            <li><span>Standard</span><strong>{stateData.min}</strong></li>
+            <li><span>Restricted</span><strong>{stateData.restrict || "N/A"}</strong></li>
+            <li><span>Renewal</span><strong>{stateData.renewal}</strong></li>
+          </ul>
+          <a class="btn btn-primary" style="width: 100%; justify-content: center; margin-bottom: 10px;" href="/us/test/">
+            Start DMV Practice
+          </a>
+          <a class="btn btn-ghost" style="width: 100%; justify-content: center;" href="/states/">
+            All 50 States
+          </a>
+        </div>
+      </aside>
       </div>
     </div>
   </SiteShell>

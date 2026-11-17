@@ -82,39 +82,53 @@ const related = rotatedPosts.filter((p) => {
       </div>
     </div>
 
-    <div class="content-body prose" style="max-width: 76ch; margin: 0 auto;">
-      <article set:html={post.content[locale] || post.content.en} />
+    <div class="doc-layout">
+      <div class="content-body prose">
+        <article set:html={post.content[locale] || post.content.en} />
 
-      <div class="snellen-divider" aria-hidden="true" style="margin: 48px 0 36px;">
-        <span class="snellen-motif">
-          <span class="m-1">E</span>
-          <span class="m-2">F P</span>
-          <span class="m-3">T O Z</span>
-          <span class="m-4">L P E D</span>
-        </span>
+        <div class="snellen-divider" aria-hidden="true" style="margin: 48px 0 36px;">
+          <span class="snellen-motif">
+            <span class="m-1">E</span>
+            <span class="m-2">F P</span>
+            <span class="m-3">T O Z</span>
+            <span class="m-4">L P E D</span>
+          </span>
+        </div>
+
+        <div class="dark-ink-panel" style="margin-top: 36px;">
+          <h3 style="margin-top: 0; font-size: clamp(1.6rem, 2.5vw, 2.2rem);">{locale === "en" ? "Ready to test your vision?" : d("nav.start")}</h3>
+          <p style="margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
+          <a class="btn btn-primary btn-lg" href={home}>{d("nav.cta")}</a>
+        </div>
+
+        {related.length > 0 && (
+          <aside class="related-posts" aria-labelledby="related-heading">
+            <h2 id="related-heading">{RELATED_LABEL[locale] || RELATED_LABEL.en}</h2>
+            <ul>
+              {related.map((p) => (
+                <li>
+                  <a href={pathFor(locale, "blog") + p.slug + "/"}>
+                    {p.title[locale] || p.title.en}
+                  </a>
+                  <p>{p.excerpt[locale] || p.excerpt.en}</p>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
       </div>
 
-      <div class="dark-ink-panel" style="margin-top: 36px;">
-        <h3 style="margin-top: 0; font-size: clamp(1.6rem, 2.5vw, 2.2rem);">{locale === "en" ? "Ready to test your vision?" : d("nav.start")}</h3>
-        <p style="margin-bottom: 24px;">{locale === "en" ? "Calibrate your screen and practice the vision checks in 10 minutes." : d("hero.trust3")}</p>
-        <a class="btn btn-primary btn-lg" href={home}>{d("nav.cta")}</a>
-      </div>
-
-      {related.length > 0 && (
-        <aside class="related-posts" aria-labelledby="related-heading">
-          <h2 id="related-heading">{RELATED_LABEL[locale] || RELATED_LABEL.en}</h2>
-          <ul>
-            {related.map((p) => (
-              <li>
-                <a href={pathFor(locale, "blog") + p.slug + "/"}>
-                  {p.title[locale] || p.title.en}
-                </a>
-                <p>{p.excerpt[locale] || p.excerpt.en}</p>
-              </li>
-            ))}
+      <aside class="doc-aside" aria-label={d("nav.start")}>
+        <div class="doc-aside-card">
+          <h3>{locale === "en" ? "Calibrated Vision Screener" : d("nav.start")}</h3>
+          <p>{d("hero.trust3")}</p>
+          <ul class="doc-aside-list">
+            <li><span>ISO/IEC 7810</span><strong>85.6 mm</strong></li>
+            <li><span>{locale === "en" ? "Benchmark" : "20/40"}</span><strong>20/40</strong></li>
           </ul>
-        </aside>
-      )}
+          <a class="btn btn-primary" style="width: 100%; justify-content: center;" href={pathFor(locale, "test")}>{d("nav.cta")}</a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
